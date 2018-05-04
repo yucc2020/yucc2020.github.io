@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="不踏坑的Yu同学">
 <meta property="og:description" content="在windows环境下，python3 读取中文文件方法，折腾了很久，总结了下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-04T08:38:01.613Z">
+<meta property="og:updated_time" content="2018-05-04T09:10:33.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 3 读取中文文件">
 <meta name="twitter:description" content="在windows环境下，python3 读取中文文件方法，折腾了很久，总结了下。">
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-04T16:38:01+08:00">
-                2018-05-04 16:38
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-04T17:10:33+08:00">
+                2018-05-04 17:10
               </time>
             
           </span>
@@ -377,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/experience-of-life/" itemprop="url" rel="index">
-                    <span itemprop="name">experience of life</span>
+                  <a href="/categories/experience-of-code/" itemprop="url" rel="index">
+                    <span itemprop="name">experience of code</span>
                   </a>
                 </span>
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  270
+                  285
                 </span>
               
 
@@ -475,6 +475,8 @@
 </ol>
 <p>两种方法，方法一，使用codecs模块：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> codecs</span><br><span class="line"><span class="keyword">with</span> codecs.open(file, <span class="string">'r'</span>, encoding=<span class="string">'utf-16'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read().decode(<span class="string">'utf-16'</span>)</span><br></pre></td></tr></table></figure>
 <p>方法二：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(file, <span class="string">'r'</span>, encoding=<span class="string">'UTF-16'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    text = f.read()</span><br></pre></td></tr></table></figure>
 <p>自己写的时候记得修改encoding为自己文件的相应格式，同时根据自己需要修改读写。</p>

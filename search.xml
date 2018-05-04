@@ -3,9 +3,9 @@
   <entry>
     <title><![CDATA[python 3 读取中文文件]]></title>
     <url>%2Fp%2F6821aaf2%2F</url>
-    <content type="text"><![CDATA[在windows环境下，python3 读取中文文件方法，折腾了很久，总结了下。 先找到文件编码格式。 因为读文件的时候，需要知道文件的编码格式，编码格式怎么看呢？ 我的方法是，使用windows自带的记事本打开文件，然后ctrl+shift+s，或文件-另存为，可以看到文件的编码格式。 常见的编码格式有utf-8，gbk，gb2312。我今天把这些编码格式都试了发现都不能解码，最后发现文件编码格式是Unicode big endian，然后看到Stack Overflow上说，编码就是UTF-16[1]，最终解决问题。 编写相应代码。 两种方法，方法一，使用codecs模块： 123import codecswith codecs.open(file, 'r', encoding='utf-16') as f: text = f.read() 方法二： 12with open(file, 'r', encoding='UTF-16') as f: text = f.read() 自己写的时候记得修改encoding为自己文件的相应格式，同时根据自己需要修改读写。 引用： [1]. https://stackoverflow.com/questions/8827419/converting-utf-16-utf-8-and-remove-bom]]></content>
+    <content type="text"><![CDATA[在windows环境下，python3 读取中文文件方法，折腾了很久，总结了下。 先找到文件编码格式。 因为读文件的时候，需要知道文件的编码格式，编码格式怎么看呢？ 我的方法是，使用windows自带的记事本打开文件，然后ctrl+shift+s，或文件-另存为，可以看到文件的编码格式。 常见的编码格式有utf-8，gbk，gb2312。我今天把这些编码格式都试了发现都不能解码，最后发现文件编码格式是Unicode big endian，然后看到Stack Overflow上说，编码就是UTF-16[1]，最终解决问题。 编写相应代码。 两种方法，方法一，使用codecs模块： 123import codecswith codecs.open(file, 'r', encoding='utf-16') as f: text = f.read() 或 12with open(file, 'rb') as f: text = f.read().decode('utf-16') 方法二： 12with open(file, 'r', encoding='UTF-16') as f: text = f.read() 自己写的时候记得修改encoding为自己文件的相应格式，同时根据自己需要修改读写。 引用： [1]. https://stackoverflow.com/questions/8827419/converting-utf-16-utf-8-and-remove-bom]]></content>
       <categories>
-        <category>experience of life</category>
+        <category>experience of code</category>
       </categories>
       <tags>
         <tag>python</tag>
