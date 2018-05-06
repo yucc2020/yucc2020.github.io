@@ -85,18 +85,21 @@
 
 
 
-<meta name="description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）做一个推导。">
+<meta name="description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
 <meta name="keywords" content="error backpropagation, 误差反向传播, bp, bp算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="误差反向传播（error backpropagation）推导过程【待完成】">
 <meta property="og:url" content="http://yucc.me/p/55aa0f10/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）做一个推导。">
+<meta property="og:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-05T15:10:11.996Z">
+<meta property="og:image" content="http://yucc.me/p/55aa0f10/1.png">
+<meta property="og:image" content="http://yucc.me/p/55aa0f10/3.png">
+<meta property="og:updated_time" content="2018-05-06T09:17:56.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差反向传播（error backpropagation）推导过程【待完成】">
-<meta name="twitter:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）做一个推导。">
+<meta name="twitter:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
+<meta name="twitter:image" content="http://yucc.me/p/55aa0f10/1.png">
 
 
 
@@ -358,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-05T23:10:11+08:00">
-                2018-05-05 23:10
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-06T17:17:56+08:00">
+                2018-05-06 17:17
               </time>
             
           </span>
@@ -415,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  76
+                  813
                 </span>
               
 
@@ -431,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -452,8 +455,33 @@
       
 
       
-        <p>误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）做一个推导。</p>
+        <p>误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squared Error）。</p>
 <a id="more"></a>
+<h2 id="1-前馈神经网络简介"><a href="#1-前馈神经网络简介" class="headerlink" title="1. 前馈神经网络简介"></a>1. 前馈神经网络简介</h2><p>基本网络如图1所示，这是一个基本的神经网络，下面来解析这个网络结构。</p>
+<img src="/p/55aa0f10/1.png" title="图1：两层神经网络的网络图。输入变量、隐含变量、输出变量表示的节点，权参数被表示为节点之间的链接，其中偏置参数被表示为来自额外的输入变量$\\x_0\\$和隐含变量$\\z_0\\$的链接。箭头表示信息流在网络中传播的方向。">
+<p>首先，我们构造输入变量$x_1,…,x_D$的线性组合，形式为：</p>
+<p>$$<br>\begin{equation}<br>{a_j} = \sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}<br>\end{equation} \tag{1}<br>$$</p>
+<p>其中$j=1,…,M$，M是输出的总量，且上标(1)表示对应的参数是神经网络的第一层。${w_{ji}}^{(1)}$叫做权重（weight），参数$w_{j0}$叫做偏置（bias）,$a_j$叫做激活(activation)。每个激活都使用一个非线性激活函数(activation function) $h(·)$进行变换，得：</p>
+<p>$$<br>\begin{equation}<br>z_j = h(a_j)<br>\end{equation} \tag{2}<br>$$</p>
+<p>非线性函数$h(a_j)$通常选用sigmoid，tanh，relu等。$z_j$为经过激活函数的值。这些值会再次线性组合，得到输出单元激活（output unit activation）：</p>
+<p>$$<br>\begin{equation}<br>{a_k} = \sum_{i=1}^K {w_{kj}}^{(2)} \cdot z_j + {w_{k0}}^{(2)}<br>\end{equation} \tag{3}<br>$$</p>
+<p>这个变换对应于神经网络第二层，类似于之前。最后使用一个恰当的激活函数进行变换，得到神经网络的一组输出$y_k$。对于标准回归问题，激活函数是恒等函数，从而$y_k = a_k$。对于一个二元分类问题，每个输出单元激活可以使用logistic sigmoid进行变换，即:</p>
+<p>$$<br>\begin{equation}<br>y_k = \sigma(a_k)<br>\end{equation} \tag{4}<br>$$</p>
+<p>$\sigma(·)$函数形式这里不再给出，可以自己查看。对于多分类问题，可以使用softmax激活函数。</p>
+<p>最后综合以上的观点，我们容易得到一个网络整体，如下:</p>
+<p>$$<br>\begin{equation}<br>y_k = \sigma(\sum_{i=1}^K {w_{kj}}^{(2)} \cdot h(\sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}) + {w_{k0}}^{(2)})<br>\end{equation} \tag{5}<br>$$</p>
+<p>其中所有权重参数和偏置被聚集在一起，记做$\vec{w}$。因此，神经网络可以简单地认为是从输入变量$\vec{x}$到输出变量$\vec{y}$的非线性函数，映射由调节参数$\vec{w}$来控制。</p>
+<p>具体网络结构正如图1所示。计算公式（5）的过程可以认为是信息通过网络的<strong>前向传播（forward propagation）</strong>。</p>
+<p>通过定义额外的输入变量$x_0$讲公式(1)中的偏置参数整合进权重参数集合中，并且$x_0$被限定为1，因此公式（1）可以改写为：</p>
+<p>$$<br>\begin{equation}<br>{a_j} = \sum_{i=0}^D {w_{ji}}^{(1)} \cdot x_i<br>\end{equation} \tag{6}<br>$$</p>
+<p>第二层的偏置也做类似处理，最终整体网络函数可以从公式（5）变为：</p>
+<p>$$<br>\begin{equation}<br>y_k = \sigma(\sum_{i=0}^K {w_{kj}}^{(2)} \cdot h(\sum_{i=0}^D {w_{ji}}^{(1)} \cdot x_i))<br>\end{equation} \tag{7}<br>$$</p>
+<p>至此，一个简单的前馈神经网络已经完成了。</p>
+<h2 id="2-误差反向传播算法"><a href="#2-误差反向传播算法" class="headerlink" title="2. 误差反向传播算法"></a>2. 误差反向传播算法</h2><h2 id="3-简单线性模型"><a href="#3-简单线性模型" class="headerlink" title="3. 简单线性模型"></a>3. 简单线性模型</h2><h2 id="4-通用推导"><a href="#4-通用推导" class="headerlink" title="4. 通用推导"></a>4. 通用推导</h2><p><img src="3.png" alt=""></p>
+<h2 id="5-一个简单的例子"><a href="#5-一个简单的例子" class="headerlink" title="5. 一个简单的例子"></a>5. 一个简单的例子</h2><p>参考资料：</p>
+<ol>
+<li>BISHOP, C, M. Pattern recognition and machine learning[M]. New York:Springer, 2006. 225-244</li>
+</ol>
 
       
     </div>
@@ -602,8 +630,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -720,6 +757,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络简介"><span class="nav-text">1. 前馈神经网络简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-误差反向传播算法"><span class="nav-text">2. 误差反向传播算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-简单线性模型"><span class="nav-text">3. 简单线性模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通用推导"><span class="nav-text">4. 通用推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-一个简单的例子"><span class="nav-text">5. 一个简单的例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1318,6 +1371,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
   <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
