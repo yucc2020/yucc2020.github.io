@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[二分类模型性能评估指标详解[待完成]]]></title>
+    <url>%2Fp%2F82f51d0e%2F</url>
+    <content type="text"><![CDATA[对于二分类模型常用的分类指标有： 1. 精准率precision 2. 召回率 recall 3. F值 F-score 4. 准确率ACC(Accuracy) 5. ROC 6.AUC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。 1. 混淆矩阵混淆矩阵是监督学习中的一种可视化工具，主要用于比较分类结果和实例的真实信息。矩阵中的每一行代表实例的预测类别，每一列代表实例的真实类别。 真实值为正样本P 真实值为负样本N 预测值为P True Postive(TP) False Postive(FP) 预测值为N False Negative(FN) True Negative(TN) 在混淆矩阵中，每一个实例可以划分为以下四种类型之一： 真正(True Positive , TP)：被模型预测为正的正样本 假正(False Positive , FP)：被模型预测为正的负样本 假负(False Negative , FN)：被模型预测为负的正样本 真负(True Negative , TN)：被模型预测为负的负样本 2. 真正率、假负率、假正率及真负率定义以下几个指标 真正率(True Positive Rate, TP Rate, TPR)（灵敏度sensitivity， 也是召回率）：$TPR = \frac{TP}{(TP + FN)}$，即$\frac{被预测为正的正样本结果数}{正样本实际数}$ 假负率(False Negative Rate, FN Rate, FNR) ：$FNR = \frac{FN}{(TP + FN)}$ ，即被$\frac{预测为负的正样本结果数}{正样本实际数}$ 假正率(False Positive Rate, FP Rate, FPR) ：$FPR = \frac{FP}{(FP + TN)}$ ，即被$\frac{预测为正的负样本结果数}{负样本实际数}$ 真负率(True Negative Rate, TN Rate, TNR)（特指度specificity）：$TNR = \frac{TN}{(TN + FP)}$ ，即被$\frac{预测为负的负样本结果数}{负样本实际数}$ 可以看出，真正（TP）和假负（FN）都是实际类别是正样本，分别被判为正及负，真正率（TPR）及假负率（FNR）都是除以正样本的总个数（TP+FN）。所以TPR+FNR=1。类似的，假正（FP）和真负（TN）都是实际样本类别是负样本，分别被判为正及负，假正率（FPR）及真负率（TNR）都是除以负样本的总数（FP+TN）。所以FPR+TNR=1。 可以看出，以上四个率（Rate）都是除以他们的真实标签对应的所有与它们真实标签相同的样本的个数。TPR、FNR二者知其一，便知另外一个。FPR、TNR也只需要知道一个便知另外一个。 在weka里，会显示TPR和FPR两个参数。 3. 精准度、召回率、F值 精准度，也叫 参考资料： http://blog.sina.com.cn/s/blog_629e606f0102v7a0.html https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers 周志华《机器学习》 李航《统计学习方法》]]></content>
+      <categories>
+        <category>Artificial Intelligence</category>
+      </categories>
+      <tags>
+        <tag>AI一丝一毫</tag>
+        <tag>machine learning</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[误差反向传播（error backpropagation）推导过程【待完成】]]></title>
     <url>%2Fp%2F55aa0f10%2F</url>
     <content type="text"><![CDATA[误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squared Error）。 1. 前馈神经网络简介基本网络如图1所示，这是一个基本的神经网络，下面来解析这个网络结构。 首先，我们构造输入变量$x_1,…,x_D$的线性组合，形式为： $$\begin{equation}{a_j} = \sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}\end{equation} \tag{1}$$ 其中$j=1,…,M$，M是输出的总量，且上标(1)表示对应的参数是神经网络的第一层。${w_{ji}}^{(1)}$叫做权重（weight），参数$w_{j0}$叫做偏置（bias）,$a_j$叫做激活(activation)。每个激活都使用一个非线性激活函数(activation function) $h(·)$进行变换，得： $$\begin{equation}z_j = h(a_j)\end{equation} \tag{2}$$ 非线性函数$h(a_j)$通常选用sigmoid，tanh，relu等。$z_j$为经过激活函数的值。这些值会再次线性组合，得到输出单元激活（output unit activation）： $$\begin{equation}{a_k} = \sum_{i=1}^K {w_{kj}}^{(2)} \cdot z_j + {w_{k0}}^{(2)}\end{equation} \tag{3}$$ 这个变换对应于神经网络第二层，类似于之前。最后使用一个恰当的激活函数进行变换，得到神经网络的一组输出$y_k$。对于标准回归问题，激活函数是恒等函数，从而$y_k = a_k$。对于一个二元分类问题，每个输出单元激活可以使用logistic sigmoid进行变换，即: $$\begin{equation}y_k = \sigma(a_k)\end{equation} \tag{4}$$ $\sigma(·)$函数形式这里不再给出，可以自己查看。对于多分类问题，可以使用softmax激活函数。 最后综合以上的观点，我们容易得到一个网络整体，如下: $$\begin{equation}y_k = \sigma(\sum_{i=1}^K {w_{kj}}^{(2)} \cdot h(\sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}) + {w_{k0}}^{(2)})\end{equation} \tag{5}$$ 其中所有权重参数和偏置被聚集在一起，记做$\vec{w}$。因此，神经网络可以简单地认为是从输入变量$\vec{x}$到输出变量$\vec{y}$的非线性函数，映射由调节参数$\vec{w}$来控制。 具体网络结构正如图1所示。计算公式（5）的过程可以认为是信息通过网络的前向传播（forward propagation）。 通过定义额外的输入变量$x_0$讲公式(1)中的偏置参数整合进权重参数集合中，并且$x_0$被限定为1，因此公式（1）可以改写为： $$\begin{equation}{a_j} = \sum_{i=0}^D {w_{ji}}^{(1)} \cdot x_i\end{equation} \tag{6}$$ 第二层的偏置也做类似处理，最终整体网络函数可以从公式（5）变为： $$\begin{equation}y_k = \sigma(\sum_{i=0}^K {w_{kj}}^{(2)} \cdot h(\sum_{i=0}^D {w_{ji}}^{(1)} \cdot x_i))\end{equation} \tag{7}$$ 至此，一个简单的前馈神经网络已经完成了。 2. 误差反向传播算法简介我们的目标是寻找一种计算前馈神经网络的误差函数$E(w)$的梯度高效的方法。我们将会看到，可以使用局部信息传递的思想来完成这一点。在局部信息传递的思想中，信息在神经网络中交替的向前、向后传播。这种方法被称为误差反向传播（error propagation），有时被称为backprop，通常简称bp算法。 关于训练过程的本质。大部分训练算法涉及到一个迭代的步骤用于误差函数的最小化，以及通过一系列的步骤进行权重调节。在每一个这样迭代过程中，我们可以区分这两个不同的阶段。在第一个阶段，误差函数关于权重的导数必须被计算出来。正如我们稍后看到的那样，反向传播算法的一个重要贡献是提供了计算这些导数的一个高效的方法。由于正是这个阶段，误差通过网络进行传播，因此我们将专门使用反向传播这个属于来描述计算导数的过程。在第二个阶段，导数用于计算权重的调整量。最简单的方法，也是最开始由Rumelhart et al.（1986）考虑的方法，涉及到梯度下降。认识到这两个阶段属于不同的阶段是很重要的。因此，第一阶段，即为了计算导数而进行的误差在网络中的反向传播阶段，可以应用于许多不同种类的网络，而不仅仅是多层感知器。它也可以 应用于其他的误差函数，而不仅仅是简单的平方和误差函数。它也可以用于计算其他类型的导数。第二阶段，即使用计算过的导数调整权重的阶段，可以使用许多最优化方法处理，许多最优化方法本质上要比简单的梯度下降更强大。 3. 简单线性模型误差导数的计算许多实际应用中使用的误差函数，例如针对一组独立同分布的数据的最大似然方法定义的误差函数，由若干项的求和公式组成。每一项对应于训练集中的一个数据点，即： $$\begin{equation}E(w) = \sum_{n=1}^N {w}\end{equation} \tag{8}$$ 这里，我们要考虑计算$\nabla E_n(w)$的问题。这可以直接使用顺序优化的方法计算，或者使用批处理方法在训练集上进行累加。 对于一个特定的输入模式n（等价于对于一个特定的样本$\vec{x}$），误差函数形式为： $$\begin{equation}E_n = \frac{1}{2} \cdot \sum_{k} {(y_{nk}-t_{nk})}^2\end{equation} \tag{9}$$ 其中$y_{nk} = y_k(\vec{x_n}, \vec{w})$，$y_{nk}$表示对于特定输入模式的输出，$t_{nk}$表示对应的实际标签（或预测值）。这个误差函数关于权重$w_{ji}$的梯度为： $$\begin{equation}\frac{E_n}{w_{ji}} = (y_{nj} - t_{nj})x_{ni}\end{equation} \tag{10}$$ 它可以表示为与链接$w_{ji}$的输出端关联的“误差信号”$y_{nj}-t_{nj}$和与链接的输入端相关连的变量$x_{ni}$的乘积。我们现在会看到这个简单的结果如何扩展到更复杂的多层前馈神经网络中。 4. 通用前馈神经网络bp算法推导 5. 一个简单的例子参考资料： BISHOP, C, M. Pattern recognition and machine learning[M]. New York:Springer, 2006. 225-244]]></content>
@@ -58,9 +70,9 @@
       </categories>
       <tags>
         <tag>AI一丝一毫</tag>
+        <tag>machine learning</tag>
         <tag>machine learning yearning</tag>
         <tag>Andrew Ng</tag>
-        <tag>machine learning</tag>
       </tags>
   </entry>
   <entry>
