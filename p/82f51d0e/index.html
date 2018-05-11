@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="对于二分类模型常用的分类指标有： 1. 精准率precision 2. 召回率 recall 3. F值 F-score 4. 准确率ACC(Accuracy) 5. ROC 6.AUC  这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。">
+<meta name="description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精准率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
 <meta name="keywords" content="分类, 二分类, 评估指标, F1值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二分类模型性能评估指标详解[待完成]">
 <meta property="og:url" content="http://yucc.me/p/82f51d0e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="对于二分类模型常用的分类指标有： 1. 精准率precision 2. 召回率 recall 3. F值 F-score 4. 准确率ACC(Accuracy) 5. ROC 6.AUC  这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。">
+<meta property="og:description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精准率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T02:04:17.484Z">
+<meta property="og:updated_time" content="2018-05-10T08:31:56.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="二分类模型性能评估指标详解[待完成]">
-<meta name="twitter:description" content="对于二分类模型常用的分类指标有： 1. 精准率precision 2. 召回率 recall 3. F值 F-score 4. 准确率ACC(Accuracy) 5. ROC 6.AUC  这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。">
+<meta name="twitter:description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精准率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
 
 
 
@@ -358,8 +358,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-08T10:04:17+08:00">
-                2018-05-08 10:04
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-10T16:31:56+08:00">
+                2018-05-10 16:31
               </time>
             
           </span>
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  711
+                  736
                 </span>
               
 
@@ -452,14 +452,14 @@
       
 
       
-        <p>对于二分类模型常用的分类指标有： 1. 精准率precision 2. 召回率 recall 3. F值 F-score 4. 准确率ACC(Accuracy) 5. ROC 6.AUC </p>
+        <p>对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精准率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC</p>
 <p>这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。</p>
 <a id="more"></a>
 <h3 id="1-混淆矩阵"><a href="#1-混淆矩阵" class="headerlink" title="1. 混淆矩阵"></a>1. 混淆矩阵</h3><p>混淆矩阵是监督学习中的一种可视化工具，主要用于比较分类结果和实例的真实信息。矩阵中的每一行代表实例的预测类别，每一列代表实例的真实类别。</p>
 <table>
 <thead>
 <tr>
-<th></th>
+<th>-</th>
 <th>真实值为正样本P</th>
 <th>真实值为负样本N</th>
 </tr>
@@ -593,6 +593,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/p/b4d20b2d/" rel="prev" title="使用vultr搭建vpn（shadowsocks）翻墙教程【部分完成】">
+                使用vultr搭建vpn（shadowsocks）翻墙教程【部分完成】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -677,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +692,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -699,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
