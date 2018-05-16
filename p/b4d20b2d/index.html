@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/1.png">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/3.png">
-<meta property="og:updated_time" content="2018-05-14T23:57:09.273Z">
+<meta property="og:updated_time" content="2018-05-16T06:08:59.607Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用vultr搭建vpn（shadowsocks）翻墙并支持北邮人bt（ipv6）下载教程">
 <meta name="twitter:description" content="学习本教程，主要收获会有两个。一个是科学上网，一个能够去北邮人bt上传下载资源。详细的内容见下表，如果只为了科学上网，学习1-3即可。需要支持北邮人bt看1-4，服务器管理相关的内容放在了5，章节6主要是一些问题的解决办法。内容主要是以win为例写的，mac、android的科学上网也可以跟着本教程来。内容概要：  vultr购买VPS服务器 在服务器上搭建shadowsocks 在win10配置">
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-15T07:57:09+08:00">
-                2018-05-15 07:57
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-16T14:08:59+08:00">
+                2018-05-16 14:08
               </time>
             
           </span>
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,062
+                  2,007
                 </span>
               
 
@@ -465,10 +465,9 @@
 <li>Q &amp; A</li>
 </ol>
 <a id="more"></a>
-<p>说明：一些同学用的搬瓦工，跟我的可能会有些不同。我就遇到有同学的搬瓦工vps本身不支持ipv6，就很麻烦，这是本教程力所不能及的。本教程建议使用vultr，所以使用非vultr的vps，一定要确保支持并可以开启ipv6。不支持ipv6的结果就是对上北邮人bt等ipv6站点有影响，不影响科学上网。</p>
-<h3 id="1-vultr上购买VPS服务器"><a href="#1-vultr上购买VPS服务器" class="headerlink" title="1. vultr上购买VPS服务器"></a>1. vultr上购买VPS服务器</h3><h4 id="1-1-注册及交费"><a href="#1-1-注册及交费" class="headerlink" title="1.1 注册及交费"></a>1.1 注册及交费</h4><p>这一步就非常简单了，用下面的链接注册：</p>
+<p>说明：一些同学用的搬瓦工，跟我的可能会有些不同。我就遇到有同学的搬瓦工vps本身不支持ipv6，就很麻烦，这是本教程力所不能及的。本教程建议使用vultr，所有使用非vultr的vps，一定要确保支持并可以开启ipv6。不支持ipv6的结果就是对上北邮人bt等ipv6站点有影响，不影响科学上网。</p>
+<h3 id="1-vultr上购买VPS服务器"><a href="#1-vultr上购买VPS服务器" class="headerlink" title="1. vultr上购买VPS服务器"></a>1. vultr上购买VPS服务器</h3><h4 id="1-1-注册及交费"><a href="#1-1-注册及交费" class="headerlink" title="1.1 注册及交费"></a>1.1 注册及交费</h4><p>这一步就非常简单了，用下面的链接<strong>注册</strong>：</p>
 <p><a href="https://www.vultr.com/?ref=7402906" target="_blank" rel="noopener">https://www.vultr.com/?ref=7402906</a></p>
-<p>也不确定有没有优惠了，我当时是充10送15美元。vultr的一个好处是按小时计费，你可以销毁服务器，就不再计费。</p>
 <h4 id="1-2-购买服务器"><a href="#1-2-购买服务器" class="headerlink" title="1.2 购买服务器"></a>1.2 购买服务器</h4><p>注册完账户，并充值后。进入以下网址购买服务器。</p>
 <p><a href="https://my.vultr.com/deploy/" target="_blank" rel="noopener">https://my.vultr.com/deploy/</a></p>
 <p>Server Location自己随意选，但是部分的确没有2.5美元/月的服务器。地区可以都试试。Server Type自己随意，建议用centos。Server Size随意，如果只是做vpn的话，买2.5美元/月的那个就行。<strong>Additional Features中，如果想支持ipv6， 访问北邮人bt，那么Enable IPv6必选</strong>。</p>
@@ -479,10 +478,11 @@
 <h4 id="1-3-检查ip地址是否被墙（可跳过）"><a href="#1-3-检查ip地址是否被墙（可跳过）" class="headerlink" title="1.3 检查ip地址是否被墙（可跳过）"></a>1.3 检查ip地址是否被墙（可跳过）</h4><p>这一步，win系统的同学需要打开cmd输入 ping ip并按回车，检查是否被墙。其中ip需要替换为你上一步看到的ip地址。 如果没有出现time out。恭喜这个没问题。如果你不知道如何打开cmd，可以自行百度或google，或<strong>跳过此步骤</strong>。</p>
 <p>如果是mac，cmd替换为“终端”。</p>
 <h3 id="2-在服务器上搭建shadowsocks"><a href="#2-在服务器上搭建shadowsocks" class="headerlink" title="2. 在服务器上搭建shadowsocks"></a>2. 在服务器上搭建shadowsocks</h3><h4 id="2-1-登录服务器"><a href="#2-1-登录服务器" class="headerlink" title="2.1 登录服务器"></a>2.1 登录服务器</h4><p>win下，可以使用xshell来登录。 可以下载好xshell。</p>
+<p>mac环境，使用“终端”或“iterm2”，一样的效果。</p>
 <p>在黑窗口里输入一下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@ip</span><br></pre></td></tr></table></figure>
 <p>其中ip替换为你自己的ip地址。</p>
-<p>然后会弹出第一个框，输入用户名，通常输入root，点击确定或ok或按enter键。然后弹出第二个框，输入你前几步提到的密码，并回车（enter键）。</p>
+<p>然后会弹出弹出一个框，输入你前几步提到的密码，并回车（enter键）。</p>
 <p>至此，你已经登陆了。</p>
 <h4 id="2-2-服务器上部署shadowsocks"><a href="#2-2-服务器上部署shadowsocks" class="headerlink" title="2.2 服务器上部署shadowsocks"></a>2.2 服务器上部署shadowsocks</h4><p>在刚才登录的xshell服务器上，输入以下代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
