@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,hash table,string,two pointers,hard," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="22.0%  https://leetcode.com/problems/substring-with-concatenation-of-all-words/ You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of su">
+<meta name="keywords" content="leetcode,hash table,string,two pointers,hard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="030. Substring with Concatenation of All Words">
+<meta property="og:url" content="http://yucc.me/p/f97ee9f9/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="22.0%  https://leetcode.com/problems/substring-with-concatenation-of-all-words/ You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of su">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T15:08:37.186Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="030. Substring with Concatenation of All Words">
+<meta name="twitter:description" content="22.0%  https://leetcode.com/problems/substring-with-concatenation-of-all-words/ You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of su">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/f97ee9f9/"/>
+
+
+
+
+
+  <title>030. Substring with Concatenation of All Words | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/f97ee9f9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">030. Substring with Concatenation of All Words</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:57:40+08:00">
+                2018-05-19 22:57
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T23:08:37+08:00">
+                2018-05-19 23:08
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,612
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>22.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/substring-with-concatenation-of-all-words/" target="_blank" rel="noopener">https://leetcode.com/problems/substring-with-concatenation-of-all-words/</a></p>
+<p>You are given a string, s, and a list of words, words, that are all of the same length. Find all starting indices of substring(s) in s that is a concatenation of each word in words exactly once and without any intervening characters.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">For example, given:</span><br><span class="line">s: &quot;barfoothefoobarman&quot;</span><br><span class="line">words: [&quot;foo&quot;, &quot;bar&quot;]</span><br><span class="line"></span><br><span class="line">You should return the indices: [0,9].</span><br><span class="line">(order does not matter).</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>与题目 76 类似， Minimum Window Substring</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/6617/an-o-n-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6617/an-o-n-solution-with-detailed-explanation</a></p>
+<p>An O(N) solution with detailed explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">// travel all the words combinations to maintain a window</span><br><span class="line">// there are wl(word len) times travel</span><br><span class="line">// each time, n/wl words, mostly 2 times travel for each word</span><br><span class="line">// one left side of the window, the other right side of the window</span><br><span class="line">// so, time complexity O(wl * 2 * N/wl) = O(2N)</span><br><span class="line">vector&lt;int&gt; findSubstring(string S, vector&lt;string&gt; &amp;L) &#123;</span><br><span class="line">    vector&lt;int&gt; ans;</span><br><span class="line">    int n = S.size(), cnt = L.size();</span><br><span class="line">    if (n &lt;= 0 || cnt &lt;= 0) return ans;</span><br><span class="line">    </span><br><span class="line">    // init word occurence</span><br><span class="line">    unordered_map&lt;string, int&gt; dict;</span><br><span class="line">    for (int i = 0; i &lt; cnt; ++i) dict[L[i]]++;</span><br><span class="line">    </span><br><span class="line">    // travel all sub string combinations</span><br><span class="line">    int wl = L[0].size();</span><br><span class="line">    for (int i = 0; i &lt; wl; ++i) &#123;</span><br><span class="line">        int left = i, count = 0;</span><br><span class="line">        unordered_map&lt;string, int&gt; tdict;</span><br><span class="line">        for (int j = i; j &lt;= n - wl; j += wl) &#123;</span><br><span class="line">            string str = S.substr(j, wl);</span><br><span class="line">            // a valid word, accumulate results</span><br><span class="line">            if (dict.count(str)) &#123;</span><br><span class="line">                tdict[str]++;</span><br><span class="line">                if (tdict[str] &lt;= dict[str]) </span><br><span class="line">                    count++;</span><br><span class="line">                else &#123;</span><br><span class="line">                    // a more word, advance the window left side possiablly</span><br><span class="line">                    while (tdict[str] &gt; dict[str]) &#123;</span><br><span class="line">                        string str1 = S.substr(left, wl);</span><br><span class="line">                        tdict[str1]--;</span><br><span class="line">                        if (tdict[str1] &lt; dict[str1]) count--;</span><br><span class="line">                        left += wl;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                // come to a result</span><br><span class="line">                if (count == cnt) &#123;</span><br><span class="line">                    ans.push_back(left);</span><br><span class="line">                    // advance one word</span><br><span class="line">                    tdict[S.substr(left, wl)]--;</span><br><span class="line">                    count--;</span><br><span class="line">                    left += wl;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            // not a valid word, reset all vars</span><br><span class="line">            else &#123;</span><br><span class="line">                tdict.clear();</span><br><span class="line">                count = 0;</span><br><span class="line">                left = j + wl;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>698ms, 47.43%, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/17943/naive-c-solution-using-two-unordered_map-about-20-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17943/naive-c-solution-using-two-unordered_map-about-20-lines</a></p>
+<p>Naive C++ Solution using two unordered_map (about 20 lines)</p>
+<p>I think the following code is self-explanatory enough. We use an unordered_map&lt;string, int&gt; counts to record the expected times of each word and another unordered_map&lt;string, int&gt; seen to record the times we have seen. Then we check for every possible position of i. Once we meet an unexpected word or the times of some word is larger than its expected times, we stop the check. If we finish the check successfully, push i to the result indexes.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; findSubstring(string s, vector&lt;string&gt;&amp; words) &#123;</span><br><span class="line">        unordered_map&lt;string, int&gt; counts;</span><br><span class="line">        for(string word:words)</span><br><span class="line">            counts[word]++;</span><br><span class="line">        int n = s.length(), num = words.size(), len = words[0].length();</span><br><span class="line">        vector&lt;int&gt; indexes;</span><br><span class="line">        for(int i=0; i&lt;n-num*len+1; i++)&#123;</span><br><span class="line">            unordered_map&lt;string, int&gt; seen;</span><br><span class="line">            int j = 0;</span><br><span class="line">            for(;j&lt;num; j++)&#123;</span><br><span class="line">                string word = s.substr(i+j*len, len);</span><br><span class="line">                if(counts.find(word)!=counts.end())&#123;</span><br><span class="line">                    seen[word]++;</span><br><span class="line">                    if(seen[word]&gt;counts[word])</span><br><span class="line">                        break;</span><br><span class="line">                &#125;</span><br><span class="line">                else break;</span><br><span class="line">            &#125;</span><br><span class="line">            if(j==num) indexes.push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">        return indexes;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7552/my-ac-c-code-o-n-complexity-26ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7552/my-ac-c-code-o-n-complexity-26ms</a></p>
+<p>My AC c++ code, O(n) complexity, 26ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">// The general idea:</span><br><span class="line">// Construct a hash function f for L, f: vector&lt;string&gt; -&gt; int, </span><br><span class="line">// Then use the return value of f to check whether a substring is a concatenation </span><br><span class="line">// of all words in L.</span><br><span class="line">// f has two levels, the first level is a hash function f1 for every single word in L.</span><br><span class="line">// f1 : string -&gt; double</span><br><span class="line">// So with f1, L is converted into a vector of float numbers</span><br><span class="line">// Then another hash function f2 is defined to convert a vector of doubles into a single int.</span><br><span class="line">// Finally f(L) := f2(f1(L))</span><br><span class="line">// To obtain lower complexity, we require f1 and f2 can be computed through moving window.</span><br><span class="line">// The following corner case also needs to be considered:</span><br><span class="line">// f2(f1([&quot;ab&quot;, &quot;cd&quot;])) != f2(f1([&quot;ac&quot;, &quot;bd&quot;]))</span><br><span class="line">// There are many possible options for f2 and f1. </span><br><span class="line">// The following code only shows one possibility (probably not the best), </span><br><span class="line">// f2 is the function &quot;hash&quot; in the class,</span><br><span class="line">// f1([a1, a2, ... , an]) := int( decimal_part(log(a1) + log(a2) + ... + log(an)) * 1000000000 )</span><br><span class="line">public:</span><br><span class="line">    // The complexity of this function is O(nW).</span><br><span class="line">    double hash(double f, double code[], string &amp;word) &#123;</span><br><span class="line">        double result = 0.;</span><br><span class="line">        for (auto &amp;c : word) result = result * f + code[c];</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; findSubstring(string S, vector&lt;string&gt; &amp;L) &#123;</span><br><span class="line">        uniform_real_distribution&lt;double&gt; unif(0., 1.);</span><br><span class="line">        default_random_engine seed;</span><br><span class="line">        double code[128];</span><br><span class="line">        for (auto &amp;d : code) d = unif(seed);</span><br><span class="line">        double f = unif(seed) / 5. + 0.8;</span><br><span class="line">        double value = 0;</span><br><span class="line"></span><br><span class="line">        // The complexity of the following for loop is O(L.size( ) * nW).</span><br><span class="line">        for (auto &amp;str : L) value += log(hash(f, code, str));</span><br><span class="line"></span><br><span class="line">        int unit = 1e9;</span><br><span class="line">        int key = (value-floor(value))*unit;</span><br><span class="line">        int nS = S.size(), nL = L.size(), nW = L[0].size();</span><br><span class="line">        double fn = pow(f, nW-1.);</span><br><span class="line">        vector&lt;int&gt; result;</span><br><span class="line">        if (nS &lt; nW) return result;</span><br><span class="line">        vector&lt;double&gt; values(nS-nW+1);</span><br><span class="line">        string word(S.begin(), S.begin()+nW);</span><br><span class="line">        values[0] = hash(f, code, word);</span><br><span class="line"></span><br><span class="line">        // Use a moving window to hash every word with length nW in S to a float number, </span><br><span class="line">        // which is stored in vector values[]</span><br><span class="line">        // The complexity of this step is O(nS).</span><br><span class="line">        for (int i=1; i&lt;=nS-nW; ++i) values[i] = (values[i-1] - code[S[i-1]]*fn)*f + code[S[i+nW-1]];</span><br><span class="line"></span><br><span class="line">        // This for loop will run nW times, each iteration has a complexity O(nS/nW)</span><br><span class="line">        // So the overall complexity is O(nW * (nS / nW)) = O(nS)</span><br><span class="line">        for (int i=0; i&lt;nW; ++i) &#123;</span><br><span class="line">            int j0=i, j1=i, k=0;</span><br><span class="line">            double sum = 0.;</span><br><span class="line"></span><br><span class="line">            // Use a moving window to hash every L.size() continuous words with length nW in S.</span><br><span class="line">            // This while loop will terminate within nS/nW iterations since the increasement of j1 is nW,</span><br><span class="line">            // So the complexity of this while loop is O(nS / nW).</span><br><span class="line">            while(j1&lt;=nS-nW) &#123;</span><br><span class="line">                sum += log(values[j1]);</span><br><span class="line">                ++k;</span><br><span class="line">                j1 += nW;</span><br><span class="line">                if (k==nL) &#123;</span><br><span class="line">                    int key1 = (sum-floor(sum)) * unit;</span><br><span class="line">                    if (key1==key) result.push_back(j0);</span><br><span class="line">                    sum -= log(values[j0]);</span><br><span class="line">                    --k;</span><br><span class="line">                    j0 += nW;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Though theoretically it has a very small chance to fail.</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3018/hash-idea-and-exception-case" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3018/hash-idea-and-exception-case</a></p>
+<p>Hash Idea and exception case</p>
+<p>The following python code is accepted by OJ. It is based on the following idea (assumption)</p>
+<ul>
+<li>We know that two multisets consist of same elements and size of the multisets are equal. if sum of hashes of all elements are the same for these multisets -&gt; those multisets are identical</li>
+</ul>
+<p>This is not true for same very very rare cases. Please describe such a case.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def findSubstring(self, S, L):</span><br><span class="line">    n = len(L) #num words</span><br><span class="line">    w = len(L[0])  #length of each word</span><br><span class="line">    t = n*w    # total length</span><br><span class="line"></span><br><span class="line">    hashsum = sum([hash(x) for x in L])</span><br><span class="line">    h = [hash(S[i:i+w])*(S[i:i+w] in L) for i in xrange(len(S)-w+1)]</span><br><span class="line">    return [i for i in xrange(len(S)-t+1) if sum(h[i:i+t:w])==hashsum]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26043/ac-python-80ms-solution-dictionary-and-two-pointers" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26043/ac-python-80ms-solution-dictionary-and-two-pointers</a></p>
+<p>AC Python 80ms solution, dictionary and two pointers</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">def _findSubstring(self, l, r, n, k, t, s, req, ans):</span><br><span class="line">    curr = &#123;&#125;</span><br><span class="line">    while r + k &lt;= n:</span><br><span class="line">        w = s[r:r + k]</span><br><span class="line">        r += k</span><br><span class="line">        if w not in req:</span><br><span class="line">            l = r</span><br><span class="line">            curr.clear()</span><br><span class="line">        else:</span><br><span class="line">            curr[w] = curr[w] + 1 if w in curr else 1</span><br><span class="line">            while curr[w] &gt; req[w]:</span><br><span class="line">                curr[s[l:l + k]] -= 1</span><br><span class="line">                l += k</span><br><span class="line">            if r - l == t:</span><br><span class="line">                ans.append(l)</span><br><span class="line"></span><br><span class="line">def findSubstring(self, s, words):</span><br><span class="line">    if not s or not words or not words[0]:</span><br><span class="line">        return []</span><br><span class="line">    n = len(s)</span><br><span class="line">    k = len(words[0])</span><br><span class="line">    t = len(words) * k</span><br><span class="line">    req = &#123;&#125;</span><br><span class="line">    for w in words:</span><br><span class="line">        req[w] = req[w] + 1 if w in req else 1</span><br><span class="line">    ans = []</span><br><span class="line">    for i in xrange(min(k, n - t + 1)):</span><br><span class="line">        self._findSubstring(i, i, n, k, t, s, req, ans)</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 169 / 169 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 80 ms</span><br><span class="line"># 98.60%</span><br></pre></td></tr></table></figure>
+<p>First of all consider s as several series of words with length k starting at [0, k-1]. For example “barfoothe” with k = 3, can be view as [“bar”, “foo”, “the”] for i=0 and [“arf”, “oot”] for i = 1 and [“rfo”, “oth”] for i = 2.<br>Thus we need to check each of these series and find out the valid index by definition.</p>
+<p>For each series, we just need to check if there exist a range [l, r) where the occurrence or “spectrum” of the words in the range is the same as our given word list’s “spectrum”. We use dictionary to store the spectrum and maintain it as we loop through s.</p>
+<p>collections.Counter class may save a bit of code on updating the counts of the dictionary. However plain dict wins on the speed.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13630/99ms-python-o-kmn-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13630/99ms-python-o-kmn-solution</a></p>
+<p>99ms Python O(kmn) Solution</p>
+<p>The idea comes from [<a href="https://leetcode.com/discuss/20151/an-o-n-solution-with-detailed-explanation]" target="_blank" rel="noopener">https://leetcode.com/discuss/20151/an-o-n-solution-with-detailed-explanation]</a></p>
+<p>Using a counter and a sliding window, we push the window from left to right, counting the number of valid words in the window. When the number of a word in the window is more than the times it appears in words or we meet a invalid word, push the window.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param &#123;string&#125; s</span><br><span class="line"># @param &#123;string[]&#125; words</span><br><span class="line"># @return &#123;integer[]&#125;</span><br><span class="line">def findSubstring(self, s, words):</span><br><span class="line">	if len(words) == 0:</span><br><span class="line">		return []</span><br><span class="line">	# initialize d, l, ans</span><br><span class="line">	l = len(words[0])</span><br><span class="line">	d = &#123;&#125;</span><br><span class="line">	for w in words:</span><br><span class="line">		if w in d:</span><br><span class="line">			d[w] += 1</span><br><span class="line">		else:</span><br><span class="line">			d[w] = 1</span><br><span class="line">	i = 0</span><br><span class="line">	ans = []</span><br><span class="line"></span><br><span class="line">	# sliding window(s)</span><br><span class="line">	for k in range(l):</span><br><span class="line">		left = k</span><br><span class="line">		subd = &#123;&#125;</span><br><span class="line">		count = 0</span><br><span class="line">		for j in xrange(k, len(s)-l+1, l):</span><br><span class="line">			tword = s[j:j+l]</span><br><span class="line">			# valid word</span><br><span class="line">			if tword in d:</span><br><span class="line">				if tword in subd:</span><br><span class="line">					subd[tword] += 1</span><br><span class="line">				else:</span><br><span class="line">					subd[tword] = 1</span><br><span class="line">				count += 1</span><br><span class="line">				while subd[tword] &gt; d[tword]:</span><br><span class="line">					subd[s[left:left+l]] -= 1</span><br><span class="line">					left += l</span><br><span class="line">					count -= 1</span><br><span class="line">				if count == len(words):</span><br><span class="line">					ans.append(left)</span><br><span class="line">			# not valid</span><br><span class="line">			else:</span><br><span class="line">				left = j + l</span><br><span class="line">				subd = &#123;&#125;</span><br><span class="line">				count = 0</span><br><span class="line"></span><br><span class="line">	return ans</span><br></pre></td></tr></table></figure>
+<p>Assuming we have k words in words, and there are m substrings in the string, the complexity is O(kmn) because we need to adjust the window when more valid words are found.</p>
+<p>This solution runs 99ms on OJ.</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>180ms, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6432/simple-java-solution-with-two-pointers-and-map" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6432/simple-java-solution-with-two-pointers-and-map</a></p>
+<p>Simple Java Solution with Two Pointers and Map</p>
+<p>My idea is pretty simple. Just build a map for the words and their relative count in L. Then we traverse through S to check whether there is a match.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; findSubstring(String s, String[] words) &#123;</span><br><span class="line">        List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        if(s == null || words == null || words.length == 0) return res;</span><br><span class="line">        int len = words[0].length();</span><br><span class="line">        </span><br><span class="line">        Map&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;();</span><br><span class="line">        for(String word:words) map.put(word, map.containsKey(word)?map.get(word)+1:1);</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;=s.length()-len*words.length; i++)&#123;</span><br><span class="line">            Map&lt;String, Integer&gt; copy = new HashMap&lt;String, Integer&gt;(map);</span><br><span class="line">            for(int j = 0; j&lt;words.length; j++)&#123;</span><br><span class="line">                String str = s.substring(i+j*len, i+j*len+len);</span><br><span class="line">                if(copy.containsKey(str))&#123;</span><br><span class="line">                    int count = copy.get(str);</span><br><span class="line">                    if(count == 1) copy.remove(str);</span><br><span class="line">                    else copy.put(str, count-1);</span><br><span class="line">                    if(copy.isEmpty())&#123;</span><br><span class="line">                        res.add(i);</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                else break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/35676/accepted-java-solution-12ms-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/35676/accepted-java-solution-12ms-with-explanation</a></p>
+<p>Accepted Java solution 12ms with explanation</p>
+<p>It’s not too hard to find some resemblance between this problem and <a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener">minimum-window-substring</a>. Actually the main difference is the fact that we are interested at some interval length: we want intervals with fixed length K * M, where K is the number of strings in the “words” array and M the length of each target string. In order to apply the same idea we used for that problem, all we need to do is to map each string from the “words” array to something we are able to index (I prefer to use hashing for this). Also, in order to speed up the algorithm, we can find all occurrences of those strings in S (which is equivalent to do it on demand, but we will potentially do the same matching twice). Notice that, we can simply apply these occurrences as they appear because we are assured that no word is contained by some other. Finally, we use all this information to process each possibility. Notice here that, the fact that all strings has the same length, implies that we have just M (being M the length of each target string) possible starting points, hence we end up performing M linear scans over array with length O(N/M) (being N the length of S) and that makes the scanning stage of the algorithm to be linear on the length of S.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Integer&gt; findSubstring(String s, String[] words) &#123;</span><br><span class="line">	int N = s.length();</span><br><span class="line">	List&lt;Integer&gt; indexes = new ArrayList&lt;Integer&gt;(s.length());</span><br><span class="line">	if (words.length == 0) &#123;</span><br><span class="line">		return indexes;</span><br><span class="line">	&#125;</span><br><span class="line">	int M = words[0].length();</span><br><span class="line">	if (N &lt; M * words.length) &#123;</span><br><span class="line">		return indexes;</span><br><span class="line">	&#125;</span><br><span class="line">	int last = N - M + 1;</span><br><span class="line">	</span><br><span class="line">	//map each string in words array to some index and compute target counters</span><br><span class="line">	Map&lt;String, Integer&gt; mapping = new HashMap&lt;String, Integer&gt;(words.length);</span><br><span class="line">	int [][] table = new int[2][words.length];</span><br><span class="line">	int failures = 0, index = 0;</span><br><span class="line">	for (int i = 0; i &lt; words.length; ++i) &#123;</span><br><span class="line">		Integer mapped = mapping.get(words[i]);</span><br><span class="line">		if (mapped == null) &#123;</span><br><span class="line">			++failures;</span><br><span class="line">			mapping.put(words[i], index);</span><br><span class="line">			mapped = index++;</span><br><span class="line">		&#125;</span><br><span class="line">		++table[0][mapped];</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//find all occurrences at string S and map them to their current integer, -1 means no such string is in words array</span><br><span class="line">	int [] smapping = new int[last];</span><br><span class="line">	for (int i = 0; i &lt; last; ++i) &#123;</span><br><span class="line">		String section = s.substring(i, i + M);</span><br><span class="line">		Integer mapped = mapping.get(section);</span><br><span class="line">		if (mapped == null) &#123;</span><br><span class="line">			smapping[i] = -1;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			smapping[i] = mapped;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//fix the number of linear scans</span><br><span class="line">	for (int i = 0; i &lt; M; ++i) &#123;</span><br><span class="line">		//reset scan variables</span><br><span class="line">		int currentFailures = failures; //number of current mismatches</span><br><span class="line">		int left = i, right = i;</span><br><span class="line">		Arrays.fill(table[1], 0);</span><br><span class="line">		//here, simple solve the minimum-window-substring problem</span><br><span class="line">		while (right &lt; last) &#123;</span><br><span class="line">			while (currentFailures &gt; 0 &amp;&amp; right &lt; last) &#123;</span><br><span class="line">				int target = smapping[right];</span><br><span class="line">				if (target != -1 &amp;&amp; ++table[1][target] == table[0][target]) &#123;</span><br><span class="line">					--currentFailures;</span><br><span class="line">				&#125;</span><br><span class="line">				right += M;</span><br><span class="line">			&#125;</span><br><span class="line">			while (currentFailures == 0 &amp;&amp; left &lt; right) &#123;</span><br><span class="line">				int target = smapping[left];</span><br><span class="line">				if (target != -1 &amp;&amp; --table[1][target] == table[0][target] - 1) &#123;</span><br><span class="line">					int length = right - left;</span><br><span class="line">					//instead of checking every window, we know exactly the length we want</span><br><span class="line">					if ((length / M) ==  words.length) &#123;</span><br><span class="line">						indexes.add(left);</span><br><span class="line">					&#125;</span><br><span class="line">					++currentFailures;</span><br><span class="line">				&#125;</span><br><span class="line">				left += M;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	return indexes;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32038/java-12ms-beats-100" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32038/java-12ms-beats-100</a></p>
+<p>Java 12ms beats 100%</p>
+<p>The two pointers method with hashmap is known by many other solutions. The idea is to slide the scan window as far as possible, and keep throwing the impossible cases based on the length test.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Integer&gt; findSubstring(String s, String[] words) &#123;</span><br><span class="line">		/**</span><br><span class="line">		 * Let n=s.length, k=words[0].length traverse s with indices i, i+k,</span><br><span class="line">		 * i+2k, ... for 0&lt;=i&lt;k, so that the time complexity is O(n).</span><br><span class="line">		 */</span><br><span class="line">		List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">		int n = s.length(), m = words.length, k;</span><br><span class="line">		if (n == 0 || m == 0 || (k = words[0].length()) == 0)</span><br><span class="line">			return res;</span><br><span class="line"></span><br><span class="line">		HashMap&lt;String, Integer&gt; wDict = new HashMap&lt;String, Integer&gt;();</span><br><span class="line"></span><br><span class="line">		for (String word : words) &#123;</span><br><span class="line">			if (wDict.containsKey(word))</span><br><span class="line">				wDict.put(word, wDict.get(word) + 1);</span><br><span class="line">			else</span><br><span class="line">				wDict.put(word, 1);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		int i, j, start, x, wordsLen = m * k;</span><br><span class="line">		HashMap&lt;String, Integer&gt; curDict = new HashMap&lt;String, Integer&gt;();</span><br><span class="line">		String test, temp;</span><br><span class="line">		for (i = 0; i &lt; k; i++) &#123;</span><br><span class="line">			curDict.clear();</span><br><span class="line">			start = i;</span><br><span class="line">			if (start + wordsLen &gt; n)</span><br><span class="line">				return res;</span><br><span class="line">			for (j = i; j + k &lt;= n; j += k) &#123;</span><br><span class="line">				test = s.substring(j, j + k);</span><br><span class="line"></span><br><span class="line">				if (wDict.containsKey(test)) &#123;</span><br><span class="line">					if (!curDict.containsKey(test)) &#123;</span><br><span class="line">						curDict.put(test, 1);</span><br><span class="line"></span><br><span class="line">						start = checkFound(res, start, wordsLen, j, k, curDict, s);</span><br><span class="line">						continue;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					// curDict.containsKey(test)</span><br><span class="line">					x = curDict.get(test);</span><br><span class="line">					if (x &lt; wDict.get(test)) &#123;</span><br><span class="line">						curDict.put(test, x + 1);</span><br><span class="line"></span><br><span class="line">						start = checkFound(res, start, wordsLen, j, k, curDict, s);</span><br><span class="line">						continue;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					// curDict.get(test)==wDict.get(test), slide start to</span><br><span class="line">					// the next word of the first same word as test</span><br><span class="line">					while (!(temp = s.substring(start, start + k)).equals(test)) &#123;</span><br><span class="line">						decreaseCount(curDict, temp);</span><br><span class="line">						start += k;</span><br><span class="line">					&#125;</span><br><span class="line">					start += k;</span><br><span class="line">					if (start + wordsLen &gt; n)</span><br><span class="line">						break;</span><br><span class="line">					continue;</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// totally failed up to index j+k, slide start and reset all</span><br><span class="line">				start = j + k;</span><br><span class="line">				if (start + wordsLen &gt; n)</span><br><span class="line">					break;</span><br><span class="line">				curDict.clear();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int checkFound(List&lt;Integer&gt; res, int start, int wordsLen, int j, int k,</span><br><span class="line">			HashMap&lt;String, Integer&gt; curDict, String s) &#123;</span><br><span class="line">		if (start + wordsLen == j + k) &#123;</span><br><span class="line">			res.add(start);</span><br><span class="line">			// slide start to the next word</span><br><span class="line">			decreaseCount(curDict, s.substring(start, start + k));</span><br><span class="line">			return start + k;</span><br><span class="line">		&#125;</span><br><span class="line">		return start;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void decreaseCount(HashMap&lt;String, Integer&gt; curDict, String key) &#123;</span><br><span class="line">		// remove key if curDict.get(key)==1, otherwise decrease it by 1</span><br><span class="line">		int x = curDict.get(key);</span><br><span class="line">		if (x == 1)</span><br><span class="line">			curDict.remove(key);</span><br><span class="line">		else</span><br><span class="line">			curDict.put(key, x - 1);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6593/accepted-recursive-solution-using-trie-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6593/accepted-recursive-solution-using-trie-tree</a></p>
+<p>Accepted recursive solution using Trie Tree</p>
+<p>The idea is quite simple. Just use a trie tree to accelerate testing whether a substring is valid. The value of each TrieNode is used to deal with duplication and to mark whether the word is used before.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">static class TrieNode &#123;</span><br><span class="line">       int value = 0;</span><br><span class="line">       Map&lt;Character, TrieNode&gt; children = new HashMap&lt;Character, TrieNode&gt;();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   TrieNode trie;</span><br><span class="line"></span><br><span class="line">// build a trie tree</span><br><span class="line">public List&lt;Integer&gt; findSubstring(String S, String[] L) &#123;</span><br><span class="line">    trie = buildTrie(L);</span><br><span class="line">    int length = getTotalLength(L);</span><br><span class="line">    List&lt;Integer&gt; result = new LinkedList&lt;Integer&gt;();</span><br><span class="line">    for (int i = 0; i &lt; S.length() - length + 1; i++) &#123;</span><br><span class="line">        if (isSubString(S, i, i + length))</span><br><span class="line">            result.add(i);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int getTotalLength(String[] L) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for (String l : L)</span><br><span class="line">        sum += l.length();</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private TrieNode buildTrie(String[] L) &#123;</span><br><span class="line">    TrieNode root = new TrieNode();</span><br><span class="line">    for (String l : L)</span><br><span class="line">        addWord(root, l);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void addWord(TrieNode root, String s) &#123;</span><br><span class="line">    TrieNode node = root;</span><br><span class="line">    for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">        char c = s.charAt(i);</span><br><span class="line">        TrieNode next = node.children.get(c);</span><br><span class="line">        if (next == null) &#123;</span><br><span class="line">            next = new TrieNode();</span><br><span class="line">            node.children.put(c, next);</span><br><span class="line">        &#125;</span><br><span class="line">        node = next;</span><br><span class="line">    &#125;</span><br><span class="line">    node.value++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private boolean isSubString(String S, int start, int end) &#123;</span><br><span class="line">	if (start == end)</span><br><span class="line">		return true;</span><br><span class="line">    // search in the trie tree</span><br><span class="line">    TrieNode node = trie;</span><br><span class="line">    for (int i = start; i &lt; end; i++) &#123;</span><br><span class="line">        char c = S.charAt(i);</span><br><span class="line">        if (node.children.get(c) == null)</span><br><span class="line">            return false;</span><br><span class="line">        node = node.children.get(c);</span><br><span class="line">        if (node.value &gt; 0) &#123;  // leaf &amp; can be used</span><br><span class="line">            node.value--; // mark as used</span><br><span class="line">            if (isSubString(S, i + 1, end)) &#123;</span><br><span class="line">                node.value++; // mark as unused</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            node.value++; // mark as unused</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/f97ee9f9/" title="030. Substring with Concatenation of All Words">http://yucc.me/p/f97ee9f9/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/a87eef55/" rel="next" title="029. Divide Two Integers">
+                <i class="fa fa-chevron-left"></i> 029. Divide Two Integers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/3f16d422/" rel="prev" title="031. Next Permutation">
+                031. Next Permutation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

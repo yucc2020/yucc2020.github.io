@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,easy,string,two pointers," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="27.5%  https://leetcode.com/problems/implement-strstr/ Implement strStr(). Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.">
+<meta name="keywords" content="leetcode,easy,string,two pointers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="028. Implement strStr()">
+<meta property="og:url" content="http://yucc.me/p/78eeb38d/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="27.5%  https://leetcode.com/problems/implement-strstr/ Implement strStr(). Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T15:06:58.367Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="028. Implement strStr()">
+<meta name="twitter:description" content="27.5%  https://leetcode.com/problems/implement-strstr/ Implement strStr(). Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/78eeb38d/"/>
+
+
+
+
+
+  <title>028. Implement strStr() | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/78eeb38d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">028. Implement strStr()</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:57:13+08:00">
+                2018-05-19 22:57
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T23:06:58+08:00">
+                2018-05-19 23:06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,887
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>27.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="noopener">https://leetcode.com/problems/implement-strstr/</a></p>
+<p>Implement strStr().</p>
+<p>Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：暴力法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m = haystack.size(), n = needle.size();</span><br><span class="line">        if(!haystack || !needle || m&lt;n) return -1;</span><br><span class="line">        for(int i=0; ;i++)&#123;</span><br><span class="line">            for(int j=0; ;j++)&#123;</span><br><span class="line">                if(j==n-1) return i;</span><br><span class="line">                if(i+j==m-1) return -1;</span><br><span class="line">                if(haystack[i+j]!=needle[j]) break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack, <span class="built_in">string</span> needle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = haystack.size(), n = needle.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(m==<span class="number">0</span> || m&lt;n) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; ;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; ;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j==n) <span class="keyword">return</span> i;</span><br><span class="line">                <span class="keyword">if</span>(i+j==m) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">if</span>(haystack[i+j]!=needle[j]) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：KMP算法</p>
+<p>先建立lps，然后使用kmp算法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m = haystack.length(), n = needle.length();</span><br><span class="line">        if (!n) return 0;</span><br><span class="line">        vector&lt;int&gt; lps = kmpProcess(needle);</span><br><span class="line">        for (int i = 0, j = 0; i &lt; m; ) &#123;</span><br><span class="line">            if (haystack[i] == needle[j]) &#123; </span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            if (j == n) return i - j;</span><br><span class="line">            if (i &lt; m &amp;&amp; haystack[i] != needle[j]) &#123;</span><br><span class="line">                if (j) j = lps[j - 1];</span><br><span class="line">                else i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;int&gt; kmpProcess(string&amp; needle) &#123;</span><br><span class="line">        int n = needle.length();</span><br><span class="line">        vector&lt;int&gt; lps(n, 0);</span><br><span class="line">        for (int i = 1, len = 0; i &lt; n; ) &#123;</span><br><span class="line">            if (needle[i] == needle[len])</span><br><span class="line">                lps[i++] = ++len;</span><br><span class="line">            else if (len) len = lps[len - 1];</span><br><span class="line">            else lps[i++] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return lps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>完整实现代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++ program for implementation of KMP pattern searching</span></span><br><span class="line"><span class="comment">// algorithm</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computeLPSArray</span><span class="params">(<span class="keyword">char</span> *pat, <span class="keyword">int</span> M, <span class="keyword">int</span> *lps)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Prints occurrences of txt[] in pat[]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KMPSearch</span><span class="params">(<span class="keyword">char</span> *pat, <span class="keyword">char</span> *txt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> M = <span class="built_in">strlen</span>(pat);</span><br><span class="line">    <span class="keyword">int</span> N = <span class="built_in">strlen</span>(txt);</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// create lps[] that will hold the longest prefix suffix</span></span><br><span class="line">    <span class="comment">// values for pattern</span></span><br><span class="line">    <span class="keyword">int</span> lps[M];</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// Preprocess the pattern (calculate lps[] array)</span></span><br><span class="line">    computeLPSArray(pat, M, lps);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;  <span class="comment">// index for txt[]</span></span><br><span class="line">    <span class="keyword">int</span> j  = <span class="number">0</span>;  <span class="comment">// index for pat[]</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; N)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[j] == txt[i])</span><br><span class="line">        &#123;</span><br><span class="line">            j++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">if</span> (j == M)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"Found pattern at index %d n"</span>, i-j);</span><br><span class="line">            j = lps[j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// mismatch after j matches</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; N &amp;&amp; pat[j] != txt[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// Do not match lps[0..lps[j-1]] characters,</span></span><br><span class="line">            <span class="comment">// they will match anyway</span></span><br><span class="line">            <span class="keyword">if</span> (j != <span class="number">0</span>)</span><br><span class="line">                j = lps[j<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                i = i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Fills lps[] for given patttern pat[0..M-1]</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">computeLPSArray</span><span class="params">(<span class="keyword">char</span> *pat, <span class="keyword">int</span> M, <span class="keyword">int</span> *lps)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// length of the previous longest prefix suffix</span></span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">    lps[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// lps[0] is always 0</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// the loop calculates lps[i] for i = 1 to M-1</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; M)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pat[i] == pat[len])</span><br><span class="line">        &#123;</span><br><span class="line">            len++;</span><br><span class="line">            lps[i] = len;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="comment">// (pat[i] != pat[len])</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// This is tricky. Consider the example.</span></span><br><span class="line">            <span class="comment">// AAACAAAA and i = 7. The idea is similar </span></span><br><span class="line">            <span class="comment">// to search step.</span></span><br><span class="line">            <span class="keyword">if</span> (len != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                len = lps[len<span class="number">-1</span>];</span><br><span class="line"> </span><br><span class="line">                <span class="comment">// Also, note that we do not increment</span></span><br><span class="line">                <span class="comment">// i here</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="comment">// if (len == 0)</span></span><br><span class="line">            &#123;</span><br><span class="line">                lps[i] = <span class="number">0</span>;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Driver program to test above function</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> *txt = <span class="string">"ABABDABACDABABCABAB"</span>;</span><br><span class="line">    <span class="keyword">char</span> *pat = <span class="string">"ABABCABAB"</span>;</span><br><span class="line">    KMPSearch(pat, txt);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ol>
+<li>说明：</li>
+</ol>
+<p><a href="http://www.cplusplus.com/reference/cstring/strstr/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/cstring/strstr/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strstr</span><br><span class="line">const char * strstr ( const char * str1, const char * str2 );</span><br><span class="line">      char * strstr (       char * str1, const char * str2 );</span><br></pre></td></tr></table></figure>
+<p>Locate substring</p>
+<p>Returns a pointer to the first occurrence of str2 in str1, or a null pointer if str2 is not part of str1.</p>
+<p>The matching process does not include the terminating null-characters, but it stops there.</p>
+<ol start="2">
+<li>KMP算法阅读资料</li>
+</ol>
+<p>KMP on jBoxer’s blog;</p>
+<p><a href="http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/" target="_blank" rel="noopener">http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/</a></p>
+<p>KMP on geeksforgeeks, with a well-commented C code.</p>
+<p><a href="http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/" target="_blank" rel="noopener">http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/</a></p>
+<p>阮一峰的博客</p>
+<p><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html</a></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6888/this-test-case-doesn-t-make-sense" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6888/this-test-case-doesn-t-make-sense</a></p>
+<p>This test case doesn’t make sense.</p>
+<p>Input: “”, “”<br>Output: -1<br>Expected: 0</p>
+<p>Basically there is nothing in the string, how do you get the index.</p>
+<p>If this test case is valid, then needle =””, haystack=”anything” could return any value. since empty is everywhere.</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15569/explained-4ms-easy-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15569/explained-4ms-easy-c-solution</a></p>
+<p>Explained 4ms Easy C++ solution</p>
+<p>Well, the problem does not aim for an advanced algorithm like KMP but only a clean brute-force algorithm. So we can traverse all the possible starting points of haystack (from 0 to haystack.length() - needle.length()) and see if the following characters in haystack match those of needle.</p>
+<p>The code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public: </span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m = haystack.length(), n = needle.length();</span><br><span class="line">        if (!n) return 0;</span><br><span class="line">        for (int i = 0; i &lt; m - n + 1; i++) &#123;</span><br><span class="line">            int j = 0;</span><br><span class="line">            for (; j &lt; n; j++)</span><br><span class="line">                if (haystack[i + j] != needle[j])</span><br><span class="line">                    break;</span><br><span class="line">            if (j == n) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Of course, you may challenge yourself implementing the KMP algorithm for this problem.</p>
+<p>KMP is a classic and yet notoriously hard-to-understand algorithm. However, I think the following two links give nice explanations. You may refer to them.</p>
+<p>KMP on jBoxer’s blog;</p>
+<p><a href="http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/" target="_blank" rel="noopener">http://jakeboxer.com/blog/2009/12/13/the-knuth-morris-pratt-algorithm-in-my-own-words/</a></p>
+<p>KMP on geeksforgeeks, with a well-commented C code.</p>
+<p><a href="http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/" target="_blank" rel="noopener">http://www.geeksforgeeks.org/searching-for-patterns-set-2-kmp-algorithm/</a></p>
+<p>I am sorry that I am still unable to give a personal explanation of the algorithm. I only read it from the two links above and mimic the code in the second link.</p>
+<p>My accepted C++ code using KMP is as follows. Well, it also takes 4ms -_-</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m = haystack.length(), n = needle.length();</span><br><span class="line">        if (!n) return 0;</span><br><span class="line">        vector&lt;int&gt; lps = kmpProcess(needle);</span><br><span class="line">        for (int i = 0, j = 0; i &lt; m; ) &#123;</span><br><span class="line">            if (haystack[i] == needle[j]) &#123; </span><br><span class="line">                i++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            if (j == n) return i - j;</span><br><span class="line">            if (i &lt; m &amp;&amp; haystack[i] != needle[j]) &#123;</span><br><span class="line">                if (j) j = lps[j - 1];</span><br><span class="line">                else i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;int&gt; kmpProcess(string&amp; needle) &#123;</span><br><span class="line">        int n = needle.length();</span><br><span class="line">        vector&lt;int&gt; lps(n, 0);</span><br><span class="line">        for (int i = 1, len = 0; i &lt; n; ) &#123;</span><br><span class="line">            if (needle[i] == needle[len])</span><br><span class="line">                lps[i++] = ++len;</span><br><span class="line">            else if (len) len = lps[len - 1];</span><br><span class="line">            else lps[i++] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return lps;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4340/my-c-code-that-implements-boyer-moore-string-search-got-accepted-in-12ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4340/my-c-code-that-implements-boyer-moore-string-search-got-accepted-in-12ms</a></p>
+<p>My c++ code that implements Boyer-Moore string search got accepted in 12ms.</p>
+<p>I implements Boyer-Moore string search algorithm and it turns out to be very efficient (accepted in 12ms). Boyer-Moore uses information gained by preprocessing the pattern string to skip as many alignments as possible. A shift is calculated by applying both rules: the bad character rule and the good suffix rule. The actual shifting offset is the maximum of the shifts calculated by these rules.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">char *strStr(char *haystack, char *needle) &#123;</span><br><span class="line">	if(NULL==haystack||NULL==needle)</span><br><span class="line">		return NULL;</span><br><span class="line">	int plen = strlen(needle);</span><br><span class="line">	int slen = strlen(haystack);</span><br><span class="line">	if(0==plen)</span><br><span class="line">		return haystack;</span><br><span class="line">	else if(plen&gt;slen)</span><br><span class="line">		return NULL;</span><br><span class="line">	int badChar[256];</span><br><span class="line">	int np = 0;</span><br><span class="line">	int i,j,k;</span><br><span class="line"></span><br><span class="line">	for(i=0;i&lt;256;i++)</span><br><span class="line">		badChar[i] = plen;</span><br><span class="line"></span><br><span class="line">	while(np&lt;plen)</span><br><span class="line">	&#123;</span><br><span class="line">		badChar[*(needle+np)] = plen-np-1;</span><br><span class="line">		np++;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	int* goodSuffix = new int[plen];</span><br><span class="line"></span><br><span class="line">	int prefix_index = plen;</span><br><span class="line">	for(i=plen-1;i&gt;=0;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		goodSuffix[i] = prefix_index;</span><br><span class="line">		if(*(needle+i)==*(needle+plen-1-i)&amp;&amp;prefix_index==i+1)</span><br><span class="line">			prefix_index = i;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	for(i=0;i&lt;plen-1;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		j = plen-1, k = 0;</span><br><span class="line">		while(k&lt;i&amp;&amp;*(needle+j)==*(needle+i-k))</span><br><span class="line">		&#123;j--;k++;&#125;</span><br><span class="line">		if(*(needle+plen-1)==*(needle+i))</span><br><span class="line">			goodSuffix[j] = plen-1-i;</span><br><span class="line">	&#125;</span><br><span class="line">	goodSuffix[plen-1] = 0;</span><br><span class="line"></span><br><span class="line">	int sp = 0;</span><br><span class="line">	while(sp&lt;slen)</span><br><span class="line">	&#123;</span><br><span class="line">		i = plen-1;</span><br><span class="line">		while(i&gt;=0&amp;&amp;*(haystack+sp+i)==*(needle+i))</span><br><span class="line">			i--;</span><br><span class="line">		if(i&lt;0)</span><br><span class="line">			return haystack+sp;</span><br><span class="line">		int bj = badChar[*(haystack+sp+i)] - plen + i + 1;</span><br><span class="line">		sp += (bj&gt;goodSuffix[i]?bj:goodSuffix[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	delete goodSuffix;</span><br><span class="line">	return NULL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31171/kmp-in-c-explanation-included" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31171/kmp-in-c-explanation-included</a></p>
+<p>KMP in C++, explanation included</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int nsize = needle.size();</span><br><span class="line">    	int hsize = haystack.size();</span><br><span class="line">    	if (nsize == 0) return 0;</span><br><span class="line">    	int *table = new int[nsize];</span><br><span class="line">    	memset(table, 0, sizeof(int)*nsize);</span><br><span class="line">    	//building match table</span><br><span class="line">    	for (int i = 1, j = 0; i &lt; nsize - 1;)&#123;</span><br><span class="line">    		if (needle[i] != needle[j])&#123;</span><br><span class="line">    			if (j&gt;0)&#123;</span><br><span class="line">    				j = table[j - 1];</span><br><span class="line">    			&#125;</span><br><span class="line">    			else&#123;</span><br><span class="line">    				i++;</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    		else&#123;</span><br><span class="line">    			table[i] = j + 1;</span><br><span class="line">    			i++;</span><br><span class="line">    			j++;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	//matching</span><br><span class="line">    	for (int i = 0, match_pos = 0; i &lt; hsize;)&#123;</span><br><span class="line">    		if (haystack[i] == needle[match_pos])&#123;</span><br><span class="line">    			if (match_pos == nsize - 1)&#123;</span><br><span class="line">    				return i - (nsize - 1);</span><br><span class="line">    			&#125;</span><br><span class="line">    			else&#123;</span><br><span class="line">    				i++;</span><br><span class="line">    				match_pos++;</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    		else&#123;</span><br><span class="line">    			if (match_pos == 0)&#123;</span><br><span class="line">    				i++;</span><br><span class="line">    			&#125;</span><br><span class="line">    			else&#123;</span><br><span class="line">    				match_pos = table[match_pos - 1];</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	delete[]table;</span><br><span class="line">    	return -1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>I’ll talk about the basic idea behind KMP algorithm.</p>
+<p>First, some notations:</p>
+<ul>
+<li>Denote the pattern string as ps and the match table as table, ps and table use 0 based index.</li>
+<li>Denote substring of ps from index i to index j (i and j included) as substr(ps,i,j).</li>
+<li>Denote string1 is the same as string2 as string1==string2</li>
+</ul>
+<p>The definition of my match table:</p>
+<p>table[i] when i&gt;0 means the max length of prefix of ps(0,i) which is the same as the suffix of ps(0,i).</p>
+<p>Or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">table[i]=max&#123;k| substr(substr(ps,0,i),0,k-1) == substr(substr(ps,0,i),i-k+1,i), k&lt;=i&#125;.</span><br></pre></td></tr></table></figure></p>
+<p>Also, we define table[i]=0.</p>
+<p>So, for string “aba”, table={0,0,1}.</p>
+<p>table[1]=0 is because no prefix equals suffix of “ab”.</p>
+<p>table[2]=1 is because prefix “a” equals suffix “a” of “aba”.</p>
+<p>for string “abcabce”, table={0,0,0,1,2,3,0}.</p>
+<p>table[4]=2 is because prefix “ab” equals suffix “ab” of “abcab”</p>
+<p>table[5]=3 is because prefix “abc” equals suffix “abc” of “abcabc”</p>
+<p>for string “aabaabaaa”, table={0,1,0,1,2,3,4,5,2}.</p>
+<p>How would this match table be helpful to string matching?</p>
+<p>Suppose we have a target string “abcabcdxxxxx” and a pattern “abcabce”.<br>In the first round of matching, we start at first character and have</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcabcdxxxxx</span><br><span class="line">abcabce</span><br></pre></td></tr></table></figure>
+<p>We discover that ‘d’ and ‘e’ are different and string before that is the same, which is “abcabc”.<br>if we move “abcabce” forward one character, we would be comparing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcabcdxxxxx</span><br><span class="line"> abcabce</span><br></pre></td></tr></table></figure>
+<p>let’s focus on the parts which are same in the previous round:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcabc</span><br><span class="line"> abcabc</span><br></pre></td></tr></table></figure>
+<p>we are actually comparing the suffix of length 5 of “abcabc”, which is “bcabc” and the prefix of length 5 of “abcabc”, which is “abcab”.</p>
+<p>However, table[5]==3 tells us the max length of suffix and prefix of “abcabc” which are same is 3, so suffix and prefix<br>of length 5 can’t be the same. Thus, we can skip this round of comparing.<br>Next, we move “abcabce” forward by another one character, we would be comparing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcabc</span><br><span class="line">  abcabc</span><br></pre></td></tr></table></figure>
+<p>Now, we are comparing suffix and prefix of length 4, since table[5]==3, we can skip this round.<br>Next, we move “abcabce” forward by another one character, we would be comparing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcabc</span><br><span class="line">   abcabc</span><br></pre></td></tr></table></figure>
+<p>Now, we are comparing suffix and prefix of length 3, since table[5]==3, this is valid.<br>Another property we can use to simply the matching process is that we already know the prefix and suffix of length 3 are the same, so we can start by comparing from the 4th charater in pattern, which is ‘a’, with the target string.</p>
+<p>To sum up, when the ps(pattern string) at index i(i&gt;0) failed to match ts(target string) at index j, which means substr(ps,0,i-1) matches, we start by comparing ps[table[i-1]] with ts[j].</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>35ms, 100.00%, September 6, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/29848/my-answer-by-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29848/my-answer-by-python</a></p>
+<p>My answer by Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def strStr(self, haystack, needle):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type haystack: str</span><br><span class="line">        :type needle: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        for i in range(len(haystack)-len(needle)+1):</span><br><span class="line">            if haystack[i:i+len(needle)] == needle:</span><br><span class="line">                return i</span><br><span class="line">        return -1</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="c"><a href="#c" class="headerlink" title="c"></a>c</h4><hr>
+<p>0ms, 28.37%, September 6, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6557/a-very-clean-solution-brute-force" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6557/a-very-clean-solution-brute-force</a></p>
+<p>A very clean solution, brute-force</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int strStr(char *haystack, char *needle) &#123;</span><br><span class="line">        if (!haystack || !needle) return -1;</span><br><span class="line">        for (int i = 0; ; ++i) &#123;</span><br><span class="line">            for (int j = 0; ; ++j) &#123;</span><br><span class="line">                if (needle[j] == 0) return i;</span><br><span class="line">                if (haystack[i + j] == 0) return -1;</span><br><span class="line">                if (haystack[i + j] != needle[j]) break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>8ms, 28.67%, September 9, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/18839/elegant-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18839/elegant-java-solution</a></p>
+<p>Elegant Java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int strStr(String haystack, String needle) &#123;</span><br><span class="line">        for(int i=0; ; i++)</span><br><span class="line">            for(int j=0; ; j++)&#123;</span><br><span class="line">                if(j == needle.length()) return i;</span><br><span class="line">                if(i+j == haystack.length()) return -1;</span><br><span class="line">                if(needle.charAt(j) != haystack.charAt(i+j)) break;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9872/share-my-accepted-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9872/share-my-accepted-java-solution</a></p>
+<p>Share my accepted java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int strStr(String haystack, String needle) &#123;</span><br><span class="line">        int l1 = haystack.length(), l2 = needle.length();</span><br><span class="line">        if (l1 &lt; l2) &#123;</span><br><span class="line">            return -1;</span><br><span class="line">        &#125; else if (l2 == 0) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int threshold = l1 - l2;</span><br><span class="line">        for (int i = 0; i &lt;= threshold; ++i) &#123;</span><br><span class="line">            if (haystack.substring(i,i+l2).equals(needle)) &#123;</span><br><span class="line">                return i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3576/accepted-kmp-solution-in-java-for-reference" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3576/accepted-kmp-solution-in-java-for-reference</a></p>
+<p>Accepted KMP solution in java for reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public String strStr(String haystack, String needle) &#123;</span><br><span class="line">	//KMP algorithms</span><br><span class="line">	if(needle.equals(&quot;&quot;)) return haystack;</span><br><span class="line">	if(haystack.equals(&quot;&quot;)) return null;</span><br><span class="line">	char[] arr = needle.toCharArray();</span><br><span class="line">	int[] next = makeNext(arr);</span><br><span class="line"></span><br><span class="line">	for(int i = 0, j = 0, end = haystack.length(); i &lt; end;)&#123;</span><br><span class="line">		if(j == -1 || haystack.charAt(i) == arr[j])&#123;</span><br><span class="line">			j++;</span><br><span class="line">			i++;</span><br><span class="line">			if(j == arr.length) return haystack.substring(i - arr.length);</span><br><span class="line">		&#125;</span><br><span class="line">		if(i &lt; end &amp;&amp; haystack.charAt(i) != arr[j]) j = next[j];</span><br><span class="line">	&#125;</span><br><span class="line">    return null;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int[] makeNext(char[] arr)&#123;</span><br><span class="line">	int len = arr.length;</span><br><span class="line">	int[] next = new int[len];</span><br><span class="line"></span><br><span class="line">	next[0] = -1;</span><br><span class="line">	for(int i = 0, j = -1; i + 1 &lt; len;)&#123;</span><br><span class="line">		if(j == -1 || arr[i] == arr[j])&#123;</span><br><span class="line">			next[i+1] = j+1;</span><br><span class="line">			if(arr[i+1] == arr[j+1]) next[i+1] = next[j+1];</span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		if(arr[i] != arr[j]) j = next[j];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41463/java-easy-to-understand-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41463/java-easy-to-understand-solutions</a></p>
+<p>Java easy to understand solutions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int strStr1(String haystack, String needle) &#123;</span><br><span class="line">    return haystack.indexOf(needle);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int strStr(String haystack, String needle) &#123;</span><br><span class="line">    if (haystack == null || needle == null)</span><br><span class="line">        return -1;</span><br><span class="line">    int l1 = haystack.length();</span><br><span class="line">    int l2 = needle.length();</span><br><span class="line">    for (int i = 0; i &lt; l1-l2+1; i++) &#123;</span><br><span class="line">        int count = 0;</span><br><span class="line">        while (count &lt; l2 &amp;&amp; haystack.charAt(i+count) == needle.charAt(count))</span><br><span class="line">            count++;</span><br><span class="line">        if (count == l2)</span><br><span class="line">            return i;</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/78eeb38d/" title="028. Implement strStr()">http://yucc.me/p/78eeb38d/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/98cbed82/" rel="next" title="027. Remove Element">
+                <i class="fa fa-chevron-left"></i> 027. Remove Element
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/a87eef55/" rel="prev" title="029. Divide Two Integers">
+                029. Divide Two Integers <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c"><span class="nav-text">c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

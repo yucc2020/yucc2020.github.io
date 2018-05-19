@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,hash table,backtracking," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="https://leetcode.com/problems/sudoku-solver/ Write a program to solve a Sudoku puzzle by filling the empty cells. Empty cells are indicated by the character ‘.’. You may assume that there will be only">
+<meta name="keywords" content="leetcode,hash table,backtracking">
+<meta property="og:type" content="article">
+<meta property="og:title" content="037. Sudoku Solver">
+<meta property="og:url" content="http://yucc.me/p/f1a3dfa0/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="https://leetcode.com/problems/sudoku-solver/ Write a program to solve a Sudoku puzzle by filling the empty cells. Empty cells are indicated by the character ‘.’. You may assume that there will be only">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png">
+<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Sudoku-by-L2G-20050714_solution.svg/250px-Sudoku-by-L2G-20050714_solution.svg.png">
+<meta property="og:updated_time" content="2018-05-19T15:16:13.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="037. Sudoku Solver">
+<meta name="twitter:description" content="https://leetcode.com/problems/sudoku-solver/ Write a program to solve a Sudoku puzzle by filling the empty cells. Empty cells are indicated by the character ‘.’. You may assume that there will be only">
+<meta name="twitter:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/f1a3dfa0/"/>
+
+
+
+
+
+  <title>037. Sudoku Solver | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/f1a3dfa0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">037. Sudoku Solver</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:59:02+08:00">
+                2018-05-19 22:59
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T23:16:13+08:00">
+                2018-05-19 23:16
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,730
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener">https://leetcode.com/problems/sudoku-solver/</a></p>
+<p>Write a program to solve a Sudoku puzzle by filling the empty cells.</p>
+<p>Empty cells are indicated by the character ‘.’.</p>
+<p>You may assume that there will be only one unique solution.</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt="image"></p>
+<p>A sudoku puzzle…</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Sudoku-by-L2G-20050714_solution.svg/250px-Sudoku-by-L2G-20050714_solution.svg.png" alt="image"></p>
+<p>…and its solution numbers marked in red.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2145/there-is-a-dancing-links-x-algorithm" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2145/there-is-a-dancing-links-x-algorithm</a></p>
+<p>There is a Dancing Links X Algorithm</p>
+<p>Dr. Donald Knuth’s Dancing Links Algorithm solves an Exact Cover situation. The Exact Cover problem can be extended to a variety of applications that need to fill constraints. Sudoku is one such special case of the Exact Cover problem.</p>
+<p>NOTE:This is a very complicate solution.</p>
+<p>A Sudoku Solver in Java implementing Knuth’s Dancing Links Algorithm</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>25ms, 54.00%, September 21, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/11327/straight-forward-java-solution-using-backtracking" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11327/straight-forward-java-solution-using-backtracking</a></p>
+<p>Straight Forward Java Solution Using Backtracking</p>
+<p>Try 1 through 9 for each cell. The time complexity should be 9 ^ m (m represents the number of blanks to be filled in), since each blank can have 9 choices. Details see comments inside code. Let me know your suggestions.</p>
+<p>Sorry for being late to answer the time complexity question</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void solveSudoku(char[][] board) &#123;</span><br><span class="line">        if(board == null || board.length == 0)</span><br><span class="line">            return;</span><br><span class="line">        solve(board);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean solve(char[][] board)&#123;</span><br><span class="line">        for(int i=0; i&lt;board.length; i++)&#123;</span><br><span class="line">            for(int j=0; j&lt;board[0].length; j++)&#123;</span><br><span class="line">                if(board[i][j]==&apos;.&apos;)&#123;</span><br><span class="line">                    for(char c=&apos;1&apos;; c&lt;=&apos;9&apos;; c++)&#123;</span><br><span class="line">                        if(isValid(board, i, j, c))&#123;</span><br><span class="line">                            board[i][j] = c;</span><br><span class="line">                            if(solve(board))</span><br><span class="line">                                return true;</span><br><span class="line">                            else</span><br><span class="line">                                board[i][j]=&apos;.&apos;;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    return false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean isValid(char[][] board, int i, int j, char c)&#123;</span><br><span class="line">        for(int row = 0; row&lt;9; row++)</span><br><span class="line">            if(board[row][j] == c)</span><br><span class="line">                return false;</span><br><span class="line">                </span><br><span class="line">        for(int col = 0; col&lt;9; col++)</span><br><span class="line">            if(board[i][col] == c)</span><br><span class="line">                return false;</span><br><span class="line">        </span><br><span class="line">        for(int row = (i/3)*3; row &lt; (i/3)*3 + 3; row++)</span><br><span class="line">            for(int col = (j/3)*3; col &lt; (j/3)*3+3; col++)</span><br><span class="line">                if(board[row][col] == c)</span><br><span class="line">                    return false;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/7195/sharing-my-2ms-c-solution-with-comments-and-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7195/sharing-my-2ms-c-solution-with-comments-and-explanations</a></p>
+<p>Sharing my 2ms C++ solution with comments and explanations.</p>
+<p>Update: there’s a <a href="https://leetcode.com/discuss/59649/yet-another-0ms-c-solution" target="_blank" rel="noopener">follow-up 0ms solution which is even more optimized</a></p>
+<p>This is one of the fastest Sudoku solvers I’ve ever written. It is compact enough - just 150 lines of C++ code with comments. I thought it’d be interesting to share it, since it combines several techniques like reactive network update propagation and backtracking with very aggressive pruning.</p>
+<p>The algorithm is online - it starts with an empty board and as you add numbers to it, it starts solving the Sudoku.</p>
+<p>Unlike in other solutions where you have bitmasks of allowed/disallowed values per row/column/square, this solution track bitmask for every(!) cell, forming a set of constraints for the allowed values for each particular cell. Once a value is written into a cell, new constraints are immediately propagated to row, column and 3x3 square of the cell. If during this process a value of other cell can be unambiguously deduced - then the value is set, new constraints are propagated, so on…. You can think about this as an implicit reactive network of cells.</p>
+<p>If we’re lucky (and we’ll be lucky for 19 of 20 of Sudokus published in magazines) then Sudoku is solved at the end (or even before!) processing of the input.</p>
+<p>Otherwise, there will be empty cells which have to be resolved. Algorithm uses backtracking for this purpose. To optimize it, algorithm starts with the cell with the smallest ambiguity. This could be improved even further by using priority queue (but it’s not implemented here). Backtracking is more or less standard, however, at each step we guess the number, the reactive update propagation comes back into play and it either quickly proves that the guess is unfeasible or significantly prunes the remaining search space.</p>
+<p>It’s interesting to note, that in this case taking and restoring snapshots of the compact representation of the state is faster than doing backtracking rollback by “undoing the moves”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">	struct cell // encapsulates a single cell on a Sudoku board</span><br><span class="line">	&#123;</span><br><span class="line">		uint8_t value; // cell value 1..9 or 0 if unset</span><br><span class="line">		// number of possible (unconstrained) values for the cell</span><br><span class="line">		uint8_t numPossibilities;</span><br><span class="line">		// if bitset[v] is 1 then value can&apos;t be v</span><br><span class="line">		bitset&lt;10&gt; constraints;</span><br><span class="line">		cell() : value(0), numPossibilities(9),constraints() &#123;&#125;;</span><br><span class="line">	&#125;;</span><br><span class="line">	array&lt;array&lt;cell,9&gt;,9&gt; cells;</span><br><span class="line"></span><br><span class="line">	// sets the value of the cell to [v]</span><br><span class="line">	// the function also propagates constraints to other cells and deduce new values where possible</span><br><span class="line">	bool set(int i, int j, int v)</span><br><span class="line">	&#123; </span><br><span class="line">		// updating state of the cell</span><br><span class="line">		cell&amp; c = cells[i][j];</span><br><span class="line">		if (c.value == v)</span><br><span class="line">			return true;</span><br><span class="line">		if (c.constraints[v])</span><br><span class="line">			return false;</span><br><span class="line">		c.constraints = bitset&lt;10&gt;(0x3FE); // all 1s</span><br><span class="line">		c.constraints.reset(v);</span><br><span class="line">		c.numPossibilities = 1;</span><br><span class="line">		c.value = v;</span><br><span class="line"></span><br><span class="line">		// propagating constraints</span><br><span class="line">		for (int k = 0; k&lt;9; k++) &#123;</span><br><span class="line">			// to the row: </span><br><span class="line">			if (i != k &amp;&amp; !updateConstraints(k, j, v))</span><br><span class="line">				return false;</span><br><span class="line">			// to the column:</span><br><span class="line">			if (j != k &amp;&amp; !updateConstraints(i, k, v))</span><br><span class="line">				return false;</span><br><span class="line">			// to the 3x3 square:</span><br><span class="line">			int ix = (i / 3) * 3 + k / 3;</span><br><span class="line">			int jx = (j / 3) * 3 + k % 3;</span><br><span class="line">			if (ix != i &amp;&amp; jx != j &amp;&amp; !updateConstraints(ix, jx, v))</span><br><span class="line">				return false;</span><br><span class="line">		&#125;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	// update constraints of the cell i,j by excluding possibility of &apos;excludedValue&apos;</span><br><span class="line">	// once there&apos;s one possibility left the function recurses back into set()</span><br><span class="line">	bool updateConstraints(int i, int j, int excludedValue)</span><br><span class="line">	&#123;</span><br><span class="line">		cell&amp; c = cells[i][j];</span><br><span class="line">		if (c.constraints[excludedValue]) &#123;</span><br><span class="line">			return true;</span><br><span class="line">		&#125;</span><br><span class="line">		if (c.value == excludedValue) &#123;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">		c.constraints.set(excludedValue);</span><br><span class="line">		if (--c.numPossibilities &gt; 1)</span><br><span class="line">			return true;</span><br><span class="line">		for (int v = 1; v &lt;= 9; v++) &#123;</span><br><span class="line">			if (!c.constraints[v]) &#123;</span><br><span class="line">				return set(i, j, v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		assert(false);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// backtracking state - list of empty cells</span><br><span class="line">	vector&lt;pair&lt;int, int&gt;&gt; bt;</span><br><span class="line"></span><br><span class="line">	// find values for empty cells</span><br><span class="line">	bool findValuesForEmptyCells()</span><br><span class="line">	&#123;</span><br><span class="line">		// collecting all empty cells</span><br><span class="line">		bt.clear();</span><br><span class="line">		for (int i = 0; i &lt; 9; i++) &#123;</span><br><span class="line">			for (int j = 0; j &lt; 9; j++) &#123;</span><br><span class="line">				if (!cells[i][j].value)</span><br><span class="line">					bt.push_back(make_pair(i, j));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		// making backtracking efficient by pre-sorting empty cells by numPossibilities</span><br><span class="line">		sort(bt.begin(), bt.end(), [this](const pair&lt;int, int&gt;&amp;a, const pair&lt;int, int&gt;&amp;b) &#123;</span><br><span class="line">			return cells[a.first][a.second].numPossibilities &lt; cells[b.first][b.second].numPossibilities; &#125;);</span><br><span class="line">		return backtrack(0);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Finds value for all empty cells with index &gt;=k</span><br><span class="line">	bool backtrack(int k)</span><br><span class="line">	&#123;</span><br><span class="line">		if (k &gt;= bt.size())</span><br><span class="line">			return true;</span><br><span class="line">		int i = bt[k].first;</span><br><span class="line">		int j = bt[k].second;</span><br><span class="line">		// fast path - only 1 possibility</span><br><span class="line">		if (cells[i][j].value)</span><br><span class="line">			return backtrack(k + 1);</span><br><span class="line">		auto constraints = cells[i][j].constraints;</span><br><span class="line">		// slow path &gt;1 possibility.</span><br><span class="line">		// making snapshot of the state</span><br><span class="line">		array&lt;array&lt;cell,9&gt;,9&gt; snapshot(cells);</span><br><span class="line">		for (int v = 1; v &lt;= 9; v++) &#123;</span><br><span class="line">			if (!constraints[v]) &#123;</span><br><span class="line">				if (set(i, j, v)) &#123;</span><br><span class="line">					if (backtrack(k + 1))</span><br><span class="line">						return true;</span><br><span class="line">				&#125;</span><br><span class="line">				// restoring from snapshot,</span><br><span class="line">				// note: computationally this is cheaper</span><br><span class="line">				// than alternative implementation with undoing the changes</span><br><span class="line">				cells = snapshot;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">public:</span><br><span class="line">	void solveSudoku(vector&lt;vector&lt;char&gt;&gt; &amp;board) &#123;</span><br><span class="line">		cells = array&lt;array&lt;cell,9&gt;,9&gt;(); // clear array</span><br><span class="line">		// Decoding input board into the internal cell matrix.</span><br><span class="line">		// As we do it - constraints are propagated and even additional values are set as we go</span><br><span class="line">		// (in the case if it is possible to unambiguously deduce them).</span><br><span class="line">		for (int i = 0; i &lt; 9; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for (int j = 0; j &lt; 9; j++) &#123;</span><br><span class="line">				if (board[i][j] != &apos;.&apos; &amp;&amp; !set(i, j, board[i][j] - &apos;0&apos;))</span><br><span class="line">					return; // sudoku is either incorrect or unsolvable</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		// if we&apos;re lucky we&apos;ve already got a solution,</span><br><span class="line">		// however, if we have empty cells we need to use backtracking to fill them</span><br><span class="line">		if (!findValuesForEmptyCells())</span><br><span class="line">			return; // sudoku is unsolvable</span><br><span class="line"></span><br><span class="line">		// copying the solution back to the board</span><br><span class="line">		for (int i = 0; i &lt; 9; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			for (int j = 0; j &lt; 9; j++) &#123;</span><br><span class="line">				if (cells[i][j].value)</span><br><span class="line">					board[i][j] = cells[i][j].value + &apos;0&apos;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13314/singapore-prime-minister-lee-hsien-loong-s-sudoku-solver-code-runs-in-1ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13314/singapore-prime-minister-lee-hsien-loong-s-sudoku-solver-code-runs-in-1ms</a></p>
+<p>Singapore prime minister Lee Hsien Loong’s Sudoku Solver code runs in 1ms</p>
+<p>Singapore’s prime minister <a href="http://en.wikipedia.org/wiki/Lee_Hsien_Loong" target="_blank" rel="noopener">Lee Hsien Loong</a> showcased his Sudoku Solver C code. You can read his original Facebook post <a href="https://www.facebook.com/leehsienloong/photos/a.344710778924968.83425.125845680811480/905828379479869/?type=3&amp;permPage=1" target="_blank" rel="noopener">here</a> and another news reporting it <a href="http://arstechnica.com/information-technology/2015/05/04/prime-minister-of-singapore-shares-his-c-code-for-sudoku-solver/" target="_blank" rel="noopener">here</a>.</p>
+<p>I have made some slight modification to adapt it so it can be <a href="https://leetcode.com/problems/sudoku-solver/" target="_blank" rel="noopener">tested on LeetCode OJ</a>. It passed all 6/6 test cases with a runtime of 1 ms. Pretty impressive for a prime minister, huh?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></td><td class="code"><pre><span class="line">// Original author: Hsien Loong Lee (http://bit.ly/1zfIGMc)</span><br><span class="line">// Slight modification by @1337c0d3r to adapt to run on LeetCode OJ.</span><br><span class="line">// https://leetcode.com/problems/sudoku-solver/</span><br><span class="line">int InBlock[81], InRow[81], InCol[81];</span><br><span class="line"></span><br><span class="line">const int BLANK = 0;</span><br><span class="line">const int ONES = 0x3fe; 	// Binary 1111111110</span><br><span class="line"></span><br><span class="line">int Entry[81];	// Records entries 1-9 in the grid, as the corresponding bit set to 1</span><br><span class="line">int Block[9], Row[9], Col[9];	// Each int is a 9-bit array</span><br><span class="line"></span><br><span class="line">int SeqPtr = 0;</span><br><span class="line">int Sequence[81];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void SwapSeqEntries(int S1, int S2)</span><br><span class="line">&#123;</span><br><span class="line">     int temp = Sequence[S2];</span><br><span class="line">     Sequence[S2] = Sequence[S1];</span><br><span class="line">     Sequence[S1] = temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void InitEntry(int i, int j, int val)</span><br><span class="line">&#123;</span><br><span class="line">	 int Square = 9 * i + j;</span><br><span class="line">	 int valbit = 1 &lt;&lt; val;</span><br><span class="line">     int SeqPtr2;</span><br><span class="line"></span><br><span class="line">     // add suitable checks for data consistency</span><br><span class="line">     </span><br><span class="line">	 Entry[Square] = valbit;</span><br><span class="line">	 Block[InBlock[Square]] &amp;= ~valbit;</span><br><span class="line">	 Col[InCol[Square]] &amp;= ~valbit; // Simpler Col[j] &amp;= ~valbit;</span><br><span class="line">	 Row[InRow[Square]] &amp;= ~valbit; // Simpler Row[i] &amp;= ~valbit;</span><br><span class="line"></span><br><span class="line">     SeqPtr2 = SeqPtr;</span><br><span class="line">     while (SeqPtr2 &lt; 81 &amp;&amp; Sequence[SeqPtr2] != Square)</span><br><span class="line">           SeqPtr2++ ;</span><br><span class="line"></span><br><span class="line">     SwapSeqEntries(SeqPtr, SeqPtr2);</span><br><span class="line">     SeqPtr++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void PrintArray(char **board)</span><br><span class="line">&#123;</span><br><span class="line">     int i, j, valbit, val, Square;</span><br><span class="line">     char ch;</span><br><span class="line">     </span><br><span class="line">     Square = 0;</span><br><span class="line"></span><br><span class="line">     for (i = 0; i &lt; 9; i++) &#123;</span><br><span class="line">         for (j = 0; j &lt; 9; j++) &#123;</span><br><span class="line">             valbit = Entry[Square++];</span><br><span class="line">             if (valbit == 0) ch = &apos;-&apos;;</span><br><span class="line">             else &#123;</span><br><span class="line">                 for (val = 1; val &lt;= 9; val++) </span><br><span class="line">                     if (valbit == (1 &lt;&lt; val)) &#123;</span><br><span class="line">                        ch = &apos;0&apos; + val;</span><br><span class="line">                        break;</span><br><span class="line">                     &#125;</span><br><span class="line">             &#125;    </span><br><span class="line">             board[i][j] = ch;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int NextSeq(int S)</span><br><span class="line">&#123;</span><br><span class="line">    int S2, Square, Possibles, BitCount;</span><br><span class="line">    int T, MinBitCount = 100;</span><br><span class="line"></span><br><span class="line">    for (T = S; T &lt; 81; T++) &#123;</span><br><span class="line">        Square = Sequence[T];</span><br><span class="line">        Possibles = Block[InBlock[Square]] &amp; Row[InRow[Square]] &amp; Col[InCol[Square]];</span><br><span class="line">        BitCount = 0;</span><br><span class="line">        while (Possibles) &#123;</span><br><span class="line">           Possibles &amp;= ~(Possibles &amp; -Possibles);</span><br><span class="line">           BitCount++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (BitCount &lt; MinBitCount) &#123;</span><br><span class="line">           MinBitCount = BitCount;</span><br><span class="line">           S2 = T;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return S2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void Place(int S, char** board)</span><br><span class="line">&#123;</span><br><span class="line">    if (S &gt;= 81) &#123;</span><br><span class="line">        PrintArray(board);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int S2 = NextSeq(S);</span><br><span class="line">    SwapSeqEntries(S, S2);</span><br><span class="line"></span><br><span class="line">    int Square = Sequence[S];</span><br><span class="line"></span><br><span class="line">    int 	BlockIndex = InBlock[Square],</span><br><span class="line">			RowIndex = InRow[Square],</span><br><span class="line">			ColIndex = InCol[Square];</span><br><span class="line"></span><br><span class="line">    int 	Possibles = Block[BlockIndex] &amp; Row[RowIndex] &amp; Col[ColIndex];</span><br><span class="line">    while (Possibles) &#123;</span><br><span class="line">          int valbit = Possibles &amp; (-Possibles); // Lowest 1 bit in Possibles</span><br><span class="line">          Possibles &amp;= ~valbit;</span><br><span class="line">          Entry[Square] = valbit;</span><br><span class="line">          Block[BlockIndex] &amp;= ~valbit;</span><br><span class="line">          Row[RowIndex] &amp;= ~valbit;</span><br><span class="line">          Col[ColIndex] &amp;= ~valbit;</span><br><span class="line">				</span><br><span class="line">          Place(S + 1, board);</span><br><span class="line"></span><br><span class="line">          Entry[Square] = BLANK; // Could be moved out of the loop</span><br><span class="line">          Block[BlockIndex] |= valbit;</span><br><span class="line">          Row[RowIndex] |= valbit;</span><br><span class="line">          Col[ColIndex] |= valbit;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    SwapSeqEntries(S, S2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solveSudoku(char **board, int m, int n) &#123;</span><br><span class="line">    SeqPtr = 0;</span><br><span class="line">    int i, j, Square;</span><br><span class="line"></span><br><span class="line">	for (i = 0; i &lt; 9; i++)</span><br><span class="line">		for (j = 0; j &lt; 9; j++) &#123;</span><br><span class="line">			Square = 9 * i + j;</span><br><span class="line">			InRow[Square] = i;</span><br><span class="line">			InCol[Square] = j;</span><br><span class="line">			InBlock[Square] = (i / 3) * 3 + ( j / 3);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	for (Square = 0; Square &lt; 81; Square++) &#123;</span><br><span class="line">        Sequence[Square] = Square;</span><br><span class="line">		Entry[Square] = BLANK;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	for (i = 0; i &lt; 9; i++) </span><br><span class="line">		Block[i] = Row[i] = Col[i] = ONES;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; 9; ++i)</span><br><span class="line">       for (int j = 0; j &lt; 9; ++j) &#123;</span><br><span class="line">           if (&apos;.&apos; != board[i][j])</span><br><span class="line">                InitEntry(i, j, board[i][j] - &apos;0&apos;);</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">    Place(SeqPtr, board);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5002/a-simple-dfs-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5002/a-simple-dfs-solution</a></p>
+<p>A simple DFS solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	bool isValidSudoku(vector&lt;vector&lt;char&gt; &gt; &amp;board) &#123;</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line">	void solveSudoku(vector&lt;vector&lt;char&gt; &gt; &amp;board) &#123;</span><br><span class="line">		util(board, 0);</span><br><span class="line">	&#125;</span><br><span class="line">	bool util(vector&lt;vector&lt;char&gt;&gt;&amp; board, int pos)</span><br><span class="line">	&#123;</span><br><span class="line">		if (pos &gt;= 81)</span><br><span class="line">			return true;</span><br><span class="line">		int i = pos / 9;</span><br><span class="line">		int j = pos % 9;</span><br><span class="line">		if (board[i][j] != &apos;.&apos;)</span><br><span class="line">			return util(board, pos + 1);</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			for (char c = &apos;1&apos;; c &lt;= &apos;9&apos;; c++)</span><br><span class="line">			&#123;</span><br><span class="line">				if (!isInRow(board, i,c) &amp;&amp; !isInCol(board, j, c) &amp;&amp; !isInRec(board, i, j, c))</span><br><span class="line">				&#123;</span><br><span class="line">					board[i][j] = c;</span><br><span class="line">					if (util(board, pos + 1))</span><br><span class="line">						return true;</span><br><span class="line">					else</span><br><span class="line">						board[i][j] = &apos;.&apos;;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	bool isInRow(vector&lt;vector&lt;char&gt;&gt;&amp; board, int i, char c)</span><br><span class="line">	&#123;</span><br><span class="line">		vector&lt;char&gt;&amp; row = board[i];</span><br><span class="line">		for (int k = 0; k &lt; 9; k++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (row[k] == c)</span><br><span class="line">				return true;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	bool isInCol(vector&lt;vector&lt;char&gt;&gt;&amp; board,int j, char c)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int k = 0; k &lt; 9; k++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (board[k][j] == c)</span><br><span class="line">				return true;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">	bool isInRec(vector&lt;vector&lt;char&gt;&gt;&amp; board, int i, int j, char c)</span><br><span class="line">	&#123;</span><br><span class="line">		int bigrow = i / 3, bigcol = j / 3;</span><br><span class="line">		for (int m = 3 * bigrow; m &lt; 3 * (bigrow + 1); m++)</span><br><span class="line">		&#123;</span><br><span class="line">			for (int n = 3 * bigcol; n &lt; 3 * (bigcol + 1); n++)</span><br><span class="line">				if (board[m][n] == c)</span><br><span class="line">					return true;</span><br><span class="line">		&#125;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21103/simple-and-clean-solution-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21103/simple-and-clean-solution-c</a></p>
+<p>Simple and Clean Solution / C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">bool check(vector&lt;vector&lt;char&gt;&gt; &amp;board, int i, int j, char val)</span><br><span class="line">&#123;</span><br><span class="line">    int row = i - i%3, column = j - j%3;</span><br><span class="line">    for(int x=0; x&lt;9; x++) if(board[x][j] == val) return false;</span><br><span class="line">    for(int y=0; y&lt;9; y++) if(board[i][y] == val) return false;</span><br><span class="line">    for(int x=0; x&lt;3; x++)</span><br><span class="line">    for(int y=0; y&lt;3; y++)</span><br><span class="line">        if(board[row+x][column+y] == val) return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">bool solveSudoku(vector&lt;vector&lt;char&gt;&gt; &amp;board, int i, int j)</span><br><span class="line">&#123;</span><br><span class="line">    if(i==9) return true;</span><br><span class="line">    if(j==9) return solveSudoku(board, i+1, 0);</span><br><span class="line">    if(board[i][j] != &apos;.&apos;) return solveSudoku(board, i, j+1);</span><br><span class="line"></span><br><span class="line">    for(char c=&apos;1&apos;; c&lt;=&apos;9&apos;; c++)</span><br><span class="line">    &#123;</span><br><span class="line">        if(check(board, i, j, c))</span><br><span class="line">        &#123;</span><br><span class="line">            board[i][j] = c;</span><br><span class="line">            if(solveSudoku(board, i, j+1)) return true;</span><br><span class="line">            board[i][j] = &apos;.&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">public:</span><br><span class="line">void solveSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</span><br><span class="line">solveSudoku(board, 0, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27787/c-clear-solution-using-dfs-beating-90-c-coder" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27787/c-clear-solution-using-dfs-beating-90-c-coder</a></p>
+<p>C++ clear solution using dfs, beating 90% c++ coder.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool col[10][10],row[10][10],f[10][10];</span><br><span class="line">    bool flag = false;</span><br><span class="line">    void solveSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) &#123;</span><br><span class="line">         memset(col,false,sizeof(col));</span><br><span class="line">         memset(row,false,sizeof(row));</span><br><span class="line">         memset(f,false,sizeof(f));</span><br><span class="line">         for(int i = 0; i &lt; 9;i++)&#123;</span><br><span class="line">             for(int j = 0; j &lt; 9;j++)&#123;</span><br><span class="line">                 if(board[i][j] == &apos;.&apos;)   continue;</span><br><span class="line">                 int temp = 3*(i/3)+j/3;</span><br><span class="line">                 int num = board[i][j]-&apos;0&apos;;</span><br><span class="line">                 col[j][num] = row[i][num] = f[temp][num] = true;</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         dfs(board,0,0);</span><br><span class="line">    &#125;</span><br><span class="line">    void dfs(vector&lt;vector&lt;char&gt;&gt;&amp; board,int i,int j)&#123;</span><br><span class="line">        if(flag == true)  return ;</span><br><span class="line">        if(i &gt;= 9)&#123;</span><br><span class="line">            flag = true;</span><br><span class="line">            return ;</span><br><span class="line">        &#125;</span><br><span class="line">        if(board[i][j] != &apos;.&apos;)&#123;</span><br><span class="line">             if(j &lt; 8)  dfs(board,i,j+1);</span><br><span class="line">             else dfs(board,i+1,0);</span><br><span class="line">             if(flag)  return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        else&#123;</span><br><span class="line">            int temp = 3*(i/3)+j/3;</span><br><span class="line">            for(int n = 1; n &lt;= 9; n++)&#123;</span><br><span class="line">                if(!col[j][n] &amp;&amp; !row[i][n] &amp;&amp; !f[temp][n])&#123;</span><br><span class="line">                    board[i][j] = n + &apos;0&apos;;</span><br><span class="line">                    col[j][n] = row[i][n] = f[temp][n] = true;</span><br><span class="line">                    if(j &lt; 8)  dfs(board,i,j+1);</span><br><span class="line">                    else dfs(board,i+1,0);</span><br><span class="line">                    col[j][n] = row[i][n] = f[temp][n] = false;</span><br><span class="line">                    if(flag)  return;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            board[i][j] = &apos;.&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/18316/48ms-straitforward-python-dfs-solution-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18316/48ms-straitforward-python-dfs-solution-with-explanations</a></p>
+<p>48ms straitforward python DFS solution with explanations</p>
+<p>It’s similar to how human solve Sudoku. </p>
+<ol>
+<li>create a hash table (dictionary) val to store possible values in every location.</li>
+<li>Each time, start from the location with fewest possible values, choose one value from it and then update the board and possible values at other locations. If this update is valid, keep solving (DFS). If this update is invalid (leaving zero possible values at some locations) or this value doesn’t lead to the solution, undo the updates and then choose the next value. </li>
+</ol>
+<p>Since we calculated val at the beginning and start filling the board from the location with fewest possible values, the amount of calculation and thus the runtime can be significantly reduced: </p>
+<p>The run time is 48-68 ms on LeetCode OJ, which seems to be among the fastest python solutions here.</p>
+<p>The PossibleVals function may be further simplified/optimized, but it works just fine for now. (it would look less lengthy if we are allowed to use numpy array for the board lol). </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">def solveSudoku(self, board):</span><br><span class="line">    self.board = board</span><br><span class="line">    self.val = self.PossibleVals()</span><br><span class="line">    self.Solver()</span><br><span class="line"></span><br><span class="line">def PossibleVals(self):</span><br><span class="line">    a = &quot;123456789&quot;</span><br><span class="line">    d, val = &#123;&#125;, &#123;&#125;</span><br><span class="line">    for i in xrange(9):</span><br><span class="line">        for j in xrange(9):</span><br><span class="line">            ele = self.board[i][j]</span><br><span class="line">            if ele != &quot;.&quot;:</span><br><span class="line">                d[(&quot;r&quot;, i)] = d.get((&quot;r&quot;, i), []) + [ele]</span><br><span class="line">                d[(&quot;c&quot;, j)] = d.get((&quot;c&quot;, j), []) + [ele]</span><br><span class="line">                d[(i//3, j//3)] = d.get((i//3, j//3), []) + [ele]</span><br><span class="line">            else:</span><br><span class="line">                val[(i,j)] = []</span><br><span class="line">    for (i,j) in val.keys():</span><br><span class="line">        inval = d.get((&quot;r&quot;,i),[])+d.get((&quot;c&quot;,j),[])+d.get((i/3,j/3),[])</span><br><span class="line">        val[(i,j)] = [n for n in a if n not in inval ]</span><br><span class="line">    return val</span><br><span class="line"></span><br><span class="line">def Solver(self):</span><br><span class="line">    if len(self.val)==0:</span><br><span class="line">        return True</span><br><span class="line">    kee = min(self.val.keys(), key=lambda x: len(self.val[x]))</span><br><span class="line">    nums = self.val[kee]</span><br><span class="line">    for n in nums:</span><br><span class="line">        update = &#123;kee:self.val[kee]&#125;</span><br><span class="line">        if self.ValidOne(n, kee, update): # valid choice</span><br><span class="line">            if self.Solver(): # keep solving</span><br><span class="line">                return True</span><br><span class="line">        self.undo(kee, update) # invalid choice or didn&apos;t solve it =&gt; undo</span><br><span class="line">    return False</span><br><span class="line">    </span><br><span class="line">def ValidOne(self, n, kee, update):</span><br><span class="line">    self.board[kee[0]][kee[1]] = n</span><br><span class="line">    del self.val[kee]</span><br><span class="line">    i, j = kee</span><br><span class="line">    for ind in self.val.keys():</span><br><span class="line">        if n in self.val[ind]:</span><br><span class="line">            if ind[0]==i or ind[1]==j or (ind[0]/3,ind[1]/3)==(i/3,j/3):</span><br><span class="line">                update[ind] = n</span><br><span class="line">                self.val[ind].remove(n)</span><br><span class="line">                if len(self.val[ind])==0:</span><br><span class="line">                    return False</span><br><span class="line">    return True</span><br><span class="line"></span><br><span class="line">def undo(self, kee, update):</span><br><span class="line">    self.board[kee[0]][kee[1]]=&quot;.&quot;</span><br><span class="line">    for k in update:            </span><br><span class="line">        if k not in self.val:</span><br><span class="line">            self.val[k]= update[k]</span><br><span class="line">        else:</span><br><span class="line">            self.val[k].append(update[k])</span><br><span class="line">    return None</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7475/accepted-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7475/accepted-python-solution</a></p>
+<p>Accepted Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param board, a 9x9 2D array</span><br><span class="line">    # Solve the Sudoku by modifying the input board in-place.</span><br><span class="line">    # Do not return any value.</span><br><span class="line">    def solveSudoku(self, board):</span><br><span class="line">        self.board = board</span><br><span class="line">        self.solve()</span><br><span class="line">    </span><br><span class="line">    def findUnassigned(self):</span><br><span class="line">        for row in range(9):</span><br><span class="line">            for col in range(9):</span><br><span class="line">                if self.board[row][col] == &quot;.&quot;:</span><br><span class="line">                    return row, col</span><br><span class="line">        return -1, -1</span><br><span class="line">    </span><br><span class="line">    def solve(self):</span><br><span class="line">        row, col = self.findUnassigned()</span><br><span class="line">        #no unassigned position is found, puzzle solved</span><br><span class="line">        if row == -1 and col == -1:</span><br><span class="line">            return True</span><br><span class="line">        for num in [&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;]:</span><br><span class="line">            if self.isSafe(row, col, num):</span><br><span class="line">                self.board[row][col] = num</span><br><span class="line">                if self.solve():</span><br><span class="line">                    return True</span><br><span class="line">                self.board[row][col] = &quot;.&quot;</span><br><span class="line">        return False</span><br><span class="line">            </span><br><span class="line">    def isSafe(self, row, col, ch):</span><br><span class="line">        boxrow = row - row%3</span><br><span class="line">        boxcol = col - col%3</span><br><span class="line">        if self.checkrow(row,ch) and self.checkcol(col,ch) and self.checksquare(boxrow, boxcol, ch):</span><br><span class="line">            return True</span><br><span class="line">        return False</span><br><span class="line">    </span><br><span class="line">    def checkrow(self, row, ch):</span><br><span class="line">        for col in range(9):</span><br><span class="line">            if self.board[row][col] == ch:</span><br><span class="line">                return False</span><br><span class="line">        return True</span><br><span class="line">    </span><br><span class="line">    def checkcol(self, col, ch):</span><br><span class="line">        for row in range(9):</span><br><span class="line">            if self.board[row][col] == ch:</span><br><span class="line">                return False</span><br><span class="line">        return True</span><br><span class="line">       </span><br><span class="line">    def checksquare(self, row, col, ch):</span><br><span class="line">        for r in range(row, row+3):</span><br><span class="line">            for c in range(col, col+3):</span><br><span class="line">                if self.board[r][c] == ch:</span><br><span class="line">                    return False</span><br><span class="line">        return True</span><br></pre></td></tr></table></figure>
+<p>It’s a simple backtracking solution.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/f1a3dfa0/" title="037. Sudoku Solver">http://yucc.me/p/f1a3dfa0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/7b8b841d/" rel="next" title="036. Valid Sudoku">
+                <i class="fa fa-chevron-left"></i> 036. Valid Sudoku
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/f2d63f47/" rel="prev" title="038. Count and Say">
+                038. Count and Say <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

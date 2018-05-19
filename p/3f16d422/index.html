@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,array,medium," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="28.8%  https://leetcode.com/problems/next-permutation/ Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not">
+<meta name="keywords" content="leetcode,array,medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="031. Next Permutation">
+<meta property="og:url" content="http://yucc.me/p/3f16d422/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="28.8%  https://leetcode.com/problems/next-permutation/ Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm.png">
+<meta property="og:image" content="http://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm-thumb.png">
+<meta property="og:updated_time" content="2018-05-19T15:09:35.472Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="031. Next Permutation">
+<meta name="twitter:description" content="28.8%  https://leetcode.com/problems/next-permutation/ Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not">
+<meta name="twitter:image" content="https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/3f16d422/"/>
+
+
+
+
+
+  <title>031. Next Permutation | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/3f16d422/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">031. Next Permutation</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:57:57+08:00">
+                2018-05-19 22:57
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T23:09:35+08:00">
+                2018-05-19 23:09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,936
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>28.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/next-permutation/" target="_blank" rel="noopener">https://leetcode.com/problems/next-permutation/</a></p>
+<p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
+<p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p>
+<p>The replacement must be in-place, do not allocate extra memory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Here are some examples. Inputs are in the left-hand column and </span><br><span class="line">its corresponding outputs are in the right-hand column.</span><br><span class="line">1,2,3 → 1,3,2</span><br><span class="line">3,2,1 → 1,2,3</span><br><span class="line">1,1,5 → 1,5,1</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> left = n<span class="number">-2</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]&lt;nums[left+<span class="number">1</span>])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            left--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(left&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            reverse(nums.begin(), nums.end());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(right&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[right]&gt;nums[left])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums[left], nums[right]);</span><br><span class="line">        reverse(nums.begin()+left+<span class="number">1</span>, nums.end());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> i = n<span class="number">-2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i+<span class="number">1</span>]&gt;nums[i])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            reverse(nums.begin(), nums.end());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> j = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[j]&gt;nums[i])</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(nums[i], nums[j]);</span><br><span class="line">        reverse(nums.begin()+i+<span class="number">1</span>, nums.end());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>成熟的解法</p>
+<p>第一步，从后向前，找到一个index k，k是第一个满足当前节点值大于下一个点的值。</p>
+<p>就是说后面的都是递减的。</p>
+<p>(如果找不到，说明已经是最大的数组了，而且都是逆序，反转返回即可)</p>
+<p>第二步，从后向前找，找到一个index l，l是nums[l] &gt; nums[k]，也就是l是大于nums[k]的最大索引。</p>
+<p>第三步，交换l和k对应的值</p>
+<p>第四步，把从k+1开始到nums末尾的数组，进行反转reverse。</p>
+<p>A simple algorithm from Wikipedia with C++ implementation (can be used in Permutations and Permutations II)</p>
+<p>Well, in fact the problem of next permutation has been studied long ago. From the Wikipedia page, in the 14th century, a man named Narayana Pandita gives the following classic and yet quite simple algorithm (with minor modifications in notations to fit the problem statement):</p>
+<ol>
+<li>Find the largest index k such that nums[k] &lt; nums[k + 1]. If no such index exists, the permutation is sorted in descending order, just reverse it to ascending order and we are done. For example, the next permutation of [3, 2, 1] is [1, 2, 3].</li>
+<li>Find the largest index l greater than k such that nums[k] &lt; nums[l].</li>
+<li>Swap the value of nums[k] with that of nums[l].</li>
+<li>Reverse the sequence from nums[k + 1] up to and including the final element nums[nums.size() - 1].</li>
+</ol>
+<p>Quite simple, yeah? Now comes the following code, which is barely a translation.</p>
+<p>Well, a final note here, the above algorithm is indeed powerful — <strong>it can handle the cases of duplicates!</strong> If you have tried the problems <a href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener">Permutations</a> and <a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="noopener">Permutations II</a>, then the following function is also useful. Both of Permutations and Permutations II can be solved easily using this function. Hints: sort nums in ascending order, add it to the result of all permutations and then repeatedly generate the next permutation and add it … until we get back to the original sorted condition. If you want to learn more, please visit <a href="https://leetcode.com/discuss/38255/solution-nextpermutation-permutations-without-modification" target="_blank" rel="noopener">this solution</a> and <a href="https://leetcode.com/discuss/38260/easy-solution-using-code-in-nextpermutation" target="_blank" rel="noopener">that solution</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    	int k = -1;</span><br><span class="line">    	for (int i = nums.size() - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">    		if (nums[i] &lt; nums[i + 1]) &#123;</span><br><span class="line">    			k = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125; </span><br><span class="line">    	if (k == -1) &#123;</span><br><span class="line">    	    reverse(nums.begin(), nums.end());</span><br><span class="line">    	    return;</span><br><span class="line">    	&#125;</span><br><span class="line">    	int l = -1;</span><br><span class="line">    	for (int i = nums.size() - 1; i &gt; k; i--) &#123;</span><br><span class="line">    		if (nums[i] &gt; nums[k]) &#123;</span><br><span class="line">    			l = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125; </span><br><span class="line">    	&#125; </span><br><span class="line">    	swap(nums[k], nums[l]);</span><br><span class="line">    	reverse(nums.begin() + k + 1, nums.end()); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;nums[i+<span class="number">1</span>])&#123;</span><br><span class="line">                left = i;</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// break不能忘</span></span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">-1</span>)&#123;</span><br><span class="line">            reverse(nums.begin(), nums.end());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> right;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=n<span class="number">-1</span>; j&gt;left; j--)</span><br><span class="line">            <span class="keyword">if</span>(nums[j]&gt;nums[left])&#123;</span><br><span class="line">                right = j;</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// break不能忘</span></span><br><span class="line">            &#125;</span><br><span class="line">        swap(nums[left], nums[right]);</span><br><span class="line">        reverse(nums.begin()+left+<span class="number">1</span>, nums.end());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15216/a-simple-algorithm-from-wikipedia-with-c-implementation-can-be-used-in-permutations-and-permutations-ii" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15216/a-simple-algorithm-from-wikipedia-with-c-implementation-can-be-used-in-permutations-and-permutations-ii</a></p>
+<p>A simple algorithm from Wikipedia with C++ implementation (can be used in Permutations and Permutations II)</p>
+<p>Well, in fact the problem of next permutation has been studied long ago. From the Wikipedia page, in the 14th century, a man named Narayana Pandita gives the following classic and yet quite simple algorithm (with minor modifications in notations to fit the problem statement):</p>
+<ol>
+<li>Find the largest index k such that nums[k] &lt; nums[k + 1]. If no such index exists, the permutation is sorted in descending order, just reverse it to ascending order and we are done. For example, the next permutation of [3, 2, 1] is [1, 2, 3].</li>
+<li>Find the largest index l greater than k such that nums[k] &lt; nums[l].</li>
+<li>Swap the value of nums[k] with that of nums[l].</li>
+<li>Reverse the sequence from nums[k + 1] up to and including the final element nums[nums.size() - 1].</li>
+</ol>
+<p>Quite simple, yeah? Now comes the following code, which is barely a translation.</p>
+<p>Well, a final note here, the above algorithm is indeed powerful — <strong>it can handle the cases of duplicates!</strong> If you have tried the problems <a href="https://leetcode.com/problems/permutations/" target="_blank" rel="noopener">Permutations</a> and <a href="https://leetcode.com/problems/permutations-ii/" target="_blank" rel="noopener">Permutations II</a>, then the following function is also useful. Both of Permutations and Permutations II can be solved easily using this function. Hints: sort nums in ascending order, add it to the result of all permutations and then repeatedly generate the next permutation and add it … until we get back to the original sorted condition. If you want to learn more, please visit <a href="https://leetcode.com/discuss/38255/solution-nextpermutation-permutations-without-modification" target="_blank" rel="noopener">this solution</a> and <a href="https://leetcode.com/discuss/38260/easy-solution-using-code-in-nextpermutation" target="_blank" rel="noopener">that solution</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    	int k = -1;</span><br><span class="line">    	for (int i = nums.size() - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">    		if (nums[i] &lt; nums[i + 1]) &#123;</span><br><span class="line">    			k = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125; </span><br><span class="line">    	if (k == -1) &#123;</span><br><span class="line">    	    reverse(nums.begin(), nums.end());</span><br><span class="line">    	    return;</span><br><span class="line">    	&#125;</span><br><span class="line">    	int l = -1;</span><br><span class="line">    	for (int i = nums.size() - 1; i &gt; k; i--) &#123;</span><br><span class="line">    		if (nums[i] &gt; nums[k]) &#123;</span><br><span class="line">    			l = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125; </span><br><span class="line">    	&#125; </span><br><span class="line">    	swap(nums[k], nums[l]);</span><br><span class="line">    	reverse(nums.begin() + k + 1, nums.end()); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8508/9-lines-of-c-code-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8508/9-lines-of-c-code-with-comments</a></p>
+<p>9 Lines of C++ code with Comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void nextPermutation(vector&lt;int&gt; &amp;num) </span><br><span class="line">    &#123;</span><br><span class="line">        if (num.empty()) return;</span><br><span class="line">        </span><br><span class="line">        // in reverse order, find the first number which is in increasing trend (we call it violated number here)</span><br><span class="line">        int i;</span><br><span class="line">        for (i = num.size()-2; i &gt;= 0; --i)</span><br><span class="line">        &#123;</span><br><span class="line">            if (num[i] &lt; num[i+1]) break;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // reverse all the numbers after violated number</span><br><span class="line">        reverse(begin(num)+i+1, end(num));</span><br><span class="line">        // if violated number not found, because we have reversed the whole array, then we are done!</span><br><span class="line">        if (i == -1) return;</span><br><span class="line">        // else binary search find the first number larger than the violated number</span><br><span class="line">        auto itr = upper_bound(begin(num)+i+1, end(num), num[i]);</span><br><span class="line">        // swap them, done!</span><br><span class="line">        swap(num[i], *itr);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>You might need to think for a while why this would work.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19264/1-4-11-lines-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19264/1-4-11-lines-c</a></p>
+<p>1, 4, 11 lines C++</p>
+<p>Solution 1</p>
+<p>Just for info: There’s a library function that does the job, even going from totally reverse sorted to sorted:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    next_permutation(begin(nums), end(nums));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Solution 2</p>
+<p>Using library functions for all building blocks of the algorithm. Very nice how they all play together, notice the total lack of +1/-1, it all fits exactly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    auto i = is_sorted_until(nums.rbegin(), nums.rend());</span><br><span class="line">    if (i != nums.rend())</span><br><span class="line">        swap(*i, *upper_bound(nums.rbegin(), i, *i));</span><br><span class="line">    reverse(nums.rbegin(), i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Solution 3</p>
+<p>Doing it all on my own (except swap, let’s not be silly):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int i = nums.size() - 1, k = i;</span><br><span class="line">    while (i &gt; 0 &amp;&amp; nums[i-1] &gt;= nums[i])</span><br><span class="line">        i--;</span><br><span class="line">    for (int j=i; j&lt;k; j++, k--)</span><br><span class="line">        swap(nums[j], nums[k]);</span><br><span class="line">    if (i &gt; 0) &#123;</span><br><span class="line">        k = i--;</span><br><span class="line">        while (nums[k] &lt;= nums[i])</span><br><span class="line">            k++;</span><br><span class="line">        swap(nums[i], nums[k]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Solution 4</p>
+<p>Ok, let’s be silly after all and not even use swap :-)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int i = nums.size() - 1, k = i, tmp;</span><br><span class="line">    while (i &gt; 0 &amp;&amp; nums[i-1] &gt;= nums[i])</span><br><span class="line">        i--;</span><br><span class="line">    for (int j=i; j&lt;k; j++, k--)</span><br><span class="line">        tmp = nums[j], nums[j] = nums[k], nums[k] = tmp;</span><br><span class="line">    if (i &gt; 0) &#123;</span><br><span class="line">        k = i--;</span><br><span class="line">        while (nums[k] &lt;= nums[i])</span><br><span class="line">            k++;</span><br><span class="line">        tmp = nums[i], nums[i] = nums[k], nums[k] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7138/sharing-my-really-simple-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7138/sharing-my-really-simple-solution-with-explanation</a></p>
+<p>Sharing my really simple solution with explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">    for(int i = num.size() - 2; i &gt;= 0; i--)&#123;</span><br><span class="line">        if(num[i] &lt; num[i + 1])&#123;</span><br><span class="line">            int pos;</span><br><span class="line">            int diff = INT_MAX;</span><br><span class="line">            for(int j = i + 1; j &lt; num.size(); j++)&#123;</span><br><span class="line">                if(num[j] &gt; num[i] &amp;&amp; abs(num[i] - num[j]) &lt; diff)&#123;</span><br><span class="line">                    diff = abs(num[i] - num[j]);</span><br><span class="line">                    pos = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(num[i], num[pos]);</span><br><span class="line">            sort(num.begin() + i + 1, num.end());</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(num.begin(), num.end());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>For this problem, coding is not a big deal. Algorithm is!</p>
+<p>Now let’s pick a number, for example, 24387651.</p>
+<p>what is the next permutation? 24513678.</p>
+<p>How can I get the answer?</p>
+<p>First step: find the first ascending digit from the back of the number. 3 &lt; 8 &gt; 7 &gt; 6 &gt; 5 &gt; 1. Then 3 is the digit.</p>
+<p>Second step: swap that digit with the next big digit in following digits. Which one is the next big digit in 87651? 5! So swap them. Now the number becomes 24587631.</p>
+<p>Third step: sort 87631 into 13678. The final answer is 24513678.</p>
+<hr>
+<p>12ms, 10.84%, April.23rd, 2016</p>
+<p><a href="https://github.com/haoel/leetcode/blob/master/algorithms/cpp/nextPermutation/nextPermutation.cpp" target="_blank" rel="noopener">https://github.com/haoel/leetcode/blob/master/algorithms/cpp/nextPermutation/nextPermutation.cpp</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * Take a look the following continuous permutation, can you find the patern?</span><br><span class="line"> *</span><br><span class="line"> *    1 2 3 4</span><br><span class="line"> *    1 2 4 3</span><br><span class="line"> *    1 3 2 4</span><br><span class="line"> *    1 3 4 2</span><br><span class="line"> *    1 4 2 3</span><br><span class="line"> *    1 4 3 2</span><br><span class="line"> *    2 1 3 4</span><br><span class="line"> *    ...</span><br><span class="line"> *</span><br><span class="line"> * The pattern can be descripted as below:</span><br><span class="line"> *</span><br><span class="line"> *    1) from n-1 to 0, find the first place [i-1] which num[i-1] &lt; num[i]</span><br><span class="line"> *    2) from n-1 to i, find the first number from n-1 to i which &gt;= num[i-1]</span><br><span class="line"> *    3) swap the 2) num with the num[i-1]</span><br><span class="line"> *    4) sort the sub-array [i, n) //actuall sort is fine as well</span><br><span class="line"> * </span><br><span class="line"> * For example:</span><br><span class="line"> * </span><br><span class="line"> *     1 4 3 2   &lt;-- 1) find the first place which num[i-1] &lt; num[i]</span><br><span class="line"> *     ^</span><br><span class="line"> * </span><br><span class="line"> *     1 4 3 2   &lt;-- 2) find the first number from n-1 to i which &gt;= num[i-1]</span><br><span class="line"> *     ^     ^  </span><br><span class="line"> * </span><br><span class="line"> *     2 4 3 1   &lt;-- 3) swap them</span><br><span class="line"> *     ^     ^</span><br><span class="line"> * </span><br><span class="line"> *     2 4 3 1   &lt;-- 4) sort</span><br><span class="line"> *       ^   ^</span><br><span class="line"> *</span><br><span class="line"> *     2 1 3 4   </span><br><span class="line"> * </span><br><span class="line"> * Edge Case:</span><br><span class="line"> *</span><br><span class="line"> *     4 3 2 1, the next permutation is 1 2 3 4</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(nums.size() &lt;= 1) return;</span><br><span class="line">        for(int i = nums.size() - 1; i &gt; 0; i--)&#123;</span><br><span class="line">            if(nums[i-1] &lt; nums[i])&#123;</span><br><span class="line">                int j = nums.size() - 1;</span><br><span class="line">                while(nums[i-1] &gt;= nums[j]) j--;</span><br><span class="line">                </span><br><span class="line">                int tmp = nums[j];</span><br><span class="line">                nums[j] = nums[i-1];</span><br><span class="line">                nums[i-1] = tmp;</span><br><span class="line">                reverse(nums.begin()+i, nums.end());</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">            if(i == 1)&#123;</span><br><span class="line">                 reverse(nums.begin(), nums.end());</span><br><span class="line">                 return;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>12ms, 10.84%, April.23rd, 2016</p>
+<p><a href="http://blog.csdn.net/m6830098/article/details/17291259" target="_blank" rel="noopener">http://blog.csdn.net/m6830098/article/details/17291259</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        next_permutation(nums.begin(), nums.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/52275/easy-python-solution-based-on-lexicographical-permutation-algorithm" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/52275/easy-python-solution-based-on-lexicographical-permutation-algorithm</a></p>
+<p>Easy python solution based on lexicographical permutation algorithm</p>
+<p>For the detailed algorithm and demonstration, please go to <a href="https://www.nayuki.io/page/next-lexicographical-permutation-algorithm" target="_blank" rel="noopener">https://www.nayuki.io/page/next-lexicographical-permutation-algorithm</a></p>
+<p>The steps are shown in the picture below.</p>
+<p><img src="https://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def nextPermutation(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: void Do not return anything, modify nums in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # find longest non-increasing suffix</span><br><span class="line">        right = len(nums)-1</span><br><span class="line">        while nums[right] &lt;= nums[right-1] and right-1 &gt;=0:</span><br><span class="line">            right -= 1</span><br><span class="line">        if right == 0:</span><br><span class="line">            return self.reverse(nums,0,len(nums)-1)</span><br><span class="line">        # find pivot</span><br><span class="line">        pivot = right-1</span><br><span class="line">        successor = 0</span><br><span class="line">        # find rightmost succesor</span><br><span class="line">        for i in range(len(nums)-1,pivot,-1):</span><br><span class="line">            if nums[i] &gt; nums[pivot]:</span><br><span class="line">                successor = i</span><br><span class="line">                break</span><br><span class="line">        # swap pivot and successor</span><br><span class="line">        nums[pivot],nums[successor] = nums[successor],nums[pivot]  </span><br><span class="line">        # reverse suffix</span><br><span class="line">        self.reverse(nums,pivot+1,len(nums)-1)</span><br><span class="line">        </span><br><span class="line">    def reverse(self,nums,l,r):</span><br><span class="line">        while l &lt; r:</span><br><span class="line">            nums[l],nums[r] = nums[r],nums[l]</span><br><span class="line">            l += 1</span><br><span class="line">            r -= 1</span><br></pre></td></tr></table></figure>
+<hr>
+<p>60ms, 77.71%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/59874/two-pointer-solution-in-python-with-detail-expalanation" target="_blank" rel="noopener">https://leetcode.com/discuss/59874/two-pointer-solution-in-python-with-detail-expalanation</a></p>
+<p>Two-pointer solution in python with detail expalanation</p>
+<p>Credit goes to <a href="http://blog.csdn.net/m6830098/article/details/17291259" target="_blank" rel="noopener">http://blog.csdn.net/m6830098/article/details/17291259</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def nextPermutation(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: void Do not return anything, modify nums in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # Use two-pointers: two pointers start from back</span><br><span class="line">        # first pointer j stop at descending point</span><br><span class="line">        # second pointer i stop at value &gt; nums[j]</span><br><span class="line">        # swap and sort rest</span><br><span class="line">        if not nums: return None</span><br><span class="line">        i = len(nums)-1</span><br><span class="line">        j = -1 # j is set to -1 for case `4321`, so need to reverse all in following step</span><br><span class="line">        while i &gt; 0:</span><br><span class="line">            if nums[i-1] &lt; nums[i]: # first one violates the trend</span><br><span class="line">              j = i-1</span><br><span class="line">              break</span><br><span class="line">            i-=1</span><br><span class="line">        for i in xrange(len(nums)-1, -1, -1):</span><br><span class="line">            if nums[i] &gt; nums[j]: # </span><br><span class="line">                nums[i], nums[j] = nums[j], nums[i] # swap position</span><br><span class="line">                nums[j+1:] = sorted(nums[j+1:]) # sort rest</span><br><span class="line">                return</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/2542/share-my-o-n-time-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2542/share-my-o-n-time-solution</a></p>
+<p>Share my O(n) time solution</p>
+<p>My idea is for an array:</p>
+<ol>
+<li>Start from its last element, traverse backward to find the first one with index i that satisfy num[i-1] &lt; num[i]. So, elements from num[i] to num[n-1] is reversely sorted.</li>
+<li>To find the next permutation, we have to swap some numbers at different positions, to minimize the increased amount, we have to make the highest changed position as high as possible. Notice that index larger than or equal to i is not possible as num[i,n-1] is reversely sorted. So, we want to increase the number at index i-1, clearly, swap it with the smallest number between num[i,n-1] that is larger than num[i-1]. For example, original number is 121543321, we want to swap the ‘1’ at position 2 with ‘2’ at position 7.</li>
+<li>The last step is to make the remaining higher position part as small as possible, we just have to reversely sort the num[i,n-1]</li>
+</ol>
+<p>The following is my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public void nextPermutation(int[] num) &#123;</span><br><span class="line">    int n=num.length;</span><br><span class="line">    if(n&lt;2)</span><br><span class="line">        return;</span><br><span class="line">    int index=n-1;        </span><br><span class="line">    while(index&gt;0)&#123;</span><br><span class="line">        if(num[index-1]&lt;num[index])</span><br><span class="line">            break;</span><br><span class="line">        index--;</span><br><span class="line">    &#125;</span><br><span class="line">    if(index==0)&#123;</span><br><span class="line">        reverseSort(num,0,n-1);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        int val=num[index-1];</span><br><span class="line">        int j=n-1;</span><br><span class="line">        while(j&gt;=index)&#123;</span><br><span class="line">            if(num[j]&gt;val)</span><br><span class="line">                break;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        swap(num,j,index-1);</span><br><span class="line">        reverseSort(num,index,n-1);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void swap(int[] num, int i, int j)&#123;</span><br><span class="line">    int temp=0;</span><br><span class="line">    temp=num[i];</span><br><span class="line">    num[i]=num[j];</span><br><span class="line">    num[j]=temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void reverseSort(int[] num, int start, int end)&#123;   </span><br><span class="line">    if(start&gt;end)</span><br><span class="line">        return;</span><br><span class="line">    for(int i=start;i&lt;=(end+start)/2;i++)</span><br><span class="line">        swap(num,i,start+end-i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14124/sharing-my-clean-and-easy-understand-java-code-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14124/sharing-my-clean-and-easy-understand-java-code-with-explanation</a></p>
+<p>Sharing my clean and easy-understand java code with explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void nextPermutation(int[] nums) &#123;</span><br><span class="line">      if(nums.length&lt;=1)&#123;</span><br><span class="line">          return;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      int i= nums.length-1;</span><br><span class="line">      </span><br><span class="line">      for(;i&gt;=1;i--)&#123;</span><br><span class="line">         </span><br><span class="line">         if(nums[i]&gt;nums[i-1])&#123; //find first number which is smaller than it&apos;s after number</span><br><span class="line">             break;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      if(i!=0)&#123;</span><br><span class="line">          swap(nums,i-1); //if the number exist,which means that the nums not like&#123;5,4,3,2,1&#125;</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      reverse(nums,i);    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void swap(int[] a,int i)&#123;</span><br><span class="line">        for(int j = a.length-1;j&gt;i;j--)&#123;</span><br><span class="line">            if(a[j]&gt;a[i])&#123;</span><br><span class="line">                int t = a[j];</span><br><span class="line">                a[j] = a[i];</span><br><span class="line">                a[i] = t;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void reverse(int[] a,int i)&#123;//reverse the number after the number we have found</span><br><span class="line">        int first = i;</span><br><span class="line">        int last = a.length-1;</span><br><span class="line">        while(first&lt;last)&#123;</span><br><span class="line">            int t = a[first];</span><br><span class="line">            a[first] = a[last];</span><br><span class="line">            a[last] = t;</span><br><span class="line">            first ++;</span><br><span class="line">            last --;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在当前序列中，从尾端往前寻找两个相邻元素，前一个记为first，后一个记为second，并且满足first 小于 second。然后再从尾端寻找另一个元素number，如果满足first 小于number，即将第first个元素与number元素对调，并将second元素之后（包括second）的所有元素颠倒排序，即求出下一个序列</p>
+<p>example:</p>
+<p>6，3，4，9，8，7，1</p>
+<p>此时 first ＝ 4，second = 9</p>
+<p>从尾巴到前找到第一个大于first的数字，就是7</p>
+<p>交换4和7，即上面的swap函数，此时序列变成6，3，7，9，8，4，1</p>
+<p>再将second＝9以及以后的序列重新排序，让其从小到大排序，使得整体最小，即reverse一下（因为此时肯定是递减序列）</p>
+<p>得到最终的结果：6，3，7，1，4，8，9</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30212/easiest-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30212/easiest-java-solution</a></p>
+<p>Easiest JAVA Solution</p>
+<p>Using a simple example, we can derive the following steps:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public void nextPermutation(int[] A) &#123;</span><br><span class="line">    if(A == null || A.length &lt;= 1) return;</span><br><span class="line">    int i = A.length - 2;</span><br><span class="line">    while(i &gt;= 0 &amp;&amp; A[i] &gt;= A[i + 1]) i--; // Find 1st id i that breaks descending order</span><br><span class="line">    if(i &gt;= 0) &#123;                           // If not entirely descending</span><br><span class="line">        int j = A.length - 1;              // Start from the end</span><br><span class="line">        while(A[j] &lt;= A[i]) j--;           // Find rightmost first larger id j</span><br><span class="line">        swap(A, i, j);                     // Switch i and j</span><br><span class="line">    &#125;</span><br><span class="line">    reverse(A, i + 1, A.length - 1);       // Reverse the descending sequence</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void swap(int[] A, int i, int j) &#123;</span><br><span class="line">    int tmp = A[i];</span><br><span class="line">    A[i] = A[j];</span><br><span class="line">    A[j] = tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void reverse(int[] A, int i, int j) &#123;</span><br><span class="line">    while(i &lt; j) swap(A, i++, j--);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30688/readable-code-without-confusing-i-j-and-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30688/readable-code-without-confusing-i-j-and-with-explanation</a></p>
+<p>Readable code without confusing i/j, and with explanation</p>
+<p>Implementation based on description from <a href="http://www.nayuki.io/page/next-lexicographical-permutation-algorithm" target="_blank" rel="noopener">Project Nayuki</a>. I cannot describe it better than them:</p>
+<p><img src="http://www.nayuki.io/res/next-lexicographical-permutation-algorithm/next-permutation-algorithm-thumb.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">/*0*/ public void nextPermutation(int[] nums) &#123;</span><br><span class="line">        // pivot is the element just before the non-increasing (weakly decreasing) suffix</span><br><span class="line">/*2*/   int pivot = indexOfLastPeak(nums) - 1;</span><br><span class="line">        // paritions nums into [prefix pivot suffix]</span><br><span class="line">        if (pivot != -1) &#123;</span><br><span class="line">            int nextPrefix = lastIndexOfGreater(nums, nums[pivot]); // in the worst case it&apos;s suffix[0]</span><br><span class="line">            // next prefix must exist because pivot &lt; suffix[0], otherwise pivot would be part of suffix</span><br><span class="line">/*4*/       swap(nums, pivot, nextPrefix); // this minimizes the change in prefix</span><br><span class="line">        &#125;</span><br><span class="line">/*5*/   reverseSuffix(nums, pivot + 1); // reverses the whole list if there was no pivot</span><br><span class="line">/*6*/ &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * Find the last element which is a peak.</span><br><span class="line">     * In case there are multiple equal peaks, return the first of those.</span><br><span class="line">     * @return first index of last peak</span><br><span class="line">     */</span><br><span class="line">/*1*/ int indexOfLastPeak(int[] nums) &#123;</span><br><span class="line">        for (int i = nums.length - 1; 0 &lt; i; --i) &#123;</span><br><span class="line">            if (nums[i - 1] &lt; nums[i]) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** @return last index where the &#123;@code num &gt; threshold&#125; or -1 if not found */</span><br><span class="line">/*3*/ int lastIndexOfGreater(int[] nums, int threshold) &#123;</span><br><span class="line">        for (int i = nums.length - 1; 0 &lt;= i; --i) &#123;</span><br><span class="line">            if (threshold &lt; nums[i]) return i;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /** Reverse numbers starting from an index till the end. */</span><br><span class="line">    void reverseSuffix(int[] nums, int start) &#123;</span><br><span class="line">        int end = nums.length - 1;</span><br><span class="line">        while (start &lt; end) &#123;</span><br><span class="line">            swap(nums, start++, end--);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void swap(int[] nums, int i, int j) &#123;</span><br><span class="line">        int temp = nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/3f16d422/" title="031. Next Permutation">http://yucc.me/p/3f16d422/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/f97ee9f9/" rel="next" title="030. Substring with Concatenation of All Words">
+                <i class="fa fa-chevron-left"></i> 030. Substring with Concatenation of All Words
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/3f681304/" rel="prev" title="032. Longest Valid Parentheses">
+                032. Longest Valid Parentheses <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

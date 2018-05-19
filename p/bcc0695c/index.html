@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,string,dynamic programming,backtracking,hard,greedy," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="20.4%  https://leetcode.com/problems/wildcard-matching/ Implement wildcard pattern matching with support for ‘?’ and ‘*‘. 12345678910111213141516&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apo">
+<meta name="keywords" content="leetcode,string,dynamic programming,backtracking,hard,greedy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="044. Wildcard Matching">
+<meta property="og:url" content="http://yucc.me/p/bcc0695c/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="20.4%  https://leetcode.com/problems/wildcard-matching/ Implement wildcard pattern matching with support for ‘?’ and ‘*‘. 12345678910111213141516&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T15:23:14.972Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="044. Wildcard Matching">
+<meta name="twitter:description" content="20.4%  https://leetcode.com/problems/wildcard-matching/ Implement wildcard pattern matching with support for ‘?’ and ‘*‘. 12345678910111213141516&amp;apos;?&amp;apos; Matches any single character.&amp;apos;*&amp;apo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/bcc0695c/"/>
+
+
+
+
+
+  <title>044. Wildcard Matching | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/bcc0695c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">044. Wildcard Matching</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T23:03:54+08:00">
+                2018-05-19 23:03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T23:23:14+08:00">
+                2018-05-19 23:23
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,668
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>20.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/wildcard-matching/" target="_blank" rel="noopener">https://leetcode.com/problems/wildcard-matching/</a></p>
+<p>Implement wildcard pattern matching with support for ‘?’ and ‘*‘.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&apos;?&apos; Matches any single character.</span><br><span class="line">&apos;*&apos; Matches any sequence of characters (including the empty sequence).</span><br><span class="line"></span><br><span class="line">The matching should cover the entire input string (not partial).</span><br><span class="line"></span><br><span class="line">The function prototype should be:</span><br><span class="line">bool isMatch(const char *s, const char *p)</span><br><span class="line"></span><br><span class="line">Some examples:</span><br><span class="line">isMatch(&quot;aa&quot;,&quot;a&quot;) → false</span><br><span class="line">isMatch(&quot;aa&quot;,&quot;aa&quot;) → true</span><br><span class="line">isMatch(&quot;aaa&quot;,&quot;aa&quot;) → false</span><br><span class="line">isMatch(&quot;aa&quot;, &quot;*&quot;) → true</span><br><span class="line">isMatch(&quot;aa&quot;, &quot;a*&quot;) → true</span><br><span class="line">isMatch(&quot;ab&quot;, &quot;?*&quot;) → true</span><br><span class="line">isMatch(&quot;aab&quot;, &quot;c*a*b&quot;) → false</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.size(), n = p.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> m==<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(m+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n+<span class="number">1</span>, <span class="literal">false</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i<span class="number">-1</span>] &amp;&amp; (p[i<span class="number">-1</span>]==<span class="string">'*'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">                <span class="keyword">if</span>(p[j<span class="number">-1</span>]!=<span class="string">'*'</span>)</span><br><span class="line">                    dp[i][j] = dp[i<span class="number">-1</span>][j<span class="number">-1</span>] &amp;&amp; (s[i<span class="number">-1</span>]==p[j<span class="number">-1</span>] || p[j<span class="number">-1</span>]==<span class="string">'?'</span>);</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=i; k&gt;=<span class="number">0</span>; k--)&#123;</span><br><span class="line">                        dp[i][j] = dp[i][j] || dp[k][j<span class="number">-1</span>];</span><br><span class="line">                        <span class="keyword">if</span>(dp[i][j]==<span class="literal">true</span>)</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二:</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.size(), n = p.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> m==<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(m+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(n+<span class="number">1</span>, <span class="literal">false</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i<span class="number">-1</span>] &amp;&amp; (p[i<span class="number">-1</span>]==<span class="string">'*'</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">                <span class="keyword">if</span>(p[j<span class="number">-1</span>]!=<span class="string">'*'</span>)</span><br><span class="line">                    dp[i][j] = dp[i<span class="number">-1</span>][j<span class="number">-1</span>] &amp;&amp; (s[i<span class="number">-1</span>]==p[j<span class="number">-1</span>] || p[j<span class="number">-1</span>]==<span class="string">'?'</span>);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    dp[i][j] = dp[i<span class="number">-1</span>][j] || dp[i][j<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>更新迭代公式解释：</p>
+<p><a href="https://discuss.leetcode.com/topic/7266/c-dp-solution/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7266/c-dp-solution/2</a></p>
+<p>Equation 1). means that if p[j-1] is not *, f(i,j) is determined by if s[0:i-2] matches p[0:j-2] and if (s[i-1]==p[j-1] or p[j-1]==’?’).</p>
+<p>Equation 2). means that if p[j-1] is <em>, f(i,j) is true if either f(i,j-1) is true: s[0:i-1] matches p[0:j-2] and </em> is not used here; or f(i-1,j) is true: s[0:i-2] matches p[0:j-1] and * is used to match s[i-1].</p>
+<p><a href="https://discuss.leetcode.com/topic/17901/accepted-c-dp-solution-with-a-trick" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17901/accepted-c-dp-solution-with-a-trick</a></p>
+<p>Accepted C++ DP Solution with a Trick</p>
+<p>1312ms, 28.41%, September 22, 2016</p>
+<p>Updated: Since the OJ has relaxed the time constraint, the following DP solution is now accepted without the trick :-)</p>
+<p>Well, so many people has tried to solve this problem using DP. And almost all of them get TLE (if you see a C++ DP solution that gets accepted, please let me know ^_^). Well, this post aims at providing an accpted DP solution which uses a trick to get around the largest test case, insteaed of a solution that is fully correct. So please do not give me down votes for that :-)</p>
+<p>Let’s briefly summarize the idea of DP. We define the state P[i][j] to be whether s[0..i) matches p[0..j). The state equations are as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. P[i][j] = P[i - 1][j - 1] &amp;&amp; (s[i - 1] == p[j - 1] || p[j - 1] == &apos;?&apos;), if p[j - 1] != &apos;*&apos;;</span><br><span class="line">2. P[i][j] = P[i][j - 1] || P[i - 1][j], if p[j - 1] == &apos;*&apos;.</span><br></pre></td></tr></table></figure>
+<p>If you feel confused with the second equation, you may refer to this link. There is an explanation in the comments.</p>
+<p>We optimize the DP code to O(m) space by recording P[i - 1][j - 1] using a single variable pre.</p>
+<p>The trick to avoid TLE is to hard-code the result for the largest test case by</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (n &gt; 30000) return false;</span><br></pre></td></tr></table></figure>
+<p>The complete code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123; </span><br><span class="line">        int m = s.length(), n = p.length();</span><br><span class="line">        if (n &gt; 30000) return false; // the trick</span><br><span class="line">        vector&lt;bool&gt; cur(m + 1, false); </span><br><span class="line">        cur[0] = true;</span><br><span class="line">        for (int j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">            bool pre = cur[0]; // use the value before update</span><br><span class="line">            cur[0] = cur[0] &amp;&amp; p[j - 1] == &apos;*&apos;; </span><br><span class="line">            for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">                bool temp = cur[i]; // record the value before update</span><br><span class="line">                if (p[j - 1] != &apos;*&apos;)</span><br><span class="line">                    cur[i] = pre &amp;&amp; (s[i - 1] == p[j - 1] || p[j - 1] == &apos;?&apos;);</span><br><span class="line">                else cur[i] = cur[i - 1] || cur[i];</span><br><span class="line">                pre = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cur[m]; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三:</p>
+<p>For those interested in a fully correct solution, this link has a nice Greedy solution. And I have rewritten the code below to fit the new C++ interface (changed from char* to string).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123;</span><br><span class="line">        int m = s.length(), n = p.length();</span><br><span class="line">        int i = 0, j = 0, asterisk = -1, match;</span><br><span class="line">        while (i &lt; m) &#123;</span><br><span class="line">            if (j &lt; n &amp;&amp; p[j] == &apos;*&apos;) &#123;</span><br><span class="line">                match = i; </span><br><span class="line">                asterisk = j++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j &lt; n &amp;&amp; (s[i] == p[j] || p[j] == &apos;?&apos;)) &#123;</span><br><span class="line">                i++; </span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (asterisk &gt;= 0) &#123;</span><br><span class="line">                i = ++match;</span><br><span class="line">                j = asterisk + 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else return false;</span><br><span class="line">        &#125;</span><br><span class="line">        while (j &lt; n &amp;&amp; p[j] == &apos;*&apos;) j++;</span><br><span class="line">        return j == n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21577/my-three-c-solutions-iterative-16ms-dp-180ms-modified-recursion-88ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21577/my-three-c-solutions-iterative-16ms-dp-180ms-modified-recursion-88ms</a></p>
+<p>My three C++ solutions (iterative (16ms) &amp; DP (180ms) &amp; modified recursion (88ms))</p>
+<p>The reason that the iterative solution is much faster for this case is we only need to save (and deal with) the positions (iStar for s, jStar for p) of the last “” we met. We only need to do traceback using iStar and jStar and all the previous “” can be ignored since the last “” will cover all the traceback cases for the previous “”.<br>What we need to do are</p>
+<ol>
+<li>if the current p character is ‘’ (i.e. p[j]==’’), then we update iStar and jStar with the cureent i and j values. iStar/jStar will be used for traceback. Also we do –i to start the depth first search with the case that ‘*’ represents a null string.</li>
+<li>if p[j]!=’’, then we check if mismatch occurs (i.e. p[j]!=s[i] and p[j]!=’?’), if so we check if we met a ‘’ before (iStar&gt;=0), if not, then we return false since no match can achieve. Otherwise, we traceback to the positions at which the last ‘*’ happens and do the next possible dfs search (i.e. i = iStar++; j = jStar; remember to update iStar too to save the i position to try in the next traceback).</li>
+<li>The loop will quit when we reach the end of s. At last, we need to skip all the ‘*’ in p to see if we can reach the end of p. if so, match, otherwise mismatch</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123;</span><br><span class="line">        int  slen = s.size(), plen = p.size(), i, j, iStar=-1, jStar=-1;</span><br><span class="line"></span><br><span class="line">        for(i=0,j=0 ; i&lt;slen; ++i, ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            if(p[j]==&apos;*&apos;)</span><br><span class="line">            &#123; //meet a new &apos;*&apos;, update traceback i/j info</span><br><span class="line">                iStar = i;</span><br><span class="line">                jStar = j;</span><br><span class="line">                --i;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123; </span><br><span class="line">                if(p[j]!=s[i] &amp;&amp; p[j]!=&apos;?&apos;)</span><br><span class="line">                &#123;  // mismatch happens</span><br><span class="line">                    if(iStar &gt;=0)</span><br><span class="line">                    &#123; // met a &apos;*&apos; before, then do traceback</span><br><span class="line">                        i = iStar++;</span><br><span class="line">                        j = jStar;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else return false; // otherwise fail</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(p[j]==&apos;*&apos;) ++j;</span><br><span class="line">        return j==plen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>A DP solution is also given here. It has O(N^2) time complexity and O(N) space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123;</span><br><span class="line">        int pLen = p.size(), sLen = s.size(), i, j, k, cur, prev;</span><br><span class="line">        if(!pLen) return sLen == 0;</span><br><span class="line">        bool matched[2][sLen+1];</span><br><span class="line">        fill_n(&amp;matched[0][0], 2*(sLen+1), false);</span><br><span class="line">        </span><br><span class="line">        matched[0][0] = true;</span><br><span class="line">        for(i=1; i&lt;=pLen; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            cur = i%2, prev= 1-cur;</span><br><span class="line">            matched[cur][0]= matched[prev][0] &amp;&amp; p[i-1]==&apos;*&apos;;</span><br><span class="line">            if(p[i-1]==&apos;*&apos;) for(j=1; j&lt;=sLen; ++j) matched[cur][j] = matched[cur][j-1] || matched[prev][j];</span><br><span class="line">            else for(j=1; j&lt;=sLen; ++j)            matched[cur][j] =  matched[prev][j-1] &amp;&amp; (p[i-1]==&apos;?&apos; || p[i-1]==s[j-1]) ;</span><br><span class="line">        &#125;</span><br><span class="line">            return matched[cur][sLen];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>A recursion version. A typical recursion version will give us TLE due to too many unnecessary recursive calls. As we explained, all the traceback recursive calls at the ‘’ we met (except the last ‘’) are unneccessary and should be avoided. In the below version, we use recLevel to track the recursion level (i.e the total ‘’ we met) and we also use curLevel to save the order of ‘’ we currently process. If it is not the last ‘’ we met (i.e if(recLevel&gt;curLevel+1) ), then we will return false directly ( if(recLevel&gt;curLevel+1) return false;) to skip all unneccessary recursion call at the ‘’ before the last ‘*’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    bool helper(const string &amp;s, const string &amp;p, int si, int pi, int &amp;recLevel)</span><br><span class="line">    &#123;</span><br><span class="line">        int sSize = s.size(), pSize = p.size(), i, curLevel = recLevel;</span><br><span class="line">        bool first=true;</span><br><span class="line">        while(si&lt;sSize &amp;&amp; (p[pi]==s[si] || p[pi]==&apos;?&apos;)) &#123;++pi; ++si;&#125; //match as many as possible</span><br><span class="line">        if(pi == pSize) return si == sSize; // if p reaches the end, return</span><br><span class="line">        if(p[pi]==&apos;*&apos;)</span><br><span class="line">        &#123; // if a star is met</span><br><span class="line">            while(p[++pi]==&apos;*&apos;); //skip all the following stars</span><br><span class="line">            if(pi&gt;=pSize) return true; // if the rest of p are all star, return true</span><br><span class="line">            for(i=si; i&lt;sSize; ++i)</span><br><span class="line">            &#123;   // then do recursion</span><br><span class="line">                if(p[pi]!= &apos;?&apos; &amp;&amp; p[pi]!=s[i]) continue;</span><br><span class="line">                if(first) &#123;++recLevel; first = false;&#125;</span><br><span class="line">                if(helper(s, p, i, pi, recLevel)) return true;</span><br><span class="line">                if(recLevel&gt;curLevel+1) return false; // if the currently processed star is not the last one, return</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123;</span><br><span class="line">        int recLevel = 0;</span><br><span class="line">        return helper(s, p, 0, 0, recLevel);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7266/c-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7266/c-dp-solution</a></p>
+<p>C++ DP solution</p>
+<p>It seems that only Greedy solution can pass all test cases (sorry if I omit any DP solution that passes all test cases). My DP solution also fails to pass the s=aaaaaaaaaaaaaa………….. (lots of a’s…). However, despite this very large case my DP solution passes all other cases. The idea is:</p>
+<p>f(i,j) == whether the first i chars of s match the first j chars of p. The transition equation is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1). if(p[j-1]!=&apos;*&apos;) f(i, j) = f(i-1, j-1) &amp;&amp; (s[i-1]==p[j-1] || p[j-1]==&apos;?&apos;)</span><br><span class="line"></span><br><span class="line">2). if(p[j-1]==&apos;*&apos;) f(i, j) = f(i, j-1) || f(i-1, j)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">bool isMatch(const char *s, const char *p) &#123;</span><br><span class="line">    const int m = strlen(s);</span><br><span class="line">    const int n = strlen(p);</span><br><span class="line">    if(m&gt;30000) return false; // to skip the large test case</span><br><span class="line">    vector&lt;bool&gt; prev(n+1,false); // to save space, just O(n) space is used</span><br><span class="line">    prev[0]=true;</span><br><span class="line">    for(int j=1; j&lt;=n; j++)</span><br><span class="line">        prev[j] = prev[j-1] &amp;&amp; p[j-1]==&apos;*&apos;;</span><br><span class="line">    for(int i=1; i&lt;=m; i++) &#123;</span><br><span class="line">        vector&lt;bool&gt; cur(n+1,false);</span><br><span class="line">        for(int j=1; j&lt;=n; j++) &#123;</span><br><span class="line">            if(p[j-1]==&apos;*&apos;) &#123;</span><br><span class="line">                cur[j] = cur[j-1] || prev[j];</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                cur[j] = prev[j-1] &amp;&amp; (s[i-1]==p[j-1] || p[j-1]==&apos;?&apos;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        prev = cur;</span><br><span class="line">    &#125;</span><br><span class="line">    return prev[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Equation 1). means that if p[j-1] is not *, f(i,j) is determined</span><br><span class="line">by if s[0:i-2] matches p[0:j-2] and if (s[i-1]==p[j-1] or</span><br><span class="line">p[j-1]==&apos;?&apos;).</span><br><span class="line"></span><br><span class="line">Equation 2). means that if p[j-1] is *, f(i,j) is true if either</span><br><span class="line">f(i,j-1) is true: s[0:i-1] matches p[0:j-2] and * is not used</span><br><span class="line">here; or f(i-1,j) is true: s[0:i-2] matches p[0:j-1] and * is</span><br><span class="line">used to match s[i-1].</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isMatch(string s, string p) &#123;</span><br><span class="line">        int m=0, n=0, match=0, startIdx=-1;</span><br><span class="line">        while(m&lt;s.size())&#123;</span><br><span class="line">            if(n&lt;p.size() &amp;&amp; (p[n]==&apos;?&apos; || p[n]==s[m]))&#123;m++; n++;&#125;</span><br><span class="line">            else if(n&lt;p.size() &amp;&amp; p[n]==&apos;*&apos;)&#123;startIdx=n; match=m; n++;&#125;</span><br><span class="line">            else if(startIdx!=-1)&#123;n=startIdx+1; match++; m=match;&#125;</span><br><span class="line">            else return false;</span><br><span class="line">        &#125;</span><br><span class="line">        while(n&lt;p.size() &amp;&amp; p[n]==&apos;*&apos;) n++;</span><br><span class="line">        return n==p.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/9350/python-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9350/python-dp-solution</a></p>
+<p>Python DP solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @return a boolean</span><br><span class="line">def isMatch(self, s, p):</span><br><span class="line">    length = len(s)</span><br><span class="line">    if len(p) - p.count(&apos;*&apos;) &gt; length:</span><br><span class="line">        return False</span><br><span class="line">    dp = [True] + [False]*length</span><br><span class="line">    for i in p:</span><br><span class="line">        if i != &apos;*&apos;:</span><br><span class="line">            for n in reversed(range(length)):</span><br><span class="line">                dp[n+1] = dp[n] and (i == s[n] or i == &apos;?&apos;)</span><br><span class="line">        else:</span><br><span class="line">            for n in range(1, length+1):</span><br><span class="line">                dp[n] = dp[n-1] or dp[n]</span><br><span class="line">        dp[0] = dp[0] and i == &apos;*&apos;</span><br><span class="line">    return dp[-1]</span><br></pre></td></tr></table></figure>
+<p>dp[n] means the substring s[:n] if match the pattern i</p>
+<p>dp[0] means the empty string ‘’ or s[:0] which only match the pattern ‘*’</p>
+<p>use the reversed builtin because for every dp[n+1] we use the previous ‘dp’</p>
+<p>add Java O(m*n) version code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public boolean isMatch(String s, String p) &#123;</span><br><span class="line">    int count = 0;</span><br><span class="line">    for (char c : p.toCharArray()) &#123;</span><br><span class="line">        if (c == &apos;*&apos;)</span><br><span class="line">            count++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (p.length() - count &gt; s.length())</span><br><span class="line">        return false;</span><br><span class="line">    boolean[][] dp = new boolean[p.length() + 1][s.length() + 1];</span><br><span class="line">    dp[0][0] = true;</span><br><span class="line">    for (int j = 1; j &lt;= p.length(); j++) &#123;</span><br><span class="line">        char pattern = p.charAt(j - 1);</span><br><span class="line">        dp[j][0] = dp[j - 1][0] &amp;&amp; pattern == &apos;*&apos;;</span><br><span class="line">        for (int i = 1; i &lt;= s.length(); i++) &#123;</span><br><span class="line">            char letter = s.charAt(i - 1);</span><br><span class="line">            if (pattern != &apos;*&apos;) &#123;</span><br><span class="line">                dp[j][i] = dp[j - 1][i - 1] &amp;&amp; (pattern == &apos;?&apos; || pattern == letter);</span><br><span class="line">            &#125; else</span><br><span class="line">                dp[j][i] = dp[j][i - 1] || dp[j - 1][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[p.length()][s.length()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="http://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html" target="_blank" rel="noopener">http://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Analysis:</span><br><span class="line"></span><br><span class="line">For each element in s</span><br><span class="line">If *s==*p or *p == ? which means <span class="keyword">this</span> is a match, then goes to next element s++ p++.</span><br><span class="line">If p==<span class="string">'*'</span>,  <span class="keyword">this</span> is also a match, but one or many chars may be available, so let us save <span class="keyword">this</span> *<span class="string">'s position and the matched s position.</span></span><br><span class="line"><span class="string">If not match, then we check if there is a * previously showed up,</span></span><br><span class="line"><span class="string">       if there is no *,  return false;</span></span><br><span class="line"><span class="string">       if there is an *,  we set current p to the next element of *, and set current s to the next saved s position.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">e.g.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">abed</span></span><br><span class="line"><span class="string">?b*d**</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">a=?, go on, b=b, go on,</span></span><br><span class="line"><span class="string">e=*, save * position star=3, save s position ss = 3, p++</span></span><br><span class="line"><span class="string">e!=d,  check if there was a *, yes, ss++, s=ss; p=star+1</span></span><br><span class="line"><span class="string">d=d, go on, meet the end.</span></span><br><span class="line"><span class="string">check the rest element in p, if all are *, true, else false;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "*p=='</span>\<span class="number">0</span><span class="string">'".</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/3040/linear-runtime-and-constant-space-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3040/linear-runtime-and-constant-space-solution</a></p>
+<p>60ms, 60.11%, September 22, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isMatch(String str, String pattern) &#123;</span><br><span class="line">        int s=0, p=0, match=0, starIdx=-1;</span><br><span class="line">        while(s&lt;str.length())&#123;</span><br><span class="line">            if(p&lt;pattern.length() &amp;&amp; (pattern.charAt(p)==&apos;?&apos; || str.charAt(s)==pattern.charAt(p)))&#123;</span><br><span class="line">                s++;</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(p&lt;pattern.length() &amp;&amp; pattern.charAt(p) == &apos;*&apos;)&#123;</span><br><span class="line">                starIdx = p;</span><br><span class="line">                match = s;</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(starIdx!=-1)&#123;</span><br><span class="line">                p = starIdx + 1;</span><br><span class="line">                match++;</span><br><span class="line">                s = match;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        while(p&lt;pattern.length() &amp;&amp; pattern.charAt(p) == &apos;*&apos;)</span><br><span class="line">            p++;</span><br><span class="line">        return p == pattern.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3040/linear-runtime-and-constant-space-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3040/linear-runtime-and-constant-space-solution</a></p>
+<p>Linear runtime and constant space solution</p>
+<p>I found this solution from <a href="http://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html" target="_blank" rel="noopener">http://yucoding.blogspot.com/2013/02/leetcode-question-123-wildcard-matching.html</a></p>
+<p>The basic idea is to have one pointer for the string and one pointer for the pattern. This algorithm iterates at most length(string) + length(pattern) times, for each iteration, at least one pointer advance one step.</p>
+<p>Here is Yu’s elegant solution in C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">bool isMatch(const char *s, const char *p) &#123;</span><br><span class="line">        const char* star=NULL;</span><br><span class="line">        const char* ss=s;</span><br><span class="line">        while (*s)&#123;</span><br><span class="line">            //advancing both pointers when (both characters match) or (&apos;?&apos; found in pattern)</span><br><span class="line">            //note that *p will not advance beyond its length </span><br><span class="line">            if ((*p==&apos;?&apos;)||(*p==*s))&#123;s++;p++;continue;&#125; </span><br><span class="line"></span><br><span class="line">            // * found in pattern, track index of *, only advancing pattern pointer </span><br><span class="line">            if (*p==&apos;*&apos;)&#123;star=p++; ss=s;continue;&#125; </span><br><span class="line"></span><br><span class="line">            //current characters didn&apos;t match, last pattern pointer was *, current pattern pointer is not *</span><br><span class="line">            //only advancing pattern pointer</span><br><span class="line">            if (star)&#123; p = star+1; s=++ss;continue;&#125; </span><br><span class="line"></span><br><span class="line">           //current pattern pointer is not star, last patter pointer was not *</span><br><span class="line">           //characters do not match</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">       //check for remaining characters in pattern</span><br><span class="line">        while (*p==&apos;*&apos;)&#123;p++;&#125;</span><br><span class="line"></span><br><span class="line">        return !*p;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Here is my re-write in Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">boolean comparison(String str, String pattern) &#123;</span><br><span class="line">        int s = 0, p = 0, match = 0, starIdx = -1;            </span><br><span class="line">        while (s &lt; str.length())&#123;</span><br><span class="line">            // advancing both pointers</span><br><span class="line">            if (p &lt; pattern.length()  &amp;&amp; (pattern.charAt(p) == &apos;?&apos; || str.charAt(s) == pattern.charAt(p)))&#123;</span><br><span class="line">                s++;</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">            // * found, only advancing pattern pointer</span><br><span class="line">            else if (p &lt; pattern.length() &amp;&amp; pattern.charAt(p) == &apos;*&apos;)&#123;</span><br><span class="line">                starIdx = p;</span><br><span class="line">                match = s;</span><br><span class="line">                p++;</span><br><span class="line">            &#125;</span><br><span class="line">           // last pattern pointer was *, advancing string pointer</span><br><span class="line">            else if (starIdx != -1)&#123;</span><br><span class="line">                p = starIdx + 1;</span><br><span class="line">                match++;</span><br><span class="line">                s = match;</span><br><span class="line">            &#125;</span><br><span class="line">           //current pattern pointer is not star, last patter pointer was not *</span><br><span class="line">          //characters do not match</span><br><span class="line">            else return false;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //check for remaining characters in pattern</span><br><span class="line">        while (p &lt; pattern.length() &amp;&amp; pattern.charAt(p) == &apos;*&apos;)</span><br><span class="line">            p++;</span><br><span class="line">        </span><br><span class="line">        return p == pattern.length();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isMatch(String s, String p) &#123;</span><br><span class="line">        int m=0, n=0, match=0, startIdx=-1;</span><br><span class="line">        while(m&lt;s.length())&#123;</span><br><span class="line">            if(n&lt;p.length() &amp;&amp; (s.charAt(m)==p.charAt(n) || p.charAt(n)==&apos;?&apos;))&#123;m++; n++;&#125;</span><br><span class="line">            else if(n&lt;p.length() &amp;&amp; p.charAt(n)==&apos;*&apos;)&#123;startIdx=n; match=m; n++;&#125;</span><br><span class="line">            else if(startIdx!=-1)&#123;match++; m=match; n=startIdx+1;&#125;</span><br><span class="line">            else return false;</span><br><span class="line">        &#125;</span><br><span class="line">        while(n&lt;p.length() &amp;&amp; p.charAt(n)==&apos;*&apos;)&#123;n++;&#125;</span><br><span class="line">        return n==p.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22516/my-java-dp-solution-using-2d-table" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22516/my-java-dp-solution-using-2d-table</a></p>
+<p>My java DP solution using 2D table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isMatch(String s, String p) &#123;</span><br><span class="line">        boolean[][] match=new boolean[s.length()+1][p.length()+1];</span><br><span class="line">        match[s.length()][p.length()]=true;</span><br><span class="line">        for(int i=p.length()-1;i&gt;=0;i--)&#123;</span><br><span class="line">            if(p.charAt(i)!=&apos;*&apos;)</span><br><span class="line">                break;</span><br><span class="line">            else</span><br><span class="line">                match[s.length()][i]=true;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=s.length()-1;i&gt;=0;i--)&#123;</span><br><span class="line">            for(int j=p.length()-1;j&gt;=0;j--)&#123;</span><br><span class="line">                if(s.charAt(i)==p.charAt(j)||p.charAt(j)==&apos;?&apos;)</span><br><span class="line">                        match[i][j]=match[i+1][j+1];</span><br><span class="line">                else if(p.charAt(j)==&apos;*&apos;)</span><br><span class="line">                        match[i][j]=match[i+1][j]||match[i][j+1];</span><br><span class="line">                else</span><br><span class="line">                    match[i][j]=false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return match[0][0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10794/my-java-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10794/my-java-dp-solution</a></p>
+<p>My Java DP Solution</p>
+<p>At first I cannot pass the the long ‘aaa…’ test case. Then I add more check and pass it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isMatch(String s, String p) &#123;</span><br><span class="line">        int m = s.length(), n = p.length();</span><br><span class="line">        int count = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (p.charAt(i) == &apos;*&apos;) count++;</span><br><span class="line">        &#125;</span><br><span class="line">        if (count==0 &amp;&amp; m != n) return false;</span><br><span class="line">        else if (n - count &gt; m) return false;</span><br><span class="line">        </span><br><span class="line">        boolean[] match = new boolean[m+1];</span><br><span class="line">        match[0] = true;</span><br><span class="line">        for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">            match[i+1] = false;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (p.charAt(i) == &apos;*&apos;) &#123;</span><br><span class="line">                for (int j = 0; j &lt; m; j++) &#123;</span><br><span class="line">                    match[j+1] = match[j] || match[j+1]; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                for (int j = m-1; j &gt;= 0; j--) &#123;</span><br><span class="line">                    match[j+1] = (p.charAt(i) == &apos;?&apos; || p.charAt(i) == s.charAt(j)) &amp;&amp; match[j];</span><br><span class="line">                &#125;</span><br><span class="line">                match[0] = false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return match[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/bcc0695c/" title="044. Wildcard Matching">http://yucc.me/p/bcc0695c/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/d81212f5/" rel="next" title="043. Multiply Strings">
+                <i class="fa fa-chevron-left"></i> 043. Multiply Strings
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/ded0cd97/" rel="prev" title="045. Jump Game II">
+                045. Jump Game II <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
