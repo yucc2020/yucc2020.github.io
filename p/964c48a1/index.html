@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,array,hash table,medium,two pointers," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="25.9%  https://leetcode.com/problems/4sum/ Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which give">
+<meta name="keywords" content="leetcode,array,hash table,medium,two pointers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="018. 4Sum">
+<meta property="og:url" content="http://yucc.me/p/964c48a1/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="25.9%  https://leetcode.com/problems/4sum/ Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which give">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T14:45:25.700Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="018. 4Sum">
+<meta name="twitter:description" content="25.9%  https://leetcode.com/problems/4sum/ Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which give">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/964c48a1/"/>
+
+
+
+
+
+  <title>018. 4Sum | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/964c48a1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">018. 4Sum</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:36:52+08:00">
+                2018-05-19 22:36
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T22:45:25+08:00">
+                2018-05-19 22:45
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,203
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  32
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>25.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/4sum/" target="_blank" rel="noopener">https://leetcode.com/problems/4sum/</a></p>
+<p>Given an array S of n integers, are there elements a, b, c, and d in S such that a + b + c + d = target? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note: The solution set must not contain duplicate quadruplets.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">For example, given array S = [1, 0, -1, 0, -2, 2], and target = 0.</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; fourSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">4</span>) <span class="keyword">return</span> res;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n<span class="number">-3</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span> &amp;&amp; nums[i]==nums[i<span class="number">-1</span>])</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]+nums[i+<span class="number">1</span>]+nums[i+<span class="number">2</span>]+nums[i+<span class="number">3</span>]&gt;target)</span><br><span class="line">                <span class="keyword">break</span>; <span class="comment">// 此处为break；</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i]+nums[n<span class="number">-3</span>]+nums[n<span class="number">-2</span>]+nums[n<span class="number">-1</span>]&lt;target)</span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">// 此处为continue; 注意区分</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>; j&lt;n<span class="number">-2</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j!=i+<span class="number">1</span> &amp;&amp; nums[j]==nums[j<span class="number">-1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]+nums[j+<span class="number">1</span>]+nums[j+<span class="number">2</span>]&gt;target)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]+nums[n<span class="number">-2</span>]+nums[n<span class="number">-1</span>]&lt;target)</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> k=j+<span class="number">1</span>, l=n<span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">while</span>(k&lt;l)&#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i]+nums[j]+nums[k]+nums[l];</span><br><span class="line">                    <span class="keyword">if</span>(sum==target)&#123;</span><br><span class="line">                        res.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;nums[i], nums[j], nums[k], nums[l]&#125;);</span><br><span class="line">                        <span class="keyword">while</span>(k&lt;l &amp;&amp; nums[k+<span class="number">1</span>]==nums[k]) k++;</span><br><span class="line">                        <span class="keyword">while</span>(k&lt;l &amp;&amp; nums[l<span class="number">-1</span>]==nums[l]) l--;</span><br><span class="line">                        k++; l--;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sum&gt;target)</span><br><span class="line">                        l--;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        k++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>16ms, 91.80%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/87769/implementation-carefully-pruning-accelerates-from-100ms" target="_blank" rel="noopener">https://leetcode.com/discuss/87769/implementation-carefully-pruning-accelerates-from-100ms</a></p>
+<p>First thanks to the post from @cx1992</p>
+<p>I will just say that with out the 2 using of the</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if(nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target) break;</span><br><span class="line"></span><br><span class="line">  if(nums[i]+nums[j]+nums[n-2]+nums[n-1]&lt;target) continue;</span><br></pre></td></tr></table></figure>
+<p>The runing time without these two lines cost 100ms.</p>
+<p>But with these lines, cost 16ms !</p>
+<p>Here is the final implementation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; fourSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; result;</span><br><span class="line">        int n=nums.size();</span><br><span class="line">        if(n&lt;4)  return result;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        for(int i=0; i&lt;n-3; i++)&#123;</span><br><span class="line">            if(i&gt;0 &amp;&amp; nums[i]==nums[i-1])  continue;</span><br><span class="line">            /** cut edge to accelerate the speed **/</span><br><span class="line">            if(nums[i]+nums[i+1]+nums[i+2]+nums[i+3]&gt;target) break; // 此处加break</span><br><span class="line">            if(nums[i]+nums[n-3]+nums[n-2]+nums[n-1]&lt;target) continue;</span><br><span class="line">            for(int j=i+1; j&lt;n-2; j++)&#123;</span><br><span class="line">                if(j&gt;i+1 &amp;&amp; nums[j]==nums[j-1])  continue;</span><br><span class="line">                /** cut edge to accelerate the speed **/</span><br><span class="line">                if(nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target)  break;</span><br><span class="line">                if(nums[i]+nums[j]+nums[n-2]+nums[n-1]&lt;target)  continue;</span><br><span class="line">                /** jia bi process **/</span><br><span class="line">                int start=j+1, end=n-1;</span><br><span class="line">                while(start &lt; end)&#123;</span><br><span class="line">                    int sum=nums[start]+nums[end]+nums[i]+nums[j];</span><br><span class="line">                    if(sum&lt;target)  start++;</span><br><span class="line">                    else if(sum&gt;target)  end--;</span><br><span class="line">                    else&#123;</span><br><span class="line">                        result.push_back(vector&lt;int&gt;&#123;nums[i], nums[j], nums[start], nums[end]&#125;);</span><br><span class="line">                        start++; end--;</span><br><span class="line">                        while(nums[start-1]==nums[start] &amp;&amp; start&lt;end)  start++;</span><br><span class="line">                        while(nums[end+1]==nums[end] &amp;&amp; start&lt;end)  end--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>另一种代码实现：</p>
+<p><a href="https://discuss.leetcode.com/topic/28641/my-16ms-c-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28641/my-16ms-c-code</a></p>
+<p>My 16ms c++ code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; fourSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; total;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        if(n&lt;4)  return total;</span><br><span class="line">        sort(nums.begin(),nums.end());</span><br><span class="line">        for(int i=0;i&lt;n-3;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) continue;</span><br><span class="line">            if(nums[i]+nums[i+1]+nums[i+2]+nums[i+3]&gt;target) break;</span><br><span class="line">            if(nums[i]+nums[n-3]+nums[n-2]+nums[n-1]&lt;target) continue;</span><br><span class="line">            for(int j=i+1;j&lt;n-2;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(j&gt;i+1&amp;&amp;nums[j]==nums[j-1]) continue;</span><br><span class="line">                if(nums[i]+nums[j]+nums[j+1]+nums[j+2]&gt;target) break;</span><br><span class="line">                if(nums[i]+nums[j]+nums[n-2]+nums[n-1]&lt;target) continue;</span><br><span class="line">                int left=j+1,right=n-1;</span><br><span class="line">                while(left&lt;right)&#123;</span><br><span class="line">                    int sum=nums[left]+nums[right]+nums[i]+nums[j];</span><br><span class="line">                    if(sum&lt;target) left++;</span><br><span class="line">                    else if(sum&gt;target) right--;</span><br><span class="line">                    else&#123;</span><br><span class="line">                        total.push_back(vector&lt;int&gt;&#123;nums[i],nums[j],nums[left],nums[right]&#125;);</span><br><span class="line">                        do&#123;left++;&#125;while(nums[left]==nums[left-1]&amp;&amp;left&lt;right);</span><br><span class="line">                        do&#123;right--;&#125;while(nums[right]==nums[right+1]&amp;&amp;left&lt;right);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>100ms, 45.73%, Apr.23rd, 2016</p>
+<p><a href="http://c4fun.cn/blog/2014/03/20/leetcode-solution-02/" target="_blank" rel="noopener">http://c4fun.cn/blog/2014/03/20/leetcode-solution-02/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; fourSum(vector&lt;int&gt; &amp;num, int target) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; ans;</span><br><span class="line">        sort(num.begin(), num.end());</span><br><span class="line">        for (int i = 0; i &lt; num.size(); i++) &#123;</span><br><span class="line">            if (i &gt; 0 &amp;&amp; num[i] == num[i-1]) continue;</span><br><span class="line">            for (int j = i + 1; j &lt; num.size(); j++) &#123;</span><br><span class="line">                if (j &gt; i + 1 &amp;&amp; num[j] == num[j - 1]) continue;</span><br><span class="line">                int l = j + 1, r = num.size() - 1;</span><br><span class="line">                while (l &lt; r) &#123;</span><br><span class="line">                    int sum = num[i] + num[j] + num[l] + num[r];</span><br><span class="line">                    if (sum == target) &#123;</span><br><span class="line">                        ans.push_back(&#123;num[i], num[j], num[l], num[r]&#125;);</span><br><span class="line">                        while (l &lt; r &amp;&amp; num[l] == num[l + 1]) l++; l++;</span><br><span class="line">                        while (l &lt; r &amp;&amp; num[r] == num[r - 1]) r--; r--;</span><br><span class="line">                    &#125; else if (sum &lt; target) &#123;</span><br><span class="line">                        l++;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        r--;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27445/lower-bound-n-3" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27445/lower-bound-n-3</a></p>
+<p>Lower bound n^3</p>
+<p>Some people say their solutions are O(n2 log n) or even O(n2), but…</p>
+<p>Consider cases where nums is the n numbers from 1 to n.</p>
+<p>=&gt; There are Θ(n4) different quadruplets (nC4, to be exact, so about n4 / 24).</p>
+<p>=&gt; There are Θ(n) possible sums (from 1+2+3+4 to (n-3)+(n-2)+(n-1)+n, so about 4n sums).</p>
+<p>=&gt; At least one sum must have Ω(n3) different quadruplets.</p>
+<p>=&gt; For that sum, we must generate those Ω(n3) quadruplets.</p>
+<p>=&gt; For these cases we have to do Ω(n3) work.</p>
+<p>=&gt; O(n2 log n) or even O(n2) are impossible.</p>
+<p>(I have seen some previous talk about this, but only in a few answers/comments and I found it lacking. So I thought there should be a question directly stating and proving it.)</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3752/my-c-solution-using-hashtable" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3752/my-c-solution-using-hashtable</a></p>
+<p>My C++ solution using hashtable</p>
+<p>My idea is to sort num first, then build a hashtable with the key as the sum of the pair and the value as a vector storing all pairs of index of num that having the same sum. In this way, all elements stored in hashtable has a order that duplicate pairs are neighbors. Therefore scanning the vector in the hashtable we only put non duplicate elements into the final answer vvi.</p>
+<p>Is this method O(n^2) ? or Does anyone can improve it to O(n^2);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123; //using hashtable, avg O(n^2)</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; fourSum(vector&lt;int&gt; &amp;num, int target)&#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; vvi;</span><br><span class="line">        int n = num.size();</span><br><span class="line">        if(n &lt; 4) return  vvi;</span><br><span class="line">        </span><br><span class="line">        sort(num.begin(), num.end());        </span><br><span class="line">        unordered_map&lt;int, vector&lt;pair&lt;int, int&gt;&gt; &gt; mp;</span><br><span class="line">        for(int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">            for(int j = i + 1; j &lt; n; j++)&#123;</span><br><span class="line">                mp[num[i]+num[j]].push_back(make_pair(i,j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">            if(i&gt;0 &amp;&amp; num[i] == num[i-1]) continue;</span><br><span class="line">            for(int j = i + 1; j &lt; n; j++)&#123;</span><br><span class="line">                if(j &gt; i + 1 &amp;&amp; num[j] == num[j-1]) continue;</span><br><span class="line">                int res = target - num[i] - num[j];</span><br><span class="line">                if(mp.count(res))&#123;</span><br><span class="line">                    for(auto it = mp[res].begin(); it != mp[res].end(); it++)&#123;</span><br><span class="line">                        int k = (*it).first, l = (*it).second;</span><br><span class="line">                        if(k &gt; j)&#123; // k&gt;j make sure that the second pair has bigger values than the first pair.</span><br><span class="line">                            if(!vvi.empty() &amp;&amp; num[i]==vvi.back()[0] &amp;&amp; num[j]==vvi.back()[1]</span><br><span class="line">                            &amp;&amp; num[k]==vvi.back()[2] &amp;&amp; num[l] == vvi.back()[3])&#123;</span><br><span class="line">                                continue; //if the obtained 4 elements are the same as previous one continue to next</span><br><span class="line">                            &#125;</span><br><span class="line">                            vector&lt;int&gt; vi=&#123;num[i], num[j], num[k], num[l]&#125;;</span><br><span class="line">                            vvi.push_back(vi);</span><br><span class="line">                        &#125; // if k&gt;j</span><br><span class="line">                        </span><br><span class="line">                    &#125;//for it</span><br><span class="line">                &#125;//if</span><br><span class="line">            &#125;// forj</span><br><span class="line">        &#125;//for i</span><br><span class="line">        return vvi;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/10995/share-my-python-code-run-time-200-20ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10995/share-my-python-code-run-time-200-20ms</a></p>
+<p>Share my python code, run time 200+- 20ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return a list of lists of length 4, [[val1,val2,val3,val4]]</span><br><span class="line">    def fourSum(self, num, target):</span><br><span class="line">        num.sort()</span><br><span class="line">        result = []</span><br><span class="line">        for i in xrange(len(num)-3):</span><br><span class="line">            if num[i] &gt; target/4.0:</span><br><span class="line">                break</span><br><span class="line">            if i &gt; 0 and num[i] == num[i-1]:</span><br><span class="line">                continue</span><br><span class="line">            target2 = target - num[i]</span><br><span class="line">            for j in xrange(i+1, len(num)-2):</span><br><span class="line">                if num[j] &gt; target2/3.0:</span><br><span class="line">                    break</span><br><span class="line">                if j &gt; i+1 and num[j] == num[j-1]:</span><br><span class="line">                    continue</span><br><span class="line">                k = j + 1</span><br><span class="line">                l = len(num) - 1</span><br><span class="line">                target3 = target2 - num[j]</span><br><span class="line">                # we should use continue not break</span><br><span class="line">                # because target3 changes as j changes</span><br><span class="line">                if num[k] &gt; target3/2.0:</span><br><span class="line">                    continue</span><br><span class="line">                if num[l] &lt; target3/2.0:</span><br><span class="line">                    continue</span><br><span class="line">                while k &lt; l:</span><br><span class="line">                    sum_value = num[k] + num[l]</span><br><span class="line">                    if sum_value == target3:</span><br><span class="line">                        result.append([num[i], num[j], num[k], num[l]])</span><br><span class="line">                        kk = num[k]</span><br><span class="line">                        k += 1</span><br><span class="line">                        while k&lt;l and num[k] == kk:</span><br><span class="line">                            k += 1</span><br><span class="line">                        </span><br><span class="line">                        ll = num[l]</span><br><span class="line">                        l -= 1</span><br><span class="line">                        while k&lt;l and num[l] == ll:</span><br><span class="line">                            l -= 1</span><br><span class="line">                    elif sum_value &lt; target3:</span><br><span class="line">                        k += 1</span><br><span class="line">                    else:</span><br><span class="line">                        l -= 1</span><br><span class="line">        return result</span><br></pre></td></tr></table></figure>
+<p>We can reduce run time by adding some restrictions.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9078/twosum-twosum-foursum-a-simple-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9078/twosum-twosum-foursum-a-simple-python-solution</a></p>
+<p>TwoSum+twoSum == fourSum, a simple python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @return a list of lists of length 4, [[val1,val2,val3,val4]]</span><br><span class="line">def fourSum(self, num, target):</span><br><span class="line">    two_sum = collections.defaultdict(list)</span><br><span class="line">    res = set()</span><br><span class="line">    for (n1, i1), (n2, i2) in itertools.combinations(enumerate(num), 2):</span><br><span class="line">        two_sum[i1+i2].append(&#123;n1, n2&#125;)</span><br><span class="line">    for t in list(two_sum.keys()):</span><br><span class="line">        if not two_sum[target-t]:</span><br><span class="line">            continue</span><br><span class="line">        for pair1 in two_sum[t]:</span><br><span class="line">            for pair2 in two_sum[target-t]:</span><br><span class="line">                if pair1.isdisjoint(pair2):</span><br><span class="line">                    res.add(tuple(sorted(num[i] for i in pair1 | pair2)))</span><br><span class="line">        del two_sum[t]</span><br><span class="line">    return [list(r) for r in res]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10556/a-conise-python-solution-based-on-ksum" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10556/a-conise-python-solution-based-on-ksum</a></p>
+<p>A conise python solution based on ksum</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return a list of lists of length 4, [[val1,val2,val3,val4]]</span><br><span class="line">    def fourSum(self, num, target):</span><br><span class="line">        num.sort()</span><br><span class="line">        def ksum(num, k, target):</span><br><span class="line">            i = 0</span><br><span class="line">            result = set()</span><br><span class="line">            if k == 2:</span><br><span class="line">                j = len(num) - 1</span><br><span class="line">                while i &lt; j:</span><br><span class="line">                    if num[i] + num[j] == target:</span><br><span class="line">                        result.add((num[i], num[j]))</span><br><span class="line">                        i += 1</span><br><span class="line">                    elif num[i] + num[j] &gt; target:</span><br><span class="line">                        j -= 1</span><br><span class="line">                    else:</span><br><span class="line">                        i += 1</span><br><span class="line">            else:</span><br><span class="line">                while i &lt; len(num) - k + 1:</span><br><span class="line">                    newtarget = target - num[i]</span><br><span class="line">                    subresult = ksum(num[i+1:], k - 1, newtarget)</span><br><span class="line">                    if subresult:</span><br><span class="line">                        result = result | set( (num[i],) + nr for nr in subresult)</span><br><span class="line">                    i += 1</span><br><span class="line">                </span><br><span class="line">            return result</span><br><span class="line">        </span><br><span class="line">        return [list(t) for t in ksum(num, 4, target)]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>148ms, 86.46%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/83152/python-beats-86-07%25-may-be-better" target="_blank" rel="noopener">https://leetcode.com/discuss/83152/python-beats-86-07%25-may-be-better</a></p>
+<p><strong>python</strong> beats 86.07% may be better</p>
+<p>make sure nums[i]!=nums[i+1] to avoid duplication and unnecessary computations</p>
+<p>and whennums[i]*4 &gt; target,It’ll be impossible to get another answer.</p>
+<p>and when nums[j]*4 &lt; target,It should turn to next loop</p>
+<p>maybe in some situations:usenums[i]+nums[i+1]+nums[i+2]+nums[i+3]wil be better.I am just for convenience..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def fourSum(self, nums, target):</span><br><span class="line">        res, n, nums, limit = [], len(nums), sorted(nums), target &gt;&gt; 2</span><br><span class="line">        for i in xrange(n-3):</span><br><span class="line">            if nums[i] &gt; limit:  #limit 1</span><br><span class="line">                break</span><br><span class="line">            if i != 0 and nums[i] == nums[i-1]: #remove duplicate </span><br><span class="line">                continue</span><br><span class="line">            for j in xrange(n-1,i+2,-1):   #Reverse traversal</span><br><span class="line">                if nums[j] &lt; limit: #limit 2</span><br><span class="line">                    break</span><br><span class="line">                if j != n -1 and nums[j] == nums[j+1]: #remove duplicate   </span><br><span class="line">                    continue</span><br><span class="line">                lo, hi, sum2 = i + 1, j - 1, nums[i] + nums[j] </span><br><span class="line">                limit2 = (target - sum2) &gt;&gt; 1</span><br><span class="line">                while lo &lt; hi and nums[lo] &lt;= limit2 and nums[hi] &gt;= limit2: #limit 3</span><br><span class="line">                    sum = sum2 + nums[lo] + nums[hi] </span><br><span class="line">                    if sum == target:</span><br><span class="line">                        res += (nums[i], nums[lo], nums[hi], nums[j]),</span><br><span class="line">                        while lo &lt; hi and nums[hi] == nums[hi-1]: #remove duplicate </span><br><span class="line">                            hi -= 1</span><br><span class="line">                        while lo &lt; hi and nums[lo] == nums[lo+1]: #remove duplicate </span><br><span class="line">                            lo += 1</span><br><span class="line">                    lo += sum &lt;= target</span><br><span class="line">                    hi -= sum &gt;= target</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22705/python-140ms-beats-100-and-works-for-n-sum-n-2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22705/python-140ms-beats-100-and-works-for-n-sum-n-2</a></p>
+<p>Python 140ms beats 100%, and works for N-sum (N&gt;=2)</p>
+<p>The core is to implement a fast 2-pointer to solve 2-sum, and recursion to reduce the N-sum to 2-sum. Some optimization was be made knowing the list is sorted.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def fourSum(self, nums, target):</span><br><span class="line">    nums.sort()</span><br><span class="line">    results = []</span><br><span class="line">    self.findNsum(nums, target, 4, [], results)</span><br><span class="line">    return results</span><br><span class="line"></span><br><span class="line">def findNsum(self, nums, target, N, result, results):</span><br><span class="line">    if len(nums) &lt; N or N &lt; 2: return</span><br><span class="line"></span><br><span class="line">    # solve 2-sum</span><br><span class="line">    if N == 2:</span><br><span class="line">        l,r = 0,len(nums)-1</span><br><span class="line">        while l &lt; r:</span><br><span class="line">            if nums[l] + nums[r] == target:</span><br><span class="line">                results.append(result + [nums[l], nums[r]])</span><br><span class="line">                l += 1</span><br><span class="line">                r -= 1</span><br><span class="line">                while l &lt; r and nums[l] == nums[l - 1]:</span><br><span class="line">                    l += 1</span><br><span class="line">                while r &gt; l and nums[r] == nums[r + 1]:</span><br><span class="line">                    r -= 1</span><br><span class="line">            elif nums[l] + nums[r] &lt; target:</span><br><span class="line">                l += 1</span><br><span class="line">            else:</span><br><span class="line">                r -= 1</span><br><span class="line">    else:</span><br><span class="line">        for i in range(0, len(nums)-N+1):   # careful about range</span><br><span class="line">            if target &lt; nums[i]*N or target &gt; nums[-1]*N:  # take advantages of sorted list</span><br><span class="line">                break</span><br><span class="line">            if i == 0 or i &gt; 0 and nums[i-1] != nums[i]:  # recursively reduce N</span><br><span class="line">                self.findNsum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)</span><br><span class="line">    return</span><br></pre></td></tr></table></figure>
+<p>Just revisited and clean the code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def fourSum(self, nums, target):</span><br><span class="line">    def findNsum(nums, target, N, result, results):</span><br><span class="line">        if len(nums) &lt; N or N &lt; 2 or target &lt; nums[0]*N or target &gt; nums[-1]*N:  # early termination</span><br><span class="line">            return</span><br><span class="line">        if N == 2: # two pointers solve sorted 2-sum problem</span><br><span class="line">            l,r = 0,len(nums)-1</span><br><span class="line">            while l &lt; r:</span><br><span class="line">                s = nums[l] + nums[r]</span><br><span class="line">                if s == target:</span><br><span class="line">                    results.append(result + [nums[l], nums[r]])</span><br><span class="line">                    l += 1</span><br><span class="line">                    while l &lt; r and nums[l] == nums[l-1]:</span><br><span class="line">                        l += 1</span><br><span class="line">                elif s &lt; target:</span><br><span class="line">                    l += 1</span><br><span class="line">                else:</span><br><span class="line">                    r -= 1</span><br><span class="line">        else: # recursively reduce N</span><br><span class="line">            for i in range(len(nums)-N+1):</span><br><span class="line">                if i == 0 or (i &gt; 0 and nums[i-1] != nums[i]):</span><br><span class="line">                    findNsum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)</span><br><span class="line"></span><br><span class="line">    results = []</span><br><span class="line">    findNsum(sorted(nums), target, 4, [], results)</span><br><span class="line">    return results</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/29585/7ms-java-code-win-over-100" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29585/7ms-java-code-win-over-100</a></p>
+<p>26ms, 97.32%</p>
+<p>7ms java code win over 100%</p>
+<p>The first time win over 100%. Basic idea is using subfunctions for 3sum and 2sum, and keeping throwing all impossible cases. O(n^3) time complexity, O(1) extra space complexity.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123;</span><br><span class="line">    		ArrayList&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">    		int len = nums.length;</span><br><span class="line">    		if (nums == null || len &lt; 4)</span><br><span class="line">    			return res;</span><br><span class="line">    </span><br><span class="line">    		Arrays.sort(nums);</span><br><span class="line">    </span><br><span class="line">    		int max = nums[len - 1];</span><br><span class="line">    		if (4 * nums[0] &gt; target || 4 * max &lt; target)</span><br><span class="line">    			return res;</span><br><span class="line">    </span><br><span class="line">    		int i, z;</span><br><span class="line">    		for (i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    			z = nums[i];</span><br><span class="line">    			if (i &gt; 0 &amp;&amp; z == nums[i - 1])// avoid duplicate</span><br><span class="line">    				continue;</span><br><span class="line">    			if (z + 3 * max &lt; target) // z is too small</span><br><span class="line">    				continue;</span><br><span class="line">    			if (4 * z &gt; target) // z is too large</span><br><span class="line">    				break;</span><br><span class="line">    			if (4 * z == target) &#123; // z is the boundary</span><br><span class="line">    				if (i + 3 &lt; len &amp;&amp; nums[i + 3] == z)</span><br><span class="line">    					res.add(Arrays.asList(z, z, z, z));</span><br><span class="line">    				break;</span><br><span class="line">    			&#125;</span><br><span class="line">    </span><br><span class="line">    			threeSumForFourSum(nums, target - z, i + 1, len - 1, res, z);</span><br><span class="line">    		&#125;</span><br><span class="line">    </span><br><span class="line">    		return res;</span><br><span class="line">    	&#125;</span><br><span class="line">    </span><br><span class="line">    	/*</span><br><span class="line">    	 * Find all possible distinguished three numbers adding up to the target</span><br><span class="line">    	 * in sorted array nums[] between indices low and high. If there are,</span><br><span class="line">    	 * add all of them into the ArrayList fourSumList, using</span><br><span class="line">    	 * fourSumList.add(Arrays.asList(z1, the three numbers))</span><br><span class="line">    	 */</span><br><span class="line">    	public void threeSumForFourSum(int[] nums, int target, int low, int high, ArrayList&lt;List&lt;Integer&gt;&gt; fourSumList,</span><br><span class="line">    			int z1) &#123;</span><br><span class="line">    		if (low + 1 &gt;= high)</span><br><span class="line">    			return;</span><br><span class="line">    </span><br><span class="line">    		int max = nums[high];</span><br><span class="line">    		if (3 * nums[low] &gt; target || 3 * max &lt; target)</span><br><span class="line">    			return;</span><br><span class="line">    </span><br><span class="line">    		int i, z;</span><br><span class="line">    		for (i = low; i &lt; high - 1; i++) &#123;</span><br><span class="line">    			z = nums[i];</span><br><span class="line">    			if (i &gt; low &amp;&amp; z == nums[i - 1]) // avoid duplicate</span><br><span class="line">    				continue;</span><br><span class="line">    			if (z + 2 * max &lt; target) // z is too small</span><br><span class="line">    				continue;</span><br><span class="line">    </span><br><span class="line">    			if (3 * z &gt; target) // z is too large</span><br><span class="line">    				break;</span><br><span class="line">    </span><br><span class="line">    			if (3 * z == target) &#123; // z is the boundary</span><br><span class="line">    				if (i + 1 &lt; high &amp;&amp; nums[i + 2] == z)</span><br><span class="line">    					fourSumList.add(Arrays.asList(z1, z, z, z));</span><br><span class="line">    				break;</span><br><span class="line">    			&#125;</span><br><span class="line">    </span><br><span class="line">    			twoSumForFourSum(nums, target - z, i + 1, high, fourSumList, z1, z);</span><br><span class="line">    		&#125;</span><br><span class="line">    </span><br><span class="line">    	&#125;</span><br><span class="line">    </span><br><span class="line">    	/*</span><br><span class="line">    	 * Find all possible distinguished two numbers adding up to the target</span><br><span class="line">    	 * in sorted array nums[] between indices low and high. If there are,</span><br><span class="line">    	 * add all of them into the ArrayList fourSumList, using</span><br><span class="line">    	 * fourSumList.add(Arrays.asList(z1, z2, the two numbers))</span><br><span class="line">    	 */</span><br><span class="line">    	public void twoSumForFourSum(int[] nums, int target, int low, int high, ArrayList&lt;List&lt;Integer&gt;&gt; fourSumList,</span><br><span class="line">    			int z1, int z2) &#123;</span><br><span class="line">    </span><br><span class="line">    		if (low &gt;= high)</span><br><span class="line">    			return;</span><br><span class="line">    </span><br><span class="line">    		if (2 * nums[low] &gt; target || 2 * nums[high] &lt; target)</span><br><span class="line">    			return;</span><br><span class="line">    </span><br><span class="line">    		int i = low, j = high, sum, x;</span><br><span class="line">    		while (i &lt; j) &#123;</span><br><span class="line">    			sum = nums[i] + nums[j];</span><br><span class="line">    			if (sum == target) &#123;</span><br><span class="line">    				fourSumList.add(Arrays.asList(z1, z2, nums[i], nums[j]));</span><br><span class="line">    </span><br><span class="line">    				x = nums[i];</span><br><span class="line">    				while (++i &lt; j &amp;&amp; x == nums[i]) // avoid duplicate</span><br><span class="line">    					;</span><br><span class="line">    				x = nums[j];</span><br><span class="line">    				while (i &lt; --j &amp;&amp; x == nums[j]) // avoid duplicate</span><br><span class="line">    					;</span><br><span class="line">    			&#125;</span><br><span class="line">    			if (sum &lt; target)</span><br><span class="line">    				i++;</span><br><span class="line">    			if (sum &gt; target)</span><br><span class="line">    				j--;</span><br><span class="line">    		&#125;</span><br><span class="line">    		return;</span><br><span class="line">    	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12368/clean-accepted-java-o-n-3-solution-based-on-3sum" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12368/clean-accepted-java-o-n-3-solution-based-on-3sum</a></p>
+<p>Clean accepted java O(n^3) solution based on 3sum</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] num, int target) &#123;</span><br><span class="line">        ArrayList&lt;List&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        if(num.length&lt;4)return ans;</span><br><span class="line">        Arrays.sort(num);</span><br><span class="line">        for(int i=0; i&lt;num.length-3; i++)&#123;</span><br><span class="line">            if(i&gt;0&amp;&amp;num[i]==num[i-1])continue;</span><br><span class="line">            for(int j=i+1; j&lt;num.length-2; j++)&#123;</span><br><span class="line">                if(j&gt;i+1&amp;&amp;num[j]==num[j-1])continue;</span><br><span class="line">                int low=j+1, high=num.length-1;</span><br><span class="line">                while(low&lt;high)&#123;</span><br><span class="line">                    int sum=num[i]+num[j]+num[low]+num[high];</span><br><span class="line">                    if(sum==target)&#123;</span><br><span class="line">                        ans.add(Arrays.asList(num[i], num[j], num[low], num[high]));</span><br><span class="line">                        while(low&lt;high&amp;&amp;num[low]==num[low+1])low++;</span><br><span class="line">                        while(low&lt;high&amp;&amp;num[high]==num[high-1])high--;</span><br><span class="line">                        low++;</span><br><span class="line">                        high--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else if(sum&lt;target)low++;</span><br><span class="line">                    else high--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12893/on-average-o-n-2-and-worst-case-o-n-3-java-solution-by-reducing-4sum-to-2sum" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12893/on-average-o-n-2-and-worst-case-o-n-3-java-solution-by-reducing-4sum-to-2sum</a></p>
+<p>On average O(n^2) and worst case O(n^3) java solution by reducing 4Sum to 2Sum</p>
+<p>Basic idea is to reduce the 4Sum problem to 2Sum one. In order to achieve that, we can use an array (size of n^2) to store the pair sums and this array will act as the array in 2Sum case (Here n is the size of the original 1D array and it turned out that we do not even need to explicitly use the n^2 sized array ). We also use a hashmap to mark if a pair sum has been visited or not (the same as in the 2Sum case). The tricky part here is that we may have multiple pairs that result in the same pair sum. So we will use a list to group these pairs together. For every pair with a particular sum, check if the pair sum that is needed to get the target has been visited. If so, further check if there is overlapping between these two pairs. If not, record the result.</p>
+<p>Time complexity to get all the pairs is O(n^2). For each pair, if the pair sum needed to get the target has been visited, the time complexity will be O(k), where k is the maximum size of the lists holding pairs with visited pair sum. Therefore the total time complexity will be O(k*n^2). Now we need to determine the range of k. Basically the more distinct pair sums we get, the smaller k will be. If all the pair sums are different from each other, k will just be 1. However, if we have many repeated elements in the original 1D array, or in some extreme cases such as the elements form an arithmetic progression, k can be of the order of n (strictly speaking, for the repeated elements case, k can go as high as n^2, but we can get rid of many of them). On average k will be some constant between 1 and n for normal elements distribution in the original 1D array. So on average our algorithm will go in O(n^2) but with worst case of O(n^3). Here is the complete code in java:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] num, int target) &#123;</span><br><span class="line">    Arrays.sort(num);</span><br><span class="line">    </span><br><span class="line">    Map&lt;Integer, List&lt;int[]&gt;&gt; twoSumMap = new HashMap&lt;&gt;(); // for holding visited pair sums. All pairs with the same pair sum are grouped together</span><br><span class="line">    Set&lt;List&lt;Integer&gt;&gt; res = new HashSet&lt;&gt;();  // for holding the results</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; num.length; i++) &#123;</span><br><span class="line">    	// get rid of repeated pair sums</span><br><span class="line">        if (i &gt; 1 &amp;&amp; num[i] == num[i - 2]) continue;</span><br><span class="line">    	</span><br><span class="line">        for (int j = i + 1; j &lt; num.length; j++) &#123;</span><br><span class="line">            // get rid of repeated pair sums</span><br><span class="line">            if (j &gt; i + 2 &amp;&amp; num[j] == num[j - 2]) continue;</span><br><span class="line"></span><br><span class="line">            // for each pair sum, check if the pair sum that is needed to get the target has been visited.            	</span><br><span class="line">            if (twoSumMap.containsKey(target - (num[i] + num[j]))) &#123;   </span><br><span class="line">                // if so, get all the pairs that contribute to this visited pair sum.</span><br><span class="line">        	List&lt;int[]&gt; ls = twoSumMap.get(target - (num[i] + num[j]));</span><br><span class="line">        		</span><br><span class="line">        	for (int[] pair : ls) &#123;</span><br><span class="line">        	    // we have two pairs: one is indicated as (pair[0], pair[1]), the other is (i, j).</span><br><span class="line">        	    // we first need to check if they are overlapping with each other.</span><br><span class="line">        	    int m1 = Math.min(pair[0], i);  // m1 will always be the smallest index</span><br><span class="line">                    int m2 = Math.min(pair[1], j);  // m2 will be one of the middle two indices</span><br><span class="line">                    int m3 = Math.max(pair[0], i);  // m3 will be one of the middle two indices</span><br><span class="line">                    int m4 = Math.max(pair[1], j);  // m4 will always be the largest index</span><br><span class="line">                    </span><br><span class="line">                    if (m1 == m3 || m1 == m4 || m2 == m3 || m2 == m4) continue;  // two pairs are overlapping, so just ignore this case</span><br><span class="line"> 		    </span><br><span class="line"> 		    res.add(Arrays.asList(num[m1], num[Math.min(m2, m3)], num[Math.max(m2, m3)], num[m4]));  // else record the result</span><br><span class="line">        	&#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // mark that we have visited current pair and add it to the corrsponding pair sum group.</span><br><span class="line">            // here we&apos;ve encoded the pair indices i and j into an integer array of length 2.</span><br><span class="line">            twoSumMap.computeIfAbsent(num[i] + num[j], key -&gt; new ArrayList&lt;&gt;()).add(new int[] &#123;i, j&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return new ArrayList&lt;List&lt;Integer&gt;&gt;(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/46339/my-solution-generalized-for-ksums-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/46339/my-solution-generalized-for-ksums-in-java</a></p>
+<p>My solution generalized for kSums in JAVA</p>
+<p>General Idea</p>
+<p>If you have already read and implement the 3sum and 4sum by using the sorting approach: reduce them into 2sum at the end, you might already got the feeling that, all ksum problem can be divided into two problems:</p>
+<ol>
+<li>2sum Problem</li>
+<li>Reduce K sum problem to K – 1 sum Problem</li>
+</ol>
+<p>Therefore, the ideas is simple and straightforward. We could use recursive to solve this problem. Time complexity is O(N^(K-1)).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    int len = 0;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123;</span><br><span class="line">        len = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        return kSum(nums, target, 4, 0);</span><br><span class="line">    &#125;</span><br><span class="line">   private ArrayList&lt;List&lt;Integer&gt;&gt; kSum(int[] nums, int target, int k, int index) &#123;</span><br><span class="line">        ArrayList&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        if(index &gt;= len) &#123;</span><br><span class="line">            return res;</span><br><span class="line">        &#125;</span><br><span class="line">        if(k == 2) &#123;</span><br><span class="line">        	int i = index, j = len - 1;</span><br><span class="line">        	while(i &lt; j) &#123;</span><br><span class="line">                //find a pair</span><br><span class="line">        	    if(target - nums[i] == nums[j]) &#123;</span><br><span class="line">        	    	List&lt;Integer&gt; temp = new ArrayList&lt;&gt;();</span><br><span class="line">                	temp.add(nums[i]);</span><br><span class="line">                	temp.add(target-nums[i]);</span><br><span class="line">                    res.add(temp);</span><br><span class="line">                    //skip duplication</span><br><span class="line">                    while(i&lt;j &amp;&amp; nums[i]==nums[i+1]) i++;</span><br><span class="line">                    while(i&lt;j &amp;&amp; nums[j-1]==nums[j]) j--;</span><br><span class="line">                    i++;</span><br><span class="line">                    j--;</span><br><span class="line">                //move left bound</span><br><span class="line">        	    &#125; else if (target - nums[i] &gt; nums[j]) &#123;</span><br><span class="line">        	        i++;</span><br><span class="line">                //move right bound</span><br><span class="line">        	    &#125; else &#123;</span><br><span class="line">        	        j--;</span><br><span class="line">        	    &#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            for (int i = index; i &lt; len - k + 1; i++) &#123;</span><br><span class="line">                //use current number to reduce ksum into k-1sum</span><br><span class="line">                ArrayList&lt;List&lt;Integer&gt;&gt; temp = kSum(nums, target - nums[i], k-1, i+1);</span><br><span class="line">                if(temp != null)&#123;</span><br><span class="line">                    //add previous results</span><br><span class="line">                    for (List&lt;Integer&gt; t : temp) &#123;</span><br><span class="line">                        t.add(0, nums[i]);</span><br><span class="line">                    &#125;</span><br><span class="line">                    res.addAll(temp);</span><br><span class="line">                &#125;</span><br><span class="line">                while (i &lt; len-1 &amp;&amp; nums[i] == nums[i+1]) &#123;</span><br><span class="line">                    //skip duplicated numbers</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33433/java-a-little-bit-faster-than-other-common-methods-9ms-beats-95" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33433/java-a-little-bit-faster-than-other-common-methods-9ms-beats-95</a></p>
+<p><em>Java</em> a little bit faster than other common methods (9ms, beats 95%)</p>
+<p>To avoid duplicate list items, I skip unnecessary indices at two locations:</p>
+<ul>
+<li>one at the end of the outer loop (i-loop)</li>
+<li>the other at the end of the inner loop (j-loop).</li>
+</ul>
+<p>To avoid useless computations, the following is kind of critical:</p>
+<ul>
+<li>the function return immediately when nums[i]*4 &gt; target</li>
+<li>the inner loop break immediately when nums[j]*4 &lt; target.</li>
+</ul>
+<p>These two lines save quite some time due to the set up of the test cases in OJ.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        int second = 0, third = 0, nexti = 0, nextj = 0;</span><br><span class="line">        for(int i=0, L=nums.length; i&lt;L-3; i++) &#123;</span><br><span class="line">            if(nums[i]&lt;&lt;2 &gt; target) return list; // return immediately</span><br><span class="line">            for(int j=L-1; j&gt;i+2; j--) &#123;</span><br><span class="line">                if(nums[j]&lt;&lt;2 &lt; target) break; // break immediately</span><br><span class="line">                int rem = target-nums[i]-nums[j];</span><br><span class="line">                int lo = i+1, hi=j-1;</span><br><span class="line">                while(lo&lt;hi) &#123;</span><br><span class="line">                    int sum = nums[lo] + nums[hi];</span><br><span class="line">                    if(sum&gt;rem) --hi;</span><br><span class="line">                    else if(sum&lt;rem) ++lo;</span><br><span class="line">                    else &#123;</span><br><span class="line">                        list.add(Arrays.asList(nums[i],nums[lo],nums[hi],nums[j]));</span><br><span class="line">                        while(++lo&lt;=hi &amp;&amp; nums[lo-1]==nums[lo]) continue; // avoid duplicate results</span><br><span class="line">                        while(--hi&gt;=lo &amp;&amp; nums[hi]==nums[hi+1]) continue; // avoid duplicate results</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                while(j&gt;=1 &amp;&amp; nums[j]==nums[j-1]) --j; // skip inner loop</span><br><span class="line">            &#125;</span><br><span class="line">            while(i&lt;L-1 &amp;&amp; nums[i]==nums[i+1]) ++i; // skip outer loop</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9712/4sum-c-solution-with-explanation-and-comparison-with-3sum-problem-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9712/4sum-c-solution-with-explanation-and-comparison-with-3sum-problem-easy-to-understand</a></p>
+<p>For the reference, please have a look at my explanation of 3Sum problem because the algorithm are exactly the same. The link is as blow.</p>
+<p><a href="https://oj.leetcode.com/discuss/23595/share-my-solution-around-50ms-with-explanation-and-comments" target="_blank" rel="noopener">My 3Sum problem answer</a></p>
+<p>The key idea is to downgrade the problem to a 2Sum problem eventually. And the same algorithm can be expand to NSum problem.</p>
+<p>After you had a look at my explanation of 3Sum, the code below will be extremely easy to understand.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] num, int target) &#123;</span><br><span class="line">        ArrayList&lt;List&lt;Integer&gt;&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        if(num.length&lt;4)return ans;</span><br><span class="line">        Arrays.sort(num);</span><br><span class="line">        for(int i=0; i&lt;num.length-3; i++)&#123;</span><br><span class="line">            if(i&gt;0&amp;&amp;num[i]==num[i-1])continue;</span><br><span class="line">            for(int j=i+1; j&lt;num.length-2; j++)&#123;</span><br><span class="line">                if(j&gt;i+1&amp;&amp;num[j]==num[j-1])continue;</span><br><span class="line">                int low=j+1, high=num.length-1;</span><br><span class="line">                while(low&lt;high)&#123;</span><br><span class="line">                    int sum=num[i]+num[j]+num[low]+num[high];</span><br><span class="line">                    if(sum==target)&#123;</span><br><span class="line">                        ans.add(Arrays.asList(num[i], num[j], num[low], num[high]));</span><br><span class="line">                        while(low&lt;high&amp;&amp;num[low]==num[low+1])low++;</span><br><span class="line">                        while(low&lt;high&amp;&amp;num[high]==num[high-1])high--;</span><br><span class="line">                        low++;</span><br><span class="line">                        high--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    else if(sum&lt;target)low++;</span><br><span class="line">                    else high--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/964c48a1/" title="018. 4Sum">http://yucc.me/p/964c48a1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/9a201804/" rel="next" title="017. Letter Combinations of a Phone Number">
+                <i class="fa fa-chevron-left"></i> 017. Letter Combinations of a Phone Number
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/72420d7f/" rel="prev" title="019. Remove Nth Node From End of List">
+                019. Remove Nth Node From End of List <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

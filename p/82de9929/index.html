@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,array,medium,divide and conquer,binary search," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="21.0%  https://leetcode.com/problems/median-of-two-sorted-arrays/ There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run t">
+<meta name="keywords" content="leetcode,array,medium,divide and conquer,binary search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="004. Median of Two Sorted Arrays">
+<meta property="og:url" content="http://yucc.me/p/82de9929/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="21.0%  https://leetcode.com/problems/median-of-two-sorted-arrays/ There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run t">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T14:14:19.145Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="004. Median of Two Sorted Arrays">
+<meta name="twitter:description" content="21.0%  https://leetcode.com/problems/median-of-two-sorted-arrays/ There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run t">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/82de9929/"/>
+
+
+
+
+
+  <title>004. Median of Two Sorted Arrays | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/82de9929/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">004. Median of Two Sorted Arrays</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-19T22:13:28+08:00">
+                2018-05-19 22:13
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T22:14:19+08:00">
+                2018-05-19 22:14
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,212
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  33
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>21.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode.com/problems/median-of-two-sorted-arrays/</a></p>
+<p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p>
+<p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">nums1 = [1, 3]</span><br><span class="line">nums2 = [2]</span><br><span class="line"></span><br><span class="line">The median is 2.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example <span class="number">2</span>:</span><br><span class="line">nums1 = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">nums2 = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line">The median is (<span class="number">2</span> + <span class="number">3</span>)/<span class="number">2</span> = <span class="number">2.5</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/16797/very-concise-o-log-min-m-n-iterative-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16797/very-concise-o-log-min-m-n-iterative-solution-with-detailed-explanation</a></p>
+<p>Very concise O(log(min(M,N))) iterative solution with detailed explanation</p>
+<p>This problem is notoriously hard to implement due to all the corner cases. Most implementations consider odd-lengthed and even-lengthed arrays as two different cases and treat them separately. As a matter of fact, with a little mind twist. These two cases can be combined as one, leading to a very simple solution where (almost) no special treatment is needed.</p>
+<p>First, let’s see the concept of ‘MEDIAN’ in a slightly unconventional way. That is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;if we cut the sorted array to two halves of EQUAL LENGTHS, then</span><br><span class="line">median is the AVERAGE OF Max(lower_half) and Min(upper_half), i.e. the</span><br><span class="line">two numbers immediately next to the cut&quot;.</span><br></pre></td></tr></table></figure>
+<p>For example, for [2 3 5 7], we make the cut between 3 and 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2 3 / 5 7]</span><br></pre></td></tr></table></figure>
+<p>then the median = (3+5)/2. Note that I’ll use ‘/‘ to represent a cut, and (number / number) to represent a cut made through a number in this article.</p>
+<p>for [2 3 4 5 6], we make the cut right through 4 like this:</p>
+<p>[2 3 (4/4) 5 7]</p>
+<p>Since we split 4 into two halves, we say now both the lower and upper subarray contain 4. This notion also leads to the correct answer: (4 + 4) / 2 = 4;</p>
+<p>For convenience, let’s use L to represent the number immediately left to the cut, and R the right counterpart. In [2 3 5 7], for instance, we have L = 3 and R = 5, respectively.</p>
+<p>We observe the index of L and R have the following relationship with the length of the array N:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">N        Index of L / R</span><br><span class="line">1               0 / 0</span><br><span class="line">2               0 / 1</span><br><span class="line">3               1 / 1  </span><br><span class="line">4               1 / 2      </span><br><span class="line">5               2 / 2</span><br><span class="line">6               2 / 3</span><br><span class="line">7               3 / 3</span><br><span class="line">8               3 / 4</span><br></pre></td></tr></table></figure>
+<p>It is not hard to conclude that index of L = (N-1)/2, and R is at N/2. Thus, the median can be represented as</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(L + R)/2 = (A[(N-1)/2] + A[N/2])/2</span><br></pre></td></tr></table></figure>
+<p>To get ready for the two array situation, let’s add a few imaginary ‘positions’ (represented as #’s) in between numbers, and treat numbers as ‘positions’ as well.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[6 9 13 18]  -&gt;   [# 6 # 9 # 13 # 18 #]    (N = 4)</span><br><span class="line">position index     0 1 2 3 4 5  6 7  8     (N_Position = 9)</span><br><span class="line">		  </span><br><span class="line">[6 9 11 13 18]-&gt;   [# 6 # 9 # 11 # 13 # 18 #]   (N = 5)</span><br><span class="line">position index      0 1 2 3 4 5  6 7  8 9 10    (N_Position = 11)</span><br></pre></td></tr></table></figure>
+<p>As you can see, there are always exactly 2*N+1 ‘positions’ regardless of length N. Therefore, the middle cut should always be made on the Nth position (0-based). Since index(L) = (N-1)/2 and index(R) = N/2 in this situation, we can infer that index(L) = (CutPosition-1)/2, index(R) = (CutPosition)/2.</p>
+<p>Now for the two-array case:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A1: [# 1 # 2 # 3 # 4 # 5 #]    (N1 = 5, N1_positions = 11)</span><br><span class="line"></span><br><span class="line">A2: [# 1 # 1 # 1 # 1 #]     (N2 = 4, N2_positions = 9)</span><br></pre></td></tr></table></figure>
+<p>Similar to the one-array problem, we need to find a cut that divides the two arrays each into two halves such that</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;any number in the two left halves&quot; &lt;= &quot;any number in the two right</span><br><span class="line">halves&quot;.</span><br></pre></td></tr></table></figure>
+<p>We can also make the following observations：</p>
+<ol>
+<li>There are 2N1 + 2N2 + 2 position altogether. Therefore, there must be exactly N1 + N2 positions on each side of the cut, and 2 positions directly on the cut.</li>
+<li>Therefore, when we cut at position C2 = K in A2, then the cut position in A1 must be C1 = N1 + N2 - k. For instance, if C2 = 2, then we must have C1 = 4 + 5 - C2 = 7.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[# 1 # 2 # 3 # (4/4) # 5 #]    </span><br><span class="line"></span><br><span class="line">[# 1 / 1 # 1 # 1 #]</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>When the cuts are made, we’d have two L’s and two R’s. They are</p>
+<p>L1 = A1[(C1-1)/2]; R1 = A1[C1/2];<br>L2 = A2[(C2-1)/2]; R2 = A2[C2/2];<br>In the above example,</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">L1 = A1[(7-1)/2] = A1[3] = 4; R1 = A1[7/2] = A1[3] = 4;</span><br><span class="line">L2 = A2[(2-1)/2] = A2[0] = 1; R2 = A1[2/2] = A1[1] = 1;</span><br></pre></td></tr></table></figure>
+<p>Now how do we decide if this cut is the cut we want? Because L1, L2 are the greatest numbers on the left halves and R1, R2 are the smallest numbers on the right, we only need</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L1 &lt;= R1 &amp;&amp; L1 &lt;= R2 &amp;&amp; L2 &lt;= R1 &amp;&amp; L2 &lt;= R2</span><br></pre></td></tr></table></figure>
+<p>to make sure that any number in lower halves &lt;= any number in upper halves. As a matter of fact, since<br>L1 &lt;= R1 and L2 &lt;= R2 are naturally guaranteed because A1 and A2 are sorted, we only need to make sure:</p>
+<p>L1 &lt;= R2 and L2 &lt;= R1.</p>
+<p>Now we can use simple binary search to find out the result.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">If we have L1 &gt; R1, it means there are too many large numbers on the left half of A1, </span><br><span class="line">then we must move C1 to the left (i.e. move C2 to the right); </span><br><span class="line"></span><br><span class="line">If L2 &gt; R1, then there are too many large numbers on the left half of A2, and we must move C2 to the left.</span><br><span class="line"></span><br><span class="line">Otherwise, this cut is the right one. </span><br><span class="line"></span><br><span class="line">After we find the cut, the medium can be computed as (max(L1, L2) + min(R1, R2)) / 2;</span><br></pre></td></tr></table></figure>
+<p>Two side notes:</p>
+<p>A. since C1 and C2 can be mutually determined from each other, we might as well select the shorter array (say A2) and only move C2 around, and calculate C1 accordingly. That way we can achieve a run-time complexity of O(log(min(N1, N2)))</p>
+<p>B. The only edge case is when a cut falls on the 0th(first) or the 2Nth(last) position. For instance, if C2 = 2N2, then R2 = A2[2*N2/2] = A2[N2], which exceeds the boundary of the array. To solve this problem, we can imagine that both A1 and A2 actually have two extra elements, INT_MAX at A[-1] and INT_MAX at A[N]. These additions don’t change the result, but make the implementation easier: If any L falls out of the left boundary of the array, then L = INT_MIN, and if any R falls out of the right boundary, then R = INT_MAX.</p>
+<p>I know that was not very easy to understand, but all the above reasoning eventually boils down to the following concise code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">double findMedianSortedArrays(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) &#123;</span><br><span class="line">    int N1 = nums1.size();</span><br><span class="line">    int N2 = nums2.size();</span><br><span class="line">    if (N1 &lt; N2) return findMedianSortedArrays(nums2, nums1);	// Make sure A2 is the shorter one.</span><br><span class="line">    </span><br><span class="line">    if (N2 == 0) return ((double)nums1[(N1-1)/2] + (double)nums1[N1/2])/2;  // If A2 is empty</span><br><span class="line">    </span><br><span class="line">    int lo = 0, hi = N2 * 2;</span><br><span class="line">    while (lo &lt;= hi) &#123;</span><br><span class="line">        int mid2 = (lo + hi) / 2;   // Try Cut 2 </span><br><span class="line">        int mid1 = N1 + N2 - mid2;  // Calculate Cut 1 accordingly</span><br><span class="line">        </span><br><span class="line">        double L1 = (mid1 == 0) ? INT_MIN : nums1[(mid1-1)/2];	// Get L1, R1, L2, R2 respectively</span><br><span class="line">        double L2 = (mid2 == 0) ? INT_MIN : nums2[(mid2-1)/2];</span><br><span class="line">        double R1 = (mid1 == N1 * 2) ? INT_MAX : nums1[(mid1)/2];</span><br><span class="line">        double R2 = (mid2 == N2 * 2) ? INT_MAX : nums2[(mid2)/2];</span><br><span class="line">        </span><br><span class="line">        if (L1 &gt; R2) lo = mid2 + 1;		// A1&apos;s lower half is too big; need to move C1 left (C2 right)</span><br><span class="line">        else if (L2 &gt; R1) hi = mid2 - 1;	// A2&apos;s lower half too big; need to move C2 left.</span><br><span class="line">        else return (max(L1,L2) + min(R1, R2)) / 2;	// Otherwise, that&apos;s the right cut.</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If you have any suggestions to make the logic and implementation even more cleaner. Please do let me know!</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2778/share-my-simple-o-log-m-n-solution-for-your-reference" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2778/share-my-simple-o-log-m-n-solution-for-your-reference</a></p>
+<p>Share my simple O(log(m+n)) solution for your reference</p>
+<p>Binary search. Call 2 times getkth and k is about half of (m + n). Every time call getkth can reduce the scale k to its half. So the time complexity is log(m + n).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int getkth(int s[], int m, int l[], int n, int k)&#123;</span><br><span class="line">        // let m &lt;= n</span><br><span class="line">        if (m &gt; n) </span><br><span class="line">            return getkth(l, n, s, m, k);</span><br><span class="line">        if (m == 0)</span><br><span class="line">            return l[k - 1];</span><br><span class="line">        if (k == 1)</span><br><span class="line">            return min(s[0], l[0]);</span><br><span class="line"></span><br><span class="line">        int i = min(m, k / 2), j = min(n, k / 2);</span><br><span class="line">        if (s[i - 1] &gt; l[j - 1])</span><br><span class="line">            return getkth(s, m, l + j, n - j, k - j);</span><br><span class="line">        else</span><br><span class="line">            return getkth(s + i, m - i, l, n, k - i);</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    double findMedianSortedArrays(int A[], int m, int B[], int n) &#123;</span><br><span class="line">        int l = (m + n + 1) &gt;&gt; 1;</span><br><span class="line">        int r = (m + n + 2) &gt;&gt; 1;</span><br><span class="line">        return (getkth(A, m ,B, n, l) + getkth(A, m, B, n, r)) / 2.0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5728/share-one-divide-and-conquer-o-log-m-n-method-with-clear-description" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5728/share-one-divide-and-conquer-o-log-m-n-method-with-clear-description</a></p>
+<p>Share one divide and conquer O(log(m+n)) method with clear description</p>
+<p>// using divide and conquer idea, each time find the mid of both arrays</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">double findMedianSortedArrays(int A[], int m, int B[], int n) &#123;</span><br><span class="line">        /* A[0, 1, 2, ..., n-1, n] */</span><br><span class="line">        /* A[0, 1, 2, ..., m-1, m] */</span><br><span class="line">        int k = (m + n + 1) / 2;</span><br><span class="line">        double v = (double)FindKth(A, 0, m - 1, B, 0, n - 1, k);</span><br><span class="line">        </span><br><span class="line">        if ((m+n) % 2 == 0) &#123;</span><br><span class="line">            int k2 = k+1;</span><br><span class="line">            double v2 = (double)FindKth(A, 0, m - 1, B, 0, n - 1, k2);</span><br><span class="line">            v = (v + v2) / 2;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return v;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // find the kth element int the two sorted arrays</span><br><span class="line">    // let us say: A[aMid] &lt;= B[bMid], x: mid len of a, y: mid len of b, then wen can know</span><br><span class="line">    // </span><br><span class="line">    // (1) there will be at least (x + 1 + y) elements before bMid</span><br><span class="line">    // (2) there will be at least (m - x - 1 + n - y) = m + n - (x + y +1) elements after aMid</span><br><span class="line">    // therefore</span><br><span class="line">    // if k &lt;= x + y + 1, find the kth element in a and b, but unconsidering bMid and its suffix</span><br><span class="line">    // if k &gt; x + y + 1, find the k - (x + 1) th element in a and b, but unconsidering aMid and its prefix</span><br><span class="line">    int FindKth(int A[], int aL, int aR, int B[], int bL, int bR, int k) &#123;</span><br><span class="line">        if (aL &gt; aR) return B[bL + k - 1];</span><br><span class="line">        if (bL &gt; bR) return A[aL + k - 1];</span><br><span class="line">        </span><br><span class="line">        int aMid = (aL + aR) / 2;</span><br><span class="line">        int bMid = (bL + bR) / 2;</span><br><span class="line">        </span><br><span class="line">        if (A[aMid] &lt;= B[bMid]) &#123;</span><br><span class="line">            if (k &lt;= (aMid - aL) + (bMid - bL) + 1) </span><br><span class="line">                return FindKth(A, aL, aR, B, bL, bMid - 1, k);</span><br><span class="line">            else</span><br><span class="line">                return FindKth(A, aMid + 1, aR, B, bL, bR, k - (aMid - aL) - 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123; // A[aMid] &gt; B[bMid]</span><br><span class="line">            if (k &lt;= (aMid - aL) + (bMid - bL) + 1) </span><br><span class="line">                return FindKth(A, aL, aMid - 1, B, bL, bR, k);</span><br><span class="line">            else</span><br><span class="line">                return FindKth(A, aL, aR, B, bMid + 1, bR, k - (bMid - bL) - 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11478/o-lg-m-n-c-solution-using-kth-smallest-number" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11478/o-lg-m-n-c-solution-using-kth-smallest-number</a></p>
+<p>O(lg(m+n)) c++ solution using kth smallest number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int kth(int a[], int m, int b[], int n, int k) &#123;</span><br><span class="line">        if (m &lt; n) return kth(b,n,a,m,k);</span><br><span class="line">        if (n==0) return a[k-1];</span><br><span class="line">        if (k==1) return min(a[0],b[0]);</span><br><span class="line"></span><br><span class="line">        int j = min(n,k/2);</span><br><span class="line">        int i = k-j;</span><br><span class="line">        if (a[i-1] &gt; b[j-1]) return kth(a,i,b+j,n-j,k-j);</span><br><span class="line">        return kth(a+i,m-i,b,j,k-i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    double findMedianSortedArrays(int a[], int m, int b[], int n) &#123;</span><br><span class="line">        int k = (m+n)/2;</span><br><span class="line">        int m1 = kth(a,m,b,n,k+1);</span><br><span class="line">        if ((m+n)%2==0) &#123;</span><br><span class="line">            int m2 = kth(a,m,b,n,k);</span><br><span class="line">            return ((double)m1+m2)/2.0;</span><br><span class="line">        &#125;</span><br><span class="line">        return m1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26926/another-simple-and-neat-solution-binary-search-non-recursion-3-rows-of-core-code-o-log-min-m-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26926/another-simple-and-neat-solution-binary-search-non-recursion-3-rows-of-core-code-o-log-min-m-n</a></p>
+<p>Another simple and neat solution, binary search, non-recursion, 3 rows of core code, O(log(min(m, n)))</p>
+<p>If you solve the k-th minmum value of two sorted arrays, you solve this problem.This is a classical problem of “Divide and conquer”.</p>
+<p>Here is another more simple and more neat solution.</p>
+<p>Cosider chosing first x numbers from A and k - x numbers from B.if these k numbers are the k minmum numbers of A and B, x must satisfies that A[x + 1] &gt;= B[k - x] and B[k - x + 1] &gt;= A[x] (for better explanation index is base-1). </p>
+<p>So this x is what we want.</p>
+<p>Obviously, if A[x + 1] &lt; B[k - x + 1] then x must be smaller, else if B[k - x] &lt; A[x] then x must be greater. A nice two-value definition for binary search :)</p>
+<p>To simplify edge cases, we cosider each array indefinite, with value of INTMIN when index &lt; 1 and INTMAX when index &gt; n.</p>
+<p>Here is the solution of c++ version:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">typedef vector&lt;int&gt; vi;</span><br><span class="line">const int inf = 0x7fffffff, ninf = 0x80000000;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    int kth_min(vi&amp; a, vi&amp; b, int k, int n, int m)&#123;</span><br><span class="line">        #define A(i) (i &lt; 1 ? ninf : (i &gt; n ? inf : a[i - 1]))</span><br><span class="line">        #define B(i) (i &lt; 1 ? ninf : (i &gt; m ? inf : b[i - 1]))</span><br><span class="line">        int l = 0, r = n + 1, x;</span><br><span class="line">        while(l &lt;= r)&#123;</span><br><span class="line">            x = (l + r) &gt;&gt; 1;</span><br><span class="line">            if(A(x) &gt; B(k - x + 1)) r = x - 1;</span><br><span class="line">            else if(B(k - x) &gt; A(x + 1)) l = x + 1;</span><br><span class="line">            else return max(A(x), B(k - x));</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;   //never execute , just to hide the warning :)</span><br><span class="line">        #undef A</span><br><span class="line">        #undef B</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    double findMedianSortedArrays(vector&lt;int&gt;&amp; a, vector&lt;int&gt;&amp; b) &#123;</span><br><span class="line">        int n = a.size(), m = b.size();</span><br><span class="line">        if(n &gt; m) return findMedianSortedArrays(b, a); //make sure that a.size() &lt;= b.size()</span><br><span class="line">        if((m + n) &amp; 1) return kth_min(a, b, (m + n + 1) &gt;&gt; 1, n, m);</span><br><span class="line">        return (0.0 + kth_min(a, b, (m + n + 1) &gt;&gt; 1, n, m) + kth_min(a, b, ((m + n) &gt;&gt; 1) + 1, n, m)) * 0.5;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/4996/share-my-o-log-min-m-n-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4996/share-my-o-log-min-m-n-solution-with-explanation</a></p>
+<p>To solve this problem, we need to understand “What is the use of median”. In statistics, the median is used for dividing a set into two equal length subsets, that one subset is always greater than the other. If we understand the use of median for dividing, we are very close to the answer.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">First let&apos;s cut A into two parts at a random position i:</span><br><span class="line"></span><br><span class="line">      left_A             |        right_A</span><br><span class="line">A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]</span><br></pre></td></tr></table></figure></p>
+<p>Since A has m elements, so there are m+1 kinds of cutting( i = 0 ~ m ). And we know: len(left_A) = i, len(right_A) = m - i . Note: when i = 0 , left_A is empty, and when i = m , right_A is empty.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">With the same way, cut B into two parts at a random position j:</span><br><span class="line"></span><br><span class="line">      left_B             |        right_B</span><br><span class="line">B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]</span><br></pre></td></tr></table></figure></p>
+<p>Put left_A and left_B into one set, and put right_A and right_B into another set.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Let&apos;s name them left_part and right_part :</span><br><span class="line">      left_part          |        right_part</span><br><span class="line">A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]</span><br><span class="line">B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]</span><br></pre></td></tr></table></figure></p>
+<p>If we can ensure:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1) len(left_part) == len(right_part)</span><br><span class="line">2) max(left_part) &lt;= min(right_part)</span><br></pre></td></tr></table></figure></p>
+<p>then we divide all elements in {A, B} into two parts with equal length, and one part is always greater than the other. Then median = (max(left_part) + min(right_part))/2.</p>
+<p>To ensure these two conditions, we just need to ensure:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1) i + j == m - i + n - j (or: m - i + n - j + 1)</span><br><span class="line">    if n &gt;= m, we just need to set: i = 0 ~ m, j = (m + n + 1)/2 - i</span><br><span class="line">(2) B[j-1] &lt;= A[i] and A[i-1] &lt;= B[j]</span><br></pre></td></tr></table></figure></p>
+<p>(For simplicity, I presume A[i-1],B[j-1],A[i],B[j] are always valid even if i=0/i=m/j=0/j=n . I will talk about how to deal with these edge values at last.)</p>
+<p>So, all we need to do is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Searching i in [0, m], to find an object `i` that:</span><br><span class="line">    B[j-1] &lt;= A[i] and A[i-1] &lt;= B[j], ( where j = (m + n + 1)/2 - i )</span><br></pre></td></tr></table></figure></p>
+<p>And we can do a binary search following steps described below:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;1&gt; Set imin = 0, imax = m, then start searching in [imin, imax]</span><br><span class="line"></span><br><span class="line">&lt;2&gt; Set i = (imin + imax)/2, j = (m + n + 1)/2 - i</span><br><span class="line"></span><br><span class="line">&lt;3&gt; Now we have len(left_part)==len(right_part). And there are only 3 situations</span><br><span class="line">     that we may encounter:</span><br><span class="line">    &lt;a&gt; B[j-1] &lt;= A[i] and A[i-1] &lt;= B[j]</span><br><span class="line">        Means we have found the object `i`, so stop searching.</span><br><span class="line">    &lt;b&gt; B[j-1] &gt; A[i]</span><br><span class="line">        Means A[i] is too small. We must `ajust` i to get `B[j-1] &lt;= A[i]`.</span><br><span class="line">        Can we `increase` i?</span><br><span class="line">            Yes. Because when i is increased, j will be decreased.</span><br><span class="line">            So B[j-1] is decreased and A[i] is increased, and `B[j-1] &lt;= A[i]` may</span><br><span class="line">            be satisfied.</span><br><span class="line">        Can we `decrease` i?</span><br><span class="line">            `No!` Because when i is decreased, j will be increased.</span><br><span class="line">            So B[j-1] is increased and A[i] is decreased, and B[j-1] &lt;= A[i] will</span><br><span class="line">            be never satisfied.</span><br><span class="line">        So we must `increase` i. That is, we must ajust the searching range to</span><br><span class="line">        [i+1, imax]. So, set imin = i+1, and goto &lt;2&gt;.</span><br><span class="line">    &lt;c&gt; A[i-1] &gt; B[j]</span><br><span class="line">        Means A[i-1] is too big. And we must `decrease` i to get `A[i-1]&lt;=B[j]`.</span><br><span class="line">        That is, we must ajust the searching range to [imin, i-1].</span><br><span class="line">        So, set imax = i-1, and goto &lt;2&gt;.</span><br></pre></td></tr></table></figure></p>
+<p>When the object i is found, the median is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">max(A[i-1], B[j-1]) (when m + n is odd)  注释 odd 奇数</span><br><span class="line">or (max(A[i-1], B[j-1]) + min(A[i], B[j]))/2 (when m + n is even)</span><br></pre></td></tr></table></figure></p>
+<p>Now let’s consider the edges values i=0,i=m,j=0,j=n where A[i-1],B[j-1],A[i],B[j] may not exist. Actually this situation is easier than you think.</p>
+<p>What we need to do is ensuring that max(left_part) &lt;= min(right_part). So, if i and j are not edges values(means A[i-1],B[j-1],A[i],B[j] all exist), then we must check both B[j-1] &lt;= A[i] and A[i-1] &lt;= B[j]. But if some of A[i-1],B[j-1],A[i],B[j] don’t exist, then we don’t need to check one(or both) of these two conditions. For example, if i=0, then A[i-1] doesn’t exist, then we don’t need to check A[i-1] &lt;= B[j]. So, what we need to do is:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Searching i in [0, m], to find an object `i` that:</span><br><span class="line">    (j == 0 or i == m or B[j-1] &lt;= A[i]) and</span><br><span class="line">    (i == 0 or j == n or A[i-1] &lt;= B[j])</span><br><span class="line">    where j = (m + n + 1)/2 - i</span><br><span class="line">And in a searching loop, we will encounter only three situations:</span><br><span class="line"></span><br><span class="line">&lt;a&gt; (j == 0 or i == m or B[j-1] &lt;= A[i]) and</span><br><span class="line">    (i == 0 or j = n or A[i-1] &lt;= B[j])</span><br><span class="line">    Means i is perfect, we can stop searching.</span><br><span class="line"></span><br><span class="line">&lt;b&gt; j &gt; 0 and i &lt; m and B[j - 1] &gt; A[i]</span><br><span class="line">    Means i is too small, we must increase it.</span><br><span class="line"></span><br><span class="line">&lt;c&gt; i &gt; 0 and j &lt; n and A[i - 1] &gt; B[j]</span><br><span class="line">    Means i is too big, we must decrease it.</span><br></pre></td></tr></table></figure></p>
+<p>Thank @Quentin.chen , him pointed out that: i &lt; m ==&gt; j &gt; 0 and i &gt; 0 ==&gt; j &lt; n . Because:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m &lt;= n, i &lt; m ==&gt; j = (m+n+1)/2 - i &gt; (m+n+1)/2 - m &gt;= (2*m+1)/2 - m &gt;= 0    </span><br><span class="line">m &lt;= n, i &gt; 0 ==&gt; j = (m+n+1)/2 - i &lt; (m+n+1)/2 &lt;= (2*n+1)/2 &lt;= n</span><br></pre></td></tr></table></figure></p>
+<p>So in situation <b> and <c>, we don’t need to check whether j &gt; 0 and whether j &lt; n.</c></b></p>
+<p>Below is the accepted code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def median(A, B):</span><br><span class="line">   m, n = len(A), len(B)</span><br><span class="line">   if m &gt; n:</span><br><span class="line">       A, B, m, n = B, A, n, m</span><br><span class="line">   if n == 0:</span><br><span class="line">       raise ValueError</span><br><span class="line"></span><br><span class="line">   imin, imax, half_len = 0, m, (m + n + 1) / 2</span><br><span class="line">   while imin &lt;= imax:</span><br><span class="line">       i = (imin + imax) / 2</span><br><span class="line">       j = half_len - i</span><br><span class="line">       if i &lt; m and B[j-1] &gt; A[i]:</span><br><span class="line">           # i is too small, must increase it</span><br><span class="line">           imin = i + 1</span><br><span class="line">       elif i &gt; 0 and A[i-1] &gt; B[j]:</span><br><span class="line">           # i is too big, must decrease it</span><br><span class="line">           imax = i - 1</span><br><span class="line">       else:</span><br><span class="line">           # i is perfect</span><br><span class="line"></span><br><span class="line">           if i == 0: max_of_left = B[j-1]</span><br><span class="line">           elif j == 0: max_of_left = A[i-1]</span><br><span class="line">           else: max_of_left = max(A[i-1], B[j-1])</span><br><span class="line"></span><br><span class="line">           if (m + n) % 2 == 1:</span><br><span class="line">               return max_of_left</span><br><span class="line"></span><br><span class="line">           if i == m: min_of_right = B[j]</span><br><span class="line">           elif j == n: min_of_right = A[i]</span><br><span class="line">           else: min_of_right = min(A[i], B[j])</span><br><span class="line"></span><br><span class="line">           return (max_of_left + min_of_right) / 2.0</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://leetcode.com/discuss/15790/share-my-o-log-min-m-n-solution-with-explanation" target="_blank" rel="noopener">https://leetcode.com/discuss/15790/share-my-o-log-min-m-n-solution-with-explanation</a></p>
+<p>120ms, 86.12%, June.25th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums1: List[int]</span><br><span class="line">        :type nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        m, n = len(nums1), len(nums2)</span><br><span class="line">        if m &gt; n:</span><br><span class="line">            nums1, nums2, m, n = nums2, nums1, n, m</span><br><span class="line">        if n == 0:</span><br><span class="line">            raise ValueError</span><br><span class="line">    </span><br><span class="line">        imin, imax, half_len = 0, m, (m + n + 1) / 2</span><br><span class="line">        while imin &lt;= imax:</span><br><span class="line">            i = (imin + imax) / 2</span><br><span class="line">            j = half_len - i</span><br><span class="line">            if j &gt; 0 and i &lt; m and nums2[j-1] &gt; nums1[i]:</span><br><span class="line">                # i is too small, must increase it</span><br><span class="line">                imin = i + 1</span><br><span class="line">            elif i &gt; 0 and j &lt; n and nums1[i-1] &gt; nums2[j]:</span><br><span class="line">                # i is too big, must decrease it</span><br><span class="line">                imax = i - 1</span><br><span class="line">            else:</span><br><span class="line">                # i is perfect</span><br><span class="line">                if i == 0: max_of_left = nums2[j-1]</span><br><span class="line">                elif j == 0: max_of_left = nums1[i-1]</span><br><span class="line">                else: max_of_left = max(nums1[i-1], nums2[j-1])</span><br><span class="line">    </span><br><span class="line">                if (m + n) % 2 == 1:</span><br><span class="line">                    return max_of_left</span><br><span class="line">    </span><br><span class="line">                if i == m: min_of_right = nums2[j]</span><br><span class="line">                elif j == n: min_of_right = nums1[i]</span><br><span class="line">                else: min_of_right = min(nums1[i], nums2[j])</span><br><span class="line">    </span><br><span class="line">                return (max_of_left + min_of_right) / 2.0</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://leetcode.com/discuss/20897/intuitive-python-solution-smallest-two-sorted-arrays-252ms" target="_blank" rel="noopener">https://leetcode.com/discuss/20897/intuitive-python-solution-smallest-two-sorted-arrays-252ms</a></p>
+<p>Intuitive Python O(log (m+n)) solution, by kth smallest in the two sorted arrays, 252ms</p>
+<p>144ms, 30.79%, June.25th, 2016</p>
+<p>The idea is in the comment:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMedianSortedArrays(self, nums1, nums2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums1: List[int]</span><br><span class="line">        :type nums2: List[int]</span><br><span class="line">        :rtype: float</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        l = len(nums1) + len(nums2)</span><br><span class="line">        if l % 2 == 1:</span><br><span class="line">            return self.kth(nums1, nums2, l // 2)</span><br><span class="line">        else:</span><br><span class="line">            return (self.kth(nums1, nums2, l // 2) + self.kth(nums1, nums2, l // 2 - 1)) / 2.</span><br><span class="line">            </span><br><span class="line">    def kth(self, a, b, k):</span><br><span class="line">        if not a:</span><br><span class="line">            return b[k]</span><br><span class="line">        if not b:</span><br><span class="line">            return a[k]</span><br><span class="line">        ia, ib = len(a) // 2, len(b) // 2</span><br><span class="line">        ma, mb = a[ia], b[ib]</span><br><span class="line">        </span><br><span class="line">        if ia + ib &lt; k:</span><br><span class="line">            if ma &gt; mb:</span><br><span class="line">                return self.kth(a, b[ib + 1:], k - ib - 1)</span><br><span class="line">            else:</span><br><span class="line">                return self.kth(a[ia + 1:], b, k -ia - 1)</span><br><span class="line">        else:</span><br><span class="line">            if ma &gt; mb:</span><br><span class="line">                return self.kth(a[:ia], b, k)</span><br><span class="line">            else:</span><br><span class="line">                return self.kth(a, b[:ib], k)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22406/python-o-log-min-m-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22406/python-o-log-min-m-n-solution</a></p>
+<p>Python O(log(min(m,n)) solution</p>
+<p>It’s guaranteed to be O(log(min(m,n)) because every time the findKth function cuts the shorter array by half of its size.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return a float</span><br><span class="line">    def findMedianSortedArrays(self, A, B):</span><br><span class="line">        l=len(A)+len(B)</span><br><span class="line">        return self.findKth(A,B,l//2) if l%2==1 else (self.findKth(A,B,l//2-1)+self.findKth(A,B,l//2))/2.0</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">    def findKth(self,A,B,k):</span><br><span class="line">        if len(A)&gt;len(B):</span><br><span class="line">            A,B=B,A</span><br><span class="line">        if not A:</span><br><span class="line">            return B[k]</span><br><span class="line">        if k==len(A)+len(B)-1:</span><br><span class="line">            return max(A[-1],B[-1])</span><br><span class="line">        i=len(A)//2</span><br><span class="line">        j=k-i</span><br><span class="line">        if A[i]&gt;B[j]:</span><br><span class="line">            #Here I assume it is O(1) to get A[:i] and B[j:]. In python, it&apos;s not but in cpp it is.</span><br><span class="line">            return self.findKth(A[:i],B[j:],i)</span><br><span class="line">        else:</span><br><span class="line">            return self.findKth(A[i:],B[:j],j)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3367/share-my-iterative-solution-with-o-log-min-n-m" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3367/share-my-iterative-solution-with-o-log-min-n-m</a></p>
+<p>Share my iterative solution with O(log(min(n, m)))</p>
+<p>This is my iterative solution using binary search. The main idea is to find the approximate location of the median and compare the elements around it to get the final result.</p>
+<ol>
+<li>do binary search. suppose the shorter list is A with length n. the runtime is O(log(n)) which means no matter how large B array is, it only depends on the size of A. It makes sense because if A has only one element while B has 100 elements, the median must be one of A[0], B[49], and B[50] without check everything else. If A[0] &lt;= B[49], B[49] is the answer; if B[49] &lt; A[0] &lt;= B[50], A[0] is the answer; else, B[50] is the answer.</li>
+<li>After binary search, we get the approximate location of median. Now we just need to compare at most 4 elements to find the answer. This step is O(1).</li>
+<li>the same solution can be applied to find kth element of 2 sorted arrays.</li>
+</ol>
+<p>Here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public double findMedianSortedArrays(int A[], int B[]) &#123;</span><br><span class="line">int n = A.length;</span><br><span class="line">int m = B.length;</span><br><span class="line">// the following call is to make sure len(A) &lt;= len(B).</span><br><span class="line">// yes, it calls itself, but at most once, shouldn&apos;t be</span><br><span class="line">// consider a recursive solution</span><br><span class="line">if (n &gt; m)</span><br><span class="line">    return findMedianSortedArrays(B, A);</span><br><span class="line"></span><br><span class="line">// now, do binary search</span><br><span class="line">int k = (n + m - 1) / 2;</span><br><span class="line">int l = 0, r = Math.min(k, n); // r is n, NOT n-1, this is important!!</span><br><span class="line">while (l &lt; r) &#123;</span><br><span class="line">    int midA = (l + r) / 2;</span><br><span class="line">    int midB = k - midA;</span><br><span class="line">    if (A[midA] &lt; B[midB])</span><br><span class="line">        l = midA + 1;</span><br><span class="line">    else</span><br><span class="line">        r = midA;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// after binary search, we almost get the median because it must be between</span><br><span class="line">// these 4 numbers: A[l-1], A[l], B[k-l], and B[k-l+1] </span><br><span class="line"></span><br><span class="line">// if (n+m) is odd, the median is the larger one between A[l-1] and B[k-l].</span><br><span class="line">// and there are some corner cases we need to take care of.</span><br><span class="line">int a = Math.max(l &gt; 0 ? A[l - 1] : Integer.MIN_VALUE, k - l &gt;= 0 ? B[k - l] : Integer.MIN_VALUE);</span><br><span class="line">if (((n + m) &amp; 1) == 1)</span><br><span class="line">    return (double) a;</span><br><span class="line"></span><br><span class="line">// if (n+m) is even, the median can be calculated by </span><br><span class="line">//      median = (max(A[l-1], B[k-l]) + min(A[l], B[k-l+1]) / 2.0</span><br><span class="line">// also, there are some corner cases to take care of.</span><br><span class="line">int b = Math.min(l &lt; n ? A[l] : Integer.MAX_VALUE, k - l + 1 &lt; m ? B[k - l + 1] : Integer.MAX_VALUE);</span><br><span class="line">return (a + b) / 2.0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>I’m lazy to type. But I found a very good pdf to explain my algorithm:</p>
+<p><a href="http://ocw.alfaisal.edu/NR/rdonlyres/Electrical-Engineering-and-Computer-Science/6-046JFall-2005/30C68118-E436-4FE3-8C79-6BAFBB07D935/0/ps9sol.pdf" target="_blank" rel="noopener">http://ocw.alfaisal.edu/NR/rdonlyres/Electrical-Engineering-and-Computer-Science/6-046JFall-2005/30C68118-E436-4FE3-8C79-6BAFBB07D935/0/ps9sol.pdf</a></p>
+<p>BTW: Thanks to xdxiaoxin. I’ve removed the check “midB &gt; k”.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28602/concise-java-solution-based-on-binary-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28602/concise-java-solution-based-on-binary-search</a></p>
+<p>Concise JAVA solution based on Binary Search</p>
+<p><strong>Explanation</strong></p>
+<p>The key point of this problem is to ignore half part of A and B each step recursively by comparing the median of remaining A and B:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (aMid &lt; bMid) Keep [aRight + bLeft]</span><br><span class="line"></span><br><span class="line">else Keep [bRight + aLeft]</span><br></pre></td></tr></table></figure>
+<p>As the following: time=O(log(m + n))</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public double findMedianSortedArrays(int[] A, int[] B) &#123;</span><br><span class="line">	    int m = A.length, n = B.length;</span><br><span class="line">	    int l = (m + n + 1) / 2;</span><br><span class="line">	    int r = (m + n + 2) / 2;</span><br><span class="line">	    return (getkth(A, 0, B, 0, l) + getkth(A, 0, B, 0, r)) / 2.0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">public double getkth(int[] A, int aStart, int[] B, int bStart, int k) &#123;</span><br><span class="line">	if (aStart &gt; A.length - 1) return B[bStart + k - 1];            </span><br><span class="line">	if (bStart &gt; B.length - 1) return A[aStart + k - 1];                </span><br><span class="line">	if (k == 1) return Math.min(A[aStart], B[bStart]);</span><br><span class="line">	</span><br><span class="line">	int aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;</span><br><span class="line">	if (aStart + k/2 - 1 &lt; A.length) aMid = A[aStart + k/2 - 1]; </span><br><span class="line">	if (bStart + k/2 - 1 &lt; B.length) bMid = B[bStart + k/2 - 1];        </span><br><span class="line">	</span><br><span class="line">	if (aMid &lt; bMid) </span><br><span class="line">	    return getkth(A, aStart + k/2, B, bStart,       k - k/2);// Check: aRight + bLeft </span><br><span class="line">	else </span><br><span class="line">		return getkth(A, aStart,       B, bStart + k/2, k - k/2);// Check: bRight + aLeft</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/82de9929/" title="004. Median of Two Sorted Arrays">http://yucc.me/p/82de9929/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/f34c3115/" rel="next" title="003. Longest Substring Without Repeating Characters">
+                <i class="fa fa-chevron-left"></i> 003. Longest Substring Without Repeating Characters
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/a8573ae4/" rel="prev" title="005. Longest Palindromic Substring">
+                005. Longest Palindromic Substring <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
