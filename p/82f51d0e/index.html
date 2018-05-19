@@ -85,18 +85,20 @@
 
 
 
-<meta name="description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精确率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
+<meta name="description" content="本文主要内容有：   错误率（Error Rate）与准确率（Accuracy、ACC） 混淆矩阵（Confusion matrix） 精确率（Precision）、召回率（Recall）、F1值（F1-score） 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1） ROC与A">
 <meta name="keywords" content="分类, 二分类, 评估指标, F1值">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分类任务中的模型性能评估指标详解">
 <meta property="og:url" content="http://yucc.me/p/82f51d0e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精确率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
+<meta property="og:description" content="本文主要内容有：   错误率（Error Rate）与准确率（Accuracy、ACC） 混淆矩阵（Confusion matrix） 精确率（Precision）、召回率（Recall）、F1值（F1-score） 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1） ROC与A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-18T16:45:43.426Z">
+<meta property="og:image" content="http://yucc.me/p/82f51d0e/1.jpg">
+<meta property="og:updated_time" content="2018-05-19T03:53:46.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分类任务中的模型性能评估指标详解">
-<meta name="twitter:description" content="对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精确率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC 这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和">
+<meta name="twitter:description" content="本文主要内容有：   错误率（Error Rate）与准确率（Accuracy、ACC） 混淆矩阵（Confusion matrix） 精确率（Precision）、召回率（Recall）、F1值（F1-score） 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1） ROC与A">
+<meta name="twitter:image" content="http://yucc.me/p/82f51d0e/1.jpg">
 
 
 
@@ -358,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T00:45:43+08:00">
-                2018-05-19 00:45
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-19T11:53:46+08:00">
+                2018-05-19 11:53
               </time>
             
           </span>
@@ -415,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,772
+                  3,237
                 </span>
               
 
@@ -431,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  13
                 </span>
               
             </div>
@@ -452,8 +454,17 @@
       
 
       
-        <p>对于二分类模型常用的分类指标有： 1. 真正率（TP rate）、假负率（FP Rate）、假正率（FP Rate）、真负率（TF Rate） 2. 精确率（precision） 3. 召回率（recall） 4. F值（F-score） 5. 准确率(Accuracy、ACC) 6. ROC 7. AUC 8. PRC 9. MCC</p>
-<p>这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。</p>
+        <p>本文主要内容有： </p>
+<ol>
+<li>错误率（Error Rate）与准确率（Accuracy、ACC）</li>
+<li>混淆矩阵（Confusion matrix）</li>
+<li>精确率（Precision）、召回率（Recall）、F1值（F1-score）</li>
+<li>宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）</li>
+<li>ROC与AUC</li>
+<li>Mean Average Precision @ K</li>
+<li>回归任务的评估指标</li>
+</ol>
+<p>对于分类模型常用的分类指标有1-6，这些评估指标，工程和研究中都会经常遇到，需要对其有透彻的理解和对其中的差别清楚知晓。本文对这些指标进行一些总结和归纳。</p>
 <a id="more"></a>
 <h3 id="1-错误率（Error-Rate）与准确率（Accuracy、ACC）"><a href="#1-错误率（Error-Rate）与准确率（Accuracy、ACC）" class="headerlink" title="1. 错误率（Error Rate）与准确率（Accuracy、ACC）"></a>1. 错误率（Error Rate）与准确率（Accuracy、ACC）</h3><p>准确率亦称精度。错误率与准确率是分类任务中常见的性能度量，同时适用于二分类及多分类任务。错误率是分类错误的样本数占样本总数的比例，准确率是分类正确的样本数占样本总数的比例。显然，二者的和为1。</p>
 <p>对于样例集$D$，分类的错误率可以定义为：</p>
@@ -495,38 +506,83 @@
 </ol>
 <h3 id="3-真正率、假负率、假正率及真负率"><a href="#3-真正率、假负率、假正率及真负率" class="headerlink" title="3. 真正率、假负率、假正率及真负率"></a>3. 真正率、假负率、假正率及真负率</h3><p>定义以下几个指标</p>
 <ol>
-<li>真正率(True Positive Rate, TP Rate, TPR)（灵敏度sensitivity， 也是召回率）：$TPR = \frac{TP}{TP + FN}$，即$\frac{被预测为正的正样本结果数}{正样本实际数}$</li>
-<li>假负率(False Negative Rate, FN Rate, FNR) ：$FNR = \frac{FN}{TP + FN}$ ，即被$\frac{预测为负的正样本结果数}{正样本实际数}$</li>
-<li>假正率(False Positive Rate, FP Rate, FPR) ：$FPR = \frac{FP}{FP + TN}$ ，即被$\frac{预测为正的负样本结果数}{负样本实际数}$</li>
-<li>真负率(True Negative Rate, TN Rate, TNR)（特指度specificity）：$TNR = \frac{TN}{TN + FP}$ ，即被$\frac{预测为负的负样本结果数}{负样本实际数}$ </li>
+<li>真正率(True Positive Rate, TP Rate, TPR)（灵敏度sensitivity， 也是<strong>召回率</strong>）定义为$\frac{被预测为正的正样本结果数}{正样本实际数}$，即：</li>
 </ol>
+<p>$$<br>\begin{equation}<br>TPR = \frac{TP}{TP + FN}<br>\end{equation} \tag{5}<br>$$</p>
+<ol start="2">
+<li>假负率(False Negative Rate, FN Rate, FNR)定义为$\frac{被预测为负的正样本结果数}{正样本实际数}$，即：</li>
+</ol>
+<p>$$<br>\begin{equation}<br>FNR = \frac{FN}{TP + FN}<br>\end{equation} \tag{6}<br>$$</p>
+<ol start="3">
+<li>假正率(False Positive Rate, FP Rate, FPR) 定义为$\frac{被预测为正的负样本结果数}{负样本实际数}$，即：</li>
+</ol>
+<p>$$<br>\begin{equation}<br>FPR = \frac{FP}{FP + TN}<br>\end{equation} \tag{7}<br>$$</p>
+<ol start="4">
+<li>真负率(True Negative Rate, TN Rate, TNR)（特指度specificity）定义为$\frac{被预测为负的负样本结果数}{负样本实际数}$，即：</li>
+</ol>
+<p>$$<br>\begin{equation}<br>TNR = \frac{TN}{TN + FP}<br>\end{equation} \tag{8}<br>$$</p>
 <p>可以看出，<strong>真正（TP）和假负（FN）都是实际类别是正样本</strong>，分别被判为正及负，真正率（TPR）及假负率（FNR）都是<strong>除以正样本的总个数（TP+FN）</strong>。所以TPR+FNR=1。类似的，<strong>假正（FP）和真负（TN）都是实际样本类别是负样本</strong>，分别被判为正及负，假正率（FPR）及真负率（TNR）都是<strong>除以负样本的总数（FP+TN）</strong>。所以FPR+TNR=1。</p>
 <p>可以看出，以上四个率（Rate）都是除以他们的真实标签对应的所有与它们真实标签相同的样本的个数。TPR、FNR二者知其一，便知另外一个。FPR、TNR也只需要知道一个便知另外一个。</p>
 <p>一个具体的例子，就是[5]。假设你正在构建一个使用麦克风来监听用户说出特定“唤醒词”，检测到“唤醒词就唤醒系统的硬件设备。例如亚马逊的Echo倾听“Alexa”，苹果siri的“Hey Siri”，安卓的“Okay Google”及百度应用的“你好，百度”。你关心的是假正率（假阳性率）及假负率（假阴性率）。假正率（假阳性率）指没有人说唤醒词系统醒来的频率，假负率（假阴性率）是当有人说唤醒词系统没有醒来的频率。一个合理的目标是在满足每运行24小时不会有一个假阳性（满足指标）的情况下，最大限度的减少假阴性率（优化指标）。</p>
 <p>在weka里，会显示TPR和FPR两个参数。</p>
 <h3 id="3-精确率（Precision）、召回率（Recall）、F1值（F1-score）"><a href="#3-精确率（Precision）、召回率（Recall）、F1值（F1-score）" class="headerlink" title="3. 精确率（Precision）、召回率（Recall）、F1值（F1-score）"></a>3. 精确率（Precision）、召回率（Recall）、F1值（F1-score）</h3><p>二分类问题常用的评价指标有精确率（Precision）、召回率（Recall）和F1值。精确率亦称为“查准率”，召回率亦称“查全率”。</p>
 <p>精确率定义为：</p>
-<p>$$<br>\begin{equation}<br>P = \frac{TP}{TP+FP}<br>\end{equation} \tag{5}<br>$$</p>
+<p>$$<br>\begin{equation}<br>P = \frac{TP}{TP+FP}<br>\end{equation} \tag{9}<br>$$</p>
 <p>召回率定义为：</p>
-<p>$$<br>\begin{equation}<br>R = \frac{TP}{TP+FN}<br>\end{equation} \tag{6}<br>$$</p>
+<p>$$<br>\begin{equation}<br>R = \frac{TP}{TP+FN}<br>\end{equation} \tag{10}<br>$$</p>
 <p>F1之定义为精确率和召回率的调和平均数，即：</p>
-<p>$$<br>\begin{equation}<br>\frac{2}{F1} = \frac{1}{P} + \frac{1}{R}<br>\end{equation} \tag{7}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\frac{2}{F1} = \frac{1}{P} + \frac{1}{R}<br>\end{equation} \tag{11}<br>$$</p>
 <p>即 </p>
-<p>$$<br>\begin{equation}<br>\begin{split}<br>F1 &amp; = \frac{2PR}{P+R} \\<br>&amp; = \frac{2}{\frac{TP+FP}{TP}+\frac{TP+FN}{TP}} \\<br>&amp; = \frac{2TP}{2TP+FP+FN}<br>\end{split}<br>\end{equation} \tag{8}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\begin{split}<br>F1 &amp; = \frac{2PR}{P+R} \\<br>&amp; = \frac{2}{\frac{TP+FP}{TP}+\frac{TP+FN}{TP}} \\<br>&amp; = \frac{2TP}{2TP+FP+FN}<br>\end{split}<br>\end{equation} \tag{12}<br>$$</p>
 <p>对于一些应用，精确率和召回率重视程度不同，比如在商品推荐中，为了减少对用户的打扰，更希望推荐用户感兴趣的，此时精确率更重要。查找逃犯时，希望尽可能的减少逃犯遗漏，则召回率更重要。于是有了F1值更一般的形势$F_\beta$，定义为精确率和召回率的加权平均数：</p>
-<p>$$<br>\begin{equation}<br>\frac{1+\beta^2}{F_\beta} = \frac{1}{P} + \frac{\beta^2}{R}<br>\end{equation} \tag{9}<br>$$</p>
+<p>$$<br>\begin{equation}<br>\frac{1+\beta^2}{F_\beta} = \frac{1}{P} + \frac{\beta^2}{R}<br>\end{equation} \tag{13}<br>$$</p>
 <p>即：</p>
-<p>$$<br>\begin{equation}<br>F_\beta = \frac{(1+\beta^2)PR}{\beta^2P + R}<br>\end{equation} \tag{10}<br>$$</p>
-<p>其中，$\beta &gt; 0$，$\beta$度量了精确率和召回率之间的重要性，当$\beta=1$时,就是F1；当$\beta&lt;1$时，精确率更重要；当$\beta&gt;1$时，召回率更重要。这些结论可以通过观察公式（9）得出。</p>
+<p>$$<br>\begin{equation}<br>F_\beta = \frac{(1+\beta^2)PR}{\beta^2P + R}<br>\end{equation} \tag{14}<br>$$</p>
+<p>其中，$\beta &gt; 0$，$\beta$度量了精确率和召回率之间的重要性，当$\beta=1$时,就是F1；当$\beta&lt;1$时，精确率更重要；当$\beta&gt;1$时，召回率更重要。这些结论可以通过观察公式（13）得出。</p>
 <h3 id="4-宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）"><a href="#4-宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）" class="headerlink" title="4. 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）"></a>4. 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）</h3><p>很多时候我们有多个二分类混淆矩阵，例如进行多次训练/测试，每次得到一个混淆矩阵;或是在多个数据集上进行训练/测试，希望估计算法的”全局”<br>性能;甚或是执行多分类任务，每两两类别的组合都对应一个混淆矩阵，总之，我们希望在个二分类混淆矩阵上综合考察精确率和召回率。</p>
-<p>一种直接的做法是</p>
-<h3 id="5-ROC与AUC"><a href="#5-ROC与AUC" class="headerlink" title="5. ROC与AUC"></a>5. ROC与AUC</h3><h3 id="6-Mean-Average-Precision"><a href="#6-Mean-Average-Precision" class="headerlink" title="6. Mean Average Precision"></a>6. Mean Average Precision</h3><h3 id="7-预测任务的评估指标"><a href="#7-预测任务的评估指标" class="headerlink" title="7. 预测任务的评估指标"></a>7. 预测任务的评估指标</h3><p>参考资料：</p>
+<p>一种直接的做法是现在各个混淆矩阵上分别计算出精确率和召回率，记为$(P_1, R_1),(P_2,R_2),…,(P_n, R_n)$，再计算平均值，这样就得到宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1），分别定义如下：</p>
+<p>$$<br>\begin{equation}<br>marco-P = \frac{1}{n} \sum_{i=1}^n P_i<br>\end{equation} \tag{15}<br>$$</p>
+<p>$$<br>\begin{equation}<br>marco-R = \frac{1}{n} \sum_{i=1}^n R_i<br>\end{equation} \tag{16}<br>$$</p>
+<p>$$<br>\begin{equation}<br>marco-F1 = \frac{2 \times marco-P \times macro-R}{macro-P + macro-R}<br>\end{equation} \tag{17}<br>$$</p>
+<p>除此之外，还可以将各个混淆矩阵的对应元素进行平均，得到TP、FP、TN、FN的平均值，分别记为$\overline{TP}、 \overline{FP}、 \overline{TN}、 \overline{FN}$，然后再基于这些指标，计算出微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1），分别定义如下：</p>
+<p>$$<br>\begin{equation}<br>mirco-P = \frac{\overline{TP}}{\overline{TP}+\overline{FP}}<br>\end{equation} \tag{18}<br>$$</p>
+<p>$$<br>\begin{equation}<br>mirco-R = \frac{\overline{TP}}{\overline{TP}+\overline{FN}}<br>\end{equation} \tag{19}<br>$$</p>
+<p>$$<br>\begin{equation}<br>mirco-F1 = \frac{2 \times mirco-P \times micro-R}{micro-P + micro-R}<br>\end{equation} \tag{20}<br>$$</p>
+<h3 id="5-ROC与AUC"><a href="#5-ROC与AUC" class="headerlink" title="5. ROC与AUC"></a>5. ROC与AUC</h3><p>ROC全称是受试者工作特征（Receiver Operating Characteristic）。ROC曲线的纵轴是上文提到的真正率（TPR），横轴是假正率（FPR），分别对应于公式（5）和公式（7）。此处再次搬运过来。</p>
+<p>$$<br>\begin{equation}<br>TPR = \frac{TP}{TP + FN}<br>\end{equation} \tag{21}<br>$$</p>
+<p>$$<br>\begin{equation}<br>FPR = \frac{FP}{FP + TN}<br>\end{equation} \tag{22}<br>$$</p>
+<p>正如前文分析的那样，TPR的分子为分类结果中为正样本且真实标签也为正样本的个数，分母是所有样本中正样本的个数。FPR的分子为分类结果为正样本且真实样本为负样本的个数，分母是所有样本中负样本的个数。所以对于一个固定的测试集来说，TPR、FPR的分母都是固定值。一个ROC曲线图如下所示：</p>
+<p><img src="1.jpg" alt=""></p>
+<p>对上图的四个关键点进行分析：</p>
+<ol>
+<li>(0,0)：TP=0，FP=0，可以发现该分类器预测所有的样本都为负样本(Negative)</li>
+<li>(1,1)：TN=0，FN=0，可以发现该分类器预测所有的样本都为正样本(Positive) </li>
+<li>(0,1)：FP=0，FN=0，它将所有的样本都正确分类</li>
+<li>(1,0)：TP=0，TN=0，它将所有的样本都错误分类</li>
+</ol>
+<p>从上面的分析我们可以看到，如果ROC曲线越靠近左上方，那么分类器的效果越好。进行学习器的比较时，若一个分类器的ROC曲线完全包住另一个分类器，那么可以判断前者的性能更好。</p>
+<p>ROC的绘图过程是：给定$m^+$个正样本和$m^-$个负样本。根据学习期预测结果对样例进行排序，然后把分类阈值设为最大，则把所有结果预测为负样本，此时真正率和假正率均为0，在坐标（0,0）处标记一个点。然后，将分类阈值一次设为每个样本的预测值，即依次将每个样例划分为正样本。设签一个标记点坐标为（x，y），当前若为正样本，则对应标记点的坐标为$(x,y+\frac{1}{m^+})$；当前若当负样本，则对应标记点的坐标为$(x+\frac{1}{m^-}, y)$，然后用线段连接相邻点即可。</p>
+<p>在进行学习期比较时，如果一个学习期的ROC曲线被另一个学习期的曲线完全“包住”，则可以断言后者优于前者。但是如果有交叉，则一般难以断言哪个更好。此时如果一定要比较，则较为合理的判断是比较ROC曲线下的面积，即AUC（Area Under ROC Curve）。</p>
+<p>从以上定义可知，AUC可以通过对ROC曲线下个面积求和得到。假设ROC曲线的坐标为${(x_1, y_1),(x_2, y_2),…(x_m, y_m)}的点按序连接而成$(x_1 = 0, x_m = 1)$，则AUC可以估算为：</p>
+<p>$$<br>\begin{equation}<br>AUC = \frac{1}{2} \sum_{i=1}^{m-1} (x_{i+1} - x_i)(y_i + y_{i+1})<br>\end{equation} \tag{23}<br>$$</p>
+<h3 id="6-Mean-Average-Precision-K"><a href="#6-Mean-Average-Precision-K" class="headerlink" title="6. Mean Average Precision @ K"></a>6. Mean Average Precision @ K</h3><p>在kaggle的Freesound General-Purpose Audio Tagging Challenge[7]使用的评估方法是Mean Average Precision @ 3 (MAP@3)，该问题是每个音频文件进行自动标注，每个音频实际上只对应一个标签，但是可以做出最多三个预测标签值，对应的公式是：</p>
+<p>$$<br>\begin{equation}<br>MAP@3 = \frac{1}{U} \sum_{u=1}^U {\sum_{k=1}^{min(n,3)} P(k)}<br>\end{equation} \tag{24}<br>$$</p>
+<p>U是样本的总个数，最后是对每个样本的评价求平均，所以关键还是要Average Precision @ 3 (AP@3），所以对应的公式是：</p>
+<p>$$<br>\begin{equation}<br>AP@3 = \sum_{k=1}^{min(n,3)} P(k)<br>\end{equation} \tag{25}<br>$$</p>
+<p>n是预测结果的总个数，也就是限制为3。比如一个真实标签为鸟叫声的音频，可以预测为：鸟叫声，门声，玻璃破碎声。则对应的结果为AP@3 = 1 * 1 + 0 * 1/2 + 0 * 1/3 = 1。也就是每一位是有权重的，越靠前权重越高，第一位权重为1，第二位1/2，第三位为1/3。如果预测为门声，玻璃破碎声，鸟叫声，则AP@3 = 0 * 1 + 0 * 1/2  + 0 * 1/3 = 1/3 。</p>
+<h3 id="7-回归任务的评估指标"><a href="#7-回归任务的评估指标" class="headerlink" title="7. 回归任务的评估指标"></a>7. 回归任务的评估指标</h3><p>回归任务中最常用的性能度量是均方误差（mean squared error)：</p>
+<p>$$<br>\begin{equation}<br>E(f; D) = \frac{1}{m} \sum_{i=1}^m (f(x_i)-y_i)^2<br>\end{equation} \tag{26}<br>$$</p>
+<p>更一般的，对于数据分布D和概率密度函数p(·)，均方误差可以如下定义：</p>
+<p>$$<br>\begin{equation}<br>E(f; D) = \int_{x \sim D} (f(x) - y)^2p(x) {\rm d}x<br>\end{equation} \tag{27}<br>$$</p>
+<h3 id="8-PRC与MCC【待完成】"><a href="#8-PRC与MCC【待完成】" class="headerlink" title="8. PRC与MCC【待完成】"></a>8. PRC与MCC【待完成】</h3><p>参考资料：</p>
 <ol>
 <li><a href="http://blog.sina.com.cn/s/blog_629e606f0102v7a0.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_629e606f0102v7a0.html</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Evaluation_of_binary_classifiers</a></li>
 <li>周志华《机器学习》</li>
-<li>李航《统计学习方法》</li>
+<li>李航《统计学习方法》 </li>
 <li><a href="https://yuchenchen.gitbook.io/machine-learning-yearning/9.-you-hua-he-man-zu-zhi-biao" target="_blank" rel="noopener">https://yuchenchen.gitbook.io/machine-learning-yearning/9.-you-hua-he-man-zu-zhi-biao</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/25528580" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25528580</a></li>
+<li><a href="https://www.kaggle.com/c/freesound-audio-tagging#evaluation" target="_blank" rel="noopener">https://www.kaggle.com/c/freesound-audio-tagging#evaluation</a></li>
 </ol>
 
       
@@ -594,9 +650,9 @@
           
             <a href="/tags/AI一丝一毫/" rel="tag"># AI一丝一毫</a>
           
-            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-          
             <a href="/tags/to-do/" rel="tag"># to do</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
         </div>
       
@@ -801,7 +857,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-错误率（Error-Rate）与准确率（Accuracy、ACC）"><span class="nav-text">1. 错误率（Error Rate）与准确率（Accuracy、ACC）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-混淆矩阵（Confusion-matrix）"><span class="nav-text">2. 混淆矩阵（Confusion matrix）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-真正率、假负率、假正率及真负率"><span class="nav-text">3. 真正率、假负率、假正率及真负率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-精确率（Precision）、召回率（Recall）、F1值（F1-score）"><span class="nav-text">3. 精确率（Precision）、召回率（Recall）、F1值（F1-score）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）"><span class="nav-text">4. 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ROC与AUC"><span class="nav-text">5. ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Mean-Average-Precision"><span class="nav-text">6. Mean Average Precision</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-预测任务的评估指标"><span class="nav-text">7. 预测任务的评估指标</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-错误率（Error-Rate）与准确率（Accuracy、ACC）"><span class="nav-text">1. 错误率（Error Rate）与准确率（Accuracy、ACC）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-混淆矩阵（Confusion-matrix）"><span class="nav-text">2. 混淆矩阵（Confusion matrix）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-真正率、假负率、假正率及真负率"><span class="nav-text">3. 真正率、假负率、假正率及真负率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-精确率（Precision）、召回率（Recall）、F1值（F1-score）"><span class="nav-text">3. 精确率（Precision）、召回率（Recall）、F1值（F1-score）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）"><span class="nav-text">4. 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ROC与AUC"><span class="nav-text">5. ROC与AUC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Mean-Average-Precision-K"><span class="nav-text">6. Mean Average Precision @ K</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-回归任务的评估指标"><span class="nav-text">7. 回归任务的评估指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-PRC与MCC【待完成】"><span class="nav-text">8. PRC与MCC【待完成】</span></a></li></ol></div>
             
 
           </div>
