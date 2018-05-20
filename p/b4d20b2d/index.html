@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/1.png">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/3.png">
-<meta property="og:updated_time" content="2018-05-18T10:08:13.172Z">
+<meta property="og:updated_time" content="2018-05-20T03:02:24.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用vultr搭建vpn（shadowsocks）翻墙并支持北邮人bt（ipv6）下载教程">
 <meta name="twitter:description" content="学习本教程，主要收获会有两个。一个是科学上网，一个能够去北邮人bt上传下载资源。详细的内容见下表，如果只为了科学上网，学习1-3即可。需要支持北邮人bt看1-4，服务器管理相关的内容放在了5，章节6主要是一些问题的解决办法。内容主要是以win为例写的，mac、android的科学上网也可以跟着本教程来。内容概要：  vultr购买VPS服务器 在服务器上搭建shadowsocks 在win10配置">
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-18T18:08:13+08:00">
-                2018-05-18 18:08
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-20T11:02:24+08:00">
+                2018-05-20 11:02
               </time>
             
           </span>
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,032
+                  2,245
                 </span>
               
 
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  9
                 </span>
               
             </div>
@@ -465,8 +465,9 @@
 <li>Q &amp; A</li>
 </ol>
 <a id="more"></a>
-<p>说明：一些同学用的搬瓦工，跟我的可能会有些不同。我就遇到有同学的搬瓦工vps本身不支持ipv6，就很麻烦，这是本教程力所不能及的。本教程建议使用vultr，所有使用非vultr的vps，一定要确保支持并可以开启ipv6。不支持ipv6的结果就是对上北邮人bt等ipv6站点有影响，不影响科学上网。</p>
-<h3 id="1-vultr上购买VPS服务器"><a href="#1-vultr上购买VPS服务器" class="headerlink" title="1. vultr上购买VPS服务器"></a>1. vultr上购买VPS服务器</h3><h4 id="1-1-注册及交费"><a href="#1-1-注册及交费" class="headerlink" title="1.1 注册及交费"></a>1.1 注册及交费</h4><p>这一步就非常简单了，用下面的链接<strong>注册</strong>：</p>
+<h3 id="1-vultr上购买VPS服务器"><a href="#1-vultr上购买VPS服务器" class="headerlink" title="1. vultr上购买VPS服务器"></a>1. vultr上购买VPS服务器</h3><p>要科学上网，需要使用到VPS服务器，本教程使用的是vultr，费用是2.5美元/月，费用是vultr收取的，跟本教程无关。除了vultr也可以使用其他的VPS，效果类似。</p>
+<p>一些同学用的搬瓦工，跟我的可能会有些不同。我就遇到有同学的搬瓦工vps本身不支持ipv6，对于上北邮人bt就很麻烦，这是本教程力所不能及的。本教程建议使用vultr，所有使用非vultr的vps，一定要确保支持并可以开启ipv6。不支持ipv6的结果就是对上北邮人bt等ipv6站点有影响，不影响科学上网。</p>
+<h4 id="1-1-注册及交费"><a href="#1-1-注册及交费" class="headerlink" title="1.1 注册及交费"></a>1.1 注册及交费</h4><p>这一步就非常简单了，用下面的链接<strong>注册</strong>：</p>
 <p><a href="https://www.vultr.com/?ref=7402906" target="_blank" rel="noopener">https://www.vultr.com/?ref=7402906</a></p>
 <h4 id="1-2-购买服务器"><a href="#1-2-购买服务器" class="headerlink" title="1.2 购买服务器"></a>1.2 购买服务器</h4><p>注册完账户，并充值后。进入以下网址购买服务器。</p>
 <p><a href="https://my.vultr.com/deploy/" target="_blank" rel="noopener">https://my.vultr.com/deploy/</a></p>
@@ -493,9 +494,11 @@
 <p>Android：<a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-android/releases</a></p>
 <p>mac：<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a> </p>
 <p>ubuntu的配置较为复杂，可以参考[4]。</p>
-<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例，下载，并解压缩后，运行。</p>
+<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例（mac类似），下载，并解压缩后，运行。</p>
 <p>输入ip，port，password，及encryption点击ok就可以了。</p>
 <p>打开你的浏览器，输入 <a href="https://www.google.com/" target="_blank" rel="noopener">https://www.google.com/</a> ，那么见证奇迹的时刻到了。</p>
+<p>如果是Android，则点击右上角的较好，进去配置服务器、远程端口、密码、加密方式、路由，然后点击右上角的对号进行保存。 然后，选中刚才配置的vpn，然后点击右下角有个飞机的那个圆圈，就可以了。快来测试下吧！</p>
+<p>至此，电脑及手机的科学上网已经配置完成。</p>
 <h3 id="4-配置utorrent，支持北邮人bt"><a href="#4-配置utorrent，支持北邮人bt" class="headerlink" title="4. 配置utorrent，支持北邮人bt"></a>4. 配置utorrent，支持北邮人bt</h3><p>两步，第一步将北邮人bt的网址加入支持翻墙的列表，第二步配置utorrent。都很简单。</p>
 <h4 id="4-1-配置shadowsocks"><a href="#4-1-配置shadowsocks" class="headerlink" title="4.1 配置shadowsocks"></a>4.1 配置shadowsocks</h4><p>首先我们打开和Shadowsocks.exe同文件夹中的 user-rule.txt 文件，当然你也可以通过 右键Shadowsocks托盘图标 &gt;-&gt; PAC &gt;-&gt; 编辑 GFWList 的用户规则（或 Edit User rule for GFWList） 来打开这个文件。 如果没有这个文件可以自己建一个。</p>
 <p>添加如下规则并保存：</p>
@@ -508,6 +511,7 @@
 <p><img src="3.png" alt=""></p>
 <p>mac用户配置方法：按快捷键：“command+,”，打开utorrent的设置。在设置上侧找到Network（中文应该是网络），配置方法跟上图类似。就是配置<br>proxy server，address，port，配置的内容跟上图对应的一样。同时选中下面的use proxy for hostname lookups及use proxy for peer-to-peer connections。</p>
 <p>至此就能愉快的下载了。</p>
+<p>本章内容除了可以用于北邮人bt，也可以用于北交大的晨光pt，只要把晨光pt的网址按类似方法加进去就可以了。</p>
 <p>试试效果？有问题欢迎留言。下面的5是对于服务器管理用的，一般用不到，可以不看，至此完成了科学上网+支持北邮人bt。</p>
 <h3 id="5-服务器管理说明"><a href="#5-服务器管理说明" class="headerlink" title="5. 服务器管理说明"></a>5. 服务器管理说明</h3><p>此内容是用于对服务器的vpn进行管理使用的，正常情况下是不需要看这个的。</p>
 <h4 id="5-1-卸载方法说明："><a href="#5-1-卸载方法说明：" class="headerlink" title="5.1 卸载方法说明："></a>5.1 卸载方法说明：</h4><p>使用root用户登录，运行以下命令：</p>
