@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/1.png">
 <meta property="og:image" content="http://yucc.me/p/b4d20b2d/3.png">
-<meta property="og:updated_time" content="2018-05-20T03:02:24.373Z">
+<meta property="og:updated_time" content="2018-05-21T12:55:34.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用vultr搭建vpn（shadowsocks）翻墙并支持北邮人bt（ipv6）下载教程">
 <meta name="twitter:description" content="学习本教程，主要收获会有两个。一个是科学上网，一个能够去北邮人bt上传下载资源。详细的内容见下表，如果只为了科学上网，学习1-3即可。需要支持北邮人bt看1-4，服务器管理相关的内容放在了5，章节6主要是一些问题的解决办法。内容主要是以win为例写的，mac、android的科学上网也可以跟着本教程来。内容概要：  vultr购买VPS服务器 在服务器上搭建shadowsocks 在win10配置">
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-20T11:02:24+08:00">
-                2018-05-20 11:02
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-21T20:55:34+08:00">
+                2018-05-21 20:55
               </time>
             
           </span>
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,245
+                  2,315
                 </span>
               
 
@@ -494,13 +494,16 @@
 <p>Android：<a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-android/releases</a></p>
 <p>mac：<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a> </p>
 <p>ubuntu的配置较为复杂，可以参考[4]。</p>
-<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例（mac类似），下载，并解压缩后，运行。</p>
+<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例，下载，并解压缩后，运行。</p>
 <p>输入ip，port，password，及encryption点击ok就可以了。</p>
+<p>如果是mac，解压缩后运行，在上面点击那个小飞机，出现下拉栏“服务器-新服务器”-“服务器设置”。同样是输入地址、端口、加密方法、密码，并确定就可以了。</p>
+<p>如果是Android，操作类似，请大家自行探索。</p>
+<p>有可能需要关闭并重新打开shadowsocks的操作，有可能不需要。</p>
 <p>打开你的浏览器，输入 <a href="https://www.google.com/" target="_blank" rel="noopener">https://www.google.com/</a> ，那么见证奇迹的时刻到了。</p>
 <p>如果是Android，则点击右上角的较好，进去配置服务器、远程端口、密码、加密方式、路由，然后点击右上角的对号进行保存。 然后，选中刚才配置的vpn，然后点击右下角有个飞机的那个圆圈，就可以了。快来测试下吧！</p>
 <p>至此，电脑及手机的科学上网已经配置完成。</p>
 <h3 id="4-配置utorrent，支持北邮人bt"><a href="#4-配置utorrent，支持北邮人bt" class="headerlink" title="4. 配置utorrent，支持北邮人bt"></a>4. 配置utorrent，支持北邮人bt</h3><p>两步，第一步将北邮人bt的网址加入支持翻墙的列表，第二步配置utorrent。都很简单。</p>
-<h4 id="4-1-配置shadowsocks"><a href="#4-1-配置shadowsocks" class="headerlink" title="4.1 配置shadowsocks"></a>4.1 配置shadowsocks</h4><p>首先我们打开和Shadowsocks.exe同文件夹中的 user-rule.txt 文件，当然你也可以通过 右键Shadowsocks托盘图标 &gt;-&gt; PAC &gt;-&gt; 编辑 GFWList 的用户规则（或 Edit User rule for GFWList） 来打开这个文件。 如果没有这个文件可以自己建一个。</p>
+<h4 id="4-1-配置shadowsocks"><a href="#4-1-配置shadowsocks" class="headerlink" title="4.1 配置shadowsocks"></a>4.1 配置shadowsocks</h4><p>首先通过 右键Shadowsocks托盘图标 &gt;-&gt; PAC &gt;-&gt; 编辑 GFWList 的用户规则（或 Edit User rule for GFWList） 来打开user-rule.txt。（mac用户，点击小飞机，“编辑PAC用户自定规则”）</p>
 <p>添加如下规则并保存：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">||bt.byr.cn^</span><br></pre></td></tr></table></figure>
 <p>效果如下图：</p>
