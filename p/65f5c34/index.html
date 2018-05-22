@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,array,hard,sort," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="26.7%  https://leetcode.com/problems/insert-interval/ Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary). You may assume that the intervals were i">
+<meta name="keywords" content="leetcode,array,hard,sort">
+<meta property="og:type" content="article">
+<meta property="og:title" content="057. Insert Interval">
+<meta property="og:url" content="http://yucc.me/p/65f5c34/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="26.7%  https://leetcode.com/problems/insert-interval/ Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary). You may assume that the intervals were i">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-22T02:59:56.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="057. Insert Interval">
+<meta name="twitter:description" content="26.7%  https://leetcode.com/problems/insert-interval/ Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary). You may assume that the intervals were i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/65f5c34/"/>
+
+
+
+
+
+  <title>057. Insert Interval | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/65f5c34/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">057. Insert Interval</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T10:44:25+08:00">
+                2018-05-22 10:44
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T10:59:56+08:00">
+                2018-05-22 10:59
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,834
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>26.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/insert-interval/" target="_blank" rel="noopener">https://leetcode.com/problems/insert-interval/</a></p>
+<p>Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).</p>
+<p>You may assume that the intervals were initially sorted according to their start times.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Given intervals [1,3],[6,9], insert and merge [2,5] in as [1,5],[6,9].</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Given [1,2],[3,5],[6,7],[8,10],[12,16], insert and merge [4,9] in as [1,2],[3,10],[12,16].</span><br><span class="line"></span><br><span class="line">This is because the new interval [4,9] overlaps with [3,5],[6,7],[8,10].</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>头条代码</p>
+<p>Easy and clean O(n) C++ solution</p>
+<p>Very easy to understand code as follows.</p>
+<p>First, put all intervals that are to the left of the inserted interval.</p>
+<p>Second, merge all intervals that intersect with the inserted interval.</p>
+<p>Finally, put all intervals that are to the right of the inserted interval.</p>
+<p>That’s it! You are done!</p>
+<p>重点答案，简单直白高效</p>
+<p>一个启示，未必只用一个while/for循环，可以前一段一个while，中间一个while，后面一个while，这样分开讨论的情况，很简洁，思路畅通。</p>
+<p>针对相遇的情况，更改了newInterval的值，始终保持start最小，end最大，最后加入到结果中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        vector&lt;Interval&gt; res;</span><br><span class="line">        int index = 0;</span><br><span class="line">        while(index &lt; intervals.size() &amp;&amp; intervals[index].end &lt; newInterval.start)&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        while(index &lt; intervals.size() &amp;&amp; intervals[index].start &lt;= newInterval.end)&#123;</span><br><span class="line">            newInterval.start = min(newInterval.start, intervals[index].start);</span><br><span class="line">            newInterval.end = max(newInterval.end, intervals[index].end);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        while(index &lt; intervals.size())&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for an interval.</span></span><br><span class="line"><span class="comment"> * struct Interval &#123;</span></span><br><span class="line"><span class="comment"> *     int start;</span></span><br><span class="line"><span class="comment"> *     int end;</span></span><br><span class="line"><span class="comment"> *     Interval() : start(0), end(0) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; insert(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        <span class="keyword">int</span> n = intervals.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;Interval&gt; res;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n &amp;&amp; intervals[i].end&lt;newInterval.start)</span><br><span class="line">            res.push_back(intervals[i++]);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n &amp;&amp; intervals[i].start&lt;=newInterval.end)&#123;</span><br><span class="line">            newInterval.start = min(newInterval.start, intervals[i].start);</span><br><span class="line">            newInterval.end = max(newInterval.end, intervals[i].end);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n)</span><br><span class="line">            res.push_back(intervals[i++]);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/12899/very-short-and-easy-to-understand-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12899/very-short-and-easy-to-understand-c-solution</a></p>
+<p>Very short and easy to understand C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">    vector&lt;Interval&gt; ret;</span><br><span class="line">    auto it = intervals.begin();</span><br><span class="line">    for(; it!=intervals.end(); ++it)&#123;</span><br><span class="line">		if(newInterval.end &lt; (*it).start) //all intervals after will not overlap with the newInterval</span><br><span class="line">			break; </span><br><span class="line">		else if(newInterval.start &gt; (*it).end) //*it will not overlap with the newInterval</span><br><span class="line">			ret.push_back(*it); </span><br><span class="line">        else&#123; //update newInterval bacause *it overlap with the newInterval</span><br><span class="line">            newInterval.start = min(newInterval.start, (*it).start);</span><br><span class="line">            newInterval.end = max(newInterval.end, (*it).end);</span><br><span class="line">        &#125;	</span><br><span class="line">    &#125;</span><br><span class="line">    // don&apos;t forget the rest of the intervals and the newInterval</span><br><span class="line">	ret.push_back(newInterval);</span><br><span class="line">	for(; it!=intervals.end(); ++it)</span><br><span class="line">		ret.push_back(*it);</span><br><span class="line">	return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>My question is why this code need 500ms !?</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28015/elegant-c-stl-solution-using-equal_range-to-find-overlapped-intervals" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28015/elegant-c-stl-solution-using-equal_range-to-find-overlapped-intervals</a></p>
+<p>Elegant C++ STL solution, using “equal_range” to find overlapped intervals.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        auto compare = [] (const Interval &amp;intv1, const Interval &amp;intv2)</span><br><span class="line">                          &#123; return intv1.end &lt; intv2.start; &#125;;</span><br><span class="line">        auto range = equal_range(intervals.begin(), intervals.end(), newInterval, compare);</span><br><span class="line">        auto itr1 = range.first, itr2 = range.second;</span><br><span class="line">        if (itr1 == itr2) &#123;</span><br><span class="line">            intervals.insert(itr1, newInterval);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            itr2--;</span><br><span class="line">            itr2-&gt;start = min(newInterval.start, itr1-&gt;start);</span><br><span class="line">            itr2-&gt;end = max(newInterval.end, itr2-&gt;end);</span><br><span class="line">            intervals.erase(itr1, itr2);</span><br><span class="line">        &#125;</span><br><span class="line">        return intervals;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24439/easy-and-clean-o-n-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24439/easy-and-clean-o-n-c-solution</a></p>
+<p>Easy and clean O(n) C++ solution</p>
+<p>Very easy to understand code as follows.</p>
+<p>First, put all intervals that are to the left of the inserted interval.</p>
+<p>Second, merge all intervals that intersect with the inserted interval.</p>
+<p>Finally, put all intervals that are to the right of the inserted interval.</p>
+<p>That’s it! You are done!</p>
+<p>重点答案，简单直白高效</p>
+<p>一个启示，未必只用一个while/for循环，可以前一段一个while，中间一个while，后面一个while，这样分开讨论的情况，很简洁，思路畅通。</p>
+<p>针对相遇的情况，更改了newInterval的值，始终保持start最小，end最大，最后加入到结果中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        vector&lt;Interval&gt; res;</span><br><span class="line">        int index = 0;</span><br><span class="line">        while(index &lt; intervals.size() &amp;&amp; intervals[index].end &lt; newInterval.start)&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        while(index &lt; intervals.size() &amp;&amp; intervals[index].start &lt;= newInterval.end)&#123;</span><br><span class="line">            newInterval.start = min(newInterval.start, intervals[index].start);</span><br><span class="line">            newInterval.end = max(newInterval.end, intervals[index].end);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        while(index &lt; intervals.size())&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17937/two-easy-o-n-c-solutions-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17937/two-easy-o-n-c-solutions-with-explanations</a></p>
+<p>Two Easy O(n) C++ Solutions with Explanations</p>
+<p>By far the best solution I have seen is of O(n) time (some solutions claim to be of O(logn) turns out to be O(n)). One of the simplest ideas is to compare each interval in intervals (intervals[i]) with newInterval and then perform respective operations according to their relationships.</p>
+<ol>
+<li>If they overlap, merge them to newInterval;</li>
+<li>If intervals[i] is to the left of newInterval, push intervals[i] to the result vector;</li>
+<li>If newInterval is to the left of intervals[i], push newInterval and all the remaining intervals (intervals[i], …, intervals[n - 1]) to the result vector.</li>
+</ol>
+<p>The code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        vector&lt;Interval&gt; res;</span><br><span class="line">        int n = intervals.size();</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (intervals[i].end &lt; newInterval.start)</span><br><span class="line">                res.push_back(intervals[i]);</span><br><span class="line">            else if (newInterval.end &lt; intervals[i].start) &#123;</span><br><span class="line">                res.push_back(newInterval);</span><br><span class="line">                for (int j = i; j &lt; n; j++)</span><br><span class="line">                    res.push_back(intervals[j]);</span><br><span class="line">                return res; </span><br><span class="line">            &#125;</span><br><span class="line">            else newInterval = merge(intervals[i], newInterval);</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    Interval merge(Interval&amp; interval1, Interval&amp; interval2) &#123;</span><br><span class="line">        int start = min(interval1.start, interval2.start);</span><br><span class="line">        int end = max(interval1.end, interval2.end);</span><br><span class="line">        return Interval(start, end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Another idea is to search for the two ends of the overlapping intervals using binary search. Then we only need to merge newInterval with the intervals at the two ends if they overlap. All the intervals within the two ends will be contained innewInterval.</p>
+<p>Let’s do the example in the problem statement: intervals = [1, 2], [3, 5], [6, 7], [8, 10], [12, 16] and newInterval = [4, 9]. We first find the rightmost interval with start smaller than that of newInterval, which is [3, 5]. Then we find the leftmost interval with end larger than that of newInterval, which is [8, 10]. Then all the intervals between them will be contained within newInterval (you may check this to convince yourself) and so can be safely ignored. We only need to check whether newInterval overlaps with the two intervals on the two ends and merge them if necessary.</p>
+<p>The complete code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;Interval&gt; insert(vector&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        int n = intervals.size(), leftEnd, rightEnd, l, r;</span><br><span class="line">        vector&lt;Interval&gt; res;</span><br><span class="line">        // Find the rightmost interval with start smaller than that of newInterval</span><br><span class="line">        for (l = 0, r = n - 1; l &lt;= r; ) &#123;</span><br><span class="line">            int mid = l + ((r - l) &gt;&gt; 1);</span><br><span class="line">            if (intervals[mid].start &gt; newInterval.start)</span><br><span class="line">                r = mid - 1;</span><br><span class="line">            else l = mid + 1;</span><br><span class="line">        &#125; </span><br><span class="line">        leftEnd = r;</span><br><span class="line">        // Find the leftmost interval with end larger than that of newInterval</span><br><span class="line">        for (l = 0, r = n - 1; l &lt;= r; ) &#123;</span><br><span class="line">            int mid = l + ((r - l) &gt;&gt; 1);</span><br><span class="line">            if (intervals[mid].end &lt; newInterval.end)</span><br><span class="line">                l = mid + 1;</span><br><span class="line">            else r = mid - 1;</span><br><span class="line">        &#125;</span><br><span class="line">        rightEnd = l;</span><br><span class="line">        // Merge newInterval with intervals[leftEnd] and intervals[rightEnd] if necessary</span><br><span class="line">        if (leftEnd &gt;= 0 &amp;&amp; intervals[leftEnd].end &gt;= newInterval.start)</span><br><span class="line">            newInterval.start = intervals[leftEnd--].start;</span><br><span class="line">        if (rightEnd &lt; n &amp;&amp; intervals[rightEnd].start &lt;= newInterval.end)</span><br><span class="line">            newInterval.end = intervals[rightEnd++].end;</span><br><span class="line">        // Save the intervals sequentially</span><br><span class="line">        for (int i = 0; i &lt;= leftEnd; i++)</span><br><span class="line">            res.push_back(intervals[i]);</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        for (int i = rightEnd; i &lt; n; i++)</span><br><span class="line">            res.push_back(intervals[i]);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/16988/7-lines-3-easy-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16988/7-lines-3-easy-solutions</a></p>
+<p>7+ lines, 3 easy solutions</p>
+<p>Solution 1: (7 lines, 88 ms)</p>
+<p>Collect the intervals strictly left or right of the new interval, then merge the new one with the middle ones (if any) before inserting it between left and right ones.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def insert(self, intervals, newInterval):</span><br><span class="line">    s, e = newInterval.start, newInterval.end</span><br><span class="line">    left = [i for i in intervals if i.end &lt; s]</span><br><span class="line">    right = [i for i in intervals if i.start &gt; e]</span><br><span class="line">    if left + right != intervals:</span><br><span class="line">        s = min(s, intervals[len(left)].start)</span><br><span class="line">        e = max(e, intervals[~len(right)].end)</span><br><span class="line">    return left + [Interval(s, e)] + right</span><br></pre></td></tr></table></figure>
+<p>Solution 2: (8 lines, 84 ms)</p>
+<p>Same algorithm as solution 1, but different implementation with only one pass and explicitly collecting the to-be-merged intervals.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def insert(self, intervals, newInterval):</span><br><span class="line">    s, e = newInterval.start, newInterval.end</span><br><span class="line">    parts = merge, left, right = [], [], []</span><br><span class="line">    for i in intervals:</span><br><span class="line">        parts[(i.end &lt; s) - (i.start &gt; e)].append(i)</span><br><span class="line">    if merge:</span><br><span class="line">        s = min(s, merge[0].start)</span><br><span class="line">        e = max(e, merge[-1].end)</span><br><span class="line">    return left + [Interval(s, e)] + right</span><br></pre></td></tr></table></figure>
+<p>Solution 3: (11 lines, 80 ms)</p>
+<p>Same again, but collect and merge while going over the intervals once.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def insert(self, intervals, newInterval):</span><br><span class="line">    s, e = newInterval.start, newInterval.end</span><br><span class="line">    left, right = [], []</span><br><span class="line">    for i in intervals:</span><br><span class="line">        if i.end &lt; s:</span><br><span class="line">            left += i,</span><br><span class="line">        elif i.start &gt; e:</span><br><span class="line">            right += i,</span><br><span class="line">        else:</span><br><span class="line">            s = min(s, i.start)</span><br><span class="line">            e = max(e, i.end)</span><br><span class="line">    return left + [Interval(s, e)] + right</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6976/o-n-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6976/o-n-python-solution</a></p>
+<p>O(n) Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param intervals, a list of Intervals</span><br><span class="line">    # @param newInterval, a Interval</span><br><span class="line">    # @return a list of Interval</span><br><span class="line">    def insert(self, intervals, newInterval):</span><br><span class="line">        start = newInterval.start</span><br><span class="line">        end = newInterval.end</span><br><span class="line">        result = []</span><br><span class="line">        i = 0</span><br><span class="line">        while i &lt; len(intervals):</span><br><span class="line">            if start &lt;= intervals[i].end:</span><br><span class="line">                if end &lt; intervals[i].start:</span><br><span class="line">                    break</span><br><span class="line">                start = min(start, intervals[i].start)</span><br><span class="line">                end = max(end, intervals[i].end)</span><br><span class="line">            else:</span><br><span class="line">                result.append(intervals[i])</span><br><span class="line">            i += 1</span><br><span class="line">        result.append(Interval(start, end))</span><br><span class="line">        result += intervals[i:]</span><br><span class="line">        return result</span><br></pre></td></tr></table></figure>
+<hr>
+<p>112ms, 19.91%, June.23th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Definition for an interval.</span><br><span class="line"># class Interval(object):</span><br><span class="line">#     def __init__(self, s=0, e=0):</span><br><span class="line">#         self.start = s</span><br><span class="line">#         self.end = e</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def insert(self, intervals, newInterval):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type intervals: List[Interval]</span><br><span class="line">        :type newInterval: Interval</span><br><span class="line">        :rtype: List[Interval]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        intervals.append(newInterval)</span><br><span class="line">        rtype = []</span><br><span class="line">        for i in sorted(intervals, key = lambda x:x.start):</span><br><span class="line">            if rtype and i.start &lt;= rtype[-1].end:</span><br><span class="line">                rtype[-1].end = max(rtype[-1].end, i.end)</span><br><span class="line">            else:</span><br><span class="line">                rtype += i,</span><br><span class="line">        return rtype</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/7808/short-and-straight-forward-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7808/short-and-straight-forward-java-solution</a></p>
+<p>Short and straight-forward Java solution</p>
+<p>Hi guys!</p>
+<p>Here’s a pretty straight-forward and concise solution below.</p>
+<p>这个直白的解法，很喜欢，先针对intervals比较小的，未接触处理，然后进行中间相遇的处理，然后处理相遇后的。很直白，很简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Interval&gt; insert(List&lt;Interval&gt; intervals, Interval newInterval) &#123;</span><br><span class="line">    List&lt;Interval&gt; result = new LinkedList&lt;&gt;();</span><br><span class="line">    int i = 0;</span><br><span class="line">    // add all the intervals ending before newInterval starts</span><br><span class="line">    while (i &lt; intervals.size() &amp;&amp; intervals.get(i).end &lt; newInterval.start)</span><br><span class="line">        result.add(intervals.get(i++));</span><br><span class="line">    // merge all overlapping intervals to one considering newInterval</span><br><span class="line">    while (i &lt; intervals.size() &amp;&amp; intervals.get(i).start &lt;= newInterval.end) &#123;</span><br><span class="line">        newInterval = new Interval( // we could mutate newInterval here also</span><br><span class="line">                Math.min(newInterval.start, intervals.get(i).start),</span><br><span class="line">                Math.max(newInterval.end, intervals.get(i).end));</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    result.add(newInterval); // add the union of intervals we got</span><br><span class="line">    // add all the rest</span><br><span class="line">    while (i &lt; intervals.size()) result.add(intervals.get(i++)); </span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Hope it helps.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12691/short-java-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12691/short-java-code</a></p>
+<p>Short java code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Interval&gt; insert(List&lt;Interval&gt; intervals, Interval newInterval) &#123;</span><br><span class="line">    List&lt;Interval&gt; result = new ArrayList&lt;Interval&gt;();</span><br><span class="line">    for (Interval i : intervals) &#123;</span><br><span class="line">        if (newInterval == null || i.end &lt; newInterval.start)</span><br><span class="line">            result.add(i);</span><br><span class="line">        else if (i.start &gt; newInterval.end) &#123;</span><br><span class="line">            result.add(newInterval);</span><br><span class="line">            result.add(i);</span><br><span class="line">            newInterval = null;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            newInterval.start = Math.min(newInterval.start, i.start);</span><br><span class="line">            newInterval.end = Math.max(newInterval.end, i.end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (newInterval != null)</span><br><span class="line">        result.add(newInterval);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41004/my-binary-search-approach-implementation-2ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41004/my-binary-search-approach-implementation-2ms</a></p>
+<p>My Binary Search Approach Implementation, 2ms</p>
+<p>I know this is a little messy. For clean and simple code, please use the O(n) approach. We have great answer here with just 3 while loops. The BS approach utilizes the ordered characteristic of the input. For me, I want to get the position of the interval that is the first to have start equal to or larger than the inserted interval’s start. Similarly, I get the position of the interval that is the first to have end equal to or larger than the new interval’s end. Then I can get the range of intervals that the new interval connects. There are some corner cases that need to be considered, i.e. when the new interval has no overlap with any of the existing intervals (smaller, larger, or the original list is empty). In these corner cases, we just don’t need to update the new interval. The code could possibly be cleaner and simpler without sacrificing the speed, or even with less time and space. Please let me know if you have any suggestions. Thank you!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Interval&gt; insert(List&lt;Interval&gt; intervals, Interval newInterval) &#123;</span><br><span class="line">    List&lt;Interval&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    if (intervals == null || newInterval == null) return result;</span><br><span class="line">    int iStart = findStartPos(intervals, newInterval.start);</span><br><span class="line">    int iEnd = findEndPos(intervals, newInterval.end);</span><br><span class="line">    if (iStart &gt; 0 &amp;&amp; intervals.get(iStart - 1).end &gt;= newInterval.start) iStart--;</span><br><span class="line">    if (iEnd == intervals.size() || intervals.get(iEnd).start &gt; newInterval.end) iEnd--;</span><br><span class="line">    </span><br><span class="line">    //If not in the corner cases, this condition should apply.</span><br><span class="line">    if (iStart &lt;= iEnd) &#123;</span><br><span class="line">        newInterval = new Interval(Math.min(newInterval.start, intervals.get(iStart).start),Math.max(newInterval.end, intervals.get(iEnd).end));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int i = 0;</span><br><span class="line">    while (i &lt; iStart) result.add(intervals.get(i++));</span><br><span class="line">    result.add(newInterval);</span><br><span class="line">    i = iEnd + 1;</span><br><span class="line">    while (i &lt; intervals.size()) result.add(intervals.get(i++));</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int findStartPos(List&lt;Interval&gt; intervals, int value) &#123;</span><br><span class="line">    int l = 0, r = intervals.size() - 1;</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">        int m = (l + r) &gt;&gt; 1;</span><br><span class="line">        if (intervals.get(m).start == value) return m;</span><br><span class="line">        else if (intervals.get(m).start &lt; value) l = m + 1;</span><br><span class="line">        else r = m - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int findEndPos(List&lt;Interval&gt; intervals, int value) &#123;</span><br><span class="line">    int l = 0, r = intervals.size() - 1;</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">        int m = (l + r) &gt;&gt; 1;</span><br><span class="line">        if (intervals.get(m).end == value) return m;</span><br><span class="line">        else if (intervals.get(m).end &lt; value) l = m + 1;</span><br><span class="line">        else r = m - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/65f5c34/" title="057. Insert Interval">http://yucc.me/p/65f5c34/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/5eec50bd/" rel="next" title="056. Merge Intervals">
+                <i class="fa fa-chevron-left"></i> 056. Merge Intervals
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/e32fb410/" rel="prev" title="058. Length of Last Word">
+                058. Length of Last Word <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

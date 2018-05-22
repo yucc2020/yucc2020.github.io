@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,backtracking,hard," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="31.1%  https://leetcode.com/problems/n-queens/ The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return all d">
+<meta name="keywords" content="leetcode,backtracking,hard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="051. N-Queens">
+<meta property="og:url" content="http://yucc.me/p/aa0d9b9e/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="31.1%  https://leetcode.com/problems/n-queens/ The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return all d">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.leetcode.com/wp-content/uploads/2012/03/8-queens.png">
+<meta property="og:updated_time" content="2018-05-22T02:48:33.402Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="051. N-Queens">
+<meta name="twitter:description" content="31.1%  https://leetcode.com/problems/n-queens/ The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.  Given an integer n, return all d">
+<meta name="twitter:image" content="http://www.leetcode.com/wp-content/uploads/2012/03/8-queens.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/aa0d9b9e/"/>
+
+
+
+
+
+  <title>051. N-Queens | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/aa0d9b9e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">051. N-Queens</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T10:43:14+08:00">
+                2018-05-22 10:43
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T10:48:33+08:00">
+                2018-05-22 10:48
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,129
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>31.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/n-queens/" target="_blank" rel="noopener">https://leetcode.com/problems/n-queens/</a></p>
+<p>The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.</p>
+<p><img src="http://www.leetcode.com/wp-content/uploads/2012/03/8-queens.png" alt="image"></p>
+<p>Given an integer n, return all distinct solutions to the n-queens puzzle.</p>
+<p>Each solution contains a distinct board configuration of the n-queens’ placement, where ‘Q’ and ‘.’ both indicate a queen and an empty space respectively.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">There exist two distinct solutions to the 4-queens puzzle:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line"> [&quot;.Q..&quot;,  // Solution 1</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;..Q.&quot;],</span><br><span class="line"></span><br><span class="line"> [&quot;..Q.&quot;,  // Solution 2</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;.Q..&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1154/the-description-should-give-a-clear-explanation-of-the-problem-of-n-queens" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1154/the-description-should-give-a-clear-explanation-of-the-problem-of-n-queens</a></p>
+<p>The description should give a clear explanation of the problem of “n-queens”</p>
+<p>queens can attack other queen in the same row, same column, but i forget the diagonal.. = 。=</p>
+<p>方法一：</p>
+<p><a href="https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13617/accepted-4ms-c-solution-use-backtracking-and-bitmask-easy-understand</a></p>
+<p>Accepted 4ms c++ solution use backtracking and bitmask, easy understand.</p>
+<p>In this problem, we can go row by row, and in each position, we need to check if the column, the 45° diagonal and the 135° diagonal had a queen before.</p>
+<p>Solution A: Directly check the validity of each position, 12ms:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    std::vector&lt;std::vector&lt;std::string&gt; &gt; solveNQueens(int n) &#123;</span><br><span class="line">        std::vector&lt;std::vector&lt;std::string&gt; &gt; res;</span><br><span class="line">        std::vector&lt;std::string&gt; nQueens(n, std::string(n, &apos;.&apos;));</span><br><span class="line">        solveNQueens(res, nQueens, 0, n);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    void solveNQueens(std::vector&lt;std::vector&lt;std::string&gt; &gt; &amp;res, std::vector&lt;std::string&gt; &amp;nQueens, int row, int &amp;n) &#123;</span><br><span class="line">        if (row == n) &#123;</span><br><span class="line">            res.push_back(nQueens);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int col = 0; col != n; ++col)</span><br><span class="line">            if (isValid(nQueens, row, col, n)) &#123;</span><br><span class="line">                nQueens[row][col] = &apos;Q&apos;;</span><br><span class="line">                solveNQueens(res, nQueens, row + 1, n);</span><br><span class="line">                nQueens[row][col] = &apos;.&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    bool isValid(std::vector&lt;std::string&gt; &amp;nQueens, int row, int col, int &amp;n) &#123;</span><br><span class="line">        //check if the column had a queen before.</span><br><span class="line">        for (int i = 0; i != row; ++i)</span><br><span class="line">            if (nQueens[i][col] == &apos;Q&apos;)</span><br><span class="line">                return false;</span><br><span class="line">        //check if the 45° diagonal had a queen before.</span><br><span class="line">        for (int i = row - 1, j = col - 1; i &gt;= 0 &amp;&amp; j &gt;= 0; --i, --j)</span><br><span class="line">            if (nQueens[i][j] == &apos;Q&apos;)</span><br><span class="line">                return false;</span><br><span class="line">        //check if the 135° diagonal had a queen before.</span><br><span class="line">        for (int i = row - 1, j = col + 1; i &gt;= 0 &amp;&amp; j &lt; n; --i, ++j)</span><br><span class="line">            if (nQueens[i][j] == &apos;Q&apos;)</span><br><span class="line">                return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; solveNQueens(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; queens(n, <span class="built_in">string</span>(n, <span class="string">'.'</span>));</span><br><span class="line">        helper(res, queens, <span class="number">0</span>, n);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp;  queens, <span class="keyword">int</span> row, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(row==n)&#123;</span><br><span class="line">            res.push_back(queens);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> col=<span class="number">0</span>; col&lt;n; col++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(isvalid(queens, row, col, n))&#123;</span><br><span class="line">                queens[row][col] = <span class="string">'Q'</span>;</span><br><span class="line">                helper(res, queens, row+<span class="number">1</span>, n);</span><br><span class="line">                queens[row][col] = <span class="string">'.'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isvalid</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; queens, <span class="keyword">int</span> row, <span class="keyword">int</span> col, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;row; i++)</span><br><span class="line">            <span class="keyword">if</span>(queens[i][col]==<span class="string">'Q'</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=row<span class="number">-1</span>, j=col<span class="number">-1</span>; i&gt;=<span class="number">0</span> &amp;&amp; j&gt;=<span class="number">0</span>; i--, j--)</span><br><span class="line">            <span class="keyword">if</span>(queens[i][j]==<span class="string">'Q'</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=row<span class="number">-1</span>, j=col+<span class="number">1</span>; i&gt;=<span class="number">0</span> &amp;&amp; j&lt;n; i--, j++)</span><br><span class="line">            <span class="keyword">if</span>(queens[i][j]==<span class="string">'Q'</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution B: Use flag vectors as bitmask, 4ms:</p>
+<p>The number of columns is n, the number of 45° diagonals is 2 <em> n - 1, the number of 135° diagonals is also 2 </em> n - 1. When reach [row, col], the column No. is col, the 45° diagonal No. is row + col and the 135° diagonal No. is n - 1 + col - row. We can use three arrays to indicate if the column or the diagonal had a queen before, if not, we can put a queen in this position and continue.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**    | | |                / / /             \ \ \</span><br><span class="line">  *    O O O               O O O               O O O</span><br><span class="line">  *    | | |              / / / /             \ \ \ \</span><br><span class="line">  *    O O O               O O O               O O O</span><br><span class="line">  *    | | |              / / / /             \ \ \ \ </span><br><span class="line">  *    O O O               O O O               O O O</span><br><span class="line">  *    | | |              / / /                 \ \ \</span><br><span class="line">  *   3 columns        5 45° diagonals     5 135° diagonals    (when n is 3)</span><br><span class="line">  */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    std::vector&lt;std::vector&lt;std::string&gt; &gt; solveNQueens(int n) &#123;</span><br><span class="line">        std::vector&lt;std::vector&lt;std::string&gt; &gt; res;</span><br><span class="line">        std::vector&lt;std::string&gt; nQueens(n, std::string(n, &apos;.&apos;));</span><br><span class="line">        std::vector&lt;int&gt; flag_col(n, 1), flag_45(2 * n - 1, 1), flag_135(2 * n - 1, 1);</span><br><span class="line">        solveNQueens(res, nQueens, flag_col, flag_45, flag_135, 0, n);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    void solveNQueens(std::vector&lt;std::vector&lt;std::string&gt; &gt; &amp;res, std::vector&lt;std::string&gt; &amp;nQueens, std::vector&lt;int&gt; &amp;flag_col, std::vector&lt;int&gt; &amp;flag_45, std::vector&lt;int&gt; &amp;flag_135, int row, int &amp;n) &#123;</span><br><span class="line">        if (row == n) &#123;</span><br><span class="line">            res.push_back(nQueens);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int col = 0; col != n; ++col)</span><br><span class="line">            if (flag_col[col] &amp;&amp; flag_45[row + col] &amp;&amp; flag_135[n - 1 + col - row]) &#123;</span><br><span class="line">                flag_col[col] = flag_45[row + col] = flag_135[n - 1 + col - row] = 0;</span><br><span class="line">                nQueens[row][col] = &apos;Q&apos;;</span><br><span class="line">                solveNQueens(res, nQueens, flag_col, flag_45, flag_135, row + 1, n);</span><br><span class="line">                nQueens[row][col] = &apos;.&apos;;</span><br><span class="line">                flag_col[col] = flag_45[row + col] = flag_135[n - 1 + col - row] = 1;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>But we actually do not need to use three arrays, we just need one. Now, when reach [row, col], the subscript of column is col, the subscript of 45° diagonal is n + row + col and the subscript of 135° diagonal is n + 2 * n - 1 + n - 1 + col - row.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    std::vector&lt;std::vector&lt;std::string&gt; &gt; solveNQueens(int n) &#123;</span><br><span class="line">        std::vector&lt;std::vector&lt;std::string&gt; &gt; res;</span><br><span class="line">		std::vector&lt;std::string&gt; nQueens(n, std::string(n, &apos;.&apos;));</span><br><span class="line">		/*</span><br><span class="line">		flag[0] to flag[n - 1] to indicate if the column had a queen before.</span><br><span class="line">		flag[n] to flag[3 * n - 2] to indicate if the 45° diagonal had a queen before.</span><br><span class="line">		flag[3 * n - 1] to flag[5 * n - 3] to indicate if the 135° diagonal had a queen before.</span><br><span class="line">		*/</span><br><span class="line">		std::vector&lt;int&gt; flag(5 * n - 2, 1);</span><br><span class="line">		solveNQueens(res, nQueens, flag, 0, n);</span><br><span class="line">		return res;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">	void solveNQueens(std::vector&lt;std::vector&lt;std::string&gt; &gt; &amp;res, std::vector&lt;std::string&gt; &amp;nQueens, std::vector&lt;int&gt; &amp;flag, int row, int &amp;n) &#123;</span><br><span class="line">		if (row == n) &#123;</span><br><span class="line">			res.push_back(nQueens);</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for (int col = 0; col != n; ++col)</span><br><span class="line">			if (flag[col] &amp;&amp; flag[n + row + col] &amp;&amp; flag[4 * n - 2 + col - row]) &#123;</span><br><span class="line">				flag[col] = flag[n + row + col] = flag[4 * n - 2 + col - row] = 0;</span><br><span class="line">				nQueens[row][col] = &apos;Q&apos;;</span><br><span class="line">				solveNQueens(res, nQueens, flag, row + 1, n);</span><br><span class="line">				nQueens[row][col] = &apos;.&apos;;</span><br><span class="line">				flag[col] = flag[n + row + col] = flag[4 * n - 2 + col - row] = 1;</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4007/accepted-auxillary-space-o-n-using-dfs-cpp" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4007/accepted-auxillary-space-o-n-using-dfs-cpp</a></p>
+<p>Accepted : auxillary space O(n) , using dfs , cpp</p>
+<p>Space complexity : Instead of using a 2D array to represent the chess board, i am using a 1D array , the index of which would represent the row number and the value of arr at row index will be the column number for the correct position of the queen.</p>
+<p>i.e</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Instead of doing  arr[row][col]=1</span><br><span class="line">i am using arr[row]=col ;               where queen is positioned at (row,col);</span><br></pre></td></tr></table></figure>
+<p>Logic : DFS for every column number ,ranging from 0 to n-1, for all the rows from 0 to n-1 and check the validity of queen position for every row,col combination(using isSafe function)</p>
+<p>isSafe function : It checks whether the queen in current position(r,c) is being attacked by any of the r-1 queens positioned in row numbers 0 through r-1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        vector &lt; vector &lt;string&gt; &gt; sol;</span><br><span class="line">        int limit;</span><br><span class="line">        </span><br><span class="line">        vector&lt;string&gt; toChessString(vector&lt;int&gt; arr) </span><br><span class="line">          &#123;</span><br><span class="line">            string s(arr.size(),&apos;.&apos;);</span><br><span class="line">            vector&lt;string&gt; ans(arr.size(),s);</span><br><span class="line">    </span><br><span class="line">            for(int i=0 ; i&lt;arr.size() ; i++)</span><br><span class="line">              ans[i][arr[i]]=&apos;Q&apos;;</span><br><span class="line">    </span><br><span class="line">              return ans;</span><br><span class="line">          &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">        bool isSafe(vector&lt;int&gt; arr, int r , int c )</span><br><span class="line">         &#123;</span><br><span class="line">            int check;</span><br><span class="line">            for(int row=r-1,ldia=c-1,rdia=c+1 ; row&gt;=0 ; row--,ldia--,rdia++)</span><br><span class="line">            &#123;</span><br><span class="line">                check=arr[row];</span><br><span class="line">    </span><br><span class="line">                if(check==c || check==ldia || check==rdia)</span><br><span class="line">                 return false;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">         &#125;</span><br><span class="line">    </span><br><span class="line">        void solveNqueen(vector&lt;int&gt; arr , int r , int c)</span><br><span class="line">        &#123;</span><br><span class="line">            if(r==limit)</span><br><span class="line">             sol.push_back(toChessString(arr));</span><br><span class="line">                </span><br><span class="line">            else</span><br><span class="line">             &#123;</span><br><span class="line">                 for(int col=c ; col&lt;limit ; col++)</span><br><span class="line">                 &#123;</span><br><span class="line">                    arr[r]=col;</span><br><span class="line">    </span><br><span class="line">                    if(isSafe(arr,r,col))</span><br><span class="line">                      solveNqueen(arr,r+1,0);</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">        vector&lt;vector&lt;string&gt; &gt; solveNQueens(int n) &#123;</span><br><span class="line">            vector&lt;int&gt; arr(n,0);</span><br><span class="line">            limit=n;</span><br><span class="line">            solveNqueen(arr,0,0);</span><br><span class="line">          </span><br><span class="line">            return sol;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7644/c-6ms-solution-use-bitmask" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7644/c-6ms-solution-use-bitmask</a></p>
+<p>C++ 6ms solution use bitmask</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution </span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    string getNq(int p)</span><br><span class="line">    &#123;</span><br><span class="line">        string s(n, &apos;.&apos;);</span><br><span class="line">        s[p] = &apos;Q&apos;;</span><br><span class="line">        return s;</span><br><span class="line">    &#125;</span><br><span class="line">    void nQueens(int p, int l, int m, int r, vector&lt;vector&lt;string&gt;&gt; &amp;res)</span><br><span class="line">    &#123;</span><br><span class="line">        static vector&lt;string&gt; ans;</span><br><span class="line">        if (p &gt;= n)</span><br><span class="line">        &#123;</span><br><span class="line">            res.push_back(ans);</span><br><span class="line">            return ;</span><br><span class="line">        &#125;</span><br><span class="line">        int mask = l | m | r;</span><br><span class="line">        for (int i = 0, b = 1; i &lt; n; ++ i, b &lt;&lt;= 1)</span><br><span class="line">            if (!(mask &amp; b))</span><br><span class="line">            &#123;</span><br><span class="line">                ans.push_back(getNq(i));</span><br><span class="line">                nQueens(p + 1, (l | b) &gt;&gt; 1, m | b, (r | b) &lt;&lt; 1, res);</span><br><span class="line">                ans.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;string&gt; &gt; solveNQueens(int n) </span><br><span class="line">    &#123;</span><br><span class="line">        this-&gt;n = n;</span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt; res;</span><br><span class="line">        nQueens(0, 0, 0, 0, res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>108ms, 77.32%, June.16th, 2016</p>
+<p><a href="https://leetcode.com/discuss/49179/fast-short-and-easy-understand-python-solution-11-lines-76ms" target="_blank" rel="noopener">https://leetcode.com/discuss/49179/fast-short-and-easy-understand-python-solution-11-lines-76ms</a></p>
+<p>Fast, short, and easy-to-understand python solution, 11 lines, 76ms</p>
+<p>ideas: </p>
+<p>Use the DFS helper function to find solutions recursively. A solution will be found when the length of queens is equal to n ( queens is a list of the indices of the queens).</p>
+<p>In this problem, whenever a location (x, y) is occupied, any other locations (p, q ) where p + q == x + y or p - q == x - y would be invalid. We can use this information to keep track of the indicators (xy_dif and xy_sum ) of the invalid positions and then call DFS recursively with valid positions only. </p>
+<p>At the end, we convert the result (a list of lists; each sublist is the indices of the queens) into the desire format.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def solveNQueens(self, n):</span><br><span class="line">    def DFS(queens, xy_dif, xy_sum):</span><br><span class="line">        p = len(queens)</span><br><span class="line">        if p==n:</span><br><span class="line">            result.append(queens)</span><br><span class="line">            return None</span><br><span class="line">        for q in range(n):</span><br><span class="line">            if q not in queens and p-q not in xy_dif and p+q not in xy_sum: </span><br><span class="line">                DFS(queens+[q], xy_dif+[p-q], xy_sum+[p+q])  </span><br><span class="line">    result = []</span><br><span class="line">    DFS([],[],[])</span><br><span class="line">    return [ [&quot;.&quot;*i + &quot;Q&quot; + &quot;.&quot;*(n-i-1) for i in sol] for sol in result]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9445/14-lines-python-code-dfs-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9445/14-lines-python-code-dfs-solution</a></p>
+<p>14 lines python code, DFS solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @return a list of lists of string</span><br><span class="line">def solveNQueens(self, n):</span><br><span class="line">    stack, res = [[(0, i)] for i in range(n)], []</span><br><span class="line">    while stack:</span><br><span class="line">        board = stack.pop()</span><br><span class="line">        row = len(board)</span><br><span class="line">        if row == n:</span><br><span class="line">            res.append([&apos;&apos;.join(&apos;Q&apos; if i == c else &apos;.&apos; for i in range(n))</span><br><span class="line">                        for r, c in board])</span><br><span class="line">        for col in range(n):</span><br><span class="line">            if all(col != c and abs(row-r) != abs(col-c)for r, c in board):</span><br><span class="line">                stack.append(board+[(row, col)])</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22293/python-recursive-dfs-solution-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22293/python-recursive-dfs-solution-with-comments</a></p>
+<p>Python recursive dfs solution with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def solveNQueens(self, n):</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs([-1]*n, 0, [], res)</span><br><span class="line">    return res</span><br><span class="line"> </span><br><span class="line"># nums is a one-dimension array, like [1, 3, 0, 2] means</span><br><span class="line"># first queen is placed in column 1, second queen is placed</span><br><span class="line"># in column 3, etc.</span><br><span class="line">def dfs(self, nums, index, path, res):</span><br><span class="line">    if index == len(nums):</span><br><span class="line">        res.append(path)</span><br><span class="line">        return  # backtracking</span><br><span class="line">    for i in xrange(len(nums)):</span><br><span class="line">        nums[index] = i</span><br><span class="line">        if self.valid(nums, index):  # pruning</span><br><span class="line">            tmp = &quot;.&quot;*len(nums)</span><br><span class="line">            self.dfs(nums, index+1, path+[tmp[:i]+&quot;Q&quot;+tmp[i+1:]], res)</span><br><span class="line"></span><br><span class="line"># check whether nth queen can be placed in that column</span><br><span class="line">def valid(self, nums, n):</span><br><span class="line">    for i in xrange(n):</span><br><span class="line">        if abs(nums[i]-nums[n]) == n -i or nums[i] == nums[n]:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8592/comparably-concise-java-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8592/comparably-concise-java-code</a></p>
+<p>Comparably concise Java code</p>
+<p>Hi guys!</p>
+<p>I didn’t invent a wheel here. We just remember the busy columns and diagonals and recursively try to put the queen into the next row. But I think the code below is short enough to be reproduced in the interview.</p>
+<p>Hope it helps!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    </span><br><span class="line">    private void helper(int r, boolean[] cols, boolean[] d1, boolean[] d2, </span><br><span class="line">                        String[] board, List&lt;String[]&gt; res) &#123;</span><br><span class="line">        if (r == board.length) res.add(board.clone());</span><br><span class="line">        else &#123;</span><br><span class="line">            for (int c = 0; c &lt; board.length; c++) &#123;</span><br><span class="line">                int id1 = r - c + board.length, id2 = 2*board.length - r - c - 1;</span><br><span class="line">                if (!cols[c] &amp;&amp; !d1[id1] &amp;&amp; !d2[id2]) &#123;</span><br><span class="line">                    char[] row = new char[board.length];</span><br><span class="line">                    Arrays.fill(row, &apos;.&apos;); row[c] = &apos;Q&apos;;</span><br><span class="line">                    board[r] = new String(row);</span><br><span class="line">                    cols[c] = true; d1[id1] = true; d2[id2] = true;</span><br><span class="line">                    helper(r+1, cols, d1, d2, board, res);</span><br><span class="line">                    cols[c] = false; d1[id1] = false; d2[id2] = false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public List&lt;String[]&gt; solveNQueens(int n) &#123;</span><br><span class="line">        List&lt;String[]&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        helper(0, new boolean[n], new boolean[2*n], new boolean[2*n], </span><br><span class="line">            new String[n], res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19470/my-easy-understanding-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19470/my-easy-understanding-java-solution</a></p>
+<p>My easy understanding Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) &#123;</span><br><span class="line">        char[][] board = new char[n][n];</span><br><span class="line">        for(int i = 0; i &lt; n; i++)</span><br><span class="line">            for(int j = 0; j &lt; n; j++)</span><br><span class="line">                board[i][j] = &apos;.&apos;;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">        dfs(board, 0, res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void dfs(char[][] board, int colIndex, List&lt;List&lt;String&gt;&gt; res) &#123;</span><br><span class="line">        if(colIndex == board.length) &#123;</span><br><span class="line">            res.add(construct(board));</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = 0; i &lt; board.length; i++) &#123;</span><br><span class="line">            if(validate(board, i, colIndex)) &#123;</span><br><span class="line">                board[i][colIndex] = &apos;Q&apos;;</span><br><span class="line">                dfs(board, colIndex + 1, res);</span><br><span class="line">                board[i][colIndex] = &apos;.&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private boolean validate(char[][] board, int x, int y) &#123;</span><br><span class="line">        for(int i = 0; i &lt; board.length; i++) &#123;</span><br><span class="line">            for(int j = 0; j &lt; y; j++) &#123;</span><br><span class="line">                if(board[i][j] == &apos;Q&apos; &amp;&amp; (x + j == y + i || x + y == i + j || x == i))</span><br><span class="line">                    return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private List&lt;String&gt; construct(char[][] board) &#123;</span><br><span class="line">        List&lt;String&gt; res = new LinkedList&lt;String&gt;();</span><br><span class="line">        for(int i = 0; i &lt; board.length; i++) &#123;</span><br><span class="line">            String s = new String(board[i]);</span><br><span class="line">            res.add(s);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24329/share-my-java-dfs-solution-very-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24329/share-my-java-dfs-solution-very-easy-to-understand</a></p>
+<p>Share my JAVA DFS solution very easy to understand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    private Set&lt;Integer&gt; col = new HashSet&lt;Integer&gt;();</span><br><span class="line">    private Set&lt;Integer&gt; diag1 = new HashSet&lt;Integer&gt;();</span><br><span class="line">    private Set&lt;Integer&gt; diag2 = new HashSet&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">        dfs(res,new ArrayList&lt;String&gt;(), 0, n);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    private void dfs(List&lt;List&lt;String&gt;&gt; res, List&lt;String&gt; list, int row, int n)&#123;</span><br><span class="line">        if (row == n)&#123;</span><br><span class="line">            res.add(new ArrayList&lt;String&gt;(list));</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">            if (col.contains(i) || diag1.contains(row + i) || diag2.contains(row - i)) continue;</span><br><span class="line">            </span><br><span class="line">            char[] charArray = new char[n];</span><br><span class="line">            Arrays.fill(charArray, &apos;.&apos;);</span><br><span class="line">            charArray[i] = &apos;Q&apos;;</span><br><span class="line">            String rowString = new String(charArray);</span><br><span class="line">            </span><br><span class="line">            list.add(rowString);</span><br><span class="line">            col.add(i);</span><br><span class="line">            diag1.add(row + i);</span><br><span class="line">            diag2.add(row - i);</span><br><span class="line">            </span><br><span class="line">            dfs(res, list, row + 1, n);</span><br><span class="line">            </span><br><span class="line">            list.remove(list.size() - 1);</span><br><span class="line">            col.remove(i);</span><br><span class="line">            diag1.remove(row + i);</span><br><span class="line">            diag2.remove(row - i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/40881/93-concise-fast-and-clear-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/40881/93-concise-fast-and-clear-java-solution</a></p>
+<p>93% concise, fast, and clear java solution</p>
+<p>The code has comment.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;String&gt;&gt; solveNQueens(int n) &#123;</span><br><span class="line">        boolean[] </span><br><span class="line">            //ocp0 = new boolean[n], //whether there&apos;s a queen ocupying nth row, I don&apos;t need it</span><br><span class="line">            ocp90 = new boolean[n], //whether there&apos;s a queen ocupying nth column</span><br><span class="line">            ocp45 = new boolean[2 * n - 1], // mark 45 degree occupation</span><br><span class="line">            ocp135 = new boolean[2 * n - 1]; // mark 135 degree occupation</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; ans = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">        char[][] map = new char[n][n];</span><br><span class="line">        for (char[] tmp : map) Arrays.fill(tmp, &apos;.&apos;); //init</span><br><span class="line">        </span><br><span class="line">        solve(0, n, map, ans, ocp45, ocp90, ocp135);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void solve(int depth, int n, char[][] map, List&lt;List&lt;String&gt;&gt; ans, </span><br><span class="line">    boolean[] ocp45, boolean[] ocp90, boolean[] ocp135) &#123;</span><br><span class="line">        if (depth == n) &#123;</span><br><span class="line">            addSolution(ans, map);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int j = 0; j &lt; n; j++)</span><br><span class="line">            if (!ocp90[j] &amp;&amp; !ocp45[depth + j] &amp;&amp; !ocp135[j - depth + n - 1]) &#123;</span><br><span class="line">                ocp90[j] = true;</span><br><span class="line">                ocp45[depth + j] = true;</span><br><span class="line">                ocp135[j - depth + n - 1] = true;</span><br><span class="line">                map[depth][j] = &apos;Q&apos;;</span><br><span class="line">                solve(depth + 1, n, map, ans, ocp45, ocp90, ocp135);</span><br><span class="line">                ocp90[j] = false;</span><br><span class="line">                ocp45[depth + j] = false;</span><br><span class="line">                ocp135[j - depth + n - 1] = false;</span><br><span class="line">                map[depth][j] = &apos;.&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void addSolution(List&lt;List&lt;String&gt;&gt; ans, char[][] map) &#123;</span><br><span class="line">        List&lt;String&gt; cur = new ArrayList&lt;String&gt;();</span><br><span class="line">        for (char[] i : map) cur.add(String.valueOf(i));</span><br><span class="line">        ans.add(cur);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/aa0d9b9e/" title="051. N-Queens">http://yucc.me/p/aa0d9b9e/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/f4cb4bf8/" rel="next" title="050. Pow(x, n)">
+                <i class="fa fa-chevron-left"></i> 050. Pow(x, n)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/8e5f0d6d/" rel="prev" title="052. N-Queens II">
+                052. N-Queens II <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
