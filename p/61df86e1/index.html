@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,two pointers,medium,linked list," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="24.3%  https://leetcode.com/problems/rotate-list/ Given a list, rotate the list to the right by k places, where k is non-negative. 123For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2,re">
+<meta name="keywords" content="leetcode,two pointers,medium,linked list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="061. Rotate List">
 <meta property="og:url" content="http://yucc.me/p/61df86e1/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="24.3%  https://leetcode.com/problems/rotate-list/ Given a list, rotate the list to the right by k places, where k is non-negative. 123For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2,re">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T02:47:51.800Z">
+<meta property="og:updated_time" content="2018-05-22T04:03:22.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="061. Rotate List">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="24.3%  https://leetcode.com/problems/rotate-list/ Given a list, rotate the list to the right by k places, where k is non-negative. 123For example:Given 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL and k = 2,re">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T10:47:51+08:00">
-                2018-05-22 10:47
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:03:22+08:00">
+                2018-05-22 12:03
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,749
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,103 @@
       
 
       
-        
+        <ul>
+<li>24.3%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/rotate-list/" target="_blank" rel="noopener">https://leetcode.com/problems/rotate-list/</a></p>
+<p>Given a list, rotate the list to the right by k places, where k is non-negative.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL and k = 2,</span><br><span class="line">return 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL.</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>先遍历一遍，求出长度</p>
+<p>通过将尾节点与头结点相链接</p>
+<p>然后向前走 len - k%len步，就可以了。</p>
+<p>核心：一次遍历求长度，然后尾部相连</p>
+<p>我的代码实现：</p>
+<p>Oct, 11th, 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">rotateRight</span><span class="params">(ListNode* head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 是或||的关系，不是&amp;&amp;</span></span><br><span class="line">        <span class="comment">// k==0的情况要考虑到</span></span><br><span class="line">        <span class="keyword">if</span>(!head || !head-&gt;next || k==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* p1 = head;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1-&gt;next)&#123;</span><br><span class="line">            cnt++;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 现除以cnt</span></span><br><span class="line">        <span class="comment">// 要移动的步数，需要用cnt-k</span></span><br><span class="line">        k %= cnt;</span><br><span class="line">        k = cnt -k;</span><br><span class="line">        p1-&gt;next = head;</span><br><span class="line">        <span class="keyword">while</span>(k!=<span class="number">0</span>)&#123;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* node = p1-&gt;next;</span><br><span class="line">        p1-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>C++ simple algorithm with explanation</p>
+<ol>
+<li>Enumerate through the list to find the last node, count the size along the way.</li>
+<li>Make a loop, by connection last to first</li>
+<li>Get modulo of |k/size| - avoiding extra rotation</li>
+<li>Enumerate again size-k nodes</li>
+<li>Break the loop and return new head</li>
+</ol>
+<p>code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ListNode *rotateRight(ListNode *head, int k) </span><br><span class="line">     &#123;</span><br><span class="line">        if(head == NULL || head-&gt;next == NULL||k==0) return head;</span><br><span class="line">        </span><br><span class="line">        ListNode* node = head;</span><br><span class="line">        int size =1;</span><br><span class="line">        </span><br><span class="line">        while(node-&gt;next != NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            size++;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //loop the list</span><br><span class="line">        node-&gt;next=head;</span><br><span class="line">        </span><br><span class="line">        //handle the case of k&gt;size</span><br><span class="line">        k = k%size;</span><br><span class="line">        </span><br><span class="line">        //find the node to break the loop at</span><br><span class="line">        while(--size &gt;= k)</span><br><span class="line">        &#123;</span><br><span class="line">            node=node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode* first = node-&gt;next;</span><br><span class="line">        node-&gt;next=NULL;</span><br><span class="line">        </span><br><span class="line">        return first;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>代码的另一种实现</p>
+<p>My clean C++ code, quite standard (find tail and reconnect the list)</p>
+<p>There is no trick for this problem. Some people used slow/fast pointers to find the tail node but I don’t see the benefit (in the sense that it doesn’t reduce the pointer move op) to do so. So I just used one loop to find the length first.</p>
+<p>12ms, September 11, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* rotateRight(ListNode* head, int k) &#123;</span><br><span class="line">        if(!head) return head;</span><br><span class="line">        </span><br><span class="line">        int len=1; // number of nodes</span><br><span class="line">        ListNode *newH, *tail;</span><br><span class="line">        newH=tail=head;</span><br><span class="line">        </span><br><span class="line">        while(tail-&gt;next)  // get the number of nodes in the list</span><br><span class="line">        &#123;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        tail-&gt;next = head; // circle the link</span><br><span class="line"></span><br><span class="line">        if(k %= len) </span><br><span class="line">        &#123;</span><br><span class="line">            for(auto i=0; i&lt;len-k; i++) tail = tail-&gt;next; // the tail node is the (len-k)-th node (1st node is head)</span><br><span class="line">        &#125;</span><br><span class="line">        newH = tail-&gt;next; </span><br><span class="line">        tail-&gt;next = NULL;</span><br><span class="line">        return newH;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/815/what-to-do-when-k-is-greater-than-size-of-list" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/815/what-to-do-when-k-is-greater-than-size-of-list</a></p>
+<p>What to do when k is greater than size of list ?</p>
+<p>i am not getting that what i should do when K is greater than size of the list.</p>
+<p><a href="https://discuss.leetcode.com/topic/815/what-to-do-when-k-is-greater-than-size-of-list/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/815/what-to-do-when-k-is-greater-than-size-of-list/2</a></p>
+<p>Let’s start with an example.</p>
+<p>Given [0,1,2], rotate 1 steps to the right -&gt; [2,0,1].</p>
+<p>Given [0,1,2], rotate 2 steps to the right -&gt; [1,2,0].</p>
+<p>Given [0,1,2], rotate 3 steps to the right -&gt; [0,1,2].</p>
+<p>Given [0,1,2], rotate 4 steps to the right -&gt; [2,0,1].</p>
+<p>So, no matter how big K, the number of steps is, the result is always the same as rotating K % n steps to the right.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9161/i-think-the-description-of-this-problem-is-misleading" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9161/i-think-the-description-of-this-problem-is-misleading</a></p>
+<p>I think the description of this problem is misleading.</p>
+<p>Recalling the problems about rotated array, this description is misleading. For those who have trouble understanding this problem like me, think of the SLL as a circle.</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/14470/my-clean-c-code-quite-standard-find-tail-and-reconnect-the-list" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14470/my-clean-c-code-quite-standard-find-tail-and-reconnect-the-list</a></p>
+<p>My clean C++ code, quite standard (find tail and reconnect the list)</p>
+<p>There is no trick for this problem. Some people used slow/fast pointers to find the tail node but I don’t see the benefit (in the sense that it doesn’t reduce the pointer move op) to do so. So I just used one loop to find the length first.</p>
+<p>12ms, September 11, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* rotateRight(ListNode* head, int k) &#123;</span><br><span class="line">        if(!head) return head;</span><br><span class="line">        </span><br><span class="line">        int len=1; // number of nodes</span><br><span class="line">        ListNode *newH, *tail;</span><br><span class="line">        newH=tail=head;</span><br><span class="line">        </span><br><span class="line">        while(tail-&gt;next)  // get the number of nodes in the list</span><br><span class="line">        &#123;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">            len++;</span><br><span class="line">        &#125;</span><br><span class="line">        tail-&gt;next = head; // circle the link</span><br><span class="line"></span><br><span class="line">        if(k %= len) </span><br><span class="line">        &#123;</span><br><span class="line">            for(auto i=0; i&lt;len-k; i++) tail = tail-&gt;next; // the tail node is the (len-k)-th node (1st node is head)</span><br><span class="line">        &#125;</span><br><span class="line">        newH = tail-&gt;next; </span><br><span class="line">        tail-&gt;next = NULL;</span><br><span class="line">        return newH;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7293/c-simple-algorithm-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7293/c-simple-algorithm-with-explanation</a></p>
+<p>C++ simple algorithm with explanation</p>
+<ol>
+<li>Enumerate through the list to find the last node, count the size along the way.</li>
+<li>Make a loop, by connection last to first</li>
+<li>Get modulo of |k/size| - avoiding extra rotation</li>
+<li>Enumerate again size-k nodes</li>
+<li>Break the loop and return new head</li>
+</ol>
+<p>code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">ListNode *rotateRight(ListNode *head, int k) </span><br><span class="line">     &#123;</span><br><span class="line">        if(head == NULL || head-&gt;next == NULL||k==0) return head;</span><br><span class="line">        </span><br><span class="line">        ListNode* node = head;</span><br><span class="line">        int size =1;</span><br><span class="line">        </span><br><span class="line">        while(node-&gt;next != NULL)</span><br><span class="line">        &#123;</span><br><span class="line">            size++;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //loop the list</span><br><span class="line">        node-&gt;next=head;</span><br><span class="line">        </span><br><span class="line">        //handle the case of k&gt;size</span><br><span class="line">        k = k%size;</span><br><span class="line">        </span><br><span class="line">        //find the node to break the loop at</span><br><span class="line">        while(--size &gt;= k)</span><br><span class="line">        &#123;</span><br><span class="line">            node=node-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode* first = node-&gt;next;</span><br><span class="line">        node-&gt;next=NULL;</span><br><span class="line">        </span><br><span class="line">        return first;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>1ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/2861/share-my-java-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2861/share-my-java-solution-with-explanation</a></p>
+<p>Share my java solution with explanation</p>
+<p>Since n may be a large number compared to the length of list. So we need to know the length of linked list.After that, move the list after the (l-n%l )th node to the front to finish the rotation.</p>
+<p>Ex: {1,2,3} k=2 Move the list after the 1st node to the front</p>
+<p>Ex: {1,2,3} k=5, In this case Move the list after (3-5%3=1)st node to the front.</p>
+<p>So the code has three parts.</p>
+<ol>
+<li><p>Get the length</p>
+</li>
+<li><p>Move to the (l-n%l)th node</p>
+</li>
+</ol>
+<p>3)Do the rotation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public ListNode rotateRight(ListNode head, int n) &#123;</span><br><span class="line">    if (head==null||head.next==null) return head;</span><br><span class="line">    ListNode dummy=new ListNode(0);</span><br><span class="line">    dummy.next=head;</span><br><span class="line">    ListNode fast=dummy,slow=dummy;</span><br><span class="line"></span><br><span class="line">    int i;</span><br><span class="line">    for (i=0;fast.next!=null;i++)//Get the total length </span><br><span class="line">    	fast=fast.next;</span><br><span class="line">    </span><br><span class="line">    for (int j=i-n%i;j&gt;0;j--) //Get the i-n%i th node</span><br><span class="line">    	slow=slow.next;</span><br><span class="line">    </span><br><span class="line">    fast.next=dummy.next; //Do the rotation</span><br><span class="line">    dummy.next=slow.next;</span><br><span class="line">    slow.next=null;</span><br><span class="line">    </span><br><span class="line">    return dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26364/clean-java-solution-with-brief-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26364/clean-java-solution-with-brief-explanation</a></p>
+<p>Clean Java Solution with Brief Explanation</p>
+<p>The basic idea is to link the tail of the list with the head, make it a cycle. Then count to the rotate point and cut it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">if (head == null)</span><br><span class="line">		return head;</span><br><span class="line">	</span><br><span class="line">	ListNode copyHead = head;</span><br><span class="line">	</span><br><span class="line">	int len = 1;</span><br><span class="line">	while (copyHead.next != null) &#123;</span><br><span class="line">		copyHead = copyHead.next;</span><br><span class="line">		len++;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	copyHead.next = head;</span><br><span class="line">	</span><br><span class="line">	for (int i = len - k % len; i &gt; 1; i--)</span><br><span class="line">		head = head.next;</span><br><span class="line"></span><br><span class="line">	copyHead = head.next;</span><br><span class="line">	head.next = null;</span><br><span class="line"></span><br><span class="line">	return copyHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10991/my-short-java-solution-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10991/my-short-java-solution-with-comments</a></p>
+<p>My short java solution with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public ListNode rotateRight(ListNode head, int k) &#123;</span><br><span class="line">    if(head==null||head.next==null||k==0) return head;</span><br><span class="line">    </span><br><span class="line">    //make it a cricle, break from k postion far from the head</span><br><span class="line">    ListNode index=head; int len=1;// int len to record the length of list</span><br><span class="line">    while(index.next!=null)</span><br><span class="line">    &#123;index=index.next; len++;&#125;</span><br><span class="line">    index.next=head;</span><br><span class="line">    </span><br><span class="line">    for(int i=0;i&lt;len-k%len;i++)</span><br><span class="line">    &#123;</span><br><span class="line">       index=index.next;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode result=index.next;</span><br><span class="line">    index.next=null;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/42445/java-clean-solution-only-one-pointer-used" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/42445/java-clean-solution-only-one-pointer-used</a></p>
+<p>Java clean solution, only one pointer used</p>
+<p>I first used a ListNode p, and point it to the head, then move it to the end of the list, and at the same time get the length of the list. Then p.next = head; gives me a circle. At this time, by moving p for len-k times, it will be pointing to the node before the break point. Then all we need to do is record the next node as head, and break the circle with p.next = null.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public ListNode rotateRight(ListNode head, int k) &#123;</span><br><span class="line">    if(head == null || k == 0) &#123;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode p = head;</span><br><span class="line">    int len = 1;</span><br><span class="line">    while(p.next != null) &#123;</span><br><span class="line">        p = p.next;</span><br><span class="line">        len++;</span><br><span class="line">    &#125;</span><br><span class="line">    p.next = head;</span><br><span class="line">    k %= len;</span><br><span class="line">    for(int i = 0; i &lt; len - k; i++) &#123;</span><br><span class="line">        p = p.next;</span><br><span class="line">    &#125;</span><br><span class="line">    head = p.next;</span><br><span class="line">    p.next = null;</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +609,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+        </div>
       
 
       
@@ -574,8 +704,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,7 +729,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,6 +813,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

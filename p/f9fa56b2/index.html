@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,dynamic programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="37.5%  https://leetcode.com/problems/minimum-path-sum/ Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its">
+<meta name="keywords" content="leetcode,array,medium,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="064. Minimum Path Sum">
 <meta property="og:url" content="http://yucc.me/p/f9fa56b2/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="37.5%  https://leetcode.com/problems/minimum-path-sum/ Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T02:47:51.807Z">
+<meta property="og:updated_time" content="2018-05-22T04:06:09.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="064. Minimum Path Sum">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="37.5%  https://leetcode.com/problems/minimum-path-sum/ Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T10:47:51+08:00">
-                2018-05-22 10:47
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:06:09+08:00">
+                2018-05-22 12:06
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,502
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  16
                 </span>
               
             </div>
@@ -430,7 +452,77 @@
       
 
       
-        
+        <ul>
+<li>37.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/minimum-path-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-path-sum/</a></p>
+<p>Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
+<p>Note: You can only move either down or right at any point in time.</p>
+ <a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = grid.size(), n = grid[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;n; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; j&gt;<span class="number">0</span>)</span><br><span class="line">                    grid[i][j] += min(grid[i<span class="number">-1</span>][j], grid[i][j<span class="number">-1</span>]);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i==<span class="number">0</span> &amp;&amp; j&gt;<span class="number">0</span>)</span><br><span class="line">                    grid[i][j] += grid[i][j<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; j==<span class="number">0</span>)</span><br><span class="line">                    grid[i][j] += grid[i<span class="number">-1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> grid[m<span class="number">-1</span>][n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/15269/10-lines-28ms-o-n-space-dp-solution-in-c-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15269/10-lines-28ms-o-n-space-dp-solution-in-c-with-explanations</a></p>
+<p>10-lines 28ms O(n)-space DP solution in C++ with Explanations</p>
+<p>This is a typical DP problem. Suppose the minimum path sum of arriving at point (i, j) is S[i][j], then the state equation is S[i][j] = min(S[i - 1][j], S[i][j - 1]) + grid[i][j].</p>
+<p>Well, some boundary conditions need to be handled. The boundary conditions happen on the topmost row (S[i - 1][j] does not exist) and the leftmost column (S[i][j - 1] does not exist). Suppose grid is like [1, 1, 1, 1], then the minimum sum to arrive at each point is simply an accumulation of previous points and the result is [1, 2, 3, 4].</p>
+<p>Now we can write down the following (unoptimized) code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">        int m = grid.size();</span><br><span class="line">        int n = grid[0].size(); </span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; sum(m, vector&lt;int&gt;(n, grid[0][0]));</span><br><span class="line">        for (int i = 1; i &lt; m; i++)</span><br><span class="line">            sum[i][0] = sum[i - 1][0] + grid[i][0];</span><br><span class="line">        for (int j = 1; j &lt; n; j++)</span><br><span class="line">            sum[0][j] = sum[0][j - 1] + grid[0][j];</span><br><span class="line">        for (int i = 1; i &lt; m; i++)</span><br><span class="line">            for (int j = 1; j &lt; n; j++)</span><br><span class="line">                sum[i][j]  = min(sum[i - 1][j], sum[i][j - 1]) + grid[i][j];</span><br><span class="line">        return sum[m - 1][n - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二:</p>
+<p>As can be seen, each time when we update sum[i][j], we only need sum[i - 1][j] (at the current column) and sum[i][j - 1] (at the left column). So we need not maintain the full m*n matrix. Maintaining two columns is enough and now we have the following code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">        int m = grid.size();</span><br><span class="line">        int n = grid[0].size();</span><br><span class="line">        vector&lt;int&gt; pre(m, grid[0][0]);</span><br><span class="line">        vector&lt;int&gt; cur(m, 0);</span><br><span class="line">        for (int i = 1; i &lt; m; i++)</span><br><span class="line">            pre[i] = pre[i - 1] + grid[i][0];</span><br><span class="line">        for (int j = 1; j &lt; n; j++) &#123; </span><br><span class="line">            cur[0] = pre[0] + grid[0][j]; </span><br><span class="line">            for (int i = 1; i &lt; m; i++)</span><br><span class="line">                cur[i] = min(cur[i - 1], pre[i]) + grid[i][j];</span><br><span class="line">            swap(pre, cur); </span><br><span class="line">        &#125;</span><br><span class="line">        return pre[m - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Further inspecting the above code, it can be seen that maintaining pre is for recovering pre[i], which is simply cur[i] before its update. So it is enough to use only one vector. Now the space is further optimized and the code also gets shorter.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; grid) &#123;</span><br><span class="line">        int m = grid.size();</span><br><span class="line">        int n = grid[0].size();</span><br><span class="line">        vector&lt;int&gt; cur(m, grid[0][0]);</span><br><span class="line">        for (int i = 1; i &lt; m; i++)</span><br><span class="line">            cur[i] = cur[i - 1] + grid[i][0]; </span><br><span class="line">        for (int j = 1; j &lt; n; j++) &#123;</span><br><span class="line">            cur[0] += grid[0][j]; </span><br><span class="line">            for (int i = 1; i &lt; m; i++)</span><br><span class="line">                cur[i] = min(cur[i - 1], cur[i]) + grid[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">        return cur[m - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3403/dp-solution-linear-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3403/dp-solution-linear-space</a></p>
+<p>DP Solution, Linear space</p>
+<p>You can only reach a cell by going from its left or top neighbor.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minPathSum(vector&lt;vector&lt;int&gt; &gt; &amp;grid) &#123;</span><br><span class="line">        if(!grid.size())return 0;</span><br><span class="line">        const int rows=grid.size(),cols=grid[0].size();</span><br><span class="line">        // r[i] == min path sum to previous row&apos;s column i.</span><br><span class="line">        vector&lt;int&gt; r(cols,0);</span><br><span class="line">        int i,j;</span><br><span class="line">        r[0]=grid[0][0];</span><br><span class="line">        for(j=1;j&lt;cols;j++)&#123;</span><br><span class="line">            r[j]=grid[0][j]+r[j-1];       </span><br><span class="line">        &#125;</span><br><span class="line">        for(i=1;i&lt;rows;i++)&#123;</span><br><span class="line">            r[0]+=grid[i][0];</span><br><span class="line">            for(j=1;j&lt;cols;j++)&#123;</span><br><span class="line">                r[j]=min(r[j-1],r[j])+grid[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return r[cols-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/448/minimum-path-sum-how-can-i-reduce-the-memory" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/448/minimum-path-sum-how-can-i-reduce-the-memory</a></p>
+<p>Minimum Path Sum ———How can I reduce the memory.</p>
+<p>Here is the idea:</p>
+<ol>
+<li>f[m][n] is a matrix store the min value of every location we can<br>get.</li>
+<li>f[0][0] =grid[0][0], f[i][0]=f[i-1][0]+grid[i][0], f[0][j]=f[0][j-1]+grid[0][j]</li>
+<li>f[i][j]=min(f[i-1][j],f[i][j-1])+grid[i][j].</li>
+<li>at last return the f[m-1][n-1]</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">        public:</span><br><span class="line">            int minPathSum(vector&lt;vector&lt;int&gt; &gt; &amp;grid) &#123;</span><br><span class="line">                // IMPORTANT: Please reset any member data you declared, as</span><br><span class="line">                // the same Solution instance will be reused for each test case.</span><br><span class="line">                int m=grid.size();</span><br><span class="line">                int n=grid[0].size();</span><br><span class="line">                int** f;</span><br><span class="line">                f=new int*[m];</span><br><span class="line">                for(int i=0;i&lt;m;i)&#123;</span><br><span class="line">                    f[i]=new int[n];</span><br><span class="line">                &#125;</span><br><span class="line">                f[0][0]=grid[0][0];</span><br><span class="line">                for(int i=1;i&lt;m;i++)&#123;</span><br><span class="line">                    f[i][0]=f[i-1][0]+grid[i][0];</span><br><span class="line">                &#125;</span><br><span class="line">                for(int i=1;i&lt;n;i++)&#123;</span><br><span class="line">                    f[0][i]=f[0][i-1]+grid[0][i];</span><br><span class="line">                &#125;</span><br><span class="line">                for(int i=1;i&lt;m;i++)&#123;</span><br><span class="line">                    for(int j=1;j&lt;n;j++)</span><br><span class="line">                        f[i][j]=min(f[i-1][j],f[i][j-1])+grid[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">                return f[m-1][n-1];</span><br><span class="line">            &#125;</span><br><span class="line">            int min(int a,int b)&#123;</span><br><span class="line">                if(a&gt;b)</span><br><span class="line">                    return b;</span><br><span class="line">                else</span><br><span class="line">                    return a;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16654/c-easy-solution-using-dp-space-compexity-o-1" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16654/c-easy-solution-using-dp-space-compexity-o-1</a></p>
+<p>C++ easy solution using dp. space compexity : O(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minPathSum(vector&lt;vector&lt;int&gt;&gt;&amp; a) &#123;</span><br><span class="line">        int m=a.size();</span><br><span class="line">        if(m==0) return 0;</span><br><span class="line">        int n= a[0].size();</span><br><span class="line">        </span><br><span class="line">        for(int i = 0 ; i&lt;m; i++  )&#123;</span><br><span class="line">            for(int j=0; j&lt;n ; j++)&#123;</span><br><span class="line">                int left= (j==0) ? INT_MAX : a[i][j-1];</span><br><span class="line">                int up = (i==0) ? INT_MAX : a[i-1][j];</span><br><span class="line">                if(i==0 &amp;&amp; j==0) continue;</span><br><span class="line">                a[i][j] += min(left, up );</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return a[m-1][n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://leetcode.com/discuss/34905/simple-python-dp-70ms" target="_blank" rel="noopener">https://leetcode.com/discuss/34905/simple-python-dp-70ms</a></p>
+<p>76ms, 49.83%, June.20th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minPathSum(self, grid):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type grid: List[List[int]]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        m = len(grid)</span><br><span class="line">        n = len(grid[0])</span><br><span class="line">        for i in xrange(1, n):</span><br><span class="line">            grid[0][i] += grid[0][i-1]</span><br><span class="line">        for i in xrange(1, m):</span><br><span class="line">            grid[i][0] += grid[i-1][0]</span><br><span class="line">        for i in xrange(1,m):</span><br><span class="line">            for j in xrange(1, n):</span><br><span class="line">                grid[i][j] += min(grid[i-1][j], grid[i][j-1])</span><br><span class="line">        return grid[-1][-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5459/my-java-solution-using-dp-and-no-extra-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5459/my-java-solution-using-dp-and-no-extra-space</a></p>
+<p>My java solution using DP and no extra space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int minPathSum(int[][] grid) &#123;</span><br><span class="line">	int m = grid.length;// row</span><br><span class="line">	int n = grid[0].length; // column</span><br><span class="line">	for (int i = 0; i &lt; m; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">			if (i == 0 &amp;&amp; j != 0) &#123;</span><br><span class="line">				grid[i][j] = grid[i][j] + grid[i][j - 1];</span><br><span class="line">			&#125; else if (i != 0 &amp;&amp; j == 0) &#123;</span><br><span class="line">				grid[i][j] = grid[i][j] + grid[i - 1][j];</span><br><span class="line">			&#125; else if (i == 0 &amp;&amp; j == 0) &#123;</span><br><span class="line">				grid[i][j] = grid[i][j];</span><br><span class="line">			&#125; else &#123;</span><br><span class="line">				grid[i][j] = Math.min(grid[i][j - 1], grid[i - 1][j])</span><br><span class="line">						+ grid[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return grid[m - 1][n - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30575/my-8-lines-simple-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30575/my-8-lines-simple-solution</a></p>
+<p>My 8 lines simple solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int m = grid.length, n = grid[0].length;</span><br><span class="line">for(int i = 0; i &lt; m; i++)&#123;</span><br><span class="line">	for(int j = 0; j &lt; n; j++)&#123;</span><br><span class="line">	if(i == 0 &amp;&amp; j != 0) grid[i][j] += grid[i][j-1];</span><br><span class="line">	if(i != 0 &amp;&amp; j == 0) grid[i][j] += grid[i-1][j];</span><br><span class="line">	if (i != 0 &amp;&amp; j != 0) grid[i][j] += Math.min(grid[i-1][j], grid[i][j-1]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">return grid[m-1][n-1];</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3184/ac-java-dp-solution-v-s-tle-dijstra-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3184/ac-java-dp-solution-v-s-tle-dijstra-solution</a></p>
+<p>AC Java DP solution v.s. TLE Dijstra solution</p>
+<p>When I looked at this question, the first thought was the Dijkstra solution, which is a very fast algorithm to calculate the shortest path. But this solution got TLE in this question, while DP solution worked fine.</p>
+<p>I will talk about the Dijkstra solution first, as it’s the first though came into my mind, and there is already discussions on the DP solution. If you are not interested in the Dijkstra solution, you can jump to the latter part of this post, which is about the DP solution, which is accepted.</p>
+<p>Dijkstra<br>The idea of Dijkstra algorithm is to divide the graph into 2 parts, visited and unvisited.<br>For every node in the visited part has a dist value. Then we need to exam every edges across the visited part and the unvisited parts, which are edges that its start node is in the visited part, while its end node is in the unvisited part. What we are looking for is one edge, which has the minimum value of (dist(start node) + the edge’s value). Then we put this node into the visited part and exam the edges again.</p>
+<p>Following is the code. It uses a Java Heap, PriorityQueue to keep track of the minimum (dist(start node) + the edge’s value), but in this question, the edge value is in the node itself, which is the same for every edges ending to it, so actually the heap just keeps track of the mimimum dist(start node) of every unvisited nodes around the boarder between visited and unvisited.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class Solution_dijkstra &#123;</span><br><span class="line"></span><br><span class="line">class PointComparator implements Comparator&lt;int[]&gt;&#123;</span><br><span class="line">	int[][] dist;</span><br><span class="line">	public PointComparator(int[][] dist)&#123;</span><br><span class="line">		this.dist = dist;</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public int compare(int[] o1, int[] o2) &#123;</span><br><span class="line">		int[] point1 = (int[])o1;</span><br><span class="line">        int[] point2 = (int[])o2;</span><br><span class="line">        return Integer.valueOf(dist[point1[0]][point1[1]])</span><br><span class="line">            .compareTo(Integer.valueOf(dist[point2[0]][point2[1]]));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">public int minPathSum(int[][] grid) &#123;</span><br><span class="line">    if(grid == null || grid.length == 0) return 0;</span><br><span class="line">    int m = grid.length;</span><br><span class="line">    int n = grid[0].length;</span><br><span class="line">    </span><br><span class="line">    boolean[][] visited = new boolean[m][n];</span><br><span class="line">    int[][] dist = new int[m][n];</span><br><span class="line">    </span><br><span class="line">    for(int x = 0; x &lt; m; x++)&#123;</span><br><span class="line">        for(int y = 0; y &lt; n; y++)&#123;</span><br><span class="line">            dist[x][y] = Integer.MAX_VALUE;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    dist[0][0] = grid[0][0];</span><br><span class="line">    </span><br><span class="line">    PriorityQueue&lt;int[]&gt; pq = new PriorityQueue&lt;int[]&gt;( m*n, new PointComparator(dist));</span><br><span class="line">    </span><br><span class="line">    pq.add(new int[]&#123;0, 0&#125;);</span><br><span class="line">    </span><br><span class="line">    while(!pq.isEmpty())&#123;</span><br><span class="line">        </span><br><span class="line">        int[] point = pq.poll();</span><br><span class="line">        int x = point[0];</span><br><span class="line">        int y = point[1];</span><br><span class="line">        int d = dist[x][y];</span><br><span class="line">        </span><br><span class="line">        if(x == n-1 &amp;&amp; y == m-1)&#123;</span><br><span class="line">            return d;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        visited[x][y] = true;</span><br><span class="line">        </span><br><span class="line">        if((y+1 &lt; n) &amp;&amp; !visited[x][y+1])&#123;</span><br><span class="line">            dist[x][y+1] = min(</span><br><span class="line">                dist[x][y+1],</span><br><span class="line">                d + grid[x][y+1]);</span><br><span class="line">            pq.add(new int[]&#123;x, y+1&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if((x+1 &lt; m ) &amp;&amp; !visited[x+1][y])&#123;</span><br><span class="line">            dist[x+1][y] = min(</span><br><span class="line">                dist[x+1][y],</span><br><span class="line">                d + grid[x+1][y]);</span><br><span class="line">            pq.add(new int[]&#123;x+1, y&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int min(int i1, int i2)&#123;</span><br><span class="line">	return i1 &lt; i2 ? i1 : i2;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>This solution got LTE error, mostly because of the priority queue and doesn’t consider the special condition here that it’s a grid and directed, which means a node can only be accessed from it’s left and upper nodes. Put all these into consideration, we have the DP solution. It’s essentially formula is</p>
+<p>dist(node) = min( dist(upper node), dist(left node)) + node’s value</p>
+<p>DP<br>here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">public class Solution_dp &#123;</span><br><span class="line"></span><br><span class="line">private int getDist(int[][] dist, int x, int y)&#123;</span><br><span class="line">	if(x &lt; 0 || y &lt; 0)&#123;</span><br><span class="line">		return Integer.MAX_VALUE;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return dist[x][y];		</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int min(int i1, int i2)&#123;</span><br><span class="line">	return i1 &lt; i2 ? i1 : i2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public int minPathSum(int[][] grid) &#123;</span><br><span class="line"></span><br><span class="line">	if(grid == null || grid.length == 0) return 0;</span><br><span class="line">	</span><br><span class="line">	int m = grid.length;</span><br><span class="line">	int n = grid[0].length;</span><br><span class="line">	</span><br><span class="line">	int[][] dist = new int[m][n];</span><br><span class="line">	</span><br><span class="line">			</span><br><span class="line">	</span><br><span class="line">	for(int x = 0; x &lt; m; x++)&#123;</span><br><span class="line">		for(int y = 0; y &lt; n; y++)&#123;</span><br><span class="line">			</span><br><span class="line">			if(x == 0 &amp;&amp; y == 0)&#123;</span><br><span class="line">				dist[0][0] = grid[0][0];</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				dist[x][y] = min(getDist(dist, x-1, y), getDist(dist, x, y-1))  + grid[x][y];					</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;			</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return dist[m-1][n-1];</span><br><span class="line">			</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minPathSum(int[][] grid) &#123;</span><br><span class="line">        int m=grid.length; </span><br><span class="line">        int n=grid[0].length;</span><br><span class="line">        for(int i=0; i&lt;m; i++)</span><br><span class="line">            for(int j=0; j&lt;n; j++)&#123;</span><br><span class="line">                if(i==0 &amp;&amp; j==0) continue;</span><br><span class="line">                if(i&gt;0 &amp;&amp; j==0) grid[i][j] += grid[i-1][j];</span><br><span class="line">                if(i==0 &amp;&amp; j&gt;0) grid[i][j] += grid[i][j-1]; </span><br><span class="line">                if(i&gt;0 &amp;&amp; j&gt;0) grid[i][j] += Math.min(grid[i][j-1], grid[i-1][j]);</span><br><span class="line">        &#125;</span><br><span class="line">        return grid[m-1][n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +583,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +678,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,7 +703,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,6 +787,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

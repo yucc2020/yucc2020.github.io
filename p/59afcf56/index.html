@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,dynamic programming," />
 
 
 
@@ -85,18 +85,20 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="39.7%  https://leetcode.com/problems/unique-paths/ A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any">
+<meta name="keywords" content="leetcode,array,medium,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="062. Unique Paths">
 <meta property="og:url" content="http://yucc.me/p/59afcf56/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="39.7%  https://leetcode.com/problems/unique-paths/ A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T02:47:51.802Z">
+<meta property="og:image" content="https://leetcode.com/static/images/problemset/robot_maze.png">
+<meta property="og:updated_time" content="2018-05-22T04:04:21.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="062. Unique Paths">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="39.7%  https://leetcode.com/problems/unique-paths/ A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below). The robot can only move either down or right at any">
+<meta name="twitter:image" content="https://leetcode.com/static/images/problemset/robot_maze.png">
 
 
 
@@ -358,12 +360,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T10:47:51+08:00">
-                2018-05-22 10:47
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:04:21+08:00">
+                2018-05-22 12:04
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,873
                 </span>
               
 
@@ -409,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +454,93 @@
       
 
       
-        
+        <ul>
+<li>39.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/unique-paths/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-paths/</a></p>
+<p>A robot is located at the top-left corner of a m x n grid (marked ‘Start’ in the diagram below).</p>
+<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked ‘Finish’ in the diagram below).</p>
+<p>How many possible unique paths are there?</p>
+<p><img src="https://leetcode.com/static/images/problemset/robot_maze.png" alt="image"></p>
+<p>Above is a 3 x 7 grid. How many possible unique paths are there?</p>
+ <a id="more"></a>
+<hr>
+<p>解析</p>
+<p>用dp算法或者使用公式，共m+n-2步，然后从中选取m-1步作为向右。</p>
+<p>方法一： </p>
+<p>dp算法记录每一步有的方法数，以此类推。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if(m==0 || n==0) return 0;</span><br><span class="line">        vector&lt;int&gt; dp(n, 1);</span><br><span class="line">        for(int i=1; i&lt;m; i++)&#123;</span><br><span class="line">            for(int j=1; j&lt;n; j++)&#123;</span><br><span class="line">                dp[j] += dp[j-1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>类似的方法， 上面的更简单。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if(m==0 || n==0) return 0;</span><br><span class="line">        vector&lt;int&gt; dp(n, 0);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        for(int i=0; i&lt;m; i++)&#123;</span><br><span class="line">            for(int j=1; j&lt;n; j++)&#123;</span><br><span class="line">                dp[j] += dp[j-1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>使用公式的话，记得定义值的类型要为double，否则数值就会出问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        int uniquePaths(int m, int n) &#123;</span><br><span class="line">            int N = n + m - 2;// how much steps we need to do</span><br><span class="line">            int k = m - 1; // number of steps that need to go down</span><br><span class="line">            double res = 1;</span><br><span class="line">            // here we calculate the total possible path number </span><br><span class="line">            // Combination(N, k) = n! / (k!(n - k)!)</span><br><span class="line">            // reduce the numerator and denominator and get</span><br><span class="line">            // C = ( (n - k + 1) * (n - k + 2) * ... * n ) / k!</span><br><span class="line">            for (int i = 1; i &lt;= k; i++)</span><br><span class="line">                res = res * (N - k + i) / i;</span><br><span class="line">            return (int)res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if(m==0 || n==0) return 0;</span><br><span class="line">        double res = 1.0;</span><br><span class="line">        for(int i=1; i&lt;=n-1; i++)&#123;</span><br><span class="line">            res = res * (m-1+i) / i;</span><br><span class="line">        &#125;</span><br><span class="line">        return (int)res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>m+1 * n+1数组</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(m+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)&#123;</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15265/0ms-5-lines-dp-solution-in-c-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15265/0ms-5-lines-dp-solution-in-c-with-explanations</a></p>
+<p>0ms, 5-lines DP Solution in C++ with Explanations</p>
+<p>This is a fundamental DP problem. First of all, let’s make some observations.</p>
+<p>Since the robot can only move right and down, when it arrives at a point, there are only two possibilities:</p>
+<ol>
+<li>It arrives at that point from above (moving down to that point);</li>
+<li>It arrives at that point from left (moving right to that point).<br>Thus, we have the following state equations: suppose the number of paths to arrive at a point (i, j) is denoted as P[i][j], it is easily concluded that P[i][j] = P[i - 1][j] + P[i][j - 1].</li>
+</ol>
+<p>The boundary conditions of the above equation occur at the leftmost column (P[i][j - 1] does not exist) and the uppermost row (P[i - 1][j] does not exist). These conditions can be handled by initialization (pre-processing) — initialize P[0][j] = 1, P[i][0] = 1 for all valid i, j. Note the initial value is 1 instead of 0!</p>
+<p>Now we can write down the following (unoptimized) code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; path(m, vector&lt;int&gt; (n, 1));</span><br><span class="line">        for (int i = 1; i &lt; m; i++)</span><br><span class="line">            for (int j = 1; j &lt; n; j++)</span><br><span class="line">                path[i][j] = path[i - 1][j] + path[i][j - 1];</span><br><span class="line">        return path[m - 1][n - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>As can be seen, the above solution runs in O(n^2) time and costs O(m*n) space. However, you may have observed that each time when we update path[i][j], we only need path[i - 1][j] (at the same column) and path[i][j - 1] (at the left column). So it is enough to maintain two columns (the current column and the left column) instead of maintaining the full m*n matrix. Now the code can be optimized to have O(min(m, n)) space complexity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if (m &gt; n) return uniquePaths(n, m); </span><br><span class="line">        vector&lt;int&gt; pre(m, 1);</span><br><span class="line">        vector&lt;int&gt; cur(m, 1);</span><br><span class="line">        for (int j = 1; j &lt; n; j++) &#123;</span><br><span class="line">            for (int i = 1; i &lt; m; i++)</span><br><span class="line">                cur[i] = cur[i - 1] + pre[i];</span><br><span class="line">            swap(pre, cur);</span><br><span class="line">        &#125;</span><br><span class="line">        return pre[m - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Further inspecting the above code, we find that keeping two columns is used to recover pre[i], which is just cur[i] before its update. So there is even no need to use two vectors and one is just enough. Now the space is further saved and the code also gets much shorter.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if (m &gt; n) return uniquePaths(n, m);</span><br><span class="line">        vector&lt;int&gt; cur(m, 1);</span><br><span class="line">        for (int j = 1; j &lt; n; j++)</span><br><span class="line">            for (int i = 1; i &lt; m; i++)</span><br><span class="line">                cur[i] += cur[i - 1]; </span><br><span class="line">        return cur[m - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Well, till now, I guess you may even want to optimize it to O(1) space complexity since the above code seems to rely on only cur[i] and cur[i - 1]. You may think that 2 variables is enough? Well, it is not. Since the whole cur needs to be updated for n - 1 times, it means that all of its values need to be saved for next update and so two variables is not enough.</p>
+<hr>
+<p><a href="https://leetcode.com/discuss/9110/my-ac-solution-using-formula" target="_blank" rel="noopener">https://leetcode.com/discuss/9110/my-ac-solution-using-formula</a></p>
+<p>0ms, 17.54%, June.19th, 2016</p>
+<p>Binomial coefficient:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        int uniquePaths(int m, int n) &#123;</span><br><span class="line">            int N = n + m - 2;// how much steps we need to do</span><br><span class="line">            int k = m - 1; // number of steps that need to go down</span><br><span class="line">            double res = 1;</span><br><span class="line">            // here we calculate the total possible path number </span><br><span class="line">            // Combination(N, k) = n! / (k!(n - k)!)</span><br><span class="line">            // reduce the numerator and denominator and get</span><br><span class="line">            // C = ( (n - k + 1) * (n - k + 2) * ... * n ) / k!</span><br><span class="line">            for (int i = 1; i &lt;= k; i++)</span><br><span class="line">                res = res * (N - k + i) / i;</span><br><span class="line">            return (int)res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>First of all you should understand that we need to do n + m - 2 movements : m - 1 down, n - 1 right, because we start from cell (1, 1).</p>
+<p>Secondly, the path it is the sequence of movements( go down / go right),</p>
+<p>therefore we can say that two paths are different</p>
+<p>when there is i-th (1 .. m + n - 2) movement in path1 differ i-th movement in path2.</p>
+<p>So, how we can build paths.</p>
+<p>Let’s choose (n - 1) movements(number of steps to the right) from (m + n - 2),</p>
+<p>and rest (m - 1) is (number of steps down).</p>
+<p>I think now it is obvious that count of different paths are all combinations (n - 1) movements from (m + n-2).</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://leetcode.com/discuss/63819/1-line-math-solution-python" target="_blank" rel="noopener">https://leetcode.com/discuss/63819/1-line-math-solution-python</a></p>
+<p>1 Line Math Solution (Python)</p>
+<p>48ms, 54.13%, June.19th, 2016<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def uniquePaths(self, m, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type m: int</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return math.factorial(m+n-2) / math.factorial(m-1) / math.factorial(n-1)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6440/accpeted-simple-python-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6440/accpeted-simple-python-dp-solution</a></p>
+<p>Accpeted simple Python DP solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return an integer</span><br><span class="line">    def uniquePaths(self, m, n):</span><br><span class="line">        aux = [[1 for x in range(n)] for x in range(m)]</span><br><span class="line">        for i in range(1, m):</span><br><span class="line">            for j in range(1, n):</span><br><span class="line">                aux[i][j] = aux[i][j-1]+aux[i-1][j]</span><br><span class="line">        return aux[-1][-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>my code</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">48ms, 54.13%, June.19th, 2016</span><br><span class="line">class Solution(object):</span><br><span class="line">    def uniquePaths(self, m, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type m: int</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if m == 1 or n == 1: return 1</span><br><span class="line">        p1 = max(m-1, n-1)</span><br><span class="line">        p2 = min(m-1, n-1)</span><br><span class="line">        p3 = m + n - 2</span><br><span class="line">        res1 = 1</span><br><span class="line">        i = p3</span><br><span class="line">        while i &gt; p3 - p2:</span><br><span class="line">            res1 *= i</span><br><span class="line">            i -= 1</span><br><span class="line">        res2 = 1</span><br><span class="line">        while p2 &gt; 0:</span><br><span class="line">            res2 *= p2</span><br><span class="line">            p2 -= 1</span><br><span class="line">        return res1 / res2</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5623/java-dp-solution-with-complexity-o-n-m" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5623/java-dp-solution-with-complexity-o-n-m</a></p>
+<p>Java DP solution with complexity O(n*m)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int uniquePaths(int m, int n) &#123;</span><br><span class="line">        Integer[][] map = new Integer[m][n];</span><br><span class="line">        for(int i = 0; i&lt;m;i++)&#123;</span><br><span class="line">            map[i][0] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j= 0;j&lt;n;j++)&#123;</span><br><span class="line">            map[0][j]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 1;i&lt;m;i++)&#123;</span><br><span class="line">            for(int j = 1;j&lt;n;j++)&#123;</span><br><span class="line">                map[i][j] = map[i-1][j]+map[i][j-1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return map[m-1][n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The assumptions are</p>
+<ol>
+<li>When (n == 0||m == 0) the function always returns 1 since the robot can’t go left or up.</li>
+<li>For all other cells. The result = uniquePaths(m-1,n)+uniquePaths(m,n-1)</li>
+</ol>
+<p>Therefore I populated the edges with 1 first and use DP to get the full 2-D array.</p>
+<p>Please give any suggestions on improving the code.</p>
+<hr>
+<p><strong>my code</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int uniquePaths(int m, int n) &#123;</span><br><span class="line">        if(m == 0 || n == 0) return 0;</span><br><span class="line">        int[] ans = new int[n];</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">            ans[i] = 1;</span><br><span class="line">            </span><br><span class="line">        for(int i=1; i&lt;m; i++)</span><br><span class="line">            for(int j=1; j&lt;n; j++)</span><br><span class="line">                ans[j] += ans[j-1]; </span><br><span class="line">        </span><br><span class="line">        return ans[n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">0ms, 84.01%, June.19th, 2016</span><br><span class="line">https://leetcode.com/discuss/9110/my-ac-solution-using-formula</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public int uniquePaths(int m, int n) &#123;</span><br><span class="line">        double value = 1;</span><br><span class="line">        for(int i = 1; i &lt;= n-1; i++)</span><br><span class="line">            value *= ((double)(m+i-1)/(double)i);</span><br><span class="line">        return (int)Math.round(value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +601,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +696,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -590,7 +721,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">110</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -674,6 +805,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
