@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,string,stack," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="25.4%  https://leetcode.com/problems/simplify-path/ Given an absolute path for a file (Unix-style), simplify it. 123For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/.">
+<meta name="keywords" content="leetcode,medium,string,stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="071. Simplify Path">
 <meta property="og:url" content="http://yucc.me/p/6cd51db6/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="25.4%  https://leetcode.com/problems/simplify-path/ Given an absolute path for a file (Unix-style), simplify it. 123For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:10:48.672Z">
+<meta property="og:updated_time" content="2018-05-22T04:44:43.921Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="071. Simplify Path">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="25.4%  https://leetcode.com/problems/simplify-path/ Given an absolute path for a file (Unix-style), simplify it. 123For example,path = &amp;quot;/home/&amp;quot;, =&amp;gt; &amp;quot;/home&amp;quot;path = &amp;quot;/a/./b/.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:10:48+08:00">
-                2018-05-22 12:10
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:44:43+08:00">
+                2018-05-22 12:44
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  998
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,68 @@
       
 
       
-        
+        <ul>
+<li>25.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/simplify-path/" target="_blank" rel="noopener">https://leetcode.com/problems/simplify-path/</a></p>
+<p>Given an absolute path for a file (Unix-style), simplify it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">path = &quot;/home/&quot;, =&gt; &quot;/home&quot;</span><br><span class="line">path = &quot;/a/./b/../../c/&quot;, =&gt; &quot;/c&quot;</span><br></pre></td></tr></table></figure>
+<p>Corner Cases:</p>
+<ul>
+<li>Did you consider the case where path = “/../“?</li>
+</ul>
+<p>In this case, you should return “/“.</p>
+<ul>
+<li>Another corner case is the path might contain multiple slashes ‘/‘ together, such as “/home//foo/“.</li>
+</ul>
+<p>In this case, you should ignore redundant slashes and return “/home/foo”.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p><a href="https://discuss.leetcode.com/topic/2872/my-o-n-ac-code-just-need-to-handle-two-special-cases" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2872/my-o-n-ac-code-just-need-to-handle-two-special-cases</a></p>
+<p>My O(n) AC code . just need to handle two special cases.</p>
+<ol>
+<li>traverse the string to record each folder name.</li>
+<li>two special cases:</li>
+</ol>
+<p>a.double dot:pop one.</p>
+<p>b.single dot: do nothing (don`t push it).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">string simplifyPath(string path) &#123;</span><br><span class="line">	vector&lt;string&gt;   nameVect;</span><br><span class="line">	string name;</span><br><span class="line">	</span><br><span class="line">	path.push_back(&apos;/&apos;);</span><br><span class="line">	for(int i=0;i&lt;path.size();i++)&#123;</span><br><span class="line">		if(path[i]==&apos;/&apos;)&#123;</span><br><span class="line">			if(name.size()==0)continue;</span><br><span class="line">			if(name==&quot;..&quot;)&#123;		//special case 1：double dot，pop dir</span><br><span class="line">			     if(nameVect.size()&gt;0)nameVect.pop_back();</span><br><span class="line">			&#125;else if(name==&quot;.&quot;)&#123;//special case 2:singel dot，don`t push</span><br><span class="line">			&#125;else&#123;			</span><br><span class="line">				nameVect.push_back(name);</span><br><span class="line">			&#125;</span><br><span class="line">			name.clear();</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			name.push_back(path[i]);//record the name</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	string result;</span><br><span class="line">	if(nameVect.empty())return &quot;/&quot;;</span><br><span class="line">	for(int i=0;i&lt;nameVect.size();i++)&#123;</span><br><span class="line">		result.append(&quot;/&quot;+nameVect[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>string的函数clear，append，push_back</p>
+<p>给定的字符串可以更改的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">simplifyPath</span><span class="params">(<span class="built_in">string</span> path)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; v;</span><br><span class="line">        <span class="built_in">string</span> name = <span class="string">""</span>;</span><br><span class="line">        path.push_back(<span class="string">'/'</span>); <span class="comment">// 针对原有string的首或尾进行改变，这是一种思路</span></span><br><span class="line">        <span class="keyword">int</span> n = path.size(); <span class="comment">// 长度改变了，所以要在改变后求长度，否则不对的</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(path[i]==<span class="string">'/'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(name==<span class="string">""</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="comment">// 下面的大括号外，不要分号的</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(name==<span class="string">"."</span>)&#123;&#125; <span class="comment">//此处不能continue，因为要清空name，才下一步</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(name==<span class="string">".."</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(!v.empty()) v.pop_back();&#125;</span><br><span class="line">                <span class="keyword">else</span> v.push_back(name);</span><br><span class="line">                name.clear(); <span class="comment">// 此处学会针对string的clear</span></span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                name.push_back(path[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">string</span> res = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;v.size(); i++)</span><br><span class="line">            res.append(<span class="string">"/"</span> + v[i]);</span><br><span class="line">        <span class="keyword">return</span> v.empty()? <span class="string">"/"</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p>6ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/8678/c-10-lines-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8678/c-10-lines-solution</a></p>
+<p>C++ 10-lines solution</p>
+<p>C++ also have getline which acts like Java’s split. I guess the code can comment itself.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string simplifyPath(string path) &#123;</span><br><span class="line">        string res, tmp;</span><br><span class="line">        vector&lt;string&gt; stk;</span><br><span class="line">        stringstream ss(path);</span><br><span class="line">        while(getline(ss, tmp, &apos;/&apos;))&#123;</span><br><span class="line">            if(tmp == &quot;&quot; or tmp == &quot;.&quot;) continue;</span><br><span class="line">            if(tmp == &quot;..&quot; and !stk.empty()) stk.pop_back();</span><br><span class="line">            else if(tmp!=&quot;..&quot;) stk.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        for(auto str:stk) res += &quot;/&quot; + str;</span><br><span class="line">        return res.empty() ? &quot;/&quot; : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>82ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/41158/9-line-python-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41158/9-line-python-solution-easy-to-understand</a></p>
+<p>9-line Python solution, easy to understand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def simplifyPath(self, path):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type path: str</span><br><span class="line">        :rtype: str</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        stack = []</span><br><span class="line">        for token in path.split(&apos;/&apos;):</span><br><span class="line">            if token in (&apos;&apos;, &apos;.&apos;):</span><br><span class="line">                pass</span><br><span class="line">            elif token == &apos;..&apos;:</span><br><span class="line">                if stack:</span><br><span class="line">                    stack.pop()</span><br><span class="line">            else:</span><br><span class="line">                stack.append(token)</span><br><span class="line">        return &apos;/&apos; + &apos;/&apos;.join(stack)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>18ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/7675/java-10-lines-solution-with-stack" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7675/java-10-lines-solution-with-stack</a></p>
+<p>Java 10-lines solution with stack</p>
+<p>Hi guys!</p>
+<p>The main idea is to push to the stack every valid file name (not in {“”,”.”,”..”}), popping only if there’s smth to pop and we met “..”. I don’t feel like the code below needs any additional comments.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public String simplifyPath(String path) &#123;</span><br><span class="line">        Deque&lt;String&gt; stack = new LinkedList&lt;&gt;();</span><br><span class="line">        Set&lt;String&gt; skip = new HashSet&lt;&gt;(Arrays.asList(&quot;..&quot;, &quot;.&quot;, &quot;&quot;));</span><br><span class="line">        for(String dir : path.split(&quot;/&quot;))&#123;</span><br><span class="line">            if(dir.equals(&quot;..&quot;) &amp;&amp; !stack.isEmpty()) stack.pop();</span><br><span class="line">            else if(!skip.contains(dir)) stack.push(dir);</span><br><span class="line">        &#125;</span><br><span class="line">        String res = &quot;&quot;;</span><br><span class="line">        for(String dir:stack) res = &quot;/&quot; + dir + res;</span><br><span class="line">        return res.isEmpty()? &quot;/&quot; : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7014/accepted-solution-using-deque" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7014/accepted-solution-using-deque</a></p>
+<p>Accepted solution using Deque</p>
+<p>I think using Deque is probably the most intuitive way to solve this problem.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Deque of strings (directories).</span><br><span class="line"> * iterate path:</span><br><span class="line"> *  if &quot;/&quot;, continue,</span><br><span class="line"> *  if &quot;.&quot;, conitnue,</span><br><span class="line"> *  if &quot;..&quot;, poll last,</span><br><span class="line"> *  else, add a new directory</span><br><span class="line"> * in the end, build result from deque.</span><br><span class="line"> */</span><br><span class="line">public String simplifyPath(String path) &#123;</span><br><span class="line">    Deque&lt;String&gt; deque = new LinkedList&lt;String&gt;();</span><br><span class="line">    String[] splits = path.split(&quot;/&quot;);</span><br><span class="line">    for (String split : splits) &#123;</span><br><span class="line">        // CATCH: must use &quot;equals()&quot; instead of &quot;==&quot;,</span><br><span class="line">        // because &apos;split&apos; is a variable!</span><br><span class="line">        // Also, &apos;split&apos; could be empty string.</span><br><span class="line">        if (split.equals(&quot;&quot;))</span><br><span class="line">            continue;</span><br><span class="line">        else if (split.equals(&quot;.&quot;))</span><br><span class="line">            continue;</span><br><span class="line">        else if (split.equals(&quot;..&quot;))</span><br><span class="line">            deque.pollLast();</span><br><span class="line">        else</span><br><span class="line">            deque.addLast(split);</span><br><span class="line">    &#125;</span><br><span class="line">    StringBuilder builder = new StringBuilder();</span><br><span class="line">    while (!deque.isEmpty()) &#123;</span><br><span class="line">        String s = deque.pollFirst();</span><br><span class="line">        builder.append(&quot;/&quot;).append(s);</span><br><span class="line">    &#125;</span><br><span class="line">    if (builder.length() == 0)</span><br><span class="line">        return &quot;/&quot;;</span><br><span class="line">    return builder.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12767/ac-solution-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12767/ac-solution-in-java</a></p>
+<p>AC Solution in Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public String simplifyPath(String path) &#123;</span><br><span class="line">        Set&lt;String&gt; isSkip = new HashSet&lt;&gt;(Arrays.asList(&quot;&quot;, &quot;.&quot;, &quot;..&quot;));</span><br><span class="line">        Deque&lt;String&gt; stack = new ArrayDeque&lt;&gt;();</span><br><span class="line">        for (String token : path.split(&quot;/&quot;)) &#123;</span><br><span class="line">            if (token.equals(&quot;..&quot;) &amp;&amp; !stack.isEmpty()) stack.pop();</span><br><span class="line">            if (isSkip.contains(token)) continue;</span><br><span class="line">            stack.push(token);</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        while (!stack.isEmpty()) &#123;</span><br><span class="line">            sb.append(&quot;/&quot; + stack.pollLast());</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.length() == 0 ? &quot;/&quot; : sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +574,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+        </div>
       
 
       
@@ -574,8 +669,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +778,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

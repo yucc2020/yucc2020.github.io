@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,math," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/plus-one/ Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head">
+<meta name="keywords" content="leetcode,array,math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="066. Plus One">
 <meta property="og:url" content="http://yucc.me/p/15c6dd1/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/plus-one/ Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:09:47.011Z">
+<meta property="og:updated_time" content="2018-05-22T04:41:02.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="066. Plus One">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/plus-one/ Given a non-negative number represented as an array of digits, plus one to the number. The digits are stored such that the most significant digit is at the head">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:09:47+08:00">
-                2018-05-22 12:09
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:41:02+08:00">
+                2018-05-22 12:41
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,029
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,69 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/plus-one/" target="_blank" rel="noopener">https://leetcode.com/problems/plus-one/</a></p>
+<p>Given a non-negative number represented as an array of digits, plus one to the number.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list.</p>
+ <a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/987/to-avoid-confusion-please-mention-that-the-lowest-digit-is-on-the-right-end" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/987/to-avoid-confusion-please-mention-that-the-lowest-digit-is-on-the-right-end</a></p>
+<p>To avoid confusion, please mention that the lowest digit is on the right end</p>
+<p>The question description does not explicitly say that.</p>
+<p>I found that is the case.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1264/missing-information" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1264/missing-information</a></p>
+<p>Missing information</p>
+<p>When I started writing the solution I was thinking we were talking about binary digits, please add this information to the text of the problem. The numerical base requested.</p>
+<p>Would be cool to have a more general problem that also passes the numerical base to the function ;-)</p>
+<hr>
+<p>方法一：</p>
+<p>更改每一位，从最后一位向前走。</p>
+<p>如果尾数是9，就改为0。</p>
+<p>如果到某一位不是9，直接返回。</p>
+<p>如果走到头都是9，则第一位改为1，最后加一位0.</p>
+<p>code 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void plusone(vector&lt;int&gt; &amp;digits)</span><br><span class="line">&#123;</span><br><span class="line">	int n = digits.size();</span><br><span class="line">	for (int i = n - 1; i &gt;= 0; --i)</span><br><span class="line">	&#123;</span><br><span class="line">		if (digits[i] == 9)</span><br><span class="line">		&#123;</span><br><span class="line">			digits[i] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			digits[i]++;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		digits[0] =1;</span><br><span class="line">		digits.push_back(0);</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>code 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; plusOne(vector&lt;int&gt;&amp; digits) &#123;</span><br><span class="line">        for (int i=digits.size(); i--; digits[i] = 0)</span><br><span class="line">            if (digits[i]++ &lt; 9)</span><br><span class="line">                return digits;</span><br><span class="line">        digits[0]++;</span><br><span class="line">        digits.push_back(0);</span><br><span class="line">        return digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/24288/my-simple-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24288/my-simple-java-solution</a></p>
+<p>My Simple Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int[] plusOne(int[] digits) &#123;</span><br><span class="line">        </span><br><span class="line">    int n = digits.length;</span><br><span class="line">    for(int i=n-1; i&gt;=0; i--) &#123;</span><br><span class="line">        if(digits[i] &lt; 9) &#123;</span><br><span class="line">            digits[i]++;</span><br><span class="line">            return digits;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        digits[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int[] newNumber = new int [n+1];</span><br><span class="line">    newNumber[0] = 1;</span><br><span class="line">    </span><br><span class="line">    return newNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19149/simple-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19149/simple-java-solution</a></p>
+<p>Simple java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int[] plusOne(int[] digits) &#123;</span><br><span class="line">    for (int i = digits.length - 1; i &gt;=0; i--) &#123;</span><br><span class="line">        if (digits[i] != 9) &#123;</span><br><span class="line">            digits[i]++;</span><br><span class="line">            break;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            digits[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (digits[0] == 0) &#123;</span><br><span class="line">        int[] res = new int[digits.length+1];</span><br><span class="line">        res[0] = 1;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    return digits;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41728/java-concise-solution-with-early-return" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41728/java-concise-solution-with-early-return</a></p>
+<p>Java concise solution with early return.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int[] plusOne(int[] digits) &#123;</span><br><span class="line">    int carry = 1;</span><br><span class="line">    for (int i = digits.length-1; i&gt;= 0; i--) &#123;</span><br><span class="line">        digits[i] += carry;</span><br><span class="line">        if (digits[i] &lt;= 9) // early return </span><br><span class="line">            return digits;</span><br><span class="line">        digits[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int[] ret = new int[digits.length+1];</span><br><span class="line">    ret[0] = 1;</span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>0ms, 38.09%, June.17th, 2016</p>
+<p><a href="http://www.itnose.net/news/172/6334216" target="_blank" rel="noopener">http://www.itnose.net/news/172/6334216</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] plusOne(int[] digits) &#123;</span><br><span class="line"></span><br><span class="line">        int carry = 1; // 进位标志，下一位来的进位标志</span><br><span class="line">        int tmp;</span><br><span class="line">        for (int i = digits.length - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            tmp = digits[i];</span><br><span class="line">            digits[i] = (tmp + carry) % 10; // 计算当前位的新值</span><br><span class="line">            carry = (tmp + carry) / 10; // 计算新的进位</span><br><span class="line"></span><br><span class="line">            if (carry == 0) &#123; // 没有进位了就可以退出了</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (carry == 1) &#123; // 最后还有一个进位</span><br><span class="line">            int[] result = new int[digits.length + 1];</span><br><span class="line">            System.arraycopy(digits, 0, result, 1, digits.length);</span><br><span class="line">            result[0] = carry;;</span><br><span class="line">            return result;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return digits;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/4556/is-it-a-simple-code-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4556/is-it-a-simple-code-c</a></p>
+<p>Is it a simple code(C++)?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void plusone(vector&lt;int&gt; &amp;digits)</span><br><span class="line">&#123;</span><br><span class="line">	int n = digits.size();</span><br><span class="line">	for (int i = n - 1; i &gt;= 0; --i)</span><br><span class="line">	&#123;</span><br><span class="line">		if (digits[i] == 9)</span><br><span class="line">		&#123;</span><br><span class="line">			digits[i] = 0;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			digits[i]++;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		digits[0] =1;</span><br><span class="line">		digits.push_back(0);</span><br><span class="line">		</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9016/my-c-solution-with-few-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9016/my-c-solution-with-few-lines</a></p>
+<p>My C++ Solution with few lines</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; plusOne(vector&lt;int&gt; &amp;digits) &#123;</span><br><span class="line">        bool carry = true;</span><br><span class="line">        </span><br><span class="line">        for(int i=digits.size()-1; i &gt;= 0 &amp;&amp; carry; i--) &#123;</span><br><span class="line">            carry = (++digits[i]%=10) == 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(carry) &#123;</span><br><span class="line">            digits.insert(digits.begin(), 1);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        return digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>4ms, 9.24%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/14616/is-it-a-simple-code-c" target="_blank" rel="noopener">https://leetcode.com/discuss/14616/is-it-a-simple-code-c</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; plusOne(vector&lt;int&gt;&amp; digits) &#123;</span><br><span class="line">        for (int i=digits.size(); i--; digits[i] = 0)</span><br><span class="line">            if (digits[i]++ &lt; 9)</span><br><span class="line">                return digits;</span><br><span class="line">        digits[0]++;</span><br><span class="line">        digits.push_back(0);</span><br><span class="line">        return digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>46ms, 94.03%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/18768/simple-python-solution-with-explanation-plus-one" target="_blank" rel="noopener">https://leetcode.com/discuss/18768/simple-python-solution-with-explanation-plus-one</a></p>
+<p>Simple Python solution with explanation (Plus One)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def plusOne(digits):</span><br><span class="line">    num = 0</span><br><span class="line">    for i in range(len(digits)):</span><br><span class="line">    	num += digits[i] * pow(10, (len(digits)-1-i))</span><br><span class="line">    return [int(i) for i in str(num+1)]</span><br></pre></td></tr></table></figure>
+<p>We’re given a list of digits, and the idea here is to convert that list to an integer, num. So each digit is multiplied by the proper place value and added to num. For example, if digits = [3, 8, 2, 5] then on the first iteration 3 is multiplied by 10 to the power of 4-1-0 = 3, so this results in 3000, which is added to num. Then 8 is multiplied by 10^2 and added to num, and so on.</p>
+<p>The last step is to add 1 to num, convert it to a list and return that list.</p>
+
       
     </div>
     
@@ -491,6 +575,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+        </div>
       
 
       
@@ -574,8 +668,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +715,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +777,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

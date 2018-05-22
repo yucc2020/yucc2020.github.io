@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,backtracking," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="39.6%  https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n. 1234567891011For example,If n = 4 and k = 2, a solution is:[">
+<meta name="keywords" content="leetcode,medium,backtracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="077. Combinations">
 <meta property="og:url" content="http://yucc.me/p/20864a35/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="39.6%  https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n. 1234567891011For example,If n = 4 and k = 2, a solution is:[">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:11:50.684Z">
+<meta property="og:updated_time" content="2018-05-22T04:50:17.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="077. Combinations">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="39.6%  https://leetcode.com/problems/combinations/ Given two integers n and k, return all possible combinations of k numbers out of 1 … n. 1234567891011For example,If n = 4 and k = 2, a solution is:[">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:11:50+08:00">
-                2018-05-22 12:11
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:50:17+08:00">
+                2018-05-22 12:50
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,980
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -430,7 +452,91 @@
       
 
       
-        
+        <ul>
+<li>39.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/combinations/" target="_blank" rel="noopener">https://leetcode.com/problems/combinations/</a></p>
+<p>Given two integers n and k, return all possible combinations of k numbers out of 1 … n.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">If n = 4 and k = 2, a solution is:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [2,4],</span><br><span class="line">  [3,4],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  [1,3],</span><br><span class="line">  [1,4],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>回溯法，dfs</p>
+<p>code 1：</p>
+<p>My shortest c++ solution,using dfs</p>
+<p>my idea is using backtracking ,every time I push a number into vector,then I push a bigger one into it;</p>
+<p>then i pop the latest one,and push a another bigger one…</p>
+<p>and if I has push k number into vector,I push this into result;</p>
+<p>this solution take 24 ms.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; combine(int n, int k) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt;res;</span><br><span class="line">        if(n&lt;k)return res;</span><br><span class="line">        vector&lt;int&gt; temp(0,k);</span><br><span class="line">        combine(res,temp,0,0,n,k);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void combine(vector&lt;vector&lt;int&gt; &gt; &amp;res,vector&lt;int&gt; &amp;temp,int start,int num,int n ,int k)&#123;</span><br><span class="line">        if(num==k)&#123;</span><br><span class="line">            res.push_back(temp);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = start;i&lt;n;i++)&#123;</span><br><span class="line">            temp.push_back(i+1);</span><br><span class="line">            combine(res,temp,i+1,num+1,n,k);</span><br><span class="line">            temp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 2:</p>
+<p>我的实现</p>
+<p>经典的回溯法算法，一定要会。</p>
+<p>my code：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        if(n&lt;k) return res;</span><br><span class="line">        dfs(res, tmp, 0, 0, n, k);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void dfs(vector&lt;vector&lt;int&gt;&gt;&amp; res, vector&lt;int&gt;&amp; tmp, int start, int num, int n, int k)&#123;</span><br><span class="line">        if(num==k)&#123;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=start+1; i&lt;=n; i++)&#123;</span><br><span class="line">            tmp.push_back(i);</span><br><span class="line">            dfs(res, tmp, i, num+1, n, k);</span><br><span class="line">            tmp.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 3：</p>
+<p><a href="https://discuss.leetcode.com/topic/22569/c-concise-recursive-solution-c-n-k-c-n-1-k-1-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22569/c-concise-recursive-solution-c-n-k-c-n-1-k-1-8ms</a></p>
+<p>C++ concise recursive solution C(n,k) -&gt;C(n-1,k-1) / 8ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        combine(1,n,k,ans,temp); //call fuction to get combination of k numbers which range is 1-n</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">       void combine(int begin,int n, int k, vector&lt;vector&lt;int&gt;&gt; &amp;ans, vector&lt;int&gt;&amp; temp)&#123;</span><br><span class="line">            if(k==0)&#123; </span><br><span class="line">                ans.push_back(temp);</span><br><span class="line">                return;</span><br><span class="line">            &#125; </span><br><span class="line">            //condition : n-i+1 is the range, range must greater than k</span><br><span class="line">            for(int i=begin;n-i+1&gt;=k;i++)&#123; // for the ith iteration, get the combination of i and k-1 numbers differ from i.</span><br><span class="line">                temp.push_back(i); </span><br><span class="line">                combine(i+1,n,k-1,ans,temp);// get the combination of k-1 numbers which range is(i+1,n) </span><br><span class="line">                temp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/26689/short-iterative-c-answer-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26689/short-iterative-c-answer-8ms</a></p>
+<p>Short Iterative C++ Answer 8ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">		vector&lt;vector&lt;int&gt;&gt; result;</span><br><span class="line">		int i = 0;</span><br><span class="line">		vector&lt;int&gt; p(k, 0);</span><br><span class="line">		while (i &gt;= 0) &#123;</span><br><span class="line">			p[i]++;</span><br><span class="line">			if (p[i] &gt; n) --i;</span><br><span class="line">			else if (i == k - 1) result.push_back(p);</span><br><span class="line">			else &#123;</span><br><span class="line">			    ++i;</span><br><span class="line">			    p[i] = p[i - 1];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>12ms, 27.43%, May.6th, 2016</p>
+<p><a href="https://leetcode.com/discuss/12915/my-shortest-c-solution-using-dfs" target="_blank" rel="noopener">https://leetcode.com/discuss/12915/my-shortest-c-solution-using-dfs</a></p>
+<p>My shortest c++ solution,using dfs</p>
+<p>my idea is using backtracking ,every time I push a number into vector,then I push a bigger one into it;</p>
+<p>then i pop the latest one,and push a another bigger one…</p>
+<p>and if I has push k number into vector,I push this into result;</p>
+<p>this solution take 24 ms.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; combine(int n, int k) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt;res;</span><br><span class="line">        if(n&lt;k)return res;</span><br><span class="line">        vector&lt;int&gt; temp(0,k);</span><br><span class="line">        combine(res,temp,0,0,n,k);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void combine(vector&lt;vector&lt;int&gt; &gt; &amp;res,vector&lt;int&gt; &amp;temp,int start,int num,int n ,int k)&#123;</span><br><span class="line">        if(num==k)&#123;</span><br><span class="line">            res.push_back(temp);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = start;i&lt;n;i++)&#123;</span><br><span class="line">            temp.push_back(i+1);</span><br><span class="line">            combine(res,temp,i+1,num+1,n,k);</span><br><span class="line">            temp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22569/c-concise-recursive-solution-c-n-k-c-n-1-k-1-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22569/c-concise-recursive-solution-c-n-k-c-n-1-k-1-8ms</a></p>
+<p>C++ concise recursive solution C(n,k) -&gt;C(n-1,k-1) / 8ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; ans;</span><br><span class="line">        vector&lt;int&gt; temp;</span><br><span class="line">        combine(1,n,k,ans,temp); //call fuction to get combination of k numbers which range is 1-n</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">       void combine(int begin,int n, int k, vector&lt;vector&lt;int&gt;&gt; &amp;ans, vector&lt;int&gt;&amp; temp)&#123;</span><br><span class="line">            if(k==0)&#123; </span><br><span class="line">                ans.push_back(temp);</span><br><span class="line">                return;</span><br><span class="line">            &#125; </span><br><span class="line">            //condition : n-i+1 is the range, range must greater than k</span><br><span class="line">            for(int i=begin;n-i+1&gt;=k;i++)&#123; // for the ith iteration, get the combination of i and k-1 numbers differ from i.</span><br><span class="line">                temp.push_back(i); </span><br><span class="line">                combine(i+1,n,k-1,ans,temp);// get the combination of k-1 numbers which range is(i+1,n) </span><br><span class="line">                temp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/14626/1-liner-3-liner-4-liner" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14626/1-liner-3-liner-4-liner</a></p>
+<p>1-liner, 3-liner, 4-liner</p>
+<p>Library - AC in 64 ms</p>
+<p>First the obvious solution - Python already provides this functionality and it’s not forbidden, so let’s take advantage of it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def combine(self, n, k):</span><br><span class="line">        return list(combinations(range(1, n+1), k))</span><br></pre></td></tr></table></figure>
+<p>Recursive - AC in 76 ms</p>
+<p>But doing it yourself is more interesting, and not that hard. Here’s a recursive version.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combine(self, n, k):</span><br><span class="line">        if k == 0:</span><br><span class="line">            return [[]]</span><br><span class="line">        return [pre + [i] for i in range(1, n+1) for pre in self.combine(i-1, k-1)]</span><br></pre></td></tr></table></figure>
+<p>Iterative - AC in 76 ms</p>
+<p>And here’s an iterative one.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combine(self, n, k):</span><br><span class="line">        combs = [[]]</span><br><span class="line">        for _ in range(k):</span><br><span class="line">            combs = [[i] + c for c in combs for i in range(1, c[0] if c else n+1)]</span><br><span class="line">        return combs</span><br></pre></td></tr></table></figure>
+<p>Reduce - AC in 76 ms</p>
+<p>Same as that iterative one, but using reduce instead of a loop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">  def combine(self, n, k):</span><br><span class="line">    return reduce(lambda C, _: [[i]+c for c in C for i in range(1, c[0] if c else n+1)],</span><br><span class="line">                  range(k), [[]])</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25958/ac-python-backtracking-iterative-solution-60-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25958/ac-python-backtracking-iterative-solution-60-ms</a></p>
+<p>AC Python backtracking iterative solution 60 ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def combine(self, n, k):</span><br><span class="line">    ans = []</span><br><span class="line">    stack = []</span><br><span class="line">    x = 1</span><br><span class="line">    while True:</span><br><span class="line">        l = len(stack)</span><br><span class="line">        if l == k:</span><br><span class="line">            ans.append(stack[:])</span><br><span class="line">        if l == k or x &gt; n - k + l + 1:</span><br><span class="line">            if not stack:</span><br><span class="line">                return ans</span><br><span class="line">            x = stack.pop() + 1</span><br><span class="line">        else:</span><br><span class="line">            stack.append(x)</span><br><span class="line">            x += 1</span><br><span class="line"></span><br><span class="line"># 26 / 26 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 60 ms</span><br><span class="line"># 98.51%</span><br></pre></td></tr></table></figure>
+<p>Combinations is typical application for backtracking. Two conditions for back track: (1) the stack length is already k (2) the current value is too large for the rest slots to fit in since we are using ascending order to make sure the uniqueness of each combination.</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/11718/backtracking-solution-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11718/backtracking-solution-java</a></p>
+<p>Backtracking Solution Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">	List&lt;List&lt;Integer&gt;&gt; combs = new ArrayList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">	combine(combs, new ArrayList&lt;Integer&gt;(), 1, n, k);</span><br><span class="line">	return combs;</span><br><span class="line">&#125;</span><br><span class="line">public static void combine(List&lt;List&lt;Integer&gt;&gt; combs, List&lt;Integer&gt; comb, int start, int n, int k) &#123;</span><br><span class="line">	if(k==0) &#123;</span><br><span class="line">		combs.add(new ArrayList&lt;Integer&gt;(comb));</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=start;i&lt;=n;i++) &#123;</span><br><span class="line">		comb.add(i);</span><br><span class="line">		combine(combs, comb, i+1, n, k-1);</span><br><span class="line">		comb.remove(comb.size()-1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12537/a-short-recursive-java-solution-based-on-c-n-k-c-n-1-k-1-c-n-1-k" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12537/a-short-recursive-java-solution-based-on-c-n-k-c-n-1-k-1-c-n-1-k</a></p>
+<p>A short recursive Java solution based on C(n,k)=C(n-1,k-1)+C(n-1,k)</p>
+<p>Basically, this solution follows the idea of the mathematical formula C(n,k)=C(n-1,k-1)+C(n-1,k).</p>
+<p>Here C(n,k) is divided into two situations. Situation one, number n is selected, so we only need to select k-1 from n-1 next. Situation two, number n is not selected, and the rest job is selecting k from n-1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k) &#123;</span><br><span class="line">        if (k == n || k == 0) &#123;</span><br><span class="line">            List&lt;Integer&gt; row = new LinkedList&lt;&gt;();</span><br><span class="line">            for (int i = 1; i &lt;= k; ++i) &#123;</span><br><span class="line">                row.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">            return new LinkedList&lt;&gt;(Arrays.asList(row));</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = this.combine(n - 1, k - 1);</span><br><span class="line">        result.forEach(e -&gt; e.add(n));</span><br><span class="line">        result.addAll(this.combine(n - 1, k));</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3943/dp-for-the-problem" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3943/dp-for-the-problem</a></p>
+<p>DP for the problem</p>
+<p>I didn’t see any DP solution for this problem, so I share mine:</p>
+<p>The idea is simple, if the combination k out of n (select k elements from [1,n]) is combine(k, n).</p>
+<p>Let’s consider how can we get combine(k, n) by adding the last element n to something we already have (combine(k - 1, n - 1) and combine(k, n - 1)). Actually, the combine(k, n) has two parts, one part is all combinations without n, it’s combine(k, n - 1), another is all combinations with n, which can be gotten by appending n to every element in combine(k - 1, n - 1). Note, the combine(i, i) is what we can get directly.</p>
+<p>Below is my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">public class Solution</span><br><span class="line">&#123;</span><br><span class="line">    // Combine(n, n).</span><br><span class="line">    private List&lt;Integer&gt; allContain(int n)</span><br><span class="line">    &#123;</span><br><span class="line">        final List&lt;Integer&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 1; i &lt;= n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            result.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; combine(int n, int k)</span><br><span class="line">    &#123;</span><br><span class="line">        List&lt;List&lt;List&lt;Integer&gt;&gt;&gt; previous = new ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i &lt;= n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            previous.add(Collections.singletonList(Collections.&lt;Integer&gt;emptyList()));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int i = 1; i &lt;= k; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            final List&lt;List&lt;List&lt;Integer&gt;&gt;&gt; current = new ArrayList&lt;&gt;();</span><br><span class="line">            current.add(Collections.singletonList(allContain(i)));</span><br><span class="line">            </span><br><span class="line">            // Combine(i, j).</span><br><span class="line">            for (int j = i + 1; j &lt;= n; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                final List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">                </span><br><span class="line">                // Combine(i, j - 1).</span><br><span class="line">                list.addAll(current.get(current.size() - 1));</span><br><span class="line">                </span><br><span class="line">                // Comine(i - 1, j - 1).</span><br><span class="line">                for (final List&lt;Integer&gt; item : previous.get(current.size()))</span><br><span class="line">                &#123;</span><br><span class="line">                    final List&lt;Integer&gt; newItem = new ArrayList&lt;&gt;(item);</span><br><span class="line">                    newItem.add(j);</span><br><span class="line">                    list.add(newItem);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                current.add(list);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            previous = current;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return (previous.size() == 0) ? Collections.&lt;List&lt;Integer&gt;&gt;emptyList() : previous.get(previous.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +597,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+        </div>
       
 
       
@@ -574,8 +690,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +737,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +799,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

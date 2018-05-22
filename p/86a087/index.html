@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,two pointers," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="36.1%  https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/ Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice? 123456For example,Given sorted array nums">
+<meta name="keywords" content="leetcode,array,medium,two pointers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="080. Remove Duplicates from Sorted Array II">
 <meta property="og:url" content="http://yucc.me/p/86a087/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="36.1%  https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/ Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice? 123456For example,Given sorted array nums">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:12:17.268Z">
+<meta property="og:updated_time" content="2018-05-22T04:52:25.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="080. Remove Duplicates from Sorted Array II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="36.1%  https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/ Follow up for “Remove Duplicates”: What if duplicates are allowed at most twice? 123456For example,Given sorted array nums">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:12:17+08:00">
-                2018-05-22 12:12
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:52:25+08:00">
+                2018-05-22 12:52
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  948
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,60 @@
       
 
       
-        
+        <ul>
+<li>36.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/</a></p>
+<p>Follow up for “Remove Duplicates”:</p>
+<p>What if duplicates are allowed at most twice?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given sorted array nums = [1,1,1,2,2,3],</span><br><span class="line"></span><br><span class="line">Your function should return length = 5, </span><br><span class="line">with the first five elements of nums being 1, 1, 2, 2 and 3. </span><br><span class="line">It doesn&apos;t matter what you leave beyond the new length.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span>(i&lt;n)&#123;</span><br><span class="line">            j=i;</span><br><span class="line">            <span class="keyword">while</span>(j&lt;n &amp;&amp; nums[i]==nums[j]) j++;</span><br><span class="line">            <span class="keyword">if</span>(j==i+<span class="number">1</span>)&#123;</span><br><span class="line">                nums[index++] = nums[j<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                nums[index++] = nums[j<span class="number">-1</span>];</span><br><span class="line">                nums[index++] = nums[j<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            i = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>怀疑下面的解法都是手误</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/12892/simple-and-clear-c-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12892/simple-and-clear-c-recursive-solution</a></p>
+<p>Simple and clear c++ recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* deleteDuplicates(ListNode* head) &#123;</span><br><span class="line">        if (!head) return 0;</span><br><span class="line">        if (!head-&gt;next) return head;</span><br><span class="line">        </span><br><span class="line">        int val = head-&gt;val;</span><br><span class="line">        ListNode* p = head-&gt;next;</span><br><span class="line">        </span><br><span class="line">        if (p-&gt;val != val) &#123;</span><br><span class="line">            head-&gt;next = deleteDuplicates(p);</span><br><span class="line">            return head;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            while (p &amp;&amp; p-&gt;val == val) p = p-&gt;next;</span><br><span class="line">            return deleteDuplicates(p);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7224/is-this-the-best-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7224/is-this-the-best-c-solution</a></p>
+<p>Is this the best C++ solution?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode *deleteDuplicates(ListNode *head) &#123;</span><br><span class="line">        ListNode **runner = &amp;head;</span><br><span class="line">        </span><br><span class="line">        if(!head || !head-&gt;next)return head;</span><br><span class="line">        </span><br><span class="line">        while(*runner)</span><br><span class="line">        &#123;</span><br><span class="line">            if((*runner)-&gt;next &amp;&amp; (*runner)-&gt;next-&gt;val == (*runner)-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                ListNode *temp = *runner;</span><br><span class="line">                while(temp &amp;&amp; (*runner)-&gt;val == temp-&gt;val)</span><br><span class="line">                    temp = temp-&gt;next;</span><br><span class="line">                </span><br><span class="line">                *runner = temp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                runner = &amp;((*runner)-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int removeDuplicates(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int size=nums.size();</span><br><span class="line">        int i=0,j=0;</span><br><span class="line">        while(i&lt;size)&#123;</span><br><span class="line">            nums[j++]=nums[i];</span><br><span class="line">            while(i+2&lt;size &amp;&amp; nums[i]==nums[i+1] &amp;&amp; nums[i+1]==nums[i+2])&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        return j;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/21369/python-in-place-solution-with-dummy-head-node" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21369/python-in-place-solution-with-dummy-head-node</a></p>
+<p>Python in-place solution with dummy head node.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def deleteDuplicates(self, head):</span><br><span class="line">    dummy = pre = ListNode(0)</span><br><span class="line">    dummy.next = head</span><br><span class="line">    while head and head.next:</span><br><span class="line">        if head.val == head.next.val:</span><br><span class="line">            while head and head.next and head.val == head.next.val:</span><br><span class="line">                head = head.next</span><br><span class="line">            head = head.next</span><br><span class="line">            pre.next = head</span><br><span class="line">        else:</span><br><span class="line">            pre = pre.next</span><br><span class="line">            head = head.next</span><br><span class="line">    return dummy.next</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3890/my-accepted-java-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3890/my-accepted-java-code</a></p>
+<p>My accepted Java code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">        if(head==null) return null;</span><br><span class="line">        ListNode FakeHead=new ListNode(0);</span><br><span class="line">        FakeHead.next=head;</span><br><span class="line">        ListNode pre=FakeHead;</span><br><span class="line">        ListNode cur=head;</span><br><span class="line">        while(cur!=null)&#123;</span><br><span class="line">            while(cur.next!=null&amp;&amp;cur.val==cur.next.val)&#123;</span><br><span class="line">                cur=cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">            if(pre.next==cur)&#123;</span><br><span class="line">                pre=pre.next;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                pre.next=cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur=cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return FakeHead.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5206/my-recursive-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5206/my-recursive-java-solution</a></p>
+<p>My Recursive Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">    if (head == null) return null;</span><br><span class="line">    </span><br><span class="line">    if (head.next != null &amp;&amp; head.val == head.next.val) &#123;</span><br><span class="line">        while (head.next != null &amp;&amp; head.val == head.next.val) &#123;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return deleteDuplicates(head.next);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        head.next = deleteDuplicates(head.next);</span><br><span class="line">    &#125;</span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>if current node is not unique, return deleteDuplicates with head.next.</p>
+<p>If current node is unique, link it to the result of next list made by recursive call. Any improvement?</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24470/java-simple-and-clean-code-with-comment" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24470/java-simple-and-clean-code-with-comment</a></p>
+<p>Java simple and clean code with comment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">	//use two pointers, slow - track the node before the dup nodes, </span><br><span class="line">	// fast - to find the last node of dups.</span><br><span class="line">    ListNode dummy = new ListNode(0), fast = head, slow = dummy;</span><br><span class="line">    slow.next = fast;</span><br><span class="line">    while(fast != null) &#123;</span><br><span class="line">    	while (fast.next != null &amp;&amp; fast.val == fast.next.val) &#123;</span><br><span class="line">     		fast = fast.next;    //while loop to find the last node of the dups.</span><br><span class="line">    	&#125;</span><br><span class="line">    	if (slow.next != fast) &#123; //duplicates detected.</span><br><span class="line">    		slow.next = fast.next; //remove the dups.</span><br><span class="line">    		fast = slow.next;     //reposition the fast pointer.</span><br><span class="line">    	&#125; else &#123; //no dup, move down both pointer.</span><br><span class="line">    		slow = slow.next;</span><br><span class="line">    		fast = fast.next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line">    return dummy.next;</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11234/a-short-and-simple-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11234/a-short-and-simple-java-solution</a></p>
+<p>A short and simple Java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public ListNode deleteDuplicates(ListNode head) &#123;</span><br><span class="line">    ListNode dummy = new ListNode(0);</span><br><span class="line">    ListNode d = dummy;</span><br><span class="line">    while (head != null) &#123;</span><br><span class="line">        if (head.next != null &amp;&amp; head.val == head.next.val) &#123;</span><br><span class="line">            while (head.next != null &amp;&amp; head.val == head.next.val)</span><br><span class="line">                head = head.next;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            d.next = head;</span><br><span class="line">            d = d.next;</span><br><span class="line">        &#125;</span><br><span class="line">        head = head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    d.next = null;</span><br><span class="line">    return dummy.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1-&gt;1-&gt;1-&gt;2-&gt;2-&gt;3</p>
+<p>we skip all the 1’s and start the loop from 2</p>
+<p>and also skip all the 2’s, and now head.val == 3;</p>
+<p>ponit d.next to the tail, end the loop</p>
+
       
     </div>
     
@@ -491,6 +566,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+        </div>
       
 
       
@@ -574,8 +661,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +708,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +770,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

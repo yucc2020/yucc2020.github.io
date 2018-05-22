@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hash table,two pointers,string,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="25.7%  https://leetcode.com/problems/minimum-window-substring/ Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). 1234For exa">
+<meta name="keywords" content="leetcode,hash table,two pointers,string,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="076. Minimum Window Substring">
 <meta property="og:url" content="http://yucc.me/p/9aa229a6/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="25.7%  https://leetcode.com/problems/minimum-window-substring/ Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). 1234For exa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:11:38.660Z">
+<meta property="og:updated_time" content="2018-05-22T04:49:37.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="076. Minimum Window Substring">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="25.7%  https://leetcode.com/problems/minimum-window-substring/ Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). 1234For exa">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:11:38+08:00">
-                2018-05-22 12:11
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:49:37+08:00">
+                2018-05-22 12:49
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,468
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  15
                 </span>
               
             </div>
@@ -430,7 +452,87 @@
       
 
       
-        
+        <ul>
+<li>25.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/minimum-window-substring/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-window-substring/</a></p>
+<p>Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">S = &quot;ADOBECODEBANC&quot;</span><br><span class="line">T = &quot;ABC&quot;</span><br><span class="line">Minimum window is &quot;BANC&quot;.</span><br></pre></td></tr></table></figure>
+<p>Note:<br>If there is no such window in S that covers all characters in T, return the empty string “”.</p>
+<p>If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.</p>
+<p>Subscribe to see which companies asked this question</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现，更容易理解逻辑，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        int m = s.size(), n = t.size();</span><br><span class="line">        if(n&gt;m) return &quot;&quot;;</span><br><span class="line">        vector&lt;int&gt; v(256, 0);</span><br><span class="line">        for(int i=0; i&lt;n; i++)</span><br><span class="line">            v[t[i]]++;</span><br><span class="line">        int left = 0;</span><br><span class="line">        int right = 0;</span><br><span class="line">        int head = 0;</span><br><span class="line">        int len = INT_MAX;</span><br><span class="line">        int cnt = n;</span><br><span class="line">        while(right&lt;m)&#123;</span><br><span class="line">            if(v[s[right]]&gt;0)</span><br><span class="line">                cnt--;</span><br><span class="line">            v[s[right]]--;</span><br><span class="line">            right++;</span><br><span class="line">            while(cnt==0)&#123; // left++, 不考虑left&gt;=m 因为left不可能&gt;=m，否则cnt！=0</span><br><span class="line">                if(right-left&lt;len)&#123;</span><br><span class="line">                    head = left;</span><br><span class="line">                    len = right-left;</span><br><span class="line">                &#125;</span><br><span class="line">                if(v[s[left]]==0)</span><br><span class="line">                    cnt++;</span><br><span class="line">                v[s[left]]++;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return len!=INT_MAX?s.substr(head, len):&quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>重点方法，重点学习，并且带有模板</p>
+<p><a href="https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30941/here-is-a-10-line-template-that-can-solve-most-substring-problems</a></p>
+<p>9ms, 86.18%, September 22, 2016</p>
+<p>Here is a 10-line template that can solve most ‘substring’ problems</p>
+<p>I will first give the solution then show you the magic template.</p>
+<p>The code of solving this problem is below. It might be the shortest among all solutions provided in Discuss.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        vector&lt;int&gt; map(128, 0);</span><br><span class="line">        for(auto c:t) map[c]++;</span><br><span class="line">        int counter=t.size(), begin=0, end=0, d=INT_MAX, head=0;</span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(map[s[end++]]--&gt;0) counter--;</span><br><span class="line">            while(counter==0)&#123;</span><br><span class="line">                if(end-begin&lt;d) d=end-(head=begin);</span><br><span class="line">                if(map[s[begin++]]++==0) counter++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return d==INT_MAX?&quot;&quot;:s.substr(head, d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Here comes the template.</p>
+<p>For most substring problem, we are given a string and need to find a substring of it which satisfy some restrictions. A general way is to use a hashmap assisted with two pointers. The template is given below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int findSubstring(string s)&#123;</span><br><span class="line">        vector&lt;int&gt; map(128,0);</span><br><span class="line">        int counter; // check whether the substring is valid</span><br><span class="line">        int begin=0, end=0; //two pointers, one point to tail and one  head</span><br><span class="line">        int d; //the length of substring</span><br><span class="line"></span><br><span class="line">        for() &#123; /* initialize the hash map here */ &#125;</span><br><span class="line"></span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line"></span><br><span class="line">            if(map[s[end++]]-- ?)&#123;  /* modify counter here */ &#125;</span><br><span class="line"></span><br><span class="line">            while(/* counter condition */)&#123; </span><br><span class="line">                 </span><br><span class="line">                 /* update d here if finding minimum*/</span><br><span class="line"></span><br><span class="line">                //increase begin to make it invalid/valid again</span><br><span class="line">                </span><br><span class="line">                if(map[s[begin++]]++ ?)&#123; /*modify counter here*/ &#125;</span><br><span class="line">            &#125;  </span><br><span class="line"></span><br><span class="line">            /* update d here if finding maximum*/</span><br><span class="line">        &#125;</span><br><span class="line">        return d;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>One thing needs to be mentioned is that when asked to find maximum substring, we should update maximum after the inner while loop to guarantee that the substring is valid. On the other hand, when asked to find minimum substring, we should update minimum inside the inner while loop.</p>
+<p>The code of solving Longest Substring with At Most Two Distinct Characters is below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int lengthOfLongestSubstringTwoDistinct(string s) &#123;</span><br><span class="line">        vector&lt;int&gt; map(128, 0);</span><br><span class="line">        int counter=0, begin=0, end=0, d=0; </span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(map[s[end++]]++==0) counter++;</span><br><span class="line">            while(counter&gt;2) if(map[s[begin++]]--==1) counter--;</span><br><span class="line">            d=max(d, end-begin);</span><br><span class="line">        &#125;</span><br><span class="line">        return d;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ol start="159">
+<li>Longest Substring with At Most Two Distinct Characters （带锁）</li>
+</ol>
+<p>The code of solving Longest Substring Without Repeating Characters is below:</p>
+<p>Update 01.04.2016, thanks @weiyi3 for advise.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int lengthOfLongestSubstring(string s) &#123;</span><br><span class="line">        vector&lt;int&gt; map(128,0);</span><br><span class="line">        int counter=0, begin=0, end=0, d=0; </span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(map[s[end++]]++&gt;0) counter++; </span><br><span class="line">            while(counter&gt;0) if(map[s[begin++]]--&gt;1) counter--;</span><br><span class="line">            d=max(d, end-begin); //while valid, update d</span><br><span class="line">        &#125;</span><br><span class="line">        return d;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>I think this post deserves some upvotes! : )</p>
+<p>code 2：</p>
+<p>代码解读：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// S = &quot;ADOBECODEBANC&quot;</span><br><span class="line">// T = &quot;ABC&quot;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        vector&lt;int&gt; map(128, 0);</span><br><span class="line">        for(auto c:t) map[c]++;</span><br><span class="line">        int counter=t.size(), begin=0, end=0, d=INT_MAX, head=0;</span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(map[s[end++]]--&gt;0) counter--;</span><br><span class="line">            while(counter==0)&#123; // 如果能进入count==0， 说明begin至end之间的包括t的所有字符</span><br><span class="line">                if(end-begin&lt;d)&#123; //简单的判断</span><br><span class="line">                    head = begin;</span><br><span class="line">                    d = end - head;</span><br><span class="line">                &#125;</span><br><span class="line">                if(map[s[begin]]==0)&#123;// begin指向值的如果在此时是0，说明这个值一定是t的值，如果不是，值一定是负的，因为前面减了。</span><br><span class="line">                    counter++;</span><br><span class="line">                &#125;</span><br><span class="line">                map[s[begin]]++; // 本来进入一个值是减的，减少一个值，这个map值的增加的</span><br><span class="line">                begin++; // 如果进入了满足counter==0状态，肯定要begin++，向前走的</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return d==INT_MAX?&quot;&quot;:s.substr(head, d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3107/accepted-o-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3107/accepted-o-n-solution</a></p>
+<p><a href="https://oj.leetcode.com/discuss/5469/is-the-length-of-t-considered-constant-or-m" target="_blank" rel="noopener">https://oj.leetcode.com/discuss/5469/is-the-length-of-t-considered-constant-or-m</a></p>
+<p>Implementation of mike3’s idea</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string S, string T) &#123;</span><br><span class="line">        if (S.empty() || T.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        int count = T.size();</span><br><span class="line">        int require[128] = &#123;0&#125;;</span><br><span class="line">        bool chSet[128] = &#123;false&#125;;</span><br><span class="line">        for (int i = 0; i &lt; count; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            require[T[i]]++;</span><br><span class="line">            chSet[T[i]] = true;</span><br><span class="line">        &#125;</span><br><span class="line">        int i = -1;</span><br><span class="line">        int j = 0;</span><br><span class="line">        int minLen = INT_MAX;</span><br><span class="line">        int minIdx = 0;</span><br><span class="line">        while (i &lt; (int)S.size() &amp;&amp; j &lt; (int)S.size())</span><br><span class="line">        &#123;</span><br><span class="line">            if (count)</span><br><span class="line">            &#123;</span><br><span class="line">                i++;</span><br><span class="line">                require[S[i]]--;</span><br><span class="line">                if (chSet[S[i]] &amp;&amp; require[S[i]] &gt;= 0)</span><br><span class="line">                &#123;</span><br><span class="line">                    count--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if (minLen &gt; i - j + 1)</span><br><span class="line">                &#123;</span><br><span class="line">                    minLen = i - j + 1;</span><br><span class="line">                    minIdx = j;</span><br><span class="line">                &#125;</span><br><span class="line">                require[S[j]]++;</span><br><span class="line">                if (chSet[S[j]] &amp;&amp; require[S[j]] &gt; 0)</span><br><span class="line">                &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (minLen == INT_MAX)</span><br><span class="line">        &#123;</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return S.substr(minIdx, minLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6026/sharing-my-straightforward-o-n-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6026/sharing-my-straightforward-o-n-solution-with-explanation</a></p>
+<p>There are three key variables in my solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unordered_map &lt;char, int&gt; map; unordered_map&lt;char, int&gt; window; int letterCounter;</span><br></pre></td></tr></table></figure>
+<p>variable “map” is used to indicate what characters and how many characters are in T.</p>
+<p>variable “window” is to indicate what characters and how many characters are between pointer “slow” and pointer “fast”.</p>
+<p>Now let’s start.</p>
+<p>The first For loop is used to construct variable “map”.</p>
+<p>The second For loop is used to find the minimum window.</p>
+<p>The first thing we should do in the second For loop is to find a window which can cover T. I use “letterCounter” to be a monitor. If “letterCounter” is equal to T.length(), then we find this window. Before that, only the first If clause can be executed. However, after we find this window, the second If clause can also be executed.</p>
+<p>In the second If clause, we move “slow” forward in order to shrink the window size. Every time finding a smaller window, I update the result.</p>
+<p>At the end of program, I return result, which is the minimum window.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">string minWindow(string S, string T) &#123;</span><br><span class="line">    string result;</span><br><span class="line">    if(S.empty() || T.empty())&#123;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    unordered_map&lt;char, int&gt; map;</span><br><span class="line">    unordered_map&lt;char, int&gt; window;</span><br><span class="line">    for(int i = 0; i &lt; T.length(); i++)&#123;</span><br><span class="line">        map[T[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    int minLength = INT_MAX;</span><br><span class="line">    int letterCounter = 0;</span><br><span class="line">    for(int slow = 0, fast = 0; fast &lt; S.length(); fast++)&#123;</span><br><span class="line">        char c = S[fast];</span><br><span class="line">        if(map.find(c) != map.end())&#123;</span><br><span class="line">            window[c]++;</span><br><span class="line">            if(window[c] &lt;= map[c])&#123;</span><br><span class="line">                letterCounter++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(letterCounter &gt;= T.length())&#123;</span><br><span class="line">            while(map.find(S[slow]) == map.end() || window[S[slow]] &gt; map[S[slow]])&#123;</span><br><span class="line">                window[S[slow]]--;</span><br><span class="line">                slow++;</span><br><span class="line">            &#125;</span><br><span class="line">            if(fast - slow + 1 &lt; minLength)&#123;</span><br><span class="line">                minLength = fast - slow + 1;</span><br><span class="line">                result = S.substr(slow, minLength);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>232ms, 32.27%, September 23, 2016</p>
+<p>12 lines Python</p>
+<p><a href="https://discuss.leetcode.com/topic/20692/12-lines-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20692/12-lines-python</a></p>
+<p>The current window is s[i:j] and the result window is s[I:J]. In need[c] I store how many times I need character c (can be negative) and missing tells how many characters are still missing. In the loop, first add the new character to the window. Then, if nothing is missing, remove as much as possible from the window start and then update the result.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minWindow(self, s, t):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :type t: str</span><br><span class="line">        :rtype: str</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        need, missing = collections.Counter(t), len(t)</span><br><span class="line">        i = I = J = 0</span><br><span class="line">        for j, c in enumerate(s, 1):</span><br><span class="line">            missing -= need[c] &gt; 0</span><br><span class="line">            need[c] -= 1</span><br><span class="line">            if not missing:</span><br><span class="line">                while i&lt;j and need[s[i]] &lt; 0:</span><br><span class="line">                    need[s[i]] += 1</span><br><span class="line">                    i += 1</span><br><span class="line">                if not J or j-i &lt;= J-I:</span><br><span class="line">                    I, J = i, j</span><br><span class="line">        return s[I:J]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6665/accepted-python-solution-using-hashtable" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6665/accepted-python-solution-using-hashtable</a></p>
+<p>Accepted Python solution using hashtable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return a string</span><br><span class="line">    def minWindow(self, S, T):</span><br><span class="line">        indices = &#123;&#125;</span><br><span class="line">        for char in T:</span><br><span class="line">            indices[char] = []</span><br><span class="line">        miss = list(T)</span><br><span class="line">        start = 0</span><br><span class="line">        end = len(S)</span><br><span class="line">        for i in range(len(S)):</span><br><span class="line">            if S[i] in T:</span><br><span class="line">                if S[i] not in miss and indices[S[i]] != []:</span><br><span class="line">                    indices[S[i]].pop(0)</span><br><span class="line">                elif S[i] in miss:</span><br><span class="line">                    miss.remove(S[i])</span><br><span class="line">                indices[S[i]].append(i)</span><br><span class="line">            if miss == []:</span><br><span class="line">                maximum = max([x[-1] for x in indices.values()])</span><br><span class="line">                minimum = min([x[0] for x in indices.values()])</span><br><span class="line">                if maximum-minimum+1 &lt; end-start+1:</span><br><span class="line">                    start = minimum</span><br><span class="line">                    end = maximum</span><br><span class="line">        if miss != []:</span><br><span class="line">            return &quot;&quot;</span><br><span class="line">        else:</span><br><span class="line">            return S[start:end+1]</span><br></pre></td></tr></table></figure>
+<p>Basically I kept a dictionary to record the index of each character of T. Each time I found a window, (when miss == []), I checked the length of this window by subtracting the maximum index and the minimum index of the characters. If this window is the smallest one so far, I record its beginning and ending index as “start” and “end.”</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/12492/share-my-neat-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12492/share-my-neat-java-solution</a></p>
+<p>Share my neat java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public String minWindow(String S, String T) &#123;</span><br><span class="line">    if(S==null||S.isEmpty()||T==null||T.isEmpty()) return &quot;&quot;;</span><br><span class="line">    int i=0, j=0;</span><br><span class="line">    int[] Tmap=new int[256];</span><br><span class="line">    int[] Smap=new int[256];</span><br><span class="line">    for(int k=0; k&lt; T.length(); k++)&#123;</span><br><span class="line">        Tmap[T.charAt(k)]++;</span><br><span class="line">    &#125;</span><br><span class="line">    int found=0;</span><br><span class="line">    int length=Integer.MAX_VALUE;</span><br><span class="line">    String res=&quot;&quot;;</span><br><span class="line">    while(j&lt;S.length())&#123;</span><br><span class="line">        if(found&lt;T.length())&#123;</span><br><span class="line">            if(Tmap[S.charAt(j)]&gt;0)&#123;</span><br><span class="line">                Smap[S.charAt(j)]++;</span><br><span class="line">                if(Smap[S.charAt(j)]&lt;=Tmap[S.charAt(j)])&#123;</span><br><span class="line">                    found++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        while(found==T.length())&#123;</span><br><span class="line">            if(j-i&lt;length)&#123;</span><br><span class="line">                length=j-i; res=S.substring(i,j);</span><br><span class="line">            &#125;</span><br><span class="line">            if(Tmap[S.charAt(i)]&gt;0)&#123;</span><br><span class="line">                Smap[S.charAt(i)]--;</span><br><span class="line">                if(Smap[S.charAt(i)]&lt;Tmap[S.charAt(i)])&#123;</span><br><span class="line">                    found--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21143/java-solution-using-two-pointers-hashmap" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21143/java-solution-using-two-pointers-hashmap</a></p>
+<p>Java solution. using two pointers + HashMap</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public String minWindow(String s, String t) &#123;</span><br><span class="line">    if(s == null || s.length() &lt; t.length() || s.length() == 0)&#123;</span><br><span class="line">        return &quot;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    HashMap&lt;Character,Integer&gt; map = new HashMap&lt;Character,Integer&gt;();</span><br><span class="line">    for(char c : t.toCharArray())&#123;</span><br><span class="line">        if(map.containsKey(c))&#123;</span><br><span class="line">            map.put(c,map.get(c)+1);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            map.put(c,1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int left = 0;</span><br><span class="line">    int minLeft = 0;</span><br><span class="line">    int minLen = s.length()+1;</span><br><span class="line">    int count = 0;</span><br><span class="line">    for(int right = 0; right &lt; s.length(); right++)&#123;</span><br><span class="line">        if(map.containsKey(s.charAt(right)))&#123;</span><br><span class="line">            map.put(s.charAt(right),map.get(s.charAt(right))-1);</span><br><span class="line">            if(map.get(s.charAt(right)) &gt;= 0)&#123;</span><br><span class="line">                count ++;</span><br><span class="line">            &#125;</span><br><span class="line">            while(count == t.length())&#123;</span><br><span class="line">                if(right-left+1 &lt; minLen)&#123;</span><br><span class="line">                    minLeft = left;</span><br><span class="line">                    minLen = right-left+1;</span><br><span class="line">                &#125;</span><br><span class="line">                if(map.containsKey(s.charAt(left)))&#123;</span><br><span class="line">                    map.put(s.charAt(left),map.get(s.charAt(left))+1);</span><br><span class="line">                    if(map.get(s.charAt(left)) &gt; 0)&#123;</span><br><span class="line">                        count --;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                left ++ ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(minLen&gt;s.length())  </span><br><span class="line">    &#123;  </span><br><span class="line">        return &quot;&quot;;  </span><br><span class="line">    &#125;  </span><br><span class="line">    </span><br><span class="line">    return s.substring(minLeft,minLeft+minLen);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41308/java-4ms-bit-97-6" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41308/java-4ms-bit-97-6</a></p>
+<p>Java 4ms bit 97.6%</p>
+<p>Basically, there are two pointers for windows sliding. One for exploiting new matched substring, other pointer for expiring previous substring.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public String minWindow(String s, String t) &#123;</span><br><span class="line">        char[] s_array = s.toCharArray();</span><br><span class="line">        char[] t_array = t.toCharArray();</span><br><span class="line">        int[] map = new int[256];</span><br><span class="line">        int end = 0;</span><br><span class="line">        int start = 0;</span><br><span class="line">        int min_length = Integer.MAX_VALUE;</span><br><span class="line">        for(int i = 0; i &lt; t_array.length; i++)</span><br><span class="line">            map[t_array[i]] ++;</span><br><span class="line">        int count = t_array.length;</span><br><span class="line">        int min_start = 0;</span><br><span class="line">        while(end &lt; s_array.length)</span><br><span class="line">        &#123;</span><br><span class="line">            if(map[s_array[end]] &gt; 0)</span><br><span class="line">            &#123;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">            map[s_array[end]] --;</span><br><span class="line">            while(count == 0)</span><br><span class="line">            &#123;</span><br><span class="line">                if((end - start + 1) &lt; min_length)</span><br><span class="line">                &#123;</span><br><span class="line">                    min_length = end - start + 1;</span><br><span class="line">                    min_start = start;</span><br><span class="line">                &#125;</span><br><span class="line">                map[s_array[start]] ++;</span><br><span class="line">                if(map[s_array[start]] &gt; 0)&#123;</span><br><span class="line">                    count ++;</span><br><span class="line">                &#125;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            end ++;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        if( min_start+min_length &gt; s_array.length)</span><br><span class="line">            return &quot;&quot;;</span><br><span class="line">        return s.substring(min_start, min_start+min_length);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +593,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -574,8 +690,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +737,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +799,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

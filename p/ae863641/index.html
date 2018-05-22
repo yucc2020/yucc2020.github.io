@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,math,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="27.9%  https://leetcode.com/problems/sqrtx/ Implement int sqrt(int x). Compute and return the square root of x.">
+<meta name="keywords" content="leetcode,easy,math,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="069. Sqrt(x)">
 <meta property="og:url" content="http://yucc.me/p/ae863641/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="27.9%  https://leetcode.com/problems/sqrtx/ Implement int sqrt(int x). Compute and return the square root of x.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:10:17.718Z">
+<meta property="og:updated_time" content="2018-05-22T04:43:19.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="069. Sqrt(x)">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="27.9%  https://leetcode.com/problems/sqrtx/ Implement int sqrt(int x). Compute and return the square root of x.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:10:17+08:00">
-                2018-05-22 12:10
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:43:19+08:00">
+                2018-05-22 12:43
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,423
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,86 @@
       
 
       
-        
+        <ul>
+<li>27.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">https://leetcode.com/problems/sqrtx/</a></p>
+<p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x.</p>
+ <a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>基本方法，二分搜索</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> == x) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">1</span>, right = x, ans;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (mid &lt;= x / mid) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">return</span> x; <span class="comment">// 先对特殊情况判断</span></span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">1</span>, right=x, ans;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123; <span class="comment">// 判断条件left&lt;=right</span></span><br><span class="line">            <span class="keyword">int</span> mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(mid&lt;=x/mid)&#123; <span class="comment">// 如果mid*mid可能超出int范围</span></span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> res = x;</span><br><span class="line">        <span class="keyword">double</span> delta = <span class="number">0.0001</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">abs</span>(<span class="built_in">pow</span>(res, <span class="number">2</span>)-x)&gt;delta)&#123;</span><br><span class="line">            res = (res + x/res)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">int</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">f(x) = ans^2 - x = 0</span><br><span class="line"></span><br><span class="line">f&apos;(x) = 2*ans </span><br><span class="line"></span><br><span class="line">y = f&apos;(ans)*(nex - ans) + f(ans)</span><br><span class="line"></span><br><span class="line">y = 0</span><br><span class="line"></span><br><span class="line">=&gt; nex = ans - f(ans) / f&apos;(ans)</span><br><span class="line"></span><br><span class="line">迭代方法</span><br></pre></td></tr></table></figure>
+<p>Newton方法，迭代</p>
+<p>The key point is the average result is calculate by “ans = (ans + x / ans) / 2”;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int sqrt(int x) &#123;</span><br><span class="line">    double ans    = x;</span><br><span class="line">    double delta  = 0.0001;</span><br><span class="line">    while (fabs(pow(ans, 2) - x) &gt; delta) &#123;</span><br><span class="line">        ans = (ans + x / ans) / 2;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">        <span class="keyword">double</span> ans = x; <span class="comment">// 注意此处用的是double，不是int</span></span><br><span class="line">        <span class="keyword">double</span> delta = <span class="number">0.0001</span>; <span class="comment">// 用double，而不是int</span></span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">fabs</span>(<span class="built_in">pow</span>(ans,<span class="number">2</span>) - x)&gt;delta)&#123;</span><br><span class="line">            ans = (ans + x/ans)/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>牛顿法的另一种实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> r = x;</span><br><span class="line">        <span class="keyword">while</span>(r*r &gt; x)</span><br><span class="line">            r = (r+x/r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24532/3-4-short-lines-integer-newton-every-language" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24532/3-4-short-lines-integer-newton-every-language</a></p>
+<p>3-4 short lines, Integer Newton, Every Language</p>
+<p>Quite a few people used Newton already, but I didn’t see someone make it this short. Same solution in every language. Explanation under the solutions.</p>
+<p>C++ and C</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">long r = x;</span><br><span class="line">while (r*r &gt; x)</span><br><span class="line">    r = (r + x/r) / 2;</span><br><span class="line">return r;</span><br></pre></td></tr></table></figure>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = x</span><br><span class="line">while r*r &gt; x:</span><br><span class="line">    r = (r + x/r) / 2</span><br><span class="line">return r</span><br></pre></td></tr></table></figure>
+<p>Java and C#</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">long r = x;</span><br><span class="line">while (r*r &gt; x)</span><br><span class="line">    r = (r + x/r) / 2;</span><br><span class="line">return (int) r;</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>Apparently, using only integer division for the Newton method works. And I guessed that if I start at x, the root candidate will decrease monotonically and never get too small.</p>
+<p>The above solutions all got accepted, and in C++ I also verified it locally on my PC for all possible inputs (0 to 2147483647):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;climits&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int mySqrt(int x) &#123;</span><br><span class="line">    long long r = x;</span><br><span class="line">    while (r*r &gt; x)</span><br><span class="line">        r = (r + x/r) / 2;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    for (long long x=0; x&lt;=INT_MAX; ++x) &#123;</span><br><span class="line">        long long r = mySqrt(x);</span><br><span class="line">        if (r&lt;0 || r*r &gt; x || (r+1)*(r+1) &lt;= x)</span><br><span class="line">            cout &lt;&lt; &quot;false: &quot; &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; endl;</span><br><span class="line">        if (x % 10000000 == 0)</span><br><span class="line">            cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; &quot;all checked&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1225/solve-this-problem-with-binary-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1225/solve-this-problem-with-binary-search</a></p>
+<p>Solve this problem with Binary Search</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int sqrt(int x) &#123;</span><br><span class="line">        if (0 == x) return 0;</span><br><span class="line">        int left = 1, right = x, ans;</span><br><span class="line">        while (left &lt;= right) &#123;</span><br><span class="line">            int mid = left + (right - left) / 2;</span><br><span class="line">            if (mid &lt;= x / mid) &#123;</span><br><span class="line">                left = mid + 1;</span><br><span class="line">                ans = mid;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                right = mid - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8689/newton-s-iterative-method-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8689/newton-s-iterative-method-in-c</a></p>
+<p>Newton’s Iterative Method in C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int sqrt(int x) &#123;</span><br><span class="line">    double ans    = x;</span><br><span class="line">    double delta  = 0.0001;</span><br><span class="line">    while (fabs(pow(ans, 2) - x) &gt; delta) &#123;</span><br><span class="line">        ans = (ans + x / ans) / 2;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The key point is the average result is calculate by “ans = (ans + x / ans) / 2”;</p>
+<p>For instance, when calculate sqrt(2) :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Guess Result        Quotient                             Average Result</span><br><span class="line">      1          2 / 1 = 2                            (2 + 1) / 2 = 1.5</span><br><span class="line">     1.5      2 / 1.5 = 1.3333                (1.3333 + 1.5) / 2 = 1.4167</span><br><span class="line">   1.4167    2 / 1.4167 = 1.4118          (1.4167 + 1.4118) / 2 = 1.4142</span><br><span class="line">    ... ...</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19698/my-clean-c-code-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19698/my-clean-c-code-8ms</a></p>
+<p>My clean C++ code 8ms</p>
+<p>Binary search and high is always converged to the one that 1 larger than the result.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int mySqrt(int x) &#123;</span><br><span class="line">        int low = 0,  high = x, mid;</span><br><span class="line">        if(x&lt;2) return x; // to avoid mid = 0</span><br><span class="line">        while(low&lt;high)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (low + high)/2;</span><br><span class="line">            if(x/mid &gt;= mid) low = mid+1;</span><br><span class="line">            else high = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        return high-1;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5472/newton-method-accepted-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5472/newton-method-accepted-solution</a></p>
+<p>Newton method, accepted solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param x, an integer</span><br><span class="line"># @return an integer</span><br><span class="line">def sqrt(self, x):</span><br><span class="line">	i=1.0;</span><br><span class="line">	while(True):</span><br><span class="line">		j=(i+x/i)/2.0;</span><br><span class="line">		if(abs(i-j)&lt; 0.000000000005):</span><br><span class="line">			break;</span><br><span class="line">		i=j;</span><br><span class="line">	return int(j);</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8680/a-binary-search-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8680/a-binary-search-solution</a></p>
+<p>A Binary Search Solution</p>
+<p>Instead of using fancy Newton’s method, this plain binary search approach also works.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int sqrt(int x) &#123;</span><br><span class="line">    if (x == 0)</span><br><span class="line">        return 0;</span><br><span class="line">    int left = 1, right = Integer.MAX_VALUE;</span><br><span class="line">    while (true) &#123;</span><br><span class="line">        int mid = left + (right - left)/2;</span><br><span class="line">        if (mid &gt; x/mid) &#123;</span><br><span class="line">            right = mid - 1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if (mid + 1 &gt; x/(mid + 1))</span><br><span class="line">                return mid;</span><br><span class="line">            left = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2671/share-my-o-log-n-solution-using-bit-manipulation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2671/share-my-o-log-n-solution-using-bit-manipulation</a></p>
+<p>Share my O(log n) Solution using bit manipulation</p>
+<p>Basic Idea:</p>
+<p>Since sqrt(x) is composed of binary bits, I calculate sqrt(x) by deciding every bit from the most significant to least significant. Since an integer n can have O(log n) bits with each bit decided within constant time, this algorithm has time limit O(log n), actually, because an Integer can have at most 32 bits, I can also say this algorithm takes O(32)=O(1) time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int sqrt(int x) &#123;</span><br><span class="line">    if(x==0)</span><br><span class="line">        return 0;</span><br><span class="line">    int h=0;</span><br><span class="line">    while((long)(1&lt;&lt;h)*(long)(1&lt;&lt;h)&lt;=x) // firstly, find the most significant bit</span><br><span class="line">        h++;</span><br><span class="line">    h--;</span><br><span class="line">    int b=h-1;</span><br><span class="line">    int res=(1&lt;&lt;h);</span><br><span class="line">    while(b&gt;=0)&#123;  // find the remaining bits</span><br><span class="line">        if((long)(res | (1&lt;&lt;b))*(long)(res |(1&lt;&lt;b))&lt;=x)</span><br><span class="line">            res|=(1&lt;&lt;b);</span><br><span class="line">        b--;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/35357/share-my-2ms-and-4lines-java-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/35357/share-my-2ms-and-4lines-java-code</a></p>
+<p>Share my 2ms and 4lines JAVA code,</p>
+<p>My idea is, for any non-negative number N, sqrt(N) = 2/2sqrt(N) =2sqrt(1/4)sqrt(N) = 2sqrt(N/4). And for the Ns that are not multiple of 4, for example, 9, 25 or 49, the actual result should be 1+2*sqrt(N/4), because we need to take remainders into account.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int mySqrt(int x) &#123;</span><br><span class="line">    if(x &lt; 4) return x == 0 ? 0 : 1;</span><br><span class="line">    int res = 2 * mySqrt(x/4);</span><br><span class="line">    if((res+1) * (res+1) &lt;= x &amp;&amp; (res+1) * (res+1) &gt;= 0) return res+1;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Hope it helps.</p>
+<hr>
+
       
     </div>
     
@@ -491,6 +592,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -574,8 +687,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +734,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +796,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

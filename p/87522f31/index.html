@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="36.0%  https://leetcode.com/problems/set-matrix-zeroes/ Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place. Follow up: Did you use extra space? A straight fo">
+<meta name="keywords" content="leetcode,array,medium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="073. Set Matrix Zeroes">
 <meta property="og:url" content="http://yucc.me/p/87522f31/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="36.0%  https://leetcode.com/problems/set-matrix-zeroes/ Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place. Follow up: Did you use extra space? A straight fo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:11:10.057Z">
+<meta property="og:updated_time" content="2018-05-22T04:47:21.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="073. Set Matrix Zeroes">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="36.0%  https://leetcode.com/problems/set-matrix-zeroes/ Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place. Follow up: Did you use extra space? A straight fo">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:11:10+08:00">
-                2018-05-22 12:11
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:47:21+08:00">
+                2018-05-22 12:47
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,480
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,52 @@
       
 
       
-        
+        <ul>
+<li>36.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/set-matrix-zeroes/" target="_blank" rel="noopener">https://leetcode.com/problems/set-matrix-zeroes/</a></p>
+<p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.</p>
+<p>Follow up:</p>
+<p>Did you use extra space?</p>
+<p>A straight forward solution using O(mn) space is probably a bad idea.</p>
+<p>A simple improvement uses O(m + n) space, but still not the best solution.</p>
+<p>Could you devise a constant space solution?</p>
+<a id="more"></a>
+<hr>
+<p>貌似剑指offer？</p>
+<p>方法一：</p>
+<p>保存所有结果到第一行和第一列，遍历非第一行，非第一列，只要有出现0的就设置为0。</p>
+<p>至于第一行第一列要不要设置为0，可以设置两个标志来判断。</p>
+<p><a href="https://discuss.leetcode.com/topic/5056/any-shorter-o-1-space-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5056/any-shorter-o-1-space-solution</a></p>
+<p>Any shorter O(1) space solution?</p>
+<p>My idea is simple: store states of each row in the first of that row, and store states of each column in the first of that column. Because the state of row0 and the state of column0 would occupy the same cell, I let it be the state of row0, and use another variable “col0” for column0. In the first phase, use matrix elements to set states in a top-down way. In the second phase, use states to set matrix elements in a bottom-up way.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void setZeroes(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    int col0 = 1, rows = matrix.size(), cols = matrix[0].size();</span><br><span class="line"></span><br><span class="line">    for (int i = 0; i &lt; rows; i++) &#123;</span><br><span class="line">        if (matrix[i][0] == 0) col0 = 0;</span><br><span class="line">        for (int j = 1; j &lt; cols; j++)</span><br><span class="line">            if (matrix[i][j] == 0)</span><br><span class="line">                matrix[i][0] = matrix[0][j] = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = rows - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">        for (int j = cols - 1; j &gt;= 1; j--)</span><br><span class="line">            if (matrix[i][0] == 0 || matrix[0][j] == 0)</span><br><span class="line">                matrix[i][j] = 0;</span><br><span class="line">        if (col0 == 0) matrix[i][0] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>多个循环，第一行，第一列，非第一行第一列，三个循环，清晰明了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.empty() || matrix[<span class="number">0</span>].empty()) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> row0 = <span class="number">1</span>, col0 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> rows = matrix.size(), cols = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;cols; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[<span class="number">0</span>][i]==<span class="number">0</span>)&#123;</span><br><span class="line">                row0 = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;rows; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span>)&#123;</span><br><span class="line">                col0 = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;rows; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;cols; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j]==<span class="number">0</span>)&#123;</span><br><span class="line">                    matrix[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">                    matrix[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;rows; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;cols; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][<span class="number">0</span>]==<span class="number">0</span> || matrix[<span class="number">0</span>][j]==<span class="number">0</span>)</span><br><span class="line">                    matrix[i][j] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(row0==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;cols; i++)</span><br><span class="line">                matrix[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(col0==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;rows; i++)</span><br><span class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7087/my-c-o-1-yoooooo" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7087/my-c-o-1-yoooooo</a></p>
+<p>My C++ O(1) yoooooo</p>
+<p>I find the last row which has 0, and use it to store the 0-collumns.</p>
+<p>Then go row by row set them to 0.</p>
+<p>Then go column by column set them to 0.</p>
+<p>Finally set the last row which has 0. It’s long but hey it’s O(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void setZeroes(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">        </span><br><span class="line">        int H = matrix.size();</span><br><span class="line">        int W = matrix[0].size();</span><br><span class="line">        </span><br><span class="line">        // find the last 0 row</span><br><span class="line">        int last_0_row = -1;</span><br><span class="line">        for (int y = H - 1; y &gt;= 0 &amp;&amp; last_0_row == -1; y--)</span><br><span class="line">            for (int x = 0; x &lt; W; x++)</span><br><span class="line">                if (matrix[y][x] == 0)</span><br><span class="line">                &#123;</span><br><span class="line">                    last_0_row = y;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">        if (last_0_row == -1)</span><br><span class="line">            return;</span><br><span class="line">        </span><br><span class="line">        // go row by row</span><br><span class="line">        for (int y = 0; y &lt; last_0_row; y++)</span><br><span class="line">        &#123;</span><br><span class="line">            bool this_is_a_0_row = false;</span><br><span class="line">            </span><br><span class="line">            for (int x = 0; x &lt; W; x++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (matrix[y][x] == 0)</span><br><span class="line">                &#123;</span><br><span class="line">                    this_is_a_0_row = true;</span><br><span class="line">                    matrix[last_0_row][x] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if (this_is_a_0_row)</span><br><span class="line">            for (int x = 0; x &lt; W; x++)</span><br><span class="line">            &#123;</span><br><span class="line">                matrix[y][x] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // set collums to 0</span><br><span class="line">        for (int y = 0; y &lt; H; y++)</span><br><span class="line">        for (int x = 0; x &lt; W; x++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (matrix[last_0_row][x] == 0)</span><br><span class="line">                matrix[y][x] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // set the last 0 row </span><br><span class="line">        for (int x = 0; x &lt; W; x++)</span><br><span class="line">        &#123;</span><br><span class="line">            matrix[last_0_row][x] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>188ms, 49.31%, June.18th, 2016</p>
+<p><a href="https://leetcode.com/discuss/49003/o-1-space-solution-in-python" target="_blank" rel="noopener">https://leetcode.com/discuss/49003/o-1-space-solution-in-python</a></p>
+<p>O(1) space solution in Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param &#123;integer[][]&#125; matrix</span><br><span class="line"># @return &#123;void&#125; Do not return anything, modify matrix in-place instead.</span><br><span class="line">def setZeroes(self, matrix):</span><br><span class="line">    m = len(matrix)</span><br><span class="line">    if m == 0:</span><br><span class="line">        return</span><br><span class="line">    n = len(matrix[0])</span><br><span class="line">    </span><br><span class="line">    row_zero = False</span><br><span class="line">    for i in range(m):</span><br><span class="line">        if matrix[i][0] == 0:</span><br><span class="line">            row_zero = True</span><br><span class="line">    col_zero = False</span><br><span class="line">    for j in range(n):</span><br><span class="line">        if matrix[0][j] == 0:</span><br><span class="line">            col_zero = True</span><br><span class="line">            </span><br><span class="line">    for i in range(1, m):</span><br><span class="line">        for j in range(1, n):</span><br><span class="line">            if matrix[i][j] == 0:</span><br><span class="line">                matrix[i][0] = 0</span><br><span class="line">                matrix[0][j] = 0</span><br><span class="line">    </span><br><span class="line">    for i in range(1, m):</span><br><span class="line">        if matrix[i][0] == 0:</span><br><span class="line">            for j in range(1, n):</span><br><span class="line">                matrix[i][j] = 0</span><br><span class="line">                </span><br><span class="line">    for j in range(1, n):</span><br><span class="line">        if matrix[0][j] == 0:</span><br><span class="line">            for i in range(1, m):</span><br><span class="line">                matrix[i][j] = 0</span><br><span class="line">    </span><br><span class="line">    if col_zero:</span><br><span class="line">        for j in range(n):</span><br><span class="line">            matrix[0][j] = 0</span><br><span class="line">    if row_zero:</span><br><span class="line">        for i in range(m):</span><br><span class="line">            matrix[i][0] = 0</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15193/my-ac-java-o-1-solution-easy-to-read" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15193/my-ac-java-o-1-solution-easy-to-read</a></p>
+<p>My AC java O(1) solution (easy to read)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public void setZeroes(int[][] matrix) &#123;</span><br><span class="line">    boolean fr = false,fc = false;</span><br><span class="line">    for(int i = 0; i &lt; matrix.length; i++) &#123;</span><br><span class="line">        for(int j = 0; j &lt; matrix[0].length; j++) &#123;</span><br><span class="line">            if(matrix[i][j] == 0) &#123;</span><br><span class="line">                if(i == 0) fr = true;</span><br><span class="line">                if(j == 0) fc = true;</span><br><span class="line">                matrix[0][j] = 0;</span><br><span class="line">                matrix[i][0] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 1; i &lt; matrix.length; i++) &#123;</span><br><span class="line">        for(int j = 1; j &lt; matrix[0].length; j++) &#123;</span><br><span class="line">            if(matrix[i][0] == 0 || matrix[0][j] == 0) &#123;</span><br><span class="line">                matrix[i][j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(fr) &#123;</span><br><span class="line">        for(int j = 0; j &lt; matrix[0].length; j++) &#123;</span><br><span class="line">            matrix[0][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(fc) &#123;</span><br><span class="line">        for(int i = 0; i &lt; matrix.length; i++) &#123;</span><br><span class="line">            matrix[i][0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8807/my-java-o-1-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8807/my-java-o-1-solution-easy-to-understand</a></p>
+<p>My java O(1) solution (easy to understand)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void setZeroes(int[][] matrix) &#123;</span><br><span class="line">        if(matrix==null)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int m = matrix.length;</span><br><span class="line">        int n = matrix[0].length;</span><br><span class="line">        </span><br><span class="line">        boolean rowHasZero = false;</span><br><span class="line">        boolean colHasZero = false;</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            if(matrix[0][i]==0)&#123;</span><br><span class="line">                rowHasZero = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i&lt;m; i++)&#123;</span><br><span class="line">            if(matrix[i][0]==0)&#123;</span><br><span class="line">                colHasZero = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=1; i&lt;m; i++)&#123;</span><br><span class="line">            for(int j=1; j&lt;n; j++)&#123;</span><br><span class="line">                if(matrix[i][j]==0)&#123;</span><br><span class="line">                    matrix[i][0] = 0;</span><br><span class="line">                    matrix[0][j] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        for(int j=1;j&lt;n; j++)&#123;</span><br><span class="line">            if(matrix[0][j]==0)&#123;</span><br><span class="line">                nullifyCol(matrix, j, m, n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=1; i&lt;m; i++)&#123;</span><br><span class="line">            if(matrix[i][0]==0)&#123;</span><br><span class="line">                nullifyRow(matrix, i, m, n);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(rowHasZero)&#123;</span><br><span class="line">            nullifyRow(matrix, 0, m, n);</span><br><span class="line">        &#125;</span><br><span class="line">        if(colHasZero)&#123;</span><br><span class="line">            nullifyCol(matrix, 0, m, n);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void nullifyRow(int[][] matrix, int i, int m, int n)&#123;</span><br><span class="line">        for(int col=0; col&lt;n; col++)&#123;</span><br><span class="line">            matrix[i][col] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void nullifyCol(int[][] matrix, int j, int m, int n)&#123;</span><br><span class="line">        for(int row=0; row&lt;m; row++)&#123;</span><br><span class="line">            matrix[row][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +558,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+        </div>
       
 
       
@@ -574,8 +651,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +760,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

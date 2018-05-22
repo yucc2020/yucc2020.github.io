@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,two pointers,sort," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="37.0%  https://leetcode.com/problems/sort-colors/ Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red,">
+<meta name="keywords" content="leetcode,array,medium,two pointers,sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="075. Sort Colors">
 <meta property="og:url" content="http://yucc.me/p/b84bd86e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="37.0%  https://leetcode.com/problems/sort-colors/ Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:11:28.781Z">
+<meta property="og:updated_time" content="2018-05-22T04:48:51.157Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="075. Sort Colors">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="37.0%  https://leetcode.com/problems/sort-colors/ Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red,">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:11:28+08:00">
-                2018-05-22 12:11
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:48:51+08:00">
+                2018-05-22 12:48
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,581
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,76 @@
       
 
       
-        
+        <ul>
+<li>37.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener">https://leetcode.com/problems/sort-colors/</a></p>
+<p>Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p>Note:<br>You are not suppose to use the library’s sort function for this problem.</p>
+<p>click to show follow up.</p>
+<p>Follow up:</p>
+<p>A rather straight forward solution is a two-pass algorithm using counting sort.</p>
+<p>First, iterate the array counting number of 0’s, 1’s, and 2’s, then overwrite array with total number of 0’s, then 1’s and followed by 2’s.</p>
+<p>Could you come up with an one-pass algorithm using only constant space?</p>
+<a id="more"></a>
+<hr>
+<p>本题属于#三向快速排序#，可以参考#算法导论#。</p>
+<p>方法一：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> second=n<span class="number">-1</span>, zero=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=second; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (A[i]==<span class="number">2</span> &amp;&amp; i&lt;second) swap(A[i], A[second--]);</span><br><span class="line">            <span class="keyword">while</span> (A[i]==<span class="number">0</span> &amp;&amp; i&gt;zero) swap(A[i], A[zero++]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的实现：</p>
+<p>left定义为指向0的指针，right为2</p>
+<p>i是遍历的指针指向的位置，从0开始。</p>
+<p>如果nums[i]等于0， 则前面left指向0的尾部，left右边是1，</p>
+<p>交换nums[i]与nums[++left]，nums[i]=1了相当于，num[++left]=0</p>
+<p>如果nums[i]为2，则与尾部交换。由于交换后的结果不确定是几</p>
+<p>所以此处i不增加</p>
+<p>如果nums[i]为1，则默默增加i就行了。</p>
+<p>left，right的初始定义值，借鉴的是算法导论里的方法。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">-1</span>, right = n;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                swap(nums[++left], nums[i]);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i]==<span class="number">2</span>)&#123;</span><br><span class="line">                swap(nums[--right], nums[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i]==<span class="number">1</span>)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5422/share-my-one-pass-constant-space-10-line-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5422/share-my-one-pass-constant-space-10-line-solution</a></p>
+<p>Share my one pass constant space 10-line solution</p>
+<p>The idea is to sweep all 0s to the left and all 2s to the right, then all 1s are left in the middle.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> second=n<span class="number">-1</span>, zero=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=second; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (A[i]==<span class="number">2</span> &amp;&amp; i&lt;second) swap(A[i], A[second--]);</span><br><span class="line">            <span class="keyword">while</span> (A[i]==<span class="number">0</span> &amp;&amp; i&gt;zero) swap(A[i], A[zero++]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6968/four-different-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6968/four-different-solutions</a></p>
+<p>Four different solutions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// two pass O(m+n) space</span><br><span class="line">void sortColors(int A[], int n) &#123;</span><br><span class="line">    int num0 = 0, num1 = 0, num2 = 0;</span><br><span class="line">    </span><br><span class="line">    for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (A[i] == 0) ++num0;</span><br><span class="line">        else if (A[i] == 1) ++num1;</span><br><span class="line">        else if (A[i] == 2) ++num2;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for(int i = 0; i &lt; num0; ++i) A[i] = 0;</span><br><span class="line">    for(int i = 0; i &lt; num1; ++i) A[num0+i] = 1;</span><br><span class="line">    for(int i = 0; i &lt; num2; ++i) A[num0+num1+i] = 2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// one pass in place solution</span><br><span class="line">void sortColors(int A[], int n) &#123;</span><br><span class="line">    int n0 = -1, n1 = -1, n2 = -1;</span><br><span class="line">    for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">        if (A[i] == 0) </span><br><span class="line">        &#123;</span><br><span class="line">            A[++n2] = 2; A[++n1] = 1; A[++n0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (A[i] == 1) </span><br><span class="line">        &#123;</span><br><span class="line">            A[++n2] = 2; A[++n1] = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (A[i] == 2) </span><br><span class="line">        &#123;</span><br><span class="line">            A[++n2] = 2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// one pass in place solution</span><br><span class="line">void sortColors(int A[], int n) &#123;</span><br><span class="line">    int j = 0, k = n - 1;</span><br><span class="line">    for (int i = 0; i &lt;= k; ++i)&#123;</span><br><span class="line">        if (A[i] == 0 &amp;&amp; i != j)</span><br><span class="line">            swap(A[i--], A[j++]);</span><br><span class="line">        else if (A[i] == 2 &amp;&amp; i != k)</span><br><span class="line">            swap(A[i--], A[k--]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// one pass in place solution</span><br><span class="line">void sortColors(int A[], int n) &#123;</span><br><span class="line">    int j = 0, k = n-1;</span><br><span class="line">    for (int i=0; i &lt;= k; i++) &#123;</span><br><span class="line">        if (A[i] == 0)</span><br><span class="line">            swap(A[i], A[j++]);</span><br><span class="line">        else if (A[i] == 2)</span><br><span class="line">            swap(A[i--], A[k--]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36832/sharing-c-solution-with-good-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36832/sharing-c-solution-with-good-explanation</a></p>
+<p>Sharing C++ solution with Good Explanation</p>
+<p>The solution requires the use of tracking 3 positions, the Low, Mid and High.</p>
+<p>We assume that the mid is the “Unknown” area that we must evaluate.</p>
+<p>If we encounter a 0, we know that it will be on the low end of the array, and if we encounter a 2, we know it will be on the high end of the array.</p>
+<p>To achieve this in one pass without preprocessing (counting), we simply traverse the unknown will generating the low and high ends.</p>
+<p>Take this example:</p>
+<p>Assume our input is: 1 0 2 2 1 0 (short for simplicity).</p>
+<p>Running the algorithm by hand would look something like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">1 0 2 2 1 0</span><br><span class="line">^         ^</span><br><span class="line">L         H</span><br><span class="line">M</span><br><span class="line"></span><br><span class="line">Mid != 0 || 2</span><br><span class="line">Mid++</span><br><span class="line"></span><br><span class="line">1 0 2 2 1 0</span><br><span class="line">^ ^       ^</span><br><span class="line">L M       H</span><br><span class="line"></span><br><span class="line">Mid == 0</span><br><span class="line">Swap Low and Mid</span><br><span class="line">Mid++</span><br><span class="line">Low++</span><br><span class="line"></span><br><span class="line">0 1 2 2 1 0</span><br><span class="line">  ^ ^     ^</span><br><span class="line">  L M     H</span><br><span class="line"></span><br><span class="line">Mid == 2</span><br><span class="line">Swap High and Mid</span><br><span class="line">High--</span><br><span class="line"></span><br><span class="line">0 1 0 2 1 2</span><br><span class="line">  ^ ^   ^</span><br><span class="line">  L M   H</span><br><span class="line"></span><br><span class="line">Mid == 0</span><br><span class="line">Swap Low and Mid</span><br><span class="line">Mid++</span><br><span class="line">Low++</span><br><span class="line"></span><br><span class="line">0 0 1 2 1 2</span><br><span class="line">    ^ ^ ^</span><br><span class="line">    L M H</span><br><span class="line"></span><br><span class="line">Mid == 2</span><br><span class="line">Swap High and Mid</span><br><span class="line">High--</span><br><span class="line"></span><br><span class="line">0 0 1 1 2 2</span><br><span class="line">    ^ ^</span><br><span class="line">    L M</span><br><span class="line">      H</span><br><span class="line"></span><br><span class="line">Mid &lt;= High is our exit case</span><br></pre></td></tr></table></figure>
+<p>Implemented in C++, it looks like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">    void sortColors(vector&lt;int&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        int tmp = 0, low = 0, mid = 0, high = nums.size() - 1;</span><br><span class="line">    </span><br><span class="line">        while(mid &lt;= high)</span><br><span class="line">        &#123;</span><br><span class="line">            if(nums[mid] == 0)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp = nums[low];</span><br><span class="line">                nums[low] = nums[mid];</span><br><span class="line">                nums[mid] = tmp;</span><br><span class="line">                low++;</span><br><span class="line">                mid++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(nums[mid] == 1)</span><br><span class="line">            &#123;</span><br><span class="line">                mid++;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(nums[mid] == 2)</span><br><span class="line">            &#123;</span><br><span class="line">                tmp = nums[high];</span><br><span class="line">                nums[high] = nums[mid];</span><br><span class="line">                nums[mid] = tmp;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void sortColors(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int lo = 0;</span><br><span class="line">        int hi = nums.size()-1;</span><br><span class="line">        int i=0;</span><br><span class="line">        while(i&lt;=hi)&#123;</span><br><span class="line">            if(nums[i]==2)&#123;</span><br><span class="line">                swap(nums[i], nums[hi]);</span><br><span class="line">                hi--;</span><br><span class="line">            &#125;</span><br><span class="line">            if(nums[i]==0)&#123;</span><br><span class="line">                swap(nums[i], nums[lo]);</span><br><span class="line">                lo++;</span><br><span class="line">                i++;   </span><br><span class="line">            &#125;</span><br><span class="line">            if(nums[i]==1)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/26181/ac-python-in-place-one-pass-solution-o-n-time-o-1-space-no-swap-no-count" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26181/ac-python-in-place-one-pass-solution-o-n-time-o-1-space-no-swap-no-count</a></p>
+<p>AC Python in place one pass solution O(n) time O(1) space, no swap no count</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def sortColors(self, nums):</span><br><span class="line">    i = j = 0</span><br><span class="line">    for k in xrange(len(nums)):</span><br><span class="line">        v = nums[k]</span><br><span class="line">        nums[k] = 2</span><br><span class="line">        if v &lt; 2:</span><br><span class="line">            nums[j] = 1</span><br><span class="line">            j += 1</span><br><span class="line">        if v == 0:</span><br><span class="line">            nums[i] = 0</span><br><span class="line">            i += 1</span><br><span class="line"></span><br><span class="line"># 86 / 86 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 44 ms</span><br><span class="line"># 84.03%</span><br></pre></td></tr></table></figure>
+<p>Just like the Lomuto partition algorithm usually used in quick sort. We keep a loop invariant that [0,i) [i, j) [j, k) are 0s, 1s and 2s sorted in place for [0,k). Here “)” means exclusive. We don’t need to swap because we know the values we want.</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/19201/java-solution-both-2-pass-and-1-pass" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19201/java-solution-both-2-pass-and-1-pass</a></p>
+<p>Java solution, both 2-pass and 1-pass</p>
+<p>2-pass 两次遍历<br>1-pass 一次遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public void sortColors(int[] nums) &#123;</span><br><span class="line">    // 1-pass</span><br><span class="line">    int p1 = 0, p2 = nums.length - 1, index = 0;</span><br><span class="line">    while (index &lt;= p2) &#123;</span><br><span class="line">        if (nums[index] == 0) &#123;</span><br><span class="line">            nums[index] = nums[p1];</span><br><span class="line">            nums[p1] = 0;</span><br><span class="line">            p1++;</span><br><span class="line">        &#125;</span><br><span class="line">        if (nums[index] == 2) &#123;</span><br><span class="line">            nums[index] = nums[p2];</span><br><span class="line">            nums[p2] = 2;</span><br><span class="line">            p2--;</span><br><span class="line">            index--;</span><br><span class="line">        &#125;</span><br><span class="line">        index++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public void sortColors(int[] nums) &#123;</span><br><span class="line">    // 2-pass</span><br><span class="line">    int count0 = 0, count1 = 0, count2 = 0;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">        if (nums[i] == 0) &#123;count0++;&#125;</span><br><span class="line">        if (nums[i] == 1) &#123;count1++;&#125;</span><br><span class="line">        if (nums[i] == 2) &#123;count2++;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">        if (i &lt; count0) &#123;nums[i] = 0;&#125;</span><br><span class="line">        else if (i &lt; count0 + count1) &#123;nums[i] = 1;&#125;</span><br><span class="line">        else &#123;nums[i] = 2;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +582,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
       
 
       
@@ -574,8 +679,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +726,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +788,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
