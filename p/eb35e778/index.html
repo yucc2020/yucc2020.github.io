@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,array,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="36.3%  https://leetcode.com/problems/find-peak-element/?tab=Description A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak elem">
+<meta name="keywords" content="leetcode,medium,array,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="162. Find Peak Element">
 <meta property="og:url" content="http://yucc.me/p/eb35e778/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="36.3%  https://leetcode.com/problems/find-peak-element/?tab=Description A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak elem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.204Z">
+<meta property="og:updated_time" content="2018-05-22T14:37:31.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="162. Find Peak Element">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="36.3%  https://leetcode.com/problems/find-peak-element/?tab=Description A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak elem">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:37:31+08:00">
+                2018-05-22 22:37
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  842
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,53 @@
       
 
       
-        
+        <ul>
+<li>36.3%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/find-peak-element/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/find-peak-element/?tab=Description</a></p>
+<p>A peak element is an element that is greater than its neighbors.</p>
+<p>Given an input array where num[i] ≠ num[i+1], find a peak element and return its index.</p>
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+<p>You may imagine that num[-1] = num[n] = -∞.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>Your solution should be in logarithmic complexity.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>my code:</p>
+<p>题目要求log复杂度，这个是n复杂度，肯定是不够的。log复杂度肯定是二分搜索了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findPeakElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        if(n==1) return 0;</span><br><span class="line">        for(int i=1; i&lt;n-1; i++)</span><br><span class="line">            if(nums[i]&gt;nums[i-1] &amp;&amp; nums[i]&gt;nums[i+1])</span><br><span class="line">                return i;</span><br><span class="line">        if(nums[0]&gt;nums[1])</span><br><span class="line">            return 0;</span><br><span class="line">        if(nums[n-2]&lt;nums[n-1])</span><br><span class="line">            return n-1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Sequential Search:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findPeakElement(const vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        for(int i = 1; i &lt; num.size(); i ++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(num[i] &lt; num[i-1])</span><br><span class="line">            &#123;// &lt;</span><br><span class="line">                return i-1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return num.size()-1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>8ms, 4.79%, June.21th, 2016</p>
+<p><a href="https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration" target="_blank" rel="noopener">https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration</a></p>
+<p>Consider that each local maximum is one valid peak.<br>My solution is to find one local maximum with binary search.<br>Binary search satisfies the O(logn) computational complexity.</p>
+<p>Binary Search: recursion</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">int findPeakElement(const vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">    return Helper(num, 0, num.size()-1);</span><br><span class="line">&#125;</span><br><span class="line">int Helper(const vector&lt;int&gt; &amp;num, int low, int high)</span><br><span class="line">&#123;</span><br><span class="line">    if(low == high)</span><br><span class="line">        return low;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        int mid1 = (low+high)/2;</span><br><span class="line">        int mid2 = mid1+1;</span><br><span class="line">        if(num[mid1] &gt; num[mid2])</span><br><span class="line">            return Helper(num, low, mid1);</span><br><span class="line">        else</span><br><span class="line">            return Helper(num, mid2, high);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>Binary Search: iteration</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findPeakElement(const vector&lt;int&gt; &amp;num) </span><br><span class="line">    &#123;</span><br><span class="line">        int low = 0;</span><br><span class="line">        int high = num.size()-1;</span><br><span class="line">        </span><br><span class="line">        while(low &lt; high)</span><br><span class="line">        &#123;</span><br><span class="line">            int mid1 = (low+high)/2;</span><br><span class="line">            int mid2 = mid1+1;</span><br><span class="line">            if(num[mid1] &lt; num[mid2])</span><br><span class="line">                low = mid2;</span><br><span class="line">            else</span><br><span class="line">                high = mid1;</span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><p>Solution 1:</p>
+<p>8ms, 4.79%, June.21th, 2016</p>
+<p><a href="https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration" target="_blank" rel="noopener">https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findPeakElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        for(int i = 1; i &lt; nums.size(); i++)</span><br><span class="line">            if(nums[i] &lt; nums[i-1])</span><br><span class="line">                return i-1;</span><br><span class="line">        return nums.size() - 1; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution 2:</p>
+<p>4ms, 84.77%, June.21th, 2016</p>
+<p><a href="https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration" target="_blank" rel="noopener">https://leetcode.com/discuss/17793/find-the-maximum-by-binary-search-recursion-and-iteration</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findPeakElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        return Helper(nums, 0, nums.size()-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int Helper(const vector&lt;int&gt; &amp;nums, int low, int high)&#123;</span><br><span class="line">        if(low == high)</span><br><span class="line">            return low;</span><br><span class="line">        else&#123;</span><br><span class="line">            int mid1 = (low + high) / 2;</span><br><span class="line">            int mid2 = mid1 + 1;</span><br><span class="line">            if(nums[mid1] &gt; nums[mid2])</span><br><span class="line">                return Helper(nums, low, mid1);</span><br><span class="line">            else</span><br><span class="line">                return Helper(nums, mid2, high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution 3:</p>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>Solution 1:</p>
+<p>48ms, 82.40%, June.21th, 2016</p>
+<p><a href="https://leetcode.com/discuss/35744/my-clean-and-readable-python-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/35744/my-clean-and-readable-python-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findPeakElement(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        left = 0</span><br><span class="line">        right = len(nums)-1</span><br><span class="line">    </span><br><span class="line">        while left &lt; right:</span><br><span class="line">            mid = (left+right)/2</span><br><span class="line">            if nums[mid] &gt; nums[mid+1] and nums[mid] &gt; nums[mid-1]:</span><br><span class="line">                return mid</span><br><span class="line">    </span><br><span class="line">            if nums[mid] &lt; nums[mid+1]:</span><br><span class="line">                left = mid+1</span><br><span class="line">            else:</span><br><span class="line">                right = mid-1</span><br><span class="line">    </span><br><span class="line">        return left</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p>Solution 1:</p>
+<p>0ms, 33.78%, June.21th, 2016</p>
+<p><a href="https://leetcode.com/discuss/18107/o-logn-solution-javacode" target="_blank" rel="noopener">https://leetcode.com/discuss/18107/o-logn-solution-javacode</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int findPeakElement(int[] num) &#123;    </span><br><span class="line">        return helper(num,0,num.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int helper(int[] num,int start,int end)&#123;</span><br><span class="line">        if(start == end)&#123;</span><br><span class="line">            return start;</span><br><span class="line">        &#125;else if(start+1 == end)&#123;</span><br><span class="line">            if(num[start] &gt; num[end]) return start;</span><br><span class="line">            return end;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">    </span><br><span class="line">            int m = (start+end)/2;</span><br><span class="line">    </span><br><span class="line">            if(num[m] &gt; num[m-1] &amp;&amp; num[m] &gt; num[m+1])&#123;</span><br><span class="line">    </span><br><span class="line">                return m;</span><br><span class="line">    </span><br><span class="line">            &#125;else if(num[m-1] &gt; num[m] &amp;&amp; num[m] &gt; num[m+1])&#123;</span><br><span class="line">    </span><br><span class="line">                return helper(num,start,m-1);</span><br><span class="line">    </span><br><span class="line">            &#125;else&#123;</span><br><span class="line">    </span><br><span class="line">                return helper(num,m+1,end);</span><br><span class="line">    </span><br><span class="line">            &#125;</span><br><span class="line">    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +559,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -574,8 +654,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +763,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

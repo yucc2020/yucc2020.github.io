@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="41.1%  Given a string, find the length of the longest substring T that contains at most 2 distinct characters. For example, Given s = “eceba”, T is “ece” which its length is 3.">
+<meta name="keywords" content="leetcode,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="159.Longest Substring with At Most Two Distinct Characters">
 <meta property="og:url" content="http://yucc.me/p/5c6ef69c/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="41.1%  Given a string, find the length of the longest substring T that contains at most 2 distinct characters. For example, Given s = “eceba”, T is “ece” which its length is 3.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.200Z">
+<meta property="og:updated_time" content="2018-05-22T14:36:03.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="159.Longest Substring with At Most Two Distinct Characters">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="41.1%  Given a string, find the length of the longest substring T that contains at most 2 distinct characters. For example, Given s = “eceba”, T is “ece” which its length is 3.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:36:03+08:00">
+                2018-05-22 22:36
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  229
                 </span>
               
 
@@ -430,7 +452,20 @@
       
 
       
-        
+        <ul>
+<li>41.1%</li>
+</ul>
+<p>Given a string, find the length of the longest substring T that contains at most 2 distinct characters.</p>
+<p>For example, Given s = “eceba”,</p>
+<p>T is “ece” which its length is 3.</p>
+<a id="more"></a>
+<hr>
+<p>本题与 第3题，第76题都可以用同一个模板解决。</p>
+<p>方法一:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int lengthOfLongestSubstring(string s) &#123;</span><br><span class="line">        vector&lt;int&gt; map(128,0);</span><br><span class="line">        int counter=0, begin=0, end=0, d=0; </span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(map[s[end++]]++&gt;0) counter++; </span><br><span class="line">            while(counter&gt;0) if(map[s[begin++]]--&gt;1) counter--;</span><br><span class="line">            d=max(d, end-begin); //while valid, update d</span><br><span class="line">        &#125;</span><br><span class="line">        return d;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现，自己通过测试，但leetcode有锁，无法判断是否通过所有样例</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Soulution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringTwoDistinct</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> n = s.size();</span><br><span class="line">		<span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</span><br><span class="line">		<span class="keyword">int</span> begin = <span class="number">0</span>, end = <span class="number">0</span>, d = <span class="number">0</span>, counter = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; indexs(<span class="number">256</span>, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">while</span> (end &lt; n) &#123;</span><br><span class="line">			<span class="keyword">if</span> (indexs[s[end]] == <span class="number">0</span>)</span><br><span class="line">				counter++;</span><br><span class="line">			indexs[s[end]]++;</span><br><span class="line">			end++;</span><br><span class="line">			<span class="keyword">while</span> (counter &gt; <span class="number">2</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (indexs[s[begin]] == <span class="number">1</span>)</span><br><span class="line">					counter--;</span><br><span class="line">				indexs[s[begin]]--;</span><br><span class="line">				begin++;</span><br><span class="line">			&#125;</span><br><span class="line">			d = max(d, end - begin);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> d;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +526,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -612,7 +655,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,string," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="20.1%  https://leetcode.com/problems/compare-version-numbers/ Compare two version numbers version1 and version2.If version1 &amp;gt; version2 return 1, if version1 &amp;lt; version2 return -1, otherwise retu">
+<meta name="keywords" content="leetcode,medium,string">
 <meta property="og:type" content="article">
 <meta property="og:title" content="165. Compare Version Numbers">
 <meta property="og:url" content="http://yucc.me/p/74b375a4/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="20.1%  https://leetcode.com/problems/compare-version-numbers/ Compare two version numbers version1 and version2.If version1 &amp;gt; version2 return 1, if version1 &amp;lt; version2 return -1, otherwise retu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.208Z">
+<meta property="og:updated_time" content="2018-05-22T14:39:09.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="165. Compare Version Numbers">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="20.1%  https://leetcode.com/problems/compare-version-numbers/ Compare two version numbers version1 and version2.If version1 &amp;gt; version2 return 1, if version1 &amp;lt; version2 return -1, otherwise retu">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:39:09+08:00">
+                2018-05-22 22:39
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,055
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,41 @@
       
 
       
-        
+        <ul>
+<li>20.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/compare-version-numbers/" target="_blank" rel="noopener">https://leetcode.com/problems/compare-version-numbers/</a></p>
+<p>Compare two version numbers version1 and version2.<br>If version1 &gt; version2 return 1, if version1 &lt; version2 return -1, otherwise return 0.</p>
+<p>You may assume that the version strings are non-empty and contain only digits and the . character.<br>The . character does not represent a decimal point and is used to separate number sequences.<br>For instance, 2.5 is not “two and a half” or “half way to version three”, it is the fifth second-level revision of the second first-level revision.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Here is an example of version numbers ordering:</span><br><span class="line"></span><br><span class="line">0.1 &lt; 1.1 &lt; 1.2 &lt; 13.37</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compareVersion</span><span class="params">(<span class="built_in">string</span> version1, <span class="built_in">string</span> version2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num1 = <span class="number">0</span>, num2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n1 = version1.size(), n2 = version2.size();</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n1 || j&lt;n2)&#123;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;n1 &amp;&amp; version1[i]!=<span class="string">'.'</span>)</span><br><span class="line">                num1 = num1*<span class="number">10</span> + version1[i++]-<span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">while</span>(j&lt;n2 &amp;&amp; version2[j]!=<span class="string">'.'</span>)</span><br><span class="line">                num2 = num2*<span class="number">10</span> + version2[j++] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">if</span>(num1&gt;num2)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(num1&lt;num2)</span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">            num1 = <span class="number">0</span>;</span><br><span class="line">            num2 = <span class="number">0</span>;</span><br><span class="line">            i++; j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>按照最简单的逻辑去做就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int compareVersion(string version1, string version2) &#123;</span><br><span class="line">    int i = 0; </span><br><span class="line">    int j = 0;</span><br><span class="line">    int n1 = version1.size(); </span><br><span class="line">    int n2 = version2.size();</span><br><span class="line">    </span><br><span class="line">    int num1 = 0;</span><br><span class="line">    int num2 = 0;</span><br><span class="line">    while(i&lt;n1 || j&lt;n2) // 此处用 ||，考虑1.0.1与1的情况</span><br><span class="line">    &#123;</span><br><span class="line">        while(i&lt;n1 &amp;&amp; version1[i]!=&apos;.&apos;)&#123;</span><br><span class="line">            num1 = num1*10+(version1[i]-&apos;0&apos;);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        while(j&lt;n2 &amp;&amp; version2[j]!=&apos;.&apos;)&#123;</span><br><span class="line">            num2 = num2*10+(version2[j]-&apos;0&apos;);;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(num1&gt;num2) return 1;</span><br><span class="line">        else if(num1 &lt; num2) return -1;</span><br><span class="line">        </span><br><span class="line">        num1 = 0;</span><br><span class="line">        num2 = 0;</span><br><span class="line">        i++;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><p><a href="https://discuss.leetcode.com/topic/11410/my-2ms-easy-solution-with-c-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11410/my-2ms-easy-solution-with-c-c</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int compareVersion(string version1, string version2) &#123;</span><br><span class="line">    int i = 0; </span><br><span class="line">    int j = 0;</span><br><span class="line">    int n1 = version1.size(); </span><br><span class="line">    int n2 = version2.size();</span><br><span class="line">    </span><br><span class="line">    int num1 = 0;</span><br><span class="line">    int num2 = 0;</span><br><span class="line">    while(i&lt;n1 || j&lt;n2)</span><br><span class="line">    &#123;</span><br><span class="line">        while(i&lt;n1 &amp;&amp; version1[i]!=&apos;.&apos;)&#123;</span><br><span class="line">            num1 = num1*10+(version1[i]-&apos;0&apos;);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        while(j&lt;n2 &amp;&amp; version2[j]!=&apos;.&apos;)&#123;</span><br><span class="line">            num2 = num2*10+(version2[j]-&apos;0&apos;);;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(num1&gt;num2) return 1;</span><br><span class="line">        else if(num1 &lt; num2) return -1;</span><br><span class="line">        </span><br><span class="line">        num1 = 0;</span><br><span class="line">        num2 = 0;</span><br><span class="line">        i++;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int compareVersion(string version1, string version2) &#123;</span><br><span class="line">        for (; version1 != version2; version1 = nextSubstr(version1), version2 = nextSubstr(version2)) &#123;</span><br><span class="line">            int gap = stoi(version1) - stoi(version2);</span><br><span class="line">            if (gap != 0) &#123;</span><br><span class="line">                return gap &gt; 0 ? 1 : -1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    string nextSubstr(string str) &#123;</span><br><span class="line">        for (int i = 0; i &lt; str.size(); i++) &#123;</span><br><span class="line">            if (str.at(i) == &apos;.&apos;) &#123;</span><br><span class="line">                return str.substr(i + 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;0&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://discuss.leetcode.com/topic/8257/10-line-concise-solution-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8257/10-line-concise-solution-c</a></p>
+<p>This is a concise solution using stringstream to format string into int.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int compareVersion(string version1, string version2) &#123;</span><br><span class="line">    for(auto&amp; w : version1) if (w == &apos;.&apos;) w=&apos; &apos;;</span><br><span class="line">    for(auto&amp; w : version2) if (w == &apos;.&apos;) w=&apos; &apos;;</span><br><span class="line">    istringstream s1(version1), s2(version2);</span><br><span class="line">    while(1) &#123;</span><br><span class="line">        int n1,n2;</span><br><span class="line">        if (not(s1 &gt;&gt; n1) ) n1 = 0;</span><br><span class="line">        if (not(s2 &gt;&gt; n2) ) n2 = 0;</span><br><span class="line">        if (not s1 and not s2) return 0;</span><br><span class="line">        if (n1&lt;n2) return -1;</span><br><span class="line">        if (n1&gt;n2) return 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p><a href="https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def compareVersion(self, version1, version2):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type version1: str</span><br><span class="line">        :type version2: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        v1 = version1.split(&apos;.&apos;)</span><br><span class="line">        v2 = version2.split(&apos;.&apos;)</span><br><span class="line">        for i in range(max(len(v1), len(v2))):</span><br><span class="line">            gap = (int(v1[i]) if i &lt; len(v1) else 0) - (int(v2[i]) if i &lt; len(v2) else 0)</span><br><span class="line">            if gap != 0:</span><br><span class="line">                return 1 if gap &gt; 0 else -1</span><br><span class="line">        return 0</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://discuss.leetcode.com/topic/18543/2-4-lines-python-3-different-ways" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18543/2-4-lines-python-3-different-ways</a></p>
+<p>Solution 1: Pad with izip_longest with fillvalue=0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def compareVersion(self, version1, version2):</span><br><span class="line">    splits = (map(int, v.split(&apos;.&apos;)) for v in (version1, version2))</span><br><span class="line">    return cmp(*zip(*itertools.izip_longest(*splits, fillvalue=0)))</span><br></pre></td></tr></table></figure>
+<p>Solution 2: Pad with [0] * lengthDifference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def compareVersion(self, version1, version2):</span><br><span class="line">    v1, v2 = (map(int, v.split(&apos;.&apos;)) for v in (version1, version2))</span><br><span class="line">    d = len(v2) - len(v1)</span><br><span class="line">    return cmp(v1 + [0]*d, v2 + [0]*-d)</span><br></pre></td></tr></table></figure>
+<p>Solution 3: Recursive, add zeros on the fly</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def compareVersion(self, version1, version2):</span><br><span class="line">    main1, _, rest1 = (&apos;0&apos; + version1).partition(&apos;.&apos;)</span><br><span class="line">    main2, _, rest2 = (&apos;0&apos; + version2).partition(&apos;.&apos;)</span><br><span class="line">    return cmp(int(main1), int(main2)) or \</span><br><span class="line">           len(rest1+rest2) and self.compareVersion(rest1, rest2)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p><a href="https://discuss.leetcode.com/topic/6238/accepted-small-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6238/accepted-small-java-solution</a></p>
+<p>This code assumes that next level is zero if no mo levels in shorter version number. And than compare levels.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int compareVersion(String version1, String version2) &#123;</span><br><span class="line">    String[] levels1 = version1.split(&quot;\\.&quot;);</span><br><span class="line">    String[] levels2 = version2.split(&quot;\\.&quot;);</span><br><span class="line">    </span><br><span class="line">    int length = Math.max(levels1.length, levels2.length);</span><br><span class="line">    for (int i=0; i&lt;length; i++) &#123;</span><br><span class="line">    	Integer v1 = i &lt; levels1.length ? Integer.parseInt(levels1[i]) : 0;</span><br><span class="line">    	Integer v2 = i &lt; levels2.length ? Integer.parseInt(levels2[i]) : 0;</span><br><span class="line">    	int compare = v1.compareTo(v2);</span><br><span class="line">    	if (compare != 0) &#123;</span><br><span class="line">    		return compare;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6266/my-solutions-in-3-languages</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int compareVersion(String version1, String version2) &#123;</span><br><span class="line">        String[] v1 = version1.split(&quot;\\.&quot;);</span><br><span class="line">        String[] v2 = version2.split(&quot;\\.&quot;);</span><br><span class="line">        for(int i=0; i&lt;Math.max(v1.length, v2.length); i++)&#123;</span><br><span class="line">            int gap = (i &lt; v1.length ? Integer.parseInt(v1[i]) : 0) - (i &lt; v2.length ? Integer.parseInt(v2[i]) : 0);</span><br><span class="line">            if(gap != 0)</span><br><span class="line">                return gap &gt; 0 ? 1 : -1;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -491,6 +547,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+        </div>
       
 
       
@@ -574,8 +640,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +749,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

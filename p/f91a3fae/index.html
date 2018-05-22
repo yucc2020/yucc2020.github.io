@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,math,hash table,easy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="39.8%  https://leetcode.com/problems/happy-number/description/ Write an algorithm to determine if a number is “happy”. A happy number is a number defined by the following process: Starting with any p">
+<meta name="keywords" content="leetcode,math,hash table,easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="202. Happy Number">
 <meta property="og:url" content="http://yucc.me/p/f91a3fae/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="39.8%  https://leetcode.com/problems/happy-number/description/ Write an algorithm to determine if a number is “happy”. A happy number is a number defined by the following process: Starting with any p">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.233Z">
+<meta property="og:updated_time" content="2018-05-22T14:53:18.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="202. Happy Number">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="39.8%  https://leetcode.com/problems/happy-number/description/ Write an algorithm to determine if a number is “happy”. A happy number is a number defined by the following process: Starting with any p">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:53:18+08:00">
+                2018-05-22 22:53
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,529
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,63 @@
       
 
       
-        
+        <ul>
+<li>39.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/happy-number/description/" target="_blank" rel="noopener">https://leetcode.com/problems/happy-number/description/</a></p>
+<p>Write an algorithm to determine if a number is “happy”.</p>
+<p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
+<p>Example: 19 is a happy number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1^2 + 9^2 = 82</span><br><span class="line"></span><br><span class="line">8^2 + 2^2 = 68</span><br><span class="line"></span><br><span class="line">6^2 + 8^2 = 100</span><br><span class="line"></span><br><span class="line">1^2 + 0^2 + 0^2 = 1</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>从开始，遍历过的放入set，如果再出现一次，则肯定为false，如果到1，返回true。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">set</span>;</span><br><span class="line">        <span class="built_in">set</span>.insert(n);</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">                sum = sum + <span class="built_in">pow</span>(n%<span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line">                n /= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">set</span>.find(sum)!=<span class="built_in">set</span>.end())</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="built_in">set</span>.insert(sum);</span><br><span class="line">            n = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>另一种实现：</p>
+<p>把一样放入table里，如果出现过，就判断是否等于1. 1的下一个还是1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isHappy(int n) &#123;</span><br><span class="line">        int num=0;</span><br><span class="line">        unordered_map&lt;int,bool&gt; table;</span><br><span class="line">        table[n]=1;</span><br><span class="line">        while(n!=1)</span><br><span class="line">        &#123;</span><br><span class="line">            while(n)</span><br><span class="line">            &#123;</span><br><span class="line">                num += (n%10) * (n%10);</span><br><span class="line">                n/=10;</span><br><span class="line">            &#125;</span><br><span class="line">            if(table[num]) break;</span><br><span class="line">            else table[num]=1;</span><br><span class="line">            n=num;num=0;</span><br><span class="line">        &#125;</span><br><span class="line">        return 1==n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>比方法一差一些，因为没有保存，每次都去判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">bool isHappy(int n) &#123;</span><br><span class="line">            int num=0;</span><br><span class="line">            while(n!=1&amp;&amp;n!=4)</span><br><span class="line">            &#123;</span><br><span class="line">                while(n)</span><br><span class="line">                &#123;</span><br><span class="line">                    num += (n%10) * (n%10);</span><br><span class="line">                    n/=10;</span><br><span class="line">                &#125;</span><br><span class="line">                n=num;num=0;</span><br><span class="line">            &#125;</span><br><span class="line">            return 1==n;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30520/explanation-of-why-those-posted-algorithms-are-mathematically-valid" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30520/explanation-of-why-those-posted-algorithms-are-mathematically-valid</a></p>
+<p>Earlier posts gave the algorithm but did not explain why it is valid mathematically, and this is what this post is about: present a “short” mathematical proof.</p>
+<p>First of all, it is easy to argue that starting from a number I, if some value - say a - appears again during the process after k steps, the initial number I cannot be a happy number. Because a will continuously become a after every k steps.</p>
+<p>Therefore, as long as we can show that there is a loop after running the process continuously, the number is not a happy number.</p>
+<p>There is another detail not clarified yet: For any non-happy number, will it definitely end up with a loop during the process? This is important, because it is possible for a non-happy number to follow the process endlessly while having no loop.</p>
+<p>To show that a non-happy number will definitely generate a loop, we only need to show that for any non-happy number, all outcomes during the process are bounded by some large but finite integer N. If all outcomes can only be in a finite set (2,N], and since there are infinitely many outcomes for a non-happy number, there has to be at least one duplicate, meaning a loop!</p>
+<p>Suppose after a couple of processes, we end up with a large outcome O1 with D digits where D is kind of large, say D&gt;=4, i.e., O1 &gt; 999 (If we cannot even reach such a large outcome, it means all outcomes are bounded by 999 ==&gt; loop exists). We can easily see that after processing O1, the new outcome O2 can be at most 9^2<em>D &lt; 100D, meaning that O2 can have at most 2+d(D) digits, where d(D) is the number of digits D have. It is obvious that 2+d(D) &lt; D. We can further argue that O1 is the maximum (or boundary) of all outcomes afterwards. This can be shown by contradictory: Suppose after some steps, we reach another large number O3 &gt; O1. This means we process on some number W &lt;= 999 that yields O3. However, this cannot happen because the outcome of W can be at most 9^2</em>3 &lt; 300 &lt; O1.</p>
+<p>Done.</p>
+<p>Please leave your comment if any question or suggestion.</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><p><a href="https://discuss.leetcode.com/topic/38728/0ms-c-solution-beats-97-4-perhaps-the-most-easy-one-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/38728/0ms-c-solution-beats-97-4-perhaps-the-most-easy-one-to-understand</a></p>
+<p>I use three solutions: 1. hash table(8ms) 2. List circle detect method(4ms) 3.circle 1 and circle 4.<br>Here is the url:<a href="https://en.wikipedia.org/wiki/Happy_number" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Happy_number</a> Based on the fact that circle of 1 is happy, circle of 4 is unhappy.</p>
+<p>Solution3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">bool isHappy(int n) &#123;</span><br><span class="line">            int num=0;</span><br><span class="line">            while(n!=1&amp;&amp;n!=4)</span><br><span class="line">            &#123;</span><br><span class="line">                while(n)</span><br><span class="line">                &#123;</span><br><span class="line">                    num += (n%10) * (n%10);</span><br><span class="line">                    n/=10;</span><br><span class="line">                &#125;</span><br><span class="line">                n=num;num=0;</span><br><span class="line">            &#125;</span><br><span class="line">            return 1==n;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>Solution1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isHappy(int n) &#123;</span><br><span class="line">        int num=0;</span><br><span class="line">        unordered_map&lt;int,bool&gt; table;</span><br><span class="line">        table[n]=1;</span><br><span class="line">        while(n!=1)</span><br><span class="line">        &#123;</span><br><span class="line">            while(n)</span><br><span class="line">            &#123;</span><br><span class="line">                num += (n%10) * (n%10);</span><br><span class="line">                n/=10;</span><br><span class="line">            &#125;</span><br><span class="line">            if(table[num]) break;</span><br><span class="line">            else table[num]=1;</span><br><span class="line">            n=num;num=0;</span><br><span class="line">        &#125;</span><br><span class="line">        return 1==n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isHappy(int n) &#123;</span><br><span class="line">        int slow,fast;</span><br><span class="line">        slow=fast=n;</span><br><span class="line">        do&#123;</span><br><span class="line">            slow = compute(slow);</span><br><span class="line">            fast=compute(fast);</span><br><span class="line">            fast=compute(fast);</span><br><span class="line">        &#125;while(slow!=fast);</span><br><span class="line">        return 1==slow;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int compute(int n)</span><br><span class="line">    &#123;</span><br><span class="line">        int num=0;</span><br><span class="line">        while(n)</span><br><span class="line">        &#123;</span><br><span class="line">            num += (n%10) * (n%10);</span><br><span class="line">            n/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        return num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>Solution 1:</p>
+<p>64ms, 42.28%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/47623/my-python-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/47623/my-python-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def isHappy(self, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        mem = set()</span><br><span class="line">        while n != 1:</span><br><span class="line">            n = sum([int(i)**2 for i in str(n)])</span><br><span class="line">            if n not in mem:</span><br><span class="line">                mem.add(n)</span><br><span class="line">            else:</span><br><span class="line">                return False</span><br><span class="line">        return True</span><br></pre></td></tr></table></figure>
+<h4 id="c"><a href="#c" class="headerlink" title="c"></a>c</h4><p>Solution 1:</p>
+<p>0ms, 44.72%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/33014/4ms-5-line-c-code" target="_blank" rel="noopener">https://leetcode.com/discuss/33014/4ms-5-line-c-code</a></p>
+<p>Using fact all numbers in [2, 6] are not happy (and all not happy numbers end on a cycle that hits this interval):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool isHappy(int n) &#123;</span><br><span class="line">    while(n&gt;6)&#123;</span><br><span class="line">        int next = 0;</span><br><span class="line">        while(n)&#123;</span><br><span class="line">            next += (n%10) * (n%10);</span><br><span class="line">            n = n / 10;</span><br><span class="line">        &#125;</span><br><span class="line">        n = next;</span><br><span class="line">    &#125;</span><br><span class="line">    return n == 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/12587/my-solution-in-c-o-1-space-and-no-magic-math-property-involved" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12587/my-solution-in-c-o-1-space-and-no-magic-math-property-involved</a></p>
+<p>I see the majority of those posts use hashset to record values. Actually, we can simply adapt the Floyd Cycle detection algorithm. I believe that many people have seen this in the Linked List Cycle detection problem. The following is my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">int digitSquareSum(int n) &#123;</span><br><span class="line">    int sum = 0, tmp;</span><br><span class="line">    while (n) &#123;</span><br><span class="line">        tmp = n % 10;</span><br><span class="line">        sum += tmp * tmp;</span><br><span class="line">        n /= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool isHappy(int n) &#123;</span><br><span class="line">    int slow, fast;</span><br><span class="line">    slow = fast = n;</span><br><span class="line">    do &#123;</span><br><span class="line">        slow = digitSquareSum(slow);</span><br><span class="line">        fast = digitSquareSum(fast);</span><br><span class="line">        fast = digitSquareSum(fast);</span><br><span class="line">    &#125; while(slow != fast);</span><br><span class="line">    if (slow == 1) return 1;</span><br><span class="line">    else return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p><a href="https://discuss.leetcode.com/topic/25026/beat-90-fast-easy-understand-java-solution-with-brief-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25026/beat-90-fast-easy-understand-java-solution-with-brief-explanation</a></p>
+<p>The idea is to use one hash set to record sum of every digit square of every number occurred. Once the current sum cannot be added to set, return false; once the current sum equals 1, return true;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isHappy(int n) &#123;</span><br><span class="line">        Set&lt;Integer&gt; inLoop = new HashSet&lt;Integer&gt;();</span><br><span class="line">        int squareSum,remain;</span><br><span class="line">    	while (inLoop.add(n)) &#123;</span><br><span class="line">    		squareSum = 0;</span><br><span class="line">    		while (n &gt; 0) &#123;</span><br><span class="line">    		    remain = n%10;</span><br><span class="line">    			squareSum += remain*remain;</span><br><span class="line">    			n /= 10;</span><br><span class="line">    		&#125;</span><br><span class="line">    		if (squareSum == 1)</span><br><span class="line">    			return true;</span><br><span class="line">    		else</span><br><span class="line">    			n = squareSum;</span><br><span class="line">    </span><br><span class="line">    	&#125;</span><br><span class="line">    	return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/12742/o-1-space-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12742/o-1-space-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isHappy(int n) &#123;</span><br><span class="line">        int x = n;</span><br><span class="line">        int y = n;</span><br><span class="line">        while(x&gt;1)&#123;</span><br><span class="line">            x = cal(x) ;</span><br><span class="line">            if(x==1) return true ;</span><br><span class="line">            y = cal(cal(y));</span><br><span class="line">            if(y==1) return true ;</span><br><span class="line"></span><br><span class="line">            if(x==y) return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true ;</span><br><span class="line">    &#125;</span><br><span class="line">    public int cal(int n)&#123;</span><br><span class="line">        int x = n;</span><br><span class="line">        int s = 0;</span><br><span class="line">        while(x&gt;0)&#123;</span><br><span class="line">            s = s+(x%10)*(x%10);</span><br><span class="line">            x = x/10;</span><br><span class="line">        &#125;</span><br><span class="line">        return s ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +569,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+        </div>
       
 
       
@@ -574,8 +664,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +711,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +773,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c"><span class="nav-text">c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

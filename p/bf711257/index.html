@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,linked list,easy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="30.2%  https://leetcode.com/problems/intersection-of-two-linked-lists/description/ Write a program to find the node at which the intersection of two singly linked lists begins. 12345678For example, t">
+<meta name="keywords" content="leetcode,linked list,easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="160. Intersection of Two Linked Lists">
 <meta property="og:url" content="http://yucc.me/p/bf711257/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="30.2%  https://leetcode.com/problems/intersection-of-two-linked-lists/description/ Write a program to find the node at which the intersection of two singly linked lists begins. 12345678For example, t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.205Z">
+<meta property="og:updated_time" content="2018-05-22T14:36:53.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="160. Intersection of Two Linked Lists">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="30.2%  https://leetcode.com/problems/intersection-of-two-linked-lists/description/ Write a program to find the node at which the intersection of two singly linked lists begins. 12345678For example, t">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:36:53+08:00">
+                2018-05-22 22:36
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,619
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -430,7 +452,83 @@
       
 
       
-        
+        <ul>
+<li>30.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/description/" target="_blank" rel="noopener">https://leetcode.com/problems/intersection-of-two-linked-lists/description/</a></p>
+<p>Write a program to find the node at which the intersection of two singly linked lists begins.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">For example, the following two linked lists:</span><br><span class="line"></span><br><span class="line">A:          a1 → a2</span><br><span class="line">                   ↘</span><br><span class="line">                     c1 → c2 → c3</span><br><span class="line">                   ↗            </span><br><span class="line">B:     b1 → b2 → b3</span><br><span class="line">begin to intersect at node c1.</span><br></pre></td></tr></table></figure>
+<p>Notes:</p>
+<ul>
+<li>If the two linked lists have no intersection at all, return null.</li>
+<li>The linked lists must retain their original structure after the function returns.</li>
+<li>You may assume there are no cycles anywhere in the entire linked structure.</li>
+<li>Your code should preferably run in O(n) time and use only O(1) memory.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>剑指offer 37</p>
+<p>Simple C++ solution (5 lines)</p>
+<p>Move cur1 (cur2) forward from headA (headB) and loop back to headB (headA), eventually cur1 and cur2 will meet at the intersection point or nullptr.</p>
+<p>此代码的巧妙之处在于，1，头尾相接，2，判断条件是cur1!=cur2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123;</span><br><span class="line">    ListNode *cur1 = headA, *cur2 = headB;</span><br><span class="line">    while(cur1 != cur2)&#123;</span><br><span class="line">        cur1 = cur1?cur1-&gt;next:headB;</span><br><span class="line">        cur2 = cur2?cur2-&gt;next:headA;</span><br><span class="line">    &#125;</span><br><span class="line">    return cur1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(headA==<span class="literal">NULL</span> || headB==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* p1 = headA, *p2 = headB;</span><br><span class="line">        <span class="keyword">if</span>(p1==p2) <span class="keyword">return</span> p1;</span><br><span class="line">        <span class="keyword">while</span>(p1 || p2)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p1)</span><br><span class="line">                p1 = p1-&gt;next;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p1 = headB;</span><br><span class="line">            <span class="keyword">if</span>(p2)</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                p2 = headA;</span><br><span class="line">            <span class="keyword">if</span>(p1==p2)</span><br><span class="line">                <span class="keyword">return</span> p1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>另一种实现方法</p>
+<p><a href="https://discuss.leetcode.com/topic/5527/my-accepted-simple-and-shortest-c-code-with-comments-explaining-the-algorithm-any-comments-or-improvements" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5527/my-accepted-simple-and-shortest-c-code-with-comments-explaining-the-algorithm-any-comments-or-improvements</a></p>
+<p>My accepted simple and shortest C++ code with comments explaining the algorithm. Any comments or improvements?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) </span><br><span class="line">&#123;</span><br><span class="line">    ListNode *p1 = headA;</span><br><span class="line">    ListNode *p2 = headB;</span><br><span class="line">        </span><br><span class="line">    if (p1 == NULL || p2 == NULL) return NULL;</span><br><span class="line"></span><br><span class="line">    while (p1 != NULL &amp;&amp; p2 != NULL &amp;&amp; p1 != p2) &#123;</span><br><span class="line">        p1 = p1-&gt;next;</span><br><span class="line">        p2 = p2-&gt;next;</span><br><span class="line"></span><br><span class="line">        //</span><br><span class="line">        // Any time they collide or reach end together without colliding </span><br><span class="line">        // then return any one of the pointers.</span><br><span class="line">        //</span><br><span class="line">        if (p1 == p2) return p1;</span><br><span class="line"></span><br><span class="line">        //</span><br><span class="line">        // If one of them reaches the end earlier then reuse it </span><br><span class="line">        // by moving it to the beginning of other list.</span><br><span class="line">        // Once both of them go through reassigning, </span><br><span class="line">        // they will be equidistant from the collision point.</span><br><span class="line">        //</span><br><span class="line">        if (p1 == NULL) p1 = headB;</span><br><span class="line">        if (p2 == NULL) p2 = headA;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    return p1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p>46ms, 46.30%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/5527/my-accepted-simple-and-shortest-c-code-with-comments-explaining-the-algorithm-any-comments-or-improvements" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5527/my-accepted-simple-and-shortest-c-code-with-comments-explaining-the-algorithm-any-comments-or-improvements</a></p>
+<p>My accepted simple and shortest C++ code with comments explaining the algorithm. Any comments or improvements?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) </span><br><span class="line">&#123;</span><br><span class="line">    ListNode *p1 = headA;</span><br><span class="line">    ListNode *p2 = headB;</span><br><span class="line">        </span><br><span class="line">    if (p1 == NULL || p2 == NULL) return NULL;</span><br><span class="line"></span><br><span class="line">    while (p1 != NULL &amp;&amp; p2 != NULL &amp;&amp; p1 != p2) &#123;</span><br><span class="line">        p1 = p1-&gt;next;</span><br><span class="line">        p2 = p2-&gt;next;</span><br><span class="line"></span><br><span class="line">        //</span><br><span class="line">        // Any time they collide or reach end together without colliding </span><br><span class="line">        // then return any one of the pointers.</span><br><span class="line">        //</span><br><span class="line">        if (p1 == p2) return p1;</span><br><span class="line"></span><br><span class="line">        //</span><br><span class="line">        // If one of them reaches the end earlier then reuse it </span><br><span class="line">        // by moving it to the beginning of other list.</span><br><span class="line">        // Once both of them go through reassigning, </span><br><span class="line">        // they will be equidistant from the collision point.</span><br><span class="line">        //</span><br><span class="line">        if (p1 == NULL) p1 = headB;</span><br><span class="line">        if (p2 == NULL) p2 = headA;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    return p1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/38444/simple-c-solution-5-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/38444/simple-c-solution-5-lines</a></p>
+<p>Simple C++ solution (5 lines)</p>
+<p>Move cur1 (cur2) forward from headA (headB) and loop back to headB (headA), eventually cur1 and cur2 will meet at the intersection point or nullptr.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) &#123;</span><br><span class="line">    ListNode *cur1 = headA, *cur2 = headB;</span><br><span class="line">    while(cur1 != cur2)&#123;</span><br><span class="line">        cur1 = cur1?cur1-&gt;next:headB;</span><br><span class="line">        cur2 = cur2?cur2-&gt;next:headA;</span><br><span class="line">    &#125;</span><br><span class="line">    return cur1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/13419/concise-python-code-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13419/concise-python-code-with-comments</a></p>
+<p>Concise python code with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param two ListNodes</span><br><span class="line">    # @return the intersected ListNode</span><br><span class="line">    def getIntersectionNode(self, headA, headB):</span><br><span class="line">        if headA is None or headB is None:</span><br><span class="line">            return None</span><br><span class="line"></span><br><span class="line">        pa = headA # 2 pointers</span><br><span class="line">        pb = headB</span><br><span class="line"></span><br><span class="line">        while pa is not pb:</span><br><span class="line">            # if either pointer hits the end, switch head and continue the second traversal, </span><br><span class="line">            # if not hit the end, just move on to next</span><br><span class="line">            pa = headB if pa is None else pa.next</span><br><span class="line">            pb = headA if pb is None else pb.next</span><br><span class="line"></span><br><span class="line">        return pa # only 2 ways to get out of the loop, they meet or the both hit the end=None</span><br></pre></td></tr></table></figure>
+<p>the idea is if you switch head, the possible difference between length would be countered. </p>
+<p>On the second traversal, they either hit or miss. </p>
+<p>if they meet, pa or pb would be the node we are looking for, </p>
+<p>if they didn’t meet, they will hit the end at the same iteration, pa == pb == None, return either one of them is the same,None</p>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode(object):</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.next = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def getIntersectionNode(self, headA, headB):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type head1, head1: ListNode</span><br><span class="line">        :rtype: ListNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if headA==None or headB==None:</span><br><span class="line">            return None</span><br><span class="line">        l1, l2 = headA, headB</span><br><span class="line">        while l1 and l2 and l1!=l2:</span><br><span class="line">            l1 = l1.next</span><br><span class="line">            l2 = l2.next</span><br><span class="line">            if l1==l2:</span><br><span class="line">                return l1</span><br><span class="line">            if l1==None:</span><br><span class="line">                l1=headB</span><br><span class="line">            if l2==None:</span><br><span class="line">                l2=headA</span><br><span class="line">        return l1</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/28067/java-solution-without-knowing-the-difference-in-len" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28067/java-solution-without-knowing-the-difference-in-len</a></p>
+<p>Java solution without knowing the difference in len!</p>
+<p>I found most solutions here preprocess linkedlists to get the difference in len.<br>Actually we don’t care about the “value” of difference, we just want to make sure two pointers reach the intersection node at the same time.</p>
+<p>We can use two iterations to do that. In the first iteration, we will reset the pointer of one linkedlist to the head of another linkedlist after it reaches the tail node. In the second iteration, we will move two pointers until they points to the same node. Our operations in first iteration will help us counteract the difference. So if two linkedlist intersects, the meeting point in second iteration must be the intersection point. If the two linked lists have no intersection at all, then the meeting pointer in second iteration must be the tail node of both lists, which is null</p>
+<p>Below is my commented Java code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">    //boundary check</span><br><span class="line">    if(headA == null || headB == null) return null;</span><br><span class="line">    </span><br><span class="line">    ListNode a = headA;</span><br><span class="line">    ListNode b = headB;</span><br><span class="line">    </span><br><span class="line">    //if a &amp; b have different len, then we will stop the loop after second iteration</span><br><span class="line">    while( a != b)&#123;</span><br><span class="line">    	//for the end of first iteration, we just reset the pointer to the head of another linkedlist</span><br><span class="line">        a = a == null? headB : a.next;</span><br><span class="line">        b = b == null? headA : b.next;    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5492/concise-java-solution-o-1-memory-o-n-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5492/concise-java-solution-o-1-memory-o-n-time</a></p>
+<p>Concise JAVA solution, O(1) memory O(n) time</p>
+<p>1, Get the length of the two lists.</p>
+<p>2, Align them to the same start point.</p>
+<p>3, Move them together until finding the intersection point, or the end null</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">    int lenA = length(headA), lenB = length(headB);</span><br><span class="line">    // move headA and headB to the same start point</span><br><span class="line">    while (lenA &gt; lenB) &#123;</span><br><span class="line">        headA = headA.next;</span><br><span class="line">        lenA--;</span><br><span class="line">    &#125;</span><br><span class="line">    while (lenA &lt; lenB) &#123;</span><br><span class="line">        headB = headB.next;</span><br><span class="line">        lenB--;</span><br><span class="line">    &#125;</span><br><span class="line">    // find the intersection until end</span><br><span class="line">    while (headA != headB) &#123;</span><br><span class="line">        headA = headA.next;</span><br><span class="line">        headB = headB.next;</span><br><span class="line">    &#125;</span><br><span class="line">    return headA;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int length(ListNode node) &#123;</span><br><span class="line">    int length = 0;</span><br><span class="line">    while (node != null) &#123;</span><br><span class="line">        node = node.next;</span><br><span class="line">        length++;</span><br><span class="line">    &#125;</span><br><span class="line">    return length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123;</span><br><span class="line"> *         val = x;</span><br><span class="line"> *         next = null;</span><br><span class="line"> *     &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">        ListNode p1=headA, p2=headB;</span><br><span class="line">        if(p1==null || p2==null) return null;</span><br><span class="line">        while(p1!=null &amp;&amp; p2!=null &amp;&amp; p1!=p2)&#123;</span><br><span class="line">            p1=p1.next;</span><br><span class="line">            p2=p2.next;</span><br><span class="line">            if(p1==p2) return p1;</span><br><span class="line">            if(p1==null) p1=headB;</span><br><span class="line">            if(p2==null) p2=headA;</span><br><span class="line">        &#125;</span><br><span class="line">        return p1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11626/share-my-simple-java-solution-o-n-time-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11626/share-my-simple-java-solution-o-n-time-o-1-space</a></p>
+<p>Share my simple java solution O(n) time, O(1) space</p>
+<ol>
+<li>Scan both lists</li>
+<li>For each list once it reaches the end, continue scanning the other list</li>
+<li>Once the two runner equal to each other, return the position</li>
+</ol>
+<p>Time O(n+m), space O(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">		if( null==headA || null==headB )</span><br><span class="line">			return null;</span><br><span class="line">		</span><br><span class="line">		ListNode curA = headA, curB = headB;</span><br><span class="line">		while( curA!=curB)&#123;</span><br><span class="line">			curA = curA==null?headB:curA.next;</span><br><span class="line">			curB = curB==null?headA:curB.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return curA;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +589,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+        </div>
       
 
       
@@ -574,8 +682,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +791,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

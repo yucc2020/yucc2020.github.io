@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,dynamic programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="37.9%  https://leetcode.com/problems/house-robber/#/description You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constra">
+<meta name="keywords" content="leetcode,easy,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="198. House Robber">
 <meta property="og:url" content="http://yucc.me/p/b015b294/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="37.9%  https://leetcode.com/problems/house-robber/#/description You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.227Z">
+<meta property="og:updated_time" content="2018-05-22T14:50:07.506Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="198. House Robber">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="37.9%  https://leetcode.com/problems/house-robber/#/description You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constra">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:50:07+08:00">
+                2018-05-22 22:50
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,025
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,84 @@
       
 
       
-        
+        <ul>
+<li>37.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/house-robber/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/house-robber/#/description</a></p>
+<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
+<a id="more"></a>
+<hr>
+<p>美团点评 面试</p>
+<p>方法一：</p>
+<ol>
+<li>rob(i)表示偷了第i家，notrob(i) 不偷第i家。</li>
+<li>rob(i) = rob(i-1)+nums[i] ,notrob(i) = max(rob(i-1), notrob(i-1))</li>
+</ol>
+<p>我的代码实现：</p>
+<p>更新公式</p>
+<p>rob(i) = max(rob(i-1), notrob(i-1)+nums[i]);</p>
+<p>notrob(i) = max(rob(i-1), notrob(i-1));</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> rob = nums[<span class="number">0</span>], notrob = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> new_rob = max(rob, notrob+nums[i]);</span><br><span class="line">            <span class="keyword">int</span> new_notrob = max(rob, notrob);</span><br><span class="line">            rob = new_rob;</span><br><span class="line">            notrob = new_notrob;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max(rob, notrob);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>由方法一进行推论可以得到</p>
+<ol>
+<li>f(i+1) 表示偷到第i家的最大利益, f(0) = 0, f(1) = nums[1]</li>
+<li>则f(i+1) = max(f(i), f(i-1)+nums[i])</li>
+</ol>
+<p><a href="https://discuss.leetcode.com/topic/32215/c-dp-solution-with-thinking-process-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32215/c-dp-solution-with-thinking-process-explanation</a></p>
+<p>C++ DP solution with thinking process explanation</p>
+<p>Following the same logic described in a post about Best Time to Buy and Sell Stock with Cooldown, we could try to solve this problem with DP.</p>
+<p>Define the following variables</p>
+<p>rob[i] means max profit for any robbing sequence before house i ending with rob</p>
+<p>rest[i] mean max profit for any robbing sequence before house i ending with rest</p>
+<p>We could get the following relationship,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rob[i]  = max(rob[i-1], rest[i-1] + value)</span><br><span class="line">rest[i] = max(rest[i-1], rob[i-1])</span><br></pre></td></tr></table></figure>
+<p>Furthermore, we always gain more profit when robbing the house. As a result,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rob[i] &gt; rest[i]</span><br><span class="line">rest[i] = rob[i-1]</span><br></pre></td></tr></table></figure>
+<p>substitute these into the original equations, we get</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rob[i]  = max(rob[i-1], rob[i-2] + value)</span><br></pre></td></tr></table></figure>
+<p>So we only need two values to keep track of the max profit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int rob(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        auto best = 0, prev_best = 0;</span><br><span class="line">        for(auto num : nums)</span><br><span class="line">        &#123;</span><br><span class="line">            auto pbest = best;</span><br><span class="line">            best = max(best, prev_best + num);</span><br><span class="line">            prev_best = pbest;</span><br><span class="line">        &#125;</span><br><span class="line">        return best;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r1 = <span class="number">0</span>, r2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r3 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> num:nums)&#123;</span><br><span class="line">            r3 = max(r2, r1+num);</span><br><span class="line">            r1 = r2;</span><br><span class="line">            r2 = r3;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r3;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28369/the-correct-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28369/the-correct-dp-solution</a></p>
+<p>The correct DP solution</p>
+<p>Here is the DP formula that leads to the right answer:</p>
+<p>M(k) = money at the kth house</p>
+<p>P(0) = 0</p>
+<p>P(1) = M(1)</p>
+<p>P(k) = max(P(k−2) + M(k), P(k−1))</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11110/c-1ms-o-1-space-very-simple-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11110/c-1ms-o-1-space-very-simple-solution</a></p>
+<p>C 1ms, O(1)space, very simple solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#define max(a, b) ((a)&gt;(b)?(a):(b))</span><br><span class="line">int rob(int num[], int n) &#123;</span><br><span class="line">    int a = 0;</span><br><span class="line">    int b = 0;</span><br><span class="line">    </span><br><span class="line">    for (int i=0; i&lt;n; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (i%2==0)</span><br><span class="line">        &#123;</span><br><span class="line">            a = max(a+num[i], b);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            b = max(a, b+num[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return max(a, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17199/python-solution-3-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17199/python-solution-3-lines</a></p>
+<p>Python solution, 3 lines.</p>
+<p>Based on the recursive formula:</p>
+<p>f(0) = nums[0]</p>
+<p>f(1) = max(num[0], num[1])</p>
+<p>f(k) = max( f(k-2) + nums[k], f(k-1) )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    </span><br><span class="line">    def rob(self, nums):</span><br><span class="line">        </span><br><span class="line">        last, now = 0, 0</span><br><span class="line">        </span><br><span class="line">        for i in nums: last, now = now, max(last + i, now)</span><br><span class="line">                </span><br><span class="line">        return now</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12735/c-my-solution-dp" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12735/c-my-solution-dp</a></p>
+<p>C++,My solution,DP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int rob(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        const int n = nums.size();</span><br><span class="line">        if (n == 0) return 0;</span><br><span class="line">        if (n == 1) return nums[0];</span><br><span class="line">        if (n == 2) return max(nums[0], nums[1]);</span><br><span class="line">        vector&lt;int&gt; f(n, 0);</span><br><span class="line">        f[0] = nums[0];</span><br><span class="line">        f[1] = max(nums[0], nums[1]);</span><br><span class="line">        for (int i = 2; i &lt; n; ++i)</span><br><span class="line">            f[i] = max(f[i-2] + nums[i], f[i-1]);</span><br><span class="line">        return f[n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>44ms, 31.77%, 69/69, April.25, 2016</p>
+<p><a href="https://leetcode.com/discuss/76958/3-line-python-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/76958/3-line-python-solution</a></p>
+<p>Python solution, 3 lines.</p>
+<p>Based on the recursive formula:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(0) = nums[0]</span><br><span class="line">f(1) = max(num[0], num[1])</span><br><span class="line">f(k) = max( f(k-2) + nums[k], f(k-1) )</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    </span><br><span class="line">    def rob(self, nums):</span><br><span class="line">        </span><br><span class="line">        last, now = 0, 0</span><br><span class="line">        </span><br><span class="line">        for i in nums: last, now = now, max(last + i, now)</span><br><span class="line">                </span><br><span class="line">        return now</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code</p>
+<p>rob[i] = notrob[i-1] + nums[i]</p>
+<p>notrob[i] = max(rob[i-1], notrob[i-1])</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def rob(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not nums: return 0</span><br><span class="line">        rob, notrob = 0, 0</span><br><span class="line">        for num in nums:</span><br><span class="line">            temp = rob</span><br><span class="line">            rob = notrob + num</span><br><span class="line">            notrob = max(temp, notrob)</span><br><span class="line">        return max(rob, notrob)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +590,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -612,7 +721,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

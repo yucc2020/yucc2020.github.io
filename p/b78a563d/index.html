@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,design,trie," />
 
 
 
@@ -85,18 +85,20 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="26.6%  https://leetcode.com/problems/implement-trie-prefix-tree/#/description Implement a trie with insert, search, and startsWith methods. Note: You may assume that all inputs are consist of lowerca">
+<meta name="keywords" content="leetcode,medium,design,trie">
 <meta property="og:type" content="article">
 <meta property="og:title" content="208. Implement Trie (Prefix Tree)">
 <meta property="og:url" content="http://yucc.me/p/b78a563d/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="26.6%  https://leetcode.com/problems/implement-trie-prefix-tree/#/description Implement a trie with insert, search, and startsWith methods. Note: You may assume that all inputs are consist of lowerca">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.242Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20150509003807271">
+<meta property="og:updated_time" content="2018-05-22T14:57:16.618Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="208. Implement Trie (Prefix Tree)">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="26.6%  https://leetcode.com/problems/implement-trie-prefix-tree/#/description Implement a trie with insert, search, and startsWith methods. Note: You may assume that all inputs are consist of lowerca">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150509003807271">
 
 
 
@@ -358,12 +360,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:57:16+08:00">
+                2018-05-22 22:57
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,174
                 </span>
               
 
@@ -409,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +454,100 @@
       
 
       
-        
+        <ul>
+<li>26.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/implement-trie-prefix-tree/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/implement-trie-prefix-tree/#/description</a></p>
+<p>Implement a trie with insert, search, and startsWith methods.</p>
+<p>Note:</p>
+<p>You may assume that all inputs are consist of lowercase letters a-z.</p>
+<a id="more"></a>
+<hr>
+<p><a href="http://blog.csdn.net/lisonglisonglisong/article/details/45584721" target="_blank" rel="noopener">http://blog.csdn.net/lisonglisonglisong/article/details/45584721</a></p>
+<p>关于前缀树，可以参考以上文章。</p>
+<p>一、什么是Trie树</p>
+<p>Trie树，又叫字典树、前缀树（Prefix Tree）、单词查找树 或 键树，是一种多叉树结构。如下图：</p>
+<p><img src="http://img.blog.csdn.net/20150509003807271" alt="image"></p>
+<p>上图是一棵Trie树，表示了关键字集合{“a”, “to”, “tea”, “ted”, “ten”, “i”, “in”, “inn”} 。从上图可以归纳出Trie树的基本性质：</p>
+<ol>
+<li>根节点不包含字符，除根节点外的每一个子节点都包含一个字符。</li>
+<li>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。</li>
+<li>每个节点的所有子节点包含的字符互不相同。</li>
+</ol>
+<p>通常在实现的时候，会在节点结构中设置一个标志，用来标记该结点处是否构成一个单词（关键字）。</p>
+<p>可以看出，Trie树的关键字一般都是字符串，而且Trie树把每个关键字保存在一条路径上，而不是一个结点中。另外，两个有公共前缀的关键字，在Trie树中前缀部分的路径相同，所以Trie树又叫做前缀树（Prefix Tree）。</p>
+<p>二、Trie树的优缺点</p>
+<p>Trie树的核心思想是空间换时间，利用字符串的公共前缀来减少无谓的字符串比较以达到提高查询效率的目的。</p>
+<p>优点</p>
+<ol>
+<li>插入和查询的效率很高，都为O(m)，其中 m 是待插入/查询的字符串的长度。</li>
+</ol>
+<p>-关于查询，会有人说 hash 表时间复杂度是O(1)不是更快？但是，哈希搜索的效率通常取决于 hash 函数的好坏，若一个坏的 hash 函数导致很多的冲突，效率并不一定比Trie树高。</p>
+<ol start="2">
+<li><p>Trie树中不同的关键字不会产生冲突。</p>
+</li>
+<li><p>Trie树只有在允许一个关键字关联多个值的情况下才有类似hash碰撞发生。</p>
+</li>
+<li><p>Trie树不用求 hash 值，对短字符串有更快的速度。通常，求hash值也是需要遍历字符串的。</p>
+</li>
+<li><p>Trie树可以对关键字按字典序排序。</p>
+</li>
+</ol>
+<p>缺点</p>
+<ol>
+<li><p>当 hash 函数很好时，Trie树的查找效率会低于哈希搜索。</p>
+</li>
+<li><p>空间消耗比较大。</p>
+</li>
+</ol>
+<p>三、Trie树的应用</p>
+<ol>
+<li>字符串检索</li>
+</ol>
+<p>检索/查询功能是Trie树最原始的功能。思路就是从根节点开始一个一个字符进行比较：</p>
+<p>如果沿路比较，发现不同的字符，则表示该字符串在集合中不存在。<br>如果所有的字符全部比较完并且全部相同，还需判断最后一个节点的标志位（标记该节点是否代表一个关键字）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct trie_node</span><br><span class="line">&#123;</span><br><span class="line">    bool isKey;   // 标记该节点是否代表一个关键字</span><br><span class="line">    trie_node *children[26]; // 各个子节点 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>词频统计</li>
+</ol>
+<p>Trie树常被搜索引擎系统用于文本词频统计 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct trie_node</span><br><span class="line">&#123;</span><br><span class="line">    int count;   // 记录该节点代表的单词的个数</span><br><span class="line">    trie_node *children[26]; // 各个子节点 </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>思路：为了实现词频统计，我们修改了节点结构，用一个整型变量count来计数。对每一个关键字执行插入操作，若已存在，计数加1，若不存在，插入后count置1。</p>
+<p>注意：第一、第二种应用也都可以用 hash table 来做。</p>
+<ol start="3">
+<li>字符串排序</li>
+</ol>
+<p>Trie树可以对大量字符串按字典序进行排序，思路也很简单：遍历一次所有关键字，将它们全部插入trie树，树的每个结点的所有儿子很显然地按照字母表排序，然后先序遍历输出Trie树中所有关键字即可。</p>
+<ol start="4">
+<li>前缀匹配</li>
+</ol>
+<p>例如：找出一个字符串集合中所有以ab开头的字符串。我们只需要用所有字符串构造一个trie树，然后输出以a-&gt;b-&gt;开头的路径上的关键字即可。</p>
+<p>trie树前缀匹配常用于搜索提示。如当输入一个网址，可以自动搜索出可能的选择。当没有完全匹配的搜索结果，可以返回前缀最相似的可能。</p>
+<ol start="5">
+<li>作为其他数据结构和算法的辅助结构</li>
+</ol>
+<p>如后缀树，AC自动机等。</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13463/maybe-the-code-is-not-too-much-by-using-next-26-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13463/maybe-the-code-is-not-too-much-by-using-next-26-c</a></p>
+<p>Maybe the code is not too much by using “next[26]”, C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    TrieNode *next[26];</span><br><span class="line">    bool is_word;</span><br><span class="line">    </span><br><span class="line">    // Initialize your data structure here.</span><br><span class="line">    TrieNode(bool b = false)</span><br><span class="line">    &#123;</span><br><span class="line">        memset(next, 0, sizeof(next));</span><br><span class="line">        is_word = b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Trie</span><br><span class="line">&#123;</span><br><span class="line">    TrieNode *root;</span><br><span class="line">public:</span><br><span class="line">    Trie()</span><br><span class="line">    &#123;</span><br><span class="line">        root = new TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Inserts a word into the trie.</span><br><span class="line">    void insert(string s)</span><br><span class="line">    &#123;</span><br><span class="line">        TrieNode *p = root;</span><br><span class="line">        for(int i = 0; i &lt; s.size(); ++ i)</span><br><span class="line">        &#123;</span><br><span class="line">            if(p -&gt; next[s[i] - &apos;a&apos;] == NULL)</span><br><span class="line">                p -&gt; next[s[i] - &apos;a&apos;] = new TrieNode();</span><br><span class="line">            p = p -&gt; next[s[i] - &apos;a&apos;];</span><br><span class="line">        &#125;</span><br><span class="line">        p -&gt; is_word = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns if the word is in the trie.</span><br><span class="line">    bool search(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        TrieNode *p = find(key);</span><br><span class="line">        return p != NULL &amp;&amp; p -&gt; is_word;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns if there is any word in the trie</span><br><span class="line">    // that starts with the given prefix.</span><br><span class="line">    bool startsWith(string prefix)</span><br><span class="line">    &#123;</span><br><span class="line">        return find(prefix) != NULL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    TrieNode* find(string key)</span><br><span class="line">    &#123;</span><br><span class="line">        TrieNode *p = root;</span><br><span class="line">        for(int i = 0; i &lt; key.size() &amp;&amp; p != NULL; ++ i)</span><br><span class="line">            p = p -&gt; next[key[i] - &apos;a&apos;];</span><br><span class="line">        return p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13623/c-my-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13623/c-my-solution-easy-to-understand</a></p>
+<p>C++, My solution, easy to understand:)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> ** author: cxq</span><br><span class="line"> ** weibo: http://weibo.com/chenxq1992</span><br><span class="line"> **/ </span><br><span class="line"></span><br><span class="line">class TrieNode &#123;</span><br><span class="line">public:</span><br><span class="line">    char content;   // the character included</span><br><span class="line">    bool isend;     // if the node is the end of a word</span><br><span class="line">    int shared;     // the number of the node shared ,convenient to implement delete(string key), not necessary in this problem</span><br><span class="line">    vector&lt;TrieNode*&gt; children; // the children of the node</span><br><span class="line">    // Initialize your data structure here.</span><br><span class="line">    TrieNode():content(&apos; &apos;), isend(false), shared(0) &#123;&#125;</span><br><span class="line">    TrieNode(char ch):content(ch), isend(false), shared(0) &#123;&#125;</span><br><span class="line">    TrieNode* subNode(char ch) &#123;</span><br><span class="line">        if (!children.empty()) &#123;</span><br><span class="line">            for (auto child : children) &#123;</span><br><span class="line">                if (child-&gt;content == ch)</span><br><span class="line">                    return child;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return nullptr;</span><br><span class="line">    &#125;</span><br><span class="line">    ~TrieNode() &#123;</span><br><span class="line">        for (auto child : children)</span><br><span class="line">            delete child;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Trie &#123;</span><br><span class="line">public:</span><br><span class="line">    Trie() &#123;</span><br><span class="line">        root = new TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Inserts a word into the trie.</span><br><span class="line">    void insert(string s) &#123;</span><br><span class="line">        if (search(s)) return;</span><br><span class="line">        TrieNode* curr = root;</span><br><span class="line">        for (auto ch : s) &#123;</span><br><span class="line">            TrieNode* child = curr-&gt;subNode(ch);</span><br><span class="line">            if (child != nullptr) &#123;</span><br><span class="line">                curr = child;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                TrieNode *newNode = new TrieNode(ch);</span><br><span class="line">                curr-&gt;children.push_back(newNode);</span><br><span class="line">                curr = newNode;</span><br><span class="line">            &#125;</span><br><span class="line">            ++curr-&gt;shared;</span><br><span class="line">        &#125;</span><br><span class="line">        curr-&gt;isend = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns if the word is in the trie.</span><br><span class="line">    bool search(string key) &#123;</span><br><span class="line">        TrieNode* curr = root;</span><br><span class="line">        for (auto ch : key) &#123;</span><br><span class="line">            curr = curr-&gt;subNode(ch);</span><br><span class="line">            if (curr == nullptr)</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return curr-&gt;isend == true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns if there is any word in the trie</span><br><span class="line">    // that starts with the given prefix.</span><br><span class="line">    bool startsWith(string prefix) &#123;</span><br><span class="line">        TrieNode* curr = root;</span><br><span class="line">        for (auto ch : prefix) &#123;</span><br><span class="line">            curr = curr-&gt;subNode(ch);</span><br><span class="line">            if (curr == nullptr)</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    ~Trie() &#123;</span><br><span class="line">        delete root;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    TrieNode* root;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14202/ac-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14202/ac-python-solution</a></p>
+<p>AC Python Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode:</span><br><span class="line"># Initialize your data structure here.</span><br><span class="line">def __init__(self):</span><br><span class="line">    self.children = collections.defaultdict(TrieNode)</span><br><span class="line">    self.is_word = False</span><br><span class="line"></span><br><span class="line">class Trie:</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line">    self.root = TrieNode()</span><br><span class="line"></span><br><span class="line">def insert(self, word):</span><br><span class="line">    current = self.root</span><br><span class="line">    for letter in word:</span><br><span class="line">        current = current.children[letter]</span><br><span class="line">    current.is_word = True</span><br><span class="line"></span><br><span class="line">def search(self, word):</span><br><span class="line">    current = self.root</span><br><span class="line">    for letter in word:</span><br><span class="line">        current = current.children.get(letter)</span><br><span class="line">        if current is None:</span><br><span class="line">            return False</span><br><span class="line">    return current.is_word</span><br><span class="line"></span><br><span class="line">def startsWith(self, prefix):</span><br><span class="line">    current = self.root</span><br><span class="line">    for letter in prefix:</span><br><span class="line">        current = current.children.get(letter)</span><br><span class="line">        if current is None:</span><br><span class="line">            return False</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/20375/my-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20375/my-python-solution</a></p>
+<p>My python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode:</span><br><span class="line">        # Initialize your data structure here.</span><br><span class="line">        def __init__(self):</span><br><span class="line">            self.word=False</span><br><span class="line">            self.children=&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    class Trie:</span><br><span class="line">    </span><br><span class="line">        def __init__(self):</span><br><span class="line">            self.root = TrieNode()</span><br><span class="line">    </span><br><span class="line">        # @param &#123;string&#125; word</span><br><span class="line">        # @return &#123;void&#125;</span><br><span class="line">        # Inserts a word into the trie.</span><br><span class="line">        def insert(self, word):</span><br><span class="line">            node=self.root</span><br><span class="line">            for i in word:</span><br><span class="line">                if i not in node.children:</span><br><span class="line">                    node.children[i]=TrieNode()</span><br><span class="line">                node=node.children[i]</span><br><span class="line">            node.word=True</span><br><span class="line">    </span><br><span class="line">        # @param &#123;string&#125; word</span><br><span class="line">        # @return &#123;boolean&#125;</span><br><span class="line">        # Returns if the word is in the trie.</span><br><span class="line">        def search(self, word):</span><br><span class="line">            node=self.root</span><br><span class="line">            for i in word:</span><br><span class="line">                if i not in node.children:</span><br><span class="line">                    return False</span><br><span class="line">                node=node.children[i]</span><br><span class="line">            return node.word</span><br><span class="line">    </span><br><span class="line">        # @param &#123;string&#125; prefix</span><br><span class="line">        # @return &#123;boolean&#125;</span><br><span class="line">        # Returns if there is any word in the trie</span><br><span class="line">        # that starts with the given prefix.</span><br><span class="line">        def startsWith(self, prefix):</span><br><span class="line">            node=self.root</span><br><span class="line">            for i in prefix:</span><br><span class="line">                if i not in node.children:</span><br><span class="line">                    return False</span><br><span class="line">                node=node.children[i]</span><br><span class="line">            return True</span><br><span class="line">            </span><br><span class="line">    </span><br><span class="line">    # Your Trie object will be instantiated and called as such:</span><br><span class="line">    # trie = Trie()</span><br><span class="line">    # trie.insert(&quot;somestring&quot;)</span><br><span class="line">    # trie.search(&quot;key&quot;)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41687/compact-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41687/compact-python-solution</a></p>
+<p>Compact Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.is_word = False</span><br><span class="line">        self.children = collections.defaultdict(TrieNode)</span><br><span class="line"></span><br><span class="line">class Trie(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.root = TrieNode()</span><br><span class="line"></span><br><span class="line">    def insert(self, word):</span><br><span class="line">        node = self.root</span><br><span class="line">        for c in word:</span><br><span class="line">            node = node.children[c]</span><br><span class="line">        node.is_word = True</span><br><span class="line"></span><br><span class="line">    def search(self, word, is_word=True):</span><br><span class="line">        node = self.root</span><br><span class="line">        for c in word:</span><br><span class="line">            if c not in node.children:</span><br><span class="line">                return False</span><br><span class="line">            node = node.children[c]</span><br><span class="line">        return node.is_word if is_word else True</span><br><span class="line"></span><br><span class="line">    def startsWith(self, prefix):</span><br><span class="line">        return self.search(prefix, False)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +608,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/design/" rel="tag"># design</a>
+          
+            <a href="/tags/trie/" rel="tag"># trie</a>
+          
+        </div>
       
 
       
@@ -612,7 +741,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

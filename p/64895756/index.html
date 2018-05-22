@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,array,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="39.1%  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/#/description Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., 0 1 2 4 5">
+<meta name="keywords" content="leetcode,medium,array,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="153. Find Minimum in Rotated Sorted Array">
 <meta property="og:url" content="http://yucc.me/p/64895756/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="39.1%  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/#/description Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., 0 1 2 4 5">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.199Z">
+<meta property="og:updated_time" content="2018-05-22T12:00:18.796Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="153. Find Minimum in Rotated Sorted Array">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="39.1%  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/#/description Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., 0 1 2 4 5">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T20:00:18+08:00">
+                2018-05-22 20:00
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,692
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -430,7 +452,85 @@
       
 
       
-        
+        <ul>
+<li>39.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/#/description</a></p>
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</p>
+<p>Find the minimum element.</p>
+<p>You may assume no duplicate exists in the array.</p>
+<a id="more"></a>
+<hr>
+<p>剑指offer 8</p>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = left;</span><br><span class="line">        <span class="keyword">while</span>(nums[left]&gt;nums[right])&#123;</span><br><span class="line">            <span class="keyword">if</span>(right-left==<span class="number">1</span>)&#123;</span><br><span class="line">                mid = right;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]&gt;nums[mid])</span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[mid];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>剑指offer解法，有两种情况，</p>
+<ol>
+<li>nums[left] &lt; nums[right], 返回的结果就是nums[left] </li>
+<li>nums[left] &gt; nums[right]相对复杂一些。对于数组里只有两个的话，只要返回第二个就好了。否则，针对两种中间情况进行讨论就好了。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMin(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        if(n==1) return nums[0];</span><br><span class="line">        int left=0, right=n-1;</span><br><span class="line">        int mid = left;</span><br><span class="line">        while(nums[left]&gt;nums[right])&#123;</span><br><span class="line">            if(right-left==1)&#123;</span><br><span class="line">                mid = right;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            mid = left+(right-left)/2;</span><br><span class="line">            if(nums[left]&lt;nums[mid])</span><br><span class="line">                left = mid;</span><br><span class="line">            else if(nums[mid]&lt;nums[right])</span><br><span class="line">                right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        return nums[mid];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left=<span class="number">0</span>, right=nums.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(nums[left]&gt;nums[right])&#123;</span><br><span class="line">            <span class="keyword">if</span>(right-left==<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> nums[right];</span><br><span class="line">            <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&lt;nums[right])</span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[left];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMin</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]&lt;=nums[right])</span><br><span class="line">                <span class="keyword">return</span> nums[left];</span><br><span class="line">            mid = left + (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="comment">// &lt;= 是考虑了left == mid的情况</span></span><br><span class="line">            <span class="keyword">if</span>(nums[left]&lt;=nums[mid])</span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[left];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>针对start和end进行循环，多重讨论而已。如果nums{start] &lt; nums[end]，则一定是顺序的了。返回结果。否则根据中间节点，选择讨论。得到两种情况。思路清晰明了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int findMin(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        int start=0,end=num.size()-1;</span><br><span class="line">        </span><br><span class="line">        while (start&lt;end) &#123;</span><br><span class="line">            if (num[start]&lt;num[end])</span><br><span class="line">                return num[start];</span><br><span class="line">            </span><br><span class="line">            int mid = (start+end)/2;</span><br><span class="line">            </span><br><span class="line">            if (num[mid]&gt;=num[start]) &#123;</span><br><span class="line">                start = mid+1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return num[start];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>看起来挺厉害的一种方法啊。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMin(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        int low = 0, high = num.size() - 1;</span><br><span class="line">        // loop invariant: 1. low &lt; high</span><br><span class="line">        //                 2. mid != high and thus A[mid] != A[high] (no duplicate exists)</span><br><span class="line">        //                 3. minimum is between [low, high]</span><br><span class="line">        // The proof that the loop will exit: after each iteration either the &apos;high&apos; decreases</span><br><span class="line">        // or the &apos;low&apos; increases, so the interval [low, high] will always shrink.</span><br><span class="line">        while (low &lt; high) &#123;</span><br><span class="line">            auto mid = low + (high - low) / 2;</span><br><span class="line">            if (num[mid] &lt; num[high])</span><br><span class="line">                // the mininum is in the left part</span><br><span class="line">                high = mid;</span><br><span class="line">            else if (num[mid] &gt; num[high])</span><br><span class="line">                // the mininum is in the right part</span><br><span class="line">                low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return num[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>4ms, 21.69%, June.19th, 2016</p>
+<p><a href="https://leetcode.com/discuss/13389/compact-and-clean-c-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/13389/compact-and-clean-c-solution</a></p>
+<p>Compact and clean C++ solution</p>
+<p>Classic binary search problem.</p>
+<p>Looking at subarray with index [start,end]. We can find out that if the first member is less than the last member, there’s no rotation in the array. So we could directly return the first element in this subarray.</p>
+<p>If the first element is larger than the last one, then we compute the element in the middle, and compare it with the first element. If value of the element in the middle is larger than the first element, we know the rotation is at the second half of this array. Else, it is in the first half in the array.</p>
+<p>Welcome to put your comments and suggestions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int findMin(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        int start=0,end=num.size()-1;</span><br><span class="line">        </span><br><span class="line">        while (start&lt;end) &#123;</span><br><span class="line">            if (num[start]&lt;num[end])</span><br><span class="line">                return num[start];</span><br><span class="line">            </span><br><span class="line">            int mid = (start+end)/2;</span><br><span class="line">            </span><br><span class="line">            if (num[mid]&gt;=num[start]) &#123;</span><br><span class="line">                start = mid+1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return num[start];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Some corner cases will be discussed <a href="http://changhaz.wordpress.com/2014/10/15/leetcode-find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">here</a></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14768/4ms-simple-c-code-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14768/4ms-simple-c-code-with-explanation</a></p>
+<p>4ms simple C++ code with explanation</p>
+<p>In this problem, we have only three cases.</p>
+<p>Case 1. The leftmost value is less than the rightmost value in the list: This means that the list is not rotated.</p>
+<p>e.g&gt; [1 2 3 4 5 6 7 ]</p>
+<p>Case 2. The value in the middle of the list is greater than the leftmost and rightmost values in the list.</p>
+<p>e.g&gt; [ 4 5 6 7 0 1 2 3 ]</p>
+<p>Case 3. The value in the middle of the list is less than the leftmost and rightmost values in the list.</p>
+<p>e.g&gt; [ 5 6 7 0 1 2 3 4 ]</p>
+<p>As you see in the examples above, if we have case 1, we just return the leftmost value in the list. If we have case 2, we just move to the right side of the list. If we have case 3 we need to move to the left side of the list.</p>
+<p>Following is the code that implements the concept described above.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int findMin(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int left = 0,  right = nums.size() - 1;</span><br><span class="line">    while(left &lt; right) &#123;</span><br><span class="line">        if(nums[left] &lt; nums[right]) </span><br><span class="line">            return nums[left];</span><br><span class="line">            </span><br><span class="line">        int mid = (left + right)/2;</span><br><span class="line">        if(nums[mid] &gt; nums[right])</span><br><span class="line">            left = mid + 1;</span><br><span class="line">        else</span><br><span class="line">            right = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return nums[left];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5044/simplest-and-fastest-c-solution-o-lg-n-you-can-t-beat-this" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5044/simplest-and-fastest-c-solution-o-lg-n-you-can-t-beat-this</a></p>
+<p>Simplest and fastest C++ solution O(lg N), you can’t beat this!</p>
+<p>Binary search: basically eliminate the impossible elements by half each time by exploiting the sorted property.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int findMin(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">    int lo =0, hi = num.size()-1;</span><br><span class="line">    while(lo&lt;hi)&#123;</span><br><span class="line">          int mid=(lo+hi)/2;</span><br><span class="line">          if(num[mid]&gt;num[hi]) lo=mid+1;</span><br><span class="line">          else hi=mid;</span><br><span class="line">    &#125;</span><br><span class="line">    return num[lo];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6112/a-concise-solution-with-proof-in-the-comment" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6112/a-concise-solution-with-proof-in-the-comment</a></p>
+<p>A concise solution with proof in the comment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMin(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        int low = 0, high = num.size() - 1;</span><br><span class="line">        // loop invariant: 1. low &lt; high</span><br><span class="line">        //                 2. mid != high and thus A[mid] != A[high] (no duplicate exists)</span><br><span class="line">        //                 3. minimum is between [low, high]</span><br><span class="line">        // The proof that the loop will exit: after each iteration either the &apos;high&apos; decreases</span><br><span class="line">        // or the &apos;low&apos; increases, so the interval [low, high] will always shrink.</span><br><span class="line">        while (low &lt; high) &#123;</span><br><span class="line">            auto mid = low + (high - low) / 2;</span><br><span class="line">            if (num[mid] &lt; num[high])</span><br><span class="line">                // the mininum is in the left part</span><br><span class="line">                high = mid;</span><br><span class="line">            else if (num[mid] &gt; num[high])</span><br><span class="line">                // the mininum is in the right part</span><br><span class="line">                low = mid + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return num[low];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26884/9-line-python-clean-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26884/9-line-python-clean-code</a></p>
+<p>9-line python clean code</p>
+<p>Just use binary search</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMin(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        i = 0</span><br><span class="line">        j = len(nums) - 1</span><br><span class="line">        while i &lt; j:</span><br><span class="line">            m = i + (j - i) / 2</span><br><span class="line">            if nums[m] &gt; nums[j]:</span><br><span class="line">                i = m + 1</span><br><span class="line">            else:</span><br><span class="line">                j = m</span><br><span class="line">        return nums[i]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Solution Mine:</p>
+<p>52ms, 50.58%, June.19th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMin(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        rtype = nums[0]</span><br><span class="line">        for i in xrange(len(nums)-1):</span><br><span class="line">            if nums[i] &gt; nums[i+1]:</span><br><span class="line">                rtype = nums[i+1]</span><br><span class="line">        return rtype</span><br></pre></td></tr></table></figure>
+<p>Solution Mine:</p>
+<p>64ms, 18.65%, June.19th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMin(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        l = 0</span><br><span class="line">        r = len(nums) - 1</span><br><span class="line">        while(l &lt; r):</span><br><span class="line">            mid = (l + r) / 2</span><br><span class="line">            if nums[mid] &lt; nums[r]:</span><br><span class="line">                r = mid</span><br><span class="line">            else:</span><br><span class="line">                l = mid + 1</span><br><span class="line">        return nums[l]</span><br></pre></td></tr></table></figure>
+<p>Solution 1:</p>
+<p>56ms, 34.04%, June.19th, 2016</p>
+<p><a href="https://leetcode.com/discuss/63514/9-line-python-clean-code" target="_blank" rel="noopener">https://leetcode.com/discuss/63514/9-line-python-clean-code</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findMin(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        l = 0</span><br><span class="line">        r = len(nums) - 1</span><br><span class="line">        while(l &lt; r):</span><br><span class="line">            mid = (l + r) / 2</span><br><span class="line">            if nums[mid] &gt; nums[r]:</span><br><span class="line">                l = mid + 1</span><br><span class="line">            else:</span><br><span class="line">                r = mid</span><br><span class="line">        return nums[l]</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +591,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -612,7 +724,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

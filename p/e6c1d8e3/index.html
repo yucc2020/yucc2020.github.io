@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,depth first search,graph,breath first search,topological sort," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="26.5%  There are a total of n courses you have to take, labeled from 0 to n - 1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed">
+<meta name="keywords" content="leetcode,medium,depth first search,graph,breath first search,topological sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="210. Course Schedule II">
 <meta property="og:url" content="http://yucc.me/p/e6c1d8e3/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="26.5%  There are a total of n courses you have to take, labeled from 0 to n - 1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.243Z">
+<meta property="og:updated_time" content="2018-05-22T14:58:29.318Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="210. Course Schedule II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="26.5%  There are a total of n courses you have to take, labeled from 0 to n - 1. Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:58:29+08:00">
+                2018-05-22 22:58
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,210
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,52 @@
       
 
       
-        
+        <ul>
+<li>26.5%</li>
+</ul>
+<p>There are a total of n courses you have to take, labeled from 0 to n - 1.</p>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
+<p>Given the total number of courses and a list of prerequisite pairs, return the ordering of courses you should take to finish all courses.</p>
+<p>There may be multiple correct orders, you just need to return one of them. If it is impossible to finish all courses, return an empty array.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">2, [[1,0]]</span><br></pre></td></tr></table></figure>
+<p>There are a total of 2 courses to take. To take course 1 you should have finished course 0. So the correct course order is [0,1]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4, [[1,0],[2,0],[3,1],[3,2]]</span><br></pre></td></tr></table></figure>
+<p>There are a total of 4 courses to take. To take course 3 you should have finished both courses 1 and 2. Both courses 1 and 2 should be taken after you finished course 0. So one correct course order is [0,1,2,3]. Another correct ordering is[0,2,1,3].</p>
+<p>Note:</p>
+<ol>
+<li>The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.</li>
+<li>You may assume that there are no duplicate edges in the input prerequisites.</li>
+</ol>
+<p>Hints:</p>
+<ol>
+<li>This problem is equivalent to finding the topological order in a directed graph. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.</li>
+<li>Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort.</li>
+<li>Topological sort could also be done via BFS.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17276/20-lines-c-bfs-dfs-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17276/20-lines-c-bfs-dfs-solutions</a></p>
+<p>20+ lines C++ BFS/DFS Solutions</p>
+<p>Well, this problem is spiritually similar to to Course Schedule. You only need to store the nodes in the order you visit into a vector during BFS or DFS. Well, for DFS, a final reversal is required.</p>
+<p>BFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; findOrder(int numCourses, vector&lt;pair&lt;int, int&gt;&gt;&amp; prerequisites) &#123;</span><br><span class="line">        vector&lt;unordered_set&lt;int&gt;&gt; graph = make_graph(numCourses, prerequisites);</span><br><span class="line">        vector&lt;int&gt; degrees = compute_indegree(graph);</span><br><span class="line">        queue&lt;int&gt; zeros;</span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++)</span><br><span class="line">            if (!degrees[i]) zeros.push(i);</span><br><span class="line">        vector&lt;int&gt; toposort;</span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++) &#123;</span><br><span class="line">            if (zeros.empty()) return &#123;&#125;;</span><br><span class="line">            int zero = zeros.front();</span><br><span class="line">            zeros.pop();</span><br><span class="line">            toposort.push_back(zero);</span><br><span class="line">            for (int neigh : graph[zero]) &#123;</span><br><span class="line">                if (!--degrees[neigh])</span><br><span class="line">                    zeros.push(neigh);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return toposort;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;unordered_set&lt;int&gt;&gt; make_graph(int numCourses, vector&lt;pair&lt;int, int&gt;&gt;&amp; prerequisites) &#123;</span><br><span class="line">        vector&lt;unordered_set&lt;int&gt;&gt; graph(numCourses);</span><br><span class="line">        for (auto pre : prerequisites)</span><br><span class="line">            graph[pre.second].insert(pre.first);</span><br><span class="line">        return graph; </span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; compute_indegree(vector&lt;unordered_set&lt;int&gt;&gt;&amp; graph) &#123;</span><br><span class="line">        vector&lt;int&gt; degrees(graph.size(), 0);</span><br><span class="line">        for (auto neighbors : graph)</span><br><span class="line">            for (int neigh : neighbors)</span><br><span class="line">                degrees[neigh]++;</span><br><span class="line">        return degrees;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; findOrder(int numCourses, vector&lt;pair&lt;int, int&gt;&gt;&amp; prerequisites) &#123;</span><br><span class="line">        vector&lt;unordered_set&lt;int&gt;&gt; graph = make_graph(numCourses, prerequisites);</span><br><span class="line">        vector&lt;int&gt; toposort;</span><br><span class="line">        vector&lt;bool&gt; onpath(numCourses, false), visited(numCourses, false);</span><br><span class="line">        for (int i = 0; i &lt; numCourses; i++)</span><br><span class="line">            if (!visited[i] &amp;&amp; dfs(graph, i, onpath, visited, toposort))</span><br><span class="line">                return &#123;&#125;;</span><br><span class="line">        reverse(toposort.begin(), toposort.end());</span><br><span class="line">        return toposort;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    vector&lt;unordered_set&lt;int&gt;&gt; make_graph(int numCourses, vector&lt;pair&lt;int, int&gt;&gt;&amp; prerequisites) &#123;</span><br><span class="line">        vector&lt;unordered_set&lt;int&gt;&gt; graph(numCourses);</span><br><span class="line">        for (auto pre : prerequisites)</span><br><span class="line">            graph[pre.second].insert(pre.first);</span><br><span class="line">        return graph;</span><br><span class="line">    &#125;</span><br><span class="line">    bool dfs(vector&lt;unordered_set&lt;int&gt;&gt;&amp; graph, int node, vector&lt;bool&gt;&amp; onpath, vector&lt;bool&gt;&amp; visited, vector&lt;int&gt;&amp; toposort) &#123; </span><br><span class="line">        if (visited[node]) return false;</span><br><span class="line">        onpath[node] = visited[node] = true; </span><br><span class="line">        for (int neigh : graph[node])</span><br><span class="line">            if (onpath[neigh] || dfs(graph, neigh, onpath, visited, toposort))</span><br><span class="line">                return true;</span><br><span class="line">        toposort.push_back(node);</span><br><span class="line">        return onpath[node] = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23925/python-dfs-bfs-solutions-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23925/python-dfs-bfs-solutions-with-comments</a></p>
+<p>Python dfs, bfs solutions with comments.</p>
+<p>BFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def findOrder1(self, numCourses, prerequisites):</span><br><span class="line">    dic = &#123;i: set() for i in xrange(numCourses)&#125;</span><br><span class="line">    neigh = collections.defaultdict(set)</span><br><span class="line">    for i, j in prerequisites:</span><br><span class="line">        dic[i].add(j)</span><br><span class="line">        neigh[j].add(i)</span><br><span class="line">    # queue stores the courses which have no prerequisites</span><br><span class="line">    queue = collections.deque([i for i in dic if not dic[i]])</span><br><span class="line">    count, res = 0, []</span><br><span class="line">    while queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        res.append(node)</span><br><span class="line">        count += 1</span><br><span class="line">        for i in neigh[node]:</span><br><span class="line">            dic[i].remove(node)</span><br><span class="line">            if not dic[i]:</span><br><span class="line">                queue.append(i)</span><br><span class="line">    return res if count == numCourses else []</span><br></pre></td></tr></table></figure>
+<p>DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def findOrder(self, numCourses, prerequisites):</span><br><span class="line">    dic = collections.defaultdict(set)</span><br><span class="line">    neigh = collections.defaultdict(set)</span><br><span class="line">    for i, j in prerequisites:</span><br><span class="line">        dic[i].add(j)</span><br><span class="line">        neigh[j].add(i)</span><br><span class="line">    stack = [i for i in xrange(numCourses) if not dic[i]]</span><br><span class="line">    res = []</span><br><span class="line">    while stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        res.append(node)</span><br><span class="line">        for i in neigh[node]:</span><br><span class="line">            dic[i].remove(node)</span><br><span class="line">            if not dic[i]:</span><br><span class="line">                stack.append(i)</span><br><span class="line">        dic.pop(node)</span><br><span class="line">    return res if not dic else []</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13982/c-using-3-colored-approach" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13982/c-using-3-colored-approach</a></p>
+<p>[C++] Using 3 colored approach</p>
+<p>Here, i have used 3 colored approach. Here w -&gt; represent white means vertex yet not visited.<br>g -&gt; gray , it means it is under DFS recursion and we again found the same node. This means cycle exists and return false.</p>
+<p>b -&gt; black node when DFS is done visiting the node.</p>
+<p>This method checks cycle as well as keeps storing answer in stack in case cycle doesn’t exists.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">class Graph &#123;</span><br><span class="line">    public:</span><br><span class="line">    int v;</span><br><span class="line">    list &lt;int&gt; *adj;</span><br><span class="line">    Graph(int v)</span><br><span class="line">    &#123;</span><br><span class="line">        this-&gt;v=v;</span><br><span class="line">        adj = new list&lt;int&gt; [v];</span><br><span class="line">    &#125;</span><br><span class="line">    void addedges(int src , int dest)</span><br><span class="line">       &#123;</span><br><span class="line">	     adj[dest].push_back(src);</span><br><span class="line">       &#125;	</span><br><span class="line">&#125;;</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    stack &lt;int&gt; st;</span><br><span class="line">    vector&lt;int&gt; findOrder(int numCourses, vector&lt;pair&lt;int, int&gt;&gt;&amp; prerequisites) &#123;</span><br><span class="line">        Graph g(numCourses);</span><br><span class="line">        for (int i=0 ; i &lt; prerequisites.size() ; i++)</span><br><span class="line">                g.addedges(prerequisites[i].first , prerequisites[i].second);        </span><br><span class="line">        vector &lt;int&gt; ans;</span><br><span class="line">        if(!courseScheduleCheck(g))</span><br><span class="line">                return ans;              </span><br><span class="line">        while(!st.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                ans.push_back(st.top());</span><br><span class="line">                st.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        return ans;       </span><br><span class="line">    &#125;</span><br><span class="line">   bool courseScheduleCheck(Graph g)</span><br><span class="line">    &#123;</span><br><span class="line">        int v = g.v;    </span><br><span class="line">        vector &lt;char&gt; visit(v,&apos;w&apos;);</span><br><span class="line">        for(int i=0 ; i&lt;v;i++)</span><br><span class="line">        &#123;        </span><br><span class="line">           if(visit[i]== &apos;w&apos;)</span><br><span class="line">                if(iscycle(g,i,visit))</span><br><span class="line">                    return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;  </span><br><span class="line">    bool iscycle(Graph g , int i, vector &lt;char&gt; &amp; visit)</span><br><span class="line">    &#123;</span><br><span class="line">        list &lt;int&gt; ::iterator it;</span><br><span class="line">        for(it = g.adj[i].begin() ; it!=g.adj[i].end() ; it++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(visit[*it]== &apos;g&apos;)</span><br><span class="line">                return true;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if(visit[*it] != &apos;b&apos;)</span><br><span class="line">                 &#123;</span><br><span class="line">                     visit[*it] = &apos;g&apos;;</span><br><span class="line">                     if(iscycle(g,*it,visit))</span><br><span class="line">                        return true;</span><br><span class="line">                 &#125;        </span><br><span class="line">            &#125;     </span><br><span class="line">        &#125;</span><br><span class="line">         visit[i]=&apos;b&apos;;</span><br><span class="line">         st.push(i);           </span><br><span class="line">        return false;</span><br><span class="line">    &#125;            </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +558,22 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+            <a href="/tags/graph/" rel="tag"># graph</a>
+          
+            <a href="/tags/breath-first-search/" rel="tag"># breath first search</a>
+          
+            <a href="/tags/topological-sort/" rel="tag"># topological sort</a>
+          
+        </div>
       
 
       
@@ -612,7 +695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

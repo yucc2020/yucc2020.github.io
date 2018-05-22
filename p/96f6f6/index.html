@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,dynamic programming,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="24.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
+<meta name="keywords" content="leetcode,dynamic programming,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="188. Best Time to Buy and Sell Stock IV">
 <meta property="og:url" content="http://yucc.me/p/96f6f6/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="24.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.221Z">
+<meta property="og:updated_time" content="2018-05-22T14:47:29.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="188. Best Time to Buy and Sell Stock IV">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="24.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:47:29+08:00">
+                2018-05-22 22:47
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,626
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  16
                 </span>
               
             </div>
@@ -430,7 +452,90 @@
       
 
       
-        
+        <ul>
+<li>24.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/</a></p>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most k transactions.</p>
+<p>Note:</p>
+<p>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<a id="more"></a>
+<hr>
+<h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><hr>
+<p><a href="https://discuss.leetcode.com/topic/8984/a-concise-dp-solution-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8984/a-concise-dp-solution-in-java</a></p>
+<p>A Concise DP Solution in Java</p>
+<p>The general idea is DP, while I had to add a “quickSolve” function to tackle some corner cases to avoid TLE.</p>
+<p>DP: t(i,j) is the max profit for up to i transactions by time j (0&lt;=i&lt;=K, 0&lt;=j&lt;=T).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int k, int[] prices) &#123;</span><br><span class="line">    int len = prices.length;</span><br><span class="line">    if (k &gt;= len / 2) return quickSolve(prices);</span><br><span class="line">    </span><br><span class="line">    int[][] t = new int[k + 1][len];</span><br><span class="line">    for (int i = 1; i &lt;= k; i++) &#123;</span><br><span class="line">        int tmpMax =  -prices[0];</span><br><span class="line">        for (int j = 1; j &lt; len; j++) &#123;</span><br><span class="line">            t[i][j] = Math.max(t[i][j - 1], prices[j] + tmpMax);</span><br><span class="line">            tmpMax =  Math.max(tmpMax, t[i - 1][j - 1] - prices[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return t[k][len - 1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private int quickSolve(int[] prices) &#123;</span><br><span class="line">    int len = prices.length, profit = 0;</span><br><span class="line">    for (int i = 1; i &lt; len; i++)</span><br><span class="line">        // as long as there is a price gap, we gain a profit.</span><br><span class="line">        if (prices[i] &gt; prices[i - 1]) profit += prices[i] - prices[i - 1];</span><br><span class="line">    return profit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26169/clean-java-dp-solution-with-comment" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26169/clean-java-dp-solution-with-comment</a></p>
+<p>Clean Java DP solution with comment</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * dp[i, j] represents the max profit up until prices[j] using at most i transactions. </span><br><span class="line"> * dp[i, j] = max(dp[i, j-1], prices[j] - prices[jj] + dp[i-1, jj]) &#123; jj in range of [0, j-1] &#125;</span><br><span class="line"> *          = max(dp[i, j-1], prices[j] + max(dp[i-1, jj] - prices[jj]))</span><br><span class="line"> * dp[0, j] = 0; 0 transactions makes 0 profit</span><br><span class="line"> * dp[i, 0] = 0; if there is only one price data point you can&apos;t make any transaction.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public int maxProfit(int k, int[] prices) &#123;</span><br><span class="line">	int n = prices.length;</span><br><span class="line">	if (n &lt;= 1)</span><br><span class="line">		return 0;</span><br><span class="line">	</span><br><span class="line">	//if k &gt;= n/2, then you can make maximum number of transactions.</span><br><span class="line">	if (k &gt;=  n/2) &#123;</span><br><span class="line">		int maxPro = 0;</span><br><span class="line">		for (int i = 1; i &lt; n; i++) &#123;</span><br><span class="line">			if (prices[i] &gt; prices[i-1])</span><br><span class="line">				maxPro += prices[i] - prices[i-1];</span><br><span class="line">		&#125;</span><br><span class="line">		return maxPro;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    int[][] dp = new int[k+1][n];</span><br><span class="line">    for (int i = 1; i &lt;= k; i++) &#123;</span><br><span class="line">    	int localMax = dp[i-1][0] - prices[0];</span><br><span class="line">    	for (int j = 1; j &lt; n; j++) &#123;</span><br><span class="line">    		dp[i][j] = Math.max(dp[i][j-1],  prices[j] + localMax);</span><br><span class="line">    		localMax = Math.max(localMax, dp[i-1][j] - prices[j]);</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[k][n-1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24079/easy-understanding-and-can-be-easily-modified-to-different-situations-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24079/easy-understanding-and-can-be-easily-modified-to-different-situations-java-solution</a></p>
+<p>Easy understanding and can be easily modified to different situations Java Solution</p>
+<p>The basic idea is to create two tables. hold and unhold.</p>
+<p>hold[i][j] means the maximum profit with at most j transaction for 0 to i-th day. hold means you have a stock in your hand.</p>
+<p>unhold[i][j] means the maximum profit with at most j transaction for 0 to i-th day. unhold means you don’t have a stock in your hand.</p>
+<p>The equation is</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hold[i][j] = Math.max(unhold[i-1][j]-prices[i],hold[i-1][j]);</span><br><span class="line"></span><br><span class="line">unhold[i][j] = Math.max(hold[i-1][j-1]+prices[i],unhold[i-1][j]);</span><br></pre></td></tr></table></figure>
+<p>when you sell your stock this is a transaction but when you buy a stock, it is not considered as a full transaction. so this is why the two equation look a little different.</p>
+<p>And we have to initiate hold table when k = 0.</p>
+<p>When the situation is you can not buy a new stock at the same day when you sell it. For example you can only buy a new stock after one day you sell it. The same idea. Another situation is when you have to pay a transaction fee for each transaction, just make a modification when you sell it, So just change the unhold equation a little.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    //hold[i][k]  ith day k transaction have stock and maximum profit</span><br><span class="line">    //unhold[i][k] ith day k transaction do not have stock at hand and maximum profit</span><br><span class="line">    public int maxProfit(int k, int[] prices) &#123;</span><br><span class="line">        if(k&gt;prices.length/2) return maxP(prices);</span><br><span class="line">        int[][] hold = new int[prices.length][k+1];</span><br><span class="line">        int[][] unhold = new int[prices.length][k+1];</span><br><span class="line">        hold[0][0] = -prices[0];</span><br><span class="line">        for(int i=1;i&lt;prices.length;i++) hold[i][0] = Math.max(hold[i-1][0],-prices[i]);</span><br><span class="line">        for(int j=1;j&lt;=k;j++) hold[0][j] = -prices[0];</span><br><span class="line">        for(int i=1;i&lt;prices.length;i++)&#123;</span><br><span class="line">            for(int j=1;j&lt;=k;j++)&#123;</span><br><span class="line">                hold[i][j] = Math.max(unhold[i-1][j]-prices[i],hold[i-1][j]);</span><br><span class="line">                unhold[i][j] = Math.max(hold[i-1][j-1]+prices[i],unhold[i-1][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return Math.max(hold[prices.length-1][k],unhold[prices.length-1][k]);</span><br><span class="line">    &#125;</span><br><span class="line">    public int maxP(int[] prices)&#123;</span><br><span class="line">        int res =0;</span><br><span class="line">        for(int i=0;i&lt;prices.length;i++)&#123;</span><br><span class="line">            if(i&gt;0 &amp;&amp; prices[i] &gt; prices[i-1])&#123;</span><br><span class="line">                res += prices[i]-prices[i-1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/9522/c-solution-with-o-n-klgn-time-using-max-heap-and-stack" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9522/c-solution-with-o-n-klgn-time-using-max-heap-and-stack</a></p>
+<p>C++ Solution with O(n + klgn) time using Max Heap and Stack</p>
+<p>We can find all adjacent valley/peak pairs and calculate the profits easily. Instead of accumulating all these profits like Buy&amp;Sell Stock II, we need the highest k ones.</p>
+<p>The key point is when there are two v/p pairs (v1, p1) and (v2, p2), satisfying v1 &lt;= v2 and p1 &lt;= p2, we can either make one transaction at [v1, p2], or make two at both [v1, p1] and [v2, p2]. The trick is to treat [v1, p2] as the first transaction, and [v2, p1] as the second. Then we can guarantee the right max profits in both situations, p2 - v1 for one transaction and p1 - v1 + p2 - v2 for two.</p>
+<p>Finding all v/p pairs and calculating the profits takes O(n) since there are up to n/2 such pairs. And extracting k maximums from the heap consumes another O(klgn).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(int k, vector&lt;int&gt; &amp;prices) &#123;</span><br><span class="line">        int n = (int)prices.size(), ret = 0, v, p = 0;</span><br><span class="line">        priority_queue&lt;int&gt; profits;</span><br><span class="line">        stack&lt;pair&lt;int, int&gt; &gt; vp_pairs;</span><br><span class="line">        while (p &lt; n) &#123;</span><br><span class="line">            // find next valley/peak pair</span><br><span class="line">            for (v = p; v &lt; n - 1 &amp;&amp; prices[v] &gt;= prices[v+1]; v++);</span><br><span class="line">            for (p = v + 1; p &lt; n &amp;&amp; prices[p] &gt;= prices[p-1]; p++);</span><br><span class="line">            // save profit of 1 transaction at last v/p pair, if current v is lower than last v</span><br><span class="line">            while (!vp_pairs.empty() &amp;&amp; prices[v] &lt; prices[vp_pairs.top().first]) &#123;</span><br><span class="line">                profits.push(prices[vp_pairs.top().second-1] - prices[vp_pairs.top().first]);</span><br><span class="line">                vp_pairs.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            // save profit difference between 1 transaction (last v and current p) and 2 transactions (last v/p + current v/p),</span><br><span class="line">            // if current v is higher than last v and current p is higher than last p</span><br><span class="line">            while (!vp_pairs.empty() &amp;&amp; prices[p-1] &gt;= prices[vp_pairs.top().second-1]) &#123;</span><br><span class="line">                profits.push(prices[vp_pairs.top().second-1] - prices[v]);</span><br><span class="line">                v = vp_pairs.top().first;</span><br><span class="line">                vp_pairs.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            vp_pairs.push(pair&lt;int, int&gt;(v, p));</span><br><span class="line">        &#125;</span><br><span class="line">        // save profits of the rest v/p pairs</span><br><span class="line">        while (!vp_pairs.empty()) &#123;</span><br><span class="line">            profits.push(prices[vp_pairs.top().second-1] - prices[vp_pairs.top().first]);</span><br><span class="line">            vp_pairs.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        // sum up first k highest profits</span><br><span class="line">        for (int i = 0; i &lt; k &amp;&amp; !profits.empty(); i++) &#123;</span><br><span class="line">            ret += profits.top();</span><br><span class="line">            profits.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12250/share-my-c-dp-solution-with-o-kn-time-o-k-space-10ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12250/share-my-c-dp-solution-with-o-kn-time-o-k-space-10ms</a></p>
+<p>Share my C++ DP solution with O(kn) time O(k) space, 10ms</p>
+<p>This is my DP solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    int maxProfit(int k, vector&lt;int&gt; &amp;prices) &#123;</span><br><span class="line">        int len = prices.size();</span><br><span class="line">        if (len&lt;2) return 0;</span><br><span class="line">        if (k&gt;len/2)&#123; // simple case</span><br><span class="line">            int ans = 0;</span><br><span class="line">            for (int i=1; i&lt;len; ++i)&#123;</span><br><span class="line">                ans += max(prices[i] - prices[i-1],0);</span><br><span class="line">            &#125;</span><br><span class="line">            return ans;</span><br><span class="line">        &#125;</span><br><span class="line">        int hold[k+1];</span><br><span class="line">        int rele[k+1];</span><br><span class="line">        for (int i=0;i&lt;=k;++i)&#123;</span><br><span class="line">            hold[i] = INT_MIN;</span><br><span class="line">            rele[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int cur;</span><br><span class="line">        for (int i=0; i&lt;len; ++i)&#123;</span><br><span class="line">            cur = prices[i];</span><br><span class="line">            for(int j=k; j&gt;0; --j)&#123;</span><br><span class="line">                rele[j] = max(rele[j],hold[j] + cur);</span><br><span class="line">                hold[j] = max(hold[j],rele[j-1] - cur);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return rele[k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Inspired by weijiac in Best Time to Buy and Sell Stock III</p>
+<p><a href="https://leetcode.com/discuss/18330/is-it-best-solution-with-o-n-o-1" target="_blank" rel="noopener">https://leetcode.com/discuss/18330/is-it-best-solution-with-o-n-o-1</a></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30242/o-n-time-8ms-accepted-solution-with-detailed-explanation-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30242/o-n-time-8ms-accepted-solution-with-detailed-explanation-c</a></p>
+<p>O(n)-time 8ms Accepted Solution with Detailed Explanation (C++)</p>
+<p>The idea of this thread was originally proposed by @yishiluo in</p>
+<p><a href="https://leetcode.com/discuss/26745/c-solution-with-o-n-klgn-time-using-max-heap-and-stack" target="_blank" rel="noopener">https://leetcode.com/discuss/26745/c-solution-with-o-n-klgn-time-using-max-heap-and-stack</a></p>
+<p>General idea:</p>
+<p>We use the term “valley” to denote a local minimum index of prices, and the term “peak” to denote a local maximum index of prices. Let (v1, p1) and (v2, p2) denote two successive valley-peak pairs of the prices, respectively. Consider the two cases:</p>
+<ul>
+<li><p>Case 1: prices[v1] &lt;= prices[v2] and prices[p1] &lt;= prices[p2]. In this case, if we can conduct one transaction, we will use (v1, p2). If we can conduct two transactions, we will use (v1, p1) and (v2, p2). Equivalently, we can consider (v1, p2) as one transaction opportunity, and (v2, p1) as another transaction opportunity. The key idea is that these two original valley-peak pairs provide two transaction opportunities: (v1, p2) and (v2, p1).</p>
+</li>
+<li><p>Case 2: prices[v1] &gt;= prices[v2] or prices[p1] &gt;= prices[p2]. In this case, if we can conduct one transaction, we will use either (v1, p1) or (v2, p2). If we can conduct two transactions, we will use both (v1, p1) and (v2, p2). That is, these two valley-peak pairs provides two transaction opportunities: (v1, p1) and (v2, p2).</p>
+</li>
+</ul>
+<p><strong>The algorithm consists of two steps:</strong></p>
+<ul>
+<li><p>Step 1: Find all transaction opportunities and record their profits. We use a stack vps to store the valley-peak pairs of the stock prices, wherein the valley value is sorted in ascending order. (The valley value at the top of the stack is the largest.) The profit of all transaction opportunities are recorded in the vector profits. The time complexity of this step is O(n).</p>
+</li>
+<li><p>Step 2: Find the k most profitable transaction opportunities. The maximum profit we can get is the summation of the k opportunity. The time complexity of this step is O(n), too.</p>
+</li>
+</ul>
+<p>Overall complexity:</p>
+<ul>
+<li><p>Time: O(n)</p>
+</li>
+<li><p>Space: worse-case O(n)</p>
+</li>
+</ul>
+<p>C++ code (Accepted 8ms)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(int k, vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line"></span><br><span class="line">        // Step 1: Find out all profit opportunities            </span><br><span class="line">        vector&lt;int&gt; profits;</span><br><span class="line">        stack&lt;pair&lt;int, int&gt;&gt; vps; // valley-peak pairs</span><br><span class="line">        </span><br><span class="line">        int v;</span><br><span class="line">        int p = -1;</span><br><span class="line">        for (;;) &#123;</span><br><span class="line">            // find next valley-peak pair</span><br><span class="line">            for (v = p+1; (v+1 &lt; prices.size()) &amp;&amp; (prices[v] &gt;= prices[v+1]); ++v);</span><br><span class="line">            for (p = v  ; (p+1 &lt; prices.size()) &amp;&amp; (prices[p] &lt;= prices[p+1]); ++p);</span><br><span class="line">            </span><br><span class="line">            if (v == p) &#123; // v==p means that both v and p reach the end of the array</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // Consider two transactions (v1, p1) (back of the stack) and (v2, p2) (the new-found).</span><br><span class="line">            // If prices[v1] &gt;= prices[v2], </span><br><span class="line">            // it is meaningless to combine the two transactions.</span><br><span class="line">            // Save of profit of (v1, p1), and pop it out of the record.</span><br><span class="line">            while ((!vps.empty()) &amp;&amp; (prices[v] &lt;= prices[vps.top().first])) &#123;</span><br><span class="line">                profits.push_back(prices[vps.top().second] - prices[vps.top().first]);</span><br><span class="line">                vps.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // If prices[v1]&lt;prices[v2] and prices[p1]&lt;prices[p2], </span><br><span class="line">            // then it is meaningful to combine the two transactions</span><br><span class="line">            // update (v1, p1) to (v1, p2), and save the profit of (v2, p1)</span><br><span class="line">            while ((!vps.empty()) &amp;&amp; (prices[p] &gt;= prices[vps.top().second])) &#123;</span><br><span class="line">                profits.push_back(prices[vps.top().second] - prices[v]);</span><br><span class="line">                v = vps.top().first;</span><br><span class="line">                vps.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // save the new-found valley-peak pair</span><br><span class="line">            vps.emplace(v, p);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // save all remaining profits</span><br><span class="line">        while (!vps.empty()) &#123;</span><br><span class="line">            profits.push_back(prices[vps.top().second] - prices[vps.top().first]);</span><br><span class="line">            vps.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // Step 2: Calculate the k highest profits</span><br><span class="line">        int ret;</span><br><span class="line">        if (profits.size() &lt;= k) &#123;</span><br><span class="line">            ret = accumulate(profits.begin(), profits.end(), 0);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            nth_element(profits.begin(), profits.end() - k, profits.end());</span><br><span class="line">            ret = accumulate(profits.end() - k, profits.end(), 0);</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/22245/well-explained-python-dp-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22245/well-explained-python-dp-with-comments</a></p>
+<p>Well explained Python DP with comments</p>
+<p>I think the general idea has been thoroughly explained by other brilliant leetcoders. All of the solutions are beautiful and concise. However, most of the them don’t look obvious to me, so I wrote this and hope it looks more straight forward.<br>It’s O(kn), apparently not optimal. I name the key variables as local profit and global profit to make things much understandable (well, at least , to me). Performance is not too bad though.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def maxProfit4(self, k, prices):</span><br><span class="line">    n = len(prices)</span><br><span class="line">    if n &lt; 2:</span><br><span class="line">        return 0</span><br><span class="line">    # k is big enougth to cover all ramps.</span><br><span class="line">    if k &gt;= n / 2:</span><br><span class="line">        return sum(i - j</span><br><span class="line">                   for i, j in zip(prices[1:], prices[:-1]) if i - j &gt; 0)</span><br><span class="line">    globalMax = [[0] * n for _ in xrange(k + 1)]</span><br><span class="line">    for i in xrange(1, k + 1):</span><br><span class="line">        # The max profit with i transations and selling stock on day j.</span><br><span class="line">        localMax = [0] * n</span><br><span class="line">        for j in xrange(1, n):</span><br><span class="line">            profit = prices[j] - prices[j - 1]</span><br><span class="line">            localMax[j] = max(</span><br><span class="line">                # We have made max profit with (i - 1) transations in</span><br><span class="line">                # (j - 1) days.</span><br><span class="line">                # For the last transation, we buy stock on day (j - 1)</span><br><span class="line">                # and sell it on day j.</span><br><span class="line">                globalMax[i - 1][j - 1] + profit,</span><br><span class="line">                # We have made max profit with (i - 1) transations in</span><br><span class="line">                # (j - 1) days.</span><br><span class="line">                # For the last transation, we buy stock on day j and</span><br><span class="line">                # sell it on the same day, so we have 0 profit, apparently</span><br><span class="line">                # we do not have to add it.</span><br><span class="line">                globalMax[i - 1][j - 1],  # + 0,</span><br><span class="line">                # We have made profit in (j - 1) days.</span><br><span class="line">                # We want to cancel the day (j - 1) sale and sell it on</span><br><span class="line">                # day j.</span><br><span class="line">                localMax[j - 1] + profit)</span><br><span class="line">            globalMax[i][j] = max(globalMax[i][j - 1], localMax[j])</span><br><span class="line">    return globalMax[k][-1]</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +596,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -574,8 +689,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +736,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +798,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#java"><span class="nav-text">java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

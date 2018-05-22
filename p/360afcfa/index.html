@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,easy,two pointers,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="47.6%  https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/ Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a sp">
+<meta name="keywords" content="leetcode,array,easy,two pointers,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="167. Two Sum II - Input array is sorted">
 <meta property="og:url" content="http://yucc.me/p/360afcfa/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="47.6%  https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/ Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a sp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.212Z">
+<meta property="og:updated_time" content="2018-05-22T14:42:03.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="167. Two Sum II - Input array is sorted">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="47.6%  https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/ Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a sp">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:42:03+08:00">
+                2018-05-22 22:42
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,011
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,55 @@
       
 
       
-        
+        <ul>
+<li>47.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/</a></p>
+<p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
+<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
+<p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: numbers=&#123;2, 7, 11, 15&#125;, target=9</span><br><span class="line">Output: index1=1, index2=2</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>双指针，不断收缩查找范围，来找到响应元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">        int lo=0, hi=numbers.size()-1;</span><br><span class="line">        while(numbers[lo]+numbers[hi] != target)&#123;</span><br><span class="line">            if(numbers[lo]+numbers[hi]&lt;target)</span><br><span class="line">                lo++;</span><br><span class="line">            else</span><br><span class="line">                hi--;</span><br><span class="line">        &#125;</span><br><span class="line">        return vector&lt;int&gt;(&#123;lo+1, hi+1&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        int left = 0, right = numbers.size()-1;</span><br><span class="line">        while(left&lt;right)&#123;</span><br><span class="line">            int sum = numbers[left] + numbers[right];</span><br><span class="line">            if(sum==target)&#123;</span><br><span class="line">                res.push_back(left+1);</span><br><span class="line">                res.push_back(right+1);</span><br><span class="line">                return res;</span><br><span class="line">            &#125;else if(sum&gt;target)</span><br><span class="line">                right--;</span><br><span class="line">            else</span><br><span class="line">                left++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>6ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/12660/a-simple-o-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12660/a-simple-o-n-solution</a></p>
+<p>A simple O(n) solution</p>
+<p>We only have to shrink the range to find the pair:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">        int lo=0, hi=numbers.size()-1;</span><br><span class="line">        while(numbers[lo]+numbers[hi] != target)&#123;</span><br><span class="line">            if(numbers[lo]+numbers[hi]&lt;target)</span><br><span class="line">                lo++;</span><br><span class="line">            else</span><br><span class="line">                hi--;</span><br><span class="line">        &#125;</span><br><span class="line">        return vector&lt;int&gt;(&#123;lo+1, hi+1&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7465/a-less-efficient-way-binary-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7465/a-less-efficient-way-binary-search</a></p>
+<p>A less efficient way (binary search)</p>
+<p>I know that the best solution is using two pointers like what is done in the previous solution sharing. However, I see the tag contains “binary search”. I do not know if I misunderstand but is binary search a less efficient way for this problem.</p>
+<p>Say, fix the first element A[0] and do binary search on the remaining n-1 elements. If cannot find any element which equals target-A[0], Try A[1]. That is, fix A[1] and do binary search on A[2] ~ A[n-1]. Continue this process until we have the last two elements A[n-2] and A[n-1] .</p>
+<p>Does this gives a time complexity lg(n-1) + lg(n-2) + … + lg(1) ~ O(lg(n!)) ~ O(nlgn). So it is less efficient than the O(n) solution. Am I missing something here?</p>
+<p>The code also passes OJ.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; twoSum(vector&lt;int&gt; &amp;numbers, int target) &#123;</span><br><span class="line">    if(numbers.empty()) return &#123;&#125;;</span><br><span class="line">    for(int i=0; i&lt;numbers.size()-1; i++) &#123;</span><br><span class="line">        int start=i+1, end=numbers.size()-1, gap=target-numbers[i];</span><br><span class="line">        while(start &lt;= end) &#123;</span><br><span class="line">            int m = start+(end-start)/2;</span><br><span class="line">            if(numbers[m] == gap) return &#123;i+1,m+1&#125;;</span><br><span class="line">            else if(numbers[m] &gt; gap) end=m-1;</span><br><span class="line">            else start=m+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/7465/a-less-efficient-way-binary-search/6" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7465/a-less-efficient-way-binary-search/6</a></p>
+<p>My idea is to use binary search to find the largest number less than target and then use two pointers.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32373/c-solution-simple-and-sweet" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32373/c-solution-simple-and-sweet</a></p>
+<p>C++ solution simple and sweet</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; numbers, int target) &#123;</span><br><span class="line">        </span><br><span class="line">        int l = 0;</span><br><span class="line">        int r = numbers.size() -1;</span><br><span class="line">        while(l &lt; r)&#123;</span><br><span class="line">            if(numbers[l] + numbers[r] == target)&#123;</span><br><span class="line">                vector&lt;int&gt; res&#123;l+1,r+1&#125;;</span><br><span class="line">                return res;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(numbers[l] + numbers[r] &gt; target)&#123;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21800/python-different-solutions-two-pointer-dictionary-binary-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21800/python-different-solutions-two-pointer-dictionary-binary-search</a></p>
+<p>Python different solutions (two-pointer, dictionary, binary search).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># two-pointer</span><br><span class="line">def twoSum1(self, numbers, target):</span><br><span class="line">    l, r = 0, len(numbers)-1</span><br><span class="line">    while l &lt; r:</span><br><span class="line">        s = numbers[l] + numbers[r]</span><br><span class="line">        if s == target:</span><br><span class="line">            return [l+1, r+1]</span><br><span class="line">        elif s &lt; target:</span><br><span class="line">            l += 1</span><br><span class="line">        else:</span><br><span class="line">            r -= 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># dictionary           </span><br><span class="line">def twoSum2(self, numbers, target):</span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line">    for i, num in enumerate(numbers):</span><br><span class="line">        if target-num in dic:</span><br><span class="line">            return [dic[target-num]+1, i+1]</span><br><span class="line">        dic[num] = i</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># binary search        </span><br><span class="line">def twoSum(self, numbers, target):</span><br><span class="line">    for i in xrange(len(numbers)):</span><br><span class="line">        l, r = i+1, len(numbers)-1</span><br><span class="line">        tmp = target - numbers[i]</span><br><span class="line">        while l &lt;= r:</span><br><span class="line">            mid = l + (r-l)//2</span><br><span class="line">            if numbers[mid] == tmp:</span><br><span class="line">                return [i+1, mid+1]</span><br><span class="line">            elif numbers[mid] &lt; tmp:</span><br><span class="line">                l = mid+1</span><br><span class="line">            else:</span><br><span class="line">                r = mid-1</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code</p>
+<p>38ms, 89.75%, Dec.1st, 2016<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def twoSum(self, numbers, target):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type numbers: List[int]</span><br><span class="line">        :type target: int</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if len(numbers) &lt; 2: return []</span><br><span class="line">        i, j = 0, len(numbers)-1</span><br><span class="line">        while i &lt; j:</span><br><span class="line">            if numbers[i] + numbers[j] &gt; target:</span><br><span class="line">                j -= 1</span><br><span class="line">            elif numbers[i] + numbers[j] &lt; target:</span><br><span class="line">                i += 1</span><br><span class="line">            else:</span><br><span class="line">                return [i+1, j+1]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>1ms, September 11, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/39962/java-7-line-simple-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/39962/java-7-line-simple-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] numbers, int target) &#123;</span><br><span class="line">        int start = 0, end = numbers.length - 1;</span><br><span class="line">        while(start &lt; end)&#123;</span><br><span class="line">            if(numbers[start] + numbers[end] == target) break;</span><br><span class="line">            if(numbers[start] + numbers[end] &lt; target) start++;</span><br><span class="line">            else end--;</span><br><span class="line">        &#125;</span><br><span class="line">        return new int[]&#123;start+1, end+1&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +561,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -612,7 +696,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,math,medium,hash table," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="17.1%  Given two integers representing the numerator and denominator of a fraction, return the fraction in string format. If the fractional part is repeating, enclose the repeating part in parenthese">
+<meta name="keywords" content="leetcode,math,medium,hash table">
 <meta property="og:type" content="article">
 <meta property="og:title" content="166. Fraction to Recurring Decimal">
 <meta property="og:url" content="http://yucc.me/p/dff0e65f/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="17.1%  Given two integers representing the numerator and denominator of a fraction, return the fraction in string format. If the fractional part is repeating, enclose the repeating part in parenthese">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.210Z">
+<meta property="og:updated_time" content="2018-05-22T14:39:53.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="166. Fraction to Recurring Decimal">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="17.1%  Given two integers representing the numerator and denominator of a fraction, return the fraction in string format. If the fractional part is repeating, enclose the repeating part in parenthese">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:39:53+08:00">
+                2018-05-22 22:39
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,160
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,53 @@
       
 
       
-        
+        <ul>
+<li>17.1%</li>
+</ul>
+<p>Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.</p>
+<p>If the fractional part is repeating, enclose the repeating part in parentheses.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line"></span><br><span class="line">Given numerator = 1, denominator = 2, return &quot;0.5&quot;.</span><br><span class="line">Given numerator = 2, denominator = 1, return &quot;2&quot;.</span><br><span class="line">Given numerator = 2, denominator = 3, return &quot;0.(6)&quot;.</span><br></pre></td></tr></table></figure>
+<p>Hint:</p>
+<ol>
+<li>No scary math, just apply elementary math knowledge. Still remember how to perform a long division?</li>
+<li>Try a long division on 4/9, the repeating part is obvious. Now try 4/333. Do you see a pattern?</li>
+<li>Be wary of edge cases! List out as many test cases as you can think of and test your code thoroughly.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>一个基本经验是，如果数字特别长，一定要转成long long</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">fractionToDecimal</span><span class="params">(<span class="keyword">int</span> numerator, <span class="keyword">int</span> denominator)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">if</span>(numerator==<span class="number">0</span> || denominator==<span class="number">0</span>) <span class="keyword">return</span> to_string(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span>(numerator&lt;<span class="number">0</span>&amp;&amp; denominator&gt;<span class="number">0</span> || numerator&gt;<span class="number">0</span>&amp;&amp;denominator&lt;<span class="number">0</span>)</span><br><span class="line">            res = res + <span class="string">"-"</span>;</span><br><span class="line">        <span class="comment">// 一个基本经验是，如果遇到数字可能会出现特别长的，一定要用long long</span></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> nu = <span class="built_in">abs</span>((<span class="keyword">long</span> <span class="keyword">long</span>)numerator);</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> de = <span class="built_in">abs</span>((<span class="keyword">long</span> <span class="keyword">long</span>)denominator);</span><br><span class="line">        res += to_string(nu/de);</span><br><span class="line">        <span class="keyword">if</span>(nu%de==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        res += <span class="string">"."</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(nu %= de; nu;nu %= de)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.find(nu)!=<span class="built_in">map</span>.end())&#123;</span><br><span class="line">                res.insert(<span class="built_in">map</span>[nu], <span class="string">"("</span>);</span><br><span class="line">                res += <span class="string">")"</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">map</span>[nu] = res.size();</span><br><span class="line">            nu *= <span class="number">10</span>;</span><br><span class="line">            res += to_string(nu/de);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/6079/accepted-cpp-solution-with-explainations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6079/accepted-cpp-solution-with-explainations</a></p>
+<p>Accepted cpp solution, with explainations</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">// upgraded parameter types</span><br><span class="line">string fractionToDecimal(int64_t n, int64_t d) &#123;</span><br><span class="line">    // zero numerator</span><br><span class="line">    if (n == 0) return &quot;0&quot;;</span><br><span class="line"></span><br><span class="line">    string res;</span><br><span class="line">    // determine the sign</span><br><span class="line">    if (n &lt; 0 ^ d &lt; 0) res += &apos;-&apos;;</span><br><span class="line"></span><br><span class="line">    // remove sign of operands</span><br><span class="line">    n = abs(n), d = abs(d);</span><br><span class="line"></span><br><span class="line">    // append integral part</span><br><span class="line">    res += to_string(n / d);</span><br><span class="line"></span><br><span class="line">    // in case no fractional part</span><br><span class="line">    if (n % d == 0) return res;</span><br><span class="line"></span><br><span class="line">    res += &apos;.&apos;;</span><br><span class="line"></span><br><span class="line">    unordered_map&lt;int, int&gt; map;</span><br><span class="line"></span><br><span class="line">    // simulate the division process</span><br><span class="line">    for (int64_t r = n % d; r; r %= d) &#123;</span><br><span class="line"></span><br><span class="line">        // meet a known remainder</span><br><span class="line">        // so we reach the end of the repeating part</span><br><span class="line">        if (map.count(r) &gt; 0) &#123;</span><br><span class="line">            res.insert(map[r], 1, &apos;(&apos;);</span><br><span class="line">            res += &apos;)&apos;;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // the remainder is first seen</span><br><span class="line">        // remember the current position for it</span><br><span class="line">        map[r] = res.size();</span><br><span class="line"></span><br><span class="line">        r *= 10;</span><br><span class="line"></span><br><span class="line">        // append the quotient digit</span><br><span class="line">        res += to_string(r / d);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17071/0ms-c-solution-with-detailed-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17071/0ms-c-solution-with-detailed-explanations</a></p>
+<p>0ms C++ Solution with Detailed Explanations</p>
+<p>Well, the key to this problem is on how to identify the recurring parts. After doing some examples using pen and paper, you may find that for the decimal parts to recur, the remainders should recur. So we need to maintain the remainders we have seen. Once we see a repeated remainder, we know that we have reached the end of the recurring parts and should enclose it with a ). However, we still need to insert the ( to the correct position. So we maintain a mapping from each remainder to the position of the corresponding quotient digit of it in the recurring parts. Then we use this mapping to retrieve the starting position of the recurring parts.</p>
+<p>Now we have solved the trickiest part of this problem.</p>
+<p>There are some remaining problems to solve to achieve a bug-free solution.</p>
+<ol>
+<li>Pay attention to the sign of the result;</li>
+<li>Handle cases that may cause overflow like numerator = -2147483648, denominator = -1 appropriately by using long long;</li>
+<li>Handle all the cases of (1) no fractional part; (2) fractional part does not recur; and (3) fractional part recurs respectively.</li>
+</ol>
+<p>To handle problem 3, we divide the division process into the integral part and the fractional part. For the fractional part, if it does not recur, then the remainder will become 0 at some point and we could return. If it does recur, the method metioned in the first paragraph has already handled it.</p>
+<p>Taking all these into considerations, we have the following code, which takes 0 ms :-)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string fractionToDecimal(int numerator, int denominator) &#123;</span><br><span class="line">        if (!numerator) return &quot;0&quot;;</span><br><span class="line">        string res;</span><br><span class="line">        if (numerator &lt; 0 ^ denominator &lt; 0) res += &apos;-&apos;;</span><br><span class="line">        long numer = numerator &lt; 0 ? (long)numerator * (-1) : (long)numerator;</span><br><span class="line">        long denom = denominator &lt; 0 ? (long)denominator * (-1) : (long)denominator;</span><br><span class="line">        long integral = numer / denom;</span><br><span class="line">        res += to_string(integral);</span><br><span class="line">        long rmd = numer % denom;</span><br><span class="line">        if (!rmd) return res;</span><br><span class="line">        res += &apos;.&apos;;</span><br><span class="line">        rmd *= 10;</span><br><span class="line">        unordered_map&lt;long, long&gt; mp; </span><br><span class="line">        while (rmd) &#123;</span><br><span class="line">            long quotient = rmd / denom;</span><br><span class="line">            if (mp.find(rmd) != mp.end()) &#123; </span><br><span class="line">                res.insert(mp[rmd], 1, &apos;(&apos;);</span><br><span class="line">                res += &apos;)&apos;;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            mp[rmd] = res.size();</span><br><span class="line">            res += to_string(quotient);</span><br><span class="line">            rmd = (rmd % denom) * 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7699/do-not-use-python-as-cpp-here-s-a-short-version-python-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7699/do-not-use-python-as-cpp-here-s-a-short-version-python-code</a></p>
+<p>Do not use python as cpp, here’s a short version python code</p>
+<p>Though python is slow, It is easy to write</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @return a string</span><br><span class="line">def fractionToDecimal(self, numerator, denominator):</span><br><span class="line">    n, remainder = divmod(abs(numerator), abs(denominator))</span><br><span class="line">    sign = &apos;-&apos; if numerator*denominator &lt; 0 else &apos;&apos;</span><br><span class="line">    result = [sign+str(n), &apos;.&apos;]</span><br><span class="line">    stack = []</span><br><span class="line">    while remainder not in stack:</span><br><span class="line">        stack.append(remainder)</span><br><span class="line">        n, remainder = divmod(remainder*10, abs(denominator))</span><br><span class="line">        result.append(str(n))</span><br><span class="line"></span><br><span class="line">    idx = stack.index(remainder)</span><br><span class="line">    result.insert(idx+2, &apos;(&apos;)</span><br><span class="line">    result.append(&apos;)&apos;)</span><br><span class="line">    return &apos;&apos;.join(result).replace(&apos;(0)&apos;, &apos;&apos;).rstrip(&apos;.&apos;)</span><br></pre></td></tr></table></figure>
+<p>and there’s no overflow</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9778/python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9778/python-solution</a></p>
+<p>Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @return a string</span><br><span class="line">def fractionToDecimal(self, numerator, denominator):</span><br><span class="line">    res=&quot;&quot;</span><br><span class="line">    if numerator/denominator&lt;0:</span><br><span class="line">        res+=&quot;-&quot;</span><br><span class="line">    elif numerator%denominator==0:</span><br><span class="line">        return str(numerator/denominator)</span><br><span class="line">    numerator=abs(numerator)</span><br><span class="line">    denominator=abs(denominator)</span><br><span class="line">    res+=str(numerator/denominator)</span><br><span class="line">    res+=&quot;.&quot;</span><br><span class="line">    numerator%=denominator</span><br><span class="line">    i=len(res)</span><br><span class="line">    table=&#123;&#125;</span><br><span class="line">    while numerator!=0:</span><br><span class="line">        if numerator not in table.keys():</span><br><span class="line">            table[numerator]=i</span><br><span class="line">        else:</span><br><span class="line">            i=table[numerator]</span><br><span class="line">            res=res[:i]+&quot;(&quot;+res[i:]+&quot;)&quot;</span><br><span class="line">            return res</span><br><span class="line">        numerator=numerator*10</span><br><span class="line">        res+=str(numerator/denominator)</span><br><span class="line">        numerator%=denominator</span><br><span class="line">        i+=1</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<p>Idea is to put every remainder into the hash table as a key, and the current length of the result string as the value. When the same remainder shows again, it’s circulating from the index of the value in the table.</p>
+
       
     </div>
     
@@ -491,6 +559,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+        </div>
       
 
       
@@ -612,7 +692,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

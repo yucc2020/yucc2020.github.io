@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,array,two pointers,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="29.4%  https://leetcode.com/problems/minimum-size-subarray-sum/ Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s.">
+<meta name="keywords" content="leetcode,medium,array,two pointers,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="209. Minimum Size Subarray Sum">
 <meta property="og:url" content="http://yucc.me/p/cf54181a/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="29.4%  https://leetcode.com/problems/minimum-size-subarray-sum/ Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.239Z">
+<meta property="og:updated_time" content="2018-05-22T14:57:51.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="209. Minimum Size Subarray Sum">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="29.4%  https://leetcode.com/problems/minimum-size-subarray-sum/ Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:57:51+08:00">
+                2018-05-22 22:57
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  794
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,44 @@
       
 
       
-        
+        <ul>
+<li>29.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-size-subarray-sum/</a></p>
+<p>Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn’t one, return 0 instead.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For example, given the array [2,3,1,2,4,3] and s = 7,</span><br><span class="line">the subarray [4,3] has the minimal length under the problem constraint.</span><br></pre></td></tr></table></figure>
+<p>More practice:</p>
+<p>If you have figured out the O(n) solution, try coding another solution of which the time complexity is O(n log n).</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSubArrayLen</span><span class="params">(<span class="keyword">int</span> s, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">-1</span>, j=<span class="number">0</span>, sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;n)&#123;</span><br><span class="line">            sum += nums[j++];</span><br><span class="line">            <span class="keyword">while</span>(sum&gt;=s)&#123;</span><br><span class="line">                res = min(res, j-i<span class="number">-1</span>);</span><br><span class="line">                sum -= nums[++i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res==INT_MAX? <span class="number">0</span> : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>8ms, 14.16%, June.24th, 2016</p>
+<p><a href="https://leetcode.com/discuss/42143/4ms-o-n-8ms-o-nlogn-c" target="_blank" rel="noopener">https://leetcode.com/discuss/42143/4ms-o-n-8ms-o-nlogn-c</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minSubArrayLen(int s, vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n = nums.size(), start = 0, sum = 0, minlen = INT_MAX;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123; </span><br><span class="line">            sum += nums[i]; </span><br><span class="line">            while (sum &gt;= s) &#123;</span><br><span class="line">                minlen = min(minlen, i - start + 1);</span><br><span class="line">                sum -= nums[start++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return minlen == INT_MAX ? 0 : minlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>学习区：</p>
+<p><a href="https://discuss.leetcode.com/topic/37844/o-n-template-for-minimum-size-subarray-sum-minimum-window-substring-longest-substring-without-repeating-characters" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37844/o-n-template-for-minimum-size-subarray-sum-minimum-window-substring-longest-substring-without-repeating-characters</a></p>
+<p>O(N) template for Minimum Size Subarray Sum &amp; Minimum Window Substring &amp; Longest Substring Without Repeating Characters</p>
+<p>First , I will show you the solution of this problem,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minSubArrayLen(int s, vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int start=0, end=0;</span><br><span class="line">        int minLen=INT_MAX, sum=0;</span><br><span class="line">        while(end&lt;nums.size())&#123;</span><br><span class="line">            if(sum&lt;s) sum+=nums[end];</span><br><span class="line">            end++;</span><br><span class="line">            while(sum&gt;=s)&#123;</span><br><span class="line">                if(end-start&lt;minLen)</span><br><span class="line">                    minLen=end-start;</span><br><span class="line">                sum-=nums[start];</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return minLen==INT_MAX ? 0 : minLen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Next, let me show you the solution to the problem “Minimum Window Substring”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string minWindow(string s, string t) &#123;</span><br><span class="line">        vector&lt;int&gt; v(128, 0);</span><br><span class="line">        for(auto c:t) v[c]++;</span><br><span class="line">        int start=0, end=0, counter=t.size();</span><br><span class="line">        int m_start=0, m_len=INT_MAX;</span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(v[s[end]]&gt;0)  counter--;</span><br><span class="line">            v[s[end]]--;</span><br><span class="line">            end++;</span><br><span class="line">            /** loop from start to check whether we can find more short string **/</span><br><span class="line">            while(counter==0)&#123;</span><br><span class="line">                if(m_len&gt;end-start)&#123;</span><br><span class="line">                    m_start=start;</span><br><span class="line">                    m_len=end-start;</span><br><span class="line">                &#125;</span><br><span class="line">                v[s[start]]++;</span><br><span class="line">                if(v[s[start]]&gt;0) counter++;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return m_len==INT_MAX ? &quot;&quot; : s.substr(m_start, m_len);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>The solution for the problem “Longest Substring Without Repeating Characters” can also be solved in the</p>
+<p>same pattern .</p>
+<p>Here is the solution for “Longest Substring Without Repeating Characters”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int lengthOfLongestSubstring(string s) &#123;</span><br><span class="line">        vector&lt;int&gt; v(128, 0);</span><br><span class="line">        int start=0, end=0;</span><br><span class="line">        int m_len=INT_MIN;</span><br><span class="line">        while(end&lt;s.size())&#123;</span><br><span class="line">            if(v[s[end]]==0) m_len=max(m_len, end-start+1);</span><br><span class="line">            v[s[end]]++;</span><br><span class="line">            end++;</span><br><span class="line">            while(v[s[end]]&gt;0)&#123;</span><br><span class="line">                v[s[start]]--;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return m_len==INT_MIN ? 0 : m_len;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>As you can see, they all follow the same pattern !</p>
+<p>This post deserves your up vote!</p>
+<hr>
+<p>1ms, 16.03%, June.24th, 2016</p>
+<p><a href="https://leetcode.com/discuss/45449/accepted-clean-java-o-n-solution-two-pointers" target="_blank" rel="noopener">https://leetcode.com/discuss/45449/accepted-clean-java-o-n-solution-two-pointers</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minSubArrayLen(int s, int[] nums) &#123;</span><br><span class="line">        if(nums == null || nums.length == 0)</span><br><span class="line">            return 0;</span><br><span class="line">        </span><br><span class="line">        int i = 0, j = 0, sum = 0, min = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">        while(j &lt; nums.length)&#123;</span><br><span class="line">            sum += nums[j++];</span><br><span class="line">            </span><br><span class="line">            while(sum &gt;= s)&#123;</span><br><span class="line">                min = Math.min(min, j - i);</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return min == Integer.MAX_VALUE ? 0 : min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>47ms, 96.87%, June.24th, 2016</p>
+<p><a href="https://leetcode.com/discuss/36384/python-o-n-and-o-n-log-n-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/36384/python-o-n-and-o-n-log-n-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minSubArrayLen(self, s, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: int</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        total = left = 0</span><br><span class="line">        result = len(nums) + 1</span><br><span class="line">        for right, n in enumerate(nums):</span><br><span class="line">            total += n</span><br><span class="line">            while total &gt;= s:</span><br><span class="line">                result = min(result, right - left + 1)</span><br><span class="line">                total -= nums[left]</span><br><span class="line">                left += 1</span><br><span class="line">        return result if result &lt;= len(nums) else 0</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +550,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -612,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

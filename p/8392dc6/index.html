@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,linked list,easy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.4%  https://leetcode.com/problems/remove-linked-list-elements/#/description Remove all elements from a linked list of integers that have value val. 123ExampleGiven: 1 --&amp;gt; 2 --&amp;gt; 6 --&amp;gt; 3 --">
+<meta name="keywords" content="leetcode,linked list,easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="203. Remove Linked List Elements">
 <meta property="og:url" content="http://yucc.me/p/8392dc6/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.4%  https://leetcode.com/problems/remove-linked-list-elements/#/description Remove all elements from a linked list of integers that have value val. 123ExampleGiven: 1 --&amp;gt; 2 --&amp;gt; 6 --&amp;gt; 3 --">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.234Z">
+<meta property="og:updated_time" content="2018-05-22T14:53:54.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="203. Remove Linked List Elements">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.4%  https://leetcode.com/problems/remove-linked-list-elements/#/description Remove all elements from a linked list of integers that have value val. 123ExampleGiven: 1 --&amp;gt; 2 --&amp;gt; 6 --&amp;gt; 3 --">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:53:54+08:00">
+                2018-05-22 22:53
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  631
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -430,7 +452,44 @@
       
 
       
-        
+        <ul>
+<li>31.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/remove-linked-list-elements/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/remove-linked-list-elements/#/description</a></p>
+<p>Remove all elements from a linked list of integers that have value val.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example</span><br><span class="line">Given: 1 --&gt; 2 --&gt; 6 --&gt; 3 --&gt; 4 --&gt; 5 --&gt; 6, val = 6</span><br><span class="line">Return: 1 --&gt; 2 --&gt; 3 --&gt; 4 --&gt; 5</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>前面设置一个哑变量</p>
+<p>学习一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ListNode *pseudo_head = new ListNode(0);</span><br><span class="line">pseudo_head-&gt;next = head;</span><br></pre></td></tr></table></figure>
+<p>Concise C++ solution with pseudo ListHead</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">        ListNode *pseudo_head = new ListNode(0);</span><br><span class="line">        pseudo_head-&gt;next = head;</span><br><span class="line">        ListNode *cur = pseudo_head;</span><br><span class="line">        while(cur)&#123;</span><br><span class="line">            if(cur-&gt;next &amp;&amp; cur-&gt;next-&gt;val == val)   cur-&gt;next = cur-&gt;next-&gt;next;</span><br><span class="line">            else    cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return pseudo_head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeElements</span><span class="params">(ListNode* head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode* prehead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        prehead-&gt;next = head;</span><br><span class="line">        ListNode* cur = prehead;</span><br><span class="line">        <span class="keyword">while</span>(cur &amp;&amp; cur-&gt;next)&#123;</span><br><span class="line">            ListNode* nex = cur-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(nex!=<span class="literal">NULL</span> &amp;&amp; nex-&gt;val==val)</span><br><span class="line">                nex = nex-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(cur-&gt;next != nex)</span><br><span class="line">                cur-&gt;next = nex;</span><br><span class="line">            cur = nex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prehead-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19529/simple-and-elegant-solution-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19529/simple-and-elegant-solution-in-c</a></p>
+<p>Simple and elegant solution in C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ListNode *removeElements(ListNode *head, int val)</span><br><span class="line">&#123;</span><br><span class="line">    ListNode **list = &amp;head;</span><br><span class="line"></span><br><span class="line">    while (*list != nullptr)</span><br><span class="line">    &#123;</span><br><span class="line">        if ((*list)-&gt;val == val)</span><br><span class="line">        &#123;</span><br><span class="line">            *list = (*list)-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            list = &amp;(*list)-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Original recursive version:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void removeHelper(ListNode *&amp;head, int val)</span><br><span class="line">&#123;</span><br><span class="line">    if (head == nullptr)</span><br><span class="line">    &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (head-&gt;val == val)</span><br><span class="line">    &#123;</span><br><span class="line">        head = head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        removeHelper(head-&gt;next, val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17550/concise-c-solution-with-pseudo-listhead" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17550/concise-c-solution-with-pseudo-listhead</a></p>
+<p>Concise C++ solution with pseudo ListHead</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* removeElements(ListNode* head, int val) &#123;</span><br><span class="line">        ListNode *pseudo_head = new ListNode(0);</span><br><span class="line">        pseudo_head-&gt;next = head;</span><br><span class="line">        ListNode *cur = pseudo_head;</span><br><span class="line">        while(cur)&#123;</span><br><span class="line">            if(cur-&gt;next &amp;&amp; cur-&gt;next-&gt;val == val)   cur-&gt;next = cur-&gt;next-&gt;next;</span><br><span class="line">            else    cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return pseudo_head-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>2ms, 5.21%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/12580/3-line-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12580/3-line-recursive-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode removeElements(ListNode head, int val) &#123;</span><br><span class="line">        if(head == null) return null;</span><br><span class="line">        head.next = removeElements(head.next, val);</span><br><span class="line">        return head.val == val ? head.next : head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>1ms, 48.64%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/12725/ac-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12725/ac-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode removeElements(ListNode head, int val) &#123;</span><br><span class="line">        ListNode fakeHead = new ListNode(-1);</span><br><span class="line">        fakeHead.next = head;</span><br><span class="line">        ListNode curr = head, prev = fakeHead;</span><br><span class="line">        while(curr != null)&#123;</span><br><span class="line">            if(curr.val == val)</span><br><span class="line">                prev.next = curr.next;</span><br><span class="line">            else </span><br><span class="line">                prev = prev.next;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return fakeHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>116ms, 68.55%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/12640/python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12640/python-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Definition for singly-linked list.</span><br><span class="line"># class ListNode(object):</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.next = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def removeElements(self, head, val):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type head: ListNode</span><br><span class="line">        :type val: int</span><br><span class="line">        :rtype: ListNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        dummy = ListNode(-1)</span><br><span class="line">        dummy.next = head</span><br><span class="line">        next = dummy</span><br><span class="line">        </span><br><span class="line">        while next != None and next.next != None:</span><br><span class="line">            if next.next.val == val:</span><br><span class="line">                next.next = next.next.next</span><br><span class="line">            else:</span><br><span class="line">                next = next.next</span><br><span class="line">        </span><br><span class="line">        return dummy.next</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +550,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+        </div>
       
 
       
@@ -574,8 +643,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +690,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +752,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

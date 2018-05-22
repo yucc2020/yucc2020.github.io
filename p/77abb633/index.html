@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,binary search,dynamic programming,aaa," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/dungeon-game/ The demons had captured the princess (P) and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D gr">
+<meta name="keywords" content="leetcode,binary search,dynamic programming,aaa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="174. Dungeon Game">
 <meta property="og:url" content="http://yucc.me/p/77abb633/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/dungeon-game/ The demons had captured the princess (P) and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D gr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.220Z">
+<meta property="og:updated_time" content="2018-05-22T14:44:47.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="174. Dungeon Game">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/dungeon-game/ The demons had captured the princess (P) and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D gr">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:44:47+08:00">
+                2018-05-22 22:44
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,433
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,93 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/dungeon-game/" target="_blank" rel="noopener">https://leetcode.com/problems/dungeon-game/</a></p>
+<p>The demons had captured the princess (P) and imprisoned her in the bottom-right corner of a dungeon. The dungeon consists of M x N rooms laid out in a 2D grid. Our valiant knight (K) was initially positioned in the top-left room and must fight his way through the dungeon to rescue the princess.</p>
+<p>The knight has an initial health point represented by a positive integer. If at any point his health point drops to 0 or below, he dies immediately.</p>
+<p>Some of the rooms are guarded by demons, so the knight loses health (negative integers) upon entering these rooms; other rooms are either empty (0’s) or contain magic orbs that increase the knight’s health (positive integers).</p>
+<p>In order to reach the princess as quickly as possible, the knight decides to move only rightward or downward in each step.</p>
+<p><strong>Write a function to determine the knight’s minimum initial health so that he is able to rescue the princess.</strong></p>
+<p>For example, given the dungeon below, the initial health of the knight must be at least 7 if he follows the optimal path RIGHT-&gt; RIGHT -&gt; DOWN -&gt; DOWN.</p>
+<table>
+<thead>
+<tr>
+<th>header 1</th>
+<th>header 2</th>
+<th>header 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2(K)</td>
+<td>-3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>-5</td>
+<td>-10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>30</td>
+<td>-5(P)</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<ul>
+<li>The knight’s health has no upper bound.</li>
+<li>Any room can contain threats or power-ups, even the first room the knight enters and the bottom-right room where the princess is imprisoned.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6906/who-can-explain-why-from-the-bottom-right-corner-to-left-top" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6906/who-can-explain-why-from-the-bottom-right-corner-to-left-top</a></p>
+<p>Who can explain why “from the bottom right corner to left top.”</p>
+<p>Why we fill the table from the bottom right corner to left top?</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6912/c-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6912/c-dp-solution</a></p>
+<p>C++ DP solution</p>
+<p>第一点，从右下角开始思考，从右下角开始思考。</p>
+<p>同时注意，knight在路途中间不能没有血。</p>
+<p>Use hp[i][j] to store the min hp needed at position (i, j), then do the calculation from right-bottom to left-up.</p>
+<p>Note: adding dummy row and column would make the code cleaner.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int calculateMinimumHP(vector&lt;vector&lt;int&gt; &gt; &amp;dungeon) &#123;</span><br><span class="line">        int M = dungeon.size();</span><br><span class="line">        int N = dungeon[0].size();</span><br><span class="line">        // hp[i][j] represents the min hp needed at position (i, j)</span><br><span class="line">        // Add dummy row and column at bottom and right side</span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; hp(M + 1, vector&lt;int&gt;(N + 1, INT_MAX));</span><br><span class="line">        hp[M][N - 1] = 1;</span><br><span class="line">        hp[M - 1][N] = 1;</span><br><span class="line">        for (int i = M - 1; i &gt;= 0; i--) &#123;</span><br><span class="line">            for (int j = N - 1; j &gt;= 0; j--) &#123;</span><br><span class="line">                int need = min(hp[i + 1][j], hp[i][j + 1]) - dungeon[i][j];</span><br><span class="line">                hp[i][j] = need &lt;= 0 ? 1 : need;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return hp[0][0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/6912/c-dp-solution/4" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6912/c-dp-solution/4</a></p>
+<p>We could reduce the 2-D DP matrix into 1-D</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int calculateMinimumHP(vector&lt;vector&lt;int&gt;&gt;&amp; dungeon) &#123;</span><br><span class="line">        int n=dungeon.size(),m=dungeon[0].size();</span><br><span class="line">        vector&lt;int&gt; dp(n+1,INT_MAX);</span><br><span class="line">        dp[n-1]=1;</span><br><span class="line">        for(int j=m-1;j&gt;=0;j--)&#123;</span><br><span class="line">            for(int i=n-1;i&gt;=0;i--)&#123;</span><br><span class="line">                dp[i]=min(dp[i],dp[i+1])-dungeon[i][j];</span><br><span class="line">                dp[i]=max(1,dp[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7633/best-solution-i-have-found-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7633/best-solution-i-have-found-with-explanations</a></p>
+<p>Best solution I have found with explanations</p>
+<p><a href="http://leetcodesolution.blogspot.com/2015/01/leetcode-dungeon-game.html" target="_blank" rel="noopener">http://leetcodesolution.blogspot.com/2015/01/leetcode-dungeon-game.html</a></p>
+<p>seems pretty simple… and easy to understand explanations…</p>
+<p>It is easy to know that at grid P, since “ at any point his health point drops to 0 or below, he dies immediately”, the remaining health value should be at least 1, that is, initialHealth + dungeon &gt;= 1, we have initialHealth = max(1, 1 - dungeon[i][j]). (Notice, at any grid, the initial health should be at least 1 (for example, test case [1,0,0] require initial health 1 even though it has positive remaining health at grid[0][1] and grid[0][2])</p>
+<p>Similarly, to satisfy the initial health of dungeon[i][j], the initial health of dungeon[i-1][j] (or dungeon[i][j-1]) should be at least initialHealth[i-1][j] + dungeon[i-1][j] = initialHealth[i][j], that is, initialHealth[i][j] = initialHealth[i][j] - dungeon[i-1][j].</p>
+<p>In addition, if grid[i][j] can go both grid[i+1][j] and grid[i][j+1] to P, we should choose a path with less initial health between grid[i+1][j] and grid[i][j+1] since it require less initial health of grid[i][j].<br>We can simply code the solution by having the dynamic programming equations.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int calculateMinimumHP(vector &amp;dungeon) &#123;</span><br><span class="line">    int m = dungeon.size();</span><br><span class="line">    int n = dungeon[0].size();</span><br><span class="line">    vector minInitHealth(m, vector&lt;int&gt;(n,0));</span><br><span class="line">    for(int i=m-1; i&gt;=0; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j=n-1; j&gt;=0; j--)</span><br><span class="line">        &#123;</span><br><span class="line">            if (i == m-1 &amp;&amp; j == n-1)</span><br><span class="line">            &#123;</span><br><span class="line">                minInitHealth[i][j] = max(1, 1 - dungeon[i][j]);</span><br><span class="line">            &#125;  </span><br><span class="line">            else if (i == m-1)</span><br><span class="line">            &#123;</span><br><span class="line">                minInitHealth[i][j] = max(1, minInitHealth[i][j+1] - dungeon[i][j]);</span><br><span class="line">            &#125;  </span><br><span class="line">            else if (j == n-1)</span><br><span class="line">            &#123;</span><br><span class="line">                minInitHealth[i][j] = max(1, minInitHealth[i+1][j] - dungeon[i][j]);</span><br><span class="line">            &#125;  </span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                minInitHealth[i][j] = max(1, min(minInitHealth[i+1][j],minInitHealth[i][j+1]) - dungeon[i][j]);</span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return  minInitHealth[0][0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7024/sharing-my-solution-with-o-n-space-o-mn-runtime" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7024/sharing-my-solution-with-o-n-space-o-mn-runtime</a></p>
+<p>Sharing my solution with O(n) space, O(mn) runtime</p>
+<p>Here is my solution using dp and rolling array –Dungeon Game:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int calculateMinimumHP(vector&lt;vector&lt;int&gt; &gt; &amp;dungeon) &#123;</span><br><span class="line">    const int m = dungeon.size();</span><br><span class="line">    const int n = dungeon[0].size();</span><br><span class="line">    vector&lt;int&gt; dp(n + 1, INT_MAX);</span><br><span class="line">    dp[n - 1] = 1; </span><br><span class="line">    for(int i = m - 1; i &gt;= 0; --i)</span><br><span class="line">        for(int j = n - 1; j &gt;= 0; --j)</span><br><span class="line">            dp[j] = getMin(min(dp[j], dp[j + 1]) - dungeon[i][j]);</span><br><span class="line">    return dp[0];</span><br><span class="line">&#125;</span><br><span class="line">int getMin(int n)&#123;</span><br><span class="line">    return n &lt;= 0 ? 1 : n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note: Update from right to left and from bottom up.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19304/6-lines-16-ms-c-o-mn-time-o-n-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19304/6-lines-16-ms-c-o-mn-time-o-n-space</a></p>
+<p>6 lines, 16 ms, C++, O(mn) Time, O(n) Space,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct Solution &#123;</span><br><span class="line">    int calculateMinimumHP(vector&lt;vector&lt;int&gt;&gt;&amp; d) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(d.size() + 1, INT_MAX);</span><br><span class="line">        dp[d.size() - 1] = 1;</span><br><span class="line">        for (int i = d[0].size() - 1; i &gt;= 0; --i)</span><br><span class="line">            for (int j = d.size() - 1; j &gt;= 0; --j)</span><br><span class="line">                dp[j] = max(1, min(dp[j + 1], dp[j]) - d[j][i]);</span><br><span class="line">        return dp[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26511/a-12-ms-c-solution-dp" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26511/a-12-ms-c-solution-dp</a></p>
+<p>A 12 ms C++ solution, DP</p>
+<p>This problem is quite like #64 Minimum Path Sum.</p>
+<p>The trick is where is the Starting point. This problem ask us to find the least hp in top-left. So in the most optimistic situation, bottom-right value can be determined as 1. Then bottom-right is the starting point.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int calculateMinimumHP(vector&lt;vector&lt;int&gt;&gt;&amp; dun) </span><br><span class="line">&#123;</span><br><span class="line">	if (!dun.size() || !dun[0].size())</span><br><span class="line">		return 1;</span><br><span class="line">	int nrow = dun.size();</span><br><span class="line">	int ncol = dun[0].size();</span><br><span class="line">	vector&lt;int&gt; row(ncol + 1, INT_MAX);</span><br><span class="line">	row[ncol - 1] = 1;</span><br><span class="line">	int i, j, t;</span><br><span class="line">	for (i = nrow - 1; i &gt;= 0; --i)</span><br><span class="line">	&#123;</span><br><span class="line">		for (j = ncol - 1; j &gt;= 0; --j)</span><br><span class="line">		&#123;</span><br><span class="line">			t = min(row[j], row[j + 1]) - dun[i][j];</span><br><span class="line">			row[j] = max(t, 1); //row[j]=smaller value from below and right, but no smaller than 1.</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return row[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19179/6-lines-python-8-lines-ruby" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19179/6-lines-python-8-lines-ruby</a></p>
+<p>6 lines Python, 8 lines Ruby</p>
+<p>Just some DP.</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def calculateMinimumHP(self, dungeon):</span><br><span class="line">    n = len(dungeon[0])</span><br><span class="line">    need = [2**31] * (n-1) + [1]</span><br><span class="line">    for row in dungeon[::-1]:</span><br><span class="line">        for j in range(n)[::-1]:</span><br><span class="line">            need[j] = max(min(need[j:j+2]) - row[j], 1)</span><br><span class="line">    return need[0]</span><br></pre></td></tr></table></figure>
+<p>Got accepted in 52 ms, faster than all other recent Python submissions (best was 56 ms, achieved by 5.7692%).</p>
+
       
     </div>
     
@@ -491,6 +599,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/aaa/" rel="tag"># aaa</a>
+          
+        </div>
       
 
       
@@ -612,7 +732,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

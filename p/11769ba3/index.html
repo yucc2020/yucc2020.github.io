@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,hash table,bitmanipulation," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="30.1%  All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: “ACGAATTCCG”. When studying DNA, it is sometimes useful to identify repeated sequences within the DNA">
+<meta name="keywords" content="leetcode,medium,hash table,bitmanipulation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="187. Repeated DNA Sequences">
 <meta property="og:url" content="http://yucc.me/p/11769ba3/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="30.1%  All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: “ACGAATTCCG”. When studying DNA, it is sometimes useful to identify repeated sequences within the DNA">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.219Z">
+<meta property="og:updated_time" content="2018-05-22T14:46:46.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="187. Repeated DNA Sequences">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="30.1%  All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: “ACGAATTCCG”. When studying DNA, it is sometimes useful to identify repeated sequences within the DNA">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T22:46:46+08:00">
+                2018-05-22 22:46
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,140
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  13
                 </span>
               
             </div>
@@ -430,7 +452,90 @@
       
 
       
-        
+        <ul>
+<li>30.1%</li>
+</ul>
+<p>All DNA is composed of a series of nucleotides abbreviated as A, C, G, and T, for example: “ACGAATTCCG”. When studying DNA, it is sometimes useful to identify repeated sequences within the DNA.</p>
+<p>Write a function to find all the 10-letter-long sequences (substrings) that occur more than once in a DNA molecule.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line"></span><br><span class="line">Given s = <span class="string">"AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"</span>,</span><br><span class="line"></span><br><span class="line">Return:</span><br><span class="line">[<span class="string">"AAAAACCCCC"</span>, <span class="string">"CCCCCAAAAA"</span>].</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findRepeatedDnaSequences(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(s.size()&lt;<span class="number">10</span>)</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; set1, set2;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span> = &#123;&#123;<span class="string">'A'</span>, <span class="number">0</span>&#125;, &#123;<span class="string">'C'</span>, <span class="number">1</span>&#125;, &#123;<span class="string">'G'</span>, <span class="number">2</span>&#125;, &#123;<span class="string">'T'</span>, <span class="number">3</span>&#125;&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=s.size()<span class="number">-10</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i; j&lt;i+<span class="number">10</span>; j++)&#123;</span><br><span class="line">                k &lt;&lt;= <span class="number">2</span>;</span><br><span class="line">                k |= <span class="built_in">map</span>[s[j]];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(set1.find(k)!=set1.end() &amp;&amp; set2.find(k)==set2.end())&#123;</span><br><span class="line">                res.push_back(s.substr(i, <span class="number">10</span>));</span><br><span class="line">                set2.insert(k);</span><br><span class="line">            &#125;</span><br><span class="line">            set1.insert(k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/8894/clean-java-solution-hashmap-bits-manipulation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8894/clean-java-solution-hashmap-bits-manipulation</a></p>
+<p>Clean Java solution (hashmap + bits manipulation)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;String&gt; findRepeatedDnaSequences(String s) &#123;</span><br><span class="line">    Set&lt;Integer&gt; words = new HashSet&lt;&gt;();</span><br><span class="line">    Set&lt;Integer&gt; doubleWords = new HashSet&lt;&gt;();</span><br><span class="line">    List&lt;String&gt; rv = new ArrayList&lt;&gt;();</span><br><span class="line">    char[] map = new char[26];</span><br><span class="line">    //map[&apos;A&apos; - &apos;A&apos;] = 0;</span><br><span class="line">    map[&apos;C&apos; - &apos;A&apos;] = 1;</span><br><span class="line">    map[&apos;G&apos; - &apos;A&apos;] = 2;</span><br><span class="line">    map[&apos;T&apos; - &apos;A&apos;] = 3;</span><br><span class="line"></span><br><span class="line">    for(int i = 0; i &lt; s.length() - 9; i++) &#123;</span><br><span class="line">        int v = 0;</span><br><span class="line">        for(int j = i; j &lt; i + 10; j++) &#123;</span><br><span class="line">            v &lt;&lt;= 2;</span><br><span class="line">            v |= map[s.charAt(j) - &apos;A&apos;];</span><br><span class="line">        &#125;</span><br><span class="line">        if(!words.add(v) &amp;&amp; doubleWords.add(v)) &#123;</span><br><span class="line">            rv.add(s.substring(i, i + 10));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c</a></p>
+<p>I did it in 10 lines of C++</p>
+<p>The main idea is to store the substring as int in map to bypass the memory limits.</p>
+<p>There are only four possible character A, C, G, and T, but I want to use 3 bits per letter instead of 2.</p>
+<p>Why? It’s easier to code.</p>
+<p>A is 0x41, C is 0x43, G is 0x47, T is 0x54. Still don’t see it? Let me write it in octal.</p>
+<p>A is 0101, C is 0103, G is 0107, T is 0124. The last digit in octal are different for all four letters. That’s all we need!</p>
+<p>We can simply use s[i] &amp; 7 to get the last digit which are just the last 3 bits, it’s much easier than lookup table or switch or a bunch of if and else, right?</p>
+<p>We don’t really need to generate the substring from the int. While counting the number of occurrences, we can push the substring into result as soon as the count becomes 2, so there won’t be any duplicates in the result.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    unordered_map&lt;int, int&gt; m;</span><br><span class="line">    vector&lt;string&gt; r;</span><br><span class="line">    int t = 0, i = 0, ss = s.size();</span><br><span class="line">    while (i &lt; 9)</span><br><span class="line">        t = t &lt;&lt; 3 | s[i++] &amp; 7;</span><br><span class="line">    while (i &lt; ss)</span><br><span class="line">        if (m[t = t &lt;&lt; 3 &amp; 0x3FFFFFFF | s[i++] &amp; 7]++ == 1)</span><br><span class="line">            r.push_back(s.substr(i - 10, 10));</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BTW, the OJ doesn’t seems to have test cases which the given string length is smaller than 9, so I didn’t check it to make the code simpler.</p>
+<p>Any suggestions?</p>
+<p>Update:</p>
+<p>I realised that I can use s[i] &gt;&gt; 1 &amp; 3 to get 2 bits, but then I won’t be able to remove the first loop as 1337c0d3r suggested.</p>
+<p><a href="https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c/2</a></p>
+<p>Neat idea. The additional 1 bit per letter still encode each substring in 10x3 = 30 bits, just under 4 bytes for a 32-bit integer.</p>
+<p>Your code could be further simplified. By observing that s[i] &amp; 7 is never 0, each of the first nine substrings with length &lt; 10 will have unique hash key and will never collide with other 10-letter long sequences. Therefore the first loop could be removed and be compacted into a single loop.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    unordered_map&lt;int, int&gt; m;</span><br><span class="line">    vector&lt;string&gt; r;</span><br><span class="line">    for (int t = 0, i = 0; i &lt; s.size(); i++)</span><br><span class="line">        if (m[t = t &lt;&lt; 3 &amp; 0x3FFFFFFF | s[i] &amp; 7]++ == 1)</span><br><span class="line">            r.push_back(s.substr(i - 9, 10));</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Another observation is the mapped value need not be an integer counter, and could simply be a boolean to further save space. This requires some extra logic though:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    unordered_map&lt;int, bool&gt; m;</span><br><span class="line">    vector&lt;string&gt; r;</span><br><span class="line">    for (int t = 0, i = 0; i &lt; s.size(); i++) &#123;</span><br><span class="line">        t = t &lt;&lt; 3 &amp; 0x3FFFFFFF | s[i] &amp; 7;</span><br><span class="line">        if (m.find(t) != m.end()) &#123;</span><br><span class="line">            if (m[t]) &#123;</span><br><span class="line">                r.push_back(s.substr(i - 9, 10));</span><br><span class="line">                m[t] = false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            m[t] = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>PS: OJ does have test cases which the given string has length that is less than 9.</p>
+<p><a href="https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c/3" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8487/i-did-it-in-10-lines-of-c/3</a></p>
+<p>Concise solution! A little longer but more readable solution base on your idea.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int str2int(string s) &#123;</span><br><span class="line">    int str=0;</span><br><span class="line">    for (int i = 0; i &lt; s.size(); ++i)</span><br><span class="line">        str = (str&lt;&lt;3) +(s[i]&amp;7);</span><br><span class="line">    return str;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    unordered_map&lt;int,int&gt; coll;</span><br><span class="line">    for (int i = 0; i+10 &lt;= s.size(); ++i)</span><br><span class="line">        if (coll[str2int(s.substr(i,10))]++ == 1)</span><br><span class="line">            res.push_back(s.substr(i,10));</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27517/7-lines-simple-java-o-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27517/7-lines-simple-java-o-n</a></p>
+<p>7 lines simple Java, O(n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;String&gt; findRepeatedDnaSequences(String s) &#123;</span><br><span class="line">    Set seen = new HashSet(), repeated = new HashSet();</span><br><span class="line">    for (int i = 0; i + 9 &lt; s.length(); i++) &#123;</span><br><span class="line">        String ten = s.substring(i, i + 10);</span><br><span class="line">        if (!seen.add(ten))</span><br><span class="line">            repeated.add(ten);</span><br><span class="line">    &#125;</span><br><span class="line">    return new ArrayList(repeated);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8539/short-java-rolling-hash-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8539/short-java-rolling-hash-solution</a></p>
+<p>Short Java “rolling-hash” solution</p>
+<p>Hi guys!</p>
+<p>The idea is to use <a href="http://en.wikipedia.org/wiki/Rolling_hash" target="_blank" rel="noopener">rolling hash</a> technique or in case of string search also known as <a href="http://en.wikipedia.org/wiki/Rabin%E2%80%93Karp_algorithm" target="_blank" rel="noopener">Rabin-Karp algorithm</a>. As our alphabet A consists of only 4 letters we can be not afraid of collisions. The hash for a current window slice could be found in a constant time by subtracting the former first character times size of the A in the power of 9 and updating remaining hash by the standard rule: hash = hash*A.size() + curr_char.</p>
+<p>Check out the Java code below.</p>
+<p>Hope it helps!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    private static final Map&lt;Character, Integer&gt; A = new HashMap&lt;&gt;();</span><br><span class="line">    static &#123; A.put(&apos;A&apos;,0); A.put(&apos;C&apos;,1); A.put(&apos;G&apos;,2); A.put(&apos;T&apos;,3); &#125;</span><br><span class="line">    private final int A_SIZE_POW_9 = (int) Math.pow(A.size(), 9);</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; findRepeatedDnaSequences(String s) &#123;</span><br><span class="line">        Set&lt;String&gt; res = new HashSet&lt;&gt;();</span><br><span class="line">        Set&lt;Integer&gt; hashes = new HashSet&lt;&gt;();</span><br><span class="line">        for (int i = 0, rhash = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">            if (i &gt; 9) rhash -= A_SIZE_POW_9 * A.get(s.charAt(i-10));</span><br><span class="line">            rhash = A.size() * rhash + A.get(s.charAt(i));</span><br><span class="line">            if (i &gt; 8 &amp;&amp; !hashes.add(rhash)) res.add(s.substring(i-9,i+1));</span><br><span class="line">        &#125;</span><br><span class="line">        return new ArrayList&lt;&gt;(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18263/10-lines-c-code-8-ms-passed" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18263/10-lines-c-code-8-ms-passed</a></p>
+<p>10 lines C++ code, 8 ms passed!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    char  hashMap[1048576] = &#123;0&#125;;</span><br><span class="line">    vector&lt;string&gt; ans;</span><br><span class="line">    int len = s.size(),hashNum = 0;</span><br><span class="line">    if (len &lt; 11) return ans;</span><br><span class="line">    for (int i = 0;i &lt; 9;++i)</span><br><span class="line">        hashNum = hashNum &lt;&lt; 2 | (s[i] - &apos;A&apos; + 1) % 5;</span><br><span class="line">    for (int i = 9;i &lt; len;++i)</span><br><span class="line">        if (hashMap[hashNum = (hashNum &lt;&lt; 2 | (s[i] - &apos;A&apos; + 1) % 5) &amp; 0xfffff]++ == 1)</span><br><span class="line">            ans.push_back(s.substr(i-9,10));</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10880/11ms-solution-with-unified-hash-fxn" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10880/11ms-solution-with-unified-hash-fxn</a></p>
+<p>~ 11ms Solution with Unified Hash Fxn</p>
+<p>Appricate for advice.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s)</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;string&gt; ret;</span><br><span class="line">    if ( s.length() &lt; 11 )</span><br><span class="line">    &#123;</span><br><span class="line">    	return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    char table[1048576] = &quot;&quot;;</span><br><span class="line">    unsigned int hash = 0U;</span><br><span class="line">    </span><br><span class="line">    for ( size_t i = 0; i &lt; 10; ++i )</span><br><span class="line">    &#123;</span><br><span class="line">    	/** &apos;A&apos; - &apos;A&apos; + 1 = 1  = 1 (mod 5)</span><br><span class="line">    	 *  &apos;C&apos; - &apos;A&apos; + 1 = 3  = 3 (mod 5)</span><br><span class="line">    	 *  &apos;G&apos; - &apos;A&apos; + 1 = 7  = 2 (mod 5)</span><br><span class="line">    	 *  &apos;T&apos; - &apos;A&apos; + 1 = 20 = 0 (mod 5)</span><br><span class="line">    	 */</span><br><span class="line">    	hash = ( hash &lt;&lt; 2 ) | ( ( s[i] - &apos;A&apos; + 1 ) % 5 );</span><br><span class="line">    &#125;</span><br><span class="line">    	</span><br><span class="line">    table[hash] = 1;</span><br><span class="line">    </span><br><span class="line">    for ( size_t i = 10; i &lt; s.length(); ++i )</span><br><span class="line">    &#123;</span><br><span class="line">    	hash = ( ( hash &lt;&lt; 2 )</span><br><span class="line">             ^ ( ( s[ i - 10 ] - &apos;A&apos; + 1 ) % 5 ) &lt;&lt; 20 )</span><br><span class="line">             | ( ( s[i] - &apos;A&apos; + 1 ) % 5 );</span><br><span class="line">    	         </span><br><span class="line">    	if ( table[hash] == 0 )</span><br><span class="line">    	&#123;</span><br><span class="line">    		table[hash] = 1;</span><br><span class="line">    	&#125;</span><br><span class="line">    	else if ( table[hash] == 1 )</span><br><span class="line">    	&#123;</span><br><span class="line">    		table[hash] = 2;</span><br><span class="line">    		ret.push_back( string( s, i - 9, 10 ) );</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31640/20-ms-solution-c-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31640/20-ms-solution-c-with-explanation</a></p>
+<p>20 ms solution (C++) with explanation</p>
+<p>One obvious way to do this is to use a hash table mapping strings to counts. (e.g. H[“AAAAAAAAAA”] represents the number of times we have seen AAAAAAAAAA. This will work in O(n) time, but its useful to discuss why this is not a good solution:</p>
+<ul>
+<li>Runtime constant (from hashing): When using a hash table, there is a runtime hit for hashing the string. In this case, converting the string to a table index. That will presumably mean looking at each character of the string. Since each character is part of 10 different substrings (other than the end characters), that means 10n character reads. Still linear, but we can do better on the constant.</li>
+<li>Memory (values): There isn’t any reason to store a count. Each possible string has only 3 states we need to track: “never been seen”, “been seen once”, and “been seen more than once”. This requires only two bits to track – not the 4-8 bytes needed for an integer.</li>
+<li>Memory (keys): A hash table needs to store each key (to resolve collisions). At 10 bytes per key, thats 10*n bytes – a potential problem if n is every large, and completely unnecessary.</li>
+</ul>
+<p>Here is how we address the three problems:</p>
+<p>Hashing: We compute the hash ourselves, but take advantage of the overlapping. We treat each letter as a two-bit number. (Arbitrarily, A=0, C=1, G=2, T=3.) We treat ten consecutive letters as a 20-bit integer. We can calculate the first one with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int val = 0;</span><br><span class="line">for (int i=0; i &lt; 10; i++)</span><br><span class="line">    val = (val &lt;&lt; 2) | char2val(s[i]);</span><br></pre></td></tr></table></figure>
+<p>Now, to compute the next string:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = ((val &lt;&lt; 2) &amp; mask) | char2val(s[10]);</span><br></pre></td></tr></table></figure>
+<p>Where:</p>
+<ol>
+<li>mask: 20 consecutive bits ((1 &lt;&lt; 21) -1).</li>
+<li>((val &lt;&lt; 2) &amp; mask: shift everything over two bits, and get rid of the most significant bits.</li>
+<li>((val &lt;&lt; 2) &amp; mask) | char2val(s[10]): Replace the right-most two bits with the character code.<br>Much faster than looking at every character 10 times.</li>
+</ol>
+<p>Hash table: We instead use two bit-sets. There are 2^{21}-1 possible strings. We need a bit in each set for each possible string. The first set (S1) tells us if the string has been seen once or not. The second set (S2) tell us whether the string has been seen more than once.</p>
+<p>Code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findRepeatedDnaSequences(string s) &#123;</span><br><span class="line">    if (s.size() &lt;= 10)</span><br><span class="line">        return vector&lt;string&gt;();</span><br><span class="line">        </span><br><span class="line">    vector&lt;string&gt; R;</span><br><span class="line">    bitset&lt;1&lt;&lt;20&gt; S1;</span><br><span class="line">    bitset&lt;1&lt;&lt;20&gt; S2;</span><br><span class="line">    </span><br><span class="line">    int val = 0;</span><br><span class="line">    for (int i=0; i &lt; 10; i++)   // Calc. the has value for the first string.</span><br><span class="line">        val = (val &lt;&lt; 2) | char2val(s[i]);</span><br><span class="line">    S1.set(val);</span><br><span class="line">    cout &lt;&lt; val &lt;&lt; &quot; | &quot;;</span><br><span class="line">    </span><br><span class="line">    int mask = (1 &lt;&lt; 20) - 1;</span><br><span class="line">    for (int i=10; i &lt; s.size(); i++) &#123;</span><br><span class="line">        // Calc the hash value for the string ending at position i.</span><br><span class="line">        val = ((val &lt;&lt; 2) &amp; mask) | char2val(s[i]);  </span><br><span class="line">        if (S2[val])</span><br><span class="line">            continue;</span><br><span class="line">        if (S1[val]) &#123;</span><br><span class="line">            R.push_back(s.substr(i-10+1, 10));</span><br><span class="line">            S2.set(val);</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">            S1.set(val);</span><br><span class="line">    &#125;</span><br><span class="line">    return R;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int char2val(char c) &#123;</span><br><span class="line">    switch (c) &#123;</span><br><span class="line">        case &apos;A&apos;: return 0;</span><br><span class="line">        case &apos;C&apos;: return 1;</span><br><span class="line">        case &apos;G&apos;: return 2;</span><br><span class="line">        case &apos;T&apos;: return 3;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +596,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/bitmanipulation/" rel="tag"># bitmanipulation</a>
+          
+        </div>
       
 
       
@@ -612,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

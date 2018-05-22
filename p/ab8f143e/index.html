@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,array,dynamic programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="24.8%  https://leetcode.com/problems/maximum-product-subarray/ Find the contiguous subarray within an array (containing at least one number) which has the largest product. 12For example, given the ar">
+<meta name="keywords" content="leetcode,medium,array,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="152. Maximum Product Subarray">
 <meta property="og:url" content="http://yucc.me/p/ab8f143e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="24.8%  https://leetcode.com/problems/maximum-product-subarray/ Find the contiguous subarray within an array (containing at least one number) which has the largest product. 12For example, given the ar">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.197Z">
+<meta property="og:updated_time" content="2018-05-22T11:59:47.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="152. Maximum Product Subarray">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="24.8%  https://leetcode.com/problems/maximum-product-subarray/ Find the contiguous subarray within an array (containing at least one number) which has the largest product. 12For example, given the ar">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:59:47+08:00">
+                2018-05-22 19:59
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,097
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,50 @@
       
 
       
-        
+        <ul>
+<li>24.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-product-subarray/</a></p>
+<p>Find the contiguous subarray within an array (containing at least one number) which has the largest product.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For example, given the array [2,3,-2,4],</span><br><span class="line">the contiguous subarray [2,3] has the largest product = 6.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>与52题类似，那个是求和，这个是求积</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> imin = nums[<span class="number">0</span>], imax = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]&lt;<span class="number">0</span>)</span><br><span class="line">                swap(imin, imax);</span><br><span class="line">            imin = min(nums[i], nums[i]*imin);</span><br><span class="line">            imax = max(nums[i], nums[i]*imax);</span><br><span class="line">            res = max(imax, res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProduct</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// store the result that is the max we have found so far</span></span><br><span class="line">        <span class="keyword">int</span> r = nums[<span class="number">0</span>], n = nums.size();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// imax/imin stores the max/min product of</span></span><br><span class="line">        <span class="comment">// subarray that ends with the current number A[i]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, imax = r, imin = r; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="comment">// multiplied by a negative makes big number smaller, small number bigger</span></span><br><span class="line">            <span class="comment">// so we redefine the extremums by swapping them</span></span><br><span class="line">            <span class="keyword">if</span> (nums[i] &lt; <span class="number">0</span>)</span><br><span class="line">                swap(imax, imin);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// max/min product for the current number is either the current number itself</span></span><br><span class="line">            <span class="comment">// or the max/min by the previous number times the current one</span></span><br><span class="line">            imax = max(nums[i], imax * nums[i]);</span><br><span class="line">            imin = min(nums[i], imin * nums[i]);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// the newly computed max value is a candidate for our global result</span></span><br><span class="line">            r = max(r, imax);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/4417/possibly-simplest-solution-with-o-n-time-complexity" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4417/possibly-simplest-solution-with-o-n-time-complexity</a></p>
+<p>Possibly simplest solution with O(n) time complexity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int maxProduct(int A[], int n) &#123;</span><br><span class="line">    // store the result that is the max we have found so far</span><br><span class="line">    int r = A[0];</span><br><span class="line"></span><br><span class="line">    // imax/imin stores the max/min product of</span><br><span class="line">    // subarray that ends with the current number A[i]</span><br><span class="line">    for (int i = 1, imax = r, imin = r; i &lt; n; i++) &#123;</span><br><span class="line">        // multiplied by a negative makes big number smaller, small number bigger</span><br><span class="line">        // so we redefine the extremums by swapping them</span><br><span class="line">        if (A[i] &lt; 0)</span><br><span class="line">            swap(imax, imin);</span><br><span class="line"></span><br><span class="line">        // max/min product for the current number is either the current number itself</span><br><span class="line">        // or the max/min by the previous number times the current one</span><br><span class="line">        imax = max(A[i], imax * A[i]);</span><br><span class="line">        imin = min(A[i], imin * A[i]);</span><br><span class="line"></span><br><span class="line">        // the newly computed max value is a candidate for our global result</span><br><span class="line">        r = max(r, imax);</span><br><span class="line">    &#125;</span><br><span class="line">    return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProduct(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int imax=nums[0], imin=nums[0];</span><br><span class="line">        int res=nums[0];</span><br><span class="line">        int tmax, tmin;</span><br><span class="line">        for(int i=1; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            tmax = max(imax*nums[i], max(imin*nums[i], nums[i]));</span><br><span class="line">            tmin = min(imax*nums[i], min(imin*nums[i], nums[i]));</span><br><span class="line">            res = max(tmax, res);</span><br><span class="line">            imax = tmax;</span><br><span class="line">            imin = tmin;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/22001/in-python-can-it-be-more-concise" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22001/in-python-can-it-be-more-concise</a></p>
+<p>In Python, can it be more concise?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def maxProduct(nums):</span><br><span class="line">    maximum=big=small=nums[0]</span><br><span class="line">    for n in nums[1:]:</span><br><span class="line">        big, small=max(n, n*big, n*small), min(n, n*big, n*small)</span><br><span class="line">        maximum=max(maximum, big)</span><br><span class="line">    return maximum</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3607/sharing-my-solution-o-1-space-o-n-running-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3607/sharing-my-solution-o-1-space-o-n-running-time</a></p>
+<p>Sharing my solution: O(1) space, O(n) running time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int maxProduct(int[] A) &#123;</span><br><span class="line">    if (A.length == 0) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int maxherepre = A[0];</span><br><span class="line">    int minherepre = A[0];</span><br><span class="line">    int maxsofar = A[0];</span><br><span class="line">    int maxhere, minhere;</span><br><span class="line">    </span><br><span class="line">    for (int i = 1; i &lt; A.length; i++) &#123;</span><br><span class="line">        maxhere = Math.max(Math.max(maxherepre * A[i], minherepre * A[i]), A[i]);</span><br><span class="line">        minhere = Math.min(Math.min(maxherepre * A[i], minherepre * A[i]), A[i]);</span><br><span class="line">        maxsofar = Math.max(maxhere, maxsofar);</span><br><span class="line">        maxherepre = maxhere;</span><br><span class="line">        minherepre = minhere;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxsofar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>There’s no need to use O(n) space, as all that you need is a minhere and maxhere. (local max and local min), then you can get maxsofar (which is global max) from them.</p>
+<p>There’s a chapter in Programming Pearls 2 that discussed the MaxSubArray problem, the idea is similar.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5161/simple-java-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5161/simple-java-code</a></p>
+<p>Simple Java code</p>
+<p>Loop through the array, each time remember the max and min value for the previous product, the most important thing is to update the max and min value: we have to compare among max <em> A[i], min </em> A[i] as well as A[i], since this is product, a negative * negative could be positive.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProduct(int[] A) &#123;</span><br><span class="line">        if (A == null || A.length == 0) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int max = A[0], min = A[0], result = A[0];</span><br><span class="line">        for (int i = 1; i &lt; A.length; i++) &#123;</span><br><span class="line">            int temp = max;</span><br><span class="line">            max = Math.max(Math.max(max * A[i], min * A[i]), A[i]);</span><br><span class="line">            min = Math.min(Math.min(temp * A[i], min * A[i]), A[i]);</span><br><span class="line">            if (max &gt; result) &#123;</span><br><span class="line">                result = max;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3581/share-my-dp-code-that-got-ac" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3581/share-my-dp-code-that-got-ac</a></p>
+<p>Share my DP code that got AC</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">  public int maxProduct(int[] A) &#123;</span><br><span class="line">    if (A == null || A.length == 0) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int[] f = new int[A.length];</span><br><span class="line">    int[] g = new int[A.length];</span><br><span class="line">    f[0] = A[0];</span><br><span class="line">    g[0] = A[0];</span><br><span class="line">    int res = A[0];</span><br><span class="line">    for (int i = 1; i &lt; A.length; i++) &#123;</span><br><span class="line">        f[i] = Math.max(Math.max(f[i - 1] * A[i], g[i - 1] * A[i]), A[i]);</span><br><span class="line">        g[i] = Math.min(Math.min(f[i - 1] * A[i], g[i - 1] * A[i]), A[i]);</span><br><span class="line">        res = Math.max(res, f[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>f[i] means maximum product that can be achieved ending with i</p>
+<p>g[i] means minimum product that can be achieved ending with i</p>
+
       
     </div>
     
@@ -491,6 +556,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +651,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +760,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
