@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,two pointers," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/merge-sorted-array/ Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size th">
+<meta name="keywords" content="leetcode,array,two pointers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="088. Merge Sorted Array">
 <meta property="og:url" content="http://yucc.me/p/505da9dc/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/merge-sorted-array/ Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.192Z">
+<meta property="og:updated_time" content="2018-05-22T05:01:15.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="088. Merge Sorted Array">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/merge-sorted-array/ Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array. Note: You may assume that nums1 has enough space (size th">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T13:01:15+08:00">
+                2018-05-22 13:01
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  909
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,60 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">https://leetcode.com/problems/merge-sorted-array/</a></p>
+<p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.</p>
+<p>Note:</p>
+<p>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>常规解法，双指针分别指向尾部，从后向前，依次进行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(int A[], int m, int B[], int n) &#123;</span><br><span class="line">        int i=m-1;</span><br><span class="line">		int j=n-1;</span><br><span class="line">		int k = m+n-1;</span><br><span class="line">		while(i &gt;=0 &amp;&amp; j&gt;=0)</span><br><span class="line">		&#123;</span><br><span class="line">			if(A[i] &gt; B[j])</span><br><span class="line">				A[k--] = A[i--];</span><br><span class="line">			else</span><br><span class="line">				A[k--] = B[j--];</span><br><span class="line">		&#125;</span><br><span class="line">		while(j&gt;=0)</span><br><span class="line">			A[k--] = B[j--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>类似于1，但是要思考清楚其中的逻辑。</p>
+<p>j&gt;=0是必要条件，j &lt; 0就不进行循环了</p>
+<p>对于i&gt;=0，并且nums1大的选择它，否则nums2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">        int i = m - 1, j = n - 1, tar = m + n - 1;</span><br><span class="line">        while (j &gt;= 0) &#123;</span><br><span class="line">            nums1[tar--] = i &gt;= 0 &amp;&amp; nums1[i] &gt; nums2[j] ? nums1[i--] : nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/2461/this-is-my-ac-code-may-help-you" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2461/this-is-my-ac-code-may-help-you</a></p>
+<p>This is my AC code, may help you</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(int A[], int m, int B[], int n) &#123;</span><br><span class="line">        int i=m-1;</span><br><span class="line">		int j=n-1;</span><br><span class="line">		int k = m+n-1;</span><br><span class="line">		while(i &gt;=0 &amp;&amp; j&gt;=0)</span><br><span class="line">		&#123;</span><br><span class="line">			if(A[i] &gt; B[j])</span><br><span class="line">				A[k--] = A[i--];</span><br><span class="line">			else</span><br><span class="line">				A[k--] = B[j--];</span><br><span class="line">		&#125;</span><br><span class="line">		while(j&gt;=0)</span><br><span class="line">			A[k--] = B[j--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16946/4ms-c-solution-with-single-loop" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16946/4ms-c-solution-with-single-loop</a></p>
+<p>4ms C++ solution with single loop</p>
+<p>This code relies on the simple observation that once all of the numbers from nums2 have been merged into nums1, the rest of the numbers in nums1 that were not moved are already in the correct place.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">        int i = m - 1, j = n - 1, tar = m + n - 1;</span><br><span class="line">        while (j &gt;= 0) &#123;</span><br><span class="line">            nums1[tar--] = i &gt;= 0 &amp;&amp; nums1[i] &gt; nums2[j] ? nums1[i--] : nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>4ms, 10.91%, April.23rd, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">        int ia = m - 1, ib = n - 1, ic = m + n - 1;</span><br><span class="line">        while(ia &gt;= 0 &amp;&amp; ib &gt;= 0)&#123;</span><br><span class="line">            nums1[ic--] = nums1[ia] &gt; nums2[ib] ? nums1[ia--] : nums2[ib--];</span><br><span class="line">        &#125;</span><br><span class="line">        while(ib &gt;= 0) nums1[ic--] = nums2[ib--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>4ms, 10.91%, April.23rd, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">     for(int i=m-1, j=n-1, k=m+n-1; j&gt;=0; )</span><br><span class="line">           nums1[k--] = i&gt;=0 &amp;&amp; nums1[i]&gt;nums2[j]? nums1[i--]: nums2[j--];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11508/1-line-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11508/1-line-solution</a></p>
+<p>1 Line Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while(n&gt;0) A[m+n-1] = (m==0||B[n-1] &gt; A[m-1]) ? B[--n] : A[--m];</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/35761/2-lines-very-simple-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/35761/2-lines-very-simple-c-solution</a></p>
+<p>2 lines very simple C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void merge(vector&lt;int&gt;&amp; nums1, int m, vector&lt;int&gt;&amp; nums2, int n) &#123;</span><br><span class="line">   for(int i=m-1, j=n-1, k=m+n-1; j&gt;=0; )</span><br><span class="line">       nums1[k--] = i&gt;=0 &amp;&amp; nums1[i]&gt;nums2[j]? nums1[i--]: nums2[j--];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>52ms, 33.16%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/47608/beautiful-python-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/47608/beautiful-python-solution</a></p>
+<p>Beautiful Python Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def merge(self, nums1, m, nums2, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums1: List[int]</span><br><span class="line">        :type m: int</span><br><span class="line">        :type nums2: List[int]</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: void Do not return anything, modify nums1 in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        while m &gt; 0 and n &gt; 0:</span><br><span class="line">            if nums1[m-1] &gt;= nums2[n-1]:</span><br><span class="line">                nums1[m+n-1] = nums1[m-1]</span><br><span class="line">                m -= 1</span><br><span class="line">            else:</span><br><span class="line">                nums1[m+n-1] = nums2[n-1]</span><br><span class="line">                n -= 1</span><br><span class="line">        if n &gt; 0:</span><br><span class="line">            nums1[:n] = nums2[:n]</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/10257/3-line-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10257/3-line-java-solution</a></p>
+<p>3 line Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void merge(int A[], int m, int B[], int n) &#123;</span><br><span class="line">    int i=m-1, j=n-1, k=m+n-1;</span><br><span class="line">    while (i&gt;-1 &amp;&amp; j&gt;-1) A[k--]= (A[i]&gt;B[j]) ? A[i--] : B[j--];</span><br><span class="line">    while (j&gt;-1)         A[k--]=B[j--];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11919/share-my-accepted-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11919/share-my-accepted-java-solution</a></p>
+<p>Share my accepted Java solution!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void merge(int A[], int m, int B[], int n) &#123;</span><br><span class="line">        int i = m - 1, j = n - 1, k = m + n - 1;</span><br><span class="line">        while(i &gt;= 0 &amp;&amp; j &gt;= 0) &#123;</span><br><span class="line">            A[k--] = A[i] &gt; B[j] ? A[i--] : B[j--];</span><br><span class="line">        &#125;</span><br><span class="line">        while(j &gt;= 0) &#123;</span><br><span class="line">            A[k--] = B[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +566,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+        </div>
       
 
       
@@ -574,8 +659,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +768,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

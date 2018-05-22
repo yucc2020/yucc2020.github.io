@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,hard,stack," />
 
 
 
@@ -85,18 +85,21 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="26.6%  https://leetcode.com/problems/largest-rectangle-in-histogram/ Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest r">
+<meta name="keywords" content="leetcode,array,hard,stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="084. Largest Rectangle in Histogram">
 <meta property="og:url" content="http://yucc.me/p/4e21238e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="26.6%  https://leetcode.com/problems/largest-rectangle-in-histogram/ Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.185Z">
+<meta property="og:image" content="http://www.leetcode.com/wp-content/uploads/2012/04/histogram.png">
+<meta property="og:image" content="http://www.leetcode.com/wp-content/uploads/2012/04/histogram_area.png">
+<meta property="og:updated_time" content="2018-05-22T04:57:38.482Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="084. Largest Rectangle in Histogram">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="26.6%  https://leetcode.com/problems/largest-rectangle-in-histogram/ Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest r">
+<meta name="twitter:image" content="http://www.leetcode.com/wp-content/uploads/2012/04/histogram.png">
 
 
 
@@ -358,12 +361,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:57:38+08:00">
+                2018-05-22 12:57
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,304
                 </span>
               
 
@@ -409,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -430,7 +455,74 @@
       
 
       
-        
+        <ul>
+<li>26.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">https://leetcode.com/problems/largest-rectangle-in-histogram/</a></p>
+<p>Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.</p>
+<p><img src="http://www.leetcode.com/wp-content/uploads/2012/04/histogram.png" alt="image"></p>
+<p>Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].</p>
+<p><img src="http://www.leetcode.com/wp-content/uploads/2012/04/histogram_area.png" alt="image"></p>
+<p>The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given heights = [2,1,5,6,2,3],</span><br><span class="line">return 10.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>效率o(nlogn)</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestRectangleArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; heights)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = heights.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> largestArea(heights, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; heights, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == end)</span><br><span class="line">            <span class="keyword">return</span> heights[start];</span><br><span class="line">        <span class="keyword">int</span> mid = start + (end-start)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> leftArea = largestArea(heights, start, mid);</span><br><span class="line">        <span class="comment">//这里必须是mid+1 不能是mid，否则不能ac</span></span><br><span class="line">        <span class="comment">// 想一想 end = left + 1, 左边是(left, left)， 右边是(left, left+1)</span></span><br><span class="line">        <span class="comment">// 右边永远无法结束 </span></span><br><span class="line">        <span class="comment">// 这个分治法的逻辑在于氛围两部分，左部分，右部分，穿越中间的部分</span></span><br><span class="line">        <span class="keyword">int</span> rightArea = largestArea(heights, mid+<span class="number">1</span>, end);</span><br><span class="line">        <span class="keyword">int</span> midArea = helper(heights, start, mid, end);</span><br><span class="line">        <span class="keyword">return</span> max(midArea, max(leftArea, rightArea));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; heights, <span class="keyword">int</span> start, <span class="keyword">int</span> mid, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = mid, r = mid+<span class="number">1</span>, height = min(heights[l], heights[r]);</span><br><span class="line">        <span class="keyword">while</span>(l&gt;=start &amp;&amp; r&lt;=end)&#123;</span><br><span class="line">            height = min(height, min(heights[l], heights[r]));</span><br><span class="line">            res = max(res, height*(r-l+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span>(l==start)</span><br><span class="line">                r++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(r==end)</span><br><span class="line">                l--;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(heights[l<span class="number">-1</span>]&gt;heights[r+<span class="number">1</span>])&#123;</span><br><span class="line">                    l--;     </span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    r++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/7491/simple-divide-and-conquer-ac-solution-without-segment-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7491/simple-divide-and-conquer-ac-solution-without-segment-tree</a></p>
+<p>Simple Divide and Conquer AC solution without Segment Tree</p>
+<p>The idea is simple: for a given range of bars, the maximum area can either from left or right half of the bars, or from the area containing the middle two bars. For the last condition, expanding from the middle two bars to find a maximum area is O(n), which makes a typical Divide and Conquer solution with T(n) = 2T(n/2) + O(n). Thus the overall complexity is O(nlgn) for time and O(1) for space (or O(lgn) considering stack usage).</p>
+<p>Following is the code accepted with 44ms. I posted this because I didn’t find a similar solution, but only the RMQ idea which seemed less straightforward to me.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int maxCombineArea(const vector&lt;int&gt; &amp;height, int s, int m, int e) &#123;</span><br><span class="line">        // Expand from the middle to find the max area containing height[m] and height[m+1]</span><br><span class="line">        int i = m, j = m+1;</span><br><span class="line">        int area = 0, h = min(height[i], height[j]);</span><br><span class="line">        while(i &gt;= s &amp;&amp; j &lt;= e) &#123;</span><br><span class="line">            h = min(h, min(height[i], height[j]));</span><br><span class="line">            area = max(area, (j-i+1) * h);</span><br><span class="line">            if (i == s) &#123;</span><br><span class="line">                ++j;</span><br><span class="line">            &#125;</span><br><span class="line">            else if (j == e) &#123;</span><br><span class="line">                --i;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                // if both sides have not reached the boundary,</span><br><span class="line">                // compare the outer bars and expand towards the bigger side</span><br><span class="line">                if (height[i-1] &gt; height[j+1]) &#123;</span><br><span class="line">                    --i;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    ++j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return area;</span><br><span class="line">    &#125;</span><br><span class="line">    int maxArea(const vector&lt;int&gt; &amp;height, int s, int e) &#123;</span><br><span class="line">        // if the range only contains one bar, return its height as area</span><br><span class="line">        if (s == e) &#123;</span><br><span class="line">            return height[s];</span><br><span class="line">        &#125;</span><br><span class="line">        // otherwise, divide &amp; conquer, the max area must be among the following 3 values</span><br><span class="line">        int m = s + (e-s)/2;</span><br><span class="line">        // 1 - max area from left half</span><br><span class="line">        int area = maxArea(height, s, m);</span><br><span class="line">        // 2 - max area from right half</span><br><span class="line">        area = max(area, maxArea(height, m+1, e));</span><br><span class="line">        // 3 - max area across the middle</span><br><span class="line">        area = max(area, maxCombineArea(height, s, m, e));</span><br><span class="line">        return area;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    int largestRectangleArea(vector&lt;int&gt; &amp;height) &#123;</span><br><span class="line">        if (height.empty()) &#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxArea(height, 0, height.size()-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>效率o（n）</p>
+<p>使用栈保存index，保存比i小，但高度比ID</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestRectangleArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; heights)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 学习针对某些原始输入进行一定的更改，比如后面加入0</span></span><br><span class="line">        heights.push_back(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> height = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">stack</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;heights.size(); i++)&#123;</span><br><span class="line">            <span class="comment">// stack的top函数, 还有vector的back函数</span></span><br><span class="line">            <span class="comment">// stack有top函数，没有back函数</span></span><br><span class="line">            <span class="keyword">while</span>(<span class="built_in">stack</span>.size() &amp;&amp; heights[<span class="built_in">stack</span>.top()] &gt; heights[i])&#123;</span><br><span class="line">                height = heights[<span class="built_in">stack</span>.top()];</span><br><span class="line">                <span class="built_in">stack</span>.pop();</span><br><span class="line">                <span class="keyword">int</span> idx = <span class="built_in">stack</span>.size() ? <span class="built_in">stack</span>.top() : <span class="number">-1</span>;</span><br><span class="line">                res = max(res, (i-idx<span class="number">-1</span>)*height);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">stack</span>.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/3913/my-concise-c-solution-ac-90-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3913/my-concise-c-solution-ac-90-ms</a></p>
+<p>My concise C++ solution, AC 90 ms</p>
+<p>I push a sentinel node back into the end of height to make the code logic more concise.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        int largestRectangleArea(vector&lt;int&gt; &amp;height) &#123;</span><br><span class="line">            </span><br><span class="line">            int ret = 0;</span><br><span class="line">            height.push_back(0);</span><br><span class="line">            vector&lt;int&gt; index;</span><br><span class="line">            </span><br><span class="line">            for(int i = 0; i &lt; height.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                while(index.size() &gt; 0 &amp;&amp; height[index.back()] &gt;= height[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    int h = height[index.back()];</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                    </span><br><span class="line">                    int sidx = index.size() &gt; 0 ? index.back() : -1;</span><br><span class="line">                    if(h * (i-sidx-1) &gt; ret)</span><br><span class="line">                        ret = h * (i-sidx-1);</span><br><span class="line">                &#125;</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14406/my-concise-code-20ms-stack-based-o-n-one-trick-used" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14406/my-concise-code-20ms-stack-based-o-n-one-trick-used</a></p>
+<p>My concise code (20ms, stack based, O(n)), one trick used</p>
+<p>The idea is simple, use a stack to save the index of each vector entry in a ascending order; once the current entry is smaller than the one with the index s.top(), then that means the rectangle with the height height[s.top()] ends at the current position, so calculate its area and update the maximum.<br>The only trick I use to avoid checking whether the stack is empty (due to pop) and also avoiding emptying the stack at the end (i.e. after going through the vector, s is not empty and we have to consider those in the stack) is to put a dummy “0” at the beginning of vector “height” and the end of “height”: the first one makes sure the stack will never be empty (since all the height entries are &gt;=0) and the last one will flush all the remaining non-zero entries of the stack at the end of “for” iteration. This trick helps us keep the code concise.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int largestRectangleArea(vector&lt;int&gt;&amp; height) &#123;</span><br><span class="line">        height.insert(height.begin(),0); // dummy &quot;0&quot; added to make sure stack s will never be empty</span><br><span class="line">        height.push_back(0); // dummy &quot;0&quot; added to clear the stack at the end</span><br><span class="line">        int len = height.size();</span><br><span class="line">        int i, res = 0, idx;</span><br><span class="line">        stack&lt;int&gt; s; // stack to save &quot;height&quot; index</span><br><span class="line">        s.push(0); // index to the first dummy &quot;0&quot;</span><br><span class="line">        for(i=1;i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            while(height[i]&lt;height[idx = s.top()]) // if the current entry is out of order</span><br><span class="line">            &#123;</span><br><span class="line">                s.pop();</span><br><span class="line">                res = max(res, height[idx] * (i-s.top()-1) ); // note how the width is calculated, use the previous index entry</span><br><span class="line">            &#125;</span><br><span class="line">            s.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        height.erase(height.begin()); // remove two dummy &quot;0&quot;</span><br><span class="line">        height.pop_back();</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>92ms, 71.82%, June.24th, 2016</p>
+<p><a href="https://leetcode.com/discuss/65647/ac-python-clean-solution-using-stack-76ms" target="_blank" rel="noopener">https://leetcode.com/discuss/65647/ac-python-clean-solution-using-stack-76ms</a></p>
+<p>AC Python clean solution using stack 76ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def largestRectangleArea(self, height):</span><br><span class="line">    height.append(0)</span><br><span class="line">    stack = [-1]</span><br><span class="line">    ans = 0</span><br><span class="line">    for i in xrange(len(height)):</span><br><span class="line">        while height[i] &lt; height[stack[-1]]:</span><br><span class="line">            h = height[stack.pop()]</span><br><span class="line">            w = i - stack[-1] - 1</span><br><span class="line">            ans = max(ans, h * w)</span><br><span class="line">        stack.append(i)</span><br><span class="line">    height.pop()</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 94 / 94 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 76 ms</span><br><span class="line"># 97.34%</span><br></pre></td></tr></table></figure>
+<p>The stack maintain the indexes of buildings with ascending height. Before adding a new building pop the building who is taller than the new one. The building popped out represent the height of a rectangle with the new building as the right boundary and the current stack top as the left boundary. Calculate its area and update ans of maximum area. Boundary is handled using dummy buildings.</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/7599/o-n-stack-based-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7599/o-n-stack-based-java-solution</a></p>
+<p>O(n) stack based JAVA solution</p>
+<p>For explanation, please see <a href="http://www.geeksforgeeks.org/largest-rectangle-under-histogram/" target="_blank" rel="noopener">http://www.geeksforgeeks.org/largest-rectangle-under-histogram/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int largestRectangleArea(int[] height) &#123;</span><br><span class="line">        int len = height.length;</span><br><span class="line">        Stack&lt;Integer&gt; s = new Stack&lt;Integer&gt;();</span><br><span class="line">        int maxArea = 0;</span><br><span class="line">        for(int i = 0; i &lt;= len; i++)&#123;</span><br><span class="line">            int h = (i == len ? 0 : height[i]);</span><br><span class="line">            if(s.isEmpty() || h &gt;= height[s.peek()])&#123;</span><br><span class="line">                s.push(i);</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                int tp = s.pop();</span><br><span class="line">                maxArea = Math.max(maxArea, height[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));</span><br><span class="line">                i--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxArea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2424/my-modified-answer-from-geeksforgeeks-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2424/my-modified-answer-from-geeksforgeeks-in-java</a></p>
+<p>My modified answer from GeeksforGeeks, in JAVA</p>
+<p>I was stuck and took an eye on Geeks4Geeks. I got the idea and tried to figure it out by myself…<br>It takes me a lot of time to make it through….</p>
+<p>EDITED: Now it is pretty concise….</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public int largestRectangleArea(int[] height) &#123;</span><br><span class="line">    if (height==null) return 0;//Should throw exception</span><br><span class="line">    if (height.length==0) return 0;</span><br><span class="line">    </span><br><span class="line">    Stack&lt;Integer&gt; index= new Stack&lt;Integer&gt;();</span><br><span class="line">    index.push(-1);</span><br><span class="line">    int max=0;</span><br><span class="line">    </span><br><span class="line">    for  (int i=0;i&lt;height.length;i++)&#123;</span><br><span class="line">            //Start calculate the max value</span><br><span class="line">        while (index.peek()&gt;-1)</span><br><span class="line">            if (height[index.peek()]&gt;height[i])&#123;</span><br><span class="line">                int top=index.pop();                    </span><br><span class="line">                max=Math.max(max,height[top]*(i-1-index.peek()));  </span><br><span class="line">            &#125;else break;</span><br><span class="line">            </span><br><span class="line">        index.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    while(index.peek()!=-1)&#123;</span><br><span class="line">    	int top=index.pop();</span><br><span class="line">        max=Math.max(max,height[top]*(height.length-1-index.peek()));</span><br><span class="line">    &#125;        </span><br><span class="line">    return max;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/39151/5ms-o-n-java-solution-explained-beats-96" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/39151/5ms-o-n-java-solution-explained-beats-96</a></p>
+<p>5ms O(n) Java solution explained (beats 96%)</p>
+<p>For any bar i the maximum rectangle is of width r - l - 1 where r - is the last coordinate of the bar to the right with height h[r] &gt;= h[i] and l - is the last coordinate of the bar to the left which height h[l] &gt;= h[i]</p>
+<p>So if for any i coordinate we know his utmost higher (or of the same height) neighbors to the right and to the left, we can easily find the largest rectangle:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int maxArea = 0;</span><br><span class="line">for (int i = 0; i &lt; height.length; i++) &#123;</span><br><span class="line">    maxArea = Math.max(maxArea, height[i] * (lessFromRight[i] - lessFromLeft[i] - 1));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The main trick is how to effectively calculate lessFromRight and lessFromLeft arrays. The trivial solution is to use O(n^2) solution and for each i element first find his left/right heighbour in the second inner loop just iterating back or forward:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 1; i &lt; height.length; i++) &#123;</span><br><span class="line">          if (height[i] &gt; height[i - 1]) &#123;</span><br><span class="line">              lessFromLeft[i] = i - 1;</span><br><span class="line">          &#125;</span><br><span class="line">          else  &#123;</span><br><span class="line">              int p = i - 1;</span><br><span class="line">              while (p &gt;= 0 &amp;&amp; height[p] &gt;= height[i]) &#123;</span><br><span class="line">                  p--;</span><br><span class="line">              &#125;</span><br><span class="line">              lessFromLeft[i] = p;</span><br><span class="line">          &#125;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<p>The only line change shifts this algorithm from O(n^2) to O(n) complexity: we don’t need to rescan each item to the left - we can reuse results of previous calculations and “jump” through indices in quick manner:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while (p &gt;= 0 &amp;&amp; height[p] &gt;= height[i]) &#123;</span><br><span class="line">      p = lessFromLeft[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here is the whole solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public int largestRectangleArea(int[] height) &#123;</span><br><span class="line">    if (height == null || height.length == 0) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int[] lessFromLeft = new int[height.length]; // idx of the first bar the left that is lower than current</span><br><span class="line">    int[] lessFromRight = new int[height.length]; // idx of the first bar the right that is lower than current</span><br><span class="line">    lessFromRight[height.length - 1] = height.length;</span><br><span class="line">    lessFromLeft[0]  = -1;</span><br><span class="line"></span><br><span class="line">    for (int i = 1; i &lt; height.length; i++) &#123;</span><br><span class="line">        if (height[i] &gt; height[i - 1]) &#123;</span><br><span class="line">            lessFromLeft[i] = i - 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else  &#123;</span><br><span class="line">            int p = i - 1;</span><br><span class="line">            while (p &gt;= 0 &amp;&amp; height[p] &gt;= height[i]) p = lessFromLeft[p];                </span><br><span class="line">            lessFromLeft[i] = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (int i = height.length - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">        if (height[i] &gt; height[i + 1]) &#123;</span><br><span class="line">            lessFromRight[i] = i + 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else  &#123;</span><br><span class="line">            int p = i + 1;</span><br><span class="line">            while (p &lt; height.length &amp;&amp; height[p] &gt;= height[i]) p = lessFromRight[p];                </span><br><span class="line">            lessFromRight[i] = p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int maxArea = 0;</span><br><span class="line">    for (int i = 0; i &lt; height.length; i++) &#123;</span><br><span class="line">        maxArea = Math.max(maxArea, height[i] * (lessFromRight[i] - lessFromLeft[i] - 1));</span><br><span class="line">    &#125;</span><br><span class="line">    return maxArea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +583,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+        </div>
       
 
       
@@ -574,8 +678,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +725,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +787,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,string,dynamci programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="19.6%  https://leetcode.com/problems/decode-ways/ A message containing letters from A-Z is being encoded to numbers using the following mapping: 1234&amp;apos;A&amp;apos; -&amp;gt; 1&amp;apos;B&amp;apos; -&amp;gt; 2...&amp;apos">
+<meta name="keywords" content="leetcode,medium,string,dynamci programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="091. Decode Ways">
 <meta property="og:url" content="http://yucc.me/p/33438676/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="19.6%  https://leetcode.com/problems/decode-ways/ A message containing letters from A-Z is being encoded to numbers using the following mapping: 1234&amp;apos;A&amp;apos; -&amp;gt; 1&amp;apos;B&amp;apos; -&amp;gt; 2...&amp;apos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.198Z">
+<meta property="og:updated_time" content="2018-05-22T05:03:35.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="091. Decode Ways">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="19.6%  https://leetcode.com/problems/decode-ways/ A message containing letters from A-Z is being encoded to numbers using the following mapping: 1234&amp;apos;A&amp;apos; -&amp;gt; 1&amp;apos;B&amp;apos; -&amp;gt; 2...&amp;apos">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T13:03:35+08:00">
+                2018-05-22 13:03
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,200
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,56 @@
       
 
       
-        
+        <ul>
+<li>19.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/decode-ways/" target="_blank" rel="noopener">https://leetcode.com/problems/decode-ways/</a></p>
+<p>A message containing letters from A-Z is being encoded to numbers using the following mapping:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;A&apos; -&gt; 1</span><br><span class="line">&apos;B&apos; -&gt; 2</span><br><span class="line">...</span><br><span class="line">&apos;Z&apos; -&gt; 26</span><br></pre></td></tr></table></figure>
+<p>Given an encoded message containing digits, determine the total number of ways to decode it.</p>
+<p>For example,<br>Given encoded message “12”, it could be decoded as “AB” (1 2) or “L” (12).</p>
+<p>The number of ways decoding “12” is 2.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>两个两个的解决，一个一个的遍历，两个两个的验证，防止100这样的无法解析的。</p>
+<p>对于数字，有两种解码方式。</p>
+<p>一种是s[i-2] + ‘i-1, i’（i-1,i组合成一个字母），一种是s[i-1] + ‘i’ （i自己组合成一个方式）</p>
+<p>首先，如果s[i] == ‘0’这种情况下，s[i-1]解码失效，设定值为0</p>
+<p>然后’i-1,i’组合成一个字母的话， 就可以更新s[i]解码方式为s[i-1]和s[i-2]的和了</p>
+<p>如果组合不成字母，则s[i] = s[i-1]</p>
+<p>0ms, 73.36%, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/7025/a-concise-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7025/a-concise-dp-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numDecodings(string s) &#123;</span><br><span class="line">        if(!s.size() || s.front() == &apos;0&apos;) return 0;</span><br><span class="line">         // r2: decode ways of s[i-2] , r1: decode ways of s[i-1] </span><br><span class="line">        int r1 = 1, r2 = 1;</span><br><span class="line">        for(int i=1; i&lt;s.size(); i++)&#123;</span><br><span class="line">            // zero voids ways of the last because zero cannot be used separately</span><br><span class="line">            if(s[i] == &apos;0&apos;) r1 = 0;</span><br><span class="line">            // possible two-digit letter, so new r1 is sum of both while new r2 is the old r1</span><br><span class="line">            if(s[i-1] == &apos;1&apos; || s[i-1] == &apos;2&apos; &amp;&amp; s[i] &lt;= &apos;6&apos;)&#123;</span><br><span class="line">                r1 = r1 + r2;</span><br><span class="line">                r2 = r1 - r2;</span><br><span class="line">            &#125;</span><br><span class="line">            // one-digit letter, no new way added</span><br><span class="line">            else</span><br><span class="line">                r2 = r1;</span><br><span class="line">        &#125;</span><br><span class="line">        return r1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>两个变量，r1， r2，一个是遍历到i时，r1表示，从开始至i-2位时的decode ways</p>
+<p>r2表示开始至i-1的decode ways</p>
+<p>更新时，新的r1显然是等于r2。 新的r2，要从r1和r2及他们后面一两位的情况，是否合法去判断。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numDecodings</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// string的函数front()</span></span><br><span class="line">        <span class="keyword">if</span>(s.empty() || s.front()==<span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r1=<span class="number">1</span>, r2=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;s.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> nr2 = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(s[i]!=<span class="string">'0'</span>)</span><br><span class="line">                nr2 += r2;</span><br><span class="line">            <span class="keyword">if</span>(s[i<span class="number">-1</span>]==<span class="string">'1'</span> || s[i<span class="number">-1</span>]==<span class="string">'2'</span>&amp;&amp;s[i]&lt;=<span class="string">'6'</span>)</span><br><span class="line">                nr2 += r1;</span><br><span class="line">            r1 = r2;</span><br><span class="line">            r2 = nr2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现二:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numDecodings</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// r1 i-2, r2 i-1</span></span><br><span class="line">        <span class="keyword">int</span> r1 = <span class="number">1</span>, r2 = s[<span class="number">0</span>]&gt;=<span class="string">'1'</span> &amp;&amp; s[<span class="number">1</span>]&lt;=<span class="string">'9'</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> nr1 = r2;</span><br><span class="line">            <span class="keyword">int</span> nr2 = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(s[i]&gt;=<span class="string">'1'</span> &amp;&amp; s[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">                nr2 += r2;</span><br><span class="line">            <span class="keyword">if</span>(s[i<span class="number">-1</span>]==<span class="string">'1'</span> || s[i<span class="number">-1</span>]==<span class="string">'2'</span> &amp;&amp; s[i]&lt;=<span class="string">'6'</span>)</span><br><span class="line">                nr2 += r1;</span><br><span class="line">            r1 = nr1;</span><br><span class="line">            r2 = nr2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p><a href="https://discuss.leetcode.com/topic/15440/my-c-0ms-dp-solution-o-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15440/my-c-0ms-dp-solution-o-n</a></p>
+<p>My c++ 0ms DP solution O(n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">int n = s.size();</span><br><span class="line">    if(n == 0 || s[0] == &apos;0&apos;) return 0;</span><br><span class="line">    if(n == 1) return 1;</span><br><span class="line">    int res = 0,fn_1 = 1,fn_2 = 1;</span><br><span class="line">    for(int i = 1;i &lt; n;i++)&#123;</span><br><span class="line">        int temp = fn_1;</span><br><span class="line">        if(isValid(s[i])&amp;&amp;isValid(s[i-1],s[i]))  res+=fn_1+fn_2;</span><br><span class="line">        if(!isValid(s[i])&amp;&amp;isValid(s[i-1],s[i])) res+=fn_2;</span><br><span class="line">        if(isValid(s[i])&amp;&amp;!isValid(s[i-1],s[i])) res+=fn_1;</span><br><span class="line">        if(!isValid(s[i])&amp;&amp;!isValid(s[i-1],s[i]))  return 0;</span><br><span class="line">        fn_1 = res;</span><br><span class="line">        fn_2 = temp;</span><br><span class="line">        res = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return fn_1;</span><br><span class="line">&#125;</span><br><span class="line">bool isValid(char a,char b)&#123;</span><br><span class="line">    return a == &apos;1&apos;||(a == &apos;2&apos; &amp;&amp; b &lt;=&apos;6&apos;);</span><br><span class="line">&#125;</span><br><span class="line">bool isValid(char a)&#123;</span><br><span class="line">    return a != &apos;0&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><p>62ms, 23.31%, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/19042/1-liner-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19042/1-liner-o-1-space</a></p>
+<p>w tells the number of ways</p>
+<p>v tells the previous number of ways</p>
+<p>d is the current digit</p>
+<p>p is the previous digit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def numDecodings(self, s):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        v, w, p = 0, int(s&gt;&apos;&apos;), &apos;&apos;</span><br><span class="line">        for d in s:</span><br><span class="line">            v, w, p = w, (d&gt;&apos;0&apos;)*w + (9&lt;int(p+d)&lt;27)*v, d</span><br><span class="line">        return w</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def numDecodings(self, s):</span><br><span class="line">    return reduce(lambda(v,w,p),d:(w,(d&gt;&apos;0&apos;)*w+(9&lt;int(p+d)&lt;27)*v,d),s,(0,s&gt;&apos;&apos;,&apos;&apos;))[1]*1</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p>5ms, 27.87%, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/35840/java-clean-dp-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/35840/java-clean-dp-solution-with-explanation</a></p>
+<p>I used a dp array of size n + 1 to save subproblem solutions. dp[0] means an empty string will have one way to decode, dp[1] means the way to decode a string of size 1. I then check one digit and two digit combination and save the results along the way. In the end, dp[n] will be the end result.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int numDecodings(String s) &#123;</span><br><span class="line">        if(s == null || s.length() == 0) return 0;</span><br><span class="line">        int n = s.length();</span><br><span class="line">        int[] dp = new int[n+1];</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        dp[1] = s.charAt(0) != &apos;0&apos; ? 1: 0;</span><br><span class="line">        for(int i = 2; i&lt;=n; i++)&#123;</span><br><span class="line">            int first = Integer.valueOf(s.substring(i-1, i));</span><br><span class="line">            int second = Integer.valueOf(s.substring(i-2, i));</span><br><span class="line">            if(first &gt;= 1 &amp;&amp; first &lt;= 9)</span><br><span class="line">                dp[i] += dp[i-1];</span><br><span class="line">            if(second &gt;= 10 &amp;&amp; second &lt;= 26)</span><br><span class="line">                dp[i] += dp[i-2];</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/2562/dp-solution-java-for-reference" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2562/dp-solution-java-for-reference</a></p>
+<p>DP Solution (Java) for reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int numDecodings(String s) &#123;</span><br><span class="line">        int n = s.length();</span><br><span class="line">        if (n == 0) return 0;</span><br><span class="line">        </span><br><span class="line">        int[] memo = new int[n+1];</span><br><span class="line">        memo[n]  = 1;</span><br><span class="line">        memo[n-1] = s.charAt(n-1) != &apos;0&apos; ? 1 : 0;</span><br><span class="line">        </span><br><span class="line">        for (int i = n - 2; i &gt;= 0; i--)</span><br><span class="line">            if (s.charAt(i) == &apos;0&apos;) continue;</span><br><span class="line">            else memo[i] = (Integer.parseInt(s.substring(i,i+2))&lt;=26) ? memo[i+1]+memo[i+2] : memo[i+1];</span><br><span class="line">        </span><br><span class="line">        return memo[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +562,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/dynamci-programming/" rel="tag"># dynamci programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +657,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +766,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

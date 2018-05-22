@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,hash table,dynamic programming,hard,stack," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="26.6%  https://leetcode.com/problems/maximal-rectangle/ Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area. 1234567For example, given">
+<meta name="keywords" content="leetcode,array,hash table,dynamic programming,hard,stack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="085. Maximal Rectangle">
 <meta property="og:url" content="http://yucc.me/p/ba45e9ed/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="26.6%  https://leetcode.com/problems/maximal-rectangle/ Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area. 1234567For example, given">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.195Z">
+<meta property="og:updated_time" content="2018-05-22T04:58:22.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="085. Maximal Rectangle">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="26.6%  https://leetcode.com/problems/maximal-rectangle/ Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area. 1234567For example, given">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:58:22+08:00">
+                2018-05-22 12:58
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,023
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  13
                 </span>
               
             </div>
@@ -430,7 +452,89 @@
       
 
       
-        
+        <ul>
+<li>26.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/maximal-rectangle/" target="_blank" rel="noopener">https://leetcode.com/problems/maximal-rectangle/</a></p>
+<p>Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For example, given the following matrix:</span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line">1 0 1 1 1</span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 0 0 1 0</span><br><span class="line">Return 6.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>9ms, 93.96%, September 23, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6650/share-my-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6650/share-my-dp-solution</a></p>
+<p>Share my DP solution</p>
+<p>The DP solution proceeds row by row, starting from the first row. Let the maximal rectangle area at row i and column j be computed by [right(i,j) - left(i,j)]*height(i,j).</p>
+<p>All the 3 variables left, right, and height can be determined by the information from previous row, and also information from the current row. So it can be regarded as a DP solution. The transition equations are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">left(i,j) = max(left(i-1,j), cur_left), cur_left can be determined from the current row</span><br><span class="line">right(i,j) = min(right(i-1,j), cur_right), cur_right can be determined from the current row</span><br><span class="line">height(i,j) = height(i-1,j) + 1, if matrix[i][j]==&apos;1&apos;;</span><br><span class="line">height(i,j) = 0, if matrix[i][j]==&apos;0&apos;</span><br></pre></td></tr></table></figure>
+<p>The code is as below. The loops can be combined for speed but I separate them for more clarity of the algorithm.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;public:</span><br><span class="line">int maximalRectangle(vector&lt;vector&lt;char&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    if(matrix.empty()) return 0;</span><br><span class="line">    const int m = matrix.size();</span><br><span class="line">    const int n = matrix[0].size();</span><br><span class="line">    int left[n], right[n], height[n];</span><br><span class="line">    fill_n(left,n,0); fill_n(right,n,n); fill_n(height,n,0);</span><br><span class="line">    int maxA = 0;</span><br><span class="line">    for(int i=0; i&lt;m; i++) &#123;</span><br><span class="line">        int cur_left=0, cur_right=n; </span><br><span class="line">        for(int j=0; j&lt;n; j++) &#123; // compute height (can do this from either side)</span><br><span class="line">            if(matrix[i][j]==&apos;1&apos;) height[j]++; </span><br><span class="line">            else height[j]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int j=0; j&lt;n; j++) &#123; // compute left (from left to right)</span><br><span class="line">            if(matrix[i][j]==&apos;1&apos;) left[j]=max(left[j],cur_left);</span><br><span class="line">            else &#123;left[j]=0; cur_left=j+1;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // compute right (from right to left)</span><br><span class="line">        for(int j=n-1; j&gt;=0; j--) &#123;</span><br><span class="line">            if(matrix[i][j]==&apos;1&apos;) right[j]=min(right[j],cur_right);</span><br><span class="line">            else &#123;right[j]=n; cur_right=j;&#125;    </span><br><span class="line">        &#125;</span><br><span class="line">        // compute the area of rectangle (can do this from either side)</span><br><span class="line">        for(int j=0; j&lt;n; j++)</span><br><span class="line">            maxA = max(maxA,(right[j]-left[j])*height[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    return maxA;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>If you think this algorithm is not easy to understand, you can try this example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 1 0 0 0 </span><br><span class="line">0 0 1 1 1 0 0 </span><br><span class="line">0 1 1 1 1 1 0</span><br></pre></td></tr></table></figure>
+<p>The vector “left” and “right” from row 0 to row 2 are as follows</p>
+<p>row 0:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l: 0 0 0 3 0 0 0</span><br><span class="line">r: 7 7 7 4 7 7 7</span><br></pre></td></tr></table></figure>
+<p>row 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l: 0 0 2 3 2 0 0</span><br><span class="line">r: 7 7 5 4 5 7 7</span><br></pre></td></tr></table></figure>
+<p>row 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">l: 0 1 2 3 2 1 0</span><br><span class="line">r: 7 6 5 4 5 6 7</span><br></pre></td></tr></table></figure>
+<p>The vector “left” is computing the left boundary. Take (i,j)=(1,3) for example. On current row 1, the left boundary is at j=2. However, because matrix[1][3] is 1, you need to consider the left boundary on previous row as well, which is 3. So the real left boundary at (1,3) is 3.</p>
+<p>I hope this additional explanation makes things clearer.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5806/sharing-my-straightforward-c-solution-with-o-n-2-time-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5806/sharing-my-straightforward-c-solution-with-o-n-2-time-with-explanation</a></p>
+<p>Sharing my straightforward C++ solution with O(n^2) time with explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">int maximalRectangle(vector&lt;vector&lt;char&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    if(matrix.empty())&#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int maxRec = 0;</span><br><span class="line">    vector&lt;int&gt; height(matrix[0].size(), 0);</span><br><span class="line">    for(int i = 0; i &lt; matrix.size(); i++)&#123;</span><br><span class="line">        for(int j = 0; j &lt; matrix[0].size(); j++)&#123;</span><br><span class="line">            if(matrix[i][j] == &apos;0&apos;)&#123;</span><br><span class="line">                height[j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                height[j]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maxRec = max(maxRec, largestRectangleArea(height));</span><br><span class="line">    &#125;</span><br><span class="line">    return maxRec;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int largestRectangleArea(vector&lt;int&gt; &amp;height) &#123;</span><br><span class="line">    stack&lt;int&gt; s;</span><br><span class="line">    height.push_back(0);</span><br><span class="line">    int maxSize = 0;</span><br><span class="line">    for(int i = 0; i &lt; height.size(); i++)&#123;</span><br><span class="line">        if(s.empty() || height[i] &gt;= height[s.top()])&#123;</span><br><span class="line">            s.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            int temp = height[s.top()];</span><br><span class="line">            s.pop();</span><br><span class="line">            maxSize = max(maxSize, temp * (s.empty() ? i : i - 1 - s.top()));</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In order to solve this problem, I use the solution from “Largest Rectangle in Histogram”.</p>
+<p>Now I assume you already know how to solve “Largest Rectangle in Histogram”.</p>
+<p>We can regard a matrix as many histograms. For example, given a matrix below:</p>
+<p>1 0 1 0</p>
+<p>0 1 0 1</p>
+<p>0 1 1 0</p>
+<p>1 0 1 0</p>
+<p>1 0 1 1</p>
+<p>From top to bottom, we can find these histograms:</p>
+<p>Number 1: 1 0 1 0</p>
+<p>Number 2: 0 1 0 1</p>
+<p>Number 3: 0 2 1 0</p>
+<p>Number 4: 1 0 2 0</p>
+<p>Number 5: 2 0 3 1</p>
+<p>Pass all of these histograms to the function which can solve “Largest Rectangle in Histogram”. And then find the maximum one.</p>
+<p>Finally, we get the answer.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1122/my-o-n-3-solution-for-your-reference" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1122/my-o-n-3-solution-for-your-reference</a></p>
+<p>My O(n^3) solution for your reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maximalRectangle(vector&lt;vector&lt;char&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">        int num_i=matrix.size();</span><br><span class="line">        if (num_i==0) return 0;</span><br><span class="line">        int num_j=matrix[0].size();</span><br><span class="line">        if (num_j==0) return 0;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; max_x(num_i,vector&lt;int&gt;(num_j,0));  //number of consecutive 1s to the left of matrix[i][j], including itself</span><br><span class="line"></span><br><span class="line">        int area=0;</span><br><span class="line">        for (int i=0;i&lt;num_i;i++)&#123;</span><br><span class="line">            for (int j=0;j&lt;num_j;j++)&#123;</span><br><span class="line">                if (matrix[i][j]==&apos;1&apos;)&#123;</span><br><span class="line">                    if (j==0) max_x[i][j]=1;</span><br><span class="line">                    else max_x[i][j]=max_x[i][j-1]+1;</span><br><span class="line">                    int y=1;</span><br><span class="line">                    int x=num_j;</span><br><span class="line">                    while((i-y+1&gt;=0)&amp;&amp;(matrix[i-y+1][j]==&apos;1&apos;))&#123;</span><br><span class="line">                        x=min(x, max_x[i-y+1][j]);</span><br><span class="line">                        area=max(area,x*y);</span><br><span class="line">                        y++;</span><br><span class="line">                    &#125; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        return area;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/27844/ac-python-dp-solutioin-120ms-based-on-largest-rectangle-in-histogram" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27844/ac-python-dp-solutioin-120ms-based-on-largest-rectangle-in-histogram</a></p>
+<p>AC Python DP solutioin 120ms based on largest rectangle in histogram</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def maximalRectangle(self, matrix):</span><br><span class="line">    if not matrix or not matrix[0]:</span><br><span class="line">        return 0</span><br><span class="line">    n = len(matrix[0])</span><br><span class="line">    height = [0] * (n + 1)</span><br><span class="line">    ans = 0</span><br><span class="line">    for row in matrix:</span><br><span class="line">        for i in xrange(n):</span><br><span class="line">            height[i] = height[i] + 1 if row[i] == &apos;1&apos; else 0</span><br><span class="line">        stack = [-1]</span><br><span class="line">        for i in xrange(n + 1):</span><br><span class="line">            while height[i] &lt; height[stack[-1]]:</span><br><span class="line">                h = height[stack.pop()]</span><br><span class="line">                w = i - 1 - stack[-1]</span><br><span class="line">                ans = max(ans, h * w)</span><br><span class="line">            stack.append(i)</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 65 / 65 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 120 ms</span><br><span class="line"># 100%</span><br></pre></td></tr></table></figure>
+<p>The solution is based on <a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">largest rectangle in histogram solution</a>. Every row in the matrix is viewed as the ground with some buildings on it. The building height is the count of consecutive 1s from that row to above rows. The rest is then the same as <a href="https://leetcode.com/discuss/65647/ac-python-clean-solution-using-stack-76ms" target="_blank" rel="noopener">this solution for largest rectangle in histogram</a></p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/1634/a-o-n-2-solution-based-on-largest-rectangle-in-histogram" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1634/a-o-n-2-solution-based-on-largest-rectangle-in-histogram</a></p>
+<p>A O(n^2) solution based on Largest Rectangle in Histogram</p>
+<p>This question is similar as <a href="http://oj.leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">[Largest Rectangle in Histogram]</a>:</p>
+<p>You can maintain a row length of Integer array H recorded its height of ‘1’s, and scan and update row by row to find out the largest rectangle of each row.</p>
+<p>For each row, if matrix[row][i] == ‘1’. H[i] +=1, or reset the H[i] to zero.<br>and accroding the algorithm of [Largest Rectangle in Histogram], to update the maximum area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maximalRectangle(char[][] matrix) &#123;</span><br><span class="line">        if (matrix==null||matrix.length==0||matrix[0].length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        int cLen = matrix[0].length;    // column length</span><br><span class="line">        int rLen = matrix.length;       // row length</span><br><span class="line">        // height array </span><br><span class="line">        int[] h = new int[cLen+1];</span><br><span class="line">        h[cLen]=0;</span><br><span class="line">        int max = 0;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        for (int row=0;row&lt;rLen;row++) &#123;</span><br><span class="line">            Stack&lt;Integer&gt; s = new Stack&lt;Integer&gt;();</span><br><span class="line">            for (int i=0;i&lt;cLen+1;i++) &#123;</span><br><span class="line">                if (i&lt;cLen)</span><br><span class="line">                    if(matrix[row][i]==&apos;1&apos;)</span><br><span class="line">                        h[i]+=1;</span><br><span class="line">                    else h[i]=0;</span><br><span class="line">                </span><br><span class="line">                if (s.isEmpty()||h[s.peek()]&lt;=h[i])</span><br><span class="line">                    s.push(i);</span><br><span class="line">                else &#123;</span><br><span class="line">                    while(!s.isEmpty()&amp;&amp;h[i]&lt;h[s.peek()])&#123;</span><br><span class="line">                        int top = s.pop();</span><br><span class="line">                        int area = h[top]*(s.isEmpty()?i:(i-s.peek()-1));</span><br><span class="line">                        if (area&gt;max)</span><br><span class="line">                            max = area;</span><br><span class="line">                    &#125;</span><br><span class="line">                    s.push(i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21772/my-java-solution-based-on-maximum-rectangle-in-histogram-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21772/my-java-solution-based-on-maximum-rectangle-in-histogram-with-explanation</a></p>
+<p>My java solution based on Maximum Rectangle in Histogram with explanation</p>
+<p>We can apply the maximum in histogram in each row of the 2D matrix. What we need is to maintain an int array for each row, which represent for the height of the histogram.</p>
+<p>Please refer to <a href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">https://leetcode.com/problems/largest-rectangle-in-histogram/</a> first.</p>
+<p>Suppose there is a 2D matrix like</p>
+<p>1 1 0 1 0 1</p>
+<p>0 1 0 0 1 1</p>
+<p>1 1 1 1 0 1</p>
+<p>1 1 1 1 0 1</p>
+<p>First initiate the height array as 1 1 0 1 0 1, which is just a copy of the first row. Then we can easily calculate the max area is 2.</p>
+<p>Then update the array. We scan the second row, when the matrix[1][i] is 0, set the height[i] to 0; else height[i] += 1, which means the height has increased by 1. So the height array again becomes 0 2 0 0 1 2. The max area now is also 2.</p>
+<p>Apply the same method until we scan the whole matrix. the last height arrays is 2 4 2 2 0 2, so the max area has been found as 2 * 4 = 8.</p>
+<p>Then reason we scan the whole matrix is that the maximum value may appear in any row of the height.</p>
+<p>Code as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public int maximalRectangle(char[][] matrix) &#123;</span><br><span class="line">    if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return 0;</span><br><span class="line">    </span><br><span class="line">    int[] height = new int[matrix[0].length];</span><br><span class="line">    for(int i = 0; i &lt; matrix[0].length; i ++)&#123;</span><br><span class="line">        if(matrix[0][i] == &apos;1&apos;) height[i] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    int result = largestInLine(height);</span><br><span class="line">    for(int i = 1; i &lt; matrix.length; i ++)&#123;</span><br><span class="line">        resetHeight(matrix, height, i);</span><br><span class="line">        result = Math.max(result, largestInLine(height));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void resetHeight(char[][] matrix, int[] height, int idx)&#123;</span><br><span class="line">    for(int i = 0; i &lt; matrix[0].length; i ++)&#123;</span><br><span class="line">        if(matrix[idx][i] == &apos;1&apos;) height[i] += 1;</span><br><span class="line">        else height[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">public int largestInLine(int[] height) &#123;</span><br><span class="line">    if(height == null || height.length == 0) return 0;</span><br><span class="line">    int len = height.length;</span><br><span class="line">    Stack&lt;Integer&gt; s = new Stack&lt;Integer&gt;();</span><br><span class="line">    int maxArea = 0;</span><br><span class="line">    for(int i = 0; i &lt;= len; i++)&#123;</span><br><span class="line">        int h = (i == len ? 0 : height[i]);</span><br><span class="line">        if(s.isEmpty() || h &gt;= height[s.peek()])&#123;</span><br><span class="line">            s.push(i);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            int tp = s.pop();</span><br><span class="line">            maxArea = Math.max(maxArea, height[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return maxArea;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +595,22 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+        </div>
       
 
       
@@ -574,8 +694,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +741,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +803,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

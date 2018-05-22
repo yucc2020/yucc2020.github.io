@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,dynamic programming,tree," />
 
 
 
@@ -85,18 +85,21 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="40.1%  https://leetcode.com/problems/unique-binary-search-trees/ Given n, how many structurally unique BST’s (binary search trees) that store values 1…n? 12345678For example,Given n = 3, there are a">
+<meta name="keywords" content="leetcode,medium,dynamic programming,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="096. Unique Binary Search Trees">
 <meta property="og:url" content="http://yucc.me/p/d9eba394/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="40.1%  https://leetcode.com/problems/unique-binary-search-trees/ Given n, how many structurally unique BST’s (binary search trees) that store values 1…n? 12345678For example,Given n = 3, there are a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.209Z">
+<meta property="og:image" content="http://i.imgur.com/hVkEdbp.png">
+<meta property="og:image" content="https://wikimedia.org/api/rest_v1/media/math/render/svg/a9434815d6487cd3786fd39f533175c6ad99c7c6">
+<meta property="og:updated_time" content="2018-05-22T05:07:06.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="096. Unique Binary Search Trees">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="40.1%  https://leetcode.com/problems/unique-binary-search-trees/ Given n, how many structurally unique BST’s (binary search trees) that store values 1…n? 12345678For example,Given n = 3, there are a">
+<meta name="twitter:image" content="http://i.imgur.com/hVkEdbp.png">
 
 
 
@@ -358,12 +361,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T13:07:06+08:00">
+                2018-05-22 13:07
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,437
                 </span>
               
 
@@ -409,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +455,82 @@
       
 
       
-        
+        <ul>
+<li>40.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/unique-binary-search-trees/" target="_blank" rel="noopener">https://leetcode.com/problems/unique-binary-search-trees/</a></p>
+<p>Given n, how many structurally unique BST’s (binary search trees) that store values 1…n?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s.</span><br><span class="line"></span><br><span class="line">    1         3     3      2      1</span><br><span class="line">     \       /     /      / \      \</span><br><span class="line">      3     2     1      1   3      2</span><br><span class="line">     /     /       \                 \</span><br><span class="line">    2     1         2                 3</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>使用动态规划的方法，依次观察求解f(n)的个数，观察规律和公式。 </p>
+<p><a href="https://www.quora.com/Given-n-how-many-structurally-unique-BSTs-binary-search-trees-that-store-values-1-to-n-are-there" target="_blank" rel="noopener">https://www.quora.com/Given-n-how-many-structurally-unique-BSTs-binary-search-trees-that-store-values-1-to-n-are-there</a></p>
+<p>0ms, September 9, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/17950/c-code-w-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17950/c-code-w-explanation</a></p>
+<p>C++ code w/ explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numTrees(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; f;</span><br><span class="line">        f.push_back(1);</span><br><span class="line">        for (int i = 1; i &lt;= n; ++i) &#123;</span><br><span class="line">            int t = 0;</span><br><span class="line">            for (int j = 0; j &lt; i; ++j)</span><br><span class="line">                t += f[j] * f[i-j-1];</span><br><span class="line">            f.push_back(t);</span><br><span class="line">        &#125;</span><br><span class="line">        return f.back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Consider f_i:</p>
+<ul>
+<li>choose 1 as the root, we have 0 node for the left tree, i-1 for the right;</li>
+<li>choose 2 as the root, we have 1 node for the left tree, i-2 for the right;</li>
+<li>…</li>
+<li>choose i as the root, we have i-1 nodes for the left tree, 0 for the right.</li>
+</ul>
+<p>Therefore, the recursive solution is f_i = \sum_{j=0}^{i-1} f_j f_{i-j-1}</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        v[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        v[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;=i; j++)</span><br><span class="line">                v[i] += v[j] * v[i-j<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>使用直接计算公式，此处是 卡特兰数</p>
+<p><a href="https://discuss.leetcode.com/topic/5822/it-s-catalan-number" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5822/it-s-catalan-number</a></p>
+<p><a href="http://en.wikipedia.org/wiki/Catalan_number" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Catalan_number</a></p>
+<p><img src="http://i.imgur.com/hVkEdbp.png" alt="image"></p>
+<p>卡特兰数的另一个公式如下：</p>
+<p><img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/a9434815d6487cd3786fd39f533175c6ad99c7c6" alt="image"></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5673/dp-problem-10-lines-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5673/dp-problem-10-lines-with-comments</a></p>
+<p>Dp problem. 10+ lines with comments</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Taking 1~n as root respectively:</span></span><br><span class="line"><span class="comment"> *      1 as root: # of trees = F(0) * F(n-1)  // F(0) == 1</span></span><br><span class="line"><span class="comment"> *      2 as root: # of trees = F(1) * F(n-2) </span></span><br><span class="line"><span class="comment"> *      3 as root: # of trees = F(2) * F(n-3)</span></span><br><span class="line"><span class="comment"> *      ...</span></span><br><span class="line"><span class="comment"> *      n-1 as root: # of trees = F(n-2) * F(1)</span></span><br><span class="line"><span class="comment"> *      n as root:   # of trees = F(n-1) * F(0)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * So, the formulation is:</span></span><br><span class="line"><span class="comment"> *      F(n) = F(0) * F(n-1) + F(1) * F(n-2) + F(2) * F(n-3) + ... + F(n-2) * F(1) + F(n-1) * F(0)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">numTrees</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> dp[n+<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++) &#123;</span><br><span class="line">        dp[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=i; j++) &#123;</span><br><span class="line">            dp[i] += dp[j<span class="number">-1</span>] * dp[i-j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13321/a-very-simple-and-straight-ans-based-on-math-catalan-number-o-n-times-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13321/a-very-simple-and-straight-ans-based-on-math-catalan-number-o-n-times-o-1-space</a></p>
+<p>A very simple and straight ans based on Math,Catalan Number ,O(N) times,O(1)space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int numTrees(int n) &#123;</span><br><span class="line">    //cantalan树</span><br><span class="line">    //C(2n,n)/(n+1)</span><br><span class="line">    long long ans =1;</span><br><span class="line">    for(int i=n+1;i&lt;=2*n;i++)&#123;</span><br><span class="line">        ans = ans*i/(i-n);</span><br><span class="line">    &#125;</span><br><span class="line">    return ans/(n+1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>36ms, September 9, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/19670/python-solutions-dp-catalan-numbers" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19670/python-solutions-dp-catalan-numbers</a></p>
+<p>Python solutions (DP + Catalan number)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># DP</span><br><span class="line">def numTrees1(self, n):</span><br><span class="line">    res = [0] * (n+1)</span><br><span class="line">    res[0] = 1</span><br><span class="line">    for i in xrange(1, n+1):</span><br><span class="line">        for j in xrange(i):</span><br><span class="line">            res[i] += res[j] * res[i-1-j]</span><br><span class="line">    return res[n]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Catalan Number  (2n)!/((n+1)!*n!)  </span><br><span class="line">def numTrees(self, n):</span><br><span class="line">    return math.factorial(2*n)/(math.factorial(n)*math.factorial(n+1))</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>0ms, September 9, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/8398/dp-solution-in-6-lines-with-explanation-f-i-n-g-i-1-g-n-i" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8398/dp-solution-in-6-lines-with-explanation-f-i-n-g-i-1-g-n-i</a></p>
+<p>DP Solution in 6 lines with explanation. F(i, n) = G(i-1) * G(n-i)</p>
+<p>The problem can be solved in a dynamic programming way. I’ll explain the intuition and formulas in the following.</p>
+<p>Given a sequence 1…n, to construct a Binary Search Tree (BST) out of the sequence, we could enumerate each number i in the sequence, and use the number as the root, naturally, the subsequence 1…(i-1) on its left side would lay on the left branch of the root, and similarly the right subsequence (i+1)…n lay on the right branch of the root. We then can construct the subtree from the subsequence recursively. Through the above approach, we could ensure that the BST that we construct are all unique, since they have unique roots.</p>
+<p>The problem is to calculate the number of unique BST. To do so, we need to define two functions:</p>
+<p>G(n): the number of unique BST for a sequence of length n.</p>
+<p>F(i, n), 1 &lt;= i &lt;= n: the number of unique BST, where the number i is the root of BST, and the sequence ranges from 1 to n.</p>
+<p>As one can see, G(n) is the actual function we need to calculate in order to solve the problem. And G(n) can be derived from F(i, n), which at the end, would recursively refer to G(n).</p>
+<p>First of all, given the above definitions, we can see that the total number of unique BST G(n), is the sum of BST F(i) using each number i as a root.<br>i.e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = F(1, n) + F(2, n) + ... + F(n, n).</span><br></pre></td></tr></table></figure>
+<p>Particularly, the bottom cases, there is only one combination to construct a BST out of a sequence of length 1 (only a root) or 0 (empty tree).<br>i.e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(0)=1, G(1)=1.</span><br></pre></td></tr></table></figure>
+<p>Given a sequence 1…n, we pick a number i out of the sequence as the root, then the number of unique BST with the specified root F(i), is the cartesian product of the number of BST for its left and right subtrees. For example, F(3, 7): the number of unique BST tree with number 3 as its root. To construct an unique BST out of the entire sequence [1, 2, 3, 4, 5, 6, 7] with 3 as the root, which is to say, we need to construct an unique BST out of its left subsequence [1, 2] and another BST out of the right subsequence [4, 5, 6, 7], and then combine them together (i.e. cartesian product). The tricky part is that we could consider the number of unique BST out of sequence [1,2] as G(2), and the number of of unique BST out of sequence [4, 5, 6, 7] as G(4). Therefore, F(3,7) = G(2) * G(4).</p>
+<p>i.e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(i, n) = G(i-1) * G(n-i)	1 &lt;= i &lt;= n</span><br></pre></td></tr></table></figure>
+<p>Combining the above two formulas, we obtain the recursive formula for G(n). i.e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)</span><br></pre></td></tr></table></figure>
+<p>In terms of calculation, we need to start with the lower number, since the value of G(n) depends on the values of G(0) … G(n-1).</p>
+<p>With the above explanation and formulas, here is the implementation in Java.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int numTrees(int n) &#123;</span><br><span class="line">    int [] G = new int[n+1];</span><br><span class="line">    G[0] = G[1] = 1;</span><br><span class="line">    </span><br><span class="line">    for(int i=2; i&lt;=n; ++i) &#123;</span><br><span class="line">    	for(int j=1; j&lt;=i; ++j) &#123;</span><br><span class="line">    		G[i] += G[j-1] * G[i-j];</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return G[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="c"><a href="#c" class="headerlink" title="c"></a>c</h4><hr>
+<p>0ms, September 9, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/5673/dp-problem-10-lines-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5673/dp-problem-10-lines-with-comments</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int numTrees(int n) &#123;</span><br><span class="line">    int dp[n+1];</span><br><span class="line">    dp[0] = dp[1] = 1;</span><br><span class="line">    for(int i=2; i&lt;=n; i++)&#123;</span><br><span class="line">        dp[i] = 0;</span><br><span class="line">        for(int j=1; j&lt;=i; j++)</span><br><span class="line">            dp[i] += dp[j-1] * dp[i-j];</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +591,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+        </div>
       
 
       
@@ -574,8 +686,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +733,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +795,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c"><span class="nav-text">c</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

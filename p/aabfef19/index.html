@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/ Follow up for “Search in Rotated Sorted Array”: What if duplicates are allowed? Would this affect the run-time complexity? How and why?">
+<meta name="keywords" content="leetcode,array,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="081. Search in Rotated Sorted Array II">
 <meta property="og:url" content="http://yucc.me/p/aabfef19/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/ Follow up for “Search in Rotated Sorted Array”: What if duplicates are allowed? Would this affect the run-time complexity? How and why?">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.189Z">
+<meta property="og:updated_time" content="2018-05-22T04:55:42.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="081. Search in Rotated Sorted Array II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/ Follow up for “Search in Rotated Sorted Array”: What if duplicates are allowed? Would this affect the run-time complexity? How and why?">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:55:42+08:00">
+                2018-05-22 12:55
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,114
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  13
                 </span>
               
             </div>
@@ -430,7 +452,76 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/search-in-rotated-sorted-array-ii/</a></p>
+<p>Follow up for “Search in Rotated Sorted Array”:</p>
+<p>What if duplicates are allowed?</p>
+<p>Would this affect the run-time complexity? How and why?</p>
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).</span><br></pre></td></tr></table></figure>
+<p>Write a function to determine if a given target is in the array.</p>
+<p>The array may contain duplicates.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23382/medium-level-question-is-follow-up-for-a-hard-level-question" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23382/medium-level-question-is-follow-up-for-a-hard-level-question</a></p>
+<p>Medium level question is follow up for a hard level question?</p>
+<p>It says this problem is a follow up for Search in Rotated Sorted Array.</p>
+<p>Search in Rotated Sorted Array is a hard level question.</p>
+<p>It is kinda un-intuitive for a medium level question to be a follow up for a hard question since I am doing all medium level questions first before I do hard level questions.</p>
+<p>If this problem is easier than Search in Rotated Sorted Array, then I think Search in Rotated Sorted Array should be the follow up problem for this, not the other way around.</p>
+<hr>
+<p>方法一：</p>
+<p>二分查找</p>
+<p>面试奇虎360曾遇到过</p>
+<p>beats 12.39% of cppsubmissions</p>
+<p>我的代码实现：</p>
+<p>对于重复的，这种是left++来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        if(n==0) return false;</span><br><span class="line">        int left = 0, right = n-1;</span><br><span class="line">        while(left&lt;=right)&#123;</span><br><span class="line">            int mid = left + (right-left)/2;</span><br><span class="line">            if(nums[mid]==target)</span><br><span class="line">                return true;</span><br><span class="line">            if(nums[left]&lt;nums[mid])&#123;</span><br><span class="line">                if(target&gt;=nums[left] &amp;&amp; target&lt;nums[mid])</span><br><span class="line">                    right = mid-1;</span><br><span class="line">                else</span><br><span class="line">                    left = mid+1;</span><br><span class="line">            &#125;else if(nums[left]&gt;nums[mid])&#123;</span><br><span class="line">                if(target&gt;nums[mid] &amp;&amp; target&lt;=nums[right])</span><br><span class="line">                    left = mid+1;</span><br><span class="line">                else</span><br><span class="line">                    right = mid-1;</span><br><span class="line">            &#125;else</span><br><span class="line">                left++;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>有借鉴剑指offer 8的解法，对于left mid right三者相等的情况，</p>
+<p>无法判断，只能顺序查找，所以单独顺序查找。</p>
+<p>其他情况还是二分查找。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        if(n==0) return false;</span><br><span class="line">        int left = 0, right = n-1;</span><br><span class="line">        while(left&lt;=right)&#123;</span><br><span class="line">            int mid = left + (right-left)/2;</span><br><span class="line">            if(nums[mid]==target)</span><br><span class="line">                return true;</span><br><span class="line">            if(nums[left]==nums[mid] &amp;&amp; nums[left]==nums[right])&#123; // 只能线性查找情况</span><br><span class="line">                return inorder_search(nums, left+1, right-1, target);</span><br><span class="line">            &#125; </span><br><span class="line">            if(nums[left]&lt;=nums[mid])&#123;</span><br><span class="line">                if(target&gt;=nums[left] &amp;&amp; target&lt;nums[mid])</span><br><span class="line">                    right = mid-1;</span><br><span class="line">                else</span><br><span class="line">                    left = mid+1;</span><br><span class="line">            &#125;else if(nums[left]&gt;nums[mid])&#123;</span><br><span class="line">                if(target&gt;nums[mid] &amp;&amp; target&lt;=nums[right])</span><br><span class="line">                    left = mid+1;</span><br><span class="line">                else</span><br><span class="line">                    right = mid-1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool inorder_search(vector&lt;int&gt;&amp; nums, int left, int right, int target)&#123;</span><br><span class="line">        if(left&gt;right) return false;</span><br><span class="line">        for(int i=left; i&lt;=right; i++)&#123;</span><br><span class="line">            if(nums[i]==target)</span><br><span class="line">                return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>其他代码实现方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int first = 0, last = nums.size();</span><br><span class="line">        while(first != last)&#123;</span><br><span class="line">            const int mid = first + (last - first) / 2;</span><br><span class="line">            if(nums[mid] == target)</span><br><span class="line">                return true;</span><br><span class="line">            if(nums[first] &lt; nums[mid])&#123;</span><br><span class="line">                if(nums[first] &lt;= target &amp;&amp; target &lt; nums[mid])</span><br><span class="line">                    last = mid;</span><br><span class="line">                else</span><br><span class="line">                    first = mid + 1;</span><br><span class="line">            &#125;else if(nums[first] &gt; nums[mid])&#123;</span><br><span class="line">                if(nums[mid] &lt; target &amp;&amp; target &lt;= nums[last-1])</span><br><span class="line">                    first = mid + 1;</span><br><span class="line">                else</span><br><span class="line">                    last = mid;</span><br><span class="line">            &#125; else</span><br><span class="line">                // skip duplicate one</span><br><span class="line">                first++;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8087/c-concise-log-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8087/c-concise-log-n-solution</a></p>
+<p>C++ concise log(n) solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">  bool search(int A[], int n, int target) &#123;</span><br><span class="line">    int lo =0, hi = n-1;</span><br><span class="line">    int mid = 0;</span><br><span class="line">    while(lo&lt;hi)&#123;</span><br><span class="line">          mid=(lo+hi)/2;</span><br><span class="line">          if(A[mid]==target) return true;</span><br><span class="line">          if(A[mid]&gt;A[hi])&#123;</span><br><span class="line">              if(A[mid]&gt;target &amp;&amp; A[lo] &lt;= target) hi = mid;</span><br><span class="line">              else lo = mid + 1;</span><br><span class="line">          &#125;else if(A[mid] &lt; A[hi])&#123;</span><br><span class="line">              if(A[mid]&lt;target &amp;&amp; A[hi] &gt;= target) lo = mid + 1;</span><br><span class="line">              else hi = mid;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">              hi--;</span><br><span class="line">          &#125;</span><br><span class="line">          </span><br><span class="line">    &#125;</span><br><span class="line">    return A[lo] == target ? true : false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16660/my-8ms-c-solution-o-logn-on-average-o-n-worst-case" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16660/my-8ms-c-solution-o-logn-on-average-o-n-worst-case</a></p>
+<p>My 8ms C++ solution (o(logn) on average, o(n) worst case)</p>
+<p>The idea is the same as the previous one without duplicates</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1) everytime check if targe == nums[mid], if so, we find it.</span><br><span class="line">2) otherwise, we check if the first half is in order (i.e. nums[left]&lt;=nums[mid]) </span><br><span class="line">  and if so, go to step 3), otherwise, the second half is in order,   go to step 4)</span><br><span class="line">3) check if target in the range of [left, mid-1] (i.e. nums[left]&lt;=target &lt; nums[mid]), if so, </span><br><span class="line">do search in the first half, i.e. right = mid-1; otherwise, search in the second half left = mid+1;</span><br><span class="line">4)  check if target in the range of [mid+1, right] (i.e. nums[mid]&lt;target &lt;= nums[right]), </span><br><span class="line">if so, do search in the second half, i.e. left = mid+1;</span><br></pre></td></tr></table></figure>
+<p> otherwise search in the first half right = mid-1;<br>The only difference is that due to the existence of duplicates, we can have nums[left] == nums[mid] and in that case, the first half could be out of order (i.e. NOT in the ascending order, e.g. [3 1 2 3 3 3 3]) and we have to deal this case separately. In that case, it is guaranteed that nums[right] also equals to nums[mid], so what we can do is to check if nums[mid]== nums[left] == nums[right] before the original logic, and if so, we can move left and right both towards the middle by 1. and repeat.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int left = 0, right =  nums.size()-1, mid;</span><br><span class="line">        </span><br><span class="line">        while(left&lt;=right)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (left + right) &gt;&gt; 1;</span><br><span class="line">            if(nums[mid] == target) return true;</span><br><span class="line"></span><br><span class="line">            // the only difference from the first one, trickly case, just updat left and right</span><br><span class="line">            if( (nums[left] == nums[mid]) &amp;&amp; (nums[right] == nums[mid]) ) &#123;++left; --right;&#125;</span><br><span class="line"></span><br><span class="line">            else if(nums[left] &lt;= nums[mid])</span><br><span class="line">            &#123;</span><br><span class="line">                if( (nums[left]&lt;=target) &amp;&amp; (nums[mid] &gt; target) ) right = mid-1;</span><br><span class="line">                else left = mid + 1; </span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if((nums[mid] &lt; target) &amp;&amp;  (nums[right] &gt;= target) ) left = mid+1;</span><br><span class="line">                else right = mid-1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19116/easy-c-solution-based-on-version-i-of-the-problem" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19116/easy-c-solution-based-on-version-i-of-the-problem</a></p>
+<p>Easy C++ Solution based on Version I of the Problem</p>
+<p>For those who have already solved Search in Rotated Sorted Array, this problem can be solved similarly using codes for that problem and simply adding codes to skip the duplicates.</p>
+<p>For Search in Rotated Sorted Array, I post solutions in C/C++/Python here (C and C++ only needs 11 lines).</p>
+<p>Now, based on the above codes, you can solve this problem by simply adding two lines to skip duplicates both starting from left and right.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public: </span><br><span class="line">    bool search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int l = 0, r = nums.size() - 1;</span><br><span class="line">        while (l &lt;= r) &#123;</span><br><span class="line">            while (l &lt; r &amp;&amp; nums[l] == nums[l + 1]) l++; // skip duplicates from the left</span><br><span class="line">            while (r &gt; l &amp;&amp; nums[r] == nums[r - 1]) r--; // skip duplicates from the right</span><br><span class="line">            int mid = (l + r) / 2;</span><br><span class="line">            if (nums[mid] == target) return true; </span><br><span class="line">            if (nums[mid] &gt; target) &#123;</span><br><span class="line">                if (nums[l] &lt;= target || nums[mid] &lt; nums[l]) r = mid - 1;</span><br><span class="line">                else l = mid + 1;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                if (nums[l] &gt; target || nums[mid] &gt;= nums[l]) l = mid + 1;</span><br><span class="line">                else r = mid - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/20593/python-easy-to-understand-solution-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20593/python-easy-to-understand-solution-with-comments</a></p>
+<p>Python easy to understand solution (with comments).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def search(self, nums, target):</span><br><span class="line">    l, r = 0, len(nums)-1</span><br><span class="line">    while l &lt;= r:</span><br><span class="line">        mid = l + (r-l)//2</span><br><span class="line">        if nums[mid] == target:</span><br><span class="line">            return True</span><br><span class="line">        while l &lt; mid and nums[l] == nums[mid]: # tricky part</span><br><span class="line">            l += 1</span><br><span class="line">        # the first half is ordered</span><br><span class="line">        if nums[l] &lt;= nums[mid]:</span><br><span class="line">            # target is in the first half</span><br><span class="line">            if nums[l] &lt;= target &lt; nums[mid]:</span><br><span class="line">                r = mid - 1</span><br><span class="line">            else:</span><br><span class="line">                l = mid + 1</span><br><span class="line">        # the second half is ordered</span><br><span class="line">        else:</span><br><span class="line">            # target is in the second half</span><br><span class="line">            if nums[mid] &lt; target &lt;= nums[r]:</span><br><span class="line">                l = mid + 1</span><br><span class="line">            else:</span><br><span class="line">                r = mid - 1</span><br><span class="line">    return False</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/310/when-there-are-duplicates-the-worst-case-is-o-n-could-we-do-better" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/310/when-there-are-duplicates-the-worst-case-is-o-n-could-we-do-better</a></p>
+<p>When there are duplicates, the worst case is O(n). Could we do better?</p>
+<p>Since we will have some duplicate elements in this problem, it is a little tricky because sometimes we cannot decide whether to go to the left side or right side. So for this condition, I have to probe both left and right side simultaneously to decide which side we need to find the number. Only in this condition, the time complexity may be O(n). The rest conditions are always O(log n).</p>
+<p>For example:</p>
+<p>input: 113111111111, Looking for target 3.</p>
+<p>Is my solution correct? My code is as followed:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean search(int[] A, int target) &#123;</span><br><span class="line">        // IMPORTANT: Please reset any member data you declared, as</span><br><span class="line">        // the same Solution instance will be reused for each test case.</span><br><span class="line">        int i = 0;</span><br><span class="line">        int j = A.length - 1;</span><br><span class="line">        while(i &lt;= j)&#123;</span><br><span class="line">            int mid = (i + j) / 2;</span><br><span class="line">            if(A[mid] == target)</span><br><span class="line">                return true;</span><br><span class="line">            else if(A[mid] &lt; A[i])&#123;</span><br><span class="line">                if(target &gt; A[j])</span><br><span class="line">                    j = mid - 1;</span><br><span class="line">                else if(target &lt; A[mid])</span><br><span class="line">                    j = mid - 1;</span><br><span class="line">                else</span><br><span class="line">                    i = mid + 1;</span><br><span class="line">            &#125;else if(A[mid] &gt; A[i])&#123;</span><br><span class="line">                if(target &lt; A[mid] &amp;&amp; target &gt;= A[i])</span><br><span class="line">                    j = mid - 1;</span><br><span class="line">                else</span><br><span class="line">                    i = mid + 1;</span><br><span class="line">            &#125;else&#123; // A[mid] == A[i]</span><br><span class="line">                if(A[mid] != A[j])</span><br><span class="line">                    i = mid + 1;</span><br><span class="line">                else&#123;</span><br><span class="line">                    boolean flag = true;</span><br><span class="line">                    for(int k = 1; mid - k &gt;= i &amp;&amp; mid + k &lt;= j; k++)&#123;</span><br><span class="line">                        if(A[mid] != A[mid - k])&#123;</span><br><span class="line">                            j = mid - k;</span><br><span class="line">                            flag = false;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;else if(A[mid] != A[mid + k])&#123;</span><br><span class="line">                            i = mid + k;</span><br><span class="line">                            flag = false;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    if(flag)</span><br><span class="line">                        return false;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25487/neat-java-solution-using-binary-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25487/neat-java-solution-using-binary-search</a></p>
+<p>Neat JAVA solution using binary search</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public boolean search(int[] nums, int target) &#123;</span><br><span class="line">    int start = 0, end = nums.length - 1, mid = -1;</span><br><span class="line">    while(start &lt;= end) &#123;</span><br><span class="line">        mid = (start + end) / 2;</span><br><span class="line">        if (nums[mid] == target) &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        //If we know for sure right side is sorted or left side is unsorted</span><br><span class="line">        if (nums[mid] &lt; nums[end] || nums[mid] &lt; nums[start]) &#123;</span><br><span class="line">            if (target &gt; nums[mid] &amp;&amp; target &lt;= nums[end]) &#123;</span><br><span class="line">                start = mid + 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                end = mid - 1;</span><br><span class="line">            &#125;</span><br><span class="line">        //If we know for sure left side is sorted or right side is unsorted</span><br><span class="line">        &#125; else if (nums[mid] &gt; nums[start] || nums[mid] &gt; nums[end]) &#123;</span><br><span class="line">            if (target &lt; nums[mid] &amp;&amp; target &gt;= nums[start]) &#123;</span><br><span class="line">                end = mid - 1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                start = mid + 1;</span><br><span class="line">            &#125;</span><br><span class="line">        //If we get here, that means nums[start] == nums[mid] == nums[end], then shifting out</span><br><span class="line">        //any of the two sides won&apos;t change the result but can help remove duplicate from</span><br><span class="line">        //consideration, here we just use end-- but left++ works too</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>In case anyone wonders, yes I agree that we don’t need to check two parts. It’s just that Doing that can slightly boost the performance, no asymptotic difference though.</p>
+<hr>
+
       
     </div>
     
@@ -491,6 +582,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -574,8 +675,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +722,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +784,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

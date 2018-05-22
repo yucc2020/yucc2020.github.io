@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,backtracking," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/gray-code/ The gray code is a binary numeral system where two successive values differ in only one bit. Given a non-negative integer n representing the total number of bi">
+<meta name="keywords" content="leetcode,backtracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="089. Gray Code">
 <meta property="og:url" content="http://yucc.me/p/57e82460/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/gray-code/ The gray code is a binary numeral system where two successive values differ in only one bit. Given a non-negative integer n representing the total number of bi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T04:17:10.198Z">
+<meta property="og:updated_time" content="2018-05-22T05:02:01.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="089. Gray Code">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/gray-code/ The gray code is a binary numeral system where two successive values differ in only one bit. Given a non-negative integer n representing the total number of bi">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T12:17:10+08:00">
-                2018-05-22 12:17
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T13:02:01+08:00">
+                2018-05-22 13:02
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  841
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,62 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/gray-code/" target="_blank" rel="noopener">https://leetcode.com/problems/gray-code/</a></p>
+<p>The gray code is a binary numeral system where two successive values differ in only one bit.</p>
+<p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">For example, given n = 2, return [0,1,3,2]. Its gray code sequence is:</span><br><span class="line"></span><br><span class="line">00 - 0</span><br><span class="line">01 - 1</span><br><span class="line">11 - 3</span><br><span class="line">10 - 2</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>For a given n, a gray code sequence is not uniquely defined.</p>
+<p>For example, [0,2,3,1] is also a valid gray code sequence according to the above definition.</p>
+<p>For now, the judge is able to judge based on one instance of gray code sequence. Sorry about that.</p>
+<a id="more"></a>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8557/an-accepted-three-line-solution-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8557/an-accepted-three-line-solution-in-java</a></p>
+<p>An accepted three line solution in JAVA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Integer&gt; grayCode(int n) &#123;</span><br><span class="line">    List&lt;Integer&gt; result = new LinkedList&lt;&gt;();</span><br><span class="line">    for (int i = 0; i &lt; 1&lt;&lt;n; i++) result.add(i ^ i&gt;&gt;1);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The idea is simple. G(i) = i^ (i/2).</p>
+<hr>
+<p>1ms, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/3021/share-my-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3021/share-my-solution</a></p>
+<p>Share my solution</p>
+<p>My idea is to generate the sequence iteratively. For example, when n=3, we can get the result based on n=2.<br>00,01,11,10 -&gt; (000,001,011,010 ) (110,111,101,100). The middle two numbers only differ at their highest bit, while the rest numbers of part two are exactly symmetric of part one. It is easy to see its correctness.</p>
+<p>Code is simple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;Integer&gt; grayCode(int n) &#123;</span><br><span class="line">        List&lt;Integer&gt; rs = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        rs.add(0);</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            int size = rs.size();</span><br><span class="line">            for(int k=size-1; k&gt;=0; k--)</span><br><span class="line">                rs.add(rs.get(k) | 1&lt;&lt;i);</span><br><span class="line">        &#125;</span><br><span class="line">        return rs;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p>3ms, 38.18%, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/1011/what-is-the-best-solution-for-gray-code-problem-no-extra-space-used-and-no-recursion" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1011/what-is-the-best-solution-for-gray-code-problem-no-extra-space-used-and-no-recursion</a></p>
+<p>What is the best solution for Gray Code problem? No extra space used and no recursion?</p>
+<p>I have a solution here which takes O(1) on space and no recursion used. Is this the best possible solution? (I combined the base cases in the loop as mike3 does. Thanks mike3!)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; grayCode(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; result(1, 0);</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            int curCount = result.size();</span><br><span class="line">            while(curCount)&#123;</span><br><span class="line">                curCount--;</span><br><span class="line">                int curNum = result[curCount];</span><br><span class="line">                curNum += (1&lt;&lt;i);</span><br><span class="line">                result.push_back(curNum);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3997/share-my-simple-way-of-this-problem-" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3997/share-my-simple-way-of-this-problem-</a>_</p>
+<p>Share my simple way of this problem^_^</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; grayCode(int n) &#123;</span><br><span class="line">        int N(1 &lt;&lt; n), tmp;</span><br><span class="line">        vector&lt;int&gt; result;</span><br><span class="line">        for(int i(0); i &lt; N; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            tmp = i &lt;&lt; 1;</span><br><span class="line">            result.push_back((tmp^i) &gt;&gt; 1);</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>As we known:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Gi = Bi+1 xor Bi</span><br></pre></td></tr></table></figure>
+<p>For example, trans binay ‘001’ to gray code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp = 001 &lt;&lt; 1</span><br></pre></td></tr></table></figure>
+<p>then,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin 0 0 0 1</span><br><span class="line">tmp 0 0 1 0</span><br><span class="line">-xor------------</span><br><span class="line">    0 0 1 1</span><br></pre></td></tr></table></figure>
+<p>and the gray code is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 1 1 &gt;&gt; 1 (ignore last bit) =&gt; 0 0 1</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14776/4ms-simple-iterative-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14776/4ms-simple-iterative-solution</a></p>
+<p>4ms simple iterative solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; grayCode(int n) &#123;</span><br><span class="line">    vector&lt;int&gt; result = &#123; 0 &#125;;</span><br><span class="line">    int t = 1;</span><br><span class="line">    for(int i = 0; i&lt;n; i++) &#123;</span><br><span class="line">        for(int j = result.size() - 1; j &gt;= 0; j--)</span><br><span class="line">            result.push_back(result[j]^t);</span><br><span class="line">        t &lt;&lt;= 1;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>52ms, September 20, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/4883/one-liner-python-solution-with-demo-in-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4883/one-liner-python-solution-with-demo-in-comments</a></p>
+<p>One-liner Python solution (with demo in comments)</p>
+<p>All you need is a bit of careful thought.</p>
+<p>Btw, it’s extremely useful to write down your thought/demo in comments before you actually start to write the code, especially during interview.</p>
+<p>Even if you do not solve the problem finally, the interviewer at least get to know what you’re thinking.</p>
+<p>And if you don’t get the problem right, he/she will have a chance to correct you.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @return a list of integers</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    from up to down, then left to right</span><br><span class="line">    </span><br><span class="line">    0   1   11  110</span><br><span class="line">            10  111</span><br><span class="line">                101</span><br><span class="line">                100</span><br><span class="line">                </span><br><span class="line">    start:      [0]</span><br><span class="line">    i = 0:      [0, 1]</span><br><span class="line">    i = 1:      [0, 1, 3, 2]</span><br><span class="line">    i = 2:      [0, 1, 3, 2, 6, 7, 5, 4]</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    def grayCode(self, n):</span><br><span class="line">        results = [0]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            results += [x + pow(2, i) for x in reversed(results)]</span><br><span class="line">        return results</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +568,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+        </div>
       
 
       
@@ -574,8 +659,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +768,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
