@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,dynamic programming,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="23.7%  https://leetcode.com/problems/palindrome-partitioning-ii/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed">
+<meta name="keywords" content="leetcode,dynamic programming,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="132. Palindrome Partitioning II">
 <meta property="og:url" content="http://yucc.me/p/c5f750e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="23.7%  https://leetcode.com/problems/palindrome-partitioning-ii/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.170Z">
+<meta property="og:updated_time" content="2018-05-22T11:41:44.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="132. Palindrome Partitioning II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="23.7%  https://leetcode.com/problems/palindrome-partitioning-ii/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:41:44+08:00">
+                2018-05-22 19:41
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,722
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,66 @@
       
 
       
-        
+        <ul>
+<li>23.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/palindrome-partitioning-ii/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/palindrome-partitioning-ii/#/description</a></p>
+<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return the minimum cuts needed for a palindrome partitioning of s.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For example, given s = &quot;aab&quot;,</span><br><span class="line">Return 1 since the palindrome partitioning [&quot;aa&quot;,&quot;b&quot;] could be produced using 1 cut.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>13ms, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/2840/my-solution-does-not-need-a-table-for-palindrome-is-it-right-it-uses-only-o-n-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2840/my-solution-does-not-need-a-table-for-palindrome-is-it-right-it-uses-only-o-n-space</a></p>
+<p>My solution does not need a table for palindrome, is it right ? It uses only O(n) space.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minCut(string s) &#123;</span><br><span class="line">        int n = s.size();</span><br><span class="line">        vector&lt;int&gt; cut(n+1, 0);  // number of cuts for the first k characters</span><br><span class="line">        for (int i = 0; i &lt;= n; i++) cut[i] = i-1;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            for (int j = 0; i-j &gt;= 0 &amp;&amp; i+j &lt; n &amp;&amp; s[i-j]==s[i+j] ; j++) // odd length palindrome</span><br><span class="line">                cut[i+j+1] = min(cut[i+j+1],1+cut[i-j]);</span><br><span class="line"></span><br><span class="line">            for (int j = 1; i-j+1 &gt;= 0 &amp;&amp; i+j &lt; n &amp;&amp; s[i-j+1] == s[i+j]; j++) // even length palindrome</span><br><span class="line">                cut[i+j+1] = min(cut[i+j+1],1+cut[i-j+1]);</span><br><span class="line">        &#125;</span><br><span class="line">        return cut[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2048/my-dp-solution-explanation-and-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2048/my-dp-solution-explanation-and-code</a></p>
+<p>My DP Solution ( explanation and code)</p>
+<p>Calculate and maintain 2 DP states:</p>
+<ol>
+<li>pal[i][j] , which is whether s[i..j] forms a pal</li>
+<li>d[i], which is the minCut for s[i..n-1]</li>
+</ol>
+<p>Once we comes to a pal[i][j]==true:</p>
+<ul>
+<li>if j==n-1, the string s[i..n-1] is a Pal, minCut is 0, d[i]=0;</li>
+<li>else: the current cut num (first cut s[i..j] and then cut the rest s[j+1…n-1]) is 1+d[j+1], compare it to the exisiting minCut num d[i], repalce if smaller.</li>
+</ul>
+<p>d[0] is the answer.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        int minCut(string s) &#123;</span><br><span class="line">            if(s.empty()) return 0;</span><br><span class="line">            int n = s.size();</span><br><span class="line">            vector&lt;vector&lt;bool&gt;&gt; pal(n,vector&lt;bool&gt;(n,false));</span><br><span class="line">            vector&lt;int&gt; d(n);</span><br><span class="line">            for(int i=n-1;i&gt;=0;i--)</span><br><span class="line">            &#123;</span><br><span class="line">                d[i]=n-i-1;</span><br><span class="line">                for(int j=i;j&lt;n;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    if(s[i]==s[j] &amp;&amp; (j-i&lt;2 || pal[i+1][j-1]))</span><br><span class="line">                    &#123;</span><br><span class="line">                       pal[i][j]=true;</span><br><span class="line">                       if(j==n-1)</span><br><span class="line">                           d[i]=0;</span><br><span class="line">                       else if(d[j+1]+1&lt;d[i])</span><br><span class="line">                           d[i]=d[j+1]+1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return d[0];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19298/two-c-versions-given-one-dp-28ms-one-manancher-like-algorithm-10-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19298/two-c-versions-given-one-dp-28ms-one-manancher-like-algorithm-10-ms</a></p>
+<p>Two C++ versions given (one DP 28ms, one Manancher-like algorithm 10 ms)</p>
+<p>One typical solution is DP based. Such solution first constructs a two-dimensional bool array isPalin to indicate whether the sub-string s[i..j] is palindrome. To get such array, we need O(N^2) time complexity. Moreover, to get the minimum cuts, we need another array minCuts to do DP and minCuts[i] saves the minimum cuts found for the sub-string s[0..i-1]. minCuts[i] is initialized to i-1, which is the maximum cuts needed (cuts the string into one-letter characters) and minCuts[0] initially sets to -1, which is needed in the case that s[0..i-1] is a palindrome. When we construct isPalin array, we update minCuts everytime we found a palindrome sub-string, i.e. if s[i..j] is a palindrome, then minCuts[j+1] will be updated to the minimum of the current minCuts[j+1] and minCut[i]+1(i.e. cut s[0..j] into s[0,i-1] and s[i,j]). At last, we return minCuts[N].<br>So the complexity is O(N^2). However, it can be further improved since as described above, we only update minCuts when we find a palindrome substring, while the DP algorithm spends lots of time to calculate isPalin, most of which is false (i.e. not a palindrome substring). If we can reduce such unnecessary calculation, then we can speed up the algorithm. This can be achieved with a Manancher-like solution, which is also given as following.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// DP solution</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minCut(string s) &#123;</span><br><span class="line">        const int N = s.size();</span><br><span class="line">        if(N&lt;=1) return 0;</span><br><span class="line">        int i,j;</span><br><span class="line">        bool isPalin[N][N];</span><br><span class="line">        fill_n(&amp;isPalin[0][0], N*N, false);</span><br><span class="line">        int minCuts[N+1];</span><br><span class="line">        for(i=0; i&lt;=N; ++i) minCuts[i] = i-1;</span><br><span class="line">        </span><br><span class="line">        for(j=1; j&lt;N; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            for(i=j; i&gt;=0; --i)</span><br><span class="line">            &#123;</span><br><span class="line">                if( (s[i] == s[j]) &amp;&amp; ( ( j-i &lt; 2 ) || isPalin[i+1][j-1] ) )</span><br><span class="line">                &#123;</span><br><span class="line">                    isPalin[i][j] = true;</span><br><span class="line">                    minCuts[j+1] = min(minCuts[j+1], 1 + minCuts[i]);    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return minCuts[N];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>The Manancher-like solution scan the array from left to right (for i loop) and only check those sub-strings centered at s[i]; once a non-palindrome string is found, it will stop and move to i+1. Same as the DP solution, minCUTS[i] is used to save the minimum cuts for s[0:i-1]. For each i, we do two for loops (for j loop) to check if the substrings s[i-j .. i+j] (odd-length substring) and s[i-j-1.. i+j] (even-length substring) are palindrome. By increasing j from 0, we can find all the palindrome sub-strings centered at i and update minCUTS accordingly. Once we meet one non-palindrome sub-string, we stop for-j loop since we know there no further palindrome substring centered at i. This helps us avoid unnecessary palindrome substring checks, as we did in the DP algorithm. Therefore, this version is faster.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//Manancher-like solution</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minCut(string s) &#123;</span><br><span class="line">        const int N = s.size();</span><br><span class="line">        if(N&lt;=1) return 0;</span><br><span class="line">        </span><br><span class="line">        int i, j, minCUTS[N+1];</span><br><span class="line">        for(i=0; i&lt;=N; ++i) minCUTS[i] = i-1;</span><br><span class="line">        </span><br><span class="line">        for(i=1;i&lt;N;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(j=0;(i-j)&gt;=0 &amp;&amp; (i+j)&lt;N &amp;&amp; s[i-j]== s[i+j]; ++j) // odd-length substrings </span><br><span class="line">                minCUTS[i+j+1] = min(minCUTS[i+j+1], 1 + minCUTS[i-j]);</span><br><span class="line"></span><br><span class="line">            for(j=0;(i-j-1)&gt;=0 &amp;&amp; (i+j)&lt;N &amp;&amp; s[i-j-1]== s[i+j]; ++j) // even-length substrings</span><br><span class="line">                minCUTS[i+j+1] = min(minCUTS[i+j+1], 1 + minCUTS[i-j-1]);</span><br><span class="line">        &#125;</span><br><span class="line">        return minCUTS[N];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22388/56-ms-python-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22388/56-ms-python-with-explanation</a></p>
+<p>56 ms python with explanation</p>
+<p>Algorithm (460 ms) credits go to:</p>
+<p><a href="https://leetcode.com/discuss/9476/solution-does-not-need-table-palindrome-right-uses-only-space" target="_blank" rel="noopener">https://leetcode.com/discuss/9476/solution-does-not-need-table-palindrome-right-uses-only-space</a></p>
+<p>The main algorithm idea is if s[i,j] is a palindrome, then the minCut(s[:j]) is at most minCut(s[:i-1])+1. This literally needs to find out all possible palindromes in the list. The above post provides an efficient search algorithm. O(n) space and O(n^2) time complexity.</p>
+<p>Further acceleration (460 ms -&gt; 56 ms) credits go to:</p>
+<p><a href="https://leetcode.com/discuss/43950/python-100ms-extra-dealing-super-cases-reduces-576ms-100ms" target="_blank" rel="noopener">https://leetcode.com/discuss/43950/python-100ms-extra-dealing-super-cases-reduces-576ms-100ms</a></p>
+<p>The main idea for acceleration is to quickly check and exclude a few long palindrome tests..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def minCut(self, s):</span><br><span class="line">    # acceleration</span><br><span class="line">    if s == s[::-1]: return 0</span><br><span class="line">    for i in range(1, len(s)):</span><br><span class="line">        if s[:i] == s[:i][::-1] and s[i:] == s[i:][::-1]:</span><br><span class="line">            return 1</span><br><span class="line">    # algorithm</span><br><span class="line">    cut = [x for x in range(-1,len(s))]  # cut numbers in worst case (no palindrome)</span><br><span class="line">    for i in range(len(s)):</span><br><span class="line">        r1, r2 = 0, 0</span><br><span class="line">        # use i as origin, and gradually enlarge radius if a palindrome exists</span><br><span class="line">        # odd palindrome</span><br><span class="line">        while i-r1 &gt;= 0 and i+r1 &lt; len(s) and s[i-r1] == s[i+r1]:</span><br><span class="line">            cut[i+r1+1] = min(cut[i+r1+1], cut[i-r1]+1)</span><br><span class="line">            r1 += 1</span><br><span class="line">        # even palindrome</span><br><span class="line">        while i-r2 &gt;= 0 and i+r2+1 &lt; len(s) and s[i-r2] == s[i+r2+1]:</span><br><span class="line">            cut[i+r2+2] = min(cut[i+r2+2], cut[i-r2]+1)</span><br><span class="line">            r2 += 1</span><br><span class="line">    return cut[-1]</span><br></pre></td></tr></table></figure>
+<p>The following code simply implements the algorithm without any optimization (1800 ms), and should be easier to understand. O(n) space and O(n^3) time complexity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def minCut(self, s):</span><br><span class="line">    cut = [x for x in range(-1,len(s))]</span><br><span class="line">    for i in range(0,len(s)):</span><br><span class="line">        for j in range(i,len(s)):</span><br><span class="line">            if s[i:j] == s[j:i:-1]:</span><br><span class="line">                cut[j+1] = min(cut[j+1],cut[i]+1)</span><br><span class="line">    return cut[-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32575/easiest-java-dp-solution-97-36" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32575/easiest-java-dp-solution-97-36</a></p>
+<p>Easiest Java DP Solution (97.36%)</p>
+<p>This can be solved by two points:</p>
+<ol>
+<li>cut[i] is the minimum of cut[j - 1] + 1 (j &lt;= i), if [j, i] is palindrome.</li>
+<li>If [j, i] is palindrome, [j + 1, i - 1] is palindrome, and c[j] == c[i].</li>
+</ol>
+<p>The 2nd point reminds us of using dp (caching).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a   b   a   |   c  c</span><br><span class="line">                j  i</span><br><span class="line">       j-1  |  [j, i] is palindrome</span><br><span class="line">   cut(j-1) +  1</span><br></pre></td></tr></table></figure>
+<p>Hope it helps!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public int minCut(String s) &#123;</span><br><span class="line">    char[] c = s.toCharArray();</span><br><span class="line">    int n = c.length;</span><br><span class="line">    int[] cut = new int[n];</span><br><span class="line">    boolean[][] pal = new boolean[n][n];</span><br><span class="line">    </span><br><span class="line">    for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        int min = i;</span><br><span class="line">        for(int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">            if(c[j] == c[i] &amp;&amp; (j + 1 &gt; i - 1 || pal[j + 1][i - 1])) &#123;</span><br><span class="line">                pal[j][i] = true;  </span><br><span class="line">                min = j == 0 ? 0 : Math.min(min, cut[j - 1] + 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cut[i] = min;</span><br><span class="line">    &#125;</span><br><span class="line">    return cut[n - 1];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +572,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -612,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

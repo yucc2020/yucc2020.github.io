@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="51.2%  https://leetcode.com/problems/maximum-depth-of-binary-tree Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down">
+<meta name="keywords" content="leetcode,easy,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="104. Maximum Depth of Binary Tree">
 <meta property="og:url" content="http://yucc.me/p/22757163/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="51.2%  https://leetcode.com/problems/maximum-depth-of-binary-tree Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.127Z">
+<meta property="og:updated_time" content="2018-05-22T11:16:43.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="104. Maximum Depth of Binary Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="51.2%  https://leetcode.com/problems/maximum-depth-of-binary-tree Given a binary tree, find its maximum depth. The maximum depth is the number of nodes along the longest path from the root node down">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:16:43+08:00">
+                2018-05-22 19:16
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,191
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,80 @@
       
 
       
-        
+        <ul>
+<li>51.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree" target="_blank" rel="noopener">https://leetcode.com/problems/maximum-depth-of-binary-tree</a></p>
+<p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>深度优先遍历</p>
+<p>My code of C++, Depth-first-search and Breadth-first-search</p>
+<p>Depth-first-search</p>
+<p>Only one line code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode *root)</span><br><span class="line">&#123;</span><br><span class="line">    return root == NULL ? 0 : max(maxDepth(root -&gt; left), maxDepth(root -&gt; right)) + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> root?max(maxDepth(root-&gt;left), maxDepth(root-&gt;right))+<span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>广度优先搜索</p>
+<p>使用一个队列，将root push进取，然后每次对队列的长度进行遍历，res++；</p>
+<p>Breadth-first-search</p>
+<p>Calculate the count of the last level.</p>
+<p>注意：栈和队列，又都push pop,没有push_back,pop_back</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode *root)</span><br><span class="line">&#123;</span><br><span class="line">    if(root == NULL)</span><br><span class="line">        return 0;</span><br><span class="line">    </span><br><span class="line">    int res = 0;</span><br><span class="line">    queue&lt;TreeNode *&gt; q;</span><br><span class="line">    q.push(root);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        ++ res;</span><br><span class="line">        for(int i = 0, n = q.size(); i &lt; n; ++ i)</span><br><span class="line">        &#123;</span><br><span class="line">            TreeNode *p = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            </span><br><span class="line">            if(p -&gt; left != NULL)</span><br><span class="line">                q.push(p -&gt; left);</span><br><span class="line">            if(p -&gt; right != NULL)</span><br><span class="line">                q.push(p -&gt; right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>其实就是层序遍历</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">            res++;</span><br><span class="line">            <span class="keyword">int</span> n = que.size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">                TreeNode* cur = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;left)</span><br><span class="line">                    que.push(cur-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;right)</span><br><span class="line">                    que.push(cur-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>学习一下queue的成员函数，有back，push，pop，没有push_back</p>
+<p>(constructor) Construct queue (public member function )</p>
+<p>empty Test whether container is empty (public member function )</p>
+<p>size Return size (public member function )</p>
+<p>front Access next element (public member function )</p>
+<p>back Access last element (public member function )</p>
+<p>push Insert element (public member function )</p>
+<p>emplace Construct and insert element (public member function )</p>
+<p>pop Remove next element (public member function )</p>
+<p>swap Swap contents (public member function )</p>
+<p>学习一下栈的成员函数，有pop push 等，没有push_back pop_back</p>
+<p>(constructor)<br>Construct stack (public member function )<br>empty<br>Test whether container is empty (public member function )<br>size<br>Return size (public member function )<br>top<br>Access next element (public member function )<br>push<br>Insert element (public member function )<br>emplace<br>Construct and insert element (public member function )<br>pop<br>Remove top element (public member function )<br>swap<br>Swap contents (public member function )</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10317/my-code-of-c-depth-first-search-and-breadth-first-search" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10317/my-code-of-c-depth-first-search-and-breadth-first-search</a></p>
+<p>My code of C++, Depth-first-search and Breadth-first-search</p>
+<p>Depth-first-search</p>
+<p>Only one line code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode *root)</span><br><span class="line">&#123;</span><br><span class="line">    return root == NULL ? 0 : max(maxDepth(root -&gt; left), maxDepth(root -&gt; right)) + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Breadth-first-search</p>
+<p>Calculate the count of the last level.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int maxDepth(TreeNode *root)</span><br><span class="line">&#123;</span><br><span class="line">    if(root == NULL)</span><br><span class="line">        return 0;</span><br><span class="line">    </span><br><span class="line">    int res = 0;</span><br><span class="line">    queue&lt;TreeNode *&gt; q;</span><br><span class="line">    q.push(root);</span><br><span class="line">    while(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        ++ res;</span><br><span class="line">        for(int i = 0, n = q.size(); i &lt; n; ++ i)</span><br><span class="line">        &#123;</span><br><span class="line">            TreeNode *p = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            </span><br><span class="line">            if(p -&gt; left != NULL)</span><br><span class="line">                q.push(p -&gt; left);</span><br><span class="line">            if(p -&gt; right != NULL)</span><br><span class="line">                q.push(p -&gt; right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/24177/1-line-ruby-and-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24177/1-line-ruby-and-python</a></p>
+<p>1 line Ruby and Python</p>
+<p>Just a bit shorter/different than previous solutions.</p>
+<p>Python:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def maxDepth(self, root):</span><br><span class="line">    return 1 + max(map(self.maxDepth, (root.left, root.right))) if root else 0</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/4087/simple-solution-using-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4087/simple-solution-using-java</a></p>
+<p>Simple solution using Java</p>
+<p>if the node does not exist, simply return 0. Otherwise, return the 1+the longer distance of its subtree.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int maxDepth(TreeNode root) &#123;</span><br><span class="line">        if(root==null)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return 1+Math.max(maxDepth(root.left),maxDepth(root.right));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27017/clean-java-iterative-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27017/clean-java-iterative-solution</a></p>
+<p>Clean Java Iterative Solution</p>
+<p>I do believe if you can think of an iterative solution, it’s always better than using a recursive one. And technical y every recursive solution can be converted into a equivalent iterative one.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public int maxDepth(TreeNode root) &#123;</span><br><span class="line">	if (root == null)</span><br><span class="line">		return 0;</span><br><span class="line">	</span><br><span class="line">	Deque&lt;TreeNode&gt; stack = new LinkedList&lt;TreeNode&gt;();</span><br><span class="line">	</span><br><span class="line">	stack.push(root);</span><br><span class="line">	int count = 0;</span><br><span class="line">	</span><br><span class="line">	while (!stack.isEmpty()) &#123;</span><br><span class="line">		int size = stack.size();</span><br><span class="line">		while (size-- &gt; 0) &#123;</span><br><span class="line">			TreeNode cur = stack.pop();</span><br><span class="line">			if (cur.left != null)</span><br><span class="line">				stack.addLast(cur.left);</span><br><span class="line">			if (cur.right != null)</span><br><span class="line">				stack.addLast(cur.right);</span><br><span class="line">		&#125;</span><br><span class="line">		count++;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	return count;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33826/two-java-iterative-solution-dfs-and-bfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33826/two-java-iterative-solution-dfs-and-bfs</a></p>
+<p>Two Java Iterative solution DFS and BFS</p>
+<p>This is the iterative version of finding the depth. The recursive version is trivial, so expect the interviewer to ask for the iterative version. I used two stacks for the dfs one and a queue for the level-order traversal one. Level order one is faster.</p>
+<p>DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public int maxDepth(TreeNode root) &#123;</span><br><span class="line">    if(root == null) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Stack&lt;TreeNode&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">    Stack&lt;Integer&gt; value = new Stack&lt;&gt;();</span><br><span class="line">    stack.push(root);</span><br><span class="line">    value.push(1);</span><br><span class="line">    int max = 0;</span><br><span class="line">    while(!stack.isEmpty()) &#123;</span><br><span class="line">        TreeNode node = stack.pop();</span><br><span class="line">        int temp = value.pop();</span><br><span class="line">        max = Math.max(temp, max);</span><br><span class="line">        if(node.left != null) &#123;</span><br><span class="line">            stack.push(node.left);</span><br><span class="line">            value.push(temp+1);</span><br><span class="line">        &#125;</span><br><span class="line">        if(node.right != null) &#123;</span><br><span class="line">            stack.push(node.right);</span><br><span class="line">            value.push(temp+1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return max;</span><br><span class="line">&#125;</span><br><span class="line">// 7ms</span><br></pre></td></tr></table></figure>
+<p>BFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public int maxDepth(TreeNode root) &#123;</span><br><span class="line">    if(root == null) &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">    queue.offer(root);</span><br><span class="line">    int count = 0;</span><br><span class="line">    while(!queue.isEmpty()) &#123;</span><br><span class="line">        int size = queue.size();</span><br><span class="line">        while(size-- &gt; 0) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            if(node.left != null) &#123;</span><br><span class="line">                queue.offer(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            if(node.right != null) &#123;</span><br><span class="line">                queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br><span class="line">// 3ms</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +586,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +681,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +728,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +790,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

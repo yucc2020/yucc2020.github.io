@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,backtracking," />
 
 
 
@@ -85,18 +85,21 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.6%  https://leetcode.com/problems/palindrome-partitioning/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome par">
+<meta name="keywords" content="leetcode,medium,backtracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="131. Palindrome Partitioning">
 <meta property="og:url" content="http://yucc.me/p/505b452c/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.6%  https://leetcode.com/problems/palindrome-partitioning/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome par">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.171Z">
+<meta property="og:image" content="http://1.bp.blogspot.com/-3g_qWEIsyUI/VJR0Co__PcI/AAAAAAAAAfg/okeb7u1mZnI/s1600/test.png">
+<meta property="og:image" content="http://i58.tinypic.com/2la69p2.png">
+<meta property="og:updated_time" content="2018-05-22T11:41:11.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="131. Palindrome Partitioning">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.6%  https://leetcode.com/problems/palindrome-partitioning/#/description Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome par">
+<meta name="twitter:image" content="http://1.bp.blogspot.com/-3g_qWEIsyUI/VJR0Co__PcI/AAAAAAAAAfg/okeb7u1mZnI/s1600/test.png">
 
 
 
@@ -358,12 +361,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:41:11+08:00">
+                2018-05-22 19:41
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,796
                 </span>
               
 
@@ -409,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +455,68 @@
       
 
       
-        
+        <ul>
+<li>31.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/palindrome-partitioning/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/palindrome-partitioning/#/description</a></p>
+<p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
+<p>Return all possible palindrome partitioning of s.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For example, given s = &quot;aab&quot;,</span><br><span class="line">Return</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [&quot;aa&quot;,&quot;b&quot;],</span><br><span class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10955/clean-c-backtracking-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10955/clean-c-backtracking-solution</a></p>
+<p>Clean C++ backtracking solution</p>
+<p>The Idea is simple: loop through the string, check if substr(0, i) is palindrome. If it is, recursively call dfs() on the rest of sub string: substr(i+1, length). keep the current palindrome partition so far in the ‘path’ argument of dfs(). When reaching the end of string, add current partition in the result.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; partition(string s) &#123;</span><br><span class="line">        vector&lt;vector&lt;string&gt; &gt; ret;</span><br><span class="line">        if(s.empty()) return ret;</span><br><span class="line">        </span><br><span class="line">        vector&lt;string&gt; path;</span><br><span class="line">        dfs(0, s, path, ret);</span><br><span class="line">        </span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void dfs(int index, string&amp; s, vector&lt;string&gt;&amp; path, vector&lt;vector&lt;string&gt; &gt;&amp; ret) &#123;</span><br><span class="line">        if(index == s.size()) &#123;</span><br><span class="line">            ret.push_back(path);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = index; i &lt; s.size(); ++i) &#123;</span><br><span class="line">            if(isPalindrome(s, index, i)) &#123;</span><br><span class="line">                path.push_back(s.substr(index, i - index + 1));</span><br><span class="line">                dfs(i+1, s, path, ret);</span><br><span class="line">                path.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool isPalindrome(const string&amp; s, int start, int end) &#123;</span><br><span class="line">        while(start &lt;= end) &#123;</span><br><span class="line">            if(s[start++] != s[end--])</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15432/12ms-14-lines-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15432/12ms-14-lines-c</a></p>
+<p>12ms 14-lines C++</p>
+<p>The problem has a nice structure that backtracking naturally fits in. The structure is, given a starting position idx, we search from idx till the end of the string s.length() - 1. Once we reach a position i such that the sub-string from idx to i (s.substr(idx, i - idx + 1)) is a palindrome, we add it to a temporary tmp. Then we recursively call the same function to process the remaining sub-string. Once we reach the end of the string, we add tmp into the result res of all the possible partitioning.</p>
+<p>Then, backtracking happens! Remember that at position i, we find s.substr(idx, i - idx + 1) to be a palindrome and we immediately add it to tmp. It is obvious that there may be some position j such that j &gt; i and s.substr(idx, j - idx + 1) is also a palindrome. So we need to recover to the state before adding s.substr(idx, i - idx + 1) to tmp and continue to find the next palindrome position after i. And we simply need to pop s.substr(idx, i - idx + 1) out of tmp to make things work.</p>
+<p>Putting these together, we can write down the following code, which should be self-explanatory.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; partition(string s) &#123;</span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt; res;</span><br><span class="line">        vector&lt;string&gt; tmp;</span><br><span class="line">        getPartition(s, 0, tmp, res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">private: </span><br><span class="line">    void getPartition(string&amp; s, int idx, vector&lt;string&gt;&amp; tmp, vector&lt;vector&lt;string&gt;&gt;&amp; res) &#123;</span><br><span class="line">        if (idx == s.length()) &#123;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = idx, n = s.length(); i &lt; n; i++) &#123;</span><br><span class="line">            int l = idx, r = i;</span><br><span class="line">            while (l &lt; r &amp;&amp; s[l] == s[r]) l++, r--;</span><br><span class="line">            if (l &gt;= r) &#123;</span><br><span class="line">                tmp.push_back(s.substr(idx, i - idx + 1));</span><br><span class="line">                getPartition(s, i + 1, tmp, res);</span><br><span class="line">                tmp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19370/1-liner-python-ruby" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19370/1-liner-python-ruby</a></p>
+<p>1-liner Python, Ruby</p>
+<p>Python:</p>
+<p>Broken into several physical lines for readability, but still one logical line and just one simple statement.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def partition(self, s):</span><br><span class="line">    return [[s[:i]] + rest</span><br><span class="line">            for i in xrange(1, len(s)+1)</span><br><span class="line">            if s[:i] == s[i-1::-1]</span><br><span class="line">            for rest in self.partition(s[i:])] or [[]]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33425/python-recursive-iterative-backtracking-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33425/python-recursive-iterative-backtracking-solution</a></p>
+<p>Python recursive/iterative backtracking solution</p>
+<p>Inspired by caikehe’s solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def partition(self, s):</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(s, [], res)</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def dfs(self, s, path, res):</span><br><span class="line">    if not s:</span><br><span class="line">        res.append(path)</span><br><span class="line">        return</span><br><span class="line">    for i in range(1, len(s)+1):</span><br><span class="line">        if self.isPal(s[:i]):</span><br><span class="line">            self.dfs(s[i:], path+[s[:i]], res)</span><br><span class="line">    </span><br><span class="line">def isPal(self, s):</span><br><span class="line">    return s == s[::-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6186/java-backtracking-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6186/java-backtracking-solution</a></p>
+<p>Java: Backtracking solution.</p>
+<p>if the input is “aab”, check if [0,0] “a” is palindrome. then check [0,1] “aa”, then [0,2] “aab”.<br>While checking [0,0], the rest of string is “ab”, use ab as input to make a recursive call.</p>
+<p><img src="http://1.bp.blogspot.com/-3g_qWEIsyUI/VJR0Co__PcI/AAAAAAAAAfg/okeb7u1mZnI/s1600/test.png" alt="image"></p>
+<p>in this example, in the loop of i=l+1, a recursive call will be made with input = “ab”.<br>Every time a recursive call is made, the position of l move right.</p>
+<p>How to define a correct answer?</p>
+<p>Think about DFS, if the current string to be checked (Palindrome) contains the last position, in this case “c”, this path is a correct answer, otherwise, it’s a false answer.</p>
+<p><img src="http://i58.tinypic.com/2la69p2.png" alt="image"></p>
+<p>line 13: is the boundary to check if the current string contains the last element.<br>l&gt;=s.length()</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; resultLst;</span><br><span class="line">	    ArrayList&lt;String&gt; currLst;</span><br><span class="line">	    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">	        resultLst = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">	        currLst = new ArrayList&lt;String&gt;();</span><br><span class="line">	        backTrack(s,0);</span><br><span class="line">	        return resultLst;</span><br><span class="line">	    &#125;</span><br><span class="line">	    public void backTrack(String s, int l)&#123;</span><br><span class="line">	        if(currLst.size()&gt;0 //the initial str could be palindrome</span><br><span class="line">	            &amp;&amp; l&gt;=s.length())&#123;</span><br><span class="line">	                List&lt;String&gt; r = (ArrayList&lt;String&gt;) currLst.clone();</span><br><span class="line">	                resultLst.add(r);</span><br><span class="line">	        &#125;</span><br><span class="line">	        for(int i=l;i&lt;s.length();i++)&#123;</span><br><span class="line">	            if(isPalindrome(s,l,i))&#123;</span><br><span class="line">	                if(l==i)</span><br><span class="line">	                    currLst.add(Character.toString(s.charAt(i)));</span><br><span class="line">	                else</span><br><span class="line">	                    currLst.add(s.substring(l,i+1));</span><br><span class="line">	                backTrack(s,i+1);</span><br><span class="line">	                currLst.remove(currLst.size()-1);</span><br><span class="line">	            &#125;</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	    public boolean isPalindrome(String str, int l, int r)&#123;</span><br><span class="line">	        if(l==r) return true;</span><br><span class="line">	        while(l&lt;r)&#123;</span><br><span class="line">	            if(str.charAt(l)!=str.charAt(r)) return false;</span><br><span class="line">	            l++;r--;</span><br><span class="line">	        &#125;</span><br><span class="line">	        return true;</span><br><span class="line">	    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2884/my-java-dp-only-solution-without-recursion-o-n-2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2884/my-java-dp-only-solution-without-recursion-o-n-2</a></p>
+<p>My Java DP only solution without recursion. O(n^2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line"> 	public static List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">		int len = s.length();</span><br><span class="line">		List&lt;List&lt;String&gt;&gt;[] result = new List[len + 1];</span><br><span class="line">		result[0] = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">		result[0].add(new ArrayList&lt;String&gt;());</span><br><span class="line"></span><br><span class="line">		boolean[][] pair = new boolean[len][len];</span><br><span class="line">		for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">			result[i + 1] = new ArrayList&lt;List&lt;String&gt;&gt;();</span><br><span class="line">			for (int left = 0; left &lt;= i; left++) &#123;</span><br><span class="line">				if (s.charAt(left) == s.charAt(i) &amp;&amp; (i-left &lt;= 1 || pair[left + 1][i - 1])) &#123;</span><br><span class="line">					pair[left][i] = true;</span><br><span class="line">					String str = s.substring(left, i + 1);</span><br><span class="line">					for (List&lt;String&gt; r : result[left]) &#123;</span><br><span class="line">						List&lt;String&gt; ri = new ArrayList&lt;String&gt;(r);</span><br><span class="line">						ri.add(str);</span><br><span class="line">						result[i + 1].add(ri);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return result[len];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Here the pair is to mark a range for the substring is a Pal. if pair[i][j] is true, that means sub string from i to j is pal.</p>
+<p>The result[i], is to store from beginng until current index i (Non inclusive), all possible partitions. From the past result we can determine current result.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/37756/java-dp-dfs-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37756/java-dp-dfs-solution</a></p>
+<p>Java DP + DFS solution</p>
+<p>The normal dfs backtracking will need to check each substring for palindrome, but a dp array can be used to record the possible break for palindrome before we start recursion.</p>
+<p>Edit:</p>
+<p>Sharing my thought process:</p>
+<p>first, I ask myself that how to check if a string is palindrome or not, usually a two point solution scanning from front and back. Here if you want to get all the possible palindrome partition, first a nested for loop to get every possible partitions for a string, then a scanning for all the partitions. That’s a O(n^2) for partition and O(n^2) for the scanning of string, totaling at O(n^4) just for the partition. However, if we use a 2d array to keep track of any string we have scanned so far, with an addition pair, we can determine whether it’s palindrome or not by justing looking at that pair, which is this line if(s.charAt(i) == s.charAt(j) &amp;&amp; (i - j &lt;= 2 || dp[j+1][i-1])). This way, the 2d array dp contains the possible palindrome partition among all.</p>
+<p>second, based on the prescanned palindrome partitions saved in dp array, a simple backtrack does the job.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        boolean[][] dp = new boolean[s.length()][s.length()];</span><br><span class="line">        for(int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">            for(int j = 0; j &lt;= i; j++) &#123;</span><br><span class="line">                if(s.charAt(i) == s.charAt(j) &amp;&amp; (i - j &lt;= 2 || dp[j+1][i-1])) &#123;</span><br><span class="line">                    dp[j][i] = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(res, new ArrayList&lt;&gt;(), dp, s, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void helper(List&lt;List&lt;String&gt;&gt; res, List&lt;String&gt; path, boolean[][] dp, String s, int pos) &#123;</span><br><span class="line">        if(pos == s.length()) &#123;</span><br><span class="line">            res.add(new ArrayList&lt;&gt;(path));</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = pos; i &lt; s.length(); i++) &#123;</span><br><span class="line">            if(dp[pos][i]) &#123;</span><br><span class="line">                path.add(s.substring(pos,i+1));</span><br><span class="line">                helper(res, path, dp, s, i+1);</span><br><span class="line">                path.remove(path.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>回溯法</p>
+<p><a href="https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/46159/a-general-approach-to-backtracking-questions-in-java-subsets-permutations-combination-sum-palindrome-partitioning/2</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;String&gt;&gt; partition(String s) &#123;</span><br><span class="line">       List&lt;List&lt;String&gt;&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">       backtrack(list, new ArrayList&lt;&gt;(), s, 0);</span><br><span class="line">       return list;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void backtrack(List&lt;List&lt;String&gt;&gt; list, List&lt;String&gt; tempList, String s, int start)&#123;</span><br><span class="line">       if(start == s.length())</span><br><span class="line">          list.add(new ArrayList&lt;&gt;(tempList));</span><br><span class="line">       else&#123;</span><br><span class="line">          for(int i = start; i &lt; s.length(); i++)&#123;</span><br><span class="line">             if(isPalindrome(s, start, i))&#123;</span><br><span class="line">                tempList.add(s.substring(start, i + 1));</span><br><span class="line">                backtrack(list, tempList, s, i + 1);</span><br><span class="line">                tempList.remove(tempList.size() - 1);</span><br><span class="line">             &#125;</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean isPalindrome(String s, int low, int high)&#123;</span><br><span class="line">       while(low &lt; high)</span><br><span class="line">          if(s.charAt(low++) != s.charAt(high--)) return false;</span><br><span class="line">       return true;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +577,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+        </div>
       
 
       
@@ -612,7 +708,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

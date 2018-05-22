@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,greedy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="29.3%  https://leetcode.com/problems/gas-station/ There are N gas stations along a circular route, where the amount of gas at station i is gas[i]. You have a car with an unlimited gas tank and it cos">
+<meta name="keywords" content="leetcode,medium,greedy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="134. Gas Station">
 <meta property="og:url" content="http://yucc.me/p/b124e3aa/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="29.3%  https://leetcode.com/problems/gas-station/ There are N gas stations along a circular route, where the amount of gas at station i is gas[i]. You have a car with an unlimited gas tank and it cos">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.173Z">
+<meta property="og:updated_time" content="2018-05-22T11:42:23.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="134. Gas Station">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="29.3%  https://leetcode.com/problems/gas-station/ There are N gas stations along a circular route, where the amount of gas at station i is gas[i]. You have a car with an unlimited gas tank and it cos">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:42:23+08:00">
+                2018-05-22 19:42
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,291
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -430,7 +452,103 @@
       
 
       
-        
+        <ul>
+<li>29.3%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/gas-station/" target="_blank" rel="noopener">https://leetcode.com/problems/gas-station/</a></p>
+<p>There are N gas stations along a circular route, where the amount of gas at station i is gas[i].</p>
+<p>You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.</p>
+<p>Return the starting gas station’s index if you can travel around the circuit once, otherwise return -1.</p>
+<p>Note:</p>
+<p>The solution is guaranteed to be unique.</p>
+<a id="more"></a>
+<hr>
+<p>具体原理及贪心算法还需要再思考</p>
+<p>方法一：</p>
+<p>我的代码实现:</p>
+<p>Oct 18，2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; gas, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start = gas.size()<span class="number">-1</span>, end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = gas[start] - cost[start];</span><br><span class="line">        <span class="keyword">while</span>(start&gt;end)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sum&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">                sum  += gas[end] - cost[end];</span><br><span class="line">                end++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                start--;</span><br><span class="line">                sum += gas[start] - cost[start];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum&gt;=<span class="number">0</span> ? start : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>My AC is O(1) space O(n) running time solution. Does anybody have posted this solution?</p>
+<p>I have got one solution to this problem. I am not sure whether somebody has already posted this solution.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;gas, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;cost)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">int</span> start = gas.size()<span class="number">-1</span>;</span><br><span class="line">       <span class="keyword">int</span> end = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> sum = gas[start] - cost[start]; <span class="comment">// 注意此处初值的赋值</span></span><br><span class="line">       <span class="keyword">while</span> (start &gt; end) &#123;</span><br><span class="line">          <span class="keyword">if</span> (sum &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">             sum += gas[end] - cost[end];</span><br><span class="line">             ++end;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">else</span> &#123;</span><br><span class="line">             --start;</span><br><span class="line">             sum += gas[start] - cost[start];</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> sum &gt;= <span class="number">0</span> ? start : <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int canCompleteCircuit(vector&lt;int&gt;&amp; gas, vector&lt;int&gt;&amp; cost) &#123;</span><br><span class="line">        int n = gas.size(), m = cost.size();</span><br><span class="line">        if(n!=m || m==n &amp;&amp; m==0) return -1;</span><br><span class="line">        int start = n-1, end = 0;</span><br><span class="line">        int cur_gas = gas[start]-cost[start];</span><br><span class="line">        while(end &lt;= start)&#123;</span><br><span class="line">            if(cur_gas&gt;=0)&#123;</span><br><span class="line">                cur_gas += gas[end] - cost[end];</span><br><span class="line">                end++;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                start--;</span><br><span class="line">                cur_gas += gas[start] - cost[start];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cur_gas&gt;=0?start:-1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/1344/share-some-of-my-ideas" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1344/share-some-of-my-ideas</a></p>
+<p>Share some of my ideas.</p>
+<p>I have thought for a long time and got two ideas:</p>
+<ol>
+<li>If car starts at A and can not reach B. Any station between A and B can not reach B.(B is the first station that A can not reach.)</li>
+<li>If the total number of gas is bigger than the total number of cost. There must be a solution.</li>
+</ol>
+<p>(Should I prove them?)</p>
+<p>Here is my solution based on those ideas:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;gas, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;cost)</span> </span>&#123;</span><br><span class="line">        int start(0),total(0),tank(0);</span><br><span class="line">        <span class="comment">//if car fails at 'start', record the next station</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;gas.size();i++) <span class="keyword">if</span>((tank=tank+gas[i]-cost[i])&lt;<span class="number">0</span>) &#123;start=i+<span class="number">1</span>;total+=tank;tank=<span class="number">0</span>;&#125;</span><br><span class="line">        <span class="keyword">return</span> (total+tank&lt;<span class="number">0</span>)? <span class="number">-1</span>:start;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5088/my-ac-is-o-1-space-o-n-running-time-solution-does-anybody-have-posted-this-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5088/my-ac-is-o-1-space-o-n-running-time-solution-does-anybody-have-posted-this-solution</a></p>
+<p>My AC is O(1) space O(n) running time solution. Does anybody have posted this solution?</p>
+<p>I have got one solution to this problem. I am not sure whether somebody has already posted this solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int canCompleteCircuit(vector&lt;int&gt; &amp;gas, vector&lt;int&gt; &amp;cost) &#123;</span><br><span class="line"></span><br><span class="line">       int start = gas.size()-1;</span><br><span class="line">       int end = 0;</span><br><span class="line">       int sum = gas[start] - cost[start];</span><br><span class="line">       while (start &gt; end) &#123;</span><br><span class="line">          if (sum &gt;= 0) &#123;</span><br><span class="line">             sum += gas[end] - cost[end];</span><br><span class="line">             ++end;</span><br><span class="line">          &#125;</span><br><span class="line">          else &#123;</span><br><span class="line">             --start;</span><br><span class="line">             sum += gas[start] - cost[start];</span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       return sum &gt;= 0 ? start : -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/39755/proof-of-if-total-gas-is-greater-than-total-cost-there-is-a-solution-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/39755/proof-of-if-total-gas-is-greater-than-total-cost-there-is-a-solution-c</a></p>
+<p>Proof of “if total gas is greater than total cost, there is a solution”. C++</p>
+<p>We prove the following statement.</p>
+<p>If sum of all gas[i]-cost[i] is greater than or equal to 0, then there is a start position you can travel the whole circle.<br>Let i be the index such that the the partial sum</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gas[0]-cost[0]+gas[1]-cost[1]+...+gas[i]-cost[i]</span><br></pre></td></tr></table></figure>
+<p>is the smallest, then the start position should be start=i+1 ( start=0 if i=n-1). Consider any other partial sum, for example,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gas[0]-cost[0]+gas[1]-cost[1]+...+gas[i]-cost[i]+gas[i+1]-cost[i+1]</span><br></pre></td></tr></table></figure>
+<p>Since gas[0]-cost[0]+gas[1]-cost[1]+…+gas[i]-cost[i] is the smallest, we must have</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gas[i+1]-cost[i+1]&gt;=0</span><br></pre></td></tr></table></figure>
+<p>in order for gas[0]-cost[0]+gas[1]-cost[1]+…+gas[i]-cost[i]+gas[i+1]-cost[i+1] to be greater.<br>The same reasoning gives that</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gas[i+1]-cost[i+1]&gt;=0</span><br><span class="line">gas[i+1]-cost[i+1]+gas[i+2]-cost[i+2]&gt;=0</span><br><span class="line">.......</span><br><span class="line">gas[i+1]-cost[i+1]+gas[i+2]-cost[i+2]+...+gas[n-1]-cost[n-1]&gt;=0</span><br></pre></td></tr></table></figure>
+<p>What about for the partial sums that wraps around?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gas[0]-cost[0]+gas[1]-cost[1]+...+gas[j]-cost[j] + gas[i+1]-cost[i+1]+...+gas[n-1]-cost[n-1]</span><br><span class="line">&gt;=</span><br><span class="line">gas[0]-cost[0]+gas[1]-cost[1]+...+gas[i]-cost[i] + gas[i+1]-cost[i+1]+...+gas[n-1]-cost[n-1]</span><br><span class="line">&gt;=0</span><br></pre></td></tr></table></figure>
+<p>The last inequality is due to the assumption that the entire sum of gas[k]-cost[k] is greater than or equal to 0.<br>So we have that all the partial sums</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gas[i+1]-cost[i+1]&gt;=0,</span><br><span class="line">gas[i+1]-cost[i+1]+gas[i+2]-cost[i+2]&gt;=0,</span><br><span class="line">gas[i+1]-cost[i+1]+gas[i+2]-cost[i+2]+...+gas[n-1]-cost[n-1]&gt;=0,</span><br><span class="line">...</span><br><span class="line">gas[i+1]-cost[i+1]+...+gas[n-1]-cost[n-1] + gas[0]-cost[0]+gas[1]-cost[1]+...+gas[j]-cost[j]&gt;=0,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>Thus i+1 is the position to start. Coding using this reasoning is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int canCompleteCircuit(vector&lt;int&gt;&amp; gas, vector&lt;int&gt;&amp; cost) &#123;</span><br><span class="line">        int n = gas.size();</span><br><span class="line">        int total(0), subsum(INT_MAX), start(0);</span><br><span class="line">        for(int i = 0; i &lt; n; ++i)&#123;</span><br><span class="line">            total += gas[i] - cost[i];</span><br><span class="line">            if(total &lt; subsum) &#123;</span><br><span class="line">                subsum = total;</span><br><span class="line">                start = i + 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return (total &lt; 0) ?  -1 : (start%n); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8860/fully-commented-o-n-c-solution-enabled-by-a-single-observation-of-mine" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8860/fully-commented-o-n-c-solution-enabled-by-a-single-observation-of-mine</a></p>
+<p>Fully-commented O(n) C++ solution enabled by a single observation of mine</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int canCompleteCircuit(vector&lt;int&gt; &amp;gas, vector&lt;int&gt; &amp;cost) &#123;</span><br><span class="line">        int i, j, n = gas.size();</span><br><span class="line"></span><br><span class="line">        /*</span><br><span class="line">         * If start from i, stop before station x -&gt; no station k from i + 1 to x - 1 can reach x.</span><br><span class="line">         * Bcoz if so, i can reach k and k can reach x, then i reaches x. Contradiction.</span><br><span class="line">         * Thus i can jump directly to x instead of i + 1, bringing complexity from O(n^2) to O(n).</span><br><span class="line">         */</span><br><span class="line">        // start from station i</span><br><span class="line">        for (i = 0; i &lt; n; i += j) &#123;</span><br><span class="line">            int gas_left = 0;</span><br><span class="line">            // forward j stations</span><br><span class="line">            for (j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">                int k = (i + j - 1) % n;</span><br><span class="line">                gas_left += gas[k] - cost[k];</span><br><span class="line">                if (gas_left &lt; 0)</span><br><span class="line">                    break;</span><br><span class="line">            &#125;</span><br><span class="line">            if (j &gt; n)</span><br><span class="line">                return i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/29487/my-one-pass-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29487/my-one-pass-solution</a></p>
+<p>My one pass solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">int canCompleteCircuit(vector&lt;int&gt;&amp; gas, vector&lt;int&gt;&amp; cost) &#123;</span><br><span class="line">    int size=gas.size();</span><br><span class="line">    int sum=0;</span><br><span class="line">    int res=0;</span><br><span class="line">    int total=0;</span><br><span class="line">    for(int i=0; i&lt;size; ++i)&#123;</span><br><span class="line">        sum+=gas[i]-cost[i];</span><br><span class="line">        if(sum&lt;0)&#123;</span><br><span class="line">            total+=sum;</span><br><span class="line">            sum=0;</span><br><span class="line">            res=i+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    total+=sum;</span><br><span class="line">    return total&lt;0?-1:res;</span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<p>The idea is simple.</p>
+<ol>
+<li>Whenever the sum is negative, reset it and let the car start from next point.</li>
+<li>In the mean time, add up all of the left gas to total. If it’s negative finally, return -1 since it’s impossible to finish.</li>
+<li>If it’s non-negative, return the last point saved in res;</li>
+</ol>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5088/my-ac-is-o-1-space-o-n-running-time-solution-does-anybody-have-posted-this-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5088/my-ac-is-o-1-space-o-n-running-time-solution-does-anybody-have-posted-this-solution</a></p>
+<p>6ms, September 20, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int canCompleteCircuit(vector&lt;int&gt;&amp; gas, vector&lt;int&gt;&amp; cost) &#123;</span><br><span class="line">        int start = gas.size() - 1;</span><br><span class="line">        int end = 0;</span><br><span class="line">        int sum = gas[start] - cost[start];</span><br><span class="line">        while(start &gt; end)&#123;</span><br><span class="line">            if(sum &gt;= 0)&#123;</span><br><span class="line">                sum += gas[end] - cost[end];</span><br><span class="line">                ++end;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                --start;</span><br><span class="line">                sum += gas[start] - cost[start];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum &gt;= 0 ? start : -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/27760/possibly-the-most-easiest-approach-o-n-one-variable-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27760/possibly-the-most-easiest-approach-o-n-one-variable-python</a></p>
+<p>55ms, 32.89%, September 20, 2016</p>
+<p>解析：sum（gas）&gt;= sum（gas），能保证存在一个位置，可以作为起点。<br>如果从位置position开始进行旅行，这一段到某一点没有油了，则以position为起点的这一段肯定不存在作为起点的位置，否则走不完这一段，所以postion设为从下一个位置开始，其他的类似。<br>my code的思想类似，不过是移动起点和终点的位置，如果小于0，起点向前移动，如果大于0，则起点向后移动。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def canCompleteCircuit(self, gas, cost):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type gas: List[int]</span><br><span class="line">        :type cost: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if len(gas) == 0 or len(cost) == 0 or sum(gas) &lt; sum(cost):</span><br><span class="line">            return -1</span><br><span class="line">        position = 0</span><br><span class="line">        balance = 0</span><br><span class="line">        for i in range(len(gas)):</span><br><span class="line">            balance += gas[i] - cost[i]</span><br><span class="line">            if balance &lt; 0:</span><br><span class="line">                balance = 0</span><br><span class="line">                position = i+1</span><br><span class="line">        return position</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>my code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def canCompleteCircuit(self, gas, cost):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type gas: List[int]</span><br><span class="line">        :type cost: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        start, end = len(gas)-1, 0</span><br><span class="line">        cur = gas[start]-cost[start]</span><br><span class="line">        while end&lt;start:</span><br><span class="line">            if cur&lt;0:</span><br><span class="line">                start -= 1</span><br><span class="line">                cur += gas[start] - cost[start]</span><br><span class="line">            else:</span><br><span class="line">                cur += gas[end] - cost[end]</span><br><span class="line">                end += 1</span><br><span class="line">        return start if cur&gt;=0 else -1</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/7247/my-o-n-time-o-1-extra-space-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7247/my-o-n-time-o-1-extra-space-solution</a></p>
+<p>My O(N) time, O(1) extra space solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">public int canCompleteCircuit(int[] gas, int[] cost) &#123;</span><br><span class="line">    for(int i = 0; i &lt; gas.length; i++) &#123;</span><br><span class="line">        gas[i] -= cost[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    int result = 0;</span><br><span class="line">    int n = gas.length;</span><br><span class="line">    for(int i = 0; i &lt; n * 2 - 1; i++) &#123;</span><br><span class="line">        sum += gas[i % n];</span><br><span class="line">        if(sum &lt; 0) &#123;</span><br><span class="line">            result = i + 1;</span><br><span class="line">            if(result &gt;= n) &#123;</span><br><span class="line">                return -1;</span><br><span class="line">            &#125;</span><br><span class="line">            sum = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25289/straightforward-java-linear-solution-with-o-1-space-explanation-and-math-proof" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25289/straightforward-java-linear-solution-with-o-1-space-explanation-and-math-proof</a></p>
+<p>Straightforward Java Linear Solution with O(1) space, explanation and Math proof</p>
+<p>The algorithm is pretty easy to understand. Imagine we take a tour around this circle, the only condition that we can complete this trip is to have more fuel provided than costed in total. That’s what the first loop does.</p>
+<p>If we do have more fuel provided than costed, that means we can always find a start point around this circle that we could complete the journey with an empty tank. Hence, we check from the beginning of the array, if we can gain more fuel at the current station, we will maintain the start point, else, which means we will burn out of oil before reaching to the next station, we will start over at the next station.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public int canCompleteCircuit(int[] gas, int[] cost) &#123;</span><br><span class="line">    int tank = 0;</span><br><span class="line">    for(int i = 0; i &lt; gas.length; i++)</span><br><span class="line">        tank += gas[i] - cost[i];</span><br><span class="line">    if(tank &lt; 0)</span><br><span class="line">        return - 1;</span><br><span class="line">        </span><br><span class="line">    int start = 0;</span><br><span class="line">    int accumulate = 0;</span><br><span class="line">    for(int i = 0; i &lt; gas.length; i++)&#123;</span><br><span class="line">        int curGain = gas[i] - cost[i];</span><br><span class="line">        if(accumulate + curGain &lt; 0)&#123;</span><br><span class="line">            start = i + 1;</span><br><span class="line">            accumulate = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        else accumulate += curGain;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25990/simple-o-n-java-solution-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25990/simple-o-n-java-solution-with-comments</a></p>
+<p>1ms, September 20, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int canCompleteCircuit(int[] gas, int[] cost) &#123;</span><br><span class="line">        int total = 0, tank = 0, index = 0;</span><br><span class="line">        for(int i=0; i&lt;cost.length; i++)&#123;</span><br><span class="line">            int cur = gas[i] - cost[i];</span><br><span class="line">            tank += cur;</span><br><span class="line">            if(tank&lt;0)&#123;</span><br><span class="line">                index = i+1;</span><br><span class="line">                tank = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            total += cur;</span><br><span class="line">        &#125;</span><br><span class="line">        return total &lt; 0 ? -1:index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +609,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
+          
+        </div>
       
 
       
@@ -574,8 +702,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +749,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +811,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

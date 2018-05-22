@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hard,design," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="16.7%  Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put. get(key) - Get the value (will always be positive) of the ke">
+<meta name="keywords" content="leetcode,hard,design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="146. LRU Cache">
 <meta property="og:url" content="http://yucc.me/p/5f411b29/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="16.7%  Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put. get(key) - Get the value (will always be positive) of the ke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.190Z">
+<meta property="og:updated_time" content="2018-05-22T11:52:24.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="146. LRU Cache">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="16.7%  Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put. get(key) - Get the value (will always be positive) of the ke">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:52:24+08:00">
+                2018-05-22 19:52
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,597
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -430,7 +452,54 @@
       
 
       
-        
+        <ul>
+<li>16.7%</li>
+</ul>
+<p>Design and implement a data structure for <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener">Least Recently Used (LRU) cache</a>. It should support the following operations: get and put.</p>
+<p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.</p>
+<p>put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
+<p>Follow up:</p>
+<p>Could you do both operations in O(1) time complexity?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">LRUCache cache = new LRUCache( 2 /* capacity */ );</span><br><span class="line"></span><br><span class="line">cache.put(1, 1);</span><br><span class="line">cache.put(2, 2);</span><br><span class="line">cache.get(1);       // returns 1</span><br><span class="line">cache.put(3, 3);    // evicts key 2</span><br><span class="line">cache.get(2);       // returns -1 (not found)</span><br><span class="line">cache.put(4, 4);    // evicts key 1</span><br><span class="line">cache.get(1);       // returns -1 (not found)</span><br><span class="line">cache.get(3);       // returns 3</span><br><span class="line">cache.get(4);       // returns 4</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6812/c-11-code-74ms-hash-table-list" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6812/c-11-code-74ms-hash-table-list</a></p>
+<p>C++11 code 74ms - Hash table + List</p>
+<p>There is a similar example in Java, but I wanted to share my solution using the new C++11 unordered_map and a list. The good thing about lists is that iterators are never invalidated by modifiers (unless erasing the element itself). This way, we can store the iterator to the corresponding LRU queue in the values of the hash map. Since using erase on a list with an iterator takes constant time, all operations of the LRU cache run in constant time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class LRUCache &#123;</span><br><span class="line">public:</span><br><span class="line">    LRUCache(int capacity) : _capacity(capacity) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    int get(int key) &#123;</span><br><span class="line">        auto it = cache.find(key);</span><br><span class="line">        if (it == cache.end()) return -1;</span><br><span class="line">        touch(it);</span><br><span class="line">        return it-&gt;second.first;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void set(int key, int value) &#123;</span><br><span class="line">        auto it = cache.find(key);</span><br><span class="line">        if (it != cache.end()) touch(it);</span><br><span class="line">        else &#123;</span><br><span class="line">			if (cache.size() == _capacity) &#123;</span><br><span class="line">				cache.erase(used.back());</span><br><span class="line">				used.pop_back();</span><br><span class="line">			&#125;</span><br><span class="line">            used.push_front(key);</span><br><span class="line">        &#125;</span><br><span class="line">        cache[key] = &#123; value, used.begin() &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    typedef list&lt;int&gt; LI;</span><br><span class="line">    typedef pair&lt;int, LI::iterator&gt; PII;</span><br><span class="line">    typedef unordered_map&lt;int, PII&gt; HIPII;</span><br><span class="line">    </span><br><span class="line">    void touch(HIPII::iterator it) &#123;</span><br><span class="line">        int key = it-&gt;first;</span><br><span class="line">        used.erase(it-&gt;second.second);</span><br><span class="line">        used.push_front(key);</span><br><span class="line">        it-&gt;second.second = used.begin();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    HIPII cache;</span><br><span class="line">    LI used;</span><br><span class="line">    int _capacity;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25792/clean-short-standard-c-solution-not-writing-c-in-c-like-all-other-lengthy-ones" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25792/clean-short-standard-c-solution-not-writing-c-in-c-like-all-other-lengthy-ones</a></p>
+<p>Clean Short Standard C++ solution – NOT writing C in C++ like all other lengthy ones</p>
+<p>I saw so many (or all) “C++” solutions posted here were not written in C++ at all. For those 200-line solutions, I don’t see the point in implementing a double-linked-list by themselves.</p>
+<p>If you are writing C++, please use STL!</p>
+<p>The code below is way cleaner, shorter and easier to read than most other C++ solutions posted here.<br>And above all, it was written in a standard C++ way.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class LRUCache&#123;</span><br><span class="line">    size_t m_capacity;</span><br><span class="line">    unordered_map&lt;int,  list&lt;pair&lt;int, int&gt;&gt;::iterator&gt; m_map; //m_map_iter-&gt;first: key, m_map_iter-&gt;second: list iterator;</span><br><span class="line">    list&lt;pair&lt;int, int&gt;&gt; m_list;                               //m_list_iter-&gt;first: key, m_list_iter-&gt;second: value;</span><br><span class="line">public:</span><br><span class="line">    LRUCache(size_t capacity):m_capacity(capacity) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    int get(int key) &#123;</span><br><span class="line">        auto found_iter = m_map.find(key);</span><br><span class="line">        if (found_iter == m_map.end()) //key doesn&apos;t exist</span><br><span class="line">            return -1;</span><br><span class="line">        m_list.splice(m_list.begin(), m_list, found_iter-&gt;second); //move the node corresponding to key to front</span><br><span class="line">        return found_iter-&gt;second-&gt;second;                         //return value of the node</span><br><span class="line">    &#125;</span><br><span class="line">    void set(int key, int value) &#123;</span><br><span class="line">        auto found_iter = m_map.find(key);</span><br><span class="line">        if (found_iter != m_map.end()) //key exists</span><br><span class="line">        &#123;</span><br><span class="line">            m_list.splice(m_list.begin(), m_list, found_iter-&gt;second); //move the node corresponding to key to front</span><br><span class="line">            found_iter-&gt;second-&gt;second = value;                        //update value of the node</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (m_map.size() == m_capacity) //reached capacity</span><br><span class="line">        &#123;</span><br><span class="line">           int key_to_del = m_list.back().first; </span><br><span class="line">           m_list.pop_back();            //remove node in list;</span><br><span class="line">           m_map.erase(key_to_del);      //remove key in map</span><br><span class="line">        &#125;</span><br><span class="line">        m_list.emplace_front(key, value);  //create new node in list</span><br><span class="line">        m_map[key] = m_list.begin();       //create correspondence between key and node</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4324/accepted-c-solution-296-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4324/accepted-c-solution-296-ms</a></p>
+<p>Accepted C++ solution, 296 ms</p>
+<p>Solution is unusual - combination of 2 data structures - hash map and linked list.<br>Algorithm:</p>
+<p>hash map holds iterators to linked list</p>
+<p>linked list holds key and value, key to access hash map items</p>
+<p>when item is accessed, it’s promoted - moved to the tail of the list - O(1) operation</p>
+<p>when item should be removed, we remove head of the list - O(1) operation</p>
+<p>when item is not promoted long time, it’s moved to the head of the list automatically</p>
+<p>get() - O(1) performance, set() - O(1) performance</p>
+<p>{</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class LRUCache&#123;</span><br><span class="line">private:</span><br><span class="line">	struct item_t&#123;</span><br><span class="line">		int key, val;</span><br><span class="line">		item_t(int k, int v) :key(k), val(v)&#123;&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	typedef list&lt;item_t&gt; list_t;</span><br><span class="line">	typedef unordered_map&lt;int, list_t::iterator&gt; map_t;</span><br><span class="line"></span><br><span class="line">	map_t   m_map;</span><br><span class="line">	list_t  m_list;</span><br><span class="line">	int     m_capacity;</span><br><span class="line">public:</span><br><span class="line">	LRUCache(int capacity) : m_capacity(capacity) &#123;</span><br><span class="line">	&#125;</span><br><span class="line">	int get(int key) &#123;</span><br><span class="line">		map_t::iterator i = m_map.find(key);</span><br><span class="line">		if (i == m_map.end()) return -1;</span><br><span class="line">		m_map[key] = promote(i-&gt;second);</span><br><span class="line">		return m_map[key]-&gt;val;</span><br><span class="line">	&#125;</span><br><span class="line">	void set(int key, int value) &#123;</span><br><span class="line">		map_t::iterator i = m_map.find(key);</span><br><span class="line">		if (i != m_map.end())&#123;</span><br><span class="line">			m_map[key] = promote(i-&gt;second);</span><br><span class="line">			m_map[key]-&gt;val = value;</span><br><span class="line">		&#125;</span><br><span class="line">		else &#123;</span><br><span class="line">			if (m_map.size() &lt; m_capacity)&#123;</span><br><span class="line">				m_map[key] = m_list.insert(m_list.end(), item_t(key, value));</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				m_map.erase(m_list.front().key);</span><br><span class="line">				m_list.pop_front();</span><br><span class="line">				m_map[key] = m_list.insert(m_list.end(), item_t(key, value));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	list_t::iterator promote(list_t::iterator i)&#123;</span><br><span class="line">		list_t::iterator inew = m_list.insert(m_list.end(), *i);</span><br><span class="line">		m_list.erase(i);</span><br><span class="line">		return inew;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>btw LeetCode, it was really hard to insert this code, after pressing {} button, class was improperly formatted. I inserted additional braces around class.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12262/o-1-unordered_map-list-splice" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12262/o-1-unordered_map-list-splice</a></p>
+<p>O(1) unordered_map + list + splice</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class LRUCache &#123;</span><br><span class="line">private:</span><br><span class="line">    // A list of (key, value) pairs</span><br><span class="line">    list&lt;pair&lt;int, int&gt;&gt; items;</span><br><span class="line">    // Map items to iterators (pointers) to list nodes</span><br><span class="line">    unordered_map&lt;int, list&lt;pair&lt;int, int&gt;&gt;::iterator&gt; cache;</span><br><span class="line">    // The capacity of the list</span><br><span class="line">    int capacity;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    LRUCache(int capacity) : capacity(capacity) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    int get(int key) &#123;</span><br><span class="line">        // If key is not found in hash map, return -1</span><br><span class="line">        if (cache.find(key) == cache.end())</span><br><span class="line">            return -1;</span><br><span class="line">        // Move the (key, value) pair to the beginning of the list</span><br><span class="line">        items.splice(items.begin(), items, cache[key]);</span><br><span class="line">        return cache[key]-&gt;second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void set(int key, int value) &#123;</span><br><span class="line">        // The key is not in the hash table</span><br><span class="line">        if (cache.find(key) == cache.end()) &#123;</span><br><span class="line">            // If the cache is full then delete the least recently</span><br><span class="line">            // used item, which is at the end of the list</span><br><span class="line">            if (items.size() == capacity) &#123;</span><br><span class="line">                cache.erase(items.back().first);</span><br><span class="line">                items.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            items.push_front(make_pair(key, value));</span><br><span class="line">            cache[key] = items.begin();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // Update the value associated with the key</span><br><span class="line">            cache[key]-&gt;second = value;</span><br><span class="line">            // Move the (key, value) pair to the beginning of the list</span><br><span class="line">            items.splice(items.begin(), items, cache[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14591/python-dict-double-linkedlist" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14591/python-dict-double-linkedlist</a></p>
+<p>Python Dict + Double LinkedList</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">class Node:</span><br><span class="line">def __init__(self, k, v):</span><br><span class="line">    self.key = k</span><br><span class="line">    self.val = v</span><br><span class="line">    self.prev = None</span><br><span class="line">    self.next = None</span><br><span class="line"></span><br><span class="line">class LRUCache:</span><br><span class="line">def __init__(self, capacity):</span><br><span class="line">    self.capacity = capacity</span><br><span class="line">    self.dic = dict()</span><br><span class="line">    self.head = Node(0, 0)</span><br><span class="line">    self.tail = Node(0, 0)</span><br><span class="line">    self.head.next = self.tail</span><br><span class="line">    self.tail.prev = self.head</span><br><span class="line"></span><br><span class="line">def get(self, key):</span><br><span class="line">    if key in self.dic:</span><br><span class="line">        n = self.dic[key]</span><br><span class="line">        self._remove(n)</span><br><span class="line">        self._add(n)</span><br><span class="line">        return n.val</span><br><span class="line">    return -1</span><br><span class="line"></span><br><span class="line">def set(self, key, value):</span><br><span class="line">    if key in self.dic:</span><br><span class="line">        self._remove(self.dic[key])</span><br><span class="line">    n = Node(key, value)</span><br><span class="line">    self._add(n)</span><br><span class="line">    self.dic[key] = n</span><br><span class="line">    if len(self.dic) &gt; self.capacity:</span><br><span class="line">        n = self.head.next</span><br><span class="line">        self._remove(n)</span><br><span class="line">        del self.dic[n.key]</span><br><span class="line"></span><br><span class="line">def _remove(self, node):</span><br><span class="line">    p = node.prev</span><br><span class="line">    n = node.next</span><br><span class="line">    p.next = n</span><br><span class="line">    n.prev = p</span><br><span class="line"></span><br><span class="line">def _add(self, node):</span><br><span class="line">    p = self.tail.prev</span><br><span class="line">    p.next = node</span><br><span class="line">    self.tail.prev = node</span><br><span class="line">    node.prev = p</span><br><span class="line">    node.next = self.tail</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/24757/python-concise-solution-with-comments-using-ordereddict" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24757/python-concise-solution-with-comments-using-ordereddict</a></p>
+<p>Python concise solution with comments (Using OrderedDict).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def __init__(self, capacity):</span><br><span class="line">    self.dic = collections.OrderedDict()</span><br><span class="line">    self.remain = capacity</span><br><span class="line"></span><br><span class="line">def get(self, key):</span><br><span class="line">    if key not in self.dic:</span><br><span class="line">        return -1</span><br><span class="line">    v = self.dic.pop(key) </span><br><span class="line">    self.dic[key] = v   # set key as the newest one</span><br><span class="line">    return v</span><br><span class="line"></span><br><span class="line">def set(self, key, value):</span><br><span class="line">    if key in self.dic:    </span><br><span class="line">        self.dic.pop(key)</span><br><span class="line">    else:</span><br><span class="line">        if self.remain &gt; 0:</span><br><span class="line">            self.remain -= 1  </span><br><span class="line">        else:  # self.dic is full</span><br><span class="line">            self.dic.popitem(last=False) </span><br><span class="line">    self.dic[key] = value</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +560,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/design/" rel="tag"># design</a>
+          
+        </div>
       
 
       
@@ -612,7 +691,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

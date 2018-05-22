@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,dynamic programming,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="28.6%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maxim">
+<meta name="keywords" content="leetcode,array,dynamic programming,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="123. Best Time to Buy and Sell Stock III">
 <meta property="og:url" content="http://yucc.me/p/3ac663d0/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="28.6%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maxim">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.157Z">
+<meta property="og:updated_time" content="2018-05-22T11:34:17.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="123. Best Time to Buy and Sell Stock III">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="28.6%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maxim">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:34:17+08:00">
+                2018-05-22 19:34
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  3,158
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  20
                 </span>
               
             </div>
@@ -430,7 +452,139 @@
       
 
       
-        
+        <ul>
+<li>28.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/</a></p>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p>
+<p>Note:</p>
+<p>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>微策略面试题</p>
+<p>我的代码实现：</p>
+<p>Oct 17, 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v = &#123;INT_MIN, <span class="number">0</span>, INT_MIN, <span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> price:prices)&#123;</span><br><span class="line">            v[<span class="number">0</span>] = max(v[<span class="number">0</span>], -price);</span><br><span class="line">            v[<span class="number">1</span>] = max(v[<span class="number">1</span>], v[<span class="number">0</span>]+price);</span><br><span class="line">            v[<span class="number">2</span>] = max(v[<span class="number">2</span>], v[<span class="number">1</span>]-price);</span><br><span class="line">            v[<span class="number">3</span>] = max(v[<span class="number">3</span>], v[<span class="number">2</span>]+price);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max(v[<span class="number">1</span>], v[<span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>My C++ solution (O(N) time, O(1) space, 8ms)</p>
+<p>It is similar to other buy/sell problems. just do DP and define an array of states to track the current maximum profits at different stages. </p>
+<p>For example, in the below code</p>
+<ul>
+<li>states[][0]: one buy</li>
+<li>states[][1]: one buy, one sell</li>
+<li>states[][2]: two buys, one sell</li>
+<li>states[][3]: two buy, two sells</li>
+</ul>
+<p>The states transistions occurs when buy/sell operations are executed. For example, state[][0] can move to state[][1] via one sell operation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int states[2][4] = &#123;INT_MIN, 0, INT_MIN, 0&#125;; // 0: 1 buy, 1: one buy/sell, 2: 2 buys/1 sell, 3, 2 buys/sells</span><br><span class="line">        int len = prices.size(), i, cur = 0, next =1;</span><br><span class="line">        for(i=0; i&lt;len; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            states[next][0] = max(states[cur][0], -prices[i]);</span><br><span class="line">            states[next][1] = max(states[cur][1], states[cur][0]+prices[i]);</span><br><span class="line">            states[next][2] = max(states[cur][2], states[cur][1]-prices[i]);</span><br><span class="line">            states[next][3] = max(states[cur][3], states[cur][2]+prices[i]);</span><br><span class="line">            swap(next, cur);</span><br><span class="line">        &#125;</span><br><span class="line">        return max(states[cur][1], states[cur][3]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>高效、简便、容易想到的方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int n = prices.size();</span><br><span class="line">        if(n&lt;2) return 0;</span><br><span class="line">        vector&lt;int&gt; dp1(n, 0);</span><br><span class="line">        vector&lt;int&gt; dp2(n, 0);</span><br><span class="line">        int minPrice = INT_MAX;</span><br><span class="line">        int maxProfit1 = 0;</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            minPrice = min(minPrice, prices[i]);</span><br><span class="line">            maxProfit1 = max(maxProfit1, prices[i]-minPrice);</span><br><span class="line">            dp1[i] = maxProfit1;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxPrice = INT_MIN;</span><br><span class="line">        int maxProfit2 = 0;</span><br><span class="line">        for(int i=n-1; i&gt;=0; i--)&#123;</span><br><span class="line">            maxPrice = max(maxPrice, prices[i]);</span><br><span class="line">            maxProfit2 = max(maxProfit2, maxPrice-prices[i]);</span><br><span class="line">            dp2[i] = maxProfit2;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxProfit = 0;</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            maxProfit = max(maxProfit, dp1[i]+dp2[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return maxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/19750/my-c-solution-o-n-time-o-1-space-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19750/my-c-solution-o-n-time-o-1-space-8ms</a></p>
+<p>My C++ solution (O(N) time, O(1) space, 8ms)</p>
+<p>It is similar to other buy/sell problems. just do DP and define an array of states to track the current maximum profits at different stages. </p>
+<p>For example, in the below code</p>
+<ul>
+<li>states[][0]: one buy</li>
+<li>states[][1]: one buy, one sell</li>
+<li>states[][2]: two buys, one sell</li>
+<li>states[][3]: two buy, two sells</li>
+</ul>
+<p>The states transistions occurs when buy/sell operations are executed. For example, state[][0] can move to state[][1] via one sell operation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int states[2][4] = &#123;INT_MIN, 0, INT_MIN, 0&#125;; // 0: 1 buy, 1: one buy/sell, 2: 2 buys/1 sell, 3, 2 buys/sells</span><br><span class="line">        int len = prices.size(), i, cur = 0, next =1;</span><br><span class="line">        for(i=0; i&lt;len; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            states[next][0] = max(states[cur][0], -prices[i]);</span><br><span class="line">            states[next][1] = max(states[cur][1], states[cur][0]+prices[i]);</span><br><span class="line">            states[next][2] = max(states[cur][2], states[cur][1]-prices[i]);</span><br><span class="line">            states[next][3] = max(states[cur][3], states[cur][2]+prices[i]);</span><br><span class="line">            swap(next, cur);</span><br><span class="line">        &#125;</span><br><span class="line">        return max(states[cur][1], states[cur][3]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27426/a-solution-not-so-dynamic-programming" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27426/a-solution-not-so-dynamic-programming</a></p>
+<p>A solution not so dynamic programming.</p>
+<p>I think the most difficult part is how to connect the first transaction to the second transaction. The final target is to get the maximum value of profit2. You must try to get money as much as possible after you buy the stock second time. Then after the second time of sell, with the as high as possible price, you get the maximum profit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int size=prices.size();</span><br><span class="line">        int profit1=0;</span><br><span class="line">        int profit2=0;</span><br><span class="line">        int o1=INT_MAX;</span><br><span class="line">        int o2=INT_MIN;</span><br><span class="line">        for(int i=0; i&lt;size; ++i)&#123;</span><br><span class="line">            o1=min(o1, prices[i]);</span><br><span class="line">            profit1=max(profit1, prices[i]-o1);</span><br><span class="line">            o2=max(o2, profit1-prices[i]);</span><br><span class="line">            profit2=max(profit2, prices[i]+o2);</span><br><span class="line">        &#125;</span><br><span class="line">        return profit2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/902/don-t-need-dp-to-solve-it-within-o-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/902/don-t-need-dp-to-solve-it-within-o-n</a></p>
+<p>Don’t need DP to solve it within O(n)</p>
+<p>Don’t need DP to solve this problem. It is still O(n) and basically use the same algorithm solving “Stock I” four times.</p>
+<ol>
+<li><p>Get the max profit with one transaction to the full array. Keep down the start and end positions.</p>
+</li>
+<li><p>the start and end positions will be included in the result of two transaction. It falls into two categories:<br>A) it is one full transaction, B) they belong to two separate transactions(start belongs to first transaction and end belongs to second transaction).</p>
+</li>
+<li><p>if A)– get max profit with one transaction to subarray from 0 to start ; get max profit with one transaction to subarray from end to prices.length.</p>
+</li>
+<li><p>if B)– get the max profit with one transaction within start and end in reverse order</p>
+</li>
+<li><p>return the max profit in those cases.</p>
+</li>
+</ol>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41049/clear-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41049/clear-c-solution</a></p>
+<p>Clear c++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">    //It&apos;s wrong if you choose the minimum price for buy2 , but you can maximize the left money.</span><br><span class="line">    //</span><br><span class="line">    int buy1 = INT_MIN, sale1 = 0, buy2 = INT_MIN, sale2 = 0;</span><br><span class="line">    for(int i=0; i&lt;prices.size(); i++)&#123;                      //the more money left, the happier you will be</span><br><span class="line">        buy1 = max(buy1, -prices[i]);                        //left money after buy1</span><br><span class="line">        sale1 = max(sale1, prices[i] + buy1);                //left money after sale1</span><br><span class="line">        buy2 = max(buy2, sale1 - prices[i]);                 //left money after buy2</span><br><span class="line">        sale2 = max(sale2, prices[i] + buy2);                //left money after sale2</span><br><span class="line">    &#125;</span><br><span class="line">    return sale2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/42087/why-don-t-we-make-our-life-easier" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/42087/why-don-t-we-make-our-life-easier</a></p>
+<p>Why don’t we make our life easier</p>
+<p>The idea is very basic. At most two transactions means we can break at any time point and compute the max revenue before this time point and after this time point. For every possible time point, we choose the maximum.</p>
+<p>Note that right_max start from the last time point, which is just like a mirror algorithm from the Best Time to Buy and Sell Stock I</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">    vector&lt;int&gt; left_max;</span><br><span class="line">    vector&lt;int&gt; right_max;</span><br><span class="line">    int n = prices.size();</span><br><span class="line">    if(n == 0)&#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int cur_min = prices[0];</span><br><span class="line">    int max_r = 0;</span><br><span class="line">    for(int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">        max_r = max(max_r, prices[i] - cur_min);</span><br><span class="line">        left_max.push_back(max_r);</span><br><span class="line">        cur_min = min(cur_min, prices[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    int cur_max = prices[n-1];</span><br><span class="line">    max_r = 0;</span><br><span class="line">    for(int i = n-1; i &gt;= 0; i--)&#123;</span><br><span class="line">        max_r = max(max_r, cur_max - prices[i]);</span><br><span class="line">        right_max.insert(right_max.begin(), max_r);</span><br><span class="line">        cur_max = max(cur_max, prices[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    int sum_max = 0;</span><br><span class="line">    for(int i = 0; i &lt; n; i++)&#123;</span><br><span class="line">        sum_max = max(sum_max, left_max[i] + right_max[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return sum_max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/6811/python-dp-solution-120ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6811/python-dp-solution-120ms</a></p>
+<p>Python DP solution, 120ms</p>
+<p>Two passes through the list, O(n) time, O(n) space:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def maxProfit(self, prices):</span><br><span class="line">    if not prices:</span><br><span class="line">        return 0</span><br><span class="line">    </span><br><span class="line">    # forward traversal, profits record the max profit </span><br><span class="line">    # by the ith day, this is the first transaction</span><br><span class="line">    profits = []</span><br><span class="line">    max_profit = 0</span><br><span class="line">    current_min = prices[0]</span><br><span class="line">    for price in prices:</span><br><span class="line">        current_min = min(current_min, price)</span><br><span class="line">        max_profit = max(max_profit, price - current_min)</span><br><span class="line">        profits.append(max_profit)</span><br><span class="line">    </span><br><span class="line">    # backward traversal, max_profit records the max profit</span><br><span class="line">    # after the ith day, this is the second transaction </span><br><span class="line">    total_max = 0    </span><br><span class="line">    max_profit = 0</span><br><span class="line">    current_max = prices[-1]</span><br><span class="line">    for i in range(len(prices) - 1, -1, -1):</span><br><span class="line">        current_max = max(current_max, prices[i])</span><br><span class="line">        max_profit = max(max_profit, current_max - prices[i])</span><br><span class="line">        total_max = max(total_max, max_profit + profits[i])</span><br><span class="line">        </span><br><span class="line">    return total_max</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/51468/7-liner-in-python-beats-99" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/51468/7-liner-in-python-beats-99</a></p>
+<p>7-liner in Python, beats 99%</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxProfit(self, p):</span><br><span class="line">        if not p: return 0</span><br><span class="line">        sell, buyd, n, minp, maxp = [0], [0], len(p), p[0], p[-1]</span><br><span class="line">        for i in range(1, n):</span><br><span class="line">            minp, maxp = min(minp, p[i]), max(maxp, p[n-i-1])</span><br><span class="line">            sell.append(max(sell[i-1], p[i] - minp))</span><br><span class="line">            buyd.append(max(buyd[i-1], maxp - p[n-i-1]))</span><br><span class="line">        return max(sell[i] + buyd[n-i-1] for i in range(n))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 198 / 198 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 56 ms</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5934/is-it-best-solution-with-o-n-o-1" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5934/is-it-best-solution-with-o-n-o-1</a></p>
+<p>Is it Best Solution with O(n), O(1).</p>
+<p>The thinking is simple and is inspired by the best solution from Single Number II (I read through the discussion after I use DP).</p>
+<p>Assume we only have 0 money at first;</p>
+<p>4 Variables to maintain some interested ‘ceilings’ so far:</p>
+<p>The maximum of if we’ve just buy 1st stock, if we’ve just sold 1nd stock, if we’ve just buy 2nd stock, if we’ve just sold 2nd stock.</p>
+<p>Very simple code too and work well. I have to say the logic is simple than those in Single Number II.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;</span><br><span class="line">        int release1 = 0, release2 = 0;</span><br><span class="line">        for(int i:prices)&#123;                              // Assume we only have 0 money at first</span><br><span class="line">            release2 = Math.max(release2, hold2+i);     // The maximum if we&apos;ve just sold 2nd stock so far.</span><br><span class="line">            hold2    = Math.max(hold2,    release1-i);  // The maximum if we&apos;ve just buy  2nd stock so far.</span><br><span class="line">            release1 = Math.max(release1, hold1+i);     // The maximum if we&apos;ve just sold 1nd stock so far.</span><br><span class="line">            hold1    = Math.max(hold1,    -i);          // The maximum if we&apos;ve just buy  1st stock so far. </span><br><span class="line">        &#125;</span><br><span class="line">        return release2; ///Since release1 is initiated as 0, so release2 will always higher than release1.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions</a></p>
+<p>A clean DP solution which generalizes to k transactions</p>
+<p>Solution is commented in the code. Time complexity is O(kn), space complexity can be O(n) because this DP only uses the result from last step. But for cleaness this solution still used O(kn) space complexity to preserve similarity to the equations in the comments.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt; &amp;prices) &#123;</span><br><span class="line">        // f[k, ii] represents the max profit up until prices[ii] (Note: NOT ending with prices[ii]) using at most k transactions. </span><br><span class="line">        // f[k, ii] = max(f[k, ii-1], prices[ii] - prices[jj] + f[k-1, jj]) &#123; jj in range of [0, ii-1] &#125;</span><br><span class="line">        //          = max(f[k, ii-1], prices[ii] + max(f[k-1, jj] - prices[jj]))</span><br><span class="line">        // f[0, ii] = 0; 0 times transation makes 0 profit</span><br><span class="line">        // f[k, 0] = 0; if there is only one price data point you can&apos;t make any money no matter how many times you can trade</span><br><span class="line">        if (prices.size() &lt;= 1) return 0;</span><br><span class="line">        else &#123;</span><br><span class="line">            int K = 2; // number of max transation allowed</span><br><span class="line">            int maxProf = 0;</span><br><span class="line">            vector&lt;vector&lt;int&gt;&gt; f(K+1, vector&lt;int&gt;(prices.size(), 0));</span><br><span class="line">            for (int kk = 1; kk &lt;= K; kk++) &#123;</span><br><span class="line">                int tmpMax = f[kk-1][0] - prices[0];</span><br><span class="line">                for (int ii = 1; ii &lt; prices.size(); ii++) &#123;</span><br><span class="line">                    f[kk][ii] = max(f[kk][ii-1], prices[ii] + tmpMax);</span><br><span class="line">                    tmpMax = max(tmpMax, f[kk-1][ii] - prices[ii]);</span><br><span class="line">                    maxProf = max(f[kk][ii], maxProf);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return maxProf;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions/2</a></p>
+<p>Brilliant solution! a small point: there is no need to track maxProf. we can simply return f[K][prices.size()-1]</p>
+<p><a href="https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions/9" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4766/a-clean-dp-solution-which-generalizes-to-k-transactions/9</a></p>
+<p>Brilliant solution! Thanks for sharing~</p>
+<p>Minor point, but f[kk-1][0] is just 0.</p>
+<p>I’d also explain the algorithm a little differently, something like the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// dpProfit[t][i]: maximum Profit using at most t transactions up to day i (including day i)</span><br><span class="line">// dpProfit[t][i] = max(dpProfit[t][i - 1], prices[i] - prices[j] + dpProfit[t - 1][j]) for all j in range [0, i - 1]</span><br><span class="line">//                = max(dpProfit[t][i - 1], prices[i] + max(dpProfit[t - 1][j] - prices[j])) for all j in range [0, i - 1]</span><br><span class="line">//                = max(dpProfit[t][i - 1], prices[i] + max prev [t - 1] trans profit at the corresponding j in range [0, i - 1] less price at j)</span><br><span class="line">//                                                      maxPreProfitLessI inside loop iterations</span><br><span class="line">//                                                      Note: subtracting price at j is for the last additional transaction to sell at day i</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/39751/my-explanation-for-o-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/39751/my-explanation-for-o-n-solution</a></p>
+<p>My explanation for O(N) solution!</p>
+<p>First assume that we have no money, so buy1 means that we have to borrow money from others, we want to borrow less so that we have to make our balance as max as we can(because this is negative).</p>
+<p>sell1 means we decide to sell the stock, after selling it we have price[i] money and we have to give back the money we owed, so we have price[i] - |buy1| = prices[i ] + buy1, we want to make this max.</p>
+<p>buy2 means we want to buy another stock, we already have sell1 money, so after buying stock2 we have buy2 = sell1 - price[i] money left, we want more money left, so we make it max</p>
+<p>sell2 means we want to sell stock2, we can have price[i] money after selling it, and we have buy2 money left before, so sell2 = buy2 + prices[i], we make this max.</p>
+<p>So sell2 is the most money we can have.</p>
+<p>Hope it is helpful and welcome quesions!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">		int sell1 = 0, sell2 = 0, buy1 = Integer.MIN_VALUE, buy2 = Integer.MIN_VALUE;</span><br><span class="line">		for (int i = 0; i &lt; prices.length; i++) &#123;</span><br><span class="line">			buy1 = Math.max(buy1, -prices[i]);</span><br><span class="line">			sell1 = Math.max(sell1, buy1 + prices[i]);</span><br><span class="line">			buy2 = Math.max(buy2, sell1 - prices[i]);</span><br><span class="line">			sell2 = Math.max(sell2, buy2 + prices[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		return sell2;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32288/2ms-java-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32288/2ms-java-dp-solution</a></p>
+<p>2ms Java DP Solution</p>
+<p>Sorry for my poor English</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    // these four variables represent your profit after executing corresponding transaction</span><br><span class="line">    // in the beginning, your profit is 0. </span><br><span class="line">    // when you buy a stock ,the profit will be deducted of the price of stock.</span><br><span class="line">    int firstBuy = Integer.MIN_VALUE, firstSell = 0;</span><br><span class="line">    int secondBuy = Integer.MIN_VALUE, secondSell = 0;</span><br><span class="line"></span><br><span class="line">    for (int curPrice : prices) &#123;</span><br><span class="line">        if (firstBuy &lt; -curPrice) firstBuy = -curPrice; // the max profit after you buy first stock</span><br><span class="line">        if (firstSell &lt; firstBuy + curPrice) firstSell = firstBuy + curPrice; // the max profit after you sell it</span><br><span class="line">        if (secondBuy &lt; firstSell - curPrice) secondBuy = firstSell - curPrice; // the max profit after you buy the second stock</span><br><span class="line">        if (secondSell &lt; secondBuy + curPrice) secondSell = secondBuy + curPrice; // the max profit after you sell the second stock</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return secondSell; // secondSell will be the max profit after passing the prices</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7028/java-solution-with-just-two-traverses" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7028/java-solution-with-just-two-traverses</a></p>
+<p>Java solution with just two traverses.</p>
+<p>Go from left to right and calculate max profit for each index (i). Go from right to left and calculate max profit for (i). Add max right profit for (i) and max left profit for (i-1) and check if it’s max profit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">	if (prices == null || prices.length == 0) return 0;</span><br><span class="line">	int lenght = prices.length;</span><br><span class="line">	</span><br><span class="line">	int[] leftProfit = new int[lenght];</span><br><span class="line">	int leftMaxProfit = 0;</span><br><span class="line">	int leftMin = prices[0];</span><br><span class="line">    for (int i=0; i&lt;lenght; i++) &#123;</span><br><span class="line">    	if (prices[i] &lt; leftMin) leftMin = prices[i];</span><br><span class="line">    	if (prices[i] - leftMin &gt; leftMaxProfit) leftMaxProfit = prices[i]-leftMin;</span><br><span class="line">    	leftProfit[i] = leftMaxProfit;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int maxProfit = 0;</span><br><span class="line">    int rightMaxProfit = 0;</span><br><span class="line">	int rightMax = prices[lenght-1];</span><br><span class="line">	for (int i=lenght-1; i&gt;=0; i--) &#123;</span><br><span class="line">    	if (prices[i] &gt; rightMax) rightMax = prices[i];</span><br><span class="line">    	if (rightMax - prices[i] &gt; rightMaxProfit) rightMaxProfit = rightMax - prices[i];</span><br><span class="line">    	int currentProfit = rightMaxProfit + (i&gt;0 ? leftProfit[i-1] : 0);</span><br><span class="line">    	if (currentProfit &gt; maxProfit) &#123;</span><br><span class="line">    		maxProfit = currentProfit;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    return maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code</p>
+<p>dp1中的dp[i] 表示从第一天至第i天，只卖出一次的最大收益。</p>
+<p>dp2中的dp[i] 表示从第i天至最后一天，只卖出一次的最大收益。</p>
+<p>dp1从前向后，dp2从后向前</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        int[] dp1 = new int[prices.length];</span><br><span class="line">        int[] dp2 = new int[prices.length];</span><br><span class="line">        int minprice = Integer.MAX_VALUE;</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        for(int i=0; i&lt;prices.length; i++)&#123;</span><br><span class="line">            if(prices[i] &lt; minprice)</span><br><span class="line">                minprice = prices[i];</span><br><span class="line">            else</span><br><span class="line">                maxprofit = Math.max(maxprofit, prices[i]-minprice);</span><br><span class="line">            dp1[i] = maxprofit;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxprice = Integer.MIN_VALUE;</span><br><span class="line">        maxprofit = 0;</span><br><span class="line">        for(int j=prices.length-1; j&gt;=0; j--)&#123;</span><br><span class="line">            if(prices[j] &gt; maxprice)</span><br><span class="line">                maxprice = prices[j];</span><br><span class="line">            else</span><br><span class="line">                maxprofit = Math.max(maxprofit, maxprice-prices[j]);</span><br><span class="line">            dp2[j] = maxprofit;</span><br><span class="line">        &#125;</span><br><span class="line">        maxprofit = 0;</span><br><span class="line">        for(int i=0; i&lt;prices.length; i++)</span><br><span class="line">            maxprofit = Math.max(maxprofit, dp1[i]+dp2[i]);</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +645,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -574,8 +740,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +787,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +849,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,easy,dynamic programming," />
 
 
 
@@ -85,18 +85,20 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="40.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at">
+<meta name="keywords" content="leetcode,array,easy,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="121. Best Time to Buy and Sell Stock">
 <meta property="og:url" content="http://yucc.me/p/588afc94/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="40.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.158Z">
+<meta property="og:image" content="https://leetcode.com/media/original_images/121_profit_graph.png">
+<meta property="og:updated_time" content="2018-05-22T11:32:14.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="121. Best Time to Buy and Sell Stock">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="40.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock/ Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at">
+<meta name="twitter:image" content="https://leetcode.com/media/original_images/121_profit_graph.png">
 
 
 
@@ -358,12 +360,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:32:14+08:00">
+                2018-05-22 19:32
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,394
                 </span>
               
 
@@ -409,7 +433,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +454,88 @@
       
 
       
-        
+        <ul>
+<li>40.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock/</a></p>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [7, 1, 5, 3, 6, 4]</span><br><span class="line">Output: 5</span><br><span class="line"></span><br><span class="line">max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [7, 6, 4, 3, 1]</span><br><span class="line">Output: 0</span><br><span class="line"></span><br><span class="line">In this case, no transaction is done, i.e. max profit = 0.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>两种思路：</p>
+<ol>
+<li>寻找低谷与峰值之间的差。设置一个变量为低谷，vally，另一个变量为目前找到的最大值，maxsofar，则从头开始遍历，如果当前值小于vally，则此值与vally的差为负，所以vally改为当前值，如果当前值大于vally，则计算当前值与vally的差。一次遍历。</li>
+<li>第二种思路，重新设置一个数组，记录邻近两个数字的差，类似于寻找最长的数组。</li>
+</ol>
+<p>方法一：</p>
+<p>微策略面试题</p>
+<p>我的代码实现：</p>
+<p>Oct 17， 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> minPrice = INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> maxPro = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> price:prices)&#123;</span><br><span class="line">            minPrice = min(price, minPrice);</span><br><span class="line">            maxPro = max(maxPro, price - minPrice);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxPro;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution</a></p>
+<p>Sharing my simple and clear C++ solution</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;prices)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> maxPro = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> minPrice = INT_MAX; <span class="comment">// 此处不能用prices[0]代替，如果用，需要先判断prices.size()与0的关系</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size(); i++)&#123;</span><br><span class="line">        minPrice = min(minPrice, prices[i]);</span><br><span class="line">        maxPro = max(maxPro, prices[i] - minPrice);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxPro;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>minPrice is the minimum price from day 0 to day i. And maxPro is the maximum profit we can get from day 0 to day i.</p>
+<p>How to get maxPro? Just get the larger one between current maxPro and prices[i] - minPrice.</p>
+<p>方法二：</p>
+<p><a href="https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/5" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/5</a></p>
+<p>Very nice solution! But it still can be optimized. We only need to calculate either maxProfit or minPrice not both in every loop. Running time can be dropped by 33% percent.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    if(prices == null || prices.length &lt; 2) return 0;      </span><br><span class="line">    int maxProfit = 0, minPrice = prices[0];</span><br><span class="line">    </span><br><span class="line">    for(int i = 1; i &lt; prices.length; i++) &#123;</span><br><span class="line">        if(prices[i] &gt; prices[i - 1]) &#123;</span><br><span class="line">            maxProfit = Math.max(maxProfit, prices[i] - minPrice);       </span><br><span class="line">        &#125; else &#123;</span><br><span class="line">             minPrice = Math.min(minPrice, prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution</a></p>
+<p>Sharing my simple and clear C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt; &amp;prices) &#123;</span><br><span class="line">    int maxPro = 0;</span><br><span class="line">    int minPrice = INT_MAX;</span><br><span class="line">    for(int i = 0; i &lt; prices.size(); i++)&#123;</span><br><span class="line">        minPrice = min(minPrice, prices[i]);</span><br><span class="line">        maxPro = max(maxPro, prices[i] - minPrice);</span><br><span class="line">    &#125;</span><br><span class="line">    return maxPro;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>minPrice is the minimum price from day 0 to day i. And maxPro is the maximum profit we can get from day 0 to day i.</p>
+<p>How to get maxPro? Just get the larger one between current maxPro and prices[i] - minPrice.</p>
+<p><a href="https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/5" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/5</a></p>
+<p>Very nice solution! But it still can be optimized. We only need to calculate either maxProfit or minPrice not both in every loop. Running time can be dropped by 33% percent.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    if(prices == null || prices.length &lt; 2) return 0;      </span><br><span class="line">    int maxProfit = 0, minPrice = prices[0];</span><br><span class="line">    </span><br><span class="line">    for(int i = 1; i &lt; prices.length; i++) &#123;</span><br><span class="line">        if(prices[i] &gt; prices[i - 1]) &#123;</span><br><span class="line">            maxProfit = Math.max(maxProfit, prices[i] - minPrice);       </span><br><span class="line">        &#125; else &#123;</span><br><span class="line">             minPrice = Math.min(minPrice, prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return maxProfit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/42716/5-line-cpp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/42716/5-line-cpp-solution</a></p>
+<p>5 line CPP solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">    int maxPro = 0, minPrice = INT_MAX;</span><br><span class="line">    for(int i = 0; i &lt; prices.size(); i++) &#123;</span><br><span class="line">        minPrice = min(minPrice, prices[i]);</span><br><span class="line">        maxPro = max(prices[i] - minPrice, maxPro);</span><br><span class="line">    &#125;</span><br><span class="line">    return maxPro;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/33241/easy-o-n-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33241/easy-o-n-python-solution</a></p>
+<p>Easy O(n) Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def maxProfit(prices):</span><br><span class="line">    max_profit, min_price = 0, float(&apos;inf&apos;)</span><br><span class="line">    for price in prices:</span><br><span class="line">        min_price = min(min_price, price)</span><br><span class="line">        profit = price - min_price</span><br><span class="line">        max_profit = max(max_profit, profit)</span><br><span class="line">    return max_profit</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>Algorithm</p>
+<p>Say the given array is:</p>
+<p>[7, 1, 5, 3, 6, 4]</p>
+<p>If we plot the numbers of the given array on a graph, we get:</p>
+<p><img src="https://leetcode.com/media/original_images/121_profit_graph.png" alt="image"></p>
+<p>The points of interest are the peaks and valleys in the given graph. We need to find the largest peak following the smallest valley. We can maintain two variables - minprice and maxprofit corresponding to the smallest valley and maximum profit (maximum difference between selling price and minprice) obtained so far respectively.</p>
+<p>Complexity Analysis</p>
+<ul>
+<li><p>Time complexity : O(n)O(n). Only a single pass is needed.</p>
+</li>
+<li><p>Space complexity : O(1)O(1). Only two variables are used.</p>
+</li>
+</ul>
+<p>针对每个点，与最小点比差值，如果最小点小于当前值，可以看其差值是否可以做最小值，如果最小点大于当前最小值，当前值可以作为最小值。</p>
+<p>关键在于对每一个值遍历。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        int minprice = Integer.MAX_VALUE;</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        for(int i=0; i&lt;prices.length; i++)&#123;</span><br><span class="line">            if(prices[i]&lt;minprice)</span><br><span class="line">                minprice = prices[i];</span><br><span class="line">            else if(prices[i] - minprice &gt; maxprofit)</span><br><span class="line">                maxprofit = prices[i] - minprice;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        if(prices.length&lt;=1) return 0;</span><br><span class="line">        int valley=prices[0];</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        for(int i=1; i&lt;prices.length; i++)&#123;</span><br><span class="line">            if(prices[i-1]&gt;prices[i])</span><br><span class="line">                valley = Math.min(valley, prices[i]);</span><br><span class="line">            else if(prices[i]-valley&gt;maxprofit)</span><br><span class="line">                maxprofit = prices[i]-valley;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19853/kadane-s-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19853/kadane-s-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input</a></p>
+<p>The logic to solve this problem is same as “max subarray problem” using Kadane’s Algorithm. Since no body has mentioned this so far, I thought it’s a good thing for everybody to know.</p>
+<p>All the straight forward solution should work, but if the interviewer twists the question slightly by giving the difference array of prices, Ex: for {1, 7, 4, 11}, if he gives {0, 6, -3, 7}, you might end up being confused.</p>
+<p>Here, the logic is to calculate the difference (maxCur += prices[i] - prices[i-1]) of the original array, and find a contiguous subarray giving maximum profit. If the difference falls below 0, reset it to zero.</p>
+<ul>
+<li><p>maxCur = current maximum value</p>
+</li>
+<li><p>maxSoFar = maximum value found so far</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int maxProfit(int[] prices) &#123;</span><br><span class="line">    int maxCur = 0, maxSoFar = 0;</span><br><span class="line">    for(int i = 1; i &lt; prices.length; i++) &#123;</span><br><span class="line">        maxCur = Math.max(0, maxCur += prices[i] - prices[i-1]);</span><br><span class="line">        maxSoFar = Math.max(maxCur, maxSoFar);</span><br><span class="line">    &#125;        </span><br><span class="line">    return maxSoFar;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/19853/kadane-s-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19853/kadane-s-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input/2</a></p>
+<p>Please refer to this for more details on the algorithm : <a href="https://en.wikipedia.org/wiki/Maximum_subarray_problem" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Maximum_subarray_problem</a></p>
+
       
     </div>
     
@@ -491,6 +596,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +691,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +738,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +800,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,bit manipulation," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="40.5%  https://leetcode.com/problems/single-number-ii/?tab=Description Given an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.">
+<meta name="keywords" content="leetcode,medium,bit manipulation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="137. Single Number II">
 <meta property="og:url" content="http://yucc.me/p/3b63b6e2/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="40.5%  https://leetcode.com/problems/single-number-ii/?tab=Description Given an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.177Z">
+<meta property="og:updated_time" content="2018-05-22T11:45:56.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="137. Single Number II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="40.5%  https://leetcode.com/problems/single-number-ii/?tab=Description Given an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:45:56+08:00">
+                2018-05-22 19:45
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  4,839
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  30
                 </span>
               
             </div>
@@ -430,7 +452,177 @@
       
 
       
-        
+        <ul>
+<li>40.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/single-number-ii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/single-number-ii/?tab=Description</a></p>
+<p>Given an array of integers, every element appears three times except for one, which appears exactly once. Find that single one.</p>
+<p>Note:</p>
+<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>统计每一位的个数，模3，然后就是答案了</p>
+<p>方法二：</p>
+<p><a href="https://discuss.leetcode.com/topic/2031/challenge-me-thx" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2031/challenge-me-thx</a></p>
+<p>Challenge me , thx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] A) &#123;</span><br><span class="line">    int ones = 0, twos = 0;</span><br><span class="line">    for(int i = 0; i &lt; A.length; i++)&#123;</span><br><span class="line">        ones = (ones ^ A[i]) &amp; ~twos;</span><br><span class="line">        twos = (twos ^ A[i]) &amp; ~ones;</span><br><span class="line">    &#125;</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers</a></p>
+<p>Detailed explanation and generalization of the bitwise operation method for single numbers</p>
+<p>Statement of our problem: “Given an array of integers, every element appears k (k &gt; 1) times except for one, which appears p times (p &gt;= 1, p % k != 0). Find that single one.”</p>
+<p>As others pointed out, in order to apply the bitwise operations, we should rethink how integers are represented in computers – by bits. To start, let’s consider only one bit for now. Suppose we have an array of 1-bit numbers (which can only be 0 or 1), we’d like to count the number of 1’s in the array such that whenever the counted number of 1 reaches a certain value, say k, the count returns to zero and starts over (In case you are curious, this k will be the same as the one in the problem statement above). To keep track of how many 1’s we have encountered so far, we need a counter. Suppose the counter has m bits in binary form: xm, …, x1 (from most significant bit to least significant bit). We can conclude at least the following four properties of the counter:</p>
+<ol>
+<li>There is an initial state of the counter, which for simplicity is zero;</li>
+<li>For each input from the array, if we hit a 0, the counter should remain unchanged;</li>
+<li>For each input from the array, if we hit a 1, the counter should increase by one;</li>
+<li>In order to cover k counts, we require 2^m &gt;= k, which implies m &gt;= logk.</li>
+</ol>
+<p>Here is the key part: how each bit in the counter (x1 to xm) changes as we are scanning the array. Note we are prompted to use bitwise operations. In order to satisfy the second property, recall what bitwise operations will not change the operand if the other operand is 0? Yes, you got it: x = x | 0 and x = x ^ 0.</p>
+<p>Okay, we have an expression now: x = x | i or x = x ^ i, where i is the scanned element from the array. Which one is better? We don’t know yet. So, let’s just do the actual counting:</p>
+<p>At the beginning, all bits of the counter is initialized to zero, i.e., xm = 0, …, x1 = 0. Since we are gonna choose bitwise operations that guarantee all bits of the counter remain unchanged if we hit 0’s, the counter will be 0 until we hit the first 1 in the array. After we hit the first 1, we got: xm = 0, …,x2 = 0, x1 = 1. Let’s continue until we hit the second 1, after which we have: xm = 0, …, x2 = 1, x1 = 0. Note that x1 changed from 1 to 0. For x1 = x1 | i, after the second count, x1 will still be 1. So it’s clear we should use x1 = x1 ^ i. What about x2, …, xm? The idea is to find the condition under which x2, …, xm will change their values. Take x2 as an example. If we hit a 1 and need to change the value of x2, what must be the value of x1 right before we do the change? The answer is: x1 must be 1 otherwise we shouldn’t change x2 because changing x1 from 0 to 1 will do the job. So x2 will change value only if x1 and i are both 1, or mathematically, x2 = x2 ^ (x1 &amp; i). Similarly xm will change value only when xm-1, …, x1 and i are all 1: xm = xm ^ (xm-1 &amp; … &amp; x1 &amp; i). Bingo, we’ve found the bitwise operations!</p>
+<p>However, you may notice that the bitwise operations found above will count from 0 until 2^m - 1, instead of k. If k &lt; 2^m - 1, we need some “cutting” mechanism to reinitialize the counter to 0 when the count reaches k. To this end, we apply bitwise AND to xm,…, x1 with some variable called mask, i.e., xm = xm &amp; mask, …, x1 = x1 &amp; mask. If we can make sure that mask will be 0 only when the count reaches k and be 1 for all other count cases, then we are done. How do we achieve that? Try to think what distinguishes the case with k count from all other count cases. Yes, it’s the count of 1’s! For each count, we have unique values for each bit of the counter, which can be regarded as its state. If we write k in its binary form: km,…, k1. we can construct mask as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mask = ~(y1 &amp; y2 &amp; ... &amp; ym), where yj = xj if kj = 1 and yj = ~xj if kj = 0 (j = 1 to m).</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Let&apos;s do some examples:</span><br><span class="line"></span><br><span class="line">k = 3: k1 = 1, k2 = 1, mask = ~(x1 &amp; x2);</span><br><span class="line"></span><br><span class="line">k = 5: k1 = 1, k2 = 0, k3 = 1, mask = ~(x1 &amp; ~x2 &amp; x3);</span><br></pre></td></tr></table></figure>
+<p>In summary, our algorithm will go like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">for (int i : array) &#123;</span><br><span class="line">    xm ^= (xm-1 &amp; ... &amp; x1 &amp; i);</span><br><span class="line">    xm-1 ^= (xm-2 &amp; ... &amp; x1 &amp; i);</span><br><span class="line">    .....</span><br><span class="line">    x1 ^= i;</span><br><span class="line">    </span><br><span class="line">    mask = ~(y1 &amp; y2 &amp; ... &amp; ym)  where yj = xj  if kj = 1 and  yj = ~xj  if kj = 0 (j = 1 to m).</span><br><span class="line"></span><br><span class="line">    xm &amp;= mask;</span><br><span class="line">    ......</span><br><span class="line">    x1 &amp;= mask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now it’s time to generalize our results from 1-bit number case to 32-bit integers. One straightforward way would be creating 32 counters for each bit in the integer. You’ve probably already seen this in other posted codes. But if we take advantage of bitwise operations, we may be able to manage all the 32 counters “collectively”. By saying “collectively” we mean using m 32-bit integers instead of 32 m-bit counters, where m is the minimum integer that satisfies m &gt;= logk. The reason is that bitwise operations apply only to each bit so operations on different bits are independent of each other(kind obvious, right?). This allows us to group the corresponding bits of the 32 counters into one 32-bit integer (for schematic steps, see comments below). Since each counter has m bits, we end up with m 32-bit integers. Therefore, in the algorithm developed above, we just need to regard x1 to xm as 32-bit integers instead of 1-bit numbers and we are done. Easy, hum?</p>
+<p>The last thing is what value we should return, or equivalently which one of x1 to xm will equal the single element. To get the correct answer, we need to understand what the m 32-bit integers x1 to xm represent. Take x1 as an example. x1 has 32 bits and let’s label them as r (r = 1 to 32), After we are done scanning the input array, the value for the r-th bit of x1 will be determined by the r-th bit of all the elements in the array (more specifically, suppose the total count of 1 for the r-th bit of all the elements in the array is q, q’ = q % k and in its binary form: q’m,…,q’1, then by definition the r-th bit of x1 will be equal to q’1). Now you can ask yourself this question: what does it imply if the r-th bit of x1 is 1?</p>
+<p>The answer is to find what can contribute to this 1. Will an element that appears k times contribute? No. Why? Because for an element to contribute, it has to satisfy at least two conditions at the same time: the r-th bit of this element is 1 and the number of appearance of this 1 is not an integer multiple of k. The first condition is trivial. The second comes from the fact that whenever the number of 1 hit is k, the counter will go back to zero, which means the corresponding bit in x1 will be reset to 0. For an element that appears k times, it’s impossible to meet these two conditions simultaneously so it won’t contribute. At last, only the single element which appears p (p % k != 0) times will contribute. If p &gt; k, then the first k * [p/k] ([p/k]denotes the integer part of p/k) single elements won’t contribute either. Then we can always set p’ = p % k and say the single element appears effectively p’ times.</p>
+<p>Let’s write p’ in its binary form: p’m, …, p’1. (note that p’ &lt; k, so it will fit into m bits). Here I claim the condition for x1 to equal the single element is p’1 = 1. Quick proof: if the r-th bit of x1 is 1, we can safely say the r-th bit of the single element is also 1. We are left to prove that if the r-th bit of x1 is 0, then the r-th bit of the single element can only be 0. Just suppose in this case the r-th bit of the single element is 1, let’s see what will happen. At the end of the scan, this 1 will be counted p’ times. If we write p’ in its binary form: p’m, …, p’1, then by definition the r-th bit of x1 will equal p’1, which is 1. This contradicts with the presumption that the r-th bit of x1 is 0. Since this is true for all bits in x1, we can conclude x1 will equal the single element if p’1 = 1. Similarly we can show xj will equal the single element if p’j = 1 (j = 1 to m). Now it’s clear what we should return. Just express p’ = p % k in its binary form and return any of the corresponding xj as long as p’j = 1.</p>
+<p>In total, the algorithm will run in O(n * logk) time and O(logk) space.</p>
+<p>Hope this helps!</p>
+<p><a href="https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11877/detailed-explanation-and-generalization-of-the-bitwise-operation-method-for-single-numbers/2</a></p>
+<p>Here is a list of few quick examples to show how the algorithm works:</p>
+<ol>
+<li>k = 2, p = 1.</li>
+</ol>
+<p>k is 2, then m = 1, we need only one 32-bit integer(x1) as the counter. And 2^m = k so we do not even need a mask!</p>
+<p>A complete java program will look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] A) &#123;</span><br><span class="line">     int x1 = 0;      </span><br><span class="line">     for (int i : A) &#123;</span><br><span class="line">        x1 ^= i;</span><br><span class="line">     &#125;</span><br><span class="line">     return x1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>k = 3, p = 1.</li>
+</ol>
+<p>k is 3, then m = 2, we need two 32-bit integers(x2, x1) as the counter. And 2^m &gt; k so we do need a mask. Write k in its binary form: k = ‘11’, then k1 = 1, k2 = 1, so we have mask = ~ (x1 &amp; x2).</p>
+<p>A complete java program will look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] A) &#123;</span><br><span class="line">     int x1 = 0;   </span><br><span class="line">     int x2 = 0; </span><br><span class="line">     int mask = 0;</span><br><span class="line"></span><br><span class="line">     for (int i : A) &#123;</span><br><span class="line">        x2 ^= x1 &amp; i;</span><br><span class="line">        x1 ^= i;</span><br><span class="line">        mask = ~(x1 &amp; x2);</span><br><span class="line">        x2 &amp;= mask;</span><br><span class="line">        x1 &amp;= mask;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     return x1;  // p = 1, in binary form p = &apos;01&apos;, then p1 = 1, so we should return x1; </span><br><span class="line">                 // if p = 2, in binary form p = &apos;10&apos;, then p2 = 1, so we should return x2.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>k = 5, p = 3.</li>
+</ol>
+<p>k is 5, then m = 3, we need three 32-bit integers(x3, x2, x1) as the counter. And 2^m &gt; k so we need a mask. Write k in its binary form: k = ‘101’, then k1 = 1, k2 = 0, k3 = 1, so we have mask = ~(x1 &amp; ~x2 &amp; x3).</p>
+<p>A complete java program will look like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] A) &#123;</span><br><span class="line">     int x1 = 0;   </span><br><span class="line">     int x2 = 0; </span><br><span class="line">     int x3  = 0;</span><br><span class="line">     int mask = 0;</span><br><span class="line"></span><br><span class="line">     for (int i : A) &#123;</span><br><span class="line">        x3 ^= x2 &amp; x1 &amp; i;</span><br><span class="line">        x2 ^= x1 &amp; i;</span><br><span class="line">        x1 ^= i;</span><br><span class="line">        mask = ~(x1 &amp; ~x2 &amp; x3);</span><br><span class="line">        x3 &amp;= mask;</span><br><span class="line">        x2 &amp;= mask;</span><br><span class="line">        x1 &amp;= mask;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     return x1;  // p = 3, in binary form p = &apos;011&apos;, then p1 = p2 = 1, </span><br><span class="line">                 // so we can return either x1 or x2; </span><br><span class="line">                 // But if p = 4, in binary form p = &apos;100&apos;, then only p3 = 1, </span><br><span class="line">                 // which implies we can only return x3.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You can easily come up with other examples. If you have any questions about the explanation, please let me know. I would appreciate your feedback. Thanks!</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22821/an-general-way-to-handle-all-this-sort-of-questions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22821/an-general-way-to-handle-all-this-sort-of-questions</a></p>
+<p>An General Way to Handle All this sort of questions.</p>
+<p>this kind of question the key idea is design a counter that record state. the problem can be every one occurs K times except one occurs M times. for this question, K =3 ,M = 1(or 2) .<br>so to represent 3 state, we need two bit. let say it is a and b, and c is the incoming bit.<br>then we can design a table to implement the state move.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">current   incoming  next</span><br><span class="line">a b            c    a b</span><br><span class="line">0 0            0    0 0</span><br><span class="line">0 1            0    0 1</span><br><span class="line">1 0            0    1 0</span><br><span class="line">0 0            1    0 1</span><br><span class="line">0 1            1    1 0</span><br><span class="line">1 0            1    0 0</span><br></pre></td></tr></table></figure>
+<p>like circuit design, we can find out what the next state will be with the incoming bit.( we only need find the ones)<br>then we have for a to be 1, we have</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">current   incoming  next</span><br><span class="line">a b            c    a b</span><br><span class="line">1 0            0    1 0</span><br><span class="line">0 1            1    1 0</span><br></pre></td></tr></table></figure>
+<p>and this is can be represented by</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=a&amp;~b&amp;~c + ~a&amp;b&amp;c</span><br></pre></td></tr></table></figure>
+<p>and b can do the same we , and we find that</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b= ~a&amp;b&amp;~c+~a&amp;~b&amp;c</span><br></pre></td></tr></table></figure>
+<p>and this is the final formula of a and b and just one of the result set, because for different state move table definition, we can generate different formulas, and this one is may not the most optimised. as you may see other’s answer that have a much simple formula, and that formula also corresponding to specific state move table. (if you like ,you can reverse their formula to a state move table, just using the same way but reversely)</p>
+<p>for this questions we need to find the except one</p>
+<p>as the question don’t say if the one appears one time or two time ,</p>
+<p>so for ab both</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">01 10 =&gt; 1</span><br><span class="line">00 =&gt; 0</span><br></pre></td></tr></table></figure>
+<p>we should return a|b;</p>
+<p>this is the key idea , we can design any based counter and find the occurs any times except one .</p>
+<p>here is my code. with comment.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    </span><br><span class="line">    public int singleNumber(int[] nums) &#123;</span><br><span class="line">        //we need to implement a tree-time counter(base 3) that if a bit appears three time ,it will be zero.</span><br><span class="line">        //#curent  income  ouput</span><br><span class="line">        //# ab      c/c       ab/ab</span><br><span class="line">        //# 00      1/0       01/00</span><br><span class="line">        //# 01      1/0       10/01</span><br><span class="line">        //# 10      1/0       00/10</span><br><span class="line">        // a=~abc+a~b~c;</span><br><span class="line">        // b=~a~bc+~ab~c;</span><br><span class="line">        int a=0;</span><br><span class="line">        int b=0;</span><br><span class="line">        for(int c:nums)&#123;</span><br><span class="line">            int ta=(~a&amp;b&amp;c)|(a&amp;~b&amp;~c);</span><br><span class="line">            b=(~a&amp;~b&amp;c)|(~a&amp;b&amp;~c);</span><br><span class="line">            a=ta;</span><br><span class="line">        &#125;</span><br><span class="line">        //we need find the number that is 01,10 =&gt; 1, 00 =&gt; 0.</span><br><span class="line">        return a|b;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>this is a general solution . and it comes from the Circuit Design on course digital logic.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/43166/java-o-n-easy-to-understand-solution-easily-extended-to-any-times-of-occurance" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/43166/java-o-n-easy-to-understand-solution-easily-extended-to-any-times-of-occurance</a></p>
+<p>Java O(n) easy to understand solution, easily extended to any times of occurance</p>
+<p>The usual bit manipulation code is bit hard to get and replicate. I like to think about the number in 32 bits and just count how many 1s are there in each bit, and sum %= 3 will clear it once it reaches 3. After running for all the numbers for each bit, if we have a 1, then that 1 belongs to the single number, we can simply move it back to its spot by doing ans |= sum &lt;&lt; i;</p>
+<p>This has complexity of O(32n), which is essentially O(n) and very easy to think and implement. Plus, you get a general solution for any times of occurrence. Say all the numbers have 5 times, just do sum %= 5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public int singleNumber(int[] nums) &#123;</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for(int i = 0; i &lt; 32; i++) &#123;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for(int j = 0; j &lt; nums.length; j++) &#123;</span><br><span class="line">            if(((nums[j] &gt;&gt; i) &amp; 1) == 1) &#123;</span><br><span class="line">                sum++;</span><br><span class="line">                sum %= 3;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(sum != 0) &#123;</span><br><span class="line">            ans |= sum &lt;&lt; i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2926/accepted-code-with-proper-explaination-does-anyone-have-a-better-idea" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2926/accepted-code-with-proper-explaination-does-anyone-have-a-better-idea</a></p>
+<p>Accepted code with proper Explaination. Does anyone have a better idea?</p>
+<p>The code makes use of 2 variables.</p>
+<p>ones - At any point of time, this variable holds XOR of all the elements which have<br>appeared “only” once.<br>twos - At any point of time, this variable holds XOR of all the elements which have<br>appeared “only” twice.</p>
+<p>So if at any point time,</p>
+<ol>
+<li>A new number appears - It gets XOR’d to the variable “ones”.</li>
+<li>A number gets repeated(appears twice) - It is removed from “ones” and XOR’d to the variable “twos”.</li>
+<li>A number appears for the third time - It gets removed from both “ones” and “twos”.</li>
+</ol>
+<p>The final answer we want is the value present in “ones” - coz, it holds the unique element.</p>
+<p>So if we explain how steps 1 to 3 happens in the code, we are done.<br>Before explaining above 3 steps, lets look at last three lines of the code,</p>
+<p>common_bit_mask = ~ (ones &amp; twos)</p>
+<p>ones &amp; = common_bit_mask</p>
+<p>twos &amp; = common_bit_mask</p>
+<p>All it does is, common 1’s between “ones” and “twos” are converted to zero.</p>
+<p>For simplicity, in all the below explanations - consider we have got only 4 elements in the array (one unique element and 3 repeated elements - in any order).</p>
+<p><strong>Explanation for step 1</strong></p>
+<p>Lets say a new element(x) appears.</p>
+<p>CURRENT SITUATION - Both variables - “ones” and “twos” has not recorded “x”.</p>
+<p>Observe the statement “twos| = ones &amp; x”.<br>Since bit representation of “x” is not present in “ones”, AND condition yields nothing. So “twos” does not get bit representation of “x”.<br>But, in next step “ones ^= x” - “ones” ends up adding bits of “x”. Thus new element gets recorded in “ones” but not in “twos”.</p>
+<p>The last 3 lines of code as explained already, converts common 1’s b/w “ones” and “twos” to zeros.<br>Since as of now, only “ones” has “x” and not “twos” - last 3 lines does nothing.</p>
+<p><strong>Explanation for step 2.</strong></p>
+<p>Lets say an element(x) appears twice.</p>
+<p>CURRENT SITUATION - “ones” has recorded “x” but not “twos”.</p>
+<p>Now due to the statement, “twos| = ones &amp; x” - “twos” ends up getting bits of x.<br>But due to the statement, “ones ^ = x” - “ones” removes “x” from its binary representation.</p>
+<p>Again, last 3 lines of code does nothing.<br>So ultimately, “twos” ends up getting bits of “x” and “ones” ends up losing bits of “x”.</p>
+<p><strong>Explanation for step 3.</strong></p>
+<p>Lets say an element(x) appears for the third time.</p>
+<p>CURRENT SITUATION - “ones” does not have bit representation of “x” but “twos” has.</p>
+<p>Though “ones &amp; x” does not yield nothing .. “twos” by itself has bit representation of “x”. So after this statement, “two” has bit representation of “x”.<br>Due to “ones^=x”, after this step, “one” also ends up getting bit representation of “x”.</p>
+<p>Now last 3 lines of code removes common 1’s of “ones” and “twos” - which is the bit representation of “x”.<br>Thus both “ones” and “twos” ends up losing bit representation of “x”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">    // Let us take the example of &#123;3, 3, 2, 3&#125; to understand this</span><br><span class="line">        int singleNumber(int A[], int n) &#123;</span><br><span class="line">            int ones=0, twos =0;</span><br><span class="line">            int common_bit_mask;</span><br><span class="line">            for(int i=0; i&lt;n;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                 /* The expression &quot;one &amp; arr[i]&quot; gives the bits that are</span><br><span class="line">               there in both &apos;ones&apos; and new element from arr[].  We</span><br><span class="line">               add these bits to &apos;twos&apos; using bitwise OR</span><br><span class="line">     </span><br><span class="line">               Value of &apos;twos&apos; will be set as 0, 3, 3 and 1 after 1st,</span><br><span class="line">               2nd, 3rd and 4th iterations respectively */</span><br><span class="line">               </span><br><span class="line">                twos= twos|(ones&amp;A[i]);</span><br><span class="line">                /* XOR the new bits with previous &apos;ones&apos; to get all bits</span><br><span class="line">               appearing odd number of times</span><br><span class="line">     </span><br><span class="line">               Value of &apos;ones&apos; will be set as 3, 0, 2 and 3 after 1st,</span><br><span class="line">               2nd, 3rd and 4th iterations respectively */</span><br><span class="line">                ones=ones^A[i];</span><br><span class="line">                 /* The common bits are those bits which appear third time</span><br><span class="line">               So these bits should not be there in both &apos;ones&apos; and &apos;twos&apos;.</span><br><span class="line">               common_bit_mask contains all these bits as 0, so that the bits can </span><br><span class="line">               be removed from &apos;ones&apos; and &apos;twos&apos;   </span><br><span class="line">     </span><br><span class="line">               Value of &apos;common_bit_mask&apos; will be set as 00, 00, 01 and 10</span><br><span class="line">               after 1st, 2nd, 3rd and 4th iterations respectively */</span><br><span class="line">                common_bit_mask= ~(ones&amp;twos);</span><br><span class="line">                /* Remove common bits (the bits that appear third time) from &apos;ones&apos;</span><br><span class="line">                 </span><br><span class="line">               Value of &apos;ones&apos; will be set as 3, 0, 0 and 2 after 1st,</span><br><span class="line">               2nd, 3rd and 4th iterations respectively */</span><br><span class="line">                ones &amp;=common_bit_mask;</span><br><span class="line">                /* Remove common bits (the bits that appear third time) from &apos;twos&apos;</span><br><span class="line">     </span><br><span class="line">               Value of &apos;twos&apos; will be set as 0, 3, 1 and 0 after 1st,</span><br><span class="line">               2nd, 3rd and 4th itearations respectively */</span><br><span class="line">                twos &amp;=common_bit_mask;</span><br><span class="line">            &#125;</span><br><span class="line">            return ones;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23584/a-general-c-solution-for-these-type-problems" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23584/a-general-c-solution-for-these-type-problems</a></p>
+<p>A general C++ solution for these type problems</p>
+<p>There are so many brilliant solutions for this problem used “| &amp; ^ ~”, and I have learned a lot from these solutions. Here is a general solution for who not familiar with “| &amp; ^ ~”.</p>
+<p>Q: Most elements appeared k times, except one. Find this “one”.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int singleNumber(vector&lt;int&gt;&amp; s) </span><br><span class="line">    &#123;</span><br><span class="line">    	vector&lt;int&gt; t(32);////Made a array contain 32 elements.</span><br><span class="line">    	int sz = s.size();</span><br><span class="line">    	int i, j, n;</span><br><span class="line">    	for (i = 0; i &lt; sz; ++i)</span><br><span class="line">    	&#123;</span><br><span class="line">    		n = s[i];</span><br><span class="line">    		for (j = 31; j &gt;= 0; --j)</span><br><span class="line">    		&#123;</span><br><span class="line">    			t[j] += n &amp; 1;//Find the last digit.</span><br><span class="line">    			n &gt;&gt;= 1;</span><br><span class="line">    			if (!n)</span><br><span class="line">    				break;</span><br><span class="line">    	    &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	int res = 0;</span><br><span class="line">	for (j = 31; j &gt;= 0; --j)</span><br><span class="line">	&#123;</span><br><span class="line">		n = t[j] % 3;//&quot;3&quot; represents k times. </span><br><span class="line">		if (n)</span><br><span class="line">			res += 1 &lt;&lt; (31 - j);</span><br><span class="line">	&#125;</span><br><span class="line">	return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/34725/my-own-explanation-of-bit-manipulation-method-might-be-easier-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34725/my-own-explanation-of-bit-manipulation-method-might-be-easier-to-understand</a></p>
+<p>My own explanation of bit manipulation method, might be easier to understand</p>
+<p>Consider the following fact:</p>
+<p>Write all numbers in binary form, then for any bit 1 that appeared 3*n times (n is an integer), the bit can only present in numbers that appeared 3 times</p>
+<p>e.g. 0010 0010 0010 1011 1011 1011 1000 (assuming 4-bit integers)<br>2(0010) and 11(1011) appeared 3 times, and digit counts are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Digits 3 2 1 0</span><br><span class="line"></span><br><span class="line">Counts 4 0 6 3</span><br><span class="line"></span><br><span class="line">Counts%3 1 0 0 0</span><br></pre></td></tr></table></figure>
+<p>Counts on 2,1,0 are all times of 3, the only digit index that has Counts % 3 != 0 is 3</p>
+<p>Therefore, to find the number that appeared only 1 or 2 times, we only need to extract all bits that has Counts %3 != 0</p>
+<p>Now consider how we could do this by bit manipulation</p>
+<p>since counts % 3 has only 3 states: 0(00),1(01),2(10)<br>we could use a TWO BIT COUNTER (Two, One) to represent Counts % 3, now we could do a little research on state transitions, for each bit, let B be the input bit, we can enumerate the all possible state transitions, Two+, One+ is the new state of Two, One. (here we need to use some knowledge in Digital Logic Design)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Two One B Two+ One+</span><br><span class="line"></span><br><span class="line">0 0 0 0 0</span><br><span class="line"></span><br><span class="line">0 0 1 0 1</span><br><span class="line"></span><br><span class="line">0 1 0 0 1</span><br><span class="line"></span><br><span class="line">0 1 1 1 0</span><br><span class="line"></span><br><span class="line">1 0 0 1 0</span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line"></span><br><span class="line">1 1 0 X X (X represents we don&apos;t care)</span><br><span class="line"></span><br><span class="line">1 1 1 X X</span><br></pre></td></tr></table></figure>
+<p>We could then draw the Karnaugh map to analyze the logic (<a href="https://en.wikipedia.org/wiki/Karnaugh_map)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Karnaugh_map)</a>, and then we get:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">One+ = (One ^ B) &amp; (~Two)</span><br><span class="line"></span><br><span class="line">Two+ = (~One+) &amp; (Two ^ B)</span><br></pre></td></tr></table></figure>
+<p>Now for int_32, we need only 2 int_32 two represent Two and One for each bit and update Two and One using the rules derived above</p>
+<p>Code is here (C++):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">  public:</span><br><span class="line">    int singleNumber(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int counterOne = 0;</span><br><span class="line">        int counterTwo = 0;</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            counterOne = (~counterTwo) &amp; (counterOne ^ nums[i]);</span><br><span class="line">            counterTwo = (~counterOne) &amp; (counterTwo ^ nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return counterOne;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17629/the-simplest-solution-ever-with-clear-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17629/the-simplest-solution-ever-with-clear-explanation</a></p>
+<p>The simplest solution ever with clear explanation</p>
+<p>The key to solve this problem is the count of 1s of each bit of all numbers.</p>
+<p>Take one bit number for example: nums = [1, 1, 1, 0, 0, 0, …, x] . All numbers are 0 or 1.</p>
+<p>We know that every number appears three times except for just one number. So, if the count of 1s in nums is 0, 3, 6, …, 3 <em> n, then the single number is 0. And if the count of 1s in nums is 1, 4, 7, …, 3\</em>n+1, then the single number is 1.</p>
+<p>So, for an array “ nums “ that contains only 0 or 1, the code to find the single number are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">count = 0</span><br><span class="line">for num in nums:</span><br><span class="line">    count = (count + num) % 3</span><br><span class="line">return count</span><br></pre></td></tr></table></figure>
+<p>To make “count” less than 3, mod “count” with 3 in every loop.</p>
+<p>Below is the procedure for finding the single number in [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Table 1:</span><br><span class="line">++=======++===+===+===+===+===+===+===+===+===+===+===+===+===+====++</span><br><span class="line">|| num   ||   | 1 | 0 | 1 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | 0  ||</span><br><span class="line">++-------++---+---+---+---+---+---+---+---+---+---+---+---+---+----++</span><br><span class="line">|| count || 0 | 1 | 1 | 2 | 0 | 0 | 1 | 1 | 2 | 2 | 0 | 0 | 1 | 1* ||</span><br><span class="line">++=======++===+===+===+===+===+===+===+===+===+===+===+===+===+====++</span><br></pre></td></tr></table></figure>
+<p>So the single number is 1.</p>
+<p>We can write the calculate table for expression “count’ = (count + num) % 3”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Table 2:</span><br><span class="line">++=======+=====+========++</span><br><span class="line">|| count | num | count&apos; ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   0   |  0  |   0    ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   1   |  0  |   1    ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   2   |  0  |   2    ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   0   |  1  |   1    ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   1   |  1  |   2    ||</span><br><span class="line">++-------+-----+--------++</span><br><span class="line">||   2   |  1  |   0    ||</span><br><span class="line">++-------+-----+--------++</span><br></pre></td></tr></table></figure>
+<p>To extend this algorithm to 32bits number. We need to rewrite these code to bit operation expressions.</p>
+<p>And the key is rewriting the expression “ count’ = (count + num) % 3 “ to bit operation expressions.</p>
+<p>Write binary numbers of “ count “ and “ count’ “ in “Table 2”. And split their bits into two column:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Table 3:</span><br><span class="line">++=======+============+=====+============+========++</span><br><span class="line">||       |    count   | num |   count&apos;   |        ||</span><br><span class="line">|| count |    (bin)   |     |   (bin)    | count&apos; ||</span><br><span class="line">|| (dec) ++=====+=====+=====+=====+=====++ (dec)  ||</span><br><span class="line">||       || b1  | b0  | num | b1&apos; | b0&apos; ||        ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   0   ||  0  |  0  |  0  |  0  |  0  ||   0    ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   1   ||  0  |  1  |  0  |  0  |  1  ||   1    ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   2   ||  1  |  0  |  0  |  1  |  0  ||   2    ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   0   ||  0  |  0  |  1  |  0  |  1  ||   1    ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   1   ||  0  |  1  |  1  |  1  |  0  ||   2    ||</span><br><span class="line">++-------++-----+-----+-----+-----+-----++--------++</span><br><span class="line">||   2   ||  1  |  0  |  1  |  0  |  0  ||   0    ||</span><br><span class="line">++=======++===========+=====+===========++========++</span><br></pre></td></tr></table></figure>
+<p>Here comes the hardest part of this solution.</p>
+<p>“Table 3” is a truth table, we need to use it to find the formulas to calculate “ b0’ “ and “ b1’ “:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b0&apos; = f(b1, b0, num)</span><br><span class="line">b1&apos; = g(b1, b0, num)</span><br></pre></td></tr></table></figure>
+<p>With observations, guesses, experiments and even some luck. Finally I got two simple and elegant formulas:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b0&apos; = (b0 ^ num) &amp; (~b1)</span><br><span class="line">b1&apos; = (b1 ^ num) &amp; (~b0&apos;)</span><br></pre></td></tr></table></figure>
+<p>The AC code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;integer[]&#125; nums</span><br><span class="line">    # @return &#123;integer&#125;</span><br><span class="line">    def singleNumber(self, nums):</span><br><span class="line">        b1, b0 = 0, 0</span><br><span class="line">        for num in nums:</span><br><span class="line">            b0 = (b0 ^ num) &amp; (~b1)</span><br><span class="line">            b1 = (b1 ^ num) &amp; (~b0)</span><br><span class="line">        return b0</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +683,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/bit-manipulation/" rel="tag"># bit manipulation</a>
+          
+        </div>
       
 
       
@@ -612,7 +814,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

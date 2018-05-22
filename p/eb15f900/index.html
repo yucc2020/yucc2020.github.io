@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,two pointers,string," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="25.7%  https://leetcode.com/problems/valid-palindrome/#/description Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. 123For example,&amp;quot;">
+<meta name="keywords" content="leetcode,easy,two pointers,string">
 <meta property="og:type" content="article">
 <meta property="og:title" content="125. Valid Palindrome">
 <meta property="og:url" content="http://yucc.me/p/eb15f900/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="25.7%  https://leetcode.com/problems/valid-palindrome/#/description Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. 123For example,&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.161Z">
+<meta property="og:updated_time" content="2018-05-22T11:35:40.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="125. Valid Palindrome">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="25.7%  https://leetcode.com/problems/valid-palindrome/#/description Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases. 123For example,&amp;quot;">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:35:40+08:00">
+                2018-05-22 19:35
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  793
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,54 @@
       
 
       
-        
+        <ul>
+<li>25.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/valid-palindrome/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/valid-palindrome/#/description</a></p>
+<p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">&quot;A man, a plan, a canal: Panama&quot; is a palindrome.</span><br><span class="line">&quot;race a car&quot; is not a palindrome.</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>Have you consider that the string might be empty? This is a good question to ask during an interview.</p>
+<p>For the purpose of this problem, we define empty string as valid palindrome.</p>
+<a id="more"></a>
+<hr>
+<p>isalnum 是否数字字符</p>
+<p>isalpha 是否字母字符</p>
+<p>tolower/toupper</p>
+<p>方法一：</p>
+<p>Here’s a clean C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool isPalindrome(string s) &#123;</span><br><span class="line">    for (int i = 0, j = s.size() - 1; i &lt; j; i++, j--) &#123; // Move 2 pointers from each end until they collide</span><br><span class="line">        while (isalnum(s[i]) == false &amp;&amp; i &lt; j) i++; // Increment left pointer if not alphanumeric</span><br><span class="line">        while (isalnum(s[j]) == false &amp;&amp; i &lt; j) j--; // Decrement right pointer if no alphanumeric</span><br><span class="line">        if (toupper(s[i]) != toupper(s[j])) return false; // Exit and return error if not match</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;j &amp;&amp; !<span class="built_in">isalnum</span>(s[i])) i++;</span><br><span class="line">            <span class="keyword">while</span>(i&lt;j &amp;&amp; !<span class="built_in">isalnum</span>(s[j])) j--;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">toupper</span>(s[i])!=<span class="built_in">toupper</span>(s[j])) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            i++; j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5581/here-s-a-clean-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5581/here-s-a-clean-c-solution</a></p>
+<p>Here’s a clean C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bool isPalindrome(string s) &#123;</span><br><span class="line">    for (int i = 0, j = s.size() - 1; i &lt; j; i++, j--) &#123; // Move 2 pointers from each end until they collide</span><br><span class="line">        while (isalnum(s[i]) == false &amp;&amp; i &lt; j) i++; // Increment left pointer if not alphanumeric</span><br><span class="line">        while (isalnum(s[j]) == false &amp;&amp; i &lt; j) j--; // Decrement right pointer if no alphanumeric</span><br><span class="line">        if (toupper(s[i]) != toupper(s[j])) return false; // Exit and return error if not match</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10862/passed-clean-c-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10862/passed-clean-c-code</a></p>
+<p>Passed clean c++ code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool isPalindrome(string s) &#123;</span><br><span class="line">	int start=0, end=s.length()-1;</span><br><span class="line">	while(start&lt;end) &#123;</span><br><span class="line">		if (!isalnum(s[start])) start++;</span><br><span class="line">		else if (!isalnum(s[end])) end--;</span><br><span class="line">		else &#123;</span><br><span class="line">			if (tolower(s[start++])!=tolower(s[end--])) return false;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22479/python-in-place-two-pointer-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22479/python-in-place-two-pointer-solution</a></p>
+<p>Python in-place two-pointer solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def isPalindrome(self, s):</span><br><span class="line">    l, r = 0, len(s)-1</span><br><span class="line">    while l &lt; r:</span><br><span class="line">        while l &lt; r and not s[l].isalnum():</span><br><span class="line">            l += 1</span><br><span class="line">        while l &lt;r and not s[r].isalnum():</span><br><span class="line">            r -= 1</span><br><span class="line">        if s[l].lower() != s[r].lower():</span><br><span class="line">            return False</span><br><span class="line">        l +=1; r -= 1</span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
+<hr>
+<p>80ms, 78.34%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/11241/challenge-shortest-possible-answer-python-palindrome-python" target="_blank" rel="noopener">https://leetcode.com/discuss/11241/challenge-shortest-possible-answer-python-palindrome-python</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def isPalindrome(self, s):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        newS = [i.lower() for i in s if i.isalnum()]</span><br><span class="line">        return newS == newS[::-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8282/accepted-pretty-java-solution-271ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8282/accepted-pretty-java-solution-271ms</a></p>
+<p>Accepted pretty Java solution(271ms)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isPalindrome(String s) &#123;</span><br><span class="line">        if (s.isEmpty()) &#123;</span><br><span class="line">        	return true;</span><br><span class="line">        &#125;</span><br><span class="line">        int head = 0, tail = s.length() - 1;</span><br><span class="line">        char cHead, cTail;</span><br><span class="line">        while(head &lt;= tail) &#123;</span><br><span class="line">        	cHead = s.charAt(head);</span><br><span class="line">        	cTail = s.charAt(tail);</span><br><span class="line">        	if (!Character.isLetterOrDigit(cHead)) &#123;</span><br><span class="line">        		head++;</span><br><span class="line">        	&#125; else if(!Character.isLetterOrDigit(cTail)) &#123;</span><br><span class="line">        		tail--;</span><br><span class="line">        	&#125; else &#123;</span><br><span class="line">        		if (Character.toLowerCase(cHead) != Character.toLowerCase(cTail)) &#123;</span><br><span class="line">        			return false;</span><br><span class="line">        		&#125;</span><br><span class="line">        		head++;</span><br><span class="line">        		tail--;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Solution 2:</p>
+<p>12ms, 40.64%, April.23rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/80399/7-lines-concise-and-easy-understand-c-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/80399/7-lines-concise-and-easy-understand-c-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(string s) &#123;</span><br><span class="line">        int l=0, r = s.size() - 1;</span><br><span class="line">        while(l &lt;= r)&#123;</span><br><span class="line">            while(!isalnum(s[l]) &amp;&amp; l &lt; r) l++;</span><br><span class="line">            while(!isalnum(s[r]) &amp;&amp; l &lt; r) r--;</span><br><span class="line">            if(toupper(s[l]) != toupper(s[r])) return false;</span><br><span class="line">            l++, r--;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution 3:</p>
+<p>16ms, 10.11%, April.23rd, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isPalindrome(string s) &#123;</span><br><span class="line">        transform(s.begin(), s.end(), s.begin(), ::tolower);</span><br><span class="line">        auto left = s.begin(), right = s.end();</span><br><span class="line">        while(left &lt; right)&#123;</span><br><span class="line">            if(!::isalnum(*left)) ++left;</span><br><span class="line">            else if(!::isalnum(*right)) --right;</span><br><span class="line">            else if(*left != *right) return false;</span><br><span class="line">            else&#123;left++, right--;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +560,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+        </div>
       
 
       
@@ -612,7 +693,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

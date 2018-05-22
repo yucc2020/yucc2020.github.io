@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,linked list,sort," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="27.7%  https://leetcode.com/problems/sort-list/?tab=Description Sort a linked list in O(n log n) time using constant space complexity.">
+<meta name="keywords" content="leetcode,medium,linked list,sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="148. Sort List">
 <meta property="og:url" content="http://yucc.me/p/41f5a08/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="27.7%  https://leetcode.com/problems/sort-list/?tab=Description Sort a linked list in O(n log n) time using constant space complexity.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.190Z">
+<meta property="og:updated_time" content="2018-05-22T11:53:31.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="148. Sort List">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="27.7%  https://leetcode.com/problems/sort-list/?tab=Description Sort a linked list in O(n log n) time using constant space complexity.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:53:31+08:00">
+                2018-05-22 19:53
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,794
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,68 @@
       
 
       
-        
+        <ul>
+<li>27.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/sort-list/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/sort-list/?tab=Description</a></p>
+<p>Sort a linked list in O(n log n) time using constant space complexity.</p>
+<a id="more"></a>
+<hr>
+<p>归并排序</p>
+<p>微信面试题：使用快速排序，对链表进行排序</p>
+<p>方法一：</p>
+<p>归并排序</p>
+<p><a href="https://discuss.leetcode.com/topic/17150/clean-and-short-merge-sort-solution-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17150/clean-and-short-merge-sort-solution-in-c</a></p>
+<p>Clean and short Merge sort Solution in c++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* merge( ListNode* head1 , ListNode * head2)&#123;</span><br><span class="line">        ListNode* d = new ListNode (0);            // dummy node</span><br><span class="line">        ListNode* e = d;</span><br><span class="line">        while(head1||head2)&#123;</span><br><span class="line">            if(head1 &amp;&amp; (!head2 || head1-&gt;val &lt;= head2 -&gt; val) )&#123;</span><br><span class="line">                e=e-&gt;next= head1 ; </span><br><span class="line">                head1 = head1 -&gt; next;</span><br><span class="line">            &#125;</span><br><span class="line">            if(head2 &amp;&amp; (!head1 || head2-&gt;val &lt; head1 -&gt; val) )&#123;</span><br><span class="line">                e=e-&gt;next= head2 ; </span><br><span class="line">                head2 = head2 -&gt; next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        e-&gt;next = NULL;</span><br><span class="line">        return d-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">   ListNode* sortList(ListNode* head) &#123;</span><br><span class="line">        if(!head || !head-&gt;next) return head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        ListNode* fast =head-&gt;next;</span><br><span class="line">         while(fast &amp;&amp; fast-&gt;next)&#123;         // to find middle node     </span><br><span class="line">            fast= fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* headb = slow-&gt;next;     // headb is start of 2nd half of list</span><br><span class="line">        slow-&gt;next = NULL;                 </span><br><span class="line">        return merge(sortList(head) , sortList(headb));</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">sortList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head || !head-&gt;next) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* fast = head, *slow = head;</span><br><span class="line">        <span class="keyword">while</span>(fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)&#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* tmp = slow-&gt;next;</span><br><span class="line">        slow-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* head1 = sortList(head);</span><br><span class="line">        ListNode* head2 = sortList(tmp);</span><br><span class="line">        ListNode* node = merge(head1, head2);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">ListNode* <span class="title">merge</span><span class="params">(ListNode* head1, ListNode* head2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head1==<span class="literal">NULL</span>) <span class="keyword">return</span> head2;</span><br><span class="line">        <span class="keyword">if</span>(head2==<span class="literal">NULL</span>) <span class="keyword">return</span> head1;</span><br><span class="line">        <span class="keyword">if</span>(head1-&gt;val&lt;=head2-&gt;val)&#123;</span><br><span class="line">            head1-&gt;next = merge(head1-&gt;next, head2);</span><br><span class="line">            <span class="keyword">return</span> head1;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            head2-&gt;next = merge(head1, head2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> head2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>使用147题的插入排序，效率O(n^2)不能满足要求</p>
+<p>超时</p>
+<p>方法三：</p>
+<p>归并排序</p>
+<p>我的代码实现:</p>
+<p>有bug</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">sortList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head || !head-&gt;next)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* slow = head, *fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)&#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        fast = slow-&gt;next;</span><br><span class="line">        slow-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        sortList(head);</span><br><span class="line">        sortList(fast);</span><br><span class="line">        <span class="keyword">return</span> merge(head, fast);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">ListNode* <span class="title">merge</span><span class="params">(ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!l1)</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(!l2)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span>(l1-&gt;val &lt; l2-&gt;val)&#123;</span><br><span class="line">            l1-&gt;next = merge(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l2-&gt;next = merge(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/10382/bottom-to-up-not-recurring-with-o-1-space-complextity-and-o-nlgn-time-complextity" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10382/bottom-to-up-not-recurring-with-o-1-space-complextity-and-o-nlgn-time-complextity</a></p>
+<p>Bottom-to-up(not recurring) with o(1) space complextity and o(nlgn) time complextity</p>
+<p>this problem can be easily solved using recurrence and divide-and-conquer. But it consumes program stack to store the recurring function stack frame, actually it consumes o(lgn) space complexity. Recursion use up-to-bottom strategy , why not try the opposite way–bottom-to-up, luckily it works, it only consumes 0(1) space complexity and o(nlgn) time complextity.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Merge sort use bottom-up policy, </span><br><span class="line"> * so Space Complexity is O(1)</span><br><span class="line"> * Time Complexity is O(NlgN)</span><br><span class="line"> * stable sort</span><br><span class="line">*/</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	ListNode *sortList(ListNode *head) &#123;</span><br><span class="line">		if(!head || !(head-&gt;next)) return head;</span><br><span class="line">		</span><br><span class="line">		//get the linked list&apos;s length</span><br><span class="line">		ListNode* cur = head;</span><br><span class="line">		int length = 0;</span><br><span class="line">		while(cur)&#123;</span><br><span class="line">			length++;</span><br><span class="line">			cur = cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ListNode dummy(0);</span><br><span class="line">		dummy.next = head;</span><br><span class="line">		ListNode *left, *right, *tail;</span><br><span class="line">		for(int step = 1; step &lt; length; step &lt;&lt;= 1)&#123;</span><br><span class="line">			cur = dummy.next;</span><br><span class="line">			tail = &amp;dummy;</span><br><span class="line">			while(cur)&#123;</span><br><span class="line">				left = cur;</span><br><span class="line">				right = split(left, step);</span><br><span class="line">				cur = split(right,step);</span><br><span class="line">				tail = merge(left, right, tail);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return dummy.next;</span><br><span class="line">	&#125;</span><br><span class="line">private:</span><br><span class="line">	/**</span><br><span class="line">	 * Divide the linked list into two lists,</span><br><span class="line">     * while the first list contains first n ndoes</span><br><span class="line">	 * return the second list&apos;s head</span><br><span class="line">	 */</span><br><span class="line">	ListNode* split(ListNode *head, int n)&#123;</span><br><span class="line">		//if(!head) return NULL;</span><br><span class="line">		for(int i = 1; head &amp;&amp; i &lt; n; i++) head = head-&gt;next;</span><br><span class="line">		</span><br><span class="line">		if(!head) return NULL;</span><br><span class="line">		ListNode *second = head-&gt;next;</span><br><span class="line">		head-&gt;next = NULL;</span><br><span class="line">		return second;</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	  * merge the two sorted linked list l1 and l2,</span><br><span class="line">	  * then append the merged sorted linked list to the node head</span><br><span class="line">	  * return the tail of the merged sorted linked list</span><br><span class="line">	 */</span><br><span class="line">	ListNode* merge(ListNode* l1, ListNode* l2, ListNode* head)&#123;</span><br><span class="line">		ListNode *cur = head;</span><br><span class="line">		while(l1 &amp;&amp; l2)&#123;</span><br><span class="line">			if(l1-&gt;val &gt; l2-&gt;val)&#123;</span><br><span class="line">				cur-&gt;next = l2;</span><br><span class="line">				cur = l2;</span><br><span class="line">				l2 = l2-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				cur-&gt;next = l1;</span><br><span class="line">				cur = l1;</span><br><span class="line">				l1 = l1-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cur-&gt;next = (l1 ? l1 : l2);</span><br><span class="line">		while(cur-&gt;next) cur = cur-&gt;next;</span><br><span class="line">		return cur;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3085/my-o-n-log-n-time-o-1-space-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3085/my-o-n-log-n-time-o-1-space-solution</a></p>
+<p>My O(n log n) time, O(1) space solution</p>
+<p>Nice problem. I use a non-recurisve way to write merge sort.</p>
+<p>For example, the size of ListNode is 8,</p>
+<p>Round #1 block_size = 1</p>
+<p>(a1, a2), (a3, a4), (a5, a6), (a7, a8)</p>
+<p>Compare a1 with a2, a3 with a4 …</p>
+<p>Round #2 block_size = 2</p>
+<p>(a1, a2, a3, a4), (a5, a6, a7, a8)</p>
+<p>merge two sorted arrays (a1, a2) and (a3, a4), then merge tow sorted arrays(a5, a6) and (a7, a8)</p>
+<p>Round #3 block_size = 4</p>
+<p>(a1, a2, a3, a4, a5, a6, a7, a8)</p>
+<p>merge two sorted arrays (a1, a2, a3, a4), and (a5, a6, a7, a8)</p>
+<p>No need for round #4 cause block_size = 8 &gt;= n = 8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int count_size(ListNode *node)&#123;</span><br><span class="line">        int n = 0;</span><br><span class="line">        while (node != NULL)&#123;</span><br><span class="line">            node = node-&gt;next;</span><br><span class="line">            ++n;</span><br><span class="line">        &#125;</span><br><span class="line">        return n;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode *sortList(ListNode *head) &#123;</span><br><span class="line">        int block_size = 1, n = count_size(head), iter = 0, i = 0, a = 0, b = 0;</span><br><span class="line">        ListNode virtual_head(0);</span><br><span class="line">        ListNode *last = NULL, *it = NULL, *A = NULL, *B = NULL, *tmp = NULL;</span><br><span class="line">        virtual_head.next = head;</span><br><span class="line">        while (block_size &lt; n)&#123;</span><br><span class="line">            iter = 0;</span><br><span class="line">            last = &amp;virtual_head;</span><br><span class="line">            it = virtual_head.next;</span><br><span class="line">            while (iter &lt;  n)&#123;</span><br><span class="line">                a = min(n - iter, block_size);</span><br><span class="line">                b = min(n - iter - a, block_size);</span><br><span class="line">                </span><br><span class="line">                A = it;</span><br><span class="line">                if (b != 0)&#123;</span><br><span class="line">                    for (i = 0; i &lt; a - 1; ++i) it = it-&gt;next;</span><br><span class="line">                    B = it-&gt;next;</span><br><span class="line">                    it-&gt;next = NULL;</span><br><span class="line">                    it = B;</span><br><span class="line">                    </span><br><span class="line">                    for (i = 0; i &lt; b - 1; ++i) it = it-&gt;next;</span><br><span class="line">                    tmp = it-&gt;next;</span><br><span class="line">                    it-&gt;next = NULL;</span><br><span class="line">                    it = tmp;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                while (A || B)&#123;</span><br><span class="line">                    if (B == NULL || (A != NULL &amp;&amp; A-&gt;val &lt;= B-&gt;val))&#123;</span><br><span class="line">                        last-&gt;next = A;</span><br><span class="line">                        last = last-&gt;next;</span><br><span class="line">                        A = A-&gt;next;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        last-&gt;next = B;</span><br><span class="line">                        last = last-&gt;next;</span><br><span class="line">                        B = B-&gt;next;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                last-&gt;next = NULL;</span><br><span class="line">                iter += a + b;</span><br><span class="line">            &#125;</span><br><span class="line">            block_size &lt;&lt;= 1;</span><br><span class="line">        &#125;</span><br><span class="line">        return virtual_head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/30407/clean-python-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30407/clean-python-code</a></p>
+<p>Clean python code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def merge(self, h1, h2):</span><br><span class="line">        dummy = tail = ListNode(None)</span><br><span class="line">        while h1 and h2:</span><br><span class="line">            if h1.val &lt; h2.val:</span><br><span class="line">                tail.next, tail, h1 = h1, h1, h1.next</span><br><span class="line">            else:</span><br><span class="line">                tail.next, tail, h2 = h2, h2, h2.next</span><br><span class="line">    </span><br><span class="line">        tail.next = h1 or h2</span><br><span class="line">        return dummy.next</span><br><span class="line">    </span><br><span class="line">    def sortList(self, head):</span><br><span class="line">        if not head or not head.next:</span><br><span class="line">            return head</span><br><span class="line">    </span><br><span class="line">        pre, slow, fast = None, head, head</span><br><span class="line">        while fast and fast.next:</span><br><span class="line">            pre, slow, fast = slow, slow.next, fast.next.next</span><br><span class="line">        pre.next = None</span><br><span class="line"></span><br><span class="line">        return self.merge(*map(self.sortList, (head, slow)))</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/18100/java-merge-sort-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18100/java-merge-sort-solution</a></p>
+<p>Java merge sort solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">  </span><br><span class="line">  public ListNode sortList(ListNode head) &#123;</span><br><span class="line">    if (head == null || head.next == null)</span><br><span class="line">      return head;</span><br><span class="line">        </span><br><span class="line">    // step 1. cut the list to two halves</span><br><span class="line">    ListNode prev = null, slow = head, fast = head;</span><br><span class="line">    </span><br><span class="line">    while (fast != null &amp;&amp; fast.next != null) &#123;</span><br><span class="line">      prev = slow;</span><br><span class="line">      slow = slow.next;</span><br><span class="line">      fast = fast.next.next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    prev.next = null;</span><br><span class="line">    </span><br><span class="line">    // step 2. sort each half</span><br><span class="line">    ListNode l1 = sortList(head);</span><br><span class="line">    ListNode l2 = sortList(slow);</span><br><span class="line">    </span><br><span class="line">    // step 3. merge l1 and l2</span><br><span class="line">    return merge(l1, l2);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  ListNode merge(ListNode l1, ListNode l2) &#123;</span><br><span class="line">    ListNode l = new ListNode(0), p = l;</span><br><span class="line">    </span><br><span class="line">    while (l1 != null &amp;&amp; l2 != null) &#123;</span><br><span class="line">      if (l1.val &lt; l2.val) &#123;</span><br><span class="line">        p.next = l1;</span><br><span class="line">        l1 = l1.next;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        p.next = l2;</span><br><span class="line">        l2 = l2.next;</span><br><span class="line">      &#125;</span><br><span class="line">      p = p.next;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (l1 != null)</span><br><span class="line">      p.next = l1;</span><br><span class="line">    </span><br><span class="line">    if (l2 != null)</span><br><span class="line">      p.next = l2;</span><br><span class="line">    </span><br><span class="line">    return l.next;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/643/i-have-a-pretty-good-mergesort-method-can-anyone-speed-up-the-run-time-or-reduce-the-memory-usage" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/643/i-have-a-pretty-good-mergesort-method-can-anyone-speed-up-the-run-time-or-reduce-the-memory-usage</a></p>
+<p>I have a pretty good MergeSort method. Can anyone speed up the run time or reduce the memory usage?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     ListNode(int x) &#123;</span><br><span class="line"> *         val = x;</span><br><span class="line"> *         next = null;</span><br><span class="line"> *     &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode sortList(ListNode head) &#123;</span><br><span class="line">        if (head == null || head.next == null)</span><br><span class="line">            return head;</span><br><span class="line">        ListNode f = head.next.next;</span><br><span class="line">        ListNode p = head;</span><br><span class="line">        while (f != null &amp;&amp; f.next != null) &#123;</span><br><span class="line">            p = p.next;</span><br><span class="line">            f =  f.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode h2 = sortList(p.next);</span><br><span class="line">        p.next = null;</span><br><span class="line">        return merge(sortList(head), h2);</span><br><span class="line">    &#125;</span><br><span class="line">    public ListNode merge(ListNode h1, ListNode h2) &#123;</span><br><span class="line">        ListNode hn = new ListNode(Integer.MIN_VALUE);</span><br><span class="line">        ListNode c = hn;</span><br><span class="line">        while (h1 != null &amp;&amp; h2 != null) &#123;</span><br><span class="line">            if (h1.val &lt; h2.val) &#123;</span><br><span class="line">                c.next = h1;</span><br><span class="line">                h1 = h1.next;</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                c.next = h2;</span><br><span class="line">                h2 = h2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            c = c.next;</span><br><span class="line">        &#125;</span><br><span class="line">        if (h1 != null)</span><br><span class="line">            c.next = h1;</span><br><span class="line">        if (h2 != null)</span><br><span class="line">            c.next = h2;</span><br><span class="line">        return hn.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +574,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
       
 
       
@@ -574,8 +669,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +778,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

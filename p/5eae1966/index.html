@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,string,dynamic programming,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="30.9%  https://leetcode.com/problems/distinct-subsequences/?tab=Description Given a string S and a string T, count the number of distinct subsequences of T in S. A subsequence of a string is a new st">
+<meta name="keywords" content="leetcode,string,dynamic programming,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="115. Distinct Subsequences">
 <meta property="og:url" content="http://yucc.me/p/5eae1966/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="30.9%  https://leetcode.com/problems/distinct-subsequences/?tab=Description Given a string S and a string T, count the number of distinct subsequences of T in S. A subsequence of a string is a new st">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.147Z">
+<meta property="og:updated_time" content="2018-05-22T11:26:53.411Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="115. Distinct Subsequences">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="30.9%  https://leetcode.com/problems/distinct-subsequences/?tab=Description Given a string S and a string T, count the number of distinct subsequences of T in S. A subsequence of a string is a new st">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:26:53+08:00">
+                2018-05-22 19:26
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,634
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -430,7 +452,78 @@
       
 
       
-        
+        <ul>
+<li>30.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/distinct-subsequences/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/distinct-subsequences/?tab=Description</a></p>
+<p>Given a string S and a string T, count the number of distinct subsequences of T in S.</p>
+<p>A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, “ACE” is a subsequence of “ABCDE” while “AEC” is not).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Here is an example:</span><br><span class="line">S = &quot;rabbbit&quot;, T = &quot;rabbit&quot;</span><br><span class="line"></span><br><span class="line">Return 3.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<p>Oct 17， 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numDistinct</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = s.size(), n = t.size();</span><br><span class="line">        <span class="keyword">if</span>(m&lt;n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(m+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;=m; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=m; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=n; j++)</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j] + (s[i<span class="number">-1</span>]==t[j<span class="number">-1</span>]?dp[i<span class="number">-1</span>][j<span class="number">-1</span>]:<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>13ms, 55.07%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/760/any-better-solution-that-takes-less-than-o-n-2-space-while-in-o-n-2-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/760/any-better-solution-that-takes-less-than-o-n-2-space-while-in-o-n-2-time</a></p>
+<p>Any better solution that takes less than O(n^2) space while in O(n^2) time?</p>
+<p>My solution is using O(n^2) space and running in O(n^2) time. I wonder is there a better way to do that which consumes less memory? I guess run time could not be improved though. Any thought/input would be highly appreciated, thanks!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Solution (DP):</span><br><span class="line"> * We keep a m*n matrix and scanning through string S, while</span><br><span class="line"> * m = T.length() + 1 and n = S.length() + 1</span><br><span class="line"> * and each cell in matrix Path[i][j] means the number of distinct subsequences of </span><br><span class="line"> * T.substr(1...i) in S(1...j)</span><br><span class="line"> * </span><br><span class="line"> * Path[i][j] = Path[i][j-1]            (discard S[j])</span><br><span class="line"> *              +     Path[i-1][j-1]    (S[j] == T[i] and we are going to use S[j])</span><br><span class="line"> *                 or 0                 (S[j] != T[i] so we could not use S[j])</span><br><span class="line"> * while Path[0][j] = 1 and Path[i][0] = 0.</span><br><span class="line"> */</span><br><span class="line">int numDistinct(string S, string T) &#123;</span><br><span class="line">    int m = T.length();</span><br><span class="line">    int n = S.length();</span><br><span class="line">    if (m &gt; n) return 0;    // impossible for subsequence</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; path(m+1, vector&lt;int&gt;(n+1, 0));</span><br><span class="line">    for (int k = 0; k &lt;= n; k++) path[0][k] = 1;    // initialization</span><br><span class="line">    </span><br><span class="line">    for (int j = 1; j &lt;= n; j++) &#123;</span><br><span class="line">        for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">            path[i][j] = path[i][j-1] + (T[i-1] == S[j-1] ? path[i-1][j-1] : 0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return path[m][n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>my code:</p>
+<p>搞清楚s t的区别，m n分别对应的关系，不要搞混了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numDistinct(string s, string t) &#123;</span><br><span class="line">        if(t.empty()) return 1;</span><br><span class="line">        if(s.empty()) return 0;</span><br><span class="line">        int m = t.size();</span><br><span class="line">        int n = s.size();</span><br><span class="line">        if(m&gt;n) return 0;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(m+1, vector&lt;int&gt;(n+1, 0));</span><br><span class="line">        for(int i=0; i&lt;=n; i++)</span><br><span class="line">            dp[0][i] = 1;</span><br><span class="line">        for(int i=0; i&lt;m; i++)&#123;</span><br><span class="line">            for(int j=0; j&lt;n; j++)&#123;</span><br><span class="line">                dp[i+1][j+1] = dp[i+1][j] + (t[i]==s[j]?dp[i][j] : 0);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>从上一种方法中，发现需要的空间复杂度还是可以降低的。</p>
+<p><a href="https://discuss.leetcode.com/topic/19778/7-10-lines-c-solutions-with-detailed-explanations-o-m-n-time-and-o-m-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19778/7-10-lines-c-solutions-with-detailed-explanations-o-m-n-time-and-o-m-space</a></p>
+<p>7-10 lines C++ Solutions with Detailed Explanations (O(m*n) time and O(m) space)</p>
+<p>Well, a dynamic programming problem. Let’s first define its state dp[i][j] to be the number of distinct subsequences of t[0..i - 1] in s[0..j - 1]. Then we have the following state equations:</p>
+<ol>
+<li>General case 1: dp[i][j] = dp[i][j - 1] if t[i - 1] != s[j - 1];</li>
+<li>General case 2: dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1] if t[i - 1] == s[j - 1];</li>
+<li>Boundary case 1: dp[0][j] = 1 for all j;</li>
+<li>Boundary case 2: dp[i][0] = 0 for all positive i.</li>
+</ol>
+<p>Now let’s give brief explanations to the four equations above.</p>
+<ol>
+<li>If t[i - 1] != s[j - 1], the distinct subsequences will not include s[j - 1] and thus all the number of distinct subsequences will simply be those in s[0..j - 2], which corresponds to dp[i][j - 1];</li>
+<li>If t[i - 1] == s[j - 1], the number of distinct subsequences include two parts: those with s[j - 1] and those without;</li>
+<li>An empty string will have exactly one subsequence in any string :-)</li>
+<li>Non-empty string will have no subsequences in an empty string.</li>
+</ol>
+<p>Putting these together, we will have the following simple codes (just like translation :-)):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numDistinct(string s, string t) &#123;</span><br><span class="line">        int m = t.length(), n = s.length();</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(m + 1, vector&lt;int&gt; (n + 1, 0));</span><br><span class="line">        for (int j = 0; j &lt;= n; j++) dp[0][j] = 1;</span><br><span class="line">        for (int j = 1; j &lt;= n; j++)</span><br><span class="line">            for (int i = 1; i &lt;= m; i++)</span><br><span class="line">                dp[i][j] = dp[i][j - 1] + (t[i - 1] == s[j - 1] ? dp[i - 1][j - 1] : 0);</span><br><span class="line">        return dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Notice that we keep the whole m*n matrix simply for dp[i - 1][j - 1]. So we can simply store that value in a single variable and further optimize the space complexity. The final code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numDistinct(string s, string t) &#123;</span><br><span class="line">        int m = t.length(), n = s.length();</span><br><span class="line">        vector&lt;int&gt; cur(m + 1, 0);</span><br><span class="line">        cur[0] = 1;</span><br><span class="line">        for (int j = 1; j &lt;= n; j++) &#123; </span><br><span class="line">            int pre = 1;</span><br><span class="line">            for (int i = 1; i &lt;= m; i++) &#123;</span><br><span class="line">                int temp = cur[i];</span><br><span class="line">                cur[i] = cur[i] + (t[i - 1] == s[j - 1] ? pre : 0);</span><br><span class="line">                pre = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cur[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>16ms, 41.15%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/9488/easy-to-understand-dp-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9488/easy-to-understand-dp-in-java</a></p>
+<p>Easy to understand DP in Java</p>
+<p>The idea is the following:</p>
+<ul>
+<li>we will build an array mem where mem[i+1][j+1] means that S[0..j] contains T[0..i] that many times as distinct subsequences. Therefor the result will be mem[T.length()][S.length()].</li>
+<li>we can build this array rows-by-rows:</li>
+<li>the first row must be filled with 1. That’s because the empty string is a subsequence of any string but only 1 time. So mem[0][j] = 1 for every j. So with this we not only make our lives easier, but we also return correct value if T is an empty string.</li>
+<li>the first column of every rows except the first must be 0. This is because an empty string cannot contain a non-empty string as a substring – the very first item of the array: mem[0][0] = 1, because an empty string contains the empty string 1 time.</li>
+</ul>
+<p>So the matrix looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line">  S 0123....j</span><br><span class="line">T +----------+</span><br><span class="line">  |1111111111|</span><br><span class="line">0 |0         |</span><br><span class="line">1 |0         |</span><br><span class="line">2 |0         |</span><br><span class="line">. |0         |</span><br><span class="line">. |0         |</span><br><span class="line">i |0         |</span><br></pre></td></tr></table></figure>
+<p>From here we can easily fill the whole grid: for each (x, y), we check if S[x] == T[y] we add the previous item and the previous item in the previous row, otherwise we copy the previous item in the same row. The reason is simple:</p>
+<ul>
+<li>if the current character in S doesn’t equal to current character T, then we have the same number of distinct subsequences as we had without the new character.</li>
+<li>if the current character in S equal to the current character T, then the distinct number of subsequences: the number we had before plus the distinct number of subsequences we had with less longer T and less longer S.<br>An example:</li>
+</ul>
+<p>S: [acdabefbc] and T: [ab]</p>
+<p>first we check with a:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line">           *  *</span><br><span class="line">      S = [acdabefbc]</span><br><span class="line">mem[1] = [0111222222]</span><br></pre></td></tr></table></figure>
+<p>then we check with ab:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line">               *  * ]</span><br><span class="line">      S = [acdabefbc]</span><br><span class="line">mem[1] = [0111222222]</span><br><span class="line">mem[2] = [0000022244]</span><br></pre></td></tr></table></figure>
+<p>And the result is 4, as the distinct subsequences are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line">      S = [a   b    ]</span><br><span class="line">      S = [a      b ]</span><br><span class="line">      S = [   ab    ]</span><br><span class="line">      S = [   a   b ]</span><br></pre></td></tr></table></figure>
+<p>See the code in Java:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public int numDistinct(String S, String T) &#123;</span><br><span class="line">    // array creation</span><br><span class="line">    int[][] mem = new int[T.length()+1][S.length()+1];</span><br><span class="line"></span><br><span class="line">    // filling the first row: with 1s</span><br><span class="line">    for(int j=0; j&lt;=S.length(); j++) &#123;</span><br><span class="line">        mem[0][j] = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // the first column is 0 by default in every other rows but the first, which we need.</span><br><span class="line">    </span><br><span class="line">    for(int i=0; i&lt;T.length(); i++) &#123;</span><br><span class="line">        for(int j=0; j&lt;S.length(); j++) &#123;</span><br><span class="line">            if(T.charAt(i) == S.charAt(j)) &#123;</span><br><span class="line">                mem[i+1][j+1] = mem[i][j] + mem[i+1][j];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                mem[i+1][j+1] = mem[i+1][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return mem[T.length()][S.length()];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +584,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -574,8 +679,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +726,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +788,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

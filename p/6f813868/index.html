@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.2%  https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?tab=Description Given inorder and postorder traversal of a tree, construct the binary tree. Note: You">
+<meta name="keywords" content="leetcode,array,medium,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="106. Construct Binary Tree from Inorder and Postorder Traversal">
 <meta property="og:url" content="http://yucc.me/p/6f813868/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.2%  https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?tab=Description Given inorder and postorder traversal of a tree, construct the binary tree. Note: You">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.131Z">
+<meta property="og:updated_time" content="2018-05-22T11:18:13.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="106. Construct Binary Tree from Inorder and Postorder Traversal">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.2%  https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?tab=Description Given inorder and postorder traversal of a tree, construct the binary tree. Note: You">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:18:13+08:00">
+                2018-05-22 19:18
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,958
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -430,7 +452,91 @@
       
 
       
-        
+        <ul>
+<li>31.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/?tab=Description</a></p>
+<p>Given inorder and postorder traversal of a tree, construct the binary tree.</p>
+<p>Note:</p>
+<p>You may assume that duplicates do not exist in the tree.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>检查边界条件</p>
+<p>类似105题，剑指 offer第6题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder) &#123;</span><br><span class="line">        int n = inorder.size();</span><br><span class="line">        if(n&lt;=0) return NULL;</span><br><span class="line">        TreeNode* root = helper(inorder, postorder, 0, n-1, 0, n-1);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    TreeNode* helper(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder, int is, int ie, int ps, int pe)&#123;</span><br><span class="line">        if(is&gt;ie || ps&gt;pe)</span><br><span class="line">            return NULL;</span><br><span class="line">        TreeNode* root = new TreeNode(postorder[pe]);</span><br><span class="line">        int pos=is;</span><br><span class="line">        for(;pos&lt;=ie;pos++)&#123;</span><br><span class="line">            if(inorder[pos]==postorder[pe])</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;left = helper(inorder, postorder, is, pos-1, ps, pos-is+ps-1);</span><br><span class="line">        root-&gt;right = helper(inorder, postorder, pos+1, ie, ps+pos-is, pe-1);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p>my code:</p>
+<p>借鉴105题，递归思路。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder) &#123;</span><br><span class="line">        return create(inorder, postorder, 0, inorder.size()-1, 0, postorder.size()-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    TreeNode* create(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder, int is, int ie, int ps, int pe)&#123;</span><br><span class="line">        if(is&gt;ie || ps&gt;pe)</span><br><span class="line">            return NULL;</span><br><span class="line">        TreeNode* root = new TreeNode(postorder[pe]);</span><br><span class="line">        int pos;</span><br><span class="line">        for(int i=ie; i&gt;=is; i--)&#123;</span><br><span class="line">            if(inorder[i]==root-&gt;val)&#123;</span><br><span class="line">                pos = i;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;left = create(inorder, postorder, is, pos-1, ps, ps+pos-is-1);</span><br><span class="line">        root-&gt;right = create(inorder, postorder, pos+1, ie, ps+pos-is, pe-1);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二:</p>
+<p>迭代法</p>
+<p>待解决</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4746/my-comprehension-of-o-n-solution-from-hongzhi" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4746/my-comprehension-of-o-n-solution-from-hongzhi</a></p>
+<p>My comprehension of O(n) solution from @hongzhi</p>
+<p>Below is the O(n) solution from @hongzhi but that discuss is closed now ‘cause @hongzhi says little about his code.</p>
+<p><a href="https://oj.leetcode.com/discuss/6334/here-is-my-o-n-solution-is-it-neat" target="_blank" rel="noopener">https://oj.leetcode.com/discuss/6334/here-is-my-o-n-solution-is-it-neat</a></p>
+<p>I’ve modified some of and tried this code and got AC.</p>
+<p>Just share about some comprehension about his code.</p>
+<p>I’ve modified vtn(vector) to stn(stack) in that stack is probably what this algs means and needs.</p>
+<p>What matters most is the meaning of stn.</p>
+<p>Only nodes whoes left side hasn’t been handled will be pushed into stn.</p>
+<p>And inorder is organized as (inorder of left) root (inorder of right),</p>
+<p>And postorder is as (postorder of left) (postorder of right) root.</p>
+<p>So at the very begin, we only have root in stn and we check if inorder.back() == root-&gt;val and in most cases it’s false(see Note 1). Then we make this node root’s right sub-node and push it into stn.</p>
+<p>Note 1: this is actually (inorder of right).back() == (postorder of right).back(), so if only there’s no right subtree or the answer will always be false.</p>
+<p>Note 2: we delete one node from postorder as we push one into stn.</p>
+<p>Now we have [root, root’s right] as stn and we check inorder.back() == stn.top()-&gt;val again.</p>
+<ul>
+<li>true means inorder.back() is the root node and needs handled left case.</li>
+<li>false means inorder.back() is the next right sub-node</li>
+</ul>
+<p>So when we encounter a true, we will cache stn.top() as p and delete both nodes from inorder and stn.</p>
+<p>Then we check inorder.size(), if there’s no nodes left, it means p has no left node.</p>
+<p>Else the next node in inorder could be p’s left node or p’s father which equals to the now stn.top() (remember we popped p from stn above).</p>
+<p>If the latter happens, it means p has no left node and we need to move on to p’s father(stn.top()).</p>
+<p>If the former happens, it means p has one left node and it’s postorder.back(), so we put it to p’s left and delete it from the postorder and push the left node into stn ‘cause it should be the next check node as the postorder is organized as above.</p>
+<p>That’s all of it. The algs just build a binary tree. :)</p>
+<p>Inform me if there’s anything vague or wrong, I’m open to any suggestions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *buildTree(vector&lt;int&gt; &amp;inorder, vector&lt;int&gt; &amp;postorder) &#123;</span><br><span class="line">        if(inorder.size() == 0)return NULL;</span><br><span class="line">        TreeNode *p;</span><br><span class="line">        TreeNode *root;</span><br><span class="line">        stack&lt;TreeNode *&gt; stn;</span><br><span class="line">        </span><br><span class="line">        root = new TreeNode(postorder.back()); </span><br><span class="line">        stn.push(root); </span><br><span class="line">        postorder.pop_back(); </span><br><span class="line">        </span><br><span class="line">        while(true)</span><br><span class="line">        &#123;</span><br><span class="line">            if(inorder.back() == stn.top()-&gt;val) </span><br><span class="line">            &#123;</span><br><span class="line">                p = stn.top();</span><br><span class="line">                stn.pop(); </span><br><span class="line">                inorder.pop_back(); </span><br><span class="line">                if(inorder.size() == 0) break;</span><br><span class="line">                if(stn.size() &amp;&amp; inorder.back() == stn.top()-&gt;val)</span><br><span class="line">                    continue;</span><br><span class="line">                p-&gt;left = new TreeNode(postorder.back()); </span><br><span class="line">                postorder.pop_back();</span><br><span class="line">                stn.push(p-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            else </span><br><span class="line">            &#123;</span><br><span class="line">                p = new TreeNode(postorder.back());</span><br><span class="line">                postorder.pop_back();</span><br><span class="line">                stn.top()-&gt;right = p; </span><br><span class="line">                stn.push(p); </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5846/sharing-my-straightforward-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5846/sharing-my-straightforward-recursive-solution</a></p>
+<p>Sharing my straightforward recursive solution</p>
+<p>TreeNode *buildTree(vector<int> &amp;inorder, vector<int> &amp;postorder) {<br>    return create(inorder, postorder, 0, inorder.size() - 1, 0, postorder.size() - 1);<br>}</int></int></p>
+<p>TreeNode<em> create(vector<int> &amp;inorder, vector<int> &amp;postorder, int is, int ie, int ps, int pe){<br>    if(ps &gt; pe){<br>        return nullptr;<br>    }<br>    TreeNode</int></int></em> node = new TreeNode(postorder[pe]);<br>    int pos;<br>    for(int i = is; i &lt;= ie; i++){<br>        if(inorder[i] == node-&gt;val){<br>            pos = i;<br>            break;<br>        }<br>    }<br>    node-&gt;left = create(inorder, postorder, is, pos - 1, ps, ps + pos - is - 1);<br>    node-&gt;right = create(inorder, postorder, pos + 1, ie, pe - ie + pos, pe - 1);<br>    return node;<br>}<br>Actually, this problem is pretty similar as the previous one.</p>
+<p><a href="https://oj.leetcode.com/discuss/18101/sharing-my-straightforward-recursive-solution" target="_blank" rel="noopener">Here is a like to that solution.</a></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1954/here-is-my-o-n-solution-is-it-neat" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1954/here-is-my-o-n-solution-is-it-neat</a></p>
+<p>Here is my O(n) solution. Is it neat?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *buildTree(vector&lt;int&gt; &amp;inorder, vector&lt;int&gt; &amp;postorder) &#123;</span><br><span class="line">        if(inorder.size() == 0)return NULL;</span><br><span class="line">        TreeNode* p;</span><br><span class="line">        TreeNode* root;</span><br><span class="line">        vector&lt;int&gt; vint;</span><br><span class="line">        vector&lt;TreeNode*&gt; vtn;</span><br><span class="line">        root = new TreeNode(postorder.back());</span><br><span class="line">        vtn.push_back(root);</span><br><span class="line">        postorder.pop_back();</span><br><span class="line">        while(true)</span><br><span class="line">        &#123;</span><br><span class="line">            if(inorder.back() == vtn.back()-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                p = vtn.back();</span><br><span class="line">                vtn.pop_back();</span><br><span class="line">                inorder.pop_back();</span><br><span class="line">                if(inorder.size() == 0) break;</span><br><span class="line">				if(vtn.size())</span><br><span class="line">					if(inorder.back() == vtn.back()-&gt;val)continue;</span><br><span class="line">                p-&gt;left = new TreeNode(postorder.back());</span><br><span class="line">				postorder.pop_back();</span><br><span class="line">                vtn.push_back(p-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                p = new TreeNode(postorder.back());</span><br><span class="line">                postorder.pop_back();</span><br><span class="line">                vtn.back()-&gt;right = p;</span><br><span class="line">                vtn.push_back(p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16861/my-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16861/my-c-solution</a></p>
+<p>My C++ Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; inorder, vector&lt;int&gt;&amp; postorder) &#123;</span><br><span class="line">        </span><br><span class="line">        return helper(inorder,0,inorder.size(),postorder,0,postorder.size());</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    TreeNode* helper(vector&lt;int&gt;&amp; inorder,int i,int j,vector&lt;int&gt;&amp; postorder,int ii,int jj)</span><br><span class="line">    &#123;</span><br><span class="line">        // 每次取postorder的最后一个值mid，将其作为树的根节点</span><br><span class="line">        // 然后从inroder中找到mid，将其分割成为两部分，左边作为mid的左子树，右边作为mid的右子树</span><br><span class="line">        // tree:     8 4 10 3 6 9 11</span><br><span class="line">        // Inorder   [3 4 6] 8 [9 10 11]</span><br><span class="line">        // postorder [3 6 4]   [9 11 10] 8</span><br><span class="line"></span><br><span class="line">        if(i &gt;= j || ii &gt;= jj)</span><br><span class="line">            return NULL;</span><br><span class="line">        </span><br><span class="line">        int mid = postorder[jj - 1];</span><br><span class="line">        </span><br><span class="line">        auto f = find(inorder.begin() + i,inorder.begin() + j,mid);</span><br><span class="line">        </span><br><span class="line">        int dis = f - inorder.begin() - i;</span><br><span class="line">        </span><br><span class="line">        TreeNode* root = new TreeNode(mid);</span><br><span class="line">        root -&gt; left = helper(inorder,i,i + dis,postorder,ii,ii + dis);</span><br><span class="line">        root -&gt; right = helper(inorder,i + dis + 1,j,postorder,ii + dis,jj - 1);</span><br><span class="line">        </span><br><span class="line">        return root;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>222ms, 30.82%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/10516/a-python-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10516/a-python-recursive-solution</a></p>
+<p>A Python recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode(object):</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.left = None</span><br><span class="line">#         self.right = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def buildTree(self, inorder, postorder):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type inorder: List[int]</span><br><span class="line">        :type postorder: List[int]</span><br><span class="line">        :rtype: TreeNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not inorder or not postorder:</span><br><span class="line">            return None</span><br><span class="line">        </span><br><span class="line">        root = TreeNode(postorder.pop())</span><br><span class="line">        inorderIndex = inorder.index(root.val)</span><br><span class="line">        </span><br><span class="line">        root.right = self.buildTree(inorder[inorderIndex+1:], postorder)</span><br><span class="line">        root.left = self.buildTree(inorder[:inorderIndex], postorder)</span><br><span class="line">        </span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21286/python-short-solution-recursively" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21286/python-short-solution-recursively</a></p>
+<p>Python short solution (recursively).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def buildTree(self, inorder, postorder):</span><br><span class="line">    if inorder:</span><br><span class="line">        ind = inorder.index(postorder.pop())</span><br><span class="line">        root = TreeNode(inorder[ind])</span><br><span class="line">        root.right = self.buildTree(inorder[ind+1:], postorder)</span><br><span class="line">        root.left = self.buildTree(inorder[:ind], postorder)</span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3296/my-recursive-java-code-with-o-n-time-and-o-n-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3296/my-recursive-java-code-with-o-n-time-and-o-n-space</a></p>
+<p>My recursive Java code with O(n) time and O(n) space</p>
+<p>The the basic idea is to take the last element in postorder array as the root, find the position of the root in the inorder array; then locate the range for left sub-tree and right sub-tree and do recursion. Use a HashMap to record the index of root in the inorder array.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode buildTreePostIn(int[] inorder, int[] postorder) &#123;</span><br><span class="line">	if (inorder == null || postorder == null || inorder.length != postorder.length)</span><br><span class="line">		return null;</span><br><span class="line">	HashMap&lt;Integer, Integer&gt; hm = new HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">	for (int i=0;i&lt;inorder.length;++i)</span><br><span class="line">		hm.put(inorder[i], i);</span><br><span class="line">	return buildTreePostIn(inorder, 0, inorder.length-1, postorder, 0, </span><br><span class="line">                          postorder.length-1,hm);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private TreeNode buildTreePostIn(int[] inorder, int is, int ie, int[] postorder, int ps, int pe, </span><br><span class="line">                                 HashMap&lt;Integer,Integer&gt; hm)&#123;</span><br><span class="line">	if (ps&gt;pe || is&gt;ie) return null;</span><br><span class="line">	TreeNode root = new TreeNode(postorder[pe]);</span><br><span class="line">	int ri = hm.get(postorder[pe]);</span><br><span class="line">	TreeNode leftchild = buildTreePostIn(inorder, is, ri-1, postorder, ps, ps+ri-is-1, hm);</span><br><span class="line">	TreeNode rightchild = buildTreePostIn(inorder,ri+1, ie, postorder, ps+ri-is, pe-1, hm);</span><br><span class="line">	root.left = leftchild;</span><br><span class="line">	root.right = rightchild;</span><br><span class="line">	return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/3296/my-recursive-java-code-with-o-n-time-and-o-n-space/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3296/my-recursive-java-code-with-o-n-time-and-o-n-space/2</a></p>
+<p>This is my version: similar idea, but no HashMap needed! </p>
+<p>(TreeNode end is the boundary of left subtree.)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">int pInorder;   // index of inorder array</span><br><span class="line">int pPostorder; // index of postorder array</span><br><span class="line"></span><br><span class="line">private TreeNode buildTree(int[] inorder, int[] postorder, TreeNode end) &#123;</span><br><span class="line">	if (pPostorder &lt; 0) &#123;</span><br><span class="line">		return null;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// create root node</span><br><span class="line">	TreeNode n = new TreeNode(postorder[pPostorder--]);</span><br><span class="line">	</span><br><span class="line">	// if right node exist, create right subtree</span><br><span class="line">	if (inorder[pInorder] != n.val) &#123;</span><br><span class="line">		n.right = buildTree(inorder, postorder, n);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	pInorder--;</span><br><span class="line">	</span><br><span class="line">	// if left node exist, create left subtree</span><br><span class="line">	if ((end == null) || (inorder[pInorder] != end.val)) &#123;</span><br><span class="line">		n.left = buildTree(inorder, postorder, end);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	return n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode buildTree(int[] inorder, int[] postorder) &#123;</span><br><span class="line">	pInorder = inorder.length - 1;</span><br><span class="line">	pPostorder = postorder.length - 1;</span><br><span class="line">	</span><br><span class="line">	return buildTree(inorder, postorder, null);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +597,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +694,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +741,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +803,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

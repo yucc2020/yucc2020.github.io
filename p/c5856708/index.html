@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,two pointers,medium,linked list," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.0%  https://leetcode.com/problems/linked-list-cycle-ii/?tab=Description Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the link">
+<meta name="keywords" content="leetcode,two pointers,medium,linked list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="142. Linked List Cycle II">
 <meta property="og:url" content="http://yucc.me/p/c5856708/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.0%  https://leetcode.com/problems/linked-list-cycle-ii/?tab=Description Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the link">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.184Z">
+<meta property="og:updated_time" content="2018-05-22T11:49:42.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="142. Linked List Cycle II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.0%  https://leetcode.com/problems/linked-list-cycle-ii/?tab=Description Given a linked list, return the node where the cycle begins. If there is no cycle, return null. Note: Do not modify the link">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:49:42+08:00">
+                2018-05-22 19:49
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,029
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -430,7 +452,93 @@
       
 
       
-        
+        <ul>
+<li>31.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/linked-list-cycle-ii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/linked-list-cycle-ii/?tab=Description</a></p>
+<p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
+<p>Note: Do not modify the linked list.</p>
+<p>Follow up:</p>
+<p>Can you solve it without using extra space?</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* slow = head, *fast = head;</span><br><span class="line">        <span class="comment">// 注意!fast表示fast为NULL的情况下为true，fast表示fast不为NULL</span></span><br><span class="line">        <span class="comment">// 区分!fast,fast,fast!=NULL这几种情况</span></span><br><span class="line">        <span class="keyword">while</span>(fast &amp;&amp; fast-&gt;next)&#123;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(slow==fast)&#123;</span><br><span class="line">                fast = head;</span><br><span class="line">                <span class="keyword">while</span>(fast!=slow)&#123;</span><br><span class="line">                    slow = slow-&gt;next;</span><br><span class="line">                    fast = fast-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> fast;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>类似版本：</p>
+<p>一个重点是，题目中要求循环开始的地方，所以当找到相遇的地方时，还要通过for循环找到最开始相遇的地方。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">        if(head==NULL) return head;</span><br><span class="line">        ListNode * slow, * fast;</span><br><span class="line">        slow = head;</span><br><span class="line">        fast = head;</span><br><span class="line">        while(fast!=NULL &amp;&amp; fast-&gt;next!=NULL)&#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            if(slow==fast)&#123;</span><br><span class="line">                ListNode* slow2 = head;</span><br><span class="line">                while(slow2!=slow)&#123;</span><br><span class="line">                    slow = slow-&gt;next;</span><br><span class="line">                    slow2 = slow2-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">                return slow2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return NULL;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/5284/concise-o-n-solution-by-using-c-with-detailed-alogrithm-description" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5284/concise-o-n-solution-by-using-c-with-detailed-alogrithm-description</a></p>
+<p>Concise O(n) solution by using C++ with Detailed Alogrithm Description</p>
+<p>Alogrithm Description:<br>Step 1: Determine whether there is a cycle</p>
+<p>1.1. Using a slow pointer that move forward 1 step each time</p>
+<p>1.2. Using a fast pointer that move forward 2 steps each time</p>
+<p>1.3. If the slow pointer and fast pointer both point to the same location after several moving steps, there is a cycle;</p>
+<p>1.4. Otherwise, if (fast-&gt;next == NULL || fast-&gt;next-&gt;next == NULL), there has no cycle.</p>
+<p>Step 2: If there is a cycle, return the entry location of the cycle</p>
+<p>2.1. L1 is defined as the distance between the head point and entry point</p>
+<p>2.2. L2 is defined as the distance between the entry point and the meeting point</p>
+<p>2.3. C is defined as the length of the cycle</p>
+<p>2.4. n is defined as the travel times of the fast pointer around the cycle When the first encounter of the slow pointer and the fast pointer</p>
+<ul>
+<li>According to the definition of L1, L2 and C, we can obtain:</li>
+<li>the total distance of the slow pointer traveled when encounter is L1 + L2</li>
+<li>the total distance of the fast pointer traveled when encounter is L1 + L2 + n * C</li>
+<li>Because the total distance the fast pointer traveled is twice as the slow pointer, Thus:</li>
+<li>2 <em> (L1+L2) = L1 + L2 + n </em> C =&gt; L1 + L2 = n <em> C =&gt; L1 = (n - 1) C + (C - L2)</em></li>
+</ul>
+<p>快指针不会超过慢指针好几圈，因为如果当前节点没有相遇，则下一个节点一定会相遇。</p>
+<p>It can be concluded that the distance between the head location and entry location is equal to the distance between the meeting location and the entry location along the direction of forward movement.</p>
+<p>So, when the slow pointer and the fast pointer encounter in the cycle, we can define a pointer “entry” that point to the head, this “entry” pointer moves one step each time so as the slow pointer. When this “entry” pointer and the slow pointer both point to the same location, this location is the node where the cycle begins.</p>
+<p>Here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">    if (head == NULL || head-&gt;next == NULL)</span><br><span class="line">        return NULL;</span><br><span class="line">    </span><br><span class="line">    ListNode *slow  = head;</span><br><span class="line">    ListNode *fast  = head;</span><br><span class="line">    ListNode *entry = head;</span><br><span class="line">    </span><br><span class="line">    while (fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next) &#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">        if (slow == fast) &#123;                      // there is a cycle</span><br><span class="line">            while(slow != entry) &#123;               // found the entry location</span><br><span class="line">                slow  = slow-&gt;next;</span><br><span class="line">                entry = entry-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            return entry;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return NULL;                                 // there has no cycle</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p>9ms, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/2975/o-n-solution-by-using-two-pointers-without-change-anything" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2975/o-n-solution-by-using-two-pointers-without-change-anything</a></p>
+<p>O(n) solution by using two pointers without change anything</p>
+<p>my solution is like this: using two pointers, one of them one step at a time. another pointer each take two steps. Suppose the first meet at step k,the length of the Cycle is r. so..2k-k=nr,k=nr</p>
+<p>Now, the distance between the start node of list and the start node of cycle is s. the distance between the start of list and the first meeting node is k(the pointer which wake one step at a time waked k steps).the distance between the start node of cycle and the first meeting node is m, so…s=k-m,</p>
+<p>s=nr-m=(n-1)r+(r-m),here we takes n = 1..so, using one pointer start from the start node of list, another pointer start from the first meeting node, all of them wake one step at a time, the first time they meeting each other is the start of the cycle.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">        if(head==NULL || head-&gt;next == NULL) return NULL;</span><br><span class="line">        </span><br><span class="line">        ListNode* firstp = head;</span><br><span class="line">        ListNode* secondp = head;</span><br><span class="line">        bool isCycle = false;</span><br><span class="line">        </span><br><span class="line">        while(firstp!=NULL &amp;&amp; secondp!=NULL)&#123;</span><br><span class="line">            firstp = firstp-&gt;next;</span><br><span class="line">            if(secondp-&gt;next==NULL) return NULL;</span><br><span class="line">            secondp = secondp-&gt;next-&gt;next;</span><br><span class="line">            if(firstp==secondp)&#123;</span><br><span class="line">                isCycle = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(!isCycle) return NULL;</span><br><span class="line">        firstp = head;</span><br><span class="line">        while(firstp != secondp)&#123;</span><br><span class="line">            firstp = firstp-&gt;next;</span><br><span class="line">            secondp = secondp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return firstp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33191/c-implementation-with-much-more-clear-and-strict-explanation-any-one-can-give-more-clear" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33191/c-implementation-with-much-more-clear-and-strict-explanation-any-one-can-give-more-clear</a></p>
+<p>C++ implementation with much more clear and strict explanation ! any one can give more clear ?</p>
+<p>Just use the dummy head pointer and why first find the meeting point and then set the result-pointer at the dummy and move forward to find the result position.<br>There are the reasons :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">set the</span><br><span class="line"></span><br><span class="line">   [#cycle length = C ]  </span><br><span class="line"></span><br><span class="line">   [#length-from-head-to-cycle-start-point = L] </span><br><span class="line"></span><br><span class="line">   [#cycle-start-point-meeting-point=S] </span><br><span class="line"></span><br><span class="line">   [#meeting-point-clock-direction-to-cycle-start-point=Y]</span><br><span class="line"></span><br><span class="line">   [#step needed to meeting=T]</span><br><span class="line">Then when they meet, we have</span><br><span class="line"></span><br><span class="line">   2 * T = T + N1 * C    N1=0,1,2...</span><br><span class="line">so we get</span><br><span class="line"></span><br><span class="line">   T = N1 * C</span><br><span class="line">Also we have</span><br><span class="line"></span><br><span class="line">   2 * T = L + N2 * C + S    N2=0,1,2...</span><br><span class="line">we can get</span><br><span class="line"></span><br><span class="line">   N3 * C = L + S  with C = S + Y   N3 = 2 * N1 - N2</span><br><span class="line">so we have</span><br><span class="line"></span><br><span class="line">  (N3 - 1) * C + S + Y = L + S</span><br><span class="line">then we have</span><br><span class="line"></span><br><span class="line">  (N3 - 1) * C + Y = L</span><br><span class="line">just means that we can do the things that have been explained by others.</span><br></pre></td></tr></table></figure>
+<p>We can move a node from head and node from the meeting point, then when they meet, it is the</p>
+<p>start point of the cycle.</p>
+<p>Here is the code :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        ListNode *detectCycle(ListNode *head) &#123;</span><br><span class="line">            ListNode* dummy=new ListNode(-1);</span><br><span class="line">            dummy-&gt;next=head;</span><br><span class="line">            ListNode *slow=dummy, *fast=dummy;</span><br><span class="line">            bool flag=false;</span><br><span class="line">            while(fast &amp;&amp; fast-&gt;next)&#123;</span><br><span class="line">                slow=slow-&gt;next;</span><br><span class="line">                fast=fast-&gt;next-&gt;next;</span><br><span class="line">                if(fast==slow)  &#123; flag=true; break; &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(!flag)   return NULL;</span><br><span class="line">            ListNode* result=dummy;</span><br><span class="line">            while(result != slow)&#123;</span><br><span class="line">                result=result-&gt;next;</span><br><span class="line">                slow=slow-&gt;next;**strong text**</span><br><span class="line">            &#125;</span><br><span class="line">            return result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>85ms, 51.12%, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/17521/share-my-python-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17521/share-my-python-solution-with-detailed-explanation</a></p>
+<p>Share my python solution with detailed explanation</p>
+<p>My solution consists of two parts. The first one checks if a cycle exists or not. The second one determines the entry of the cycle if it exists.<br>The first part is inspired by <a href="https://leetcode.com/discuss/40120/except-ionally-fast-python" target="_blank" rel="noopener">this post</a>. about Linked List Cycle I<br>The logic behind the 2nd part is like this:</p>
+<p>Consider the following linked list, where E is the cylce entry and X, the crossing point of fast and slow.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">H: distance from head to cycle entry E</span><br><span class="line">D: distance from E to X</span><br><span class="line">L: cycle length</span><br><span class="line">                  _____</span><br><span class="line">                 /     \</span><br><span class="line">head_____H______E       \</span><br><span class="line">                \       /</span><br><span class="line">                 X_____/</span><br></pre></td></tr></table></figure>
+<p>If fast and slow both start at head, when fast catches slow, slow has traveled H+D and fast 2(H+D).<br>Assume fast has traveled n loops in the cycle, we have:<br>2H + 2D = H + D + L  –&gt;  H + D = nL  –&gt; H = nL - D<br>Thus if two pointers start from head and X, respectively, one first reaches E, the other also reaches E.<br>In my solution, since fast starts at head.next, we need to move slow one step forward in the beginning of part 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param head, a ListNode</span><br><span class="line">    # @return a list node</span><br><span class="line">    def detectCycle(self, head):</span><br><span class="line">        try:</span><br><span class="line">            fast = head.next</span><br><span class="line">            slow = head</span><br><span class="line">            while fast is not slow:</span><br><span class="line">                fast = fast.next.next</span><br><span class="line">                slow = slow.next</span><br><span class="line">        except:</span><br><span class="line">            # if there is an exception, we reach the end and there is no cycle</span><br><span class="line">            return None</span><br><span class="line"></span><br><span class="line">        # since fast starts at head.next, we need to move slow one step forward</span><br><span class="line">        slow = slow.next</span><br><span class="line">        while head is not slow:</span><br><span class="line">            head = head.next</span><br><span class="line">            slow = slow.next</span><br><span class="line"></span><br><span class="line">        return head</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5438/sharing-my-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5438/sharing-my-python-solution</a></p>
+<p>Sharing my Python solution</p>
+<p>Same idea as many other posts, just the python version:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def detectCycle(self, head):</span><br><span class="line">    slow = fast = head</span><br><span class="line">    while fast and fast.next:</span><br><span class="line">        slow = slow.next</span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        if slow == fast:</span><br><span class="line">            break</span><br><span class="line">    else:</span><br><span class="line">        return None</span><br><span class="line">    while head != slow:</span><br><span class="line">        slow = slow.next</span><br><span class="line">        head = head.next</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>1ms, September 22, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/19367/java-o-1-space-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19367/java-o-1-space-solution-with-detailed-explanation</a></p>
+<p>Java O(1) space solution with detailed explanation.</p>
+<p>Define two pointers slow and fast. Both start at head node, fast is twice as fast as slow. If it reaches the end it means there is no cycle, otherwise eventually it will eventually catch up to slow pointer somewhere in the cycle.</p>
+<p>Let the distance from the first node to the the node where cycle begins be A, and let say the slow pointer travels travels A+B. The fast pointer must travel 2A+2B to catch up. The cycle size is N. Full cycle is also how much more fast pointer has traveled than slow pointer at meeting point.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A+B+N = 2A+2B</span><br><span class="line">N=A+B</span><br></pre></td></tr></table></figure>
+<p>From our calculation slow pointer traveled exactly full cycle when it meets fast pointer, and since originally it travled A before starting on a cycle, it must travel A to reach the point where cycle begins! We can start another slow pointer at head node, and move both pointers until they meet at the beginning of a cycle.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">            public ListNode detectCycle(ListNode head) &#123;</span><br><span class="line">                ListNode slow = head;</span><br><span class="line">                ListNode fast = head;</span><br><span class="line">        </span><br><span class="line">                while (fast!=null &amp;&amp; fast.next!=null)&#123;</span><br><span class="line">                    fast = fast.next.next;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                    </span><br><span class="line">                    if (fast == slow)&#123;</span><br><span class="line">                        ListNode slow2 = head; </span><br><span class="line">                        while (slow2 != slow)&#123;</span><br><span class="line">                            slow = slow.next;</span><br><span class="line">                            slow2 = slow2.next;</span><br><span class="line">                        &#125;</span><br><span class="line">                        return slow;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +599,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+        </div>
       
 
       
@@ -574,8 +694,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +741,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +803,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

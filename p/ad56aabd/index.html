@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="34.1%  https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ Given a binary tree, flatten it to a linked list in-place. 12345678910111213141516171819202122For example,Given         1">
+<meta name="keywords" content="leetcode,medium,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="114. Flatten Binary Tree to Linked List">
 <meta property="og:url" content="http://yucc.me/p/ad56aabd/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="34.1%  https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ Given a binary tree, flatten it to a linked list in-place. 12345678910111213141516171819202122For example,Given         1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.145Z">
+<meta property="og:updated_time" content="2018-05-22T11:25:54.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="114. Flatten Binary Tree to Linked List">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="34.1%  https://leetcode.com/problems/flatten-binary-tree-to-linked-list/ Given a binary tree, flatten it to a linked list in-place. 12345678910111213141516171819202122For example,Given         1">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:25:54+08:00">
+                2018-05-22 19:25
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,374
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,70 @@
       
 
       
-        
+        <ul>
+<li>34.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/" target="_blank" rel="noopener">https://leetcode.com/problems/flatten-binary-tree-to-linked-list/</a></p>
+<p>Given a binary tree, flatten it to a linked list in-place.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given</span><br><span class="line"></span><br><span class="line">         1</span><br><span class="line">        / \</span><br><span class="line">       2   5</span><br><span class="line">      / \   \</span><br><span class="line">     3   4   6</span><br><span class="line">     </span><br><span class="line">The flattened tree should look like:</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">      \</span><br><span class="line">       3</span><br><span class="line">        \</span><br><span class="line">         4</span><br><span class="line">          \</span><br><span class="line">           5</span><br><span class="line">            \</span><br><span class="line">             6</span><br></pre></td></tr></table></figure>
+<p>Hints:</p>
+<p>If you notice carefully in the flattened tree, each node’s right child points to the next node of a pre-order traversal.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>题目中要求转换为链表，实际上是Tree，只不过要求左分支都为0，右分支串联。</p>
+<p>迭代</p>
+<p>对于root， 把root的右节点接上右节点在先序遍历下的前驱节点。然后root右节点指向左节点，左节点设置为空，然后root指向下一个节点。依次迭代。</p>
+<p>Share my simple NON-recursive solution, O(1) space complexity!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode *root) &#123;</span><br><span class="line">		TreeNode*now = root;</span><br><span class="line">		while (now)</span><br><span class="line">		&#123;</span><br><span class="line">			if(now-&gt;left)</span><br><span class="line">			&#123;</span><br><span class="line">                //Find current node&apos;s prenode that links to current node&apos;s right subtree</span><br><span class="line">				TreeNode* pre = now-&gt;left;</span><br><span class="line">				while(pre-&gt;right)</span><br><span class="line">				&#123;</span><br><span class="line">					pre = pre-&gt;right;</span><br><span class="line">				&#125;</span><br><span class="line">				pre-&gt;right = now-&gt;right;</span><br><span class="line">                //Use current node&apos;s left subtree to replace its right subtree(original right </span><br><span class="line">                //subtree is already linked by current node&apos;s prenode</span><br><span class="line">				now-&gt;right = now-&gt;left;</span><br><span class="line">				now-&gt;left = NULL;</span><br><span class="line">			&#125;</span><br><span class="line">			now = now-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return;</span><br><span class="line">        while(root)&#123;</span><br><span class="line">            if(root-&gt;left)&#123;</span><br><span class="line">                TreeNode* prev = root-&gt;left;</span><br><span class="line">                while(prev-&gt;right!=NULL)</span><br><span class="line">                    prev = prev-&gt;right;</span><br><span class="line">                prev-&gt;right = root-&gt;right;</span><br><span class="line">                root-&gt;right = root-&gt;left;</span><br><span class="line">                root-&gt;left = NULL;</span><br><span class="line">                root = root-&gt;right;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                root = root-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root || !root-&gt;left&amp;&amp;!root-&gt;right) <span class="keyword">return</span>;</span><br><span class="line">        TreeNode* curnode = root;</span><br><span class="line">        <span class="keyword">while</span>(curnode)&#123;</span><br><span class="line">            <span class="keyword">if</span>(curnode-&gt;left)&#123;</span><br><span class="line">                TreeNode* pre = curnode-&gt;left;</span><br><span class="line">                <span class="keyword">while</span>(pre-&gt;right)</span><br><span class="line">                    pre = pre-&gt;right;</span><br><span class="line">                pre-&gt;right = curnode-&gt;right;</span><br><span class="line">                curnode-&gt;right = curnode-&gt;left;</span><br><span class="line">                curnode-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">                curnode = curnode-&gt;right;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                curnode = curnode-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>优化后的代码，相对于上面，优化了if else语句，如果有cur-&gt;left,进行一定的处理</p>
+<p>无论有没有cur-&gt;left，最后都要去cur-&gt;right</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">flatten</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root || !root-&gt;left&amp;&amp;!root-&gt;right) <span class="keyword">return</span>;</span><br><span class="line">        TreeNode* curnode = root;</span><br><span class="line">        <span class="keyword">while</span>(curnode)&#123;</span><br><span class="line">            <span class="keyword">if</span>(curnode-&gt;left)&#123;</span><br><span class="line">                TreeNode* pre = curnode-&gt;left;</span><br><span class="line">                <span class="keyword">while</span>(pre-&gt;right)</span><br><span class="line">                    pre = pre-&gt;right;</span><br><span class="line">                pre-&gt;right = curnode-&gt;right;</span><br><span class="line">                curnode-&gt;right = curnode-&gt;left;</span><br><span class="line">                curnode-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            curnode = curnode-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/3995/share-my-simple-non-recursive-solution-o-1-space-complexity" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3995/share-my-simple-non-recursive-solution-o-1-space-complexity</a></p>
+<p>Share my simple NON-recursive solution, O(1) space complexity!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void flatten(TreeNode *root) &#123;</span><br><span class="line">		TreeNode*now = root;</span><br><span class="line">		while (now)</span><br><span class="line">		&#123;</span><br><span class="line">			if(now-&gt;left)</span><br><span class="line">			&#123;</span><br><span class="line">                //Find current node&apos;s prenode that links to current node&apos;s right subtree</span><br><span class="line">				TreeNode* pre = now-&gt;left;</span><br><span class="line">				while(pre-&gt;right)</span><br><span class="line">				&#123;</span><br><span class="line">					pre = pre-&gt;right;</span><br><span class="line">				&#125;</span><br><span class="line">				pre-&gt;right = now-&gt;right;</span><br><span class="line">                //Use current node&apos;s left subtree to replace its right subtree(original right </span><br><span class="line">                //subtree is already linked by current node&apos;s prenode</span><br><span class="line">				now-&gt;right = now-&gt;left;</span><br><span class="line">				now-&gt;left = NULL;</span><br><span class="line">			&#125;</span><br><span class="line">			now = now-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14481/8ms-non-recursive-no-stack-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14481/8ms-non-recursive-no-stack-c-solution</a></p>
+<p>8ms, Non-recursive, No stack, C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void flatten(TreeNode *root) &#123;</span><br><span class="line">	while (root) &#123;</span><br><span class="line">		if (root-&gt;left &amp;&amp; root-&gt;right) &#123;</span><br><span class="line">			TreeNode* t = root-&gt;left;</span><br><span class="line">			while (t-&gt;right)</span><br><span class="line">				t = t-&gt;right;</span><br><span class="line">			t-&gt;right = root-&gt;right;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">        if(root-&gt;left)</span><br><span class="line">		    root-&gt;right = root-&gt;left;</span><br><span class="line">		root-&gt;left = NULL;</span><br><span class="line">		root = root-&gt;right;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19087/my-recursive-solution-is-easy-and-clean" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19087/my-recursive-solution-is-easy-and-clean</a></p>
+<p>My recursive solution is easy and clean!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void flatten(TreeNode* root) &#123;</span><br><span class="line">    if (!root) return;</span><br><span class="line">    flatten(root-&gt;left);</span><br><span class="line">    flatten(root-&gt;right);</span><br><span class="line">    TreeNode *tmp = root-&gt;right;</span><br><span class="line">    root-&gt;right = root-&gt;left;</span><br><span class="line">    root-&gt;left = nullptr;</span><br><span class="line">    while (root-&gt;right)</span><br><span class="line">        root = root-&gt;right;</span><br><span class="line">    root-&gt;right = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9933/16-lines-iterative-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9933/16-lines-iterative-c-solution</a></p>
+<p>16 lines iterative c++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void flatten(TreeNode *root) &#123;</span><br><span class="line">    while(root)&#123;</span><br><span class="line">        if(root-&gt;left == NULL)</span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        else &#123;</span><br><span class="line">            if(root-&gt;right)&#123;</span><br><span class="line">                TreeNode *l = root-&gt;left;</span><br><span class="line">                while(l-&gt;right) l = l-&gt;right;</span><br><span class="line">                l-&gt;right = root-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">            root-&gt;right = root-&gt;left;</span><br><span class="line">            root-&gt;left = NULL;</span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Inspired by Morris traversal.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10606/an-inorder-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10606/an-inorder-python-solution</a></p>
+<p>An inorder python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param root, a tree node</span><br><span class="line"># @return nothing, do it in place</span><br><span class="line">prev = None</span><br><span class="line">def flatten(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return</span><br><span class="line">    self.prev = root</span><br><span class="line">    self.flatten(root.left)</span><br><span class="line"></span><br><span class="line">    temp = root.right</span><br><span class="line">    root.right, root.left = root.left, None</span><br><span class="line">    self.prev.right = temp</span><br><span class="line"></span><br><span class="line">    self.flatten(temp)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         *</span><br><span class="line">       /</span><br><span class="line">      n</span><br><span class="line">   /     \</span><br><span class="line"> left   right</span><br><span class="line">  \ </span><br><span class="line">   *</span><br><span class="line">    *</span><br><span class="line">     \</span><br><span class="line">      p</span><br></pre></td></tr></table></figure>
+<p>The idea is very simple. Suppose n is the current visiting node, and p is the previous node of preorder traversal to n.right.</p>
+<p>We just need to do the inorder replacement:</p>
+<p>n.left -&gt; NULL</p>
+<p>n.right - &gt; n.left</p>
+<p>p-&gt;right -&gt; n.right</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11444/my-short-post-order-traversal-java-solution-for-share" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11444/my-short-post-order-traversal-java-solution-for-share</a></p>
+<p>My short post order traversal Java solution for share</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private TreeNode prev = null;</span><br><span class="line"></span><br><span class="line">public void flatten(TreeNode root) &#123;</span><br><span class="line">    if (root == null)</span><br><span class="line">        return;</span><br><span class="line">    flatten(root.right);</span><br><span class="line">    flatten(root.left);</span><br><span class="line">    root.right = prev;</span><br><span class="line">    root.left = null;</span><br><span class="line">    prev = root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9936/straightforward-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9936/straightforward-java-solution</a></p>
+<p>Straightforward Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public void flatten(TreeNode root) &#123;</span><br><span class="line">        if (root == null) return;</span><br><span class="line">        </span><br><span class="line">        TreeNode left = root.left;</span><br><span class="line">        TreeNode right = root.right;</span><br><span class="line">        </span><br><span class="line">        root.left = null;</span><br><span class="line">        </span><br><span class="line">        flatten(left);</span><br><span class="line">        flatten(right);</span><br><span class="line">        </span><br><span class="line">        root.right = left;</span><br><span class="line">        TreeNode cur = root;</span><br><span class="line">        while (cur.right != null) cur = cur.right;</span><br><span class="line">        cur.right = right;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>This solution is based on recursion. We simply flatten left and right subtree and paste each sublist to the right child of the root. (don’t forget to set left child to null)</p>
+<hr>
+<p>3ms, 4.67%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/5783/accepted-simple-java-solution-iterative" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5783/accepted-simple-java-solution-iterative</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public void flatten(TreeNode root) &#123;</span><br><span class="line">        if(root==null) return;</span><br><span class="line">        Stack&lt;TreeNode&gt; stk = new Stack&lt;TreeNode&gt;();</span><br><span class="line">        stk.push(root);</span><br><span class="line">        while(!stk.isEmpty())&#123;</span><br><span class="line">            TreeNode curr = stk.pop();</span><br><span class="line">            if(curr.right!=null)</span><br><span class="line">                stk.push(curr.right);</span><br><span class="line">            if(curr.left!=null)</span><br><span class="line">                stk.push(curr.left);</span><br><span class="line">            if(!stk.isEmpty())</span><br><span class="line">                curr.right = stk.peek();</span><br><span class="line">            curr.left = null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +576,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +709,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,breadth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="38.6%  https://leetcode.com/problems/binary-tree-level-order-traversal-ii/#/description Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right,">
+<meta name="keywords" content="leetcode,easy,tree,breadth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="107. Binary Tree Level Order Traversal II">
 <meta property="og:url" content="http://yucc.me/p/7174bdf5/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="38.6%  https://leetcode.com/problems/binary-tree-level-order-traversal-ii/#/description Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.133Z">
+<meta property="og:updated_time" content="2018-05-22T11:19:32.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="107. Binary Tree Level Order Traversal II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="38.6%  https://leetcode.com/problems/binary-tree-level-order-traversal-ii/#/description Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right,">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:19:32+08:00">
+                2018-05-22 19:19
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,470
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,62 @@
       
 
       
-        
+        <ul>
+<li>38.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-level-order-traversal-ii/#/description</a></p>
+<p>Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right, level by level from leaf to root).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given binary tree [3,9,20,null,null,15,7],</span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line">return its bottom-up level order traversal as:</span><br><span class="line">[</span><br><span class="line">  [15,7],</span><br><span class="line">  [9,20],</span><br><span class="line">  [3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>本题类似于102题，只是最后结果给翻转一下就可以了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; levelOrderBottom(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!que.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> n = que.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">                TreeNode* cur = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                tmp.push_back(cur-&gt;val);</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;left) que.push(cur-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;right) que.push(cur-&gt;right);</span><br><span class="line">            &#125; </span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>层序遍历，dfs，然后最后返回结果修改一下顺序就可以了。</p>
+<p>6ms, 37.42%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/1672/is-there-any-better-idea-than-doing-regular-level-order-traversal-and-reverse-the-result" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1672/is-there-any-better-idea-than-doing-regular-level-order-traversal-and-reverse-the-result</a></p>
+<p>Is there any better idea than doing regular level order traversal and reverse the result?</p>
+<p>The way I see this problem is that it is EXACTLY the same as “Level-Order Traversal I” except that we need to reverse the final container for output, which is trivial. Is there a better idea that fits this problem specifically?</p>
+<p>The attached is my current recursive solution. In each function call, we pass in the current node and its level. If this level does not yet exist in the output container, then we should add a new empty level. Then, we add the current node to the end of the current level, and recursively call the function passing the two children of the current node at the next level. This algorithm is really a DFS, but it saves the level information for each node and produces the same result as BFS would.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; res;</span><br><span class="line">    </span><br><span class="line">    void DFS(TreeNode* root, int level)</span><br><span class="line">    &#123;</span><br><span class="line">        if (root == NULL) return;</span><br><span class="line">        if (level == res.size()) // The level does not exist in output</span><br><span class="line">        &#123;</span><br><span class="line">            res.push_back(vector&lt;int&gt;()); // Create a new level</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        res[level].push_back(root-&gt;val); // Add the current value to its level</span><br><span class="line">        DFS(root-&gt;left, level+1); // Go to the next level</span><br><span class="line">        DFS(root-&gt;right,level+1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; levelOrderBottom(TreeNode *root) &#123;</span><br><span class="line">        DFS(root, 0);</span><br><span class="line">        return vector&lt;vector&lt;int&gt; &gt; (res.rbegin(), res.rend());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10903/my-neat-solution-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10903/my-neat-solution-in-c</a></p>
+<p>My Neat Solution in C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt; &gt; levelOrder(TreeNode *root) &#123;</span><br><span class="line">	vector&lt;vector&lt;int&gt; &gt; retVal;</span><br><span class="line"></span><br><span class="line">	levelOrder(root, retVal, 0);</span><br><span class="line"></span><br><span class="line">	reverse(retVal.begin(), retVal.end());</span><br><span class="line"></span><br><span class="line">	return retVal;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void levelOrder(TreeNode* root, vector&lt;vector&lt;int&gt; &gt; &amp;v, int currLevel) &#123;</span><br><span class="line">	if (root == NULL) &#123;</span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if (v.empty() || currLevel &gt; (v.size() - 1)) &#123;</span><br><span class="line">		v.push_back(vector&lt;int&gt;());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	v[currLevel].push_back(root-&gt;val);</span><br><span class="line"></span><br><span class="line">	levelOrder(root-&gt;left, v, currLevel + 1);</span><br><span class="line">	levelOrder(root-&gt;right, v, currLevel + 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27413/c-4ms-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27413/c-4ms-solution</a></p>
+<p>C++ 4ms solution!</p>
+<p>First version costs 8ms:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void levelOrder(vector&lt;vector&lt;int&gt;&gt; &amp;ans, TreeNode *node, int level) &#123;</span><br><span class="line">    if (!node) return;</span><br><span class="line">    if (level &gt;= ans.size())</span><br><span class="line">        ans.push_back(&#123;&#125;);</span><br><span class="line">    ans[level].push_back(node-&gt;val);</span><br><span class="line">    levelOrder(ans,node-&gt;left,level+1);</span><br><span class="line">    levelOrder(ans,node-&gt;right,level+1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; levelOrderBottom(TreeNode* root) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; ans;</span><br><span class="line">    levelOrder(ans,root,0);</span><br><span class="line">    reverse(ans.begin(),ans.end());</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Second version costs 4ms:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int depth(TreeNode *root) &#123;</span><br><span class="line">    if (!root) return 0;</span><br><span class="line">    return max(depth(root-&gt;left),depth(root-&gt;right))+1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void levelOrder(vector&lt;vector&lt;int&gt;&gt; &amp;ans, TreeNode *node, int level) &#123;</span><br><span class="line">    if (!node) return;</span><br><span class="line">    ans[level].push_back(node-&gt;val);</span><br><span class="line">    levelOrder(ans,node-&gt;left,level-1);</span><br><span class="line">    levelOrder(ans,node-&gt;right,level-1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;vector&lt;int&gt;&gt; levelOrderBottom(TreeNode* root) &#123;</span><br><span class="line">    int d = depth(root);</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; ans(d,vector&lt;int&gt; &#123;&#125;);</span><br><span class="line">    levelOrder(ans,root,d-1);</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17702/19-line-c-8ms-solution-very-easy" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17702/19-line-c-8ms-solution-very-easy</a></p>
+<p>19 line C++ 8ms Solution, very easy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">protected:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; ans;</span><br><span class="line">    void dfs(TreeNode *root, int height)&#123;</span><br><span class="line">        if (root == NULL) </span><br><span class="line">            return;</span><br><span class="line">        while (ans.size() &lt;= height)</span><br><span class="line">            ans.push_back(vector&lt;int&gt;());</span><br><span class="line">        ans[height].push_back(root-&gt;val);</span><br><span class="line">        dfs(root-&gt;left, height + 1);</span><br><span class="line">        dfs(root-&gt;right, height + 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; levelOrderBottom(TreeNode* root) &#123;</span><br><span class="line">       dfs(root, 0);</span><br><span class="line">       reverse(ans.begin(), ans.end());</span><br><span class="line">        return ans;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21276/python-solutions-dfs-recursively-dfs-stack-bfs-queue" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21276/python-solutions-dfs-recursively-dfs-stack-bfs-queue</a></p>
+<p>Python solutions (dfs recursively, dfs+stack, bfs+queue).</p>
+<p>dfs recursively</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def levelOrderBottom1(self, root):</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(root, 0, res)</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def dfs(self, root, level, res):</span><br><span class="line">    if root:</span><br><span class="line">        if len(res) &lt; level + 1:</span><br><span class="line">            res.insert(0, [])</span><br><span class="line">        res[-(level+1)].append(root.val)</span><br><span class="line">        self.dfs(root.left, level+1, res)</span><br><span class="line">        self.dfs(root.right, level+1, res)</span><br></pre></td></tr></table></figure>
+<p>dfs + stack</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def levelOrderBottom2(self, root):</span><br><span class="line">    stack = [(root, 0)]</span><br><span class="line">    res = []</span><br><span class="line">    while stack:</span><br><span class="line">        node, level = stack.pop()</span><br><span class="line">        if node:</span><br><span class="line">            if len(res) &lt; level+1:</span><br><span class="line">                res.insert(0, [])</span><br><span class="line">            res[-(level+1)].append(node.val)</span><br><span class="line">            stack.append((node.right, level+1))</span><br><span class="line">            stack.append((node.left, level+1))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<p>bfs + queue   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def levelOrderBottom(self, root):</span><br><span class="line">    queue, res = collections.deque([(root, 0)]), []</span><br><span class="line">    while queue:</span><br><span class="line">        node, level = queue.popleft()</span><br><span class="line">        if node:</span><br><span class="line">            if len(res) &lt; level+1:</span><br><span class="line">                res.insert(0, [])</span><br><span class="line">            res[-(level+1)].append(node.val)</span><br><span class="line">            queue.append((node.left, level+1))</span><br><span class="line">            queue.append((node.right, level+1))</span><br><span class="line">    return res</span><br><span class="line">reply quote</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7651/my-dfs-and-bfs-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7651/my-dfs-and-bfs-java-solution</a></p>
+<p>My DFS and BFS java solution</p>
+<p>DFS solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line">        Queue&lt;TreeNode&gt; queue = new LinkedList&lt;TreeNode&gt;();</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; wrapList = new LinkedList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        </span><br><span class="line">        if(root == null) return wrapList;</span><br><span class="line">        </span><br><span class="line">        queue.offer(root);</span><br><span class="line">        while(!queue.isEmpty())&#123;</span><br><span class="line">            int levelNum = queue.size();</span><br><span class="line">            List&lt;Integer&gt; subList = new LinkedList&lt;Integer&gt;();</span><br><span class="line">            for(int i=0; i&lt;levelNum; i++) &#123;</span><br><span class="line">                if(queue.peek().left != null) queue.offer(queue.peek().left);</span><br><span class="line">                if(queue.peek().right != null) queue.offer(queue.peek().right);</span><br><span class="line">                subList.add(queue.poll().val);</span><br><span class="line">            &#125;</span><br><span class="line">            wrapList.add(0, subList);</span><br><span class="line">        &#125;</span><br><span class="line">        return wrapList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BFS solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">        public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line">            List&lt;List&lt;Integer&gt;&gt; wrapList = new LinkedList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">            levelMaker(wrapList, root, 0);</span><br><span class="line">            return wrapList;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        public void levelMaker(List&lt;List&lt;Integer&gt;&gt; list, TreeNode root, int level) &#123;</span><br><span class="line">            if(root == null) return;</span><br><span class="line">            if(level &gt;= list.size()) &#123;</span><br><span class="line">                list.add(0, new LinkedList&lt;Integer&gt;());</span><br><span class="line">            &#125;</span><br><span class="line">            levelMaker(list, root.left, level+1);</span><br><span class="line">            levelMaker(list, root.right, level+1);</span><br><span class="line">            list.get(list.size()-level-1).add(root.val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>1ms, 96.03%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/7489/simple-java-solution-with-linkedlist" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7489/simple-java-solution-with-linkedlist</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line">        LinkedList&lt;List&lt;Integer&gt;&gt; list = new LinkedList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        addLevel(list, 0, root);</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void addLevel(LinkedList&lt;List&lt;Integer&gt;&gt; list, int level, TreeNode node) &#123;</span><br><span class="line">        if (node == null) return;</span><br><span class="line">        if (list.size()-1 &lt; level) list.addFirst(new LinkedList&lt;Integer&gt;());</span><br><span class="line">        list.get(list.size()-1-level).add(node.val);</span><br><span class="line">        addLevel(list, level+1, node.left);</span><br><span class="line">        addLevel(list, level+1, node.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +568,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/breadth-first-search/" rel="tag"># breadth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

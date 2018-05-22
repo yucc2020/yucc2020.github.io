@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,dynamic programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.8%  https://leetcode.com/problems/triangle/?tab=Description Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below. 12345678For">
+<meta name="keywords" content="leetcode,array,medium,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="120. Triangle">
 <meta property="og:url" content="http://yucc.me/p/9545f0d7/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.8%  https://leetcode.com/problems/triangle/?tab=Description Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below. 12345678For">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.154Z">
+<meta property="og:updated_time" content="2018-05-22T11:30:55.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="120. Triangle">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.8%  https://leetcode.com/problems/triangle/?tab=Description Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below. 12345678For">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:30:55+08:00">
+                2018-05-22 19:30
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,090
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  13
                 </span>
               
             </div>
@@ -430,7 +452,92 @@
       
 
       
-        
+        <ul>
+<li>32.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/triangle/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/triangle/?tab=Description</a></p>
+<p>Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">For example, given the following triangle</span><br><span class="line">[</span><br><span class="line">     [2],</span><br><span class="line">    [3,4],</span><br><span class="line">   [6,5,7],</span><br><span class="line">  [4,1,8,3]</span><br><span class="line">]</span><br><span class="line">The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).</span><br></pre></td></tr></table></figure>
+<p>Note:<br>Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.</p>
+<a id="more"></a>
+<hr>
+<p>C++ top-down and bottom-up solutions</p>
+<p>方法一：</p>
+<p>top down</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// top-down </span><br><span class="line">int minimumTotal1(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">    vector&lt;int&gt; res(triangle.size(), triangle[0][0]);</span><br><span class="line">    for (unsigned int i = 1; i &lt; triangle.size(); i++) </span><br><span class="line">        for (int j = i; j &gt;= 0; j--) &#123;</span><br><span class="line">            if (j == 0)</span><br><span class="line">                res[0] += triangle[i][j];</span><br><span class="line">            else if (j == i)</span><br><span class="line">                res[j] = triangle[i][j] + res[j-1];</span><br><span class="line">            else </span><br><span class="line">                res[j] = triangle[i][j] + min(res[j-1], res[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    return *min_element(res.begin(), res.end());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>bottom up</p>
+<p>我的代码实现:</p>
+<p>Oct 17, 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumTotal</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; triangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = triangle.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;triangle[i].size(); j++)</span><br><span class="line">                triangle[i][j] += min(triangle[i+<span class="number">1</span>][j], triangle[i+<span class="number">1</span>][j+<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> triangle[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// bottom-up</span><br><span class="line">int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">    vector&lt;int&gt; res = triangle.back();</span><br><span class="line">    for (int i = triangle.size()-2; i &gt;= 0; i--) </span><br><span class="line">        for (unsigned int j = 0; j &lt;= i; j++) </span><br><span class="line">            res[j] = triangle[i][j] + min(res[j], res[j+1]);</span><br><span class="line">    return res[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/1669/dp-solution-for-triangle" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1669/dp-solution-for-triangle</a></p>
+<p>DP Solution for Triangle</p>
+<p>This problem is quite well-formed in my opinion. The triangle has a tree-like structure, which would lead people to think about traversal algorithms such as DFS. However, if you look closely, you would notice that the adjacent nodes always share a ‘branch’. In other word, there are overlapping subproblems. Also, suppose x and y are ‘children’ of k. Once minimum paths from x and y to the bottom are known, the minimum path starting from k can be decided in O(1), that is optimal substructure. Therefore, dynamic programming would be the best solution to this problem in terms of time complexity.</p>
+<p>What I like about this problem even more is that the difference between ‘top-down’ and ‘bottom-up’ DP can be ‘literally’ pictured in the input triangle. For ‘top-down’ DP, starting from the node on the very top, we recursively find the minimum path sum of each node. When a path sum is calculated, we store it in an array (memoization); the next time we need to calculate the path sum of the same node, just retrieve it from the array. However, you will need a cache that is at least the same size as the input triangle itself to store the pathsum, which takes O(N^2) space. With some clever thinking, it might be possible to release some of the memory that will never be used after a particular point, but the order of the nodes being processed is not straightforwardly seen in a recursive solution, so deciding which part of the cache to discard can be a hard job.</p>
+<p>‘Bottom-up’ DP, on the other hand, is very straightforward: we start from the nodes on the bottom row; the min pathsums for these nodes are the values of the nodes themselves. From there, the min pathsum at the ith node on the kth row would be the lesser of the pathsums of its two children plus the value of itself, i.e.:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minpath[k][i] = min( minpath[k+1][i], minpath[k+1][i+1]) + triangle[k][i];</span><br></pre></td></tr></table></figure>
+<p>Or even better, since the row minpath[k+1] would be useless after minpath[k] is computed, we can simply set minpath as a 1D array, and iteratively update itself:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">For the kth level:</span><br><span class="line">minpath[i] = min( minpath[i], minpath[i+1]) + triangle[k][i];</span><br></pre></td></tr></table></figure>
+<p>Thus, we have the following solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int minimumTotal(vector&lt;vector&lt;int&gt; &gt; &amp;triangle) &#123;</span><br><span class="line">    int n = triangle.size();</span><br><span class="line">    vector&lt;int&gt; minlen(triangle.back());</span><br><span class="line">    for (int layer = n-2; layer &gt;= 0; layer--) // For each layer</span><br><span class="line">    &#123;</span><br><span class="line">        for (int i = 0; i &lt;= layer; i++) // Check its every &apos;node&apos;</span><br><span class="line">        &#123;</span><br><span class="line">            // Find the lesser of its two children, and sum the current value in the triangle with it.</span><br><span class="line">            minlen[i] = min(minlen[i], minlen[i+1]) + triangle[layer][i]; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return minlen[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6671/bottom-up-5-line-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6671/bottom-up-5-line-c-solution</a></p>
+<p>Bottom Up 5 line C++ Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minimumTotal(vector&lt;vector&lt;int&gt; &gt; &amp;triangle) </span><br><span class="line">    &#123;</span><br><span class="line">        vector&lt;int&gt; mini = triangle[triangle.size()-1];</span><br><span class="line">        for ( int i = triangle.size() - 2; i&gt;= 0 ; --i )</span><br><span class="line">            for ( int j = 0; j &lt; triangle[i].size() ; ++ j )</span><br><span class="line">                mini[j] = triangle[i][j] + min(mini[j],mini[j+1]);</span><br><span class="line">        return mini[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/29834/c-top-down-and-bottom-up-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29834/c-top-down-and-bottom-up-solutions</a></p>
+<p>C++ top-down and bottom-up solutions</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// top-down </span><br><span class="line">int minimumTotal1(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">    vector&lt;int&gt; res(triangle.size(), triangle[0][0]);</span><br><span class="line">    for (unsigned int i = 1; i &lt; triangle.size(); i++) </span><br><span class="line">        for (int j = i; j &gt;= 0; j--) &#123;</span><br><span class="line">            if (j == 0)</span><br><span class="line">                res[0] += triangle[i][j];</span><br><span class="line">            else if (j == i)</span><br><span class="line">                res[j] = triangle[i][j] + res[j-1];</span><br><span class="line">            else </span><br><span class="line">                res[j] = triangle[i][j] + min(res[j-1], res[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    return *min_element(res.begin(), res.end());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// bottom-up</span><br><span class="line">int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">    vector&lt;int&gt; res = triangle.back();</span><br><span class="line">    for (int i = triangle.size()-2; i &gt;= 0; i--) </span><br><span class="line">        for (unsigned int j = 0; j &lt;= i; j++) </span><br><span class="line">            res[j] = triangle[i][j] + min(res[j], res[j+1]);</span><br><span class="line">    return res[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19834/my-c-code-bottom-up-dp-8ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19834/my-c-code-bottom-up-dp-8ms</a></p>
+<p>My C++ code (Bottom up DP, 8ms)</p>
+<p>Just do bottom up DP, it is easier and cleaner than top-down DP.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">    public:</span><br><span class="line">        int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">            for(int i= triangle.size()-2; i&gt;=0; --i)</span><br><span class="line">                for(int j=0; j&lt;triangle[i].size();++j)</span><br><span class="line">                    triangle[i][j] += min(triangle[i+1][j],triangle[i+1][j+1]);</span><br><span class="line">            return triangle[0][0];        </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// another version, without modifying the input array</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">        vector&lt;int&gt; res(triangle[triangle.size()-1]);</span><br><span class="line">        for(int i= triangle.size()-2; i&gt;=0; --i)</span><br><span class="line">            for(int j=0; j&lt;triangle[i].size();++j)</span><br><span class="line">                res[j] = triangle[i][j] + min(res[j],res[j+1]);</span><br><span class="line">        return res[0];        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minimumTotal(vector&lt;vector&lt;int&gt;&gt;&amp; triangle) &#123;</span><br><span class="line">        if(triangle.size()==0) return 0;</span><br><span class="line">        if(triangle.size()==1) return triangle[0][0];</span><br><span class="line">        for(int i=1; i&lt;triangle.size(); i++)&#123;</span><br><span class="line">            for(int j=0; j&lt;triangle[i].size(); j++)&#123;</span><br><span class="line">                if(j==0) triangle[i][j] += triangle[i-1][j];</span><br><span class="line">                else if(j==triangle[i].size()-1) triangle[i][j] += triangle[i-1][j-1];</span><br><span class="line">                else triangle[i][j] += min(triangle[i-1][j-1], triangle[i-1][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int res = triangle[triangle.size()-1][0];</span><br><span class="line">        for(auto num:triangle[triangle.size()-1])&#123;</span><br><span class="line">            res = min(res, num);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/19754/python-easy-to-understand-solutions-top-down-bottom-up" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19754/python-easy-to-understand-solutions-top-down-bottom-up</a></p>
+<p>Python easy to understand solutions (top-down, bottom-up).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># O(n*n/2) space, top-down </span><br><span class="line">def minimumTotal1(self, triangle):</span><br><span class="line">    if not triangle:</span><br><span class="line">        return </span><br><span class="line">    res = [[0 for i in xrange(len(row))] for row in triangle]</span><br><span class="line">    res[0][0] = triangle[0][0]</span><br><span class="line">    for i in xrange(1, len(triangle)):</span><br><span class="line">        for j in xrange(len(triangle[i])):</span><br><span class="line">            if j == 0:</span><br><span class="line">                res[i][j] = res[i-1][j] + triangle[i][j]</span><br><span class="line">            elif j == len(triangle[i])-1:</span><br><span class="line">                res[i][j] = res[i-1][j-1] + triangle[i][j]</span><br><span class="line">            else:</span><br><span class="line">                res[i][j] = min(res[i-1][j-1], res[i-1][j]) + triangle[i][j]</span><br><span class="line">    return min(res[-1])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Modify the original triangle, top-down</span><br><span class="line">def minimumTotal2(self, triangle):</span><br><span class="line">    if not triangle:</span><br><span class="line">        return </span><br><span class="line">    for i in xrange(1, len(triangle)):</span><br><span class="line">        for j in xrange(len(triangle[i])):</span><br><span class="line">            if j == 0:</span><br><span class="line">                triangle[i][j] += triangle[i-1][j]</span><br><span class="line">            elif j == len(triangle[i])-1:</span><br><span class="line">                triangle[i][j] += triangle[i-1][j-1]</span><br><span class="line">            else:</span><br><span class="line">                triangle[i][j] += min(triangle[i-1][j-1], triangle[i-1][j])</span><br><span class="line">    return min(triangle[-1])</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Modify the original triangle, bottom-up</span><br><span class="line">def minimumTotal3(self, triangle):</span><br><span class="line">    if not triangle:</span><br><span class="line">        return </span><br><span class="line">    for i in xrange(len(triangle)-2, -1, -1):</span><br><span class="line">        for j in xrange(len(triangle[i])):</span><br><span class="line">            triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])</span><br><span class="line">    return triangle[0][0]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># bottom-up, O(n) space</span><br><span class="line">def minimumTotal(self, triangle):</span><br><span class="line">    if not triangle:</span><br><span class="line">        return </span><br><span class="line">    res = triangle[-1]</span><br><span class="line">    for i in xrange(len(triangle)-2, -1, -1):</span><br><span class="line">        for j in xrange(len(triangle[i])):</span><br><span class="line">            res[j] = min(res[j], res[j+1]) + triangle[i][j]</span><br><span class="line">    return res[0]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/13970/one-liner-in-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/13970/one-liner-in-python</a></p>
+<p>One-liner in Python</p>
+<p>Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def minimumTotal(self, t):</span><br><span class="line">    return reduce(lambda a,b:[f+min(d,e)for d,e,f in zip(a,a[1:],b)],t[::-1])[0]</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>Starting with the bottom row, I move upwards, always combining the current row and the next upper row. At the end, I have combined everything into the top row and simply return its only element. Here’s a longer version with meaningful variable names:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def minimumTotal(self, triangle):</span><br><span class="line">    def combine_rows(lower_row, upper_row):</span><br><span class="line">        return [upper + min(lower_left, lower_right)</span><br><span class="line">                for upper, lower_left, lower_right in</span><br><span class="line">                zip(upper_row, lower_row, lower_row[1:])]</span><br><span class="line">    return reduce(combine_rows, triangle[::-1])[0]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Solution mine:</p>
+<p>60ms, 57.14%, June.22th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def minimumTotal(self, triangle):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type triangle: List[List[int]]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not triangle:</span><br><span class="line">            return 0</span><br><span class="line">        for i in xrange(1, len(triangle)):</span><br><span class="line">            triangle[i][0] += triangle[i-1][0]</span><br><span class="line">            triangle[i][-1] += triangle[i-1][-1]</span><br><span class="line">            for j in xrange(1, i):</span><br><span class="line">                triangle[i][j] += min(triangle[i-1][j-1], triangle[i-1][j])</span><br><span class="line">        return min(triangle[-1])</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8077/my-8-line-dp-java-code-4-meaningful-lines-with-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8077/my-8-line-dp-java-code-4-meaningful-lines-with-o-1-space</a></p>
+<p>My 8 line DP Java code(4 meaningful lines) with O(1) space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</span><br><span class="line">        for(int i = triangle.size() - 2; i &gt;= 0; i--)</span><br><span class="line">            for(int j = 0; j &lt;= i; j++)</span><br><span class="line">                triangle.get(i).set(j, triangle.get(i).get(j) + Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)));</span><br><span class="line">        return triangle.get(0).get(0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The idea is simple.</p>
+<ol>
+<li>Go from bottom to top.</li>
+<li>We start form the row above the bottom row [size()-2].</li>
+<li>Each number add the smaller number of two numbers that below it.</li>
+<li>And finally we get to the top we the smallest sum.</li>
+</ol>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22254/7-lines-neat-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22254/7-lines-neat-java-solution</a></p>
+<p>7 lines neat Java Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public int minimumTotal(List&lt;List&lt;Integer&gt;&gt; triangle) &#123;</span><br><span class="line">    int[] A = new int[triangle.size()+1];</span><br><span class="line">    for(int i=triangle.size()-1;i&gt;=0;i--)&#123;</span><br><span class="line">        for(int j=0;j&lt;triangle.get(i).size();j++)&#123;</span><br><span class="line">            A[j] = Math.min(A[j],A[j+1])+triangle.get(i).get(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return A[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +598,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +693,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +740,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +802,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

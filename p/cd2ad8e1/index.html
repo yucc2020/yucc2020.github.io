@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,two pointers,medium,linked list," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.2%  Sort a linked list using insertion sort.">
+<meta name="keywords" content="leetcode,two pointers,medium,linked list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="147. Insertion Sort List">
 <meta property="og:url" content="http://yucc.me/p/cd2ad8e1/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.2%  Sort a linked list using insertion sort.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.192Z">
+<meta property="og:updated_time" content="2018-05-22T11:52:59.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="147. Insertion Sort List">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.2%  Sort a linked list using insertion sort.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:52:59+08:00">
+                2018-05-22 19:52
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  974
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,45 @@
       
 
       
-        
+        <ul>
+<li>32.2%</li>
+</ul>
+<p>Sort a linked list using insertion sort.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>常规的插入排序，改成针对链表排序。</p>
+<p>插入排序，每次从后向前走，这里每次从前向后走，找到插入位置。因为链表插入时O(1)空间，所以一样的。</p>
+<p>我的代码实现：</p>
+<p>Oct 11th, 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">insertionSortList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==<span class="literal">nullptr</span> || head-&gt;next==<span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* dummy = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">        ListNode* p1 = head, *p2 = dummy, *p3;</span><br><span class="line">        <span class="keyword">while</span>(p1!=<span class="literal">nullptr</span>)&#123;</span><br><span class="line">            p2 = dummy;</span><br><span class="line">            <span class="keyword">while</span>(p2-&gt;next!=<span class="literal">nullptr</span> &amp;&amp; p2-&gt;next-&gt;val &lt;= p1-&gt;val)&#123;</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            p3 = p1-&gt;next;</span><br><span class="line">            p1-&gt;next = p2-&gt;next;</span><br><span class="line">            p2-&gt;next = p1;</span><br><span class="line">            p1 = p3;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>my code</p>
+<p>新建一个新节点，ListNode* dummy = new ListNode(0);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* insertionSortList(ListNode* head) &#123;</span><br><span class="line">        if(head==NULL || head-&gt;next==NULL) return head;</span><br><span class="line">        ListNode* cur;</span><br><span class="line">        cur=head-&gt;next;</span><br><span class="line">        </span><br><span class="line">        ListNode* dummy = new ListNode(0);</span><br><span class="line">        dummy-&gt;next = head;</span><br><span class="line">        head-&gt;next = NULL;</span><br><span class="line">        while(cur!=NULL)&#123;</span><br><span class="line">            ListNode* tmp = cur-&gt;next;</span><br><span class="line">            head = dummy;</span><br><span class="line">            while(head-&gt;next!=NULL &amp;&amp; head-&gt;next-&gt;val &lt; cur-&gt;val)</span><br><span class="line">                head = head-&gt;next;</span><br><span class="line">            cur-&gt;next = head-&gt;next;</span><br><span class="line">            head-&gt;next = cur;</span><br><span class="line">            cur = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        return dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/8570/an-easy-and-clear-way-to-sort-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8570/an-easy-and-clear-way-to-sort-o-1-space</a></p>
+<p>An easy and clear way to sort ( O(1) space )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public ListNode insertionSortList(ListNode head) &#123;</span><br><span class="line">		if( head == null )&#123;</span><br><span class="line">			return head;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ListNode helper = new ListNode(0); //new starter of the sorted list</span><br><span class="line">		ListNode cur = head; //the node will be inserted</span><br><span class="line">		ListNode pre = helper; //insert node between pre and pre.next</span><br><span class="line">		ListNode next = null; //the next node will be inserted</span><br><span class="line">		//not the end of input list</span><br><span class="line">		while( cur != null )&#123;</span><br><span class="line">			next = cur.next;</span><br><span class="line">			//find the right place to insert</span><br><span class="line">			while( pre.next != null &amp;&amp; pre.next.val &lt; cur.val )&#123;</span><br><span class="line">				pre = pre.next;</span><br><span class="line">			&#125;</span><br><span class="line">			//insert between pre and pre.next</span><br><span class="line">			cur.next = pre.next;</span><br><span class="line">			pre.next = cur;</span><br><span class="line">			pre = helper;</span><br><span class="line">			cur = next;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		return helper.next;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14916/explained-c-solution-24ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14916/explained-c-solution-24ms</a></p>
+<p>Explained C++ solution (24ms)</p>
+<p>Well, life gets difficult pretty soon whenever the same operation on array is transferred to linked list.</p>
+<p>First, a quick recap of insertion sort:</p>
+<p>Start from the second element (simply a[1] in array and the annoying head -&gt; next -&gt; val in linked list), each time when we see a node with val smaller than its previous node, we scan from the head and find the position that the current node should be inserted. Since a node may be inserted before head, we create a new_head that points to head. The insertion operation, however, is a little easier for linked list.</p>
+<p>Now comes the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123; </span><br><span class="line">public:</span><br><span class="line">    ListNode* insertionSortList(ListNode* head) &#123;</span><br><span class="line">        ListNode* new_head = new ListNode(0);</span><br><span class="line">        new_head -&gt; next = head;</span><br><span class="line">        ListNode* pre = new_head;</span><br><span class="line">        ListNode* cur = head;</span><br><span class="line">        while (cur) &#123;</span><br><span class="line">            if (cur -&gt; next &amp;&amp; cur -&gt; next -&gt; val &lt; cur -&gt; val) &#123;</span><br><span class="line">                while (pre -&gt; next &amp;&amp; pre -&gt; next -&gt; val &lt; cur -&gt; next -&gt; val)</span><br><span class="line">                    pre = pre -&gt; next;</span><br><span class="line">                /* Insert cur -&gt; next after pre.*/</span><br><span class="line">                ListNode* temp = pre -&gt; next;</span><br><span class="line">                pre -&gt; next = cur -&gt; next;</span><br><span class="line">                cur -&gt; next = cur -&gt; next -&gt; next;</span><br><span class="line">                pre -&gt; next -&gt; next = temp;</span><br><span class="line">                /* Move pre back to new_head. */</span><br><span class="line">                pre = new_head;</span><br><span class="line">            &#125;</span><br><span class="line">            else cur = cur -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* res = new_head -&gt; next;</span><br><span class="line">        delete new_head;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1855/accepted-solution-using-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1855/accepted-solution-using-java</a></p>
+<p>Accepted Solution using JAVA</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public ListNode insertionSortList(ListNode head) &#123;</span><br><span class="line">    ListNode helper=new ListNode(0);</span><br><span class="line">    ListNode pre=helper;</span><br><span class="line">    ListNode current=head;</span><br><span class="line">    while(current!=null) &#123;</span><br><span class="line">        pre=helper;</span><br><span class="line">        while(pre.next!=null&amp;&amp;pre.next.val&lt;current.val) &#123;</span><br><span class="line">            pre=pre.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode next=current.next;</span><br><span class="line">        current.next=pre.next;</span><br><span class="line">        pre.next=current;</span><br><span class="line">        current=next;</span><br><span class="line">    &#125;</span><br><span class="line">    return helper.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/4932/python-time-limit-is-too-tight" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4932/python-time-limit-is-too-tight</a></p>
+<p>Python time limit is too tight</p>
+<p>I have basically the same code in python and java (see below). python got TLE, but java was accepted. I propose to relax the python time limit a little bit.</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param head, a ListNode</span><br><span class="line"># @return a ListNode</span><br><span class="line">def insertionSortList(self, head):</span><br><span class="line">    srt = None</span><br><span class="line">    while head:</span><br><span class="line">        node = head</span><br><span class="line">        head = head.next</span><br><span class="line">        node.next = None</span><br><span class="line">        srt = self.insertTo(srt, node)</span><br><span class="line">    return srt</span><br><span class="line">    </span><br><span class="line">def insertTo(self, head, node):</span><br><span class="line">    node.next = head</span><br><span class="line">    head = node</span><br><span class="line">    while node.next and node.val &gt; node.next.val:</span><br><span class="line">        node.val, node.next.val = node.next.val, node.val</span><br><span class="line">        node = node.next</span><br><span class="line">    return head</span><br></pre></td></tr></table></figure>
+<p>java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode insertionSortList(ListNode head) &#123;</span><br><span class="line">        ListNode srt = null;</span><br><span class="line">        while (head != null) &#123;</span><br><span class="line">            ListNode node = head;</span><br><span class="line">            head = head.next;</span><br><span class="line">            node.next = null;</span><br><span class="line">            srt = insertTo(srt, node);</span><br><span class="line">        &#125;</span><br><span class="line">        return srt;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public ListNode insertTo(ListNode head, ListNode node) &#123;</span><br><span class="line">        node.next = head;</span><br><span class="line">        head = node;</span><br><span class="line">        while (node.next != null &amp;&amp; node.val &gt; node.next.val) &#123;</span><br><span class="line">            node.val = node.val ^ node.next.val;</span><br><span class="line">            node.next.val = node.val ^ node.next.val;</span><br><span class="line">            node.val = node.val ^ node.next.val;</span><br><span class="line">            node = node.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +551,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+        </div>
       
 
       
@@ -612,7 +684,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

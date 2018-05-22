@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hard,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="25.3%  https://leetcode.com/problems/binary-tree-maximum-path-sum/?tab=Description Given a binary tree, find the maximum path sum. For this problem, a path is defined as any sequence of nodes from so">
+<meta name="keywords" content="leetcode,hard,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="124. Binary Tree Maximum Path Sum">
 <meta property="og:url" content="http://yucc.me/p/a3afbfd3/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="25.3%  https://leetcode.com/problems/binary-tree-maximum-path-sum/?tab=Description Given a binary tree, find the maximum path sum. For this problem, a path is defined as any sequence of nodes from so">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.160Z">
+<meta property="og:updated_time" content="2018-05-22T11:35:01.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="124. Binary Tree Maximum Path Sum">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="25.3%  https://leetcode.com/problems/binary-tree-maximum-path-sum/?tab=Description Given a binary tree, find the maximum path sum. For this problem, a path is defined as any sequence of nodes from so">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:35:01+08:00">
+                2018-05-22 19:35
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,992
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,75 @@
       
 
       
-        
+        <ul>
+<li>25.3%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/binary-tree-maximum-path-sum/?tab=Description</a></p>
+<p>Given a binary tree, find the maximum path sum.</p>
+<p>For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given the below binary tree,</span><br><span class="line"></span><br><span class="line">       1</span><br><span class="line">      / \</span><br><span class="line">     2   3</span><br><span class="line">Return 6.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>面试360时遇到，核心提示，使用带参数的函数。</p>
+<p>方法一：</p>
+<p>[recommend for beginners]clean C++ implementation with detailed explanation</p>
+<p>help函数，表征从root节点开始，至叶节点之间的最大value。</p>
+<p>sum通过获取，help(root-&gt;left), help(root-&gt;right)， 再加上root-&gt;val的和为sum，与先前的sum比较，进行更新。</p>
+<p>其中，help(root-&gt;left)&lt;=0时，此处应为0。 </p>
+<p>code 1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int sum;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode* root) &#123;</span><br><span class="line">        sum=INT_MIN;</span><br><span class="line">        help(root);</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /*** return the max-value-ended-at-root-node ***/</span><br><span class="line">    int help(TreeNode* root)&#123;</span><br><span class="line">        if(!root)   return 0;</span><br><span class="line">        int left = max(0, help(root-&gt;left));</span><br><span class="line">        int right = max(0, help(root-&gt;right));</span><br><span class="line">        /*** key parts : embedding the max-value-find in the recursion process ***/</span><br><span class="line">        sum = max(sum, left+right+root-&gt;val);</span><br><span class="line">        /*** get the max-value-ended-at-root ***/</span><br><span class="line">        return max(left, right)+root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int maxToRoot(TreeNode *root, int &amp;re) &#123;</span><br><span class="line">        if (!root) return 0;</span><br><span class="line">        int l = maxToRoot(root-&gt;left, re);</span><br><span class="line">        int r = maxToRoot(root-&gt;right, re);</span><br><span class="line">        if (l &lt; 0) l = 0;</span><br><span class="line">        if (r &lt; 0) r = 0;</span><br><span class="line">        if (l + r + root-&gt;val &gt; re) re = l + r + root-&gt;val;</span><br><span class="line">        return root-&gt;val += max(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">        int max = -2147483648;</span><br><span class="line">        maxToRoot(root, max);</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 3：</p>
+<p>我自己的代码</p>
+<p>逻辑还是很简单的，但是要考虑周全，不然ac不过去。</p>
+<p>res表示最长路径的大小，然后在helper函数中，传的是地址。</p>
+<p>helper中是树的先序遍历。root==NULL自不必说。helper函数返回当前节点出发至下面任意节点之间的最大的值得大小。当前的root对应的的值为cur，要考虑这个大小，就要考虑左节点出发的大小，右节点的大小，这时，更新下res的大小，通过当前节点的加上左右分支的节点的最大值，为cur_max去更新res的值。然后返回值呢，就是左节点右节点的最大值与0的最大值加上cur，因为返回值是通过当前节点的一条分支的最大值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        int res = INT_MIN; // 初始值设置为INT_MIN，而不是0，否则负数会出错误结果。</span><br><span class="line">        helper(root, res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int helper(TreeNode* root, int &amp; res)&#123;</span><br><span class="line">        if(root==NULL)</span><br><span class="line">            return 0;</span><br><span class="line">        int cur = root-&gt;val;</span><br><span class="line">        int left = helper(root-&gt;left, res);</span><br><span class="line">        int right = helper(root-&gt;right, res);</span><br><span class="line">        int cur_max = max(left,0) + max(right, 0) + cur;</span><br><span class="line">        res = max(cur_max, res);</span><br><span class="line">        return max(max(left, right), 0)+cur;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = INT_MIN;</span><br><span class="line">        helper(root, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="keyword">int</span> &amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = helper(root-&gt;left, res);</span><br><span class="line">        <span class="keyword">int</span> right = helper(root-&gt;right, res);</span><br><span class="line">        left = max(left, <span class="number">0</span>);</span><br><span class="line">        right = max(right, <span class="number">0</span>);</span><br><span class="line">        res = max(left+right+root-&gt;val, res);</span><br><span class="line">        <span class="keyword">return</span> max(left, right)+root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>这种方法与上一种逻辑上是一样的，不同的是，一是res在全局变量（是这个名字？？），更重要的是它设定了一个res的初始值，就避免了使用INT_MIN。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int res;</span><br><span class="line">public:</span><br><span class="line">    int depth(TreeNode *root)&#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        int a=depth(root-&gt;left), b=depth(root-&gt;right);</span><br><span class="line">        res=max(res,a+b+root-&gt;val);//if *root is the top node in the path</span><br><span class="line">        return max(0,max(a, b)+root-&gt;val);//if *root is in the path, if this branch a burden or a plus</span><br><span class="line">    &#125;</span><br><span class="line">    int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        res=root-&gt;val;</span><br><span class="line">        depth(root);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5508/simple-o-n-algorithm-with-one-traversal-through-the-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5508/simple-o-n-algorithm-with-one-traversal-through-the-tree</a></p>
+<p>Simple O(n) algorithm with one traversal through the tree</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int maxToRoot(TreeNode *root, int &amp;re) &#123;</span><br><span class="line">        if (!root) return 0;</span><br><span class="line">        int l = maxToRoot(root-&gt;left, re);</span><br><span class="line">        int r = maxToRoot(root-&gt;right, re);</span><br><span class="line">        if (l &lt; 0) l = 0;</span><br><span class="line">        if (r &lt; 0) r = 0;</span><br><span class="line">        if (l + r + root-&gt;val &gt; re) re = l + r + root-&gt;val;</span><br><span class="line">        return root-&gt;val += max(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">        int max = -2147483648;</span><br><span class="line">        maxToRoot(root, max);</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>update the val of each node of the tree bottom-up, the new val of TreeNode *x stands for the max sum started from any node in subtree x and ended in x, mataining the re for result in traversal at the same time.</p>
+<p><a href="https://discuss.leetcode.com/topic/5508/simple-o-n-algorithm-with-one-traversal-through-the-tree/5" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5508/simple-o-n-algorithm-with-one-traversal-through-the-tree/5</a></p>
+<p>Good solution! Essentially same as mine, but I don’t see why you update the val of each node, since each node is visited only once. In my version, I just return the maximum path ending at the root of the current tree while potentially updating the value of the global maximum with the path that links left and right.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">        int max = numeric_limits&lt;int&gt;::min();</span><br><span class="line">        maxPathAndGlobalUpdate(root, &amp;max);</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int maxPathAndGlobalUpdate(TreeNode *root, int* _global_max) &#123;</span><br><span class="line">        if (root == nullptr) return 0;</span><br><span class="line">        int&amp; global_max = *_global_max;</span><br><span class="line">        int l = max(0, maxPathAndGlobalUpdate(root-&gt;left, &amp;global_max));</span><br><span class="line">        int r = max(0, maxPathAndGlobalUpdate(root-&gt;right, &amp;global_max));</span><br><span class="line">        global_max = max(global_max, l + r + root-&gt;val);</span><br><span class="line">        return root-&gt;val + max(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>42ms, 15.55%, October 14, 2016</p>
+<p>A very concise recursive solution</p>
+<p><a href="https://discuss.leetcode.com/topic/7325/a-very-concise-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7325/a-very-concise-recursive-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode* root) &#123;</span><br><span class="line">        int maxPath = INT_MIN;</span><br><span class="line">        dfsMaxPath(root, maxPath);</span><br><span class="line">        return maxPath;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int dfsMaxPath(TreeNode *root, int &amp;maxPath)&#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        int l = max(0, dfsMaxPath(root-&gt;left, maxPath));</span><br><span class="line">        int r = max(0, dfsMaxPath(root-&gt;right, maxPath));</span><br><span class="line">        maxPath = max(maxPath, l+r+root-&gt;val);</span><br><span class="line">        return root-&gt;val + max(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2644/accepted-o-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2644/accepted-o-n-solution</a></p>
+<p>Accepted O(n) solution</p>
+<p>The idea is based on the solution of max sum of a sequence array, Here is the explaination of the code:</p>
+<ul>
+<li><p>Have a recursive method which traverse the binary tree, it also return the max possible sum of left branch and right branch saperately. for example, For node A, when it’s left and right node recusive call returned, we will know the max possible sum of left branch, right branch.</p>
+</li>
+<li><p>Have a CheckMax function which will compare the sequence sum and record the max history. For node A, check whether left branch + this node + right branch is the maximum, check whether left branch + this node is max， check whether right branch + this node is max.</p>
+</li>
+<li><p>When recursive method return, we should only return the max sum of one path - either the left branch + this node, or the right branch + this node. So that this is still a single path and can be used to link by node A’s parent node.</p>
+</li>
+</ul>
+<p>It’s accepted by OL. Let me know if you have any question</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">        int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">            if(!root) return 0;</span><br><span class="line">            maxSum = root-&gt;val;</span><br><span class="line">            recNodes(root); </span><br><span class="line">            return maxSum;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    protected:</span><br><span class="line">        int recNodes(TreeNode* node)</span><br><span class="line">        &#123;</span><br><span class="line">            int numl=0,numr=0;</span><br><span class="line">            if (node-&gt;left)</span><br><span class="line">                numl = recNodes(node-&gt;left);</span><br><span class="line">            if (node-&gt;right)</span><br><span class="line">                numr = recNodes(node-&gt;right);</span><br><span class="line">    </span><br><span class="line">            //choose the max path, either left or right </span><br><span class="line">            int value = node-&gt;val;</span><br><span class="line">            int sumWhole = checkMax(value,numl+numr);</span><br><span class="line">            int sumLeft = numl&gt;0?checkMax(value,numl):value;</span><br><span class="line">            int sumRight = numr&gt;0?checkMax(value,numr):value;</span><br><span class="line">    </span><br><span class="line">            return max(sumLeft,sumRight);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        int checkMax(int value, int sum)</span><br><span class="line">        &#123;</span><br><span class="line">            if(sum&gt;0)</span><br><span class="line">                sum+=value;</span><br><span class="line">            else</span><br><span class="line">                sum=value;</span><br><span class="line">            if(sum&gt;maxSum)</span><br><span class="line">                maxSum = sum;</span><br><span class="line">            return sum;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        int maxSum;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/35300/recommend-for-beginners-clean-c-implementation-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/35300/recommend-for-beginners-clean-c-implementation-with-detailed-explanation</a></p>
+<p>[recommend for beginners]clean C++ implementation with detailed explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int sum;</span><br><span class="line">public:</span><br><span class="line">    int maxPathSum(TreeNode* root) &#123;</span><br><span class="line">        sum=INT_MIN;</span><br><span class="line">        help(root);</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /*** return the max-value-ended-at-root-node ***/</span><br><span class="line">    int help(TreeNode* root)&#123;</span><br><span class="line">        if(!root)   return 0;</span><br><span class="line">        int left = max(0, help(root-&gt;left));</span><br><span class="line">        int right = max(0, help(root-&gt;right));</span><br><span class="line">        /*** key parts : embedding the max-value-find in the recursion process ***/</span><br><span class="line">        sum = max(sum, left+right+root-&gt;val);</span><br><span class="line">        /*** get the max-value-ended-at-root ***/</span><br><span class="line">        return max(left, right)+root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/11112/clean-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/11112/clean-c-solution</a></p>
+<p>Clean c++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int res;</span><br><span class="line">public:</span><br><span class="line">    int depth(TreeNode *root)&#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        int a=depth(root-&gt;left), b=depth(root-&gt;right);</span><br><span class="line">        res=max(res,a+b+root-&gt;val);//if *root is the top node in the path</span><br><span class="line">        return max(0,max(a, b)+root-&gt;val);//if *root is in the path, if this branch a burden or a plus</span><br><span class="line">    &#125;</span><br><span class="line">    int maxPathSum(TreeNode *root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        res=root-&gt;val;</span><br><span class="line">        depth(root);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>2ms, 42.51%, October 14, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/4407/accepted-short-solution-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4407/accepted-short-solution-in-java</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    int maxValue;</span><br><span class="line">    </span><br><span class="line">    public int maxPathSum(TreeNode root) &#123;</span><br><span class="line">        maxValue = Integer.MIN_VALUE;</span><br><span class="line">        maxPathDown(root);</span><br><span class="line">        return maxValue;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private int maxPathDown(TreeNode node)&#123;</span><br><span class="line">        if(node == null) return 0;</span><br><span class="line">        int left = Math.max(0, maxPathDown(node.left));</span><br><span class="line">        int right = Math.max(0, maxPathDown(node.right));</span><br><span class="line">        maxValue = Math.max(maxValue, left+right+node.val);</span><br><span class="line">        return Math.max(left, right) + node.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +581,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +714,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

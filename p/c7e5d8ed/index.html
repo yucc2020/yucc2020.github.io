@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,dynamic programming," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="28.9%  https://leetcode.com/problems/word-break/ Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words. 1234">
+<meta name="keywords" content="leetcode,medium,dynamic programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="139. Word Break">
 <meta property="og:url" content="http://yucc.me/p/c7e5d8ed/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="28.9%  https://leetcode.com/problems/word-break/ Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words. 1234">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.180Z">
+<meta property="og:updated_time" content="2018-05-22T11:47:38.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="139. Word Break">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="28.9%  https://leetcode.com/problems/word-break/ Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words. 1234">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:47:38+08:00">
+                2018-05-22 19:47
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,256
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,69 @@
       
 
       
-        
+        <ul>
+<li>28.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/word-break/" target="_blank" rel="noopener">https://leetcode.com/problems/word-break/</a></p>
+<p>Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">For example, given</span><br><span class="line">s = &quot;leetcode&quot;,</span><br><span class="line">dict = [&quot;leet&quot;, &quot;code&quot;].</span><br><span class="line"></span><br><span class="line">Return true because &quot;leetcode&quot; can be segmented as &quot;leet code&quot;.</span><br></pre></td></tr></table></figure>
+<p>UPDATE (2017/1/4):</p>
+<p>The wordDict parameter had been changed to a list of strings (instead of a set of strings). Please reload the code definition to get the latest changes.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dp(n+<span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// vector to unordered_set的用法，重点学习一下</span></span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt; wordSet(wordDict.begin(), wordDict.end());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>; j&gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dp[j])&#123;</span><br><span class="line">                    <span class="built_in">string</span> word = s.substr(j, i-j);</span><br><span class="line">                    <span class="keyword">if</span>(wordSet.find(word)!=wordSet.end())&#123;</span><br><span class="line">                        dp[i] = <span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n]; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/7299/c-dynamic-programming-simple-and-fast-solution-4ms-with-optimization" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7299/c-dynamic-programming-simple-and-fast-solution-4ms-with-optimization</a></p>
+<p>6ms, September 9, 2016</p>
+<p>C++ Dynamic Programming simple and fast solution (4ms) with optimization</p>
+<p>We use a boolean vector dp[]. dp[i] is set to true if a valid word (word sequence) ends there. The optimization is to look from current position i back and only substring and do dictionary look up in case the preceding position j with dp[j] == true is found.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool wordBreak(string s, unordered_set&lt;string&gt;&amp; wordDict) &#123;</span><br><span class="line">        if(wordDict.size()==0) return false;</span><br><span class="line">        </span><br><span class="line">        vector&lt;bool&gt; dp(s.size()+1, false);</span><br><span class="line">        dp[0]=true;</span><br><span class="line">        </span><br><span class="line">        for(int i=1; i&lt;=s.size(); i++)&#123;</span><br><span class="line">            for(int j=i-1; j&gt;=0; j--)&#123;</span><br><span class="line">                if(dp[j])&#123;</span><br><span class="line">                    string word = s.substr(j, i-j);</span><br><span class="line">                    if(wordDict.find(word)!=wordDict.end())&#123;</span><br><span class="line">                        dp[i] = true;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp[s.size()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2545/a-solution-using-bfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2545/a-solution-using-bfs</a></p>
+<p>A solution using BFS</p>
+<p>People have posted elegant solutions using DP. The solution I post below using BFS is no better than those. Just to share some new thoughts.</p>
+<p>We can use a graph to represent the possible solutions. The vertices of the graph are simply the positions of the first characters of the words and each edge actually represents a word. For example, the input string is “nightmare”, there are two ways to break it, “night mare” and “nightmare”. The graph would be</p>
+<p>0–&gt;5–&gt;9</p>
+<p>|<strong> </strong> _^</p>
+<p>The question is simply to check if there is a path from 0 to 9. The most efficient way is traversing the graph using BFS with the help of a queue and a hash set. The hash set is used to keep track of the visited nodes to avoid repeating the same work.</p>
+<p>For this problem, the time complexity is O(n^2) and space complexity is O(n), the same with DP. This idea can be used to solve the problem word break II. We can simple construct the graph using BFS, save it into a map and then find all the paths using DFS.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">bool wordBreak(string s, unordered_set&lt;string&gt; &amp;dict) &#123;</span><br><span class="line">    // BFS</span><br><span class="line">    queue&lt;int&gt; BFS;</span><br><span class="line">    unordered_set&lt;int&gt; visited;</span><br><span class="line">    </span><br><span class="line">    BFS.push(0);</span><br><span class="line">    while(BFS.size() &gt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        int start = BFS.front();</span><br><span class="line">        BFS.pop();</span><br><span class="line">        if(visited.find(start) == visited.end())</span><br><span class="line">        &#123;</span><br><span class="line">            visited.insert(start);</span><br><span class="line">            for(int j=start; j&lt;s.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                string word(s, start, j-start+1);</span><br><span class="line">                if(dict.find(word) != dict.end())</span><br><span class="line">                &#123;</span><br><span class="line">                    BFS.push(j+1);</span><br><span class="line">                    if(j+1 == s.size())</span><br><span class="line">                        return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/8109/simple-dp-solution-in-python-with-description" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8109/simple-dp-solution-in-python-with-description</a></p>
+<p>Simple DP solution in Python with description</p>
+<p>75ms, 18.48%, September 7, 2016</p>
+<p>The idea is the following:</p>
+<ul>
+<li>d is an array that contains booleans</li>
+<li>d[i] is True if there is a word in the dictionary that ends at ith index of s AND d is also True at the beginning of the word</li>
+</ul>
+<p>Example:</p>
+<ul>
+<li>s = “leetcode”</li>
+<li>words = [“leet”, “code”]</li>
+<li>d[3] is True because there is “leet” in the dictionary that ends at 3rd index of “leetcode”</li>
+<li>d[7] is True because there is “code” in the dictionary that ends at the 7th index of “leetcode” AND d[3] is True</li>
+</ul>
+<p>The result is the last index of d.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def wordBreak(self, s, wordDict):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :type wordDict: Set[str]</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        d = [False] * len(s)</span><br><span class="line">        for i in range(len(s)):</span><br><span class="line">            for w in wordDict:</span><br><span class="line">                if w == s[i-len(w)+1:i+1] and (d[i-len(w)] or i-len(w) == -1):</span><br><span class="line">                    d[i] = True</span><br><span class="line">        return d[-1]</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16701/4-lines-in-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16701/4-lines-in-python</a></p>
+<p>4 lines in Python</p>
+<p>ok[i] tells whether s[:i] can be built.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def wordBreak(self, s, words):</span><br><span class="line">    ok = [True]</span><br><span class="line">    for i in range(1, len(s)+1):</span><br><span class="line">        ok += any(ok[j] and s[j:i] in words for j in range(i)),</span><br><span class="line">    return ok[-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/6156/java-implementation-using-dp-in-two-ways" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6156/java-implementation-using-dp-in-two-ways</a></p>
+<p>12ms, September 9, 2016</p>
+<p>Java implementation using DP in two ways</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean wordBreak(String s, Set&lt;String&gt; dict) &#123;</span><br><span class="line">        </span><br><span class="line">        boolean[] f = new boolean[s.length() + 1];</span><br><span class="line">        </span><br><span class="line">        f[0] = true;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        /* First DP</span><br><span class="line">        for(int i = 1; i &lt;= s.length(); i++)&#123;</span><br><span class="line">            for(String str: dict)&#123;</span><br><span class="line">                if(str.length() &lt;= i)&#123;</span><br><span class="line">                    if(f[i - str.length()])&#123;</span><br><span class="line">                        if(s.substring(i-str.length(), i).equals(str))&#123;</span><br><span class="line">                            f[i] = true;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;*/</span><br><span class="line">        </span><br><span class="line">        //Second DP</span><br><span class="line">        for(int i=1; i &lt;= s.length(); i++)&#123;</span><br><span class="line">            for(int j=0; j &lt; i; j++)&#123;</span><br><span class="line">                if(f[j] &amp;&amp; dict.contains(s.substring(j, i)))&#123;</span><br><span class="line">                    f[i] = true;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return f[s.length()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9615/dfs-with-path-memorizing-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9615/dfs-with-path-memorizing-java-solution</a></p>
+<p>DFS with Path Memorizing Java Solution</p>
+<p>I write this method by what I learned from @mahdy in his post Decode Ways</p>
+<p>Use a set to record all position that cannot find a match in dict. That cuts down the run time of DFS to O(n^2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean wordBreak(String s, Set&lt;String&gt; dict) &#123;</span><br><span class="line">        // DFS</span><br><span class="line">        Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;();</span><br><span class="line">        return dfs(s, 0, dict, set);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private boolean dfs(String s, int index, Set&lt;String&gt; dict, Set&lt;Integer&gt; set)&#123;</span><br><span class="line">        // base case</span><br><span class="line">        if(index == s.length()) return true;</span><br><span class="line">        // check memory</span><br><span class="line">        if(set.contains(index)) return false;</span><br><span class="line">        // recursion</span><br><span class="line">        for(int i = index+1;i &lt;= s.length();i++)&#123;</span><br><span class="line">            String t = s.substring(index, i);</span><br><span class="line">            if(dict.contains(t))</span><br><span class="line">                if(dfs(s, i, dict, set))</span><br><span class="line">                    return true;</span><br><span class="line">                else</span><br><span class="line">                    set.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        set.add(index);</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +575,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+        </div>
       
 
       
@@ -574,8 +668,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +715,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +777,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

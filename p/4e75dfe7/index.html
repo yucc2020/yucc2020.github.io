@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="41.0%  https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/ Given an array where elements are sorted in ascending order, convert it to a height balanced BST.">
+<meta name="keywords" content="leetcode,easy,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="108. Convert Sorted Array to Binary Search Tree">
 <meta property="og:url" content="http://yucc.me/p/4e75dfe7/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="41.0%  https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/ Given an array where elements are sorted in ascending order, convert it to a height balanced BST.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.134Z">
+<meta property="og:updated_time" content="2018-05-22T11:20:17.100Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="108. Convert Sorted Array to Binary Search Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="41.0%  https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/ Given an array where elements are sorted in ascending order, convert it to a height balanced BST.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:20:17+08:00">
+                2018-05-22 19:20
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  805
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,43 @@
       
 
       
-        
+        <ul>
+<li>41.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/</a></p>
+<p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>20ms, 24.24%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6472/accepted-c-recursive-solution-within-a-single-method" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6472/accepted-c-recursive-solution-within-a-single-method</a></p>
+<p>Accepted C++ recursive solution within a single method</p>
+<p>Recursively call the sortedArrayToBST() method providing new vector for each call to construct left and right children:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* sortedArrayToBST(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(nums.size() == 0) return NULL;</span><br><span class="line">        if(nums.size() == 1) return new TreeNode(nums[0]);</span><br><span class="line">        </span><br><span class="line">        int middle = nums.size()/2;</span><br><span class="line">        TreeNode* root = new TreeNode(nums[middle]);</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; leftInts(nums.begin(), nums.begin() + middle);</span><br><span class="line">        vector&lt;int&gt; rightInts(nums.begin()+middle+1, nums.end());</span><br><span class="line">        </span><br><span class="line">        root-&gt;left = sortedArrayToBST(leftInts);</span><br><span class="line">        root-&gt;right = sortedArrayToBST(rightInts);</span><br><span class="line">        </span><br><span class="line">        return root; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二 ：</p>
+<p><a href="https://discuss.leetcode.com/topic/24667/16-ms-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/24667/16-ms-c-solution</a></p>
+<p>16 ms C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    TreeNode* sortedArrayToBST(vector&lt;int&gt;&amp; nums, int start, int end)&#123;</span><br><span class="line">        if(end&lt;=start) return NULL; </span><br><span class="line">        int midIdx=(end+start)/2;</span><br><span class="line">        TreeNode* root=new TreeNode(nums[midIdx]);</span><br><span class="line">        root-&gt;left=sortedArrayToBST(nums, start, midIdx);</span><br><span class="line">        root-&gt;right=sortedArrayToBST(nums, midIdx+1,end);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* sortedArrayToBST(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        return sortedArrayToBST(nums, 0,nums.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">sortedArrayToBST</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(nums, <span class="number">0</span>, nums.size()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left&gt;right)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = left+(right-left)/<span class="number">2</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(nums[mid]);</span><br><span class="line">        root-&gt;left = helper(nums, left, mid<span class="number">-1</span>);</span><br><span class="line">        root-&gt;right = helper(nums, mid+<span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>116ms, 24.46%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/10519/an-easy-python-solutio" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10519/an-easy-python-solutio</a></p>
+<p>An easy Python solution</p>
+<p>The idea is to find the root first, then recursively build each left and right subtree</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def sortedArrayToBST(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: TreeNode</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not nums:</span><br><span class="line">            return None</span><br><span class="line">        </span><br><span class="line">        mid = len(nums) // 2</span><br><span class="line">        </span><br><span class="line">        root = TreeNode(nums[mid])</span><br><span class="line">        root.left = self.sortedArrayToBST(nums[:mid])</span><br><span class="line">        root.right = self.sortedArrayToBST(nums[mid+1:])</span><br><span class="line">        </span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p>0ms, 99.14%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/3158/my-accepted-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3158/my-accepted-java-solution</a></p>
+<p>My Accepted Java Solution</p>
+<p>Hi everyone, this is my accepted recursive Java solution. I get overflow problems at first because I didn’t use mid - 1 and mid + 1 as the bound. Hope this helps :)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode sortedArrayToBST(int[] nums) &#123;</span><br><span class="line">        if(nums.length == 0) return null;</span><br><span class="line">        TreeNode head = helper(nums, 0, nums.length-1);</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public TreeNode helper(int[] nums, int low, int high)&#123;</span><br><span class="line">        if(low &gt; high) return null;</span><br><span class="line">        </span><br><span class="line">        int mid = (low + high) / 2;</span><br><span class="line">        TreeNode node = new TreeNode(nums[mid]);</span><br><span class="line">        node.left = helper(nums, low, mid-1);</span><br><span class="line">        node.right = helper(nums, mid+1, high);</span><br><span class="line">        return node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14412/java-iterative-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14412/java-iterative-solution</a></p>
+<p>Java Iterative Solution</p>
+<p>I came up with the recursion solution first and tried to translate it into an iterative solution. It is very similar to doing a tree inorder traversal, I use three stacks - nodeStack stores the node I am going to process next, and leftIndexStack and rightIndexStack store the range where this node need to read from the nums.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    </span><br><span class="line">    public TreeNode sortedArrayToBST(int[] nums) &#123;</span><br><span class="line">        </span><br><span class="line">        int len = nums.length;</span><br><span class="line">        if ( len == 0 ) &#123; return null; &#125;</span><br><span class="line">        </span><br><span class="line">        // 0 as a placeholder</span><br><span class="line">        TreeNode head = new TreeNode(0); </span><br><span class="line">        </span><br><span class="line">        Deque&lt;TreeNode&gt; nodeStack       = new LinkedList&lt;TreeNode&gt;() &#123;&#123; push(head);  &#125;&#125;;</span><br><span class="line">        Deque&lt;Integer&gt;  leftIndexStack  = new LinkedList&lt;Integer&gt;()  &#123;&#123; push(0);     &#125;&#125;;</span><br><span class="line">        Deque&lt;Integer&gt;  rightIndexStack = new LinkedList&lt;Integer&gt;()  &#123;&#123; push(len-1); &#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        while ( !nodeStack.isEmpty() ) &#123;</span><br><span class="line">            TreeNode currNode = nodeStack.pop();</span><br><span class="line">            int left  = leftIndexStack.pop();</span><br><span class="line">            int right = rightIndexStack.pop();</span><br><span class="line">            int mid   = left + (right-left)/2; // avoid overflow</span><br><span class="line">            currNode.val = nums[mid];</span><br><span class="line">            if ( left &lt;= mid-1 ) &#123;</span><br><span class="line">                currNode.left = new TreeNode(0);  </span><br><span class="line">                nodeStack.push(currNode.left);</span><br><span class="line">                leftIndexStack.push(left);</span><br><span class="line">                rightIndexStack.push(mid-1);</span><br><span class="line">            &#125;</span><br><span class="line">            if ( mid+1 &lt;= right ) &#123;</span><br><span class="line">                currNode.right = new TreeNode(0);</span><br><span class="line">                nodeStack.push(currNode.right);</span><br><span class="line">                leftIndexStack.push(mid+1);</span><br><span class="line">                rightIndexStack.push(right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +549,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

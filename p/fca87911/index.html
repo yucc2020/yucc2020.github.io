@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,easy,greedy," />
 
 
 
@@ -85,18 +85,21 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="46.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
+<meta name="keywords" content="leetcode,array,easy,greedy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="122. Best Time to Buy and Sell Stock II">
 <meta property="og:url" content="http://yucc.me/p/fca87911/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="46.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.155Z">
+<meta property="og:image" content="https://leetcode.com/media/original_images/122_maxprofit_1.PNG">
+<meta property="og:image" content="https://leetcode.com/media/original_images/122_maxprofit_2.PNG">
+<meta property="og:updated_time" content="2018-05-22T11:33:00.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="122. Best Time to Buy and Sell Stock II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="46.0%  https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/ Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximu">
+<meta name="twitter:image" content="https://leetcode.com/media/original_images/122_maxprofit_1.PNG">
 
 
 
@@ -358,12 +361,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:33:00+08:00">
+                2018-05-22 19:33
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  813
                 </span>
               
 
@@ -409,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +455,50 @@
       
 
       
-        
+        <ul>
+<li>46.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/</a></p>
+<p>Say you have an array for which the ith element is the price of a given stock on day i.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i&lt;prices.size(); i++)</span><br><span class="line">            res += max(prices[i]-prices[i<span class="number">-1</span>], <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Second, suppose the first sequence is “a &lt;= b &lt;= c &lt;= d”, the profit is “d - a = (b - a) + (c - b) + (d - c)” without a doubt. And suppose another one is “a &lt;= b &gt;= b’ &lt;= c &lt;= d”, the profit is not difficult to be figured out as “(b - a) + (d - b’)”. So you just target at monotone sequences.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxProfit(vector&lt;int&gt;&amp; prices) &#123;</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        for(size_t i=1; i&lt;prices.size(); i++)&#123;</span><br><span class="line">            maxprofit += max(prices[i]-prices[i-1], 0);</span><br><span class="line">        &#125;</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>Basically, if tomorrow’s price is higher than today’s, we buy it today and sell tomorrow. Otherwise, we don’t. Here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxProfit(self, prices):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type prices: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return sum(max(prices[i+1]-prices[i], 0) for i in range(len(prices)-1))</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>Algorithm</p>
+<p>This solution follows the logic used in Approach 2 itself, but with only a slight variation. In this case, instead of looking for every peak following a valley, we can simply go on crawling over the slope and keep on adding the profit obtained from every consecutive transaction. In the end,we will be using the peaks and valleys effectively, but we need not track the costs corresponding to the peaks and valleys along with the maximum profit, but we can directly keep on adding the difference between the consecutive numbers of the array if the second number is larger than the first one, and at the total sum we obtain will be the maximum profit. This approach will simplify the solution. This can be made clearer by taking this example:</p>
+<p>[1, 7, 2, 3, 6, 7, 6, 7]</p>
+<p>The graph corresponding to this array is:</p>
+<p><img src="https://leetcode.com/media/original_images/122_maxprofit_1.PNG" alt="image"></p>
+<p>If we analyze the graph, we notice that the points of interest are the consecutive valleys and peaks.</p>
+<p>Complexity Analysis</p>
+<ul>
+<li>Time complexity : O(n)O(n). Single pass.</li>
+<li>Space complexity : O(1)O(1). Constant space required.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        if(prices.length==0) return 0;</span><br><span class="line">        int i=0;</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        int valley = prices[0];</span><br><span class="line">        int peak = prices[0];</span><br><span class="line">        while(i&lt;prices.length-1)&#123;</span><br><span class="line">            while(i&lt;prices.length-1 &amp;&amp; prices[i]&gt;=prices[i+1])</span><br><span class="line">                i++;</span><br><span class="line">            valley = prices[i];</span><br><span class="line">            while(i&lt;prices.length-1 &amp;&amp; prices[i]&lt;=prices[i+1])</span><br><span class="line">                i++;</span><br><span class="line">            peak = prices[i];</span><br><span class="line">            maxprofit += peak - valley;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://leetcode.com/articles/best-time-buy-and-sell-stock-ii/" target="_blank" rel="noopener">https://leetcode.com/articles/best-time-buy-and-sell-stock-ii/</a></p>
+<p>Algorithm</p>
+<p>This solution follows the logic used in Approach 2 itself, but with only a slight variation. In this case, instead of looking for every peak following a valley, we can simply go on crawling over the slope and keep on adding the profit obtained from every consecutive transaction. In the end,we will be using the peaks and valleys effectively, but we need not track the costs corresponding to the peaks and valleys along with the maximum profit, but we can directly keep on adding the difference between the consecutive numbers of the array if the second number is larger than the first one, and at the total sum we obtain will be the maximum profit. This approach will simplify the solution. This can be made clearer by taking this example:</p>
+<p>[1, 7, 2, 3, 6, 7, 6, 7]</p>
+<p>The graph corresponding to this array is:<br><img src="https://leetcode.com/media/original_images/122_maxprofit_2.PNG" alt="image"></p>
+<p>From the above graph, we can observe that the sum A+B+CA+B+C is equal to the difference DD corresponding to the difference between the heights of the consecutive peak and valley.</p>
+<p>Complexity Analysis</p>
+<ul>
+<li>Time complexity : O(n)O(n). Single pass.</li>
+<li>Space complexity: O(1)O(1). Constant space needed.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxProfit(int[] prices) &#123;</span><br><span class="line">        int maxprofit = 0;</span><br><span class="line">        for(int i=1; i&lt;prices.length; i++)&#123;</span><br><span class="line">            if(prices[i] - prices[i-1] &gt; 0)</span><br><span class="line">                maxprofit += prices[i] - prices[i-1];</span><br><span class="line">        &#125;</span><br><span class="line">        return maxprofit;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +559,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
+          
+        </div>
       
 
       
@@ -574,8 +654,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +763,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

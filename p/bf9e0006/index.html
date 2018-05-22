@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.1%  https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?tab=Description Given preorder and inorder traversal of a tree, construct the binary tree. Note: You ma">
+<meta name="keywords" content="leetcode,array,medium,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="105. Construct Binary Tree from Preorder and Inorder Traversal">
 <meta property="og:url" content="http://yucc.me/p/bf9e0006/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.1%  https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?tab=Description Given preorder and inorder traversal of a tree, construct the binary tree. Note: You ma">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.129Z">
+<meta property="og:updated_time" content="2018-05-22T11:17:24.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="105. Construct Binary Tree from Preorder and Inorder Traversal">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.1%  https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?tab=Description Given preorder and inorder traversal of a tree, construct the binary tree. Note: You ma">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:17:24+08:00">
+                2018-05-22 19:17
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,793
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,78 @@
       
 
       
-        
+        <ul>
+<li>31.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/?tab=Description</a></p>
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note:</p>
+<p>You may assume that duplicates do not exist in the tree.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>根据preorder和inorder的特点，找规律。</p>
+<p>剑指offer， 第6题</p>
+<p>新建一个节点代码：TreeNode* node = new TreeNode(preorder[ps]);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TreeNode *buildTree(vector&lt;int&gt; &amp;preorder, vector&lt;int&gt; &amp;inorder) &#123;</span><br><span class="line">    return create(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* create(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder, int ps, int pe, int is, int ie)&#123;</span><br><span class="line">    if(ps &gt; pe)&#123;</span><br><span class="line">        return nullptr;</span><br><span class="line">    &#125;</span><br><span class="line">    TreeNode* node = new TreeNode(preorder[ps]);</span><br><span class="line">    int pos;</span><br><span class="line">    for(int i = is; i &lt;= ie; i++)&#123;</span><br><span class="line">        if(inorder[i] == node-&gt;val)&#123;</span><br><span class="line">            pos = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    node-&gt;left = create(preorder, inorder, ps + 1, ps + pos - is, is, pos - 1);</span><br><span class="line">    node-&gt;right = create(preorder, inorder, pe - ie + pos + 1, pe, pos + 1, ie);</span><br><span class="line">    return node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p><a href="https://discuss.leetcode.com/topic/10244/my-o-n-19ms-solution-without-recusion-hope-help-you" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10244/my-o-n-19ms-solution-without-recusion-hope-help-you</a></p>
+<p>My O(n)(19ms) solution without recusion. Hope help you!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *buildTree(vector&lt;int&gt; &amp;preorder, vector&lt;int&gt; &amp;inorder) &#123;</span><br><span class="line">        TreeNode *root=NULL; stack&lt;TreeNode *&gt; MyData;</span><br><span class="line">        if(preorder.empty()) return root;</span><br><span class="line">        root = new TreeNode(preorder[0]);</span><br><span class="line">        MyData.push(root); int index = 0;</span><br><span class="line">       	for(int i=1; i&lt;=preorder.size(); i++) &#123;</span><br><span class="line">       		TreeNode *cur = MyData.top();</span><br><span class="line">       		if((MyData.top()-&gt;val)!=inorder[index]) &#123;</span><br><span class="line">       			cur-&gt;left = new TreeNode(preorder[i]);</span><br><span class="line">       			MyData.push(cur-&gt;left);</span><br><span class="line">       		&#125; else &#123;</span><br><span class="line">       			while(!MyData.empty() &amp;&amp; ((MyData.top()-&gt;val)==inorder[index])) &#123;</span><br><span class="line">       				cur=MyData.top(); MyData.pop(); index++; </span><br><span class="line">       			&#125;</span><br><span class="line">       			if(index&lt;inorder.size()) &#123;</span><br><span class="line">       				cur-&gt;right = new TreeNode(preorder[i]);</span><br><span class="line">       				MyData.push(cur-&gt;right);</span><br><span class="line">       			&#125; </span><br><span class="line">       		&#125;  </span><br><span class="line">       	&#125;</span><br><span class="line">       	return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16860/my-neat-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16860/my-neat-c-solution</a></p>
+<p>My neat C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    /* from Preorder and Inorder Traversal */</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;</span><br><span class="line"></span><br><span class="line">        return helper(preorder,0,preorder.size(),inorder,0,inorder.size());</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    TreeNode* helper(vector&lt;int&gt;&amp; preorder,int i,int j,vector&lt;int&gt;&amp; inorder,int ii,int jj)</span><br><span class="line">    &#123;</span><br><span class="line">        // tree        8 4 5 3 7 3</span><br><span class="line">        // preorder    8 [4 3 3 7] [5]</span><br><span class="line">        // inorder     [3 3 4 7] 8 [5]</span><br><span class="line"></span><br><span class="line">        // 每次从 preorder 头部取一个值 mid，作为树的根节点</span><br><span class="line">        // 检查 mid 在 inorder 中 的位置，则 mid 前面部分将作为 树的左子树，右部分作为树的右子树</span><br><span class="line"></span><br><span class="line">        if(i &gt;= j || ii &gt;= j)</span><br><span class="line">            return NULL;</span><br><span class="line"></span><br><span class="line">        int mid = preorder[i];</span><br><span class="line">        auto f = find(inorder.begin() + ii,inorder.begin() + jj,mid);</span><br><span class="line"></span><br><span class="line">        int dis = f - inorder.begin() - ii;</span><br><span class="line"></span><br><span class="line">        TreeNode* root = new TreeNode(mid);</span><br><span class="line">        root -&gt; left = helper(preorder,i + 1,i + 1 + dis,inorder,ii,ii + dis);</span><br><span class="line">        root -&gt; right = helper(preorder,i + 1 + dis,j,inorder,ii + dis + 1,jj);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/795/the-iterative-solution-is-easier-than-you-think" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/795/the-iterative-solution-is-easier-than-you-think</a></p>
+<p>The iterative solution is easier than you think!</p>
+<p>I din’t find iterative solutions discussed in the old Discuss. So, I thought, I will add my solution in here.</p>
+<p>The idea is as follows:</p>
+<ol>
+<li>Keep pushing the nodes from the preorder into a stack (and keep making the tree by adding nodes to the left of the previous node) until the top of the stack matches the inorder.</li>
+<li>At this point, pop the top of the stack until the top does not equal inorder (keep a flag to note that you have made a pop).</li>
+<li>Repeat 1 and 2 until preorder is empty. The key point is that whenever the flag is set, insert a node to the right and reset the flag.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode *buildTree(vector&lt;int&gt; &amp;preorder, vector&lt;int&gt; &amp;inorder) &#123;</span><br><span class="line">        </span><br><span class="line">        if(preorder.size()==0)</span><br><span class="line">            return NULL;</span><br><span class="line">        </span><br><span class="line">        stack&lt;int&gt; s;</span><br><span class="line">        stack&lt;TreeNode *&gt; st;</span><br><span class="line">        TreeNode *t,*r,*root;</span><br><span class="line">        int i,j,f;</span><br><span class="line">        </span><br><span class="line">        f=i=j=0;</span><br><span class="line">        s.push(preorder[i]);</span><br><span class="line">        </span><br><span class="line">        root = new TreeNode(preorder[i]);</span><br><span class="line">        st.push(root);</span><br><span class="line">        t = root;</span><br><span class="line">        i++;</span><br><span class="line">        </span><br><span class="line">        while(i&lt;preorder.size())</span><br><span class="line">        &#123;</span><br><span class="line">            if(!st.empty() &amp;&amp; st.top()-&gt;val==inorder[j])</span><br><span class="line">            &#123;</span><br><span class="line">                t = st.top();</span><br><span class="line">                st.pop();</span><br><span class="line">                s.pop();</span><br><span class="line">                f = 1;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if(f==0)</span><br><span class="line">                &#123;</span><br><span class="line">                    s.push(preorder[i]);</span><br><span class="line">                    t -&gt; left = new TreeNode(preorder[i]);</span><br><span class="line">                    t = t -&gt; left;</span><br><span class="line">                    st.push(t);</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                else </span><br><span class="line">                &#123;</span><br><span class="line">                    f = 0;</span><br><span class="line">                    s.push(preorder[i]);</span><br><span class="line">                    t -&gt; right = new TreeNode(preorder[i]);</span><br><span class="line">                    t = t -&gt; right;</span><br><span class="line">                    st.push(t);</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>33ms, 64.41%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/5845/sharing-my-straightforward-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5845/sharing-my-straightforward-recursive-solution</a></p>
+<p>Sharing my straightforward recursive solution</p>
+<p>递归，直接了当</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TreeNode *buildTree(vector&lt;int&gt; &amp;preorder, vector&lt;int&gt; &amp;inorder) &#123;</span><br><span class="line">    return create(preorder, inorder, 0, preorder.size() - 1, 0, inorder.size() - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TreeNode* create(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder, int ps, int pe, int is, int ie)&#123;</span><br><span class="line">    if(ps &gt; pe)&#123;</span><br><span class="line">        return nullptr;</span><br><span class="line">    &#125;</span><br><span class="line">    TreeNode* node = new TreeNode(preorder[ps]);</span><br><span class="line">    int pos;</span><br><span class="line">    for(int i = is; i &lt;= ie; i++)&#123;</span><br><span class="line">        if(inorder[i] == node-&gt;val)&#123;</span><br><span class="line">            pos = i;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    node-&gt;left = create(preorder, inorder, ps + 1, ps + pos - is, is, pos - 1);</span><br><span class="line">    node-&gt;right = create(preorder, inorder, pe - ie + pos + 1, pe, pos + 1, ie);</span><br><span class="line">    return node;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The first element in preorder array can divide inorder array into two parts. Then we can divide preorder array into two parts. Make this element a node. And the left sub-tree of this node is the left part, right sub-tree of this node is the right part. This problem can be solved following this logic.</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>199ms, 37.16%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/21287/python-short-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21287/python-short-recursive-solution</a></p>
+<p>Python short recursive solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def buildTree(self, preorder, inorder):</span><br><span class="line">    if inorder:</span><br><span class="line">        ind = inorder.index(preorder.pop(0))</span><br><span class="line">        root = TreeNode(inorder[ind])</span><br><span class="line">        root.left = self.buildTree(preorder, inorder[0:ind])</span><br><span class="line">        root.right = self.buildTree(preorder, inorder[ind+1:])</span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10474/a-python-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10474/a-python-recursive-solution</a></p>
+<p>A Python recursive solution</p>
+<p>The idea is to find the root first, and then recursively build each left and right subtree</p>
+<p>Only Solution 3 could pass the OJ, but theoretically they should all work …</p>
+<p>Solution 1 - clean and easy to understand, but Memory Limit Exceeded …</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a  binary tree node</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.left = None</span><br><span class="line">#         self.right = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    # @param preorder, a list of integers</span><br><span class="line">    # @param inorder, a list of integers</span><br><span class="line">    # @return a tree node</span><br><span class="line">    # 1:59</span><br><span class="line">    def buildTree(self, preorder, inorder):</span><br><span class="line">        if not preorder or not inorder:</span><br><span class="line">            return None</span><br><span class="line">        </span><br><span class="line">        rootValue = preorder[0]</span><br><span class="line">        root = TreeNode(rootValue)</span><br><span class="line">        inorderIndex = inorder.index(rootValue)</span><br><span class="line"></span><br><span class="line">        root.left = self.buildTree(preorder[1:inorderIndex+1], inorder[:inorderIndex])</span><br><span class="line">        root.right = self.buildTree(preorder[inorderIndex+1:], inorder[inorderIndex+1:])</span><br><span class="line">        </span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<p>Solution 2 - Same as solution one, but pass index instead of doing list slicing (and thus reduce the memory usage)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param preorder, a list of integers</span><br><span class="line">    # @param inorder, a list of integers</span><br><span class="line">    # @return a tree node</span><br><span class="line">    # 1:59</span><br><span class="line">    def buildTree(self, preorder, inorder, preorderStart = 0, preorderEnd = None, inorderStart = 0, inorderEnd = None):</span><br><span class="line">        if preorderEnd is None:</span><br><span class="line">            preorderEnd = len(preorder) - 1</span><br><span class="line">        </span><br><span class="line">        if inorderEnd is None:</span><br><span class="line">            inorderEnd = len(inorder) - 1</span><br><span class="line"></span><br><span class="line">        if preorderStart &gt; len(preorder) - 1 or inorderStart &gt; inorderEnd:</span><br><span class="line">            return None</span><br><span class="line">        </span><br><span class="line">        rootValue = preorder[preorderStart]</span><br><span class="line">        root = TreeNode(rootValue)</span><br><span class="line">        inorderIndex = inorder.index(rootValue)</span><br><span class="line"></span><br><span class="line">        root.left = self.buildTree(preorder, inorder, preorderStart+1, inorderIndex, inorderStart, inorderIndex-1)</span><br><span class="line">        root.right = self.buildTree(preorder, inorder, preorderStart+inorderIndex+1-inorderStart, preorderEnd, inorderIndex+1, inorderEnd)</span><br><span class="line">        </span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<p>Solution 3 - Based on Solution 1, we don’t necessary need to slice the preorder array, when we are done with the left tree, the left half of the preorder array should already be empty</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a  binary tree node</span><br><span class="line"># class TreeNode:</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.left = None</span><br><span class="line">#         self.right = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    # @param preorder, a list of integers</span><br><span class="line">    # @param inorder, a list of integers</span><br><span class="line">    # @return a tree node</span><br><span class="line">    # 1:59</span><br><span class="line">    def buildTree(self, preorder, inorder):</span><br><span class="line">        if not preorder or not inorder:</span><br><span class="line">            return None</span><br><span class="line"></span><br><span class="line">        rootValue = preorder.pop(0)</span><br><span class="line">        root = TreeNode(rootValue)</span><br><span class="line">        inorderIndex = inorder.index(rootValue)</span><br><span class="line"></span><br><span class="line">        root.left = self.buildTree(preorder, inorder[:inorderIndex])</span><br><span class="line">        root.right = self.buildTree(preorder, inorder[inorderIndex+1:])</span><br><span class="line"></span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/3695/my-accepted-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/3695/my-accepted-java-solution</a></p>
+<p>My Accepted Java Solution</p>
+<p>Hi guys, this is my Java solution. I read this post, which is very helpful.</p>
+<p>The basic idea is here:</p>
+<p>Say we have 2 arrays, PRE and IN.</p>
+<p>Preorder traversing implies that PRE[0] is the root node.</p>
+<p>Then we can find this PRE[0] in IN, say it’s IN[5].</p>
+<p>Now we know that IN[5] is root, so we know that IN[0] - IN[4] is on the left side, IN[6] to the end is on the right side.</p>
+<p>Recursively doing this on subarrays, we can build a tree out of it :)</p>
+<p>Hope this helps.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode buildTree(int[] preorder, int[] inorder) &#123;</span><br><span class="line">    return helper(0, 0, inorder.length - 1, preorder, inorder);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) &#123;</span><br><span class="line">    if (preStart &gt; preorder.length - 1 || inStart &gt; inEnd) &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">    TreeNode root = new TreeNode(preorder[preStart]);</span><br><span class="line">    int inIndex = 0; // Index of current root in inorder</span><br><span class="line">    for (int i = inStart; i &lt;= inEnd; i++) &#123;</span><br><span class="line">        if (inorder[i] == root.val) &#123;</span><br><span class="line">            inIndex = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);</span><br><span class="line">    root.right = helper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +584,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +681,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +728,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +790,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

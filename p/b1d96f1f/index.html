@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search,breadth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.5%  https://leetcode.com/problems/minimum-depth-of-binary-tree/ Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node dow">
+<meta name="keywords" content="leetcode,easy,tree,depth first search,breadth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="111. Minimum Depth of Binary Tree">
 <meta property="og:url" content="http://yucc.me/p/b1d96f1f/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.5%  https://leetcode.com/problems/minimum-depth-of-binary-tree/ Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node dow">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.144Z">
+<meta property="og:updated_time" content="2018-05-22T11:23:30.221Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="111. Minimum Depth of Binary Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.5%  https://leetcode.com/problems/minimum-depth-of-binary-tree/ Given a binary tree, find its minimum depth. The minimum depth is the number of nodes along the shortest path from the root node dow">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:23:30+08:00">
+                2018-05-22 19:23
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  700
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -430,7 +452,41 @@
       
 
       
-        
+        <ul>
+<li>32.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/minimum-depth-of-binary-tree/</a></p>
+<p>Given a binary tree, find its minimum depth.</p>
+<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>利用求树的深度的方法之一，使用一个队列的方法。</p>
+<p>bfs，广度优先搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        int res = 0;</span><br><span class="line">        queue&lt;TreeNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        while(!que.empty())&#123;</span><br><span class="line">            res++;</span><br><span class="line">            int n = que.size();</span><br><span class="line">            for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">                TreeNode* cur = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                if(cur-&gt;left==NULL &amp;&amp; cur-&gt;right==NULL)</span><br><span class="line">                    return res;</span><br><span class="line">                if(cur-&gt;left)</span><br><span class="line">                    que.push(cur-&gt;left);</span><br><span class="line">                if(cur-&gt;right)</span><br><span class="line">                    que.push(cur-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>同样是树的深度，深度优先遍历</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        if(!root-&gt;left) return 1 + minDepth(root-&gt;right);</span><br><span class="line">        if(!root-&gt;right) return 1 + minDepth(root-&gt;left);</span><br><span class="line">        return 1+min(minDepth(root-&gt;left),minDepth(root-&gt;right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(!root-&gt;left) <span class="keyword">return</span> <span class="number">1</span>+minDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(!root-&gt;right) <span class="keyword">return</span> <span class="number">1</span>+minDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">return</span> min(minDepth(root-&gt;left), minDepth(root-&gt;right)) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>利用一个helper函数，递归调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    int depth;</span><br><span class="line">public:</span><br><span class="line">    int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        depth = 1;</span><br><span class="line">        return helper(root, depth);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int helper(TreeNode* root, int depth)&#123;</span><br><span class="line">        if(root-&gt;left==NULL &amp;&amp; root-&gt;right==NULL)</span><br><span class="line">            return depth;</span><br><span class="line">        else if(root-&gt;right!=NULL &amp;&amp; root-&gt;left!=NULL)</span><br><span class="line">            return min(helper(root-&gt;left, depth+1), helper(root-&gt;right, depth+1));</span><br><span class="line">        else if(root-&gt;right!=NULL)</span><br><span class="line">            return helper(root-&gt;right, depth+1);</span><br><span class="line">        else</span><br><span class="line">            return helper(root-&gt;left, depth+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><p>9ms, 41.83%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6767/my-concise-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6767/my-concise-c-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        if(!root-&gt;left) return 1 + minDepth(root-&gt;right);</span><br><span class="line">        if(!root-&gt;right) return 1 + minDepth(root-&gt;left);</span><br><span class="line">        return 1+min(minDepth(root-&gt;left),minDepth(root-&gt;right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    int depth;</span><br><span class="line">public:</span><br><span class="line">    int minDepth(TreeNode* root) &#123;</span><br><span class="line">        if(root==NULL) return 0;</span><br><span class="line">        depth = 1;</span><br><span class="line">        return helper(root, depth);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int helper(TreeNode* root, int depth)&#123;</span><br><span class="line">        if(root-&gt;left==NULL &amp;&amp; root-&gt;right==NULL)</span><br><span class="line">            return depth;</span><br><span class="line">        else if(root-&gt;right!=NULL &amp;&amp; root-&gt;left!=NULL)</span><br><span class="line">            return min(helper(root-&gt;left, depth+1), helper(root-&gt;right, depth+1));</span><br><span class="line">        else if(root-&gt;right!=NULL)</span><br><span class="line">            return helper(root-&gt;right, depth+1);</span><br><span class="line">        else</span><br><span class="line">            return helper(root-&gt;left, depth+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>1ms, 15.51%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/8723/my-4-line-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8723/my-4-line-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minDepth(TreeNode root) &#123;</span><br><span class="line">        if(root==null) return 0;</span><br><span class="line">        int left = minDepth(root.left);</span><br><span class="line">        int right = minDepth(root.right);</span><br><span class="line">        return(left==0||right==0)?left+right+1:Math.min(left, right)+1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1ms, 15.51%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/8723/my-4-line-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8723/my-4-line-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int minDepth(TreeNode root) &#123;</span><br><span class="line">        if(root==null) return 0;</span><br><span class="line">        if(root.left == null) return minDepth(root.right)+1;</span><br><span class="line">        if(root.right == null) return minDepth(root.left)+1;</span><br><span class="line">        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +547,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+            <a href="/tags/breadth-first-search/" rel="tag"># breadth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +644,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +691,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +753,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,linked list,hashtable," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="26.5%  https://leetcode.com/problems/copy-list-with-random-pointer/#/description A linked list is given such that each node contains an additional random pointer which could point to any node in the">
+<meta name="keywords" content="leetcode,medium,linked list,hashtable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="138. Copy List with Random Pointer">
 <meta property="og:url" content="http://yucc.me/p/9bcae609/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="26.5%  https://leetcode.com/problems/copy-list-with-random-pointer/#/description A linked list is given such that each node contains an additional random pointer which could point to any node in the">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.179Z">
+<meta property="og:updated_time" content="2018-05-22T11:46:47.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="138. Copy List with Random Pointer">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="26.5%  https://leetcode.com/problems/copy-list-with-random-pointer/#/description A linked list is given such that each node contains an additional random pointer which could point to any node in the">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:46:47+08:00">
+                2018-05-22 19:46
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,403
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,44 @@
       
 
       
-        
+        <ul>
+<li>26.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/copy-list-with-random-pointer/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/copy-list-with-random-pointer/#/description</a></p>
+<p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.</p>
+<p>Return a deep copy of the list.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5831/2-clean-c-algorithms-without-using-extra-array-hash-table-algorithms-are-explained-step-by-step" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5831/2-clean-c-algorithms-without-using-extra-array-hash-table-algorithms-are-explained-step-by-step</a></p>
+<p>2 clean C++ algorithms without using extra array/hash table. Algorithms are explained step by step.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">// Here&apos;s how the 1st algorithm goes.</span><br><span class="line">// Consider l1 as a node on the 1st list and l2 as the corresponding node on 2nd list.</span><br><span class="line">// Step 1:</span><br><span class="line">// Build the 2nd list by creating a new node for each node in 1st list. </span><br><span class="line">// While doing so, insert each new node after it&apos;s corresponding node in the 1st list.</span><br><span class="line">// Step 2:</span><br><span class="line">// The new head is the 2nd node as that was the first inserted node.</span><br><span class="line">// Step 3:</span><br><span class="line">// Fix the random pointers in the 2nd list: (Remember that l1-&gt;next is actually l2)</span><br><span class="line">// l2-&gt;random will be the node in 2nd list that corresponds l1-&gt;random, </span><br><span class="line">// which is next node of l1-&gt;random.</span><br><span class="line">// Step 4:</span><br><span class="line">// Separate the combined list into 2: Splice out nodes that are part of second list. </span><br><span class="line">// Return the new head that we saved in step 2.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">RandomListNode *copyRandomList(RandomListNode *head) &#123;</span><br><span class="line">    RandomListNode *newHead, *l1, *l2;</span><br><span class="line">    if (head == NULL) return NULL;</span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next-&gt;next) &#123;</span><br><span class="line">        l2 = new RandomListNode(l1-&gt;label);</span><br><span class="line">        l2-&gt;next = l1-&gt;next;</span><br><span class="line">        l1-&gt;next = l2;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    newHead = head-&gt;next;</span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next-&gt;next) &#123;</span><br><span class="line">        if (l1-&gt;random != NULL) l1-&gt;next-&gt;random = l1-&gt;random-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next) &#123;</span><br><span class="line">        l2 = l1-&gt;next;</span><br><span class="line">        l1-&gt;next = l2-&gt;next;</span><br><span class="line">        if (l2-&gt;next != NULL) l2-&gt;next = l2-&gt;next-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return newHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">// Here&apos;s how the 2nd algorithm goes.</span><br><span class="line">// Consider l1 as a node on the 1st list and l2 as the corresponding node on 2nd list.</span><br><span class="line">// Step 1:</span><br><span class="line">// Build the 2nd list by creating a new node for each node in 1st list. </span><br><span class="line">// While doing so, set the next pointer of the new node to the random pointer </span><br><span class="line">// of the corresponding node in the 1st list.  And set the random pointer of the </span><br><span class="line">// 1st list&apos;s node to the newly created node.</span><br><span class="line">// Step 2:</span><br><span class="line">// The new head is the node pointed to by the random pointer of the 1st list.</span><br><span class="line">// Step 3:</span><br><span class="line">// Fix the random pointers in the 2nd list: (Remember that l1-&gt;random is l2)</span><br><span class="line">// l2-&gt;random will be the node in 2nd list that corresponds to the node in the </span><br><span class="line">// 1st list that is pointed to by l2-&gt;next, </span><br><span class="line">// Step 4:</span><br><span class="line">// Restore the random pointers of the 1st list and fix the next pointers of the </span><br><span class="line">// 2nd list. random pointer of the node in 1st list is the next pointer of the </span><br><span class="line">// corresponding node in the 2nd list.  This is what we had done in the </span><br><span class="line">// 1st step and now we are reverting back. next pointer of the node in </span><br><span class="line">// 2nd list is the random pointer of the node in 1st list that is pointed to </span><br><span class="line">// by the next pointer of the corresponding node in the 1st list.</span><br><span class="line">// Return the new head that we saved in step 2.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">RandomListNode *copyRandomList(RandomListNode *head) &#123;</span><br><span class="line">    RandomListNode *newHead, *l1, *l2;</span><br><span class="line">    if (head == NULL) return NULL;</span><br><span class="line"></span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next) &#123;</span><br><span class="line">        l2 = new RandomListNode(l1-&gt;label);</span><br><span class="line">        l2-&gt;next = l1-&gt;random;</span><br><span class="line">        l1-&gt;random = l2;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    newHead = head-&gt;random;</span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next) &#123;</span><br><span class="line">        l2 = l1-&gt;random;</span><br><span class="line">        l2-&gt;random = l2-&gt;next ? l2-&gt;next-&gt;random : NULL;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (l1 = head; l1 != NULL; l1 = l1-&gt;next) &#123;</span><br><span class="line">        l2 = l1-&gt;random;</span><br><span class="line">        l1-&gt;random = l2-&gt;next;</span><br><span class="line">        l2-&gt;next = l1-&gt;next ? l1-&gt;next-&gt;random : NULL;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return newHead;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22194/o-n-time-o-1-space-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22194/o-n-time-o-1-space-c</a></p>
+<p>O(n) time O(1) Space C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    RandomListNode *copyRandomList(RandomListNode * head) &#123;</span><br><span class="line">        RandomListNode * head_cp = nullptr, * cur = head, * cur_cp = nullptr;</span><br><span class="line">        if (head == nullptr)</span><br><span class="line">            return nullptr;</span><br><span class="line">        while (cur != nullptr)</span><br><span class="line">        &#123;</span><br><span class="line">            cur_cp = new RandomListNode (cur-&gt;label);</span><br><span class="line">            cur_cp-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = cur_cp;</span><br><span class="line">            cur = cur_cp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = head;</span><br><span class="line">        while (cur != nullptr)</span><br><span class="line">        &#123;</span><br><span class="line">            cur_cp = cur-&gt;next;</span><br><span class="line">            if (cur-&gt;random)</span><br><span class="line">                cur_cp-&gt;random = cur-&gt;random-&gt;next;</span><br><span class="line">            cur = cur_cp -&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        cur = head;</span><br><span class="line">        head_cp = head-&gt;next;</span><br><span class="line">        while (cur != nullptr)</span><br><span class="line">        &#123;</span><br><span class="line">            cur_cp = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = cur_cp-&gt;next;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            if (cur)</span><br><span class="line">                cur_cp-&gt;next = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        return head_cp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12025/c-simple-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12025/c-simple-recursive-solution</a></p>
+<p>C++ simple recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">unordered_map&lt;RandomListNode*, RandomListNode*&gt; hmap;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">RandomListNode *copyRandomList(RandomListNode *head) &#123;</span><br><span class="line">	if (!head) return NULL;</span><br><span class="line">	if (hmap.find(head) != hmap.end())</span><br><span class="line">		return hmap.find(head)-&gt;second;</span><br><span class="line"></span><br><span class="line">	RandomListNode* node = new RandomListNode(head-&gt;label);</span><br><span class="line">	hmap[head] = node;</span><br><span class="line">	node-&gt;next = copyRandomList(head-&gt;next);</span><br><span class="line">	node-&gt;random = copyRandomList(head-&gt;random);</span><br><span class="line">	return node;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/7594/a-solution-with-constant-space-complexity-o-1-and-linear-time-complexity-o-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/7594/a-solution-with-constant-space-complexity-o-1-and-linear-time-complexity-o-n</a></p>
+<p>A solution with constant space complexity O(1) and linear time complexity O(N)</p>
+<p>An intuitive solution is to keep a hash table for each node in the list, via which we just need to iterate the list in 2 rounds respectively to create nodes and assign the values for their random pointers. As a result, the space complexity of this solution is O(N), although with a linear time complexity.</p>
+<p>As an optimised solution, we could reduce the space complexity into constant. The idea is to associate the original node with its copy node in a single linked list. In this way, we don’t need extra space to keep track of the new nodes.</p>
+<p>The algorithm is composed of the follow three steps which are also 3 iteration rounds.</p>
+<ol>
+<li>Iterate the original list and duplicate each node. The duplicate of each node follows its original immediately.</li>
+<li>Iterate the new list and assign the random pointer for each duplicated node.</li>
+<li>Restore the original list and extract the duplicated nodes.</li>
+</ol>
+<p>The algorithm is implemented as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public RandomListNode copyRandomList(RandomListNode head) &#123;</span><br><span class="line">	RandomListNode iter = head, next;</span><br><span class="line"></span><br><span class="line">	// First round: make copy of each node,</span><br><span class="line">	// and link them together side-by-side in a single list.</span><br><span class="line">	while (iter != null) &#123;</span><br><span class="line">		next = iter.next;</span><br><span class="line"></span><br><span class="line">		RandomListNode copy = new RandomListNode(iter.label);</span><br><span class="line">		iter.next = copy;</span><br><span class="line">		copy.next = next;</span><br><span class="line"></span><br><span class="line">		iter = next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Second round: assign random pointers for the copy nodes.</span><br><span class="line">	iter = head;</span><br><span class="line">	while (iter != null) &#123;</span><br><span class="line">		if (iter.random != null) &#123;</span><br><span class="line">			iter.next.random = iter.random.next;</span><br><span class="line">		&#125;</span><br><span class="line">		iter = iter.next.next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Third round: restore the original list, and extract the copy list.</span><br><span class="line">	iter = head;</span><br><span class="line">	RandomListNode pseudoHead = new RandomListNode(0);</span><br><span class="line">	RandomListNode copy, copyIter = pseudoHead;</span><br><span class="line"></span><br><span class="line">	while (iter != null) &#123;</span><br><span class="line">		next = iter.next.next;</span><br><span class="line"></span><br><span class="line">		// extract the copy</span><br><span class="line">		copy = iter.next;</span><br><span class="line">		copyIter.next = copy;</span><br><span class="line">		copyIter = copy;</span><br><span class="line"></span><br><span class="line">		// restore the original list</span><br><span class="line">		iter.next = next;</span><br><span class="line"></span><br><span class="line">		iter = next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return pseudoHead.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18086/java-o-n-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18086/java-o-n-solution</a></p>
+<p>Java O(n) solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public RandomListNode copyRandomList(RandomListNode head) &#123;</span><br><span class="line">  if (head == null) return null;</span><br><span class="line">  </span><br><span class="line">  Map&lt;RandomListNode, RandomListNode&gt; map = new HashMap&lt;RandomListNode, RandomListNode&gt;();</span><br><span class="line">  </span><br><span class="line">  // loop 1. copy all the nodes</span><br><span class="line">  RandomListNode node = head;</span><br><span class="line">  while (node != null) &#123;</span><br><span class="line">    map.put(node, new RandomListNode(node.label));</span><br><span class="line">    node = node.next;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  // loop 2. assign next and random pointers</span><br><span class="line">  node = head;</span><br><span class="line">  while (node != null) &#123;</span><br><span class="line">    map.get(node).next = map.get(node.next);</span><br><span class="line">    map.get(node).random = map.get(node.random);</span><br><span class="line">    node = node.next;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return map.get(head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +550,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
+          
+            <a href="/tags/hashtable/" rel="tag"># hashtable</a>
+          
+        </div>
       
 
       
@@ -612,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

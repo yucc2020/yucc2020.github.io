@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="36.9%  https://leetcode.com/problems/populating-next-right-pointers-in-each-node/ 1234567891011Given a binary tree    struct TreeLinkNode &amp;#123;      TreeLinkNode *left;      TreeLinkNode *right;">
+<meta name="keywords" content="leetcode,medium,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="116. Populating Next Right Pointers in Each Node">
 <meta property="og:url" content="http://yucc.me/p/6168139a/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="36.9%  https://leetcode.com/problems/populating-next-right-pointers-in-each-node/ 1234567891011Given a binary tree    struct TreeLinkNode &amp;#123;      TreeLinkNode *left;      TreeLinkNode *right;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.148Z">
+<meta property="og:updated_time" content="2018-05-22T11:27:44.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="116. Populating Next Right Pointers in Each Node">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="36.9%  https://leetcode.com/problems/populating-next-right-pointers-in-each-node/ 1234567891011Given a binary tree    struct TreeLinkNode &amp;#123;      TreeLinkNode *left;      TreeLinkNode *right;">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:27:44+08:00">
+                2018-05-22 19:27
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,527
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,77 @@
       
 
       
-        
+        <ul>
+<li>36.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">https://leetcode.com/problems/populating-next-right-pointers-in-each-node/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Given a binary tree</span><br><span class="line"></span><br><span class="line">    struct TreeLinkNode &#123;</span><br><span class="line">      TreeLinkNode *left;</span><br><span class="line">      TreeLinkNode *right;</span><br><span class="line">      TreeLinkNode *next;</span><br><span class="line">    &#125;</span><br><span class="line">Populate each next pointer to point to its next right node. </span><br><span class="line">If there is no next right node, the next pointer should be set to NULL.</span><br><span class="line"></span><br><span class="line">Initially, all next pointers are set to NULL.</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ul>
+<li>You may only use constant extra space.</li>
+<li>You may assume that it is a perfect binary tree (ie, all leaves are at the same level, and every parent has two children).</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given the following perfect binary tree,</span><br><span class="line">         1</span><br><span class="line">       /  \</span><br><span class="line">      2    3</span><br><span class="line">     / \  / \</span><br><span class="line">    4  5  6  7</span><br><span class="line"></span><br><span class="line">After calling your function, the tree should look like:</span><br><span class="line">         1 -&gt; NULL</span><br><span class="line">       /  \</span><br><span class="line">      2 -&gt; 3 -&gt; NULL</span><br><span class="line">     / \  / \</span><br><span class="line">    4-&gt;5-&gt;6-&gt;7 -&gt; NULL</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>24ms Easy Iterative and Recursive C++ Solutions</p>
+<p>方法一：</p>
+<p>The idea is similar to a level-order traversal and remember to take full advantages of the prefect binary tree assumption in the problem statement.</p>
+<p>The code (iterative solution) is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void connect(TreeLinkNode *root) &#123;</span><br><span class="line">        TreeLinkNode* pre = root;</span><br><span class="line">        TreeLinkNode* cur = NULL;</span><br><span class="line">        while (pre) &#123;</span><br><span class="line">            cur = pre;</span><br><span class="line">            while (cur &amp;&amp; cur -&gt; left) &#123; </span><br><span class="line">                cur -&gt; left -&gt; next = cur -&gt; right;</span><br><span class="line">                if (cur -&gt; next)</span><br><span class="line">                    cur -&gt; right -&gt; next = cur -&gt; next -&gt; left;</span><br><span class="line">                cur = cur -&gt; next;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = pre -&gt; left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for binary tree with next pointer.</span></span><br><span class="line"><span class="comment"> * struct TreeLinkNode &#123;</span></span><br><span class="line"><span class="comment"> *  int val;</span></span><br><span class="line"><span class="comment"> *  TreeLinkNode *left, *right, *next;</span></span><br><span class="line"><span class="comment"> *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(TreeLinkNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root || !root-&gt;left &amp;&amp; !root-&gt;right) <span class="keyword">return</span>; <span class="comment">// 排除只有一个root节点的情况，勿忘</span></span><br><span class="line">        TreeLinkNode* curhead = root;</span><br><span class="line">        TreeLinkNode* nexhead = root-&gt;left;</span><br><span class="line">        TreeLinkNode *tail = nexhead;</span><br><span class="line">        <span class="keyword">while</span>(nexhead)&#123;</span><br><span class="line">            tail-&gt;next = curhead-&gt;right;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">            <span class="keyword">while</span>(curhead-&gt;next)&#123;</span><br><span class="line">                curhead = curhead-&gt;next;</span><br><span class="line">                tail-&gt;next = curhead-&gt;left;</span><br><span class="line">                tail = tail-&gt;next;</span><br><span class="line">                tail-&gt;next = curhead-&gt;right;</span><br><span class="line">                tail = tail-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            curhead = nexhead;</span><br><span class="line">            nexhead = nexhead-&gt;left;</span><br><span class="line">            tail = nexhead;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>This problem can also be solved recursively.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void connect(TreeLinkNode *root) &#123;</span><br><span class="line">        if (!root) return;</span><br><span class="line">        if (root -&gt; left) &#123;</span><br><span class="line">            root -&gt; left -&gt; next = root -&gt; right;</span><br><span class="line">            if (root -&gt; next)</span><br><span class="line">                root -&gt; right -&gt; next = root -&gt; next -&gt; left;</span><br><span class="line">        &#125;</span><br><span class="line">        connect(root -&gt; left);</span><br><span class="line">        connect(root -&gt; right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>层序遍历的方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for binary tree with next pointer.</span></span><br><span class="line"><span class="comment"> * struct TreeLinkNode &#123;</span></span><br><span class="line"><span class="comment"> *  int val;</span></span><br><span class="line"><span class="comment"> *  TreeLinkNode *left, *right, *next;</span></span><br><span class="line"><span class="comment"> *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(TreeLinkNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root || !root-&gt;left &amp;&amp; !root-&gt;right) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeLinkNode*&gt; que;</span><br><span class="line">        que.push(root);</span><br><span class="line">        <span class="keyword">while</span>(que.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> n = que.size();</span><br><span class="line">            TreeLinkNode* lastNode = que.front();</span><br><span class="line">            que.pop();</span><br><span class="line">            <span class="keyword">if</span>(lastNode-&gt;left) que.push(lastNode-&gt;left);</span><br><span class="line">            <span class="keyword">if</span>(lastNode-&gt;right) que.push(lastNode-&gt;right);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">                TreeLinkNode* cur = que.front();</span><br><span class="line">                que.pop();</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;left) que.push(cur-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(cur-&gt;right) que.push(cur-&gt;right);</span><br><span class="line">                lastNode-&gt;next = cur;</span><br><span class="line">                lastNode = cur;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/1214/hint-for-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/1214/hint-for-o-1-space</a></p>
+<p>Hint for O(1) space</p>
+<p>If you don’t want a solution for O(1) space but just a hint, here it is: you need to make use of the next links that you’re creating.</p>
+<p><a href="https://discuss.leetcode.com/topic/671/you-may-only-use-constant-extra-space-so-does-it-mean-we-cannot-use-recursion" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/671/you-may-only-use-constant-extra-space-so-does-it-mean-we-cannot-use-recursion</a></p>
+<p>“You may only use constant extra space.” - So does it mean we cannot use recursion?</p>
+<p>Does anyone have an iteration method with constant space solution?</p>
+<p><a href="https://discuss.leetcode.com/topic/671/you-may-only-use-constant-extra-space-so-does-it-mean-we-cannot-use-recursion/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/671/you-may-only-use-constant-extra-space-so-does-it-mean-we-cannot-use-recursion/2</a></p>
+<p>Here is solution from old discuss by skaugust. Thanks to skaugust!</p>
+<p>I’m confused why people are trying to use recursive solutions here. The problem states that you can only use constant space. To get to the leaf nodes, a recursive solution needs to be log2(n) calls deep, and each call has a call stack, which takes up memory. This means that a recursive solution isn’t constant memory, but O(log(n)) memory. To solve this, you just replace the recursive call with a while loop wrapping all of your logic.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/* Go through parent level by its next pointer to generate children level next pointer */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public void connect(TreeLinkNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        TreeLinkNode leftWall = root;</span><br><span class="line">        while (leftWall != null) &#123;</span><br><span class="line"></span><br><span class="line">            TreeLinkNode across = leftWall;</span><br><span class="line">            while (across != null) &#123;</span><br><span class="line">                if (across.left != null) &#123;</span><br><span class="line">                    across.left.next = across.right;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                if (across.right != null &amp;&amp; across.next != null) &#123;</span><br><span class="line">                    across.right.next = across.next.left;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                across = across.next;</span><br><span class="line">            &#125;</span><br><span class="line">            leftWall = leftWall.left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>19ms, 80.75%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/2202/a-simple-accepted-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2202/a-simple-accepted-solution</a></p>
+<p>A simple accepted solution</p>
+<p>如果pre-&gt;left 为空怎么办？题目假设的是所有都有左右子树</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for binary tree with next pointer.</span><br><span class="line"> * struct TreeLinkNode &#123;</span><br><span class="line"> *  int val;</span><br><span class="line"> *  TreeLinkNode *left, *right, *next;</span><br><span class="line"> *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void connect(TreeLinkNode *root) &#123;</span><br><span class="line">        if(root==NULL) return;</span><br><span class="line">        TreeLinkNode* pre = root;</span><br><span class="line">        TreeLinkNode* cur = NULL;</span><br><span class="line">        while(pre-&gt;left)&#123;</span><br><span class="line">            cur = pre;</span><br><span class="line">            while(cur)&#123;</span><br><span class="line">                cur-&gt;left-&gt;next = cur-&gt;right;</span><br><span class="line">                if(cur-&gt;next) cur-&gt;right-&gt;next = cur-&gt;next-&gt;left;</span><br><span class="line">                cur = cur-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = pre-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9579/my-simple-non-iterative-c-code-with-o-1-memory" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9579/my-simple-non-iterative-c-code-with-o-1-memory</a></p>
+<p>My simple non-iterative C++ code with O(1) memory</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void connect(TreeLinkNode *root) &#123;</span><br><span class="line">    if(!root)</span><br><span class="line">        return;</span><br><span class="line">    while(root -&gt; left)</span><br><span class="line">    &#123;</span><br><span class="line">        TreeLinkNode *p = root;</span><br><span class="line">        while(p)</span><br><span class="line">        &#123;</span><br><span class="line">            p -&gt; left -&gt; next = p -&gt; right;</span><br><span class="line">            if(p -&gt; next)</span><br><span class="line">                p -&gt; right -&gt; next = p -&gt; next -&gt; left;</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        root = root -&gt; left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16547/7-lines-iterative-real-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16547/7-lines-iterative-real-o-1-space</a></p>
+<p>7 lines, iterative, real O(1) space</p>
+<p>Simply do it level by level, using the next-pointers of the current level to go through the current level and set the next-pointers of the next level.</p>
+<p>I say “real” O(1) space because of the many recursive solutions ignoring that recursion management needs space.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def connect(self, root):</span><br><span class="line">    while root and root.left:</span><br><span class="line">        next = root.left</span><br><span class="line">        while root:</span><br><span class="line">            root.left.next = root.right</span><br><span class="line">            root.right.next = root.next and root.next.left</span><br><span class="line">            root = root.next</span><br><span class="line">        root = next</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18432/24ms-easy-iterative-and-recursive-c-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18432/24ms-easy-iterative-and-recursive-c-solutions</a></p>
+<p>24ms Easy Iterative and Recursive C++ Solutions</p>
+<p>The idea is similar to a level-order traversal and remember to take full advantages of the prefect binary tree assumption in the problem statement.</p>
+<p>The code (iterative solution) is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void connect(TreeLinkNode *root) &#123;</span><br><span class="line">        TreeLinkNode* pre = root;</span><br><span class="line">        TreeLinkNode* cur = NULL;</span><br><span class="line">        while (pre) &#123;</span><br><span class="line">            cur = pre;</span><br><span class="line">            while (cur &amp;&amp; cur -&gt; left) &#123; </span><br><span class="line">                cur -&gt; left -&gt; next = cur -&gt; right;</span><br><span class="line">                if (cur -&gt; next)</span><br><span class="line">                    cur -&gt; right -&gt; next = cur -&gt; next -&gt; left;</span><br><span class="line">                cur = cur -&gt; next;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = pre -&gt; left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>This problem can also be solved recursively.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void connect(TreeLinkNode *root) &#123;</span><br><span class="line">        if (!root) return;</span><br><span class="line">        if (root -&gt; left) &#123;</span><br><span class="line">            root -&gt; left -&gt; next = root -&gt; right;</span><br><span class="line">            if (root -&gt; next)</span><br><span class="line">                root -&gt; right -&gt; next = root -&gt; next -&gt; left;</span><br><span class="line">        &#125;</span><br><span class="line">        connect(root -&gt; left);</span><br><span class="line">        connect(root -&gt; right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>1ms, 29.64%, September 25, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/6221/java-solution-with-o-1-memory-o-n-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6221/java-solution-with-o-1-memory-o-n-time</a></p>
+<p>Java solution with O(1) memory+ O(n) time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public void connect(TreeLinkNode root) &#123;</span><br><span class="line">        TreeLinkNode level_start=root;</span><br><span class="line">        while(level_start!=null)&#123;</span><br><span class="line">            TreeLinkNode cur=level_start;</span><br><span class="line">            while(cur!=null)&#123;</span><br><span class="line">                if(cur.left!=null) cur.left.next=cur.right;</span><br><span class="line">                if(cur.right!=null &amp;&amp; cur.next!=null) cur.right.next=cur.next.left;</span><br><span class="line">                </span><br><span class="line">                cur=cur.next;</span><br><span class="line">            &#125;</span><br><span class="line">            level_start=level_start.left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/12241/my-recursive-solution-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/12241/my-recursive-solution-java</a></p>
+<p>My recursive solution(Java)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void connect(TreeLinkNode root) &#123;</span><br><span class="line">    if(root == null)</span><br><span class="line">        return;</span><br><span class="line">        </span><br><span class="line">    if(root.left != null)&#123;</span><br><span class="line">        root.left.next = root.right;</span><br><span class="line">        if(root.next != null)</span><br><span class="line">            root.right.next = root.next.left;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    connect(root.left);</span><br><span class="line">    connect(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +583,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

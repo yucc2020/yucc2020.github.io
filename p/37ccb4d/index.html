@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.1%  https://leetcode.com/problems/path-sum-ii/?tab=Description Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum. 1234567891011121314For example">
+<meta name="keywords" content="leetcode,medium,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="113. Path Sum II">
 <meta property="og:url" content="http://yucc.me/p/37ccb4d/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.1%  https://leetcode.com/problems/path-sum-ii/?tab=Description Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum. 1234567891011121314For example">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.142Z">
+<meta property="og:updated_time" content="2018-05-22T11:24:44.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="113. Path Sum II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.1%  https://leetcode.com/problems/path-sum-ii/?tab=Description Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum. 1234567891011121314For example">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:24:44+08:00">
+                2018-05-22 19:24
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,299
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,46 @@
       
 
       
-        
+        <ul>
+<li>32.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/path-sum-ii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/path-sum-ii/?tab=Description</a></p>
+<p>Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given the below binary tree and sum = 22,</span><br><span class="line">              5</span><br><span class="line">             / \</span><br><span class="line">            4   8</span><br><span class="line">           /   / \</span><br><span class="line">          11  13  4</span><br><span class="line">         /  \    / \</span><br><span class="line">        7    2  5   1</span><br><span class="line">return</span><br><span class="line">[</span><br><span class="line">   [5,4,11,2],</span><br><span class="line">   [5,8,4,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; pathSum(TreeNode* root, <span class="keyword">int</span> sum) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; paths;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; path;</span><br><span class="line">        dfs(root, path, paths, sum);</span><br><span class="line">        <span class="keyword">return</span> paths;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; path, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; paths, <span class="keyword">int</span> sum)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        path.push_back(root-&gt;val);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val==sum &amp;&amp; !root-&gt;left &amp;&amp; !root-&gt;right)</span><br><span class="line">            paths.push_back(path);</span><br><span class="line">        dfs(root-&gt;left, path, paths, sum-root-&gt;val);</span><br><span class="line">        dfs(root-&gt;right, path, paths, sum-root-&gt;val);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>典型的深度优先搜索（回溯法），典型题目，需要牢记方法。</p>
+<p>Well, a typical backtracking problem. The code is as follows. You may walk through it using the example in the problem statement to see how it works.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; pathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; paths;</span><br><span class="line">        vector&lt;int&gt; path;</span><br><span class="line">        findPaths(root, sum, path, paths);</span><br><span class="line">        return paths;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    void findPaths(TreeNode* node, int sum, vector&lt;int&gt;&amp; path, vector&lt;vector&lt;int&gt;&gt;&amp; paths)&#123;</span><br><span class="line">        if(!node) return;</span><br><span class="line">        path.push_back(node-&gt;val);</span><br><span class="line">        if(!(node-&gt;left) &amp;&amp; !(node-&gt;right) &amp;&amp; sum == node-&gt;val)</span><br><span class="line">            paths.push_back(path);</span><br><span class="line">        findPaths(node-&gt;left, sum-node-&gt;val, path, paths);</span><br><span class="line">        findPaths(node-&gt;right, sum-node-&gt;val, path, paths);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>12ms, September 21, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/18454/12ms-11-lines-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18454/12ms-11-lines-c-solution</a></p>
+<p>12ms 11-lines C++ Solution</p>
+<p>Well, a typical backtracking problem. The code is as follows. You may walk through it using the example in the problem statement to see how it works.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; pathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; paths;</span><br><span class="line">        vector&lt;int&gt; path;</span><br><span class="line">        findPaths(root, sum, path, paths);</span><br><span class="line">        return paths;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private:</span><br><span class="line">    void findPaths(TreeNode* node, int sum, vector&lt;int&gt;&amp; path, vector&lt;vector&lt;int&gt;&gt;&amp; paths)&#123;</span><br><span class="line">        if(!node) return;</span><br><span class="line">        path.push_back(node-&gt;val);</span><br><span class="line">        if(!(node-&gt;left) &amp;&amp; !(node-&gt;right) &amp;&amp; sum == node-&gt;val)</span><br><span class="line">            paths.push_back(path);</span><br><span class="line">        findPaths(node-&gt;left, sum-node-&gt;val, path, paths);</span><br><span class="line">        findPaths(node-&gt;right, sum-node-&gt;val, path, paths);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8919/18-ms-c-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8919/18-ms-c-recursive-solution</a></p>
+<p>18 ms c++ recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt; &gt; pathSum(TreeNode *root, int sum) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt; &gt; result;</span><br><span class="line">    vector&lt;int&gt; cur_path(0);</span><br><span class="line">    pathSumRec(root, sum, result, cur_path);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// pass the current path as a reference and remember to pop out the last added element</span><br><span class="line">// this improves the performance by 5 times</span><br><span class="line">void pathSumRec(TreeNode* root, int sum, vector&lt;vector&lt;int&gt; &gt;&amp; result, vector&lt;int&gt;&amp; cur_path) &#123;</span><br><span class="line">    if (root == NULL) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (root-&gt;val == sum &amp;&amp; root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL) &#123;</span><br><span class="line">        cur_path.push_back(root-&gt;val);</span><br><span class="line">        result.push_back(cur_path);</span><br><span class="line">        cur_path.pop_back();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int sum_left = sum - root-&gt;val;</span><br><span class="line">    cur_path.push_back(root-&gt;val);</span><br><span class="line">    pathSumRec(root-&gt;left, sum_left, result, cur_path);</span><br><span class="line">    //cur_path.pop_back();</span><br><span class="line">    pathSumRec(root-&gt;right, sum_left, result, cur_path);</span><br><span class="line">    cur_path.pop_back();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>92ms, September 21, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/16607/short-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16607/short-python-solution</a></p>
+<p>Short python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def pathSum(self, root, sum):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type root: TreeNode</span><br><span class="line">        :type sum: int</span><br><span class="line">        :rtype: List[List[int]]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not root: return []</span><br><span class="line">        if root.left == None and root.right == None:</span><br><span class="line">            if sum == root.val:</span><br><span class="line">                return [[root.val]]</span><br><span class="line">            else:</span><br><span class="line">                return []</span><br><span class="line">        a = self.pathSum(root.left, sum-root.val) + \</span><br><span class="line">            self.pathSum(root.right, sum - root.val)</span><br><span class="line">        return [[root.val] + i for i in a]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18444/python-solutions-recursively-bfs-queue-dfs-stack" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18444/python-solutions-recursively-bfs-queue-dfs-stack</a></p>
+<p>Python solutions (Recursively, BFS+queue, DFS+stack)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def pathSum(self, root, sum):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(root, sum, [], res)</span><br><span class="line">    return res</span><br><span class="line">    </span><br><span class="line">def dfs(self, root, sum, ls, res):</span><br><span class="line">    if not root.left and not root.right and sum == root.val:</span><br><span class="line">        ls.append(root.val)</span><br><span class="line">        res.append(ls)</span><br><span class="line">    if root.left:</span><br><span class="line">        self.dfs(root.left, sum-root.val, ls+[root.val], res)</span><br><span class="line">    if root.right:</span><br><span class="line">        self.dfs(root.right, sum-root.val, ls+[root.val], res)</span><br><span class="line">        </span><br><span class="line">def pathSum2(self, root, sum):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    if not root.left and not root.right and sum == root.val:</span><br><span class="line">        return [[root.val]]</span><br><span class="line">    tmp = self.pathSum(root.left, sum-root.val) + self.pathSum(root.right, sum-root.val)</span><br><span class="line">    return [[root.val]+i for i in tmp]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># BFS + queue    </span><br><span class="line">def pathSum3(self, root, sum): </span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res = []</span><br><span class="line">    queue = [(root, root.val, [root.val])]</span><br><span class="line">    while queue:</span><br><span class="line">        curr, val, ls = queue.pop(0)</span><br><span class="line">        if not curr.left and not curr.right and val == sum:</span><br><span class="line">            res.append(ls)</span><br><span class="line">        if curr.left:</span><br><span class="line">            queue.append((curr.left, val+curr.left.val, ls+[curr.left.val]))</span><br><span class="line">        if curr.right:</span><br><span class="line">            queue.append((curr.right, val+curr.right.val, ls+[curr.right.val]))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># DFS + stack I  </span><br><span class="line">def pathSum4(self, root, sum): </span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res = []</span><br><span class="line">    stack = [(root, sum-root.val, [root.val])]</span><br><span class="line">    while stack:</span><br><span class="line">        curr, val, ls = stack.pop()</span><br><span class="line">        if not curr.left and not curr.right and val == 0:</span><br><span class="line">            res.append(ls)</span><br><span class="line">        if curr.right:</span><br><span class="line">            stack.append((curr.right, val-curr.right.val, ls+[curr.right.val]))</span><br><span class="line">        if curr.left:</span><br><span class="line">            stack.append((curr.left, val-curr.left.val, ls+[curr.left.val]))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># DFS + stack II   </span><br><span class="line">def pathSum5(self, root, s): </span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res = []</span><br><span class="line">    stack = [(root, [root.val])]</span><br><span class="line">    while stack:</span><br><span class="line">        curr, ls = stack.pop()</span><br><span class="line">        if not curr.left and not curr.right and sum(ls) == s:</span><br><span class="line">            res.append(ls)</span><br><span class="line">        if curr.right:</span><br><span class="line">            stack.append((curr.right, ls+[curr.right.val]))</span><br><span class="line">        if curr.left:</span><br><span class="line">            stack.append((curr.left, ls+[curr.left.val]))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5414/dfs-with-one-linkedlist-accepted-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5414/dfs-with-one-linkedlist-accepted-java-solution</a></p>
+<p>DFS with one LinkedList , accepted java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, int sum) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = new LinkedList&lt;List&lt;Integer&gt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; currentResult = new LinkedList&lt;Integer&gt;();</span><br><span class="line">        pathSum(root, sum, currentResult, result);</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void pathSum(TreeNode root, int sum, List&lt;Integer&gt; currentResult,</span><br><span class="line">                    List&lt;List&lt;Integer&gt;&gt; result)&#123;</span><br><span class="line">        if(root == null) return;</span><br><span class="line">        currentResult.add(new Integer(root.val));</span><br><span class="line">        if(root.left == null &amp;&amp; root.right == null &amp;&amp; sum == root.val)&#123;</span><br><span class="line">            result.add(new LinkedList(currentResult));</span><br><span class="line">            currentResult.remove(currentResult.size() - 1);</span><br><span class="line">            return;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            pathSum(root.left, sum-root.val, currentResult, result);</span><br><span class="line">            pathSum(root.right, sum-root.val, currentResult, result);</span><br><span class="line">        &#125;</span><br><span class="line">        currentResult.remove(currentResult.size() - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +552,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

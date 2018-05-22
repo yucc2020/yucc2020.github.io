@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search,breadth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="37.5%  https://leetcode.com/problems/symmetric-tree/ Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). 1234567For example, this binary tree [1,2,2,3,4,4,3">
+<meta name="keywords" content="leetcode,easy,tree,depth first search,breadth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="101. Symmetric Tree">
 <meta property="og:url" content="http://yucc.me/p/1260a346/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="37.5%  https://leetcode.com/problems/symmetric-tree/ Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). 1234567For example, this binary tree [1,2,2,3,4,4,3">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.136Z">
+<meta property="og:updated_time" content="2018-05-22T11:13:57.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="101. Symmetric Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="37.5%  https://leetcode.com/problems/symmetric-tree/ Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). 1234567For example, this binary tree [1,2,2,3,4,4,3">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:13:57+08:00">
+                2018-05-22 19:13
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,261
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,55 @@
       
 
       
-        
+        <ul>
+<li>37.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/symmetric-tree/" target="_blank" rel="noopener">https://leetcode.com/problems/symmetric-tree/</a></p>
+<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For example, this binary tree [1,2,2,3,4,4,3] is symmetric:</span><br><span class="line"></span><br><span class="line">     1</span><br><span class="line">    / \</span><br><span class="line">   2   2</span><br><span class="line">  / \ / \</span><br><span class="line"> 3  4 4  3</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">But the following [1,2,2,null,3,null,3] is not:</span><br><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  2   2</span><br><span class="line">   \   \</span><br><span class="line">   3    3</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>Bonus points if you could solve it both recursively and iteratively.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>迭代</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(root, root);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(TreeNode* left, TreeNode* right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!left &amp;&amp; !right) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(!left || !right) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> left-&gt;val == right-&gt;val &amp;&amp; helper(left-&gt;left, right-&gt;right) &amp;&amp; helper(left-&gt;right, right-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>4ms, 25.42%, July 14th, 2016</p>
+<p>使用两个队列，一个先root，再左再右的层序，一个先root，再右再左的遍历。</p>
+<p><a href="https://discuss.leetcode.com/topic/4332/my-c-accepted-code-in-16ms-with-iteration-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/4332/my-c-accepted-code-in-16ms-with-iteration-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isSymmetric(TreeNode* root) &#123;</span><br><span class="line">        TreeNode *left, *right;</span><br><span class="line">        if(!root) return true;</span><br><span class="line">    </span><br><span class="line">        queue&lt;TreeNode*&gt; q1, q2;</span><br><span class="line">        q1.push(root-&gt;left);</span><br><span class="line">        q2.push(root-&gt;right);</span><br><span class="line">        while(!q1.empty() &amp;&amp; !q2.empty())&#123;</span><br><span class="line">            left = q1.front();</span><br><span class="line">            q1.pop();</span><br><span class="line">            right = q2.front();</span><br><span class="line">            q2.pop();</span><br><span class="line">            if(left == NULL &amp;&amp; right == NULL) continue;</span><br><span class="line">            if(left == NULL || right == NULL) return false;</span><br><span class="line">            if(left-&gt;val != right-&gt;val) return false;</span><br><span class="line">            q1.push(left-&gt;left);</span><br><span class="line">            q1.push(left-&gt;right);</span><br><span class="line">            q2.push(right-&gt;right);</span><br><span class="line">            q2.push(right-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSymmetric</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q1, q2;</span><br><span class="line">        TreeNode* left, *right;</span><br><span class="line">        q1.push(root-&gt;left);</span><br><span class="line">        q2.push(root-&gt;right);</span><br><span class="line">        <span class="keyword">while</span>(!q1.empty() &amp;&amp; !q2.empty())&#123;</span><br><span class="line">            left = q1.front(); <span class="comment">// 使用变量前要先定义，不要忘了 TreNode* </span></span><br><span class="line">            right = q2.front();</span><br><span class="line">            q1.pop(); <span class="comment">// 要在下面的判断前pop，不然就进入了死循环了。</span></span><br><span class="line">            q2.pop();</span><br><span class="line">            <span class="keyword">if</span>(!left &amp;&amp; !right) <span class="keyword">continue</span>; <span class="comment">//注意： 此处不同于递归，不能直接return true;</span></span><br><span class="line">            <span class="keyword">if</span>(!left || !right || left-&gt;val != right-&gt;val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            q1.push(left-&gt;left);</span><br><span class="line">            q1.push(left-&gt;right);</span><br><span class="line">            q2.push(right-&gt;right);</span><br><span class="line">            q2.push(right-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>4ms, 25.42%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/9503/15-lines-of-c-solution-8-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9503/15-lines-of-c-solution-8-ms</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isSymmetric(TreeNode* root) &#123;</span><br><span class="line">        if(!root) return true;</span><br><span class="line">        return helper(root-&gt;left, root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool helper(TreeNode* p, TreeNode* q)&#123;</span><br><span class="line">        if(!p &amp;&amp; !q) return true;</span><br><span class="line">        else if(!p || !q) return false;</span><br><span class="line">        </span><br><span class="line">        if(p-&gt;val != q-&gt;val) return false;</span><br><span class="line">        </span><br><span class="line">        return helper(p-&gt;left, q-&gt;right) &amp;&amp; helper(p-&gt;right, q-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>64ms, 31.10%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/8440/6line-ac-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8440/6line-ac-python</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode(object):</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.left = None</span><br><span class="line">#         self.right = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def isSymmetric(self, root):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type root: TreeNode</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        def isSym(L, R):</span><br><span class="line">            if not L and not R: return True</span><br><span class="line">            if L and R and L.val == R.val:</span><br><span class="line">                return isSym(L.left, R.right) and isSym(L.right, R.left)</span><br><span class="line">            return False</span><br><span class="line">        return isSym(root, root)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>my code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def isSymmetric(self, root):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type root: TreeNode</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not root:</span><br><span class="line">            return True</span><br><span class="line">        return self.helper(root.left, root.right)</span><br><span class="line">    </span><br><span class="line">    def helper(self, left, right):</span><br><span class="line">        if not left and not right:</span><br><span class="line">            return True</span><br><span class="line">        if left and right:</span><br><span class="line">            return left.val==right.val and self.helper(left.left, right.right) and self.helper(left.right, right.left)</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>1ms, 25.80%, July 14th, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/28589/1ms-recursive-java-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28589/1ms-recursive-java-solution-easy-to-understand</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isSymmetric(TreeNode root) &#123;</span><br><span class="line">        if(root == null) return true;</span><br><span class="line">        return isMirror(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean isMirror(TreeNode p, TreeNode q)&#123;</span><br><span class="line">        if(p == null &amp;&amp; q == null) return true;</span><br><span class="line">        if(p == null || q == null) return false;</span><br><span class="line">        return (p.val == q.val) &amp;&amp; isMirror(p.left, q.right) &amp;&amp; isMirror(p.right, q.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>3ms, 5.59%, July 14th, 2016</p>
+<p>Recursive and non-recursive solutions in Java</p>
+<p><a href="https://discuss.leetcode.com/topic/5941/recursive-and-non-recursive-solutions-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5941/recursive-and-non-recursive-solutions-in-java</a></p>
+<p>Recursive–400ms:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public boolean isSymmetric(TreeNode root) &#123;</span><br><span class="line">    return root==null || isSymmetricHelp(root.left, root.right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private boolean isSymmetricHelp(TreeNode left, TreeNode right)&#123;</span><br><span class="line">    if(left==null || right==null)</span><br><span class="line">        return left==right;</span><br><span class="line">    if(left.val!=right.val)</span><br><span class="line">        return false;</span><br><span class="line">    return isSymmetricHelp(left.left, right.right) &amp;&amp; isSymmetricHelp(left.right, right.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Non-recursive(use Stack)–460ms:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isSymmetric(TreeNode root) &#123;</span><br><span class="line">        if(root==null)  return true;</span><br><span class="line">        </span><br><span class="line">        Stack&lt;TreeNode&gt; stack = new Stack&lt;TreeNode&gt;();</span><br><span class="line">        TreeNode left, right;</span><br><span class="line">        if(root.left!=null)&#123;</span><br><span class="line">            if(root.right==null) return false;</span><br><span class="line">            stack.push(root.left);</span><br><span class="line">            stack.push(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">        else if(root.right!=null)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        while(!stack.empty())&#123;</span><br><span class="line">            if(stack.size()%2!=0)   return false;</span><br><span class="line">            right = stack.pop();</span><br><span class="line">            left = stack.pop();</span><br><span class="line">            if(right.val!=left.val) return false;</span><br><span class="line">            </span><br><span class="line">            if(left.left!=null)&#123;</span><br><span class="line">                if(right.right==null)   return false;</span><br><span class="line">                stack.push(left.left);</span><br><span class="line">                stack.push(right.right);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(right.right!=null)&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            if(left.right!=null)&#123;</span><br><span class="line">                if(right.left==null)   return false;</span><br><span class="line">                stack.push(left.right);</span><br><span class="line">                stack.push(right.left);</span><br><span class="line">            &#125;</span><br><span class="line">            else if(right.left!=null)&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +561,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+            <a href="/tags/breadth-first-search/" rel="tag"># breadth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +705,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +767,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

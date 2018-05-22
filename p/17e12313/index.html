@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="33.2%  https://leetcode.com/problems/path-sum/description/ Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the gi">
+<meta name="keywords" content="leetcode,easy,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="112. Path Sum">
 <meta property="og:url" content="http://yucc.me/p/17e12313/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="33.2%  https://leetcode.com/problems/path-sum/description/ Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.141Z">
+<meta property="og:updated_time" content="2018-05-22T11:24:07.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="112. Path Sum">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="33.2%  https://leetcode.com/problems/path-sum/description/ Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the gi">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:24:07+08:00">
+                2018-05-22 19:24
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,544
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,72 @@
       
 
       
-        
+        <ul>
+<li>33.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/path-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/path-sum/description/</a></p>
+<p>Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given the below binary tree and sum = 22,</span><br><span class="line">              5</span><br><span class="line">             / \</span><br><span class="line">            4   8</span><br><span class="line">           /   / \</span><br><span class="line">          11  13  4</span><br><span class="line">         /  \      \</span><br><span class="line">        7    2      1</span><br><span class="line">return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<p>Oct 17， 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right)</span><br><span class="line">            <span class="keyword">return</span> root-&gt;val == sum;</span><br><span class="line">        <span class="keyword">return</span> hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 1：</p>
+<p>从根节点开始，如果根等于NULL，false，如果左右节点为空，并且根的值等于sum，那么为true，否则进行迭代。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(root == NULL) return false;</span><br><span class="line">        if(root-&gt;val == sum &amp;&amp; root-&gt;left == NULL &amp;&amp; root-&gt;right ==NULL) return true;</span><br><span class="line">        return hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>code 2：</p>
+<p>我自己的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(root==NULL) return false;</span><br><span class="line">        if(root-&gt;left==NULL &amp;&amp; root-&gt;right==NULL)</span><br><span class="line">            return root-&gt;val == sum;</span><br><span class="line">        return hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>迭代的方法，使用后序遍历的方法</p>
+<p>By using postorder traversal</p>
+<p>In the postorder traversal, the node will be removed from the stack only when the right sub-tree has been visited. so the path will be stored in the stack. we can keep check the SUM, the length from root to leaf node.<br>at leaf node, if SUM == sum, OK, return true. After postorder traversal, return false.</p>
+<p>I have compared this solution with recursion solutions. In the leetcode OJ, the run time of two solutions is very near.</p>
+<p>below is my iterator code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode *root, int sum) &#123;</span><br><span class="line">        stack&lt;TreeNode *&gt; s;</span><br><span class="line">        TreeNode *pre = NULL, *cur = root;</span><br><span class="line">        int SUM = 0;</span><br><span class="line">        while (cur || !s.empty()) &#123;</span><br><span class="line">            while (cur) &#123;</span><br><span class="line">                s.push(cur);</span><br><span class="line">                SUM += cur-&gt;val;</span><br><span class="line">                cur = cur-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = s.top();</span><br><span class="line">            if (cur-&gt;left == NULL &amp;&amp; cur-&gt;right == NULL &amp;&amp; SUM == sum) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            if (cur-&gt;right &amp;&amp; pre != cur-&gt;right) &#123;</span><br><span class="line">                cur = cur-&gt;right;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                pre = cur;</span><br><span class="line">                s.pop();</span><br><span class="line">                SUM -= cur-&gt;val;</span><br><span class="line">                cur = NULL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意：本题答案来看，只有没有左右孩子节点的路径才算一条完整路径。</p>
+<p><a href="https://discuss.leetcode.com/topic/892/why-is-the-output-of-1-2-1-is-false" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/892/why-is-the-output-of-1-2-1-is-false</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Why is the output of &quot;&#123;1, 2&#125;, 1&quot; is false?</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<p>The struct is like above, and the sum of right path is 1. Why the output is false?</p>
+<p>Additional:</p>
+<p>Find another problem: the output of “{1}, 1” is true……</p>
+<p>why…..</p>
+<p>the question is “determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum”. So the condition is there is a path from the root to a leaf. For your tree, there is only one leaf (2)</p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://leetcode.com/discuss/27236/3-lines-of-c-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/27236/3-lines-of-c-solution</a></p>
+<p>12ms, 22.26%, June.17th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(root == NULL) return false;</span><br><span class="line">        if(root-&gt;val == sum &amp;&amp; root-&gt;left == NULL &amp;&amp; root-&gt;right ==NULL) return true;</span><br><span class="line">        return hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/2455/accepted-by-using-postorder-traversal" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/2455/accepted-by-using-postorder-traversal</a></p>
+<p>[Accepted] By using postorder traversal</p>
+<p>In the postorder traversal, the node will be removed from the stack only when the right sub-tree has been visited. so the path will be stored in the stack. we can keep check the SUM, the length from root to leaf node.<br>at leaf node, if SUM == sum, OK, return true. After postorder traversal, return false.</p>
+<p>I have compared this solution with recursion solutions. In the leetcode OJ, the run time of two solutions is very near.</p>
+<p>below is my iterator code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode *root, int sum) &#123;</span><br><span class="line">        stack&lt;TreeNode *&gt; s;</span><br><span class="line">        TreeNode *pre = NULL, *cur = root;</span><br><span class="line">        int SUM = 0;</span><br><span class="line">        while (cur || !s.empty()) &#123;</span><br><span class="line">            while (cur) &#123;</span><br><span class="line">                s.push(cur);</span><br><span class="line">                SUM += cur-&gt;val;</span><br><span class="line">                cur = cur-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = s.top();</span><br><span class="line">            if (cur-&gt;left == NULL &amp;&amp; cur-&gt;right == NULL &amp;&amp; SUM == sum) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            if (cur-&gt;right &amp;&amp; pre != cur-&gt;right) &#123;</span><br><span class="line">                cur = cur-&gt;right;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                pre = cur;</span><br><span class="line">                s.pop();</span><br><span class="line">                SUM -= cur-&gt;val;</span><br><span class="line">                cur = NULL;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26599/share-my-3-lines-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26599/share-my-3-lines-c-solution</a></p>
+<p>Share my 3 lines c++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasPathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(!root) return false;</span><br><span class="line">        if((root -&gt; val == sum) &amp;&amp; ((!root -&gt; left) &amp;&amp; (!root -&gt; right))) return true;</span><br><span class="line">        return hasPathSum(root -&gt; left, sum - root -&gt; val) || hasPathSum(root -&gt; right, sum - root -&gt; val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>84ms, 29.07%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/28873/short-python-recursive-solution-o-n" target="_blank" rel="noopener">https://leetcode.com/discuss/28873/short-python-recursive-solution-o-n</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Definition for a binary tree node.</span><br><span class="line"># class TreeNode(object):</span><br><span class="line">#     def __init__(self, x):</span><br><span class="line">#         self.val = x</span><br><span class="line">#         self.left = None</span><br><span class="line">#         self.right = None</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def hasPathSum(self, root, sum):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type root: TreeNode</span><br><span class="line">        :type sum: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not root: return False</span><br><span class="line">        if not root.left and not root.right and root.val == sum: return True</span><br><span class="line">        sum -= root.val</span><br><span class="line">        return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18433/python-solutions-dfs-recursively-dfs-stack-bfs-queue" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18433/python-solutions-dfs-recursively-dfs-stack-bfs-queue</a></p>
+<p>Python solutions (DFS recursively, DFS+stack, BFS+queue)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># DFS Recursively </span><br><span class="line">def hasPathSum1(self, root, sum):</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(root, sum, res)</span><br><span class="line">    return any(res)</span><br><span class="line">    </span><br><span class="line">def dfs(self, root, target, res):</span><br><span class="line">    if root:</span><br><span class="line">        if not root.left and not root.right:</span><br><span class="line">            if root.val == target:</span><br><span class="line">                res.append(True)</span><br><span class="line">        if root.left:</span><br><span class="line">            self.dfs(root.left, target-root.val, res)</span><br><span class="line">        if root.right:</span><br><span class="line">            self.dfs(root.right, target-root.val, res)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># DFS with stack</span><br><span class="line">def hasPathSum2(self, root, sum):</span><br><span class="line">    if not root:</span><br><span class="line">        return False</span><br><span class="line">    stack = [(root, root.val)]</span><br><span class="line">    while stack:</span><br><span class="line">        curr, val = stack.pop()</span><br><span class="line">        if not curr.left and not curr.right:</span><br><span class="line">            if val == sum:</span><br><span class="line">                return True</span><br><span class="line">        if curr.right:</span><br><span class="line">            stack.append((curr.right, val+curr.right.val))</span><br><span class="line">        if curr.left:</span><br><span class="line">            stack.append((curr.left, val+curr.left.val))</span><br><span class="line">    return False</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># BFS with queue</span><br><span class="line">def hasPathSum(self, root, sum):</span><br><span class="line">    if not root:</span><br><span class="line">        return False</span><br><span class="line">    queue = [(root, sum-root.val)]</span><br><span class="line">    while queue:</span><br><span class="line">        curr, val = queue.pop(0)</span><br><span class="line">        if not curr.left and not curr.right:</span><br><span class="line">            if val == 0:</span><br><span class="line">                return True</span><br><span class="line">        if curr.left:</span><br><span class="line">            queue.append((curr.left, val-curr.left.val))</span><br><span class="line">        if curr.right:</span><br><span class="line">            queue.append((curr.right, val-curr.right.val))</span><br><span class="line">    return False</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>The basic idea is to subtract the value of current node from sum until it reaches a leaf node and the subtraction equals 0, then we know that we got a hit. Otherwise the subtraction at the end could not be 0.</p>
+<p>1ms, 9.51%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/10456/accepted-my-recursive-solution-in-java" target="_blank" rel="noopener">https://leetcode.com/discuss/10456/accepted-my-recursive-solution-in-java</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * public class TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode left;</span><br><span class="line"> *     TreeNode right;</span><br><span class="line"> *     TreeNode(int x) &#123; val = x; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasPathSum(TreeNode root, int sum) &#123;</span><br><span class="line">        if(root == null) return false;</span><br><span class="line">        if(root.left == null &amp;&amp; root.right == null &amp;&amp; sum - root.val == 0) return true;</span><br><span class="line">        return hasPathSum(root.left, sum-root.val) || hasPathSum(root.right, sum-root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +578,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -574,8 +673,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +720,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +782,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

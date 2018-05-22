@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,greedy,candy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="24.2%  https://leetcode.com/problems/candy/ There are N children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following require">
+<meta name="keywords" content="leetcode,greedy,candy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="135. Candy">
 <meta property="og:url" content="http://yucc.me/p/d0cc5467/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="24.2%  https://leetcode.com/problems/candy/ There are N children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following require">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.174Z">
+<meta property="og:updated_time" content="2018-05-22T11:43:42.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="135. Candy">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="24.2%  https://leetcode.com/problems/candy/ There are N children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following require">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:43:42+08:00">
+                2018-05-22 19:43
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,319
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -430,7 +452,75 @@
       
 
       
-        
+        <ul>
+<li>24.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/candy/" target="_blank" rel="noopener">https://leetcode.com/problems/candy/</a></p>
+<p>There are N children standing in a line. Each child is assigned a rating value.</p>
+<p>You are giving candies to these children subjected to the following requirements:</p>
+<ul>
+<li><p>Each child must have at least one candy.</p>
+</li>
+<li><p>Children with a higher rating get more candies than their neighbors.</p>
+</li>
+</ul>
+<p>What is the minimum candies you must give?</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>A simple solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        int size = ratings.size();</span><br><span class="line">        if(size&lt;=1) return size;</span><br><span class="line">        vector&lt;int&gt; ret(size, 1);</span><br><span class="line">        for(int i=1; i&lt;size; i++)&#123;</span><br><span class="line">            if(ratings[i]&gt;ratings[i-1])</span><br><span class="line">                ret[i] = ret[i-1]+1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=size-1; i&gt;0; i--)&#123;</span><br><span class="line">            if(ratings[i-1]&gt;ratings[i])</span><br><span class="line">                ret[i-1] = max(ret[i-1], ret[i]+1);</span><br><span class="line">        &#125;</span><br><span class="line">        int result = 0;</span><br><span class="line">        for(int i=0; i&lt;size; i++)</span><br><span class="line">            result += ret[i];</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">candy</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; ratings)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> n = ratings.size();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ratings[i]&gt;ratings[i<span class="number">-1</span>])</span><br><span class="line">                v[i] = v[i<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-2</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ratings[i]&gt;ratings[i+<span class="number">1</span>])</span><br><span class="line">                v[i] = max(v[i], v[i+<span class="number">1</span>]+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">            res += v[i];</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/5243/a-simple-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5243/a-simple-solution</a></p>
+<p>A simple solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        int size = ratings.size();</span><br><span class="line">        if(size&lt;=1) return size;</span><br><span class="line">        vector&lt;int&gt; ret(size, 1);</span><br><span class="line">        for(int i=1; i&lt;size; i++)&#123;</span><br><span class="line">            if(ratings[i]&gt;ratings[i-1])</span><br><span class="line">                ret[i] = ret[i-1]+1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=size-1; i&gt;0; i--)&#123;</span><br><span class="line">            if(ratings[i-1]&gt;ratings[i])</span><br><span class="line">                ret[i-1] = max(ret[i-1], ret[i]+1);</span><br><span class="line">        &#125;</span><br><span class="line">        int result = 0;</span><br><span class="line">        for(int i=0; i&lt;size; i++)</span><br><span class="line">            result += ret[i];</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17722/two-c-solutions-given-with-explanation-both-with-o-n-time-one-with-o-1-space-the-other-with-o-n-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17722/two-c-solutions-given-with-explanation-both-with-o-n-time-one-with-o-1-space-the-other-with-o-n-space</a></p>
+<p>Two C++ solutions given with explanation (both with O(N) time, one with O(1) space, the other with O(N) space)</p>
+<p>The question requires us to make sure a child with a higher rate has more candies than its left and right neighbors. One simple solution is to do two scans: one foward scan (from 1 to N-1) to make sure child i has more candies than its left neighbor if its rate is higher than its left neighbor. After the forward scan, we can guarantee that the left neighbor relationship is correct but we have to do more to make the right neighbor relationship in order; so we do the backwarad scan (from N-2 to 0) to make child i has more candies than its right neighbor i+1 if its rate is higher than its right neighbor. In the following implementation, we need a O(N) array number to save the number of candies needed for children, so it has O(N) space complexity and we do two linear scans so the time complexity is O(N)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        int len = ratings.size(), res = 0, i;</span><br><span class="line">        if(len&gt;0)</span><br><span class="line">        &#123;</span><br><span class="line">            vector&lt;int&gt; number(len,0); // to save the number of candies for child[0:N-1]</span><br><span class="line">            number[0] = 1; </span><br><span class="line">// forward scan to calculate how many candies needed for child i to make sure it has more candies than its left neighbor if it has a higher rate, otherwise, give one candy to it</span><br><span class="line">            for(i=1; i&lt;len;++i) number[i] = ratings[i]&gt;ratings[i-1]?number[i-1]+1:1;</span><br><span class="line"></span><br><span class="line">// backward scan to calculate to make sure child i has more candies than its right neighbor if it has a higher rate, pick the bigger one from forward and backward scans as the final number for child i</span><br><span class="line">            for(i=len-2, res = number[len-1]; i&gt;=0;--i)</span><br><span class="line">            &#123;</span><br><span class="line">                if( (ratings[i]&gt;ratings[i+1]) &amp;&amp; number[i]&lt;(number[i+1]+1) ) number[i] = number[i+1]+1;</span><br><span class="line">                res += number[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Now, the question is can we do better? Do we really need two scans? If we do only forward scan, then the problem is we can not guarantee the right neighbor relationship holds. i.e. we don’t know if the following order is descending (i&gt;i+1&gt;i+2&gt;…). and that may cause issues. To fix that, we will detect the dips (the points at which the order switchs from increasing to decreasng). We will make sure all the local dips (minimum points) has only one candy and update its previous neighbors (which has hgher rates than its rate) accordingly. To do such update, we need to know when the decrease starts, so we use pPos to save that starting points.<br>So the solution becomes: do the forward scan, if it is in an increasing order (child i rate &gt; child i-1 order), check if it is a local dip (neg_peak == true): if so, update the candy number to make sure child i-1 has one candy. if not, just give one more candy to child i. If it is in an decreasing order (child i rate &lt; child i-1 order)<br>, just give one less candy to i. don’t forget at last, we still need to make sure child N-1 has one or more candy. So O(1) space , O(N) time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int candy(vector&lt;int&gt;&amp; ratings) &#123;</span><br><span class="line">        const int len = ratings.size();</span><br><span class="line">        if(len&lt;=1) return len;</span><br><span class="line">        </span><br><span class="line">        int i, pPos, res=1, peak=1; // peak: # candies given to the i-1 child</span><br><span class="line">        bool neg_peak = false; // flag to indicate if it is a local dip</span><br><span class="line">        for(i=1; i&lt;len;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(ratings[i] &gt;= ratings[i-1]) </span><br><span class="line">            &#123;   // it is increasing</span><br><span class="line">                if(neg_peak) </span><br><span class="line">                &#123;  // it is a local dip, we need to make sure i-1 has one candy</span><br><span class="line">                    res -= (peak-1) * (i-pPos - (peak&gt;0));</span><br><span class="line">                    peak = 1;</span><br><span class="line">                    neg_peak = false;</span><br><span class="line">                &#125;</span><br><span class="line">               // update child i candy number, if equal, set to 1</span><br><span class="line">                peak = (ratings[i] == ratings[i-1])? 1:++peak;</span><br><span class="line">                res += peak;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123; // decreasing, just give one less candy, if it is the starting point of a decrease, update pPos</span><br><span class="line">                if(!neg_peak) &#123;pPos = i-1; neg_peak = true;&#125;</span><br><span class="line">                res += --peak;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;// don&apos;t forget to update res, if the last one is a local dip</span><br><span class="line">        return !neg_peak? res : res - (peak-1) * (i-pPos - (peak&gt;0));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/21025/simple-python-solution-with-two-passes" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21025/simple-python-solution-with-two-passes</a></p>
+<p>Simple python solution with two passes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;integer[]&#125; ratings</span><br><span class="line">    # @return &#123;integer&#125;</span><br><span class="line">    def candy(self, ratings):</span><br><span class="line">        # use two pass scan from left to right and vice versa to keep the candy level up to now</span><br><span class="line">        # similar to like the Trapping Rain Water question</span><br><span class="line">        res = [1]*len(ratings) # also compatable with [] input</span><br><span class="line">        lbase = rbase = 1</span><br><span class="line">        # left scan</span><br><span class="line">        for i in xrange(1, len(ratings)):</span><br><span class="line">            lbase = lbase + 1 if ratings[i] &gt; ratings[i-1] else 1</span><br><span class="line">            res[i] = lbase</span><br><span class="line">        # right scan</span><br><span class="line">        for i in xrange(len(ratings)-2, -1, -1):</span><br><span class="line">            rbase = rbase + 1 if ratings[i] &gt; ratings[i+1] else 1</span><br><span class="line">            res[i] = max(rbase, res[i])</span><br><span class="line">        return sum(res)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/25985/simple-o-n-java-solution-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25985/simple-o-n-java-solution-with-comments</a></p>
+<p>Simple O(n) Java solution with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int candy(int[] ratings) &#123;</span><br><span class="line">        int candies[] = new int[ratings.length];</span><br><span class="line">        Arrays.fill(candies, 1);</span><br><span class="line">        for(int i=1; i&lt;ratings.length; i++)</span><br><span class="line">            if(ratings[i]&gt;ratings[i-1])</span><br><span class="line">                candies[i] = candies[i-1] + 1;</span><br><span class="line">        for(int i=ratings.length-1; i&gt;0; i--)</span><br><span class="line">            if(ratings[i-1]&gt;ratings[i])</span><br><span class="line">                candies[i-1] = Math.max(candies[i-1], candies[i]+1);</span><br><span class="line">        int result = 0;</span><br><span class="line">        for(int i=0; i&lt;ratings.length; i++)</span><br><span class="line">            result += candies[i];</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public int candy(int[] ratings) &#123;</span><br><span class="line">    int candies[] = new int[ratings.length];        </span><br><span class="line">    Arrays.fill(candies, 1);// Give each child 1 candy </span><br><span class="line">    	</span><br><span class="line">    for (int i = 1; i &lt; candies.length; i++)&#123;// Scan from left to right, to make sure right higher rated child gets 1 more candy than left lower rated child</span><br><span class="line">        if (ratings[i] &gt; ratings[i - 1]) candies[i] = (candies[i - 1] + 1);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    for (int i = candies.length - 2; i &gt;= 0; i--) &#123;// Scan from right to left, to make sure left higher rated child gets 1 more candy than right lower rated child</span><br><span class="line">	    if (ratings[i] &gt; ratings[i + 1]) candies[i] = Math.max(candies[i], (candies[i + 1] + 1));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int sum = 0;        </span><br><span class="line">    for (int candy : candies)  </span><br><span class="line">    	sum += candy;        </span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/8208/one-pass-constant-space-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/8208/one-pass-constant-space-java-solution</a></p>
+<p>One-pass constant space Java solution</p>
+<p>This solution picks each element from the input array only once. First, we give a candy to the first child. Then for each child we have three cases:</p>
+<ol>
+<li>His/her rating is equal to the previous one -&gt; give 1 candy.</li>
+<li>His/her rating is greater than the previous one -&gt; give him (previous + 1) candies.</li>
+<li>His/her rating is less than the previous one -&gt; don’t know what to do yet, let’s just count the number of such consequent cases.</li>
+</ol>
+<p>When we enter 1 or 2 condition we can check our count from 3. If it’s not zero then we know that we were descending before and we have everything to update our total candies amount: number of children in descending sequence of raitings - coundDown, number of candies given at peak - prev (we don’t update prev when descending). Total number of candies for “descending” children can be found through arithmetic progression formula (1+2+…+countDown). Plus we need to update our peak child if his number of candies is less then or equal to countDown.</p>
+<p>Here’s a pretty concise code below.</p>
+<p>详情参考以下链接：<br><a href="http://www.allenlipeng47.com/blog/index.php/2016/07/21/candy/" target="_blank" rel="noopener">http://www.allenlipeng47.com/blog/index.php/2016/07/21/candy/</a></p>
+<p>But there is a O(n) time, O(1) space solution, which is pretty hard to understand. Let me try to explain this O(1) space solution.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public static int candy(int[] ratings) &#123;</span><br><span class="line">    int pre = 1, countDown = 0, total = 1;</span><br><span class="line">    for (int i = 1; i &lt; ratings.length; i++) &#123;</span><br><span class="line">        if (ratings[i] &gt;= ratings[i - 1]) &#123;</span><br><span class="line">            if (countDown &gt; 0) &#123;</span><br><span class="line">                total += countDown * (countDown + 1) / 2;   // progression part</span><br><span class="line">                if (countDown &gt;= pre) &#123; // check if pre is tall enough</span><br><span class="line">                    total += countDown - pre + 1;</span><br><span class="line">                &#125;</span><br><span class="line">                pre = 1;    // when ascending and there is countDown, prev should be 1</span><br><span class="line">                countDown = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = ratings[i] == ratings[i - 1] ? 1 : pre + 1;   // when equals to previous one, set to 1. Else set to prev + 1</span><br><span class="line">            total += pre;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            countDown++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if (countDown &gt; 0) &#123;    // check if there is countDown in the end</span><br><span class="line">        total += countDown * (countDown + 1) / 2;</span><br><span class="line">        if (countDown &gt;= pre) &#123;</span><br><span class="line">            total += countDown - pre + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/37924/very-simple-java-solution-with-detail-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37924/very-simple-java-solution-with-detail-explanation</a></p>
+<p>Very Simple Java Solution with detail explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">We take ratings array as [5, 6, 2, 2, 4, 8, 9, 5, 4, 0, 5, 1]</span><br></pre></td></tr></table></figure>
+<p>In the given problem each student will have at least 1 candy. So distribute 1 candy to each.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ratings:     [5, 6, 2, 2, 4, 8, 9, 5, 4, 0, 5, 1]</span><br><span class="line">candies:     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]</span><br></pre></td></tr></table></figure>
+<p>Now traverse the array from left to right. If the rating of (n+1) child is greater than (n) child then set the candy of (n+1) child as one candy more than the (n) child candies.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ratings:     [5, 6, 2, 2, 4, 8, 9, 5, 4, 0, 5, 1]</span><br><span class="line">candies:     [1, 2, 1, 1, 2, 3, 4, 1, 1, 1, 2, 1]</span><br></pre></td></tr></table></figure>
+<p>Now traverse the array from right to left. If the (n) child rating is more than (n+1) child and (n) child candies is less than one more than (n+1) child candies then update the candies of (n) child as 1+ (n+1) candies.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ratings:     [5, 6, 2, 2, 4, 8, 9, 5, 4, 0, 5, 1]</span><br><span class="line">candies:     [1, 2, 1, 1, 2, 3, 4, 3, 2, 1, 2, 1]</span><br></pre></td></tr></table></figure>
+<p>Total minimum candies: 23</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public int candy(int[] ratings) &#123;</span><br><span class="line">        int sum=0;</span><br><span class="line">        int[] a=new int[ratings.length];</span><br><span class="line">        for(int i=0;i&lt;a.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            a[i]=1;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;ratings.length-1;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(ratings[i+1]&gt;ratings[i])</span><br><span class="line">            &#123;</span><br><span class="line">                a[i+1]=a[i]+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=ratings.length-1;i&gt;0;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            if(ratings[i-1]&gt;ratings[i])</span><br><span class="line">            &#123;</span><br><span class="line">                if(a[i-1]&lt;(a[i]+1))</span><br><span class="line">                &#123;</span><br><span class="line">                    a[i-1]=a[i]+1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;a.length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum+=a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +581,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
+          
+            <a href="/tags/candy/" rel="tag"># candy</a>
+          
+        </div>
       
 
       
@@ -574,8 +674,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +721,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +783,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

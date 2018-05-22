@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,hard,union find," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="35.7%  https://leetcode.com/problems/longest-consecutive-sequence/?tab=Description Given an unsorted array of integers, find the length of the longest consecutive elements sequence. 123For example,Gi">
+<meta name="keywords" content="leetcode,array,hard,union find">
 <meta property="og:type" content="article">
 <meta property="og:title" content="128. Longest Consecutive Sequence">
 <meta property="og:url" content="http://yucc.me/p/b1f32255/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="35.7%  https://leetcode.com/problems/longest-consecutive-sequence/?tab=Description Given an unsorted array of integers, find the length of the longest consecutive elements sequence. 123For example,Gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:19:45.166Z">
+<meta property="og:updated_time" content="2018-05-22T11:37:36.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="128. Longest Consecutive Sequence">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="35.7%  https://leetcode.com/problems/longest-consecutive-sequence/?tab=Description Given an unsorted array of integers, find the length of the longest consecutive elements sequence. 123For example,Gi">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:19:45+08:00">
-                2018-05-22 14:19
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T19:37:36+08:00">
+                2018-05-22 19:37
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,005
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -430,7 +452,87 @@
       
 
       
-        
+        <ul>
+<li>35.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/longest-consecutive-sequence/?tab=Description</a></p>
+<p>Given an unsorted array of integers, find the length of the longest consecutive elements sequence.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">Given [100, 4, 200, 1, 3, 2],</span><br><span class="line">The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.</span><br></pre></td></tr></table></figure>
+<p>Your algorithm should run in O(n) complexity.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>排序，一个个的查找</p>
+<p>my code:</p>
+<p>先排序，然后依次查找，同时注意出现相同数字的处理。</p>
+<p>但是达到不了题目要求的O（n）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestConsecutive(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(nums.size()==0 || nums.size()==1) return nums.size();</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        int res=1;</span><br><span class="line">        int tmp=1;</span><br><span class="line">        int last = nums[0];</span><br><span class="line">        for(int i=1; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            if(nums[i]==nums[i-1])</span><br><span class="line">                continue;</span><br><span class="line">            else if(nums[i]==last+1)&#123;</span><br><span class="line">                tmp += 1;</span><br><span class="line">                last = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res = max(tmp, res);</span><br><span class="line">                tmp = 1;</span><br><span class="line">                last = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res = max(res, tmp);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>使用set，然而效率仍然是o（nlogn）</p>
+<p><a href="https://discuss.leetcode.com/topic/16483/a-simple-c-solution-using-unordered_set-and-simple-consideration-about-this-problem" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16483/a-simple-c-solution-using-unordered_set-and-simple-consideration-about-this-problem</a></p>
+<p>A simple C++,solution using unordered_set.And simple consideration about this problem</p>
+<p>I have seen a lot of discussion about this problem.In my opinion,it is not correct to use set(which is ordered),because very time we insert an element to a ordered set,it will cost O(n),so the total complexity is O(nlogn),which violates the request of the problem.So here we use an unordered_set,and one is enough.</p>
+<p>Besides,to think about this problem,one principle issue we should realize is that usually when we want to reduce the time complexity,we have to increase the space complexity.In this case,if we want to access an element within O(1),we have to use hash table.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestConsecutive(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">        unordered_set&lt;int&gt; record(num.begin(),num.end());</span><br><span class="line">        int res = 1;</span><br><span class="line">        for(int n : num)&#123;</span><br><span class="line">            if(record.find(n)==record.end()) continue;</span><br><span class="line">            record.erase(n);</span><br><span class="line">            int prev = n-1,next = n+1;</span><br><span class="line">            while(record.find(prev)!=record.end()) record.erase(prev--);</span><br><span class="line">            while(record.find(next)!=record.end()) record.erase(next++);</span><br><span class="line">            res = max(res,next-prev-1);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>my code：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestConsecutive(vector&lt;int&gt;&amp; nums)</span><br><span class="line">    &#123;</span><br><span class="line">        unordered_set&lt;int&gt; set(nums.begin(), nums.end());</span><br><span class="line">        int ret = 1;</span><br><span class="line">        for(auto &amp;n: nums)</span><br><span class="line">        &#123;</span><br><span class="line">            if(!set.count(n)) continue;</span><br><span class="line">            set.erase(n); // 删除元素</span><br><span class="line">            int pre=n-1, next=n+1;</span><br><span class="line">            while(set.count(pre)) set.erase(pre--); // set.count(n) 返回匹配给主键的元素的个数</span><br><span class="line">            while(set.count(next)) set.erase(next++);</span><br><span class="line">            ret = max(ret, next-pre-1);</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>使用hashmap</p>
+<p>m[i]表示i为中间值的一段的长度的大小，初始为0</p>
+<p><a href="https://discuss.leetcode.com/topic/5333/possibly-shortest-cpp-solution-only-6-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/5333/possibly-shortest-cpp-solution-only-6-lines</a></p>
+<p>Possibly shortest cpp solution, only 6 lines.</p>
+<p>use a hash map to store boundary information of consecutive sequence for each element; there 4 cases when a new element i reached:</p>
+<ol>
+<li><p>neither i+1 nor i-1 has been seen: m[i]=1;</p>
+</li>
+<li><p>both i+1 and i-1 have been seen: extend m[i+m[i+1]] and m[i-m[i-1]] to each other;</p>
+</li>
+<li><p>only i+1 has been seen: extend m[i+m[i+1]] and m[i] to each other;</p>
+</li>
+<li><p>only i-1 has been seen: extend m[i-m[i-1]] and m[i] to each other.</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int longestConsecutive(vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">	unordered_map&lt;int, int&gt; m;</span><br><span class="line">	int r = 0;</span><br><span class="line">	for (int i : num) &#123;</span><br><span class="line">		if (m[i]) continue;</span><br><span class="line">		r = max(r, m[i] = m[i + m[i + 1]] = m[i - m[i - 1]] = m[i + 1] + m[i - 1] + 1);</span><br><span class="line">	&#125;</span><br><span class="line">	return r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>[num]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> len = <span class="built_in">map</span>[num<span class="number">-1</span>] + <span class="built_in">map</span>[num+<span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="built_in">map</span>[num+<span class="built_in">map</span>[num+<span class="number">1</span>]] = len;</span><br><span class="line">            <span class="built_in">map</span>[num-<span class="built_in">map</span>[num<span class="number">-1</span>]] = len;</span><br><span class="line">            <span class="built_in">map</span>[num] = len;</span><br><span class="line">            res = max(res, len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/6408/13-line-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6408/13-line-c-solution</a></p>
+<p>13-line C++ solution</p>
+<p>Thought I would share it here. May be useful for some one. The algorithm itself is pretty straightforward. But it benefited quite much from the neat expression of C++ idioms. Comments are appreciated!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">int longestConsecutive(const vector&lt;int&gt; &amp;num) &#123;</span><br><span class="line">    unordered_set&lt;int&gt; s(num.begin(), num.end()), searched;</span><br><span class="line">    int longest = 0;</span><br><span class="line">    for (int i: num) &#123;</span><br><span class="line">        if (searched.find(i) != searched.end()) continue;</span><br><span class="line">        searched.insert(i);</span><br><span class="line">        int j = i - 1, k = i + 1;</span><br><span class="line">        while (s.find(j) != s.end()) searched.insert(j--);</span><br><span class="line">        while (s.find(k) != s.end()) searched.insert(k++);</span><br><span class="line">        longest = max(longest, k - 1 - j);</span><br><span class="line">    &#125;</span><br><span class="line">    return longest;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15383/simple-o-n-with-explanation-just-walk-each-streak" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15383/simple-o-n-with-explanation-just-walk-each-streak</a></p>
+<p>Simple O(n) with Explanation - Just walk each streak</p>
+<p>First turn the input into a set of numbers. That takes O(n) and then we can ask in O(1) whether we have a certain number.</p>
+<p>Then go through the numbers. If the number x is the start of a streak (i.e., x-1 is not in the set), then test y = x+1, x+2, x+3, … and stop at the first number y not in the set. The length of the streak is then simply y-x and we update our global best with that. Since we check each streak only once, this is overall O(n). This ran in 44 ms on the OJ, one of the fastest Python submissions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def longestConsecutive(self, nums):</span><br><span class="line">    nums = set(nums)</span><br><span class="line">    best = 0</span><br><span class="line">    for x in nums:</span><br><span class="line">        if x - 1 not in nums:</span><br><span class="line">            y = x + 1</span><br><span class="line">            while y in nums:</span><br><span class="line">                y += 1</span><br><span class="line">            best = max(best, y - x)</span><br><span class="line">    return best</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/10678/python-o-n-solution-using-sets" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/10678/python-o-n-solution-using-sets</a></p>
+<p>Python O(n) solution using sets</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param num, a list of integer</span><br><span class="line">    # @return an integer</span><br><span class="line">    def longestConsecutive(self, num):</span><br><span class="line">        num=set(num)</span><br><span class="line">        maxLen=0</span><br><span class="line">        while num:</span><br><span class="line">            n=num.pop()</span><br><span class="line">            i=n+1</span><br><span class="line">            l1=0</span><br><span class="line">            l2=0</span><br><span class="line">            while i in num:</span><br><span class="line">                num.remove(i)</span><br><span class="line">                i+=1</span><br><span class="line">                l1+=1</span><br><span class="line">            i=n-1</span><br><span class="line">            while i in num:</span><br><span class="line">                num.remove(i)</span><br><span class="line">                i-=1</span><br><span class="line">                l2+=1</span><br><span class="line">            maxLen=max(maxLen,l1+l2+1)</span><br><span class="line">        return maxLen</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/6148/my-really-simple-java-o-n-solution-accepted" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/6148/my-really-simple-java-o-n-solution-accepted</a></p>
+<p>My really simple Java O(n) solution - Accepted</p>
+<p>We will use HashMap. The key thing is to keep track of the sequence length and store that in the boundary points of the sequence. For example, as a result, for sequence {1, 2, 3, 4, 5}, map.get(1) and map.get(5) should both return 5.</p>
+<p>Whenever a new element n is inserted into the map, do two things:</p>
+<ol>
+<li>See if n - 1 and n + 1 exist in the map, and if so, it means there is an existing sequence next to n. Variables left and right will be the length of those two sequences, while 0 means there is no sequence and n will be the boundary point later. Store (left + right + 1) as the associated value to key n into the map.</li>
+<li>Use left and right to locate the other end of the sequences to the left and right of n respectively, and replace the value with the new length.</li>
+</ol>
+<p>Everything inside the for loop is O(1) so the total time is O(n). Please comment if you see something wrong. Thanks.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public int longestConsecutive(int[] num) &#123;</span><br><span class="line">    int res = 0;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">    for (int n : num) &#123;</span><br><span class="line">        if (!map.containsKey(n)) &#123;</span><br><span class="line">            int left = (map.containsKey(n - 1)) ? map.get(n - 1) : 0;</span><br><span class="line">            int right = (map.containsKey(n + 1)) ? map.get(n + 1) : 0;</span><br><span class="line">            // sum: length of the sequence n is in</span><br><span class="line">            int sum = left + right + 1;</span><br><span class="line">            map.put(n, sum);</span><br><span class="line">            </span><br><span class="line">            // keep track of the max length </span><br><span class="line">            res = Math.max(res, sum);</span><br><span class="line">            </span><br><span class="line">            // extend the length to the boundary(s)</span><br><span class="line">            // of the sequence</span><br><span class="line">            // will do nothing if n has no neighbors</span><br><span class="line">            map.put(n - left, sum);</span><br><span class="line">            map.put(n + right, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // duplicates</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/29286/my-java-solution-using-unionfound" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29286/my-java-solution-using-unionfound</a></p>
+<p>My Java Solution using UnionFound</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">        public int longestConsecutive(int[] nums) &#123;</span><br><span class="line">            UF uf = new UF(nums.length);</span><br><span class="line">            Map&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;(); // &lt;value,index&gt;</span><br><span class="line">            for(int i=0; i&lt;nums.length; i++)&#123;</span><br><span class="line">                if(map.containsKey(nums[i]))&#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">                map.put(nums[i],i);</span><br><span class="line">                if(map.containsKey(nums[i]+1))&#123;</span><br><span class="line">                    uf.union(i,map.get(nums[i]+1));</span><br><span class="line">                &#125;</span><br><span class="line">                if(map.containsKey(nums[i]-1))&#123;</span><br><span class="line">                    uf.union(i,map.get(nums[i]-1));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return uf.maxUnion();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    class UF&#123;</span><br><span class="line">        private int[] list;</span><br><span class="line">        public UF(int n)&#123;</span><br><span class="line">            list = new int[n];</span><br><span class="line">            for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">                list[i] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        private int root(int i)&#123;</span><br><span class="line">            while(i!=list[i])&#123;</span><br><span class="line">                list[i] = list[list[i]];</span><br><span class="line">                i = list[i];</span><br><span class="line">            &#125;</span><br><span class="line">            return i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        public boolean connected(int i, int j)&#123;</span><br><span class="line">            return root(i) == root(j);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        public void union(int p, int q)&#123;</span><br><span class="line">          int i = root(p);</span><br><span class="line">          int j = root(q);</span><br><span class="line">          list[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // returns the maxium size of union</span><br><span class="line">        public int maxUnion()&#123; // O(n)</span><br><span class="line">            int[] count = new int[list.length];</span><br><span class="line">            int max = 0;</span><br><span class="line">            for(int i=0; i&lt;list.length; i++)&#123;</span><br><span class="line">                count[root(i)] ++;</span><br><span class="line">                max = Math.max(max, count[root(i)]);</span><br><span class="line">            &#125;</span><br><span class="line">            return max;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/9088/o-n-hashmap-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/9088/o-n-hashmap-java-solution</a></p>
+<p>O(n) HashMap Java Solution</p>
+<p>Use a hashmap to map a number to its longest consecutive sequence length, each time find a new consecutive sequence, only the begin number and end number need to be modified.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int longestConsecutive(int[] num) &#123;</span><br><span class="line">        int longest = 0;</span><br><span class="line">        Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        for(int i = 0;i &lt; num.length;i++)&#123;</span><br><span class="line">            // if there is no duplicates, these two lines can be commented</span><br><span class="line">            if(map.containsKey(num[i])) continue;</span><br><span class="line">            map.put(num[i],1);</span><br><span class="line">            </span><br><span class="line">            int end = num[i];</span><br><span class="line">            int begin = num[i];</span><br><span class="line">            if(map.containsKey(num[i]+1))</span><br><span class="line">                end = num[i] + map.get(num[i]+1);</span><br><span class="line">            if(map.containsKey(num[i]-1))</span><br><span class="line">                begin = num[i] - map.get(num[i]-1);</span><br><span class="line">            longest = Math.max(longest, end-begin+1);</span><br><span class="line">            map.put(end, end-begin+1);</span><br><span class="line">            map.put(begin, end-begin+1);</span><br><span class="line">        &#125;</span><br><span class="line">        return longest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +593,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/union-find/" rel="tag"># union find</a>
+          
+        </div>
       
 
       
@@ -574,8 +688,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +735,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +797,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
