@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,brainteser," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="54.9%  https://leetcode.com/problems/nim-game/#/description You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove">
+<meta name="keywords" content="leetcode,easy,brainteser">
 <meta property="og:type" content="article">
 <meta property="og:title" content="292. Nim Game">
 <meta property="og:url" content="http://yucc.me/p/b77dfaa9/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="54.9%  https://leetcode.com/problems/nim-game/#/description You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.165Z">
+<meta property="og:updated_time" content="2018-05-22T15:39:38.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="292. Nim Game">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="54.9%  https://leetcode.com/problems/nim-game/#/description You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:39:38+08:00">
+                2018-05-22 23:39
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,292
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,79 @@
       
 
       
-        
+        <ul>
+<li>54.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/nim-game/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/nim-game/#/description</a></p>
+<p>You are playing the following Nim Game with your friend: There is a heap of stones on the table, each time one of you take turns to remove 1 to 3 stones. The one who removes the last stone will be the winner. You will take the first turn to remove the stones.</p>
+<p>Both of you are very clever and have optimal strategies for the game. Write a function to determine whether you can win the game given the number of stones in the heap.</p>
+<p>For example, if there are 4 stones in the heap, then you will never win the game: no matter 1, 2, or 3 stones you remove, the last stone will always be removed by your friend.</p>
+<p>Hint:</p>
+<ol>
+<li>If there are 5 stones in the heap, could you figure out a way to remove the stones such that you will always be the winner?</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26999/theorem-all-4s-shall-be-false" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26999/theorem-all-4s-shall-be-false</a></p>
+<p>Theorem: all 4s shall be false</p>
+<p>Theorem: The first one who got the number that is multiple of 4 (i.e. n % 4 == 0) will lost, otherwise he/she will win.</p>
+<p>Proof:</p>
+<ol>
+<li>the base case: when n = 4, as suggested by the hint from the problem, no matter which number that that first player, the second player would always be able to pick the remaining number.</li>
+<li>For 1<em> 4 &lt; n &lt; 2 </em> 4, (n = 5, 6, 7), the first player can reduce the initial number into 4 accordingly, which will leave the death number 4 to the second player. i.e. The numbers 5, 6, 7 are winning numbers for any player who got it first.</li>
+<li>Now to the beginning of the next cycle, n = 8, no matter which number that the first player picks, it would always leave the winning numbers (5, 6, 7) to the second player. Therefore, 8 % 4 == 0, again is a death number.</li>
+<li>Following the second case, for numbers between (2<em>4 = 8) and (3</em>4=12), which are 9, 10, 11, are winning numbers for the first player again, because the first player can always reduce the number into the death number 8.</li>
+</ol>
+<p>Following the above theorem and proof, the solution could not be simpler:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public boolean canWinNim(int n) &#123;    </span><br><span class="line">    return n % 4 != 0 ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27109/one-line-o-1-solution-and-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27109/one-line-o-1-solution-and-explanation</a></p>
+<p>One line O(1) solution and explanation</p>
+<p>suppose there are x stones left for first player (A), he can take 1,2,3 stones away, so second player B will have three cases to deal with (x -1), (x-2), (x-3). after he pick the stones, there will be 9 cases left for A.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B (x-1) -&gt; A: (x-2), (x-3), (x-4)</span><br><span class="line">B (x-2) -&gt; A: (x-3), (x-4), (x-5)</span><br><span class="line">B (x-3) -&gt; A: (x-4), (x-5), (x-6)</span><br></pre></td></tr></table></figure>
+<p>Now, if A can guarantee he win at either of three groups, then he can force B to into that one of the three states and A can end up in that particular group after B’s move.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(x) = (f(x-2)&amp;&amp;f(x-3)&amp;&amp;f(x-4)) || (f(x-3)&amp;&amp;f(x-4)&amp;&amp;f(x-5)) || (f(x-4)&amp;&amp;f(x-5)&amp;&amp;f(x-6))</span><br></pre></td></tr></table></figure>
+<p>if we examine the equation a little closer, we can find f(x - 4) is a critical point, if f(x-4) is false, then f(x) will be always false.</p>
+<p>we can also find out the initial conditions, f(1), f(2), f(3) will be true (A always win), and f(4) will be false. so</p>
+<p>based on previous equation and initial conditions f(5) = f(6) = f(7) = true, f(8) = false;</p>
+<p>obviously, f(1), f(2), f(3) can make all f(4n + 1), f(4n + 2), f(4n + 3) to be true, only f(4n) will be false then.</p>
+<p>so here we go our one line solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (n % 4 != 0);</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28437/1-liner-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28437/1-liner-with-explanations</a></p>
+<p>1 liner with explanations</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def canWinNim(self, n):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type n: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        # strategy: the one with 4 remaining must loose</span><br><span class="line">        # A, B players</span><br><span class="line">        # if n == 4k, then at each round B can make A+B both take 4, </span><br><span class="line">        # eventually leave 4 to A, A lose</span><br><span class="line">        # if n == 4k + i (i &lt;= 3), then A can always take i first and B will</span><br><span class="line">        # finanly lose as he faces above scenario like A</span><br><span class="line"></span><br><span class="line">        return bool(n%4!=0)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27696/1-line-0-ms-c-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27696/1-line-0-ms-c-solution-with-explanation</a></p>
+<p>1 line 0 ms C++ solution with explanation</p>
+<p>Explanation: </p>
+<p>At first this problem might seems a bit tough but it is easy and has a pattern which is as follow. </p>
+<p>I have applied the bottom up dynamic programming approach to fill the array and noticed that only number divisible by 4 are the positions where player1(playing first chance) is losing. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool canWinNim(int n) &#123;</span><br><span class="line">        return n%4 ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Base case : </li>
+</ol>
+<p>If the numbers of stones are 1,2 or 3, then player 1 will win. </p>
+<p>If the numbers of stones are 4, then player 1 will lose irrespective of the number of stones he/she remove</p>
+<p>So lookup table will look like this : W[1]-&gt;W[2]-&gt;W[3]-&gt;L[4]. </p>
+<ol start="2">
+<li>For num_stones=5, the player can either remove 1,2 or 3 stones i.e. the other player (player 2) will win if the number of stones left are 1,2 or 3 and will lose only when the number of stones left are 4 ( see the lookup table in step 1) . </li>
+</ol>
+<p>So, if Player1 remove 1 stone, the number of stones left will be 4, which will defeat player2. So, now the lookup entry for num_stones=5 will be W.</p>
+<p>Lookup now will look like this : W-&gt;W-&gt;W-&gt;L-&gt;W (for player 1-&gt; who is taking the first chance). </p>
+<ol start="3">
+<li><p>Likewise, we can fill the complete lookup table by looking at the values at last three index. If anyone of them is L =&gt; Player 1 will win the game as he will remove only that many number of stones which will bring player 2 to the L position </p>
+</li>
+<li><p>In the end, you will notice that only positions 4-&gt;8-&gt;12-&gt;16 will contain L for player 1 thus answer is simple n%4.</p>
+</li>
+</ol>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30789/if-i-m-a-interviewer-i-prefer-the-candidates-using-burte-force-instead-of-math-method" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30789/if-i-m-a-interviewer-i-prefer-the-candidates-using-burte-force-instead-of-math-method</a></p>
+<p>If I’m a interviewer, I prefer the candidates using burte force instead of math method.</p>
+<p>Because it is a “coding interview”, not acm/icpc or other competitions. Similar to Josephus Cycle, I prefer LinkedList Cycle than Mod-Method during interviews. Here’s a backtraking-dp solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean canWinNim(int n) &#123;</span><br><span class="line">		    if(n&gt;=134882061)&#123;//I have no any other ways,please forgive my unchastity(无节操)!</span><br><span class="line">			   return n%4 != 0;</span><br><span class="line">		    &#125;</span><br><span class="line">		    int[] array=new int[n+1];</span><br><span class="line">	        return dfs(n, array);</span><br><span class="line">	 &#125;</span><br><span class="line">	 public boolean dfs(int n,int[] array)&#123;</span><br><span class="line">		 if(array[n]!=0)&#123;</span><br><span class="line">			 return array[n]==1?true:false;</span><br><span class="line">		 &#125;</span><br><span class="line">		 if(n&lt;=3)&#123;</span><br><span class="line">	        	array[n]=1;</span><br><span class="line">	        	return true;</span><br><span class="line">	        &#125;else&#123;</span><br><span class="line">	        	for(int i=1;i&lt;=3;i++)&#123;</span><br><span class="line">	        		if(!dfs(n-i,array))&#123;</span><br><span class="line">	        			array[n-i]=-1;</span><br><span class="line">	        			array[n]=1;</span><br><span class="line">	        			return true;</span><br><span class="line">	        		&#125;</span><br><span class="line">	        	&#125;</span><br><span class="line">	        	array[n]=-1;</span><br><span class="line">	        	return false;</span><br><span class="line">	        &#125;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +585,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/brainteser/" rel="tag"># brainteser</a>
+          
+        </div>
       
 
       
@@ -612,7 +716,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

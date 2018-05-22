@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hard,heap,design," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="https://leetcode.com/problems/find-median-from-data-stream/#/description Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median">
+<meta name="keywords" content="leetcode,hard,heap,design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="295. Find Median from Data Stream">
 <meta property="og:url" content="http://yucc.me/p/4e6b5bd8/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="https://leetcode.com/problems/find-median-from-data-stream/#/description Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.171Z">
+<meta property="og:updated_time" content="2018-05-22T15:40:14.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="295. Find Median from Data Stream">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="https://leetcode.com/problems/find-median-from-data-stream/#/description Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:40:14+08:00">
+                2018-05-22 23:40
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  2,084
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  13
                 </span>
               
             </div>
@@ -430,7 +452,80 @@
       
 
       
-        
+        <p><a href="https://leetcode.com/problems/find-median-from-data-stream/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/find-median-from-data-stream/#/description</a></p>
+<p>Median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value. So the median is the mean of the two middle value.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Examples: </span><br><span class="line">[2,3,4] , the median is 3</span><br><span class="line"></span><br><span class="line">[2,3], the median is (2 + 3) / 2 = 2.5</span><br></pre></td></tr></table></figure>
+<p>Design a data structure that supports the following two operations:</p>
+<ul>
+<li>void addNum(int num) - Add a integer number from the data stream to the data structure.</li>
+<li>double findMedian() - Return the median of all elements so far.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">addNum(1)</span><br><span class="line">addNum(2)</span><br><span class="line">findMedian() -&gt; 1.5</span><br><span class="line">addNum(3) </span><br><span class="line">findMedian() -&gt; 2</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27521/short-simple-java-c-python-o-log-n-o-1" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27521/short-simple-java-c-python-o-log-n-o-1</a></p>
+<p>Short simple Java/C++/Python, O(log n) + O(1)</p>
+<p>I keep two heaps (or priority queues):</p>
+<ul>
+<li>Max-heap small has the smaller half of the numbers.</li>
+<li>Min-heap large has the larger half of the numbers.</li>
+</ul>
+<p>This gives me direct access to the one or two middle values (they’re the tops of the heaps), so getting the median takes O(1) time. And adding a number takes O(log n) time.</p>
+<p>Supporting both min- and max-heap is more or less cumbersome, depending on the language, so I simply negate the numbers in the heap in which I want the reverse of the default order. To prevent this from causing a bug with -231 (which negated is itself, when using 32-bit ints), I use integer types larger than 32 bits.</p>
+<p>Using larger integer types also prevents an overflow error when taking the mean of the two middle numbers. I think almost all solutions posted previously have that bug.</p>
+<p>Update: These are pretty short already, but by now I wrote <a href="https://leetcode.com/discuss/64910/very-short-o-log-n-o-1" target="_blank" rel="noopener">even shorter ones</a>.</p>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class MedianFinder &#123;</span><br><span class="line"></span><br><span class="line">    private Queue&lt;Long&gt; small = new PriorityQueue(),</span><br><span class="line">                        large = new PriorityQueue();</span><br><span class="line"></span><br><span class="line">    public void addNum(int num) &#123;</span><br><span class="line">        large.add((long) num);</span><br><span class="line">        small.add(-large.poll());</span><br><span class="line">        if (large.size() &lt; small.size())</span><br><span class="line">            large.add(-small.poll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double findMedian() &#123;</span><br><span class="line">        return large.size() &gt; small.size()</span><br><span class="line">               ? large.peek()</span><br><span class="line">               : (large.peek() - small.peek()) / 2.0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Props to <a href="https://leetcode.com/discuss/64842/32ms-easy-to-understand-java-solution" target="_blank" rel="noopener">larrywang2014’s solution</a> for making me aware that I can use Queue in the declaration instead of PriorityQueue (that’s all I got from him, though (just saying because I just saw he changed his previously longer addNum and it’s now equivalent to mine)).</p>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class MedianFinder &#123;</span><br><span class="line">    priority_queue&lt;long&gt; small, large;</span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    void addNum(int num) &#123;</span><br><span class="line">        small.push(num);</span><br><span class="line">        large.push(-small.top());</span><br><span class="line">        small.pop();</span><br><span class="line">        if (small.size() &lt; large.size()) &#123;</span><br><span class="line">            small.push(-large.top());</span><br><span class="line">            large.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    double findMedian() &#123;</span><br><span class="line">        return small.size() &gt; large.size()</span><br><span class="line">               ? small.top()</span><br><span class="line">               : (small.top() - large.top()) / 2.0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Big thanks to jianchao.li.fighter for telling me that C++’s priority_queue is a max-queue (see comments below).</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from heapq import *</span><br><span class="line"></span><br><span class="line">class MedianFinder:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.heaps = [], []</span><br><span class="line"></span><br><span class="line">    def addNum(self, num):</span><br><span class="line">        small, large = self.heaps</span><br><span class="line">        heappush(small, -heappushpop(large, num))</span><br><span class="line">        if len(large) &lt; len(small):</span><br><span class="line">            heappush(large, -heappop(small))</span><br><span class="line"></span><br><span class="line">    def findMedian(self):</span><br><span class="line">        small, large = self.heaps</span><br><span class="line">        if len(large) &gt; len(small):</span><br><span class="line">            return float(large[0])</span><br><span class="line">        return (large[0] - small[0]) / 2.0</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27522/java-python-two-heap-solution-o-log-n-add-o-1-find" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27522/java-python-two-heap-solution-o-log-n-add-o-1-find</a></p>
+<p>Java/Python two heap solution, O(log n) add, O(1) find</p>
+<p>The invariant of the algorithm is two heaps, small and large, each represent half of the current list. The length of smaller half is kept to be n / 2 at all time and the length of the larger half is either n / 2 or n / 2 + 1 depend on n’s parity.</p>
+<p>This way we only need to peek the two heaps’ top number to calculate median.</p>
+<p>Any time before we add a new number, there are two scenarios, (total n numbers, k = n / 2):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1) length of (small, large) == (k, k)</span><br><span class="line">(2) length of (small, large) == (k, k + 1)</span><br></pre></td></tr></table></figure>
+<p>After adding the number, total (n + 1) numbers, they will become:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1) length of (small, large) == (k, k + 1)</span><br><span class="line">(2) length of (small, large) == (k + 1, k + 1)</span><br></pre></td></tr></table></figure>
+<p>Here we take the first scenario for example, we know the large will gain one more item and small will remain the same size, but we cannot just push the item into large. What we should do is we push the new number into small and pop the maximum item from small then push it into large (all the pop and push here are heappop and heappush). By doing this kind of operations for the two scenarios we can keep our invariant.</p>
+<p>Therefore to add a number, we have 3 O(log n) heap operations. Luckily the heapq provided us a function “heappushpop” which saves some time by combine two into one. The document says:</p>
+<p>Push item on the heap, then pop and return the smallest item from the heap. The combined action runs more efficiently than heappush() followed by a separate call to heappop().</p>
+<p>Alltogether, the add operation is O(logn), The findMedian operation is O(1).</p>
+<p>Note that the heapq in python is a min heap, thus we need to invert the values in the smaller half to mimic a “max heap”.</p>
+<p>A further observation is that the two scenarios take turns when adding numbers, thus it is possible to combine the two into one. For this please see stefan’s post</p>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private PriorityQueue&lt;Integer&gt; small = new PriorityQueue&lt;&gt;(Collections.reverseOrder());</span><br><span class="line">private PriorityQueue&lt;Integer&gt; large = new PriorityQueue&lt;&gt;();</span><br><span class="line">private boolean even = true;</span><br><span class="line"></span><br><span class="line">public double findMedian() &#123;</span><br><span class="line">    if (even)</span><br><span class="line">        return (small.peek() + large.peek()) / 2.0;</span><br><span class="line">    else</span><br><span class="line">        return small.peek();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void addNum(int num) &#123;</span><br><span class="line">    if (even) &#123;</span><br><span class="line">        large.offer(num);</span><br><span class="line">        small.offer(large.poll());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        small.offer(num);</span><br><span class="line">        large.offer(small.poll());</span><br><span class="line">    &#125;</span><br><span class="line">    even = !even;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from heapq import *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MedianFinder:</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.small = []  # the smaller half of the list, max heap (invert min-heap)</span><br><span class="line">        self.large = []  # the larger half of the list, min heap</span><br><span class="line"></span><br><span class="line">    def addNum(self, num):</span><br><span class="line">        if len(self.small) == len(self.large):</span><br><span class="line">            heappush(self.large, -heappushpop(self.small, -num))</span><br><span class="line">        else:</span><br><span class="line">            heappush(self.small, -heappushpop(self.large, num))</span><br><span class="line"></span><br><span class="line">    def findMedian(self):</span><br><span class="line">        if len(self.small) == len(self.large):</span><br><span class="line">            return float(self.large[0] - self.small[0]) / 2.0</span><br><span class="line">        else:</span><br><span class="line">            return float(self.large[0])</span><br><span class="line"></span><br><span class="line"># 18 / 18 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 388 ms</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27541/very-short-o-log-n-o-1" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27541/very-short-o-log-n-o-1</a></p>
+<p>Very Short, O(log n) + O(1)</p>
+<p>Same idea as before, but really exploiting the symmetry of the two heaps by switching them whenever a number is added. Still O(log n) for adding and O(1) for median. Partially inspired by peisi’s updated solution.</p>
+<p>Update: Added a new Java version (the first one).</p>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class MedianFinder &#123;</span><br><span class="line">    </span><br><span class="line">    Queue&lt;Integer&gt; q = new PriorityQueue(), z = q, t,</span><br><span class="line">                   Q = new PriorityQueue(Collections.reverseOrder()); </span><br><span class="line"></span><br><span class="line">    public void addNum(int num) &#123;</span><br><span class="line">        (t=Q).add(num);</span><br><span class="line">        (Q=q).add((q=t).poll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double findMedian() &#123;</span><br><span class="line">        return (Q.peek() + z.peek()) / 2.;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Or:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class MedianFinder &#123;</span><br><span class="line"></span><br><span class="line">    Queue[] q = &#123;new PriorityQueue(), new PriorityQueue(Collections.reverseOrder())&#125;;</span><br><span class="line">    int i = 0;</span><br><span class="line"></span><br><span class="line">    public void addNum(int num) &#123;</span><br><span class="line">        q[i].add(num);</span><br><span class="line">        q[i^=1].add(q[i^1].poll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double findMedian() &#123;</span><br><span class="line">        return ((int)(q[1].peek()) + (int)(q[i].peek())) / 2.0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from heapq import *</span><br><span class="line"></span><br><span class="line">class MedianFinder:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.heaps = None, [], []</span><br><span class="line">        self.i = 1</span><br><span class="line"></span><br><span class="line">    def addNum(self, num):</span><br><span class="line">        heappush(self.heaps[-self.i], -heappushpop(self.heaps[self.i], num * self.i))</span><br><span class="line">        self.i *= -1</span><br><span class="line"></span><br><span class="line">    def findMedian(self):</span><br><span class="line">        return (self.heaps[self.i][0] * self.i - self.heaps[-1][0]) / 2.0</span><br></pre></td></tr></table></figure>
+<p>Or:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">from heapq import *</span><br><span class="line"></span><br><span class="line">class MedianFinder:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.data = 1, [], []</span><br><span class="line"></span><br><span class="line">    def addNum(self, num):</span><br><span class="line">        sign, h1, h2 = self.data</span><br><span class="line">        heappush(h2, -heappushpop(h1, num * sign))</span><br><span class="line">        self.data = -sign, h2, h1</span><br><span class="line"></span><br><span class="line">    def findMedian(self):</span><br><span class="line">        sign, h1, h2 = d = self.data</span><br><span class="line">        return (h1[0] * sign - d[-sign][0]) / 2.0</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27613/my-c-priority_queue-based-solution-140-ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27613/my-c-priority_queue-based-solution-140-ms</a></p>
+<p>My C++ priority_queue based solution (140 ms)</p>
+<p>The idea is to use two heaps (one max heap, one mn heap) to save the input data. firstQ is a max_heap to save the first half of the data with smaller values, and secQ is a min_heap to save the second half of the data with bigger values. Everytime when inserting a new value, we first compare if it is smaller than the top of firstQ (the largest value of the first half), if so, insert into firstQ. Otherwise, it belongs to the second half. After inserting, we have to balance the first half and the second half to make sure either they have the same length or the length difference is only 1.<br>The median will be the mean of two top elements (when they have the same length) or the top element of the queue with a larger length.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class MedianFinder &#123;</span><br><span class="line">private:</span><br><span class="line">    priority_queue&lt;int&gt; firstQ; // max_heap for the first half</span><br><span class="line">    priority_queue&lt;int, std::vector&lt;int&gt;, std::greater&lt;int&gt; &gt; secQ; // min_heap for the second half</span><br><span class="line">public:</span><br><span class="line">    // Adds a number into the data structure.</span><br><span class="line">    void addNum(int num) &#123;</span><br><span class="line">        if(firstQ.empty() || (firstQ.top()&gt;num)) firstQ.push(num); // if it belongs to the smaller half</span><br><span class="line">        else secQ.push(num); </span><br><span class="line">        </span><br><span class="line">        // rebalance the two halfs to make sure the length difference is no larger than 1</span><br><span class="line">        if(firstQ.size() &gt; (secQ.size()+1))</span><br><span class="line">        &#123;</span><br><span class="line">            secQ.push(firstQ.top());</span><br><span class="line">            firstQ.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        else if(firstQ.size()+1&lt;secQ.size())</span><br><span class="line">        &#123;</span><br><span class="line">            firstQ.push(secQ.top());</span><br><span class="line">            secQ.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns the median of current data stream</span><br><span class="line">    double findMedian() &#123;</span><br><span class="line">        if(firstQ.size() == secQ.size()) return firstQ.empty()?0:( (firstQ.top()+secQ.top())/2.0);</span><br><span class="line">        else return (firstQ.size() &gt; secQ.size())? firstQ.top():secQ.top(); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27598/solution-using-binary-search-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27598/solution-using-binary-search-tree</a></p>
+<p>Solution using Binary Search Tree</p>
+<p>As the input numbers are random, so the height of the binary search tree is O(logN)</p>
+<p>We maintain every single node’s children’s size and it’s easy to implement because it just has add operation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">struct BST &#123;</span><br><span class="line">    struct node &#123;</span><br><span class="line">        int val;</span><br><span class="line">        int size;</span><br><span class="line">        node* left, *right;</span><br><span class="line">        node(int v) : size(1), val(v) &#123;&#125;;</span><br><span class="line">    &#125; *Null, *root;</span><br><span class="line">    </span><br><span class="line">    BST() &#123;</span><br><span class="line">        Null = new node(0);</span><br><span class="line">        Null -&gt; size = 0;</span><br><span class="line">        root = Null;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void add(int val, node*&amp; R) &#123;</span><br><span class="line">        if(R == Null) &#123;</span><br><span class="line">            R = new node(val);</span><br><span class="line">            R -&gt; left = R -&gt; right = Null;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if(R-&gt;val &lt;= val) add(val, R-&gt;left);</span><br><span class="line">        else add(val, R-&gt;right);</span><br><span class="line">        R-&gt;size = R-&gt;left-&gt;size + R-&gt;right-&gt;size + 1;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int rank(int k) &#123;</span><br><span class="line">        node* t = root;</span><br><span class="line">        while(true) &#123;</span><br><span class="line">            int leftSize =  t -&gt; left -&gt; size;</span><br><span class="line">            if(leftSize == k) return t -&gt; val;</span><br><span class="line">            if(leftSize &gt; k) &#123;</span><br><span class="line">                t = t -&gt; left;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                k = k - leftSize - 1;</span><br><span class="line">                t = t -&gt; right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MedianFinder &#123;</span><br><span class="line">public:</span><br><span class="line">    BST* bst;</span><br><span class="line">    MedianFinder() &#123;</span><br><span class="line">        bst = new BST();</span><br><span class="line">    &#125;</span><br><span class="line">    // Adds a number into the data structure.</span><br><span class="line">    void addNum(int num) &#123;</span><br><span class="line">        bst-&gt;add(num, bst-&gt;root);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // Returns the median of current data stream</span><br><span class="line">    double findMedian() &#123;</span><br><span class="line">        int sz = bst -&gt; root -&gt; size;</span><br><span class="line">        if(sz % 2 == 0) &#123;</span><br><span class="line">            return 1.0 * (bst -&gt; rank(sz / 2) + bst -&gt; rank(sz / 2 - 1)) / 2;</span><br><span class="line">        &#125; else return bst-&gt;rank(sz / 2);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +586,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/heap/" rel="tag"># heap</a>
+          
+            <a href="/tags/design/" rel="tag"># design</a>
+          
+        </div>
       
 
       
@@ -612,7 +719,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

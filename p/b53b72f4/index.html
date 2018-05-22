@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="28.0%  https://leetcode.com/problems/majority-element-ii/description/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time">
+<meta name="keywords" content="leetcode,array,medium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="229. Majority Element II">
 <meta property="og:url" content="http://yucc.me/p/b53b72f4/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="28.0%  https://leetcode.com/problems/majority-element-ii/description/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.118Z">
+<meta property="og:updated_time" content="2018-05-22T15:16:59.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="229. Majority Element II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="28.0%  https://leetcode.com/problems/majority-element-ii/description/ Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:16:59+08:00">
+                2018-05-22 23:16
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,408
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,60 @@
       
 
       
-        
+        <ul>
+<li>28.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/majority-element-ii/description/" target="_blank" rel="noopener">https://leetcode.com/problems/majority-element-ii/description/</a></p>
+<p>Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time and in O(1) space.</p>
+<p>Hint:</p>
+<ul>
+<li>How many majority elements could it possibly have?</li>
+<li>Do you have a better hint? Suggest it!</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p>还没有解决，需要学习下这个解法</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17564/boyer-moore-majority-vote-algorithm-and-my-elaboration" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17564/boyer-moore-majority-vote-algorithm-and-my-elaboration</a></p>
+<p>Boyer-Moore Majority Vote algorithm and my elaboration</p>
+<p>For those who aren’t familiar with Boyer-Moore Majority Vote algorithm,<br>I found a great article (<a href="http://goo.gl/64Nams" target="_blank" rel="noopener">http://goo.gl/64Nams</a>) that helps me to understand this fantastic algorithm!!<br>Please check it out!</p>
+<p>The essential concepts is you keep a counter for the majority number X. If you find a number Y that is not X, the current counter should deduce 1. The reason is that if there is 5 X and 4 Y, there would be one (5-4) more X than Y. This could be explained as “4 X being paired out by 4 Y”.</p>
+<p>And since the requirement is finding the majority for more than ceiling of [n/3], the answer would be less than or equal to two numbers.<br>So we can modify the algorithm to maintain two counters for two majorities.</p>
+<p>Followings are my sample Python code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"># @param &#123;integer[]&#125; nums</span><br><span class="line"># @return &#123;integer[]&#125;</span><br><span class="line">def majorityElement(self, nums):</span><br><span class="line">    if not nums:</span><br><span class="line">        return []</span><br><span class="line">    count1, count2, candidate1, candidate2 = 0, 0, 0, 1</span><br><span class="line">    for n in nums:</span><br><span class="line">        if n == candidate1:</span><br><span class="line">            count1 += 1</span><br><span class="line">        elif n == candidate2:</span><br><span class="line">            count2 += 1</span><br><span class="line">        elif count1 == 0:</span><br><span class="line">            candidate1, count1 = n, 1</span><br><span class="line">        elif count2 == 0:</span><br><span class="line">            candidate2, count2 = n, 1</span><br><span class="line">        else:</span><br><span class="line">            count1, count2 = count1 - 1, count2 - 1</span><br><span class="line">    return [n for n in (candidate1, candidate2)</span><br><span class="line">                    if nums.count(n) &gt; len(nums) // 3]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17396/boyer-moore-majority-vote-algorithm-generalization" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17396/boyer-moore-majority-vote-algorithm-generalization</a></p>
+<p>Boyer-Moore Majority Vote algorithm generalization</p>
+<p>Boyer-Moore Majority Vote algorithm generalization to elements appear more than floor(n/k) times</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">  vector&lt;int&gt; majorityElement(vector&lt;int&gt; &amp;a) &#123;</span><br><span class="line">    int y = 0, z = 1, cy = 0, cz = 0;</span><br><span class="line">    for (auto x: a) &#123;</span><br><span class="line">      if (x == y) cy++;</span><br><span class="line">      else if (x == z) cz++;</span><br><span class="line">      else if (! cy) y = x, cy = 1;</span><br><span class="line">      else if (! cz) z = x, cz = 1;</span><br><span class="line">      else cy--, cz--;</span><br><span class="line">    &#125;</span><br><span class="line">    cy = cz = 0;</span><br><span class="line">    for (auto x: a)</span><br><span class="line">      if (x == y) cy++;</span><br><span class="line">      else if (x == z) cz++;</span><br><span class="line">    vector&lt;int&gt; r;</span><br><span class="line">    if (cy &gt; a.size()/3) r.push_back(y);</span><br><span class="line">    if (cz &gt; a.size()/3) r.push_back(z);</span><br><span class="line">    return r;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17721/my-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17721/my-c-solution</a></p>
+<p>My C++ Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int cnt1 = 0, cnt2 = 0, a=0, b=1;</span><br><span class="line">    </span><br><span class="line">    for(auto n: nums)&#123;</span><br><span class="line">        if (a==n)&#123;</span><br><span class="line">            cnt1++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (b==n)&#123;</span><br><span class="line">            cnt2++;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (cnt1==0)&#123;</span><br><span class="line">            a = n;</span><br><span class="line">            cnt1 = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (cnt2 == 0)&#123;</span><br><span class="line">            b = n;</span><br><span class="line">            cnt2 = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            cnt1--;</span><br><span class="line">            cnt2--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cnt1 = cnt2 = 0;</span><br><span class="line">    for(auto n: nums)&#123;</span><br><span class="line">        if (n==a)   cnt1++;</span><br><span class="line">        else if (n==b)  cnt2++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;int&gt; res;</span><br><span class="line">    if (cnt1 &gt; nums.size()/3)   res.push_back(a);</span><br><span class="line">    if (cnt2 &gt; nums.size()/3)   res.push_back(b);</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23689/my-o-n-time-solution-20ms/3" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23689/my-o-n-time-solution-20ms/3</a></p>
+<p>My O(n) time solution ,20ms</p>
+<p>My idea comes from Majority Vote algroithm,<a href="http://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html.Now" target="_blank" rel="noopener">http://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html.Now</a> we vote two numbers simultaneously. if the next number is differents from them both.then the two numbers’ votes minus one. If some number’s vote comes zero,then vote the next number.Every time vote minus,it is the same that we remove the three numbers from the array.And the majority elemnts of original still are the majority elements in the end. So check t1 and t2 are the majority elements of original array at last.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int t1,t2,n1=0,n2=0;  //numbers t1 and t2,votes&apos; numbers n1,and n2.</span><br><span class="line">        for(int i=0;i&lt;nums.size();++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if(n1!=0&amp;&amp;t1==nums[i])&#123;++n1;continue;&#125; </span><br><span class="line">            if(n2!=0&amp;&amp;t2==nums[i])&#123;++n2;continue;&#125;</span><br><span class="line">            if(n1==0)&#123; t1=nums[i];++n1;continue;&#125;</span><br><span class="line">            if(n2==0)&#123; t2=nums[i];++n2;continue;&#125;</span><br><span class="line">            --n1;--n2;</span><br><span class="line">        &#125;</span><br><span class="line">        int z1=0,z2=0;</span><br><span class="line">        for(int i=0;i&lt;nums.size();++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if(n1&gt;0)&#123; if(nums[i]==t1) ++z1;&#125;</span><br><span class="line">            if(n2&gt;0) &#123;if(nums[i]==t2) ++z2;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;int&gt; ret;</span><br><span class="line">         //check t1 and t2.</span><br><span class="line">        if(z1&gt;nums.size()/3) ret.push_back(t1);</span><br><span class="line">        if(z2&gt;nums.size()/3) ret.push_back(t2);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17409/6-lines-general-case-o-n-time-and-o-k-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17409/6-lines-general-case-o-n-time-and-o-k-space</a></p>
+<p>6 lines, general case O(N) time and O(k) space</p>
+<p>Solution</p>
+<p>I keep up to two candidates in my counter, so this fulfills the O(N) time and O(1) space requirements.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def majorityElement(self, nums):</span><br><span class="line">    ctr = collections.Counter()</span><br><span class="line">    for n in nums:</span><br><span class="line">        ctr[n] += 1</span><br><span class="line">        if len(ctr) == 3:</span><br><span class="line">            ctr -= collections.Counter(set(ctr))</span><br><span class="line">    return [n for n in ctr if nums.count(n) &gt; len(nums)/3]</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>Think of it this way: Find three different votes and hide them. Repeat until there aren’t three different votes left. A number that originally had more than one third of the votes now still has at least one vote, because to hide all of its votes you would’ve had to hide more than three times one third of the votes - more votes than there were. You can easily have false positives, though, so in the end check whether the remaining up to two candidates actually had more than one third of the votes.</p>
+<p>My code does just that: Collect (count) the votes for every number, but remove triples of three different votes on the fly, as soon as we have such a triple.</p>
+<p>Generalization to ⌊N/k⌋, still O(N) time but O(k) space</p>
+<p>For the general problem, looking for elements appearing more than ⌊N/k⌋ times for some positive integer k, I just have to change my 3 to k. Then it already works and takes takes O(k) space and O(kN) time.</p>
+<p>The O(kN) time does not come from the main loop, though. Yes, each ctr -= … does cost k, but I only have to do it at most N/k times. To put it in terms of the above explanation, I can’t hide a vote more than once.</p>
+<p>No, the culprit is my last line, counting each remaining candidate separately. If I count them at the same time, I get O(N) again. Here’s the full generalized code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def majorityElement(self, nums, k):</span><br><span class="line">    ctr = collections.Counter()</span><br><span class="line">    for n in nums:</span><br><span class="line">        ctr[n] += 1</span><br><span class="line">        if len(ctr) == k:</span><br><span class="line">            ctr -= collections.Counter(set(ctr))</span><br><span class="line">    ctr = collections.Counter(n for n in nums if n in ctr)</span><br><span class="line">    return [n for n in ctr if ctr[n] &gt; len(nums)/k]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17473/c-solution-for-elements-appear-more-than-floor-n-k-times" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17473/c-solution-for-elements-appear-more-than-floor-n-k-times</a></p>
+<p>C++ solution for elements appear more than floor(n/k) times</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">   return majorityElement(nums, 3);</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums, const int k) &#123;</span><br><span class="line">    const int size_n = nums.size();</span><br><span class="line">    vector&lt;int&gt; result;</span><br><span class="line">    unordered_map&lt;int, int&gt; cand;</span><br><span class="line">    for (int i = 0; i &lt; size_n; i++) &#123;</span><br><span class="line">        cand[nums[i]]++;</span><br><span class="line">        if (cand.size() == k) &#123;</span><br><span class="line">            for (auto it = cand.begin(); it != cand.end(); ) &#123;</span><br><span class="line">                if (--(it-&gt;second) == 0) it = cand.erase(it);</span><br><span class="line">                else it++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    for (auto&amp; item : cand) item.second = 0;</span><br><span class="line">    for (auto&amp; item : nums) &#123;</span><br><span class="line">        if (cand.count(item) &gt; 0) cand[item]++;</span><br><span class="line">    &#125;</span><br><span class="line">    for (auto&amp; item : cand) &#123;</span><br><span class="line">        if (item.second &gt; size_n / k) result.emplace_back(item.first);</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +566,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+        </div>
       
 
       
@@ -612,7 +697,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

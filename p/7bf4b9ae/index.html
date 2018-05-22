@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,backtracking,design,trie," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="21.1%  Design a data structure that supports the following two operations: 12void addWord(word)bool search(word) search(word) can search a literal word or a regular expression string containing only">
+<meta name="keywords" content="leetcode,medium,backtracking,design,trie">
 <meta property="og:type" content="article">
 <meta property="og:title" content="211. Add and Search Word - Data structure design">
 <meta property="og:url" content="http://yucc.me/p/7bf4b9ae/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="21.1%  Design a data structure that supports the following two operations: 12void addWord(word)bool search(word) search(word) can search a literal word or a regular expression string containing only">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.091Z">
+<meta property="og:updated_time" content="2018-05-22T15:02:41.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="211. Add and Search Word - Data structure design">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="21.1%  Design a data structure that supports the following two operations: 12void addWord(word)bool search(word) search(word) can search a literal word or a regular expression string containing only">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:02:41+08:00">
+                2018-05-22 23:02
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,557
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -430,7 +452,58 @@
       
 
       
-        
+        <ul>
+<li>21.1%</li>
+</ul>
+<p>Design a data structure that supports the following two operations:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void addWord(word)</span><br><span class="line">bool search(word)</span><br></pre></td></tr></table></figure>
+<p>search(word) can search a literal word or a regular expression string containing only letters a-z or .. A . means it can represent any one letter.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">addWord(&quot;bad&quot;)</span><br><span class="line">addWord(&quot;dad&quot;)</span><br><span class="line">addWord(&quot;mad&quot;)</span><br><span class="line">search(&quot;pad&quot;) -&gt; false</span><br><span class="line">search(&quot;bad&quot;) -&gt; true</span><br><span class="line">search(&quot;.ad&quot;) -&gt; true</span><br><span class="line">search(&quot;b..&quot;) -&gt; true</span><br></pre></td></tr></table></figure>
+<p>Note:<br>You may assume that all words are consist of lowercase letters a-z.</p>
+<p>click to show hint.</p>
+<p>You should be familiar with how a Trie works. If not, please work on this problem: Implement Trie (Prefix Tree) first.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15581/80ms-clear-c-code-with-detailed-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15581/80ms-clear-c-code-with-detailed-explanations</a></p>
+<p>80ms Clear C++ Code with Detailed Explanations</p>
+<p>This problem is an application of the Trie data structure. In the following, it is assumed that you have solved Implement Trie (Prefix Tree).</p>
+<p>Now, let’s first look at the TrieNode class. I define it as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isKey;</span><br><span class="line">    TrieNode* children[26];</span><br><span class="line">    TrieNode(): isKey(false) &#123;</span><br><span class="line">        memset(children, NULL, sizeof(TrieNode*) * 26); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>The field isKey is to label whether the string comprised of characters starting from root to the current node is a key (word that has been added). In this problem, only lower-case letters a - z need to be considered, so each TrieNode has at most 26 children. I store it in an array of TrieNode*: children[i] corresponds to letter ‘a’ + i. The remaining code defines the constructor of the TrieNode class.</p>
+<p>Adding a word can be done in the same way as in Implement Trie (Prefix Tree). The basic idea is to create a TrieNode corresponding to each letter in the word. When we are done, label the last node to be a key (set isKey = true). The code is as follows.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void addWord(string word) &#123;</span><br><span class="line">    TrieNode* run = root;</span><br><span class="line">    for (char c : word) &#123;</span><br><span class="line">        if (!(run -&gt; children[c - &apos;a&apos;]))</span><br><span class="line">            run -&gt; children[c - &apos;a&apos;] = new TrieNode();</span><br><span class="line">        run = run -&gt; children[c - &apos;a&apos;]; </span><br><span class="line">    &#125;</span><br><span class="line">    run -&gt; isKey = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>By the way, root is defined as private data of WordDictionary:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private:</span><br><span class="line">    TrieNode* root;</span><br></pre></td></tr></table></figure>
+<p>And the WordDictionary class has a constructor to initialize root:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WordDictionary() &#123;</span><br><span class="line">    root = new TrieNode();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Now we are left only with search. Let’s do it. The basic idea is still the same as typical search operations in a Trie. The critical part is how to deal with the dots .. Well, my solution is very naive in this place. Each time when we reach a ., just traverse all the children of the current node and recursively search the remaining substring in word starting from that children. So I define a helper function query for search that takes in a string and a starting node. And the initial call to query is like query(word, root).</p>
+<p>By the way, I pass a char* instead of string to query and it greatly speeds up the code. So the initial call to query is actually query(word.c_str(), root).</p>
+<p>Now I put all the codes together below. Hope it to be useful!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isKey;</span><br><span class="line">    TrieNode* children[26];</span><br><span class="line">    TrieNode(): isKey(false) &#123;</span><br><span class="line">        memset(children, NULL, sizeof(TrieNode*) * 26);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class WordDictionary &#123;</span><br><span class="line">public:</span><br><span class="line">    WordDictionary() &#123;</span><br><span class="line">        root = new TrieNode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Adds a word into the data structure.</span><br><span class="line">    void addWord(string word) &#123;</span><br><span class="line">        TrieNode* run = root;</span><br><span class="line">        for (char c : word) &#123;</span><br><span class="line">            if (!(run -&gt; children[c - &apos;a&apos;])) </span><br><span class="line">                run -&gt; children[c - &apos;a&apos;] = new TrieNode();</span><br><span class="line">            run = run -&gt; children[c - &apos;a&apos;];</span><br><span class="line">        &#125;</span><br><span class="line">        run -&gt; isKey = true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Returns if the word is in the data structure. A word could</span><br><span class="line">    // contain the dot character &apos;.&apos; to represent any one letter.</span><br><span class="line">    bool search(string word) &#123;</span><br><span class="line">        return query(word.c_str(), root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    TrieNode* root;</span><br><span class="line"></span><br><span class="line">    bool query(const char* word, TrieNode* node) &#123;</span><br><span class="line">        TrieNode* run = node;</span><br><span class="line">        for (int i = 0; word[i]; i++) &#123;</span><br><span class="line">            if (run &amp;&amp; word[i] != &apos;.&apos;)</span><br><span class="line">                run = run -&gt; children[word[i] - &apos;a&apos;];</span><br><span class="line">            else if (run &amp;&amp; word[i] == &apos;.&apos;) &#123; </span><br><span class="line">                TrieNode* tmp = run;</span><br><span class="line">                for (int j = 0; j &lt; 26; j++) &#123;</span><br><span class="line">                    run = tmp -&gt; children[j];</span><br><span class="line">                    if (query(word + i + 1, run))</span><br><span class="line">                        return true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else break;</span><br><span class="line">        &#125;</span><br><span class="line">        return run &amp;&amp; run -&gt; isKey; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// Your WordDictionary object will be instantiated and called as such:</span><br><span class="line">// WordDictionary wordDictionary;</span><br><span class="line">// wordDictionary.addWord(&quot;word&quot;);</span><br><span class="line">// wordDictionary.search(&quot;pattern&quot;);</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18578/c-using-trie-and-dfs-for-search-easy-understand-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18578/c-using-trie-and-dfs-for-search-easy-understand-solution</a></p>
+<p>C++ using Trie and DFS for search. easy understand solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">struct Trie &#123;</span><br><span class="line">     vector&lt;Trie *&gt; child;</span><br><span class="line">     bool isWord;</span><br><span class="line">     Trie() : isWord(false), child(vector&lt;Trie *&gt;(26, nullptr)) &#123;&#125;</span><br><span class="line"> &#125;;</span><br><span class="line"> Trie *root;</span><br><span class="line"> WordDictionary() : root(new Trie()) &#123;&#125;</span><br><span class="line"></span><br><span class="line">void addWord(string word) &#123;</span><br><span class="line">    const int size_w = word.size();</span><br><span class="line">    Trie *cur = root;</span><br><span class="line">    for (int i = 0; i &lt; size_w; i++) &#123;</span><br><span class="line">        int index = word[i] - &apos;a&apos;;</span><br><span class="line">        if (!cur-&gt;child[index]) cur-&gt;child[index] = new Trie();</span><br><span class="line">        cur = cur-&gt;child[index];</span><br><span class="line">    &#125;</span><br><span class="line">    cur-&gt;isWord = true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool search(string word) &#123;</span><br><span class="line">    return search(word.c_str(), root);</span><br><span class="line">&#125;</span><br><span class="line">bool search(const char *ch, TrieNode *cur) &#123;</span><br><span class="line">    if (!cur) return false;</span><br><span class="line">    if (*ch == &apos;\0&apos;) return cur-&gt;isWord;</span><br><span class="line">    if (*ch != &apos;.&apos;) &#123;</span><br><span class="line">         return search(ch+1, cur-&gt;child[*ch - &apos;a&apos;]);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int i = 0; i &lt;= 25; i++) &#123;</span><br><span class="line">            if (search(ch+1, cur-&gt;child[i])) return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/29809/python-168ms-beat-100-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29809/python-168ms-beat-100-solution</a></p>
+<p>Python 168ms-beat-100% solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class WordDictionary(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.word_dict = collections.defaultdict(list)</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    def addWord(self, word):</span><br><span class="line">        if word:</span><br><span class="line">            self.word_dict[len(word)].append(word)</span><br><span class="line"></span><br><span class="line">    def search(self, word):</span><br><span class="line">        if not word:</span><br><span class="line">            return False</span><br><span class="line">        if &apos;.&apos; not in word:</span><br><span class="line">            return word in self.word_dict[len(word)]</span><br><span class="line">        for v in self.word_dict[len(word)]:</span><br><span class="line">            # match xx.xx.x with yyyyyyy</span><br><span class="line">            for i, ch in enumerate(word):</span><br><span class="line">                if ch != v[i] and ch != &apos;.&apos;:</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return True</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<p>The search function could be done in a more pythonic way, but I see that performance has suffered so I just wrote the raw logic by myself.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14216/tree-solutions-18-20-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14216/tree-solutions-18-20-lines</a></p>
+<p>Tree solutions, 18-20 lines</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class WordDictionary:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.root = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    def addWord(self, word):</span><br><span class="line">        node = self.root</span><br><span class="line">        for char in word:</span><br><span class="line">            node = node.setdefault(char, &#123;&#125;)</span><br><span class="line">        node[None] = None</span><br><span class="line"></span><br><span class="line">    def search(self, word):</span><br><span class="line">        def find(word, node):</span><br><span class="line">            if not word:</span><br><span class="line">                return None in node</span><br><span class="line">            char, word = word[0], word[1:]</span><br><span class="line">            if char != &apos;.&apos;:</span><br><span class="line">                return char in node and find(word, node[char])</span><br><span class="line">            return any(find(word, kid) for kid in node.values() if kid)</span><br><span class="line">        return find(word, self.root)</span><br></pre></td></tr></table></figure>
+<p>An iterative alternative for the search method:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def search(self, word):</span><br><span class="line">    nodes = [self.root]</span><br><span class="line">    for char in word:</span><br><span class="line">        nodes = [kid</span><br><span class="line">                 for node in nodes</span><br><span class="line">                 for key, kid in node.items()</span><br><span class="line">                 if char in (key, &apos;.&apos;) and kid]</span><br><span class="line">    return any(None in node for node in nodes)</span><br></pre></td></tr></table></figure>
+<p>And one that’s a bit longer but faster:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def search(self, word):</span><br><span class="line">    nodes = [self.root]</span><br><span class="line">    for char in word:</span><br><span class="line">        nodes = [kid for node in nodes for kid in</span><br><span class="line">                 ([node[char]] if char in node else</span><br><span class="line">                  filter(None, node.values()) if char == &apos;.&apos; else [])]</span><br><span class="line">    return any(None in node for node in nodes)</span><br></pre></td></tr></table></figure>
+<p>And a neat version where I append my end-marker to the word to simplify the final check:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class WordDictionary:</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.root = &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    def addWord(self, word):</span><br><span class="line">        node = self.root</span><br><span class="line">        for char in word:</span><br><span class="line">            node = node.setdefault(char, &#123;&#125;)</span><br><span class="line">        node[&apos;$&apos;] = None</span><br><span class="line"></span><br><span class="line">    def search(self, word):</span><br><span class="line">        nodes = [self.root]</span><br><span class="line">        for char in word + &apos;$&apos;:</span><br><span class="line">            nodes = [kid for node in nodes for kid in</span><br><span class="line">                     ([node[char]] if char in node else</span><br><span class="line">                      filter(None, node.values()) if char == &apos;.&apos; else [])]</span><br><span class="line">        return bool(nodes)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26944/python-solution-recursive-version-dfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26944/python-solution-recursive-version-dfs</a></p>
+<p>Python solution recursive version (DFS)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class TrieNode(object):</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line">    self.word = False</span><br><span class="line">    self.children = &#123;&#125;</span><br><span class="line">class WordDictionary(object):</span><br><span class="line"></span><br><span class="line">def __init__(self):</span><br><span class="line">    self.root = TrieNode()</span><br><span class="line"></span><br><span class="line">def addWord(self, word):</span><br><span class="line">    node = self.root</span><br><span class="line">    for c in word:</span><br><span class="line">        if c not in node.children:</span><br><span class="line">            node.children[c] = TrieNode()</span><br><span class="line">        node = node.children[c]</span><br><span class="line">    node.word = True</span><br><span class="line"></span><br><span class="line">def search(self, word):</span><br><span class="line">    return self.searchFrom(self.root, word)</span><br><span class="line"></span><br><span class="line">def searchFrom(self, node, word):</span><br><span class="line">    for i in xrange(len(word)):</span><br><span class="line">        c = word[i]</span><br><span class="line">        if c == &apos;.&apos;:</span><br><span class="line">            for k in node.children:</span><br><span class="line">                if self.searchFrom(node.children[k], word[i+1:]):</span><br><span class="line">                    return True</span><br><span class="line">            return False</span><br><span class="line">        elif c not in node.children:</span><br><span class="line">            return False</span><br><span class="line">        node = node.children[c]</span><br><span class="line">    return node.word</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +564,20 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+            <a href="/tags/design/" rel="tag"># design</a>
+          
+            <a href="/tags/trie/" rel="tag"># trie</a>
+          
+        </div>
       
 
       
@@ -612,7 +699,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="51.8%  https://leetcode.com/problems/invert-binary-tree/#/description 12345678910111213Invert a binary tree.     4   /   \  2     7 / \   / \1   3 6   9to     4   /   \  7     2 / \   / \9   6 3   1">
+<meta name="keywords" content="leetcode,easy,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="226. Invert Binary Tree">
 <meta property="og:url" content="http://yucc.me/p/f3118605/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="51.8%  https://leetcode.com/problems/invert-binary-tree/#/description 12345678910111213Invert a binary tree.     4   /   \  2     7 / \   / \1   3 6   9to     4   /   \  7     2 / \   / \9   6 3   1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.115Z">
+<meta property="og:updated_time" content="2018-05-22T15:13:51.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="226. Invert Binary Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="51.8%  https://leetcode.com/problems/invert-binary-tree/#/description 12345678910111213Invert a binary tree.     4   /   \  2     7 / \   / \1   3 6   9to     4   /   \  7     2 / \   / \9   6 3   1">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:13:51+08:00">
+                2018-05-22 23:13
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,246
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,61 @@
       
 
       
-        
+        <ul>
+<li>51.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/invert-binary-tree/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/invert-binary-tree/#/description</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Invert a binary tree.</span><br><span class="line"></span><br><span class="line">     4</span><br><span class="line">   /   \</span><br><span class="line">  2     7</span><br><span class="line"> / \   / \</span><br><span class="line">1   3 6   9</span><br><span class="line">to</span><br><span class="line">     4</span><br><span class="line">   /   \</span><br><span class="line">  7     2</span><br><span class="line"> / \   / \</span><br><span class="line">9   6 3   1</span><br></pre></td></tr></table></figure>
+<p>Trivia:</p>
+<p>This problem was inspired by this original tweet by Max Howell:</p>
+<p>Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so fuck off.</p>
+<a id="more"></a>
+<hr>
+<p>对应剑指offer 19题</p>
+<p>三种方法：递归、DFS、BFS</p>
+<p>方法一：递归</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final TreeNode left = root.left,</span><br><span class="line">                right = root.right;</span><br><span class="line">        root.left = invertTree(right);</span><br><span class="line">        root.right = invertTree(left);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span> root;</span><br><span class="line">        TreeNode* left = invertTree(root-&gt;left);</span><br><span class="line">        TreeNode* right = invertTree(root-&gt;right);</span><br><span class="line">        root-&gt;left = right;</span><br><span class="line">        root-&gt;right = left;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> root;</span><br><span class="line">        TreeNode* left = invertTree(root-&gt;left);</span><br><span class="line">        TreeNode* right = invertTree(root-&gt;right);</span><br><span class="line">        root-&gt;right = left;</span><br><span class="line">        root-&gt;left = right;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：DFS，使用栈作为辅助，使用栈的方法是把root压入栈，栈不为空时，弹出当前栈顶，针对栈顶的左右节点进行反转，若左非空，左压入，右非空，右压入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final Deque&lt;TreeNode&gt; stack = new LinkedList&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        </span><br><span class="line">        while(!stack.isEmpty()) &#123;</span><br><span class="line">            final TreeNode node = stack.pop();</span><br><span class="line">            final TreeNode left = node.left;</span><br><span class="line">            node.left = node.right;</span><br><span class="line">            node.right = left;</span><br><span class="line">            </span><br><span class="line">            if(node.left != null) &#123;</span><br><span class="line">                stack.push(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            if(node.right != null) &#123;</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>BFS，层序遍历的方法，注意，要把层序当做先序，中序，后续遍历一样普通和容易想到的方法。</p>
+<p>层序遍历，具体cpp实现，还需要再思考。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line"></span><br><span class="line">        while(!queue.isEmpty()) &#123;</span><br><span class="line">            final TreeNode node = queue.poll();</span><br><span class="line">            final TreeNode left = node.left;</span><br><span class="line">            node.left = node.right;</span><br><span class="line">            node.right = left;</span><br><span class="line"></span><br><span class="line">            if(node.left != null) &#123;</span><br><span class="line">                queue.offer(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            if(node.right != null) &#123;</span><br><span class="line">                queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16138/recursive-and-non-recursive-c-both-4ms/3" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16138/recursive-and-non-recursive-c-both-4ms/3</a></p>
+<p>Recursive and non-recursive C++ both 4ms</p>
+<p>Recursive</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* invertTree(TreeNode* root) &#123;</span><br><span class="line">    if (root) &#123;</span><br><span class="line">        invertTree(root-&gt;left);</span><br><span class="line">        invertTree(root-&gt;right);</span><br><span class="line">        std::swap(root-&gt;left, root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Non-Recursive</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TreeNode* invertTree(TreeNode* root) &#123;</span><br><span class="line">    std::stack&lt;TreeNode*&gt; stk;</span><br><span class="line">    stk.push(root);</span><br><span class="line">    </span><br><span class="line">    while (!stk.empty()) &#123;</span><br><span class="line">        TreeNode* p = stk.top();</span><br><span class="line">        stk.pop();</span><br><span class="line">        if (p) &#123;</span><br><span class="line">            stk.push(p-&gt;left);</span><br><span class="line">            stk.push(p-&gt;right);</span><br><span class="line">            std::swap(p-&gt;left, p-&gt;right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16062/3-4-lines-python/4" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16062/3-4-lines-python/4</a></p>
+<p>3-4 lines Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def invertTree(self, root):</span><br><span class="line">    if root:</span><br><span class="line">        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)</span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<p>Maybe make it four lines for better readability:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def invertTree(self, root):</span><br><span class="line">    if root:</span><br><span class="line">        invert = self.invertTree</span><br><span class="line">        root.left, root.right = invert(root.right), invert(root.left)</span><br><span class="line">        return root</span><br></pre></td></tr></table></figure>
+<p>And an iterative version using my own stack:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def invertTree(self, root):</span><br><span class="line">    stack = [root]</span><br><span class="line">    while stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        if node:</span><br><span class="line">            node.left, node.right = node.right, node.left</span><br><span class="line">            stack += node.left, node.right</span><br><span class="line">    return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21271/python-solutions-recursively-dfs-bfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21271/python-solutions-recursively-dfs-bfs</a></p>
+<p>Python solutions (recursively, dfs, bfs).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># recursively</span><br><span class="line">def invertTree1(self, root):</span><br><span class="line">    if root:</span><br><span class="line">        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)</span><br><span class="line">        return root</span><br><span class="line">        </span><br><span class="line"># BFS</span><br><span class="line">def invertTree2(self, root):</span><br><span class="line">    queue = collections.deque([(root)])</span><br><span class="line">    while queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        if node:</span><br><span class="line">            node.left, node.right = node.right, node.left</span><br><span class="line">            queue.append(node.left)</span><br><span class="line">            queue.append(node.right)</span><br><span class="line">    return root</span><br><span class="line">    </span><br><span class="line"># DFS</span><br><span class="line">def invertTree(self, root):</span><br><span class="line">    stack = [root]</span><br><span class="line">    while stack:</span><br><span class="line">        node = stack.pop()</span><br><span class="line">        if node:</span><br><span class="line">            node.left, node.right = node.right, node.left</span><br><span class="line">            stack.extend([node.right, node.left])</span><br><span class="line">    return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/16039/straightforward-dfs-recursive-iterative-bfs-solutions/3" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/16039/straightforward-dfs-recursive-iterative-bfs-solutions/3</a></p>
+<p>Straightforward DFS recursive, iterative, BFS solutions</p>
+<p>As in many other cases this problem has more than one possible solutions:</p>
+<p>Lets start with straightforward - recursive DFS - it’s easy to write and pretty much concise.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final TreeNode left = root.left,</span><br><span class="line">                right = root.right;</span><br><span class="line">        root.left = invertTree(right);</span><br><span class="line">        root.right = invertTree(left);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The above solution is correct, but it is also bound to the application stack, which means that it’s no so much scalable - (you can find the problem size that will overflow the stack and crash your application), so more robust solution would be to use stack data structure.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final Deque&lt;TreeNode&gt; stack = new LinkedList&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line">        </span><br><span class="line">        while(!stack.isEmpty()) &#123;</span><br><span class="line">            final TreeNode node = stack.pop();</span><br><span class="line">            final TreeNode left = node.left;</span><br><span class="line">            node.left = node.right;</span><br><span class="line">            node.right = left;</span><br><span class="line">            </span><br><span class="line">            if(node.left != null) &#123;</span><br><span class="line">                stack.push(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            if(node.right != null) &#123;</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Finally we can easly convert the above solution to BFS - or so called level order traversal.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public TreeNode invertTree(TreeNode root) &#123;</span><br><span class="line">        </span><br><span class="line">        if (root == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line"></span><br><span class="line">        while(!queue.isEmpty()) &#123;</span><br><span class="line">            final TreeNode node = queue.poll();</span><br><span class="line">            final TreeNode left = node.left;</span><br><span class="line">            node.left = node.right;</span><br><span class="line">            node.right = left;</span><br><span class="line"></span><br><span class="line">            if(node.left != null) &#123;</span><br><span class="line">                queue.offer(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            if(node.right != null) &#123;</span><br><span class="line">                queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>If I can write this code, does it mean I can get job at Google? ;)</p>
+
       
     </div>
     
@@ -491,6 +567,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+        </div>
       
 
       
@@ -612,7 +698,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

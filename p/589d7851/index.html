@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,binary search,tree," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="42.7%  https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description Given a binary search tree, write a function kthSmallest to find the kth smallest element in it. Note:  You may assume">
+<meta name="keywords" content="leetcode,medium,binary search,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="230. Kth Smallest Element in a BST">
 <meta property="og:url" content="http://yucc.me/p/589d7851/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="42.7%  https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description Given a binary search tree, write a function kthSmallest to find the kth smallest element in it. Note:  You may assume">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.122Z">
+<meta property="og:updated_time" content="2018-05-22T15:17:32.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="230. Kth Smallest Element in a BST">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="42.7%  https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description Given a binary search tree, write a function kthSmallest to find the kth smallest element in it. Note:  You may assume">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:17:32+08:00">
+                2018-05-22 23:17
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,218
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,68 @@
       
 
       
-        
+        <ul>
+<li>42.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/kth-smallest-element-in-a-bst/#/description</a></p>
+<p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+<p>Note: </p>
+<p>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
+<p>Follow up:</p>
+<p>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
+<p>Hint:</p>
+<ol>
+<li>Try to utilize the property of a BST.</li>
+<li>What if you could modify the BST node’s structure?</li>
+<li>The optimal runtime complexity is O(height of BST).</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>中序遍历后，BST的结果是从小至大排列的。</p>
+<p>方法一：中序遍历，保存至数组，然后取第k个。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int kthSmallest(TreeNode* root, int k) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        return res[k-1];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void inorder(TreeNode* root, vector&lt;int&gt;&amp; res)&#123;</span><br><span class="line">        if(root)&#123;</span><br><span class="line">            inorder(root-&gt;left, res);</span><br><span class="line">            res.push_back(root-&gt;val);</span><br><span class="line">            inorder(root-&gt;right, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        inorder(root, res);</span><br><span class="line">        <span class="keyword">if</span>(k&lt;<span class="number">0</span> || k&gt;res.size())</span><br><span class="line">            <span class="keyword">return</span>  <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> res[k<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inorder</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root)&#123;</span><br><span class="line">            inorder(root-&gt;left, res);</span><br><span class="line">            res.push_back(root-&gt;val);</span><br><span class="line">            inorder(root-&gt;right, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>传入参数引用， 一次遍历。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int kthSmallest(TreeNode* root, int k) &#123;</span><br><span class="line">    return find(root, k);</span><br><span class="line">&#125;</span><br><span class="line">int find(TreeNode* root, int&amp; k) &#123;</span><br><span class="line">    if (root) &#123;</span><br><span class="line">        int x = find(root-&gt;left, k);</span><br><span class="line">        return !k ? x : !--k ? root-&gt;val : find(root-&gt;right, k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(root, k); <span class="comment">// heler函数就是找到第k个并返回</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="keyword">int</span>&amp; k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root)&#123;</span><br><span class="line">            <span class="keyword">int</span> x = helper(root-&gt;left, k);</span><br><span class="line">            <span class="keyword">if</span>(k==<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> x;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(--k==<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> root-&gt;val;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> helper(root-&gt;right, k);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17573/4-lines-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17573/4-lines-in-c</a></p>
+<p>4 Lines in C++.</p>
+<p>Go inorder and decrease k at each node. Stop the whole search as soon as k is zero, and then the k-th element is immediately returned all the way to the recursion top and to the original caller.</p>
+<p>Try the left subtree first. If that made k zero, then its answer is the overall answer and we return it right away. Otherwise, decrease k for the current node, and if that made k zero, then we return the current node’s value right away. Otherwise try the right subtree and return whatever comes back from there.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int kthSmallest(TreeNode* root, int&amp; k) &#123;</span><br><span class="line">    if (root) &#123;</span><br><span class="line">        int x = kthSmallest(root-&gt;left, k);</span><br><span class="line">        return !k ? x : !--k ? root-&gt;val : kthSmallest(root-&gt;right, k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>You might notice that I changed k from int to int&amp; because I didn’t feel like adding a helper just for that and the OJ doesn’t mind. Oh well, here is that now:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int kthSmallest(TreeNode* root, int k) &#123;</span><br><span class="line">    return find(root, k);</span><br><span class="line">&#125;</span><br><span class="line">int find(TreeNode* root, int&amp; k) &#123;</span><br><span class="line">    if (root) &#123;</span><br><span class="line">        int x = find(root-&gt;left, k);</span><br><span class="line">        return !k ? x : !--k ? root-&gt;val : find(root-&gt;right, k);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18689/share-my-c-iterative-alg" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18689/share-my-c-iterative-alg</a></p>
+<p>Share my C++ iterative ALG.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int kthSmallest(TreeNode* root, int k) &#123;</span><br><span class="line">        stack&lt;TreeNode *&gt; st;</span><br><span class="line">        TreeNode *p = root;</span><br><span class="line">        while(p || !st.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            while(p)</span><br><span class="line">            &#123;</span><br><span class="line">                st.push(p);</span><br><span class="line">                p = p-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            p = st.top();</span><br><span class="line">            if(--k == 0)</span><br><span class="line">                return p-&gt;val;</span><br><span class="line">            st.pop();</span><br><span class="line">            p = p-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17577/c-solution-using-in-order-traversal" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17577/c-solution-using-in-order-traversal</a></p>
+<p>C++ solution using in order traversal</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void inorder(TreeNode* root, vector&lt;int&gt; &amp;res)&#123;</span><br><span class="line">        if(!root)</span><br><span class="line">            return;</span><br><span class="line">        inorder(root-&gt;left, res);</span><br><span class="line">        res.push_back(root-&gt;val);</span><br><span class="line">        inorder(root-&gt;right,res);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    int kthSmallest(TreeNode* root, int k) &#123;</span><br><span class="line">        if(!root)</span><br><span class="line">            return -1;</span><br><span class="line">        vector&lt;int&gt; arr;</span><br><span class="line">        inorder(root, arr);</span><br><span class="line">        return arr[k-1];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>108ms, 27.49%, June.17th, 2016</p>
+<p><a href="https://leetcode.com/discuss/44731/pythonic-approach-with-generator" target="_blank" rel="noopener">https://leetcode.com/discuss/44731/pythonic-approach-with-generator</a></p>
+<p>Pythonic approach with generator</p>
+<p>With generator in python, one very straightforward solution might be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;TreeNode&#125; root</span><br><span class="line">    # @param &#123;integer&#125; k</span><br><span class="line">    # @return &#123;integer&#125;</span><br><span class="line">    def kthSmallest(self, root, k):</span><br><span class="line">        for val in self.inorder(root):</span><br><span class="line">            if k == 1:</span><br><span class="line">                return val</span><br><span class="line">            else:</span><br><span class="line">                k -= 1</span><br><span class="line">        </span><br><span class="line">    def inorder(self, root):</span><br><span class="line">        if root is not None:</span><br><span class="line">            for val in self.inorder(root.left):</span><br><span class="line">                yield val</span><br><span class="line">            yield root.val</span><br><span class="line">            for val in self.inorder(root.right):</span><br><span class="line">                yield val</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/37222/python-easy-iterative-and-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37222/python-easy-iterative-and-recursive-solution</a></p>
+<p>Python Easy Iterative and Recursive Solution</p>
+<p>Recursive:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def kthSmallest(self, root, k):</span><br><span class="line">    self.k = k</span><br><span class="line">    self.res = None</span><br><span class="line">    self.helper(root)</span><br><span class="line">    return self.res</span><br><span class="line"></span><br><span class="line">def helper(self, node):</span><br><span class="line">    if not node:</span><br><span class="line">        return</span><br><span class="line">    self.helper(node.left)</span><br><span class="line">    self.k -= 1</span><br><span class="line">    if self.k == 0:</span><br><span class="line">        self.res = node.val</span><br><span class="line">        return</span><br><span class="line">    self.helper(node.right)</span><br></pre></td></tr></table></figure>
+<p>Iterative:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def kthSmallest(root, k):</span><br><span class="line">    stack = []</span><br><span class="line">    while root or stack:</span><br><span class="line">        while root:</span><br><span class="line">            stack.append(root)</span><br><span class="line">            root = root.left</span><br><span class="line">        root = stack.pop()</span><br><span class="line">        k -= 1</span><br><span class="line">        if k == 0:</span><br><span class="line">            return root.val</span><br><span class="line">        root = root.right</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17583/python-solution-using-iteration" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17583/python-solution-using-iteration</a></p>
+<p>Python Solution using iteration</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">        # @param &#123;TreeNode&#125; root</span><br><span class="line">        # @param &#123;integer&#125; k</span><br><span class="line">        # @return &#123;integer&#125;</span><br><span class="line">        def kthSmallest(self, root, k):</span><br><span class="line">            i=0</span><br><span class="line">            stack=[]</span><br><span class="line">            node=root</span><br><span class="line">            while node or stack:</span><br><span class="line">                while node:</span><br><span class="line">                    stack.append(node)</span><br><span class="line">                    node=node.left</span><br><span class="line">                node=stack.pop()</span><br><span class="line">                i+=1</span><br><span class="line">                if i==k:</span><br><span class="line">                    return node.val</span><br><span class="line">                node=node.right</span><br></pre></td></tr></table></figure>
+<p>For the follow up question, I think we could add a variable to the TreeNode to record the size of the left subtree. When insert or delete a node in the left subtree, we increase or decrease it by 1. So we could know whether the kth smallest element is in the left subtree or in the right subtree by compare the size with k.</p>
+
       
     </div>
     
@@ -491,6 +574,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+        </div>
       
 
       
@@ -612,7 +707,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="38.4%  https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST">
+<meta name="keywords" content="leetcode,easy,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="235. Lowest Common Ancestor of a Binary Search Tree">
 <meta property="og:url" content="http://yucc.me/p/6e0230a7/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="38.4%  https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.130Z">
+<meta property="og:updated_time" content="2018-05-22T15:23:00.066Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="235. Lowest Common Ancestor of a Binary Search Tree">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="38.4%  https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:23:00+08:00">
+                2018-05-22 23:23
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,215
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,64 @@
       
 
       
-        
+        <ul>
+<li>38.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/#/description</a></p>
+<p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tmp</span><br><span class="line">        _______6______</span><br><span class="line">       /              \</span><br><span class="line">    ___2__          ___8__</span><br><span class="line">   /      \        /      \</span><br><span class="line">   0      _4       7       9</span><br><span class="line">         /  \</span><br><span class="line">         3   5</span><br></pre></td></tr></table></figure>
+<p>For example, the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18614/easy-c-recursive-and-iterative-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18614/easy-c-recursive-and-iterative-solutions</a></p>
+<p>Easy C++ Recursive and Iterative Solutions</p>
+<p>方法一：</p>
+<p>Well, remember to take advantage of the property of binary search trees, which is, node -&gt; left -&gt; val &lt; node -&gt; val &lt; node -&gt; right -&gt; val. Moreover, both p and q will be the descendants of the root of the subtree that contains both of them. And the root with the largest depth is just the lowest common ancestor. This idea can be turned into the following simple recursive code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line">        if (p -&gt; val &lt; root -&gt; val &amp;&amp; q -&gt; val &lt; root -&gt; val)</span><br><span class="line">            return lowestCommonAncestor(root -&gt; left, p, q);</span><br><span class="line">        if (p -&gt; val &gt; root -&gt; val &amp;&amp; q -&gt; val &gt; root -&gt; val)</span><br><span class="line">            return lowestCommonAncestor(root -&gt; right, p, q);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;val &lt; root-&gt;val &amp;&amp; q-&gt;val &lt; root-&gt;val) <span class="keyword">return</span> lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;val &gt; root-&gt;val &amp;&amp; q-&gt;val &gt; root-&gt;val) <span class="keyword">return</span> lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>Of course, we can also solve it iteratively.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123; </span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line">        TreeNode* cur = root;</span><br><span class="line">        while (true) &#123;</span><br><span class="line">            if (p -&gt; val &lt; cur -&gt; val &amp;&amp; q -&gt; val &lt; cur -&gt; val)</span><br><span class="line">                cur = cur -&gt; left;</span><br><span class="line">            else if (p -&gt; val &gt; cur -&gt; val &amp;&amp; q -&gt; val &gt; cur -&gt; val)</span><br><span class="line">                cur = cur -&gt; right;</span><br><span class="line">            else return cur; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>使用236的方法</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">NULL</span> || root==p || root==q) <span class="keyword">return</span> root;</span><br><span class="line">        TreeNode* l = lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">        TreeNode* r = lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">if</span>(l &amp;&amp; r)</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">return</span> l?l:r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>3 lines with O(1) space, 1-Liners, Alternatives</p>
+<p>Just walk down from the whole tree’s root as long as both p and q are in the same subtree (meaning their values are both smaller or both larger than root’s). This walks straight from the root to the LCA, not looking at the rest of the tree, so it’s pretty much as fast as it gets. A few ways to do it:</p>
+<p>Iterative, O(1) space</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    while (root.val - p.val) * (root.val - q.val) &gt; 0:</span><br><span class="line">        root = (root.left, root.right)[p.val &gt; root.val]</span><br><span class="line">    return root</span><br></pre></td></tr></table></figure>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</span><br><span class="line">    while ((root.val - p.val) * (root.val - q.val) &gt; 0)</span><br><span class="line">        root = p.val &lt; root.val ? root.left : root.right;</span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(in case of overflow, I’d do (root.val - (long)p.val) * (root.val - (long)q.val))</p>
+<p>Different Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    a, b = sorted([p.val, q.val])</span><br><span class="line">    while not a &lt;= root.val &lt;= b:</span><br><span class="line">        root = (root.left, root.right)[a &gt; root.val]</span><br><span class="line">    return root</span><br></pre></td></tr></table></figure>
+<p>“Long” Python, maybe easiest to understand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    while root:</span><br><span class="line">        if p.val &lt; root.val &gt; q.val:</span><br><span class="line">            root = root.left</span><br><span class="line">        elif p.val &gt; root.val &lt; q.val:</span><br><span class="line">            root = root.right</span><br><span class="line">        else:</span><br><span class="line">            return root</span><br></pre></td></tr></table></figure>
+<p>Recursive</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    next = p.val &lt; root.val &gt; q.val and root.left or \</span><br><span class="line">           p.val &gt; root.val &lt; q.val and root.right</span><br><span class="line">    return self.lowestCommonAncestor(next, p, q) if next else root</span><br></pre></td></tr></table></figure>
+<p>Python One-Liner</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    return root if (root.val - p.val) * (root.val - q.val) &lt; 1 else \</span><br><span class="line">           self.lowestCommonAncestor((root.left, root.right)[p.val &gt; root.val], p, q)</span><br></pre></td></tr></table></figure>
+<p>Java One-Liner</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</span><br><span class="line">    return (root.val - p.val) * (root.val - q.val) &lt; 1 ? root :</span><br><span class="line">           lowestCommonAncestor(p.val &lt; root.val ? root.left : root.right, p, q);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“Long” Python, maybe easiest to understand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    if p.val &lt; root.val &gt; q.val:</span><br><span class="line">        return self.lowestCommonAncestor(root.left, p, q)</span><br><span class="line">    if p.val &gt; root.val &lt; q.val:</span><br><span class="line">        return self.lowestCommonAncestor(root.right, p, q)</span><br><span class="line">    return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22095/c-solution-40ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22095/c-solution-40ms</a></p>
+<p>C++ solution . 40ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;</span><br><span class="line">        if(!root)&#123;</span><br><span class="line">            return NULL;</span><br><span class="line">        &#125;</span><br><span class="line">        // check if the current value is larger than both nodes , go left</span><br><span class="line">        if(p-&gt;val &lt; root-&gt;val &amp;&amp; q-&gt;val &lt; root-&gt;val)&#123;</span><br><span class="line">            lowestCommonAncestor(root-&gt;left , p , q);</span><br><span class="line">         // go right</span><br><span class="line">        &#125;else if(p-&gt;val &gt; root-&gt;val &amp;&amp; q-&gt;val &gt; root-&gt;val)&#123;</span><br><span class="line">            lowestCommonAncestor(root-&gt;right , p , q);</span><br><span class="line">        &#125;// my LCA </span><br><span class="line">        else&#123;</span><br><span class="line">            return root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18438/python-iterative-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18438/python-iterative-solution</a></p>
+<p>Python Iterative Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"></span><br><span class="line">def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">    while root:</span><br><span class="line">        if root.val &gt; p.val and root.val &gt; q.val:</span><br><span class="line">            root = root.left</span><br><span class="line">        elif root.val &lt; p.val and root.val &lt; q.val:</span><br><span class="line">            root = root.right</span><br><span class="line">        else:</span><br><span class="line">            return root</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19536/my-python-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19536/my-python-recursive-solution</a></p>
+<p>My Python recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;TreeNode&#125; root</span><br><span class="line">    # @param &#123;TreeNode&#125; p</span><br><span class="line">    # @param &#123;TreeNode&#125; q</span><br><span class="line">    # @return &#123;TreeNode&#125;</span><br><span class="line">    def lowestCommonAncestor(self, root, p, q):</span><br><span class="line">        if not root or not p or not q:</span><br><span class="line">            return None</span><br><span class="line">        if (max(p.val, q.val) &lt; root.val):</span><br><span class="line">            return self.lowestCommonAncestor(root.left, p, q)</span><br><span class="line">        elif (min(p.val, q.val) &gt; root.val):</span><br><span class="line">            return self.lowestCommonAncestor(root.right, p, q)</span><br><span class="line">        else:</span><br><span class="line">            return root</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +570,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+        </div>
       
 
       
@@ -612,7 +701,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

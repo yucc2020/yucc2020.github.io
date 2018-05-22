@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hash table,easy,sort," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="45.4%  https://leetcode.com/problems/valid-anagram/?tab=Description Given two strings s and t, write a function to determine if t is an anagram of s. 123For example,s = &amp;quot;anagram&amp;quot;, t = &amp;quot">
+<meta name="keywords" content="leetcode,hash table,easy,sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="242. Valid Anagram">
 <meta property="og:url" content="http://yucc.me/p/da56d9f0/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="45.4%  https://leetcode.com/problems/valid-anagram/?tab=Description Given two strings s and t, write a function to determine if t is an anagram of s. 123For example,s = &amp;quot;anagram&amp;quot;, t = &amp;quot">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.141Z">
+<meta property="og:updated_time" content="2018-05-22T15:27:51.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="242. Valid Anagram">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="45.4%  https://leetcode.com/problems/valid-anagram/?tab=Description Given two strings s and t, write a function to determine if t is an anagram of s. 123For example,s = &amp;quot;anagram&amp;quot;, t = &amp;quot">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:27:51+08:00">
+                2018-05-22 23:27
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  866
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,52 @@
       
 
       
-        
+        <ul>
+<li>45.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/valid-anagram/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/valid-anagram/?tab=Description</a></p>
+<p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line">s = &quot;anagram&quot;, t = &quot;nagaram&quot;, return true.</span><br><span class="line">s = &quot;rat&quot;, t = &quot;car&quot;, return false.</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>You may assume the string contains only lowercase alphabets.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/20303/2-c-solutions-with-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20303/2-c-solutions-with-explanations</a></p>
+<p>2 C++ Solutions with Explanations</p>
+<p>方法一:</p>
+<p>Hash Table</p>
+<p>This idea uses a hash table to record the times of appearances of each letter in the two strings s and t. For each letter in s, it increases the counter by 1 while for each letter in t, it decreases the counter by 1. Finally, all the counters will be 0 if they two are anagrams of each other.</p>
+<p>The first implementation uses the built-in unordered_map and takes 36 ms.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isAnagram(string s, string t) &#123;</span><br><span class="line">        if (s.length() != t.length()) return false;</span><br><span class="line">        int n = s.length();</span><br><span class="line">        unordered_map&lt;char, int&gt; counts;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            counts[s[i]]++;</span><br><span class="line">            counts[t[i]]--;</span><br><span class="line">        &#125;</span><br><span class="line">        for (auto count : counts)</span><br><span class="line">            if (count.second) return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>Since the problem statement says that “the string contains only lowercase alphabets”, we can simply use an array to simulate the unordered_map and speed up the code. The following implementation takes 12 ms.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isAnagram(string s, string t) &#123;</span><br><span class="line">        if (s.length() != t.length()) return false;</span><br><span class="line">        int n = s.length();</span><br><span class="line">        int counts[26] = &#123;0&#125;;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123; </span><br><span class="line">            counts[s[i] - &apos;a&apos;]++;</span><br><span class="line">            counts[t[i] - &apos;a&apos;]--;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; 26; i++)</span><br><span class="line">            if (counts[i]) return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isAnagram(string s, string t) &#123;</span><br><span class="line">        int m = s.size();</span><br><span class="line">        int n = t.size();</span><br><span class="line">        if(n&lt;m)</span><br><span class="line">            return false;</span><br><span class="line">        vector&lt;int&gt; tmp(26, 0);</span><br><span class="line">        for(auto str:s)</span><br><span class="line">            tmp[str-&apos;a&apos;]++;</span><br><span class="line">        for(auto str:t)&#123;</span><br><span class="line">            if(tmp[str-&apos;a&apos;]--==0)</span><br><span class="line">                return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法三：</p>
+<p>Sorting</p>
+<p>For two anagrams, once they are sorted in a fixed order, they will become the same. This code is much shorter (this idea can be done in just 1 line using Python as here). However, it takes much longer time — 76 ms in C++.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isAnagram(string s, string t) &#123; </span><br><span class="line">        sort(s.begin(), s.end());</span><br><span class="line">        sort(t.begin(), t.end());</span><br><span class="line">        return s == t; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/20831/python-solutions-sort-and-dictionary" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20831/python-solutions-sort-and-dictionary</a></p>
+<p>Python solutions (sort and dictionary).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def isAnagram1(self, s, t):</span><br><span class="line">    dic1, dic2 = &#123;&#125;, &#123;&#125;</span><br><span class="line">    for item in s:</span><br><span class="line">        dic1[item] = dic1.get(item, 0) + 1</span><br><span class="line">    for item in t:</span><br><span class="line">        dic2[item] = dic2.get(item, 0) + 1</span><br><span class="line">    return dic1 == dic2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def isAnagram2(self, s, t):</span><br><span class="line">    dic1, dic2 = [0]*26, [0]*26</span><br><span class="line">    for item in s:</span><br><span class="line">        dic1[ord(item)-ord(&apos;a&apos;)] += 1</span><br><span class="line">    for item in t:</span><br><span class="line">        dic2[ord(item)-ord(&apos;a&apos;)] += 1</span><br><span class="line">    return dic1 == dic2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def isAnagram3(self, s, t):</span><br><span class="line">    return sorted(s) == sorted(t)</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23973/0ms-c-solution-o-n-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23973/0ms-c-solution-o-n-time</a></p>
+<p>0ms C++solution,O(n)time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">bool isAnagram(string s, string t) &#123;</span><br><span class="line">    int alp[26]=&#123;&#125;;</span><br><span class="line">    for (int i = 0; i &lt; s.length(); i++) </span><br><span class="line">        alp[s.at(i) - &apos;a&apos;]++;</span><br><span class="line">    for (int i = 0; i &lt; t.length(); i++)</span><br><span class="line">        alp[t.at(i) - &apos;a&apos;]--;</span><br><span class="line">    for (int i=0;i&lt;26;i++)</span><br><span class="line">        if (alp[i] != 0) </span><br><span class="line">            return false;</span><br><span class="line">        return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/20485/share-my-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20485/share-my-java-solution</a></p>
+<p>Share my java solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isAnagram(String s, String t) &#123;</span><br><span class="line">        if(s.length()!=t.length())&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        int[] count = new int[26];</span><br><span class="line">        for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            count[s.charAt(i)-&apos;a&apos;]++;</span><br><span class="line">            count[t.charAt(i)-&apos;a&apos;]--;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i:count)&#123;</span><br><span class="line">            if(i!=0)&#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/20314/accepted-java-o-n-solution-in-5-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20314/accepted-java-o-n-solution-in-5-lines</a></p>
+<p>Accepted Java O(n) solution in 5 lines</p>
+<p>The idea is simple. It creates a size 26 int arrays as buckets for each letter in alphabet. It increments the bucket value with String s and decrement with string t. So if they are anagrams, all buckets should remain with initial value which is zero. So just checking that and return</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean isAnagram(String s, String t) &#123;</span><br><span class="line">        int[] alphabet = new int[26];</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) alphabet[s.charAt(i) - &apos;a&apos;]++;</span><br><span class="line">        for (int i = 0; i &lt; t.length(); i++) alphabet[t.charAt(i) - &apos;a&apos;]--;</span><br><span class="line">        for (int i : alphabet) if (i != 0) return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +558,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
       
 
       
@@ -612,7 +691,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

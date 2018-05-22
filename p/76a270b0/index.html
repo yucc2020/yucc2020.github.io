@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium,backtracking," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="43.2%  https://leetcode.com/problems/combination-sum-iii/description/ Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each c">
+<meta name="keywords" content="leetcode,array,medium,backtracking">
 <meta property="og:type" content="article">
 <meta property="og:title" content="216. Combination Sum III">
 <meta property="og:url" content="http://yucc.me/p/76a270b0/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="43.2%  https://leetcode.com/problems/combination-sum-iii/description/ Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.098Z">
+<meta property="og:updated_time" content="2018-05-22T15:06:51.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="216. Combination Sum III">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="43.2%  https://leetcode.com/problems/combination-sum-iii/description/ Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each c">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:06:51+08:00">
+                2018-05-22 23:06
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,111
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  7
                 </span>
               
             </div>
@@ -430,7 +452,60 @@
       
 
       
-        
+        <ul>
+<li>43.2%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/combination-sum-iii/description/" target="_blank" rel="noopener">https://leetcode.com/problems/combination-sum-iii/description/</a></p>
+<p>Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: k = 3, n = 7</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">[[1,2,4]]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: k = 3, n = 9</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">[[1,2,6], [1,3,5], [2,3,4]]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>回溯法，我的代码实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum3(<span class="keyword">int</span> k, <span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; combination;</span><br><span class="line">        helper(k, n, <span class="number">1</span>, combination, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> target, <span class="keyword">int</span> start, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; combination, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(target==<span class="number">0</span> &amp;&amp; k==<span class="number">0</span>)&#123;</span><br><span class="line">            res.push_back(combination);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(k&lt;=<span class="number">0</span> || target&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=start; i&lt;<span class="number">10</span>; i++)&#123;</span><br><span class="line">            combination.push_back(i);</span><br><span class="line">            helper(k<span class="number">-1</span>, target-i, i+<span class="number">1</span>, combination, res);</span><br><span class="line">            combination.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Use backtrack c++ solution, easy to understand.</p>
+<p>下段代码值得借鉴的是backtrack的判断条件</p>
+<p>i&lt;=10-k &amp;&amp; i&lt;=target</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt;&gt; combinationSum3(int k, int n) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; result;</span><br><span class="line">    vector&lt;int&gt; path;</span><br><span class="line">    backtrack(result, path, 1, k, n);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void backtrack(vector&lt;vector&lt;int&gt;&gt; &amp;result, vector&lt;int&gt; &amp;path, int start, int k, int target)&#123;</span><br><span class="line">    if(target==0&amp;&amp;k==0)&#123;</span><br><span class="line">        result.push_back(path);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=start;i&lt;=10-k&amp;&amp;i&lt;=target;i++)&#123;</span><br><span class="line">        path.push_back(i);</span><br><span class="line">        backtrack(result,path,i+1,k-1,target-i);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14641/my-c-solution-backtracking" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14641/my-c-solution-backtracking</a></p>
+<p>My C++ solution, backtracking.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">  void combination(vector&lt;vector&lt;int&gt;&gt;&amp; result, vector&lt;int&gt; sol, int k, int n) &#123;</span><br><span class="line">    if (sol.size() == k &amp;&amp; n == 0) &#123; result.push_back(sol); return ; &#125;</span><br><span class="line">    if (sol.size() &lt; k) &#123;</span><br><span class="line">      for (int i = sol.empty() ? 1 : sol.back() + 1; i &lt;= 9; ++i) &#123;</span><br><span class="line">        if (n - i &lt; 0) break;</span><br><span class="line">        sol.push_back(i);</span><br><span class="line">        combination(result, sol, k, n - i);</span><br><span class="line">        sol.pop_back();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  vector&lt;vector&lt;int&gt;&gt; combinationSum3(int k, int n) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; result;</span><br><span class="line">    vector&lt;int&gt; sol;</span><br><span class="line">    combination(result, sol, k, n);</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25351/use-backtrack-c-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25351/use-backtrack-c-solution-easy-to-understand</a></p>
+<p>Use backtrack c++ solution, easy to understand.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;vector&lt;int&gt;&gt; combinationSum3(int k, int n) &#123;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; result;</span><br><span class="line">    vector&lt;int&gt; path;</span><br><span class="line">    backtrack(result, path, 1, k, n);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void backtrack(vector&lt;vector&lt;int&gt;&gt; &amp;result, vector&lt;int&gt; &amp;path, int start, int k, int target)&#123;</span><br><span class="line">    if(target==0&amp;&amp;k==0)&#123;</span><br><span class="line">        result.push_back(path);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i=start;i&lt;=10-k&amp;&amp;i&lt;=target;i++)&#123;</span><br><span class="line">        path.push_back(i);</span><br><span class="line">        backtrack(result,path,i+1,k-1,target-i);</span><br><span class="line">        path.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>52ms, 43.32%, June.18th, 2016</p>
+<p><a href="https://leetcode.com/discuss/38132/concise-python-solution-using-dfs" target="_blank" rel="noopener">https://leetcode.com/discuss/38132/concise-python-solution-using-dfs</a></p>
+<p>Concise python solution using DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;integer&#125; k</span><br><span class="line">    # @param &#123;integer&#125; n</span><br><span class="line">    # @return &#123;integer[][]&#125;</span><br><span class="line">    def combinationSum3(self, k, n):</span><br><span class="line">        if n &gt; sum([i for i in range(1, 11)]):</span><br><span class="line">            return []</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        self.sum_help(k, n, 1, [], res)</span><br><span class="line">        return res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def sum_help(self, k, n, curr, arr, res):</span><br><span class="line">        if len(arr) == k:</span><br><span class="line">            if sum(arr) == n:</span><br><span class="line">                res.append(list(arr))</span><br><span class="line">            return</span><br><span class="line"></span><br><span class="line">        if len(arr) &gt; k or curr &gt; 9:</span><br><span class="line">            return</span><br><span class="line">        </span><br><span class="line">        for i in range(curr, 10):</span><br><span class="line">            arr.append(i)</span><br><span class="line">            self.sum_help(k, n, i + 1, arr, res)</span><br><span class="line">            arr.pop()</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/14702/clean-1-6-7-liners-ac" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/14702/clean-1-6-7-liners-ac</a></p>
+<p>Clean 1/6/7-liners (AC)</p>
+<p>Batteries Included</p>
+<p>AC in 44ms</p>
+<p>First the obligatory “use the darn library” solution. Create all k-combinations of digits and keep those with sum n:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def combinationSum3(self, k, n):</span><br><span class="line">        return [c for c in combinations(range(1, 10), k) if sum(c) == n]</span><br></pre></td></tr></table></figure>
+<p>Recursive</p>
+<p>AC in 48 ms</p>
+<p>But it’s more interesting to do it on your own. Here I use a recursive helper function getting the same k and n as the main function, and an additional cap under which all the numbers have to be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum3(self, k, n):</span><br><span class="line">        def combs(k, n, cap):</span><br><span class="line">            if not k:</span><br><span class="line">                return [[]] * (not n)</span><br><span class="line">            return [comb + [last]</span><br><span class="line">                    for last in range(1, cap)</span><br><span class="line">                    for comb in combs(k-1, n-last, last)]</span><br><span class="line">        return combs(k, n, 10)</span><br></pre></td></tr></table></figure>
+<p>Iterative</p>
+<p>AC in 56 ms</p>
+<p>And an iterative version doing pretty much the same thing, except this time I prepend elements on the left, and use the first element of a partial combination as the cap.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum3(self, k, n):</span><br><span class="line">        combs = [[]]</span><br><span class="line">        for _ in range(k):</span><br><span class="line">            combs = [[first] + comb</span><br><span class="line">                     for comb in combs</span><br><span class="line">                     for first in range(1, comb[0] if comb else 10)]</span><br><span class="line">        return [c for c in combs if sum(c) == n]</span><br></pre></td></tr></table></figure>
+<p>Reduce</p>
+<p>AC in 44 ms</p>
+<p>And here’s a “one-liner” version of the iterative solution using reduce instead of the loop:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum3(self, k, n):</span><br><span class="line">        return [c for c in</span><br><span class="line">                reduce(lambda combs, _: [[first] + comb</span><br><span class="line">                                         for comb in combs</span><br><span class="line">                                         for first in range(1, comb[0] if comb else 10)],</span><br><span class="line">                       range(k), [[]])</span><br><span class="line">                if sum(c) == n]</span><br></pre></td></tr></table></figure>
+<p>I note that all these solutions also correctly solve the cases with k=0 and/or n=0 (but leetcode sadly doesn’t test those).</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19100/easy-to-understand-python-solution-backtracking" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19100/easy-to-understand-python-solution-backtracking</a></p>
+<p>Easy to understand Python solution (backtracking).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def combinationSum3(self, k, n):</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(xrange(1,10), k, n, 0, [], res)</span><br><span class="line">    return res</span><br><span class="line">    </span><br><span class="line">def dfs(self, nums, k, n, index, path, res):</span><br><span class="line">    if k &lt; 0 or n &lt; 0: # backtracking </span><br><span class="line">        return </span><br><span class="line">    if k == 0 and n == 0: </span><br><span class="line">        res.append(path)</span><br><span class="line">    for i in xrange(index, len(nums)):</span><br><span class="line">        self.dfs(nums, k-1, n-nums[i], i+1, path+[nums[i]], res)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +566,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+        </div>
       
 
       
@@ -612,7 +699,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

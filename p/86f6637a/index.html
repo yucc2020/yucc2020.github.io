@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,binary search tree," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="19.3%  https://leetcode.com/problems/contains-duplicate-iii/?tab=Description Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute di">
+<meta name="keywords" content="leetcode,medium,binary search tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="220. Contains Duplicate III">
 <meta property="og:url" content="http://yucc.me/p/86f6637a/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="19.3%  https://leetcode.com/problems/contains-duplicate-iii/?tab=Description Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute di">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.106Z">
+<meta property="og:updated_time" content="2018-05-22T15:09:24.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="220. Contains Duplicate III">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="19.3%  https://leetcode.com/problems/contains-duplicate-iii/?tab=Description Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute di">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:09:24+08:00">
+                2018-05-22 23:09
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,976
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -430,7 +452,72 @@
       
 
       
-        
+        <ul>
+<li>19.3%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/contains-duplicate-iii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/contains-duplicate-iii/?tab=Description</a></p>
+<p>Given an array of integers, find out whether there are two distinct indices i and j in the array such that the absolute difference between nums[i] and nums[j] is at most t and the absolute difference between i and j is at most k.</p>
+<a id="more"></a>
+<hr>
+<p>需要思考</p>
+<p>方法一：</p>
+<p>因为需要有序，所以使用的set，set也有lower_bound相关函数</p>
+<p>学习set，排序的set，学习low_bound函数使用</p>
+<p>比较直接，使用了lower_bound, upper_bound</p>
+<p>如果要存在，肯定在两者之间</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsNearbyAlmostDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty() || k&lt;=<span class="number">0</span> || t&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// 对于int，经常出现溢出，不如long long</span></span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; <span class="built_in">set</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> num = nums[i];</span><br><span class="line">            <span class="keyword">auto</span> itlow = <span class="built_in">set</span>.lower_bound(num-t);</span><br><span class="line">            <span class="keyword">auto</span> itup = <span class="built_in">set</span>.upper_bound(num+t);</span><br><span class="line">            <span class="comment">// 此处的迭代器没有 &lt; </span></span><br><span class="line">            <span class="keyword">if</span>(itlow!=itup)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">set</span>.insert(num);</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">set</span>.size()==k+<span class="number">1</span>)</span><br><span class="line">                <span class="built_in">set</span>.erase(nums[i-k]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>下面的算法有一定的公式推导，但是也比较简单，原理是一致的。</p>
+<p><a href="https://discuss.leetcode.com/topic/18453/c-using-set-less-10-lines-with-simple-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18453/c-using-set-less-10-lines-with-simple-explanation</a></p>
+<p>C++ using set (less 10 lines), with simple explanation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bool containsNearbyAlmostDuplicate(vector&lt;int&gt;&amp; nums, int k, int t) &#123;</span><br><span class="line">    set&lt;int&gt; window; // set is ordered automatically </span><br><span class="line">    for (int i = 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">        if (i &gt; k) window.erase(nums[i-k-1]); // keep the set contains nums i j at most k</span><br><span class="line">        // |x - nums[i]| &lt;= t  ==&gt; -t &lt;= x - nums[i] &lt;= t;</span><br><span class="line">        auto pos = window.lower_bound(nums[i] - t); // x-nums[i] &gt;= -t ==&gt; x &gt;= nums[i]-t </span><br><span class="line">        // x - nums[i] &lt;= t ==&gt; |x - nums[i]| &lt;= t    </span><br><span class="line">        if (pos != window.end() &amp;&amp; *pos - nums[i] &lt;= t) return true;</span><br><span class="line">        window.insert(nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15468/i-finally-got-ac-in-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15468/i-finally-got-ac-in-c</a></p>
+<p>I finally got AC in C++</p>
+<p>Using a set container to keep the k+1-length array,which all elements are distinct.Before the container’s size reached k+1, we just find the first element that is not less than [nums[i]-t] and judge the element’s value whether it is less than [nums[i]+t]. Starting to move forward by erasing the head and adding element at the backend after the container’s size reached k+1. The existence of the first element ,which is not less than [nums[i]-t] and less than [nums[i]+t], is the prerequisite of existing other eligible elements.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bool containsNearbyAlmostDuplicate(vector&lt;int&gt;&amp; nums, int k, int t)</span><br><span class="line">    &#123;</span><br><span class="line">    		if (!k || t&lt;0 || nums.size()&lt;2)</span><br><span class="line">        		return false;</span><br><span class="line">        	set&lt;int&gt;record;                   </span><br><span class="line">        	auto nLen = nums.size();</span><br><span class="line">        	for (int i = 0; i &lt; nLen;++i)</span><br><span class="line">        	&#123;</span><br><span class="line">        		if (i&gt;k)</span><br><span class="line">        			record.erase(nums[i - k - 1]);         </span><br><span class="line">        		set&lt;int&gt;::iterator lower = record.lower_bound(nums[i] - t);</span><br><span class="line">        		if (lower != record.end() &amp;&amp; abs(nums[i] - *lower) &lt;= t)</span><br><span class="line">        			return true;</span><br><span class="line">        </span><br><span class="line">        		record.insert(nums[i]);</span><br><span class="line">        	&#125;</span><br><span class="line">        	return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15172/accept-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15172/accept-c-solution</a></p>
+<p>Accept C++ Solution</p>
+<p>My idea is to preserve a sliding window containing nearest k numbers, and check if next number collides to the numbers in the window.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsNearbyAlmostDuplicate(vector&lt;int&gt;&amp; nums, int k, int t) &#123;</span><br><span class="line">        if (nums.size() &lt; 2 || k == 0)</span><br><span class="line">            return false;</span><br><span class="line">        deque&lt;int&gt; windows_deq;</span><br><span class="line">        multiset&lt;long&gt; windows;</span><br><span class="line">        for (int i = 0; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            if (windows.size() &gt; k) &#123;</span><br><span class="line">                int num = windows_deq.front();</span><br><span class="line">                windows_deq.pop_front();</span><br><span class="line">                windows.erase(windows.find(num));</span><br><span class="line">            &#125;</span><br><span class="line">            auto it = windows.lower_bound((long)nums[i] - (long)t);</span><br><span class="line">            if (it == windows.end() || *it &gt; (long)nums[i] + (long)t) &#123;</span><br><span class="line">                // not found</span><br><span class="line">                windows_deq.push_back(nums[i]);</span><br><span class="line">                windows.insert(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            else return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/27608/java-python-one-pass-solution-o-n-time-o-n-space-using-buckets" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27608/java-python-one-pass-solution-o-n-time-o-n-space-using-buckets</a></p>
+<p>The idea is like the bucket sort algorithm. Suppose we have consecutive buckets covering the range of nums with each bucket a width of (t+1). If there are two item with difference &lt;= t, one of the two will happen:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(1) the two in the same bucket</span><br><span class="line">(2) the two in neighbor buckets</span><br></pre></td></tr></table></figure>
+<p>For detailed explanation see my blog <a href="http://algobox.org/contains-duplicate-iii/" target="_blank" rel="noopener">here</a></p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def containsNearbyAlmostDuplicate(self, nums, k, t):</span><br><span class="line">    if t &lt; 0: return False</span><br><span class="line">    n = len(nums)</span><br><span class="line">    d = &#123;&#125;</span><br><span class="line">    w = t + 1</span><br><span class="line">    for i in xrange(n):</span><br><span class="line">        m = nums[i] / w</span><br><span class="line">        if m in d:</span><br><span class="line">            return True</span><br><span class="line">        if m - 1 in d and abs(nums[i] - d[m - 1]) &lt; w:</span><br><span class="line">            return True</span><br><span class="line">        if m + 1 in d and abs(nums[i] - d[m + 1]) &lt; w:</span><br><span class="line">            return True</span><br><span class="line">        d[m] = nums[i]</span><br><span class="line">        if i &gt;= k: del d[nums[i - k] / w]</span><br><span class="line">    return False</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 30 / 30 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 56 ms</span><br><span class="line"># 93.81%</span><br></pre></td></tr></table></figure>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">private long getID(long i, long w) &#123;</span><br><span class="line">    return i &lt; 0 ? (i + 1) / w - 1 : i / w;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123;</span><br><span class="line">    if (t &lt; 0) return false;</span><br><span class="line">    Map&lt;Long, Long&gt; d = new HashMap&lt;&gt;();</span><br><span class="line">    long w = (long)t + 1;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; ++i) &#123;</span><br><span class="line">        long m = getID(nums[i], w);</span><br><span class="line">        if (d.containsKey(m))</span><br><span class="line">            return true;</span><br><span class="line">        if (d.containsKey(m - 1) &amp;&amp; Math.abs(nums[i] - d.get(m - 1)) &lt; w)</span><br><span class="line">            return true;</span><br><span class="line">        if (d.containsKey(m + 1) &amp;&amp; Math.abs(nums[i] - d.get(m + 1)) &lt; w)</span><br><span class="line">            return true;</span><br><span class="line">        d.put(m, (long)nums[i]);</span><br><span class="line">        if (i &gt;= k) d.remove(getID(nums[i - k], w));</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19991/o-n-python-using-buckets-with-explanation-10-lines" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19991/o-n-python-using-buckets-with-explanation-10-lines</a></p>
+<p>O(n) Python using buckets with explanation, 10 lines.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def containsNearbyAlmostDuplicate(self, nums, k, t):</span><br><span class="line">    # Bucket sort. Each bucket has size of t. For each number, the possible</span><br><span class="line">    # candidate can only be in the same bucket or the two buckets besides.</span><br><span class="line">    # Keep as many as k buckets to ensure that the difference is at most k.</span><br><span class="line">    buckets = &#123;&#125;</span><br><span class="line">    for i, v in enumerate(nums):</span><br><span class="line">        # t == 0 is a special case where we only have to check the bucket</span><br><span class="line">        # that v is in.</span><br><span class="line">        bucketNum, offset = (v / t, 1) if t else (v, 0)</span><br><span class="line">        for idx in xrange(bucketNum - offset, bucketNum + offset + 1):</span><br><span class="line">            if idx in buckets and abs(buckets[idx] - nums[i]) &lt;= t:</span><br><span class="line">                return True</span><br><span class="line"></span><br><span class="line">        buckets[bucketNum] = nums[i]</span><br><span class="line">        if len(buckets) &gt; k:</span><br><span class="line">            # Remove the bucket which is too far away. Beware of zero t.</span><br><span class="line">            del buckets[nums[i - k] / t if t else nums[i - k]]</span><br><span class="line"></span><br><span class="line">    return False</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15190/python-ordereddict" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15190/python-ordereddict</a></p>
+<p>Python OrderedDict</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line"></span><br><span class="line">def containsNearbyAlmostDuplicate(self, nums, k, t):</span><br><span class="line">    if k &lt; 1 or t &lt; 0:</span><br><span class="line">        return False</span><br><span class="line">    dic = collections.OrderedDict()</span><br><span class="line">    for n in nums:</span><br><span class="line">        key = n if not t else n // t</span><br><span class="line">        for m in (dic.get(key - 1), dic.get(key), dic.get(key + 1)):</span><br><span class="line">            if m is not None and abs(n - m) &lt;= t:</span><br><span class="line">                return True</span><br><span class="line">        if len(dic) == k:</span><br><span class="line">            dic.popitem(False)</span><br><span class="line">        dic[key] = n</span><br><span class="line">    return False</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/15199/ac-o-n-solution-in-java-using-buckets-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15199/ac-o-n-solution-in-java-using-buckets-with-explanation</a></p>
+<p>AC O(N) solution in Java using buckets with explanation</p>
+<p>As a followup question, it naturally also requires maintaining a window of size k. When t == 0, it reduces to the previous question so we just reuse the solution.</p>
+<p>Since there is now a constraint on the range of the values of the elements to be considered duplicates, it reminds us of doing a range check which is implemented in tree data structure and would take O(LogN) if a balanced tree structure is used, or doing a bucket check which is constant time. We shall just discuss the idea using bucket here.</p>
+<p>Bucketing means we map a range of values to the a bucket. For example, if the bucket size is 3, we consider 0, 1, 2 all map to the same bucket. However, if t == 3, (0, 3) is a considered duplicates but does not map to the same bucket. This is fine since we are checking the buckets immediately before and after as well. So, as a rule of thumb, just make sure the size of the bucket is reasonable such that elements having the same bucket is immediately considered duplicates or duplicates must lie within adjacent buckets. So this actually gives us a range of possible bucket size, i.e. t and t + 1. We just choose it to be t and a bucket mapping to be num / t.</p>
+<p>Another complication is that negative ints are allowed. A simple num / t just shrinks everything towards 0. Therefore, we can just reposition every element to start from Integer.MIN_VALUE.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123;</span><br><span class="line">        if (k &lt; 1 || t &lt; 0) return false;</span><br><span class="line">        Map&lt;Long, Long&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            long remappedNum = (long) nums[i] - Integer.MIN_VALUE;</span><br><span class="line">            long bucket = remappedNum / ((long) t + 1);</span><br><span class="line">            if (map.containsKey(bucket)</span><br><span class="line">                    || (map.containsKey(bucket - 1) &amp;&amp; remappedNum - map.get(bucket - 1) &lt;= t)</span><br><span class="line">                        || (map.containsKey(bucket + 1) &amp;&amp; map.get(bucket + 1) - remappedNum &lt;= t))</span><br><span class="line">                            return true;</span><br><span class="line">            if (map.entrySet().size() &gt;= k) &#123;</span><br><span class="line">                long lastBucket = ((long) nums[i - k] - Integer.MIN_VALUE) / ((long) t + 1);</span><br><span class="line">                map.remove(lastBucket);</span><br><span class="line">            &#125;</span><br><span class="line">            map.put(bucket, remappedNum);</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Edits:</p>
+<p>Actually, we can use t + 1 as the bucket size to get rid of the case when t == 0. It simplifies the code. The above code is therefore the updated version.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/15191/java-o-n-lg-k-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15191/java-o-n-lg-k-solution</a></p>
+<p>Java O(N lg K) solution</p>
+<p>This problem requires to maintain a window of size k of the previous values that can be queried for value ranges. The best data structure to do that is Binary Search Tree. As a result maintaining the tree of size k will result in time complexity O(N lg K). In order to check if there exists any value of range abs(nums[i] - nums[j]) to simple queries can be executed both of time complexity O(lg K)</p>
+<p>Here is the whole solution using TreeMap.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) &#123;</span><br><span class="line">        if (nums == null || nums.length == 0 || k &lt;= 0) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        final TreeSet&lt;Integer&gt; values = new TreeSet&lt;&gt;();</span><br><span class="line">        for (int ind = 0; ind &lt; nums.length; ind++) &#123;</span><br><span class="line"></span><br><span class="line">            final Integer floor = values.floor(nums[ind] + t);</span><br><span class="line">            final Integer ceil = values.ceiling(nums[ind] - t);</span><br><span class="line">            if ((floor != null &amp;&amp; floor &gt;= nums[ind])</span><br><span class="line">                    || (ceil != null &amp;&amp; ceil &lt;= nums[ind])) &#123;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            values.add(nums[ind]);</span><br><span class="line">            if (ind &gt;= k) &#123;</span><br><span class="line">                values.remove(nums[ind - k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +578,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/binary-search-tree/" rel="tag"># binary search tree</a>
+          
+        </div>
       
 
       
@@ -574,8 +671,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +718,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +780,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hash table,medium,sort," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.8%  https://leetcode.com/problems/h-index/#/description Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.">
+<meta name="keywords" content="leetcode,hash table,medium,sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="274. H-Index">
 <meta property="og:url" content="http://yucc.me/p/1b8dbba0/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.8%  https://leetcode.com/problems/h-index/#/description Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.152Z">
+<meta property="og:updated_time" content="2018-05-22T15:33:27.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="274. H-Index">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.8%  https://leetcode.com/problems/h-index/#/description Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:33:27+08:00">
+                2018-05-22 23:33
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  772
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,52 @@
       
 
       
-        
+        <ul>
+<li>32.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/h-index/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/h-index/#/description</a></p>
+<p>Given an array of citations (each citation is a non-negative integer) of a researcher, write a function to compute the researcher’s h-index.</p>
+<p>According to the <a href="https://en.wikipedia.org/wiki/H-index" target="_blank" rel="noopener">definition of h-index on Wikipedia</a>: “A scientist has index h if h of his/her N papers have at least h citations each, and the other N − h papers have no more than h citations each.”</p>
+<p>For example, given citations = [3, 0, 6, 1, 5], which means the researcher has 5 papers in total and each of them had received 3, 0, 6, 1, 5 citations respectively. Since the researcher has 3 papers with at least 3 citations each and the remaining two with no more than 3 citations each, his h-index is 3.</p>
+<p>Note: If there are several possible values for h, the maximum one is taken as the h-index.</p>
+<p>Hint:</p>
+<ol>
+<li>An easy approach is to sort the array first.</li>
+<li>What are the possible values of h-index?</li>
+<li>A faster approach is to use extra space.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>May.4th </p>
+<p><a href="https://leetcode.com/discuss/55969/o-n-time-c-solution-using-hash-table" target="_blank" rel="noopener">https://leetcode.com/discuss/55969/o-n-time-c-solution-using-hash-table</a></p>
+<p>Line 20: control reaches end of non-void function [-Werror=return-type]</p>
+<p>使用vector<int>，index为引用量，值为篇数。时间效率O（n）</int></p>
+<p>注意下面有一处是i–, 不要习惯性的写成i++</p>
+<p>根据长度n，最大的为n，由n依次递减查找，O（n）解法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int hIndex(vector&lt;int&gt;&amp; citations) &#123;</span><br><span class="line">        if(citations.empty())</span><br><span class="line">            return 0;</span><br><span class="line">        int n = citations.size();</span><br><span class="line">        vector&lt;int&gt; hash(n + 1, 0);</span><br><span class="line">        for(int i = 0; i &lt; n; ++i)&#123;</span><br><span class="line">            if(citations[i] &gt;= n)</span><br><span class="line">                hash[n]++;</span><br><span class="line">            else</span><br><span class="line">                hash[citations[i]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        int paper = 0;</span><br><span class="line">        for(int i = n; i &gt;= 0; --i)&#123;</span><br><span class="line">            paper += hash[i];</span><br><span class="line">            if(paper &gt;= i)</span><br><span class="line">                return i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; citations)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(citations.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = citations.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(n+<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> citation:citations)&#123;</span><br><span class="line">            <span class="keyword">if</span>(citation&gt;=n)</span><br><span class="line">                v[n]++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                v[citation]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> paper = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">            paper += v[i];</span><br><span class="line">            <span class="keyword">if</span>(paper&gt;=i)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>直接按定义来，先排序，再依次判断</p>
+<p>我的实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hIndex</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; citations)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(citations.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        sort(citations.begin(), citations.end(), [](<span class="keyword">int</span> a, <span class="keyword">int</span> b)&#123;<span class="keyword">return</span> a&gt;b;&#125;);</span><br><span class="line">        <span class="keyword">int</span> paper = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n = citations.size();</span><br><span class="line">        <span class="keyword">for</span>(; paper&lt;n; paper++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(citations[paper]&lt;paper+<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> paper<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> paper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>Mine Solution:</p>
+<p>48ms, 30.68%, May.4th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def hIndex(self, citations):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type citations: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not citations: return 0</span><br><span class="line">        citations.sort(reverse = True)</span><br><span class="line">        for key, value in enumerate(citations):</span><br><span class="line">            if key + 1 &gt; value:</span><br><span class="line">                return value</span><br><span class="line">            elif key + 1 == len(citations) or key + 1 &gt;= citations[key + 1]:</span><br><span class="line">                return key + 1</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23810/python-o-n-lgn-time-with-sort-o-n-time-with-o-n-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23810/python-o-n-lgn-time-with-sort-o-n-time-with-o-n-space</a></p>
+<p>Python O(n lgn) time with sort, O(n) time with O(n) space</p>
+<p>Sort</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def hIndex(self, citations):</span><br><span class="line">    citations.sort()</span><br><span class="line">    n = len(citations)</span><br><span class="line">    for i in xrange(n):</span><br><span class="line">        if citations[i] &gt;= (n-i):</span><br><span class="line">            return n-i</span><br><span class="line">    return 0</span><br></pre></td></tr></table></figure>
+<p>O(n) space, O(n) time</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def hIndex(self, citations):</span><br><span class="line">    n = len(citations)</span><br><span class="line">    citeCount = [0] * (n+1)</span><br><span class="line">    for c in citations:</span><br><span class="line">        if c &gt;= n:</span><br><span class="line">            citeCount[n] += 1</span><br><span class="line">        else:</span><br><span class="line">            citeCount[c] += 1</span><br><span class="line">    </span><br><span class="line">    i = n-1</span><br><span class="line">    while i &gt;= 0:</span><br><span class="line">        citeCount[i] += citeCount[i+1]</span><br><span class="line">        if citeCount[i+1] &gt;= i+1:</span><br><span class="line">            return i+1</span><br><span class="line">        i -= 1</span><br><span class="line">    return 0</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><p>4ms, 9.28%, 81 / 81, May.4th, 2016</p>
+<p><a href="https://leetcode.com/discuss/55958/my-easy-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/55958/my-easy-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int hIndex(int[] citations) &#123;</span><br><span class="line">        Arrays.sort(citations);</span><br><span class="line">        int len = citations.length;</span><br><span class="line">        for(int i=0; i&lt;len; i++)</span><br><span class="line">            if(citations[i] &gt;= len - i) return len-i;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +558,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
       
 
       
@@ -574,8 +653,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +700,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +762,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

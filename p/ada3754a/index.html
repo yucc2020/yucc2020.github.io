@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,binary search,tree," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="27.1%  Given a complete binary tree, count the number of nodes. Definition of a complete binary tree from Wikipedia: In a complete binary tree every level, except possibly the last, is completely fil">
+<meta name="keywords" content="leetcode,medium,binary search,tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="222. Count Complete Tree Nodes">
 <meta property="og:url" content="http://yucc.me/p/ada3754a/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="27.1%  Given a complete binary tree, count the number of nodes. Definition of a complete binary tree from Wikipedia: In a complete binary tree every level, except possibly the last, is completely fil">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.109Z">
+<meta property="og:updated_time" content="2018-05-22T15:11:07.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="222. Count Complete Tree Nodes">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="27.1%  Given a complete binary tree, count the number of nodes. Definition of a complete binary tree from Wikipedia: In a complete binary tree every level, except possibly the last, is completely fil">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:11:07+08:00">
+                2018-05-22 23:11
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  953
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,47 @@
       
 
       
-        
+        <ul>
+<li>27.1%</li>
+</ul>
+<p>Given a complete binary tree, count the number of nodes.</p>
+<p>Definition of <a href="http://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees" target="_blank" rel="noopener">a complete binary tree from Wikipedia</a>:</p>
+<p>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>本题是求完全二叉树节点的个数。完全二叉树，就是如果深度为d，那么d-1层至0层都是满二叉树，d层从左向右排列。完全二叉树，就是d层是满的。</p>
+<p>高度为h的完全二叉树，节点数为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2^h - 1</span><br></pre></td></tr></table></figure></p>
+<p>，如果完全二叉树是满二叉树，就只这个结果。如果不是，就递归，两个相加。</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countNodes</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> hl = <span class="number">0</span>, hr = <span class="number">0</span>;</span><br><span class="line">        TreeNode* left = root, * right = root;</span><br><span class="line">        <span class="keyword">while</span>(left)&#123;</span><br><span class="line">            hl++;</span><br><span class="line">            left = left-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(right)&#123;</span><br><span class="line">            hr++;</span><br><span class="line">            right = right-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(hl == hr) <span class="keyword">return</span> <span class="built_in">pow</span>(<span class="number">2</span>, hl)<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + countNodes(root-&gt;left) + countNodes(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/15515/easy-short-c-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/15515/easy-short-c-recursive-solution</a></p>
+<p>Easy short c++ recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    int countNodes(TreeNode* root) &#123;</span><br><span class="line"></span><br><span class="line">        if(!root) return 0;</span><br><span class="line"></span><br><span class="line">        int hl=0, hr=0;</span><br><span class="line"></span><br><span class="line">        TreeNode *l=root, *r=root;</span><br><span class="line"></span><br><span class="line">        while(l) &#123;hl++;l=l-&gt;left;&#125;</span><br><span class="line"></span><br><span class="line">        while(r) &#123;hr++;r=r-&gt;right;&#125;</span><br><span class="line"></span><br><span class="line">        if(hl==hr) return pow(2,hl)-1;</span><br><span class="line"></span><br><span class="line">        return 1+countNodes(root-&gt;left)+countNodes(root-&gt;right);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31457/a-very-clear-recursive-solution-isn-t-it" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31457/a-very-clear-recursive-solution-isn-t-it</a></p>
+<p>A very clear recursive solution, isn’t it?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countNodes(TreeNode* root) &#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        int lh = height(root-&gt;left);</span><br><span class="line">        int rh = height(root-&gt;right);     </span><br><span class="line">        if(lh == rh) </span><br><span class="line">           return (1 &lt;&lt; lh) + countNodes(root-&gt;right);  /*1(根节点) + (1&lt;&lt;lh)-1(完全左子树) + # of rightNode */               </span><br><span class="line">        else </span><br><span class="line">           return (1 &lt;&lt; rh) + countNodes(root-&gt;left);  /*1(根节点) + (1&lt;&lt;rh)-1(完全右子树) + # of leftNode*/</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    int height(TreeNode *root)&#123; //get the height of a complete binary tree.</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        return 1 + height(root-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19215/simple-c-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19215/simple-c-recursive-solution</a></p>
+<p>Simple C++ recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">int getLeftHeight(TreeNode* root) &#123;</span><br><span class="line">    int height = 0;</span><br><span class="line">    while(root) &#123; </span><br><span class="line">        root = root-&gt;left;</span><br><span class="line">        height++;</span><br><span class="line">    &#125;</span><br><span class="line">    return height;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int countNodes(TreeNode* root) &#123;</span><br><span class="line">    if(!root) return 0;</span><br><span class="line">    </span><br><span class="line">    int left_height = getLeftHeight(root-&gt;left);</span><br><span class="line">    int right_height = getLeftHeight(root-&gt;right);</span><br><span class="line">    </span><br><span class="line">    if(left_height == right_height) </span><br><span class="line">        return pow(2, left_height) + countNodes(root-&gt;right);</span><br><span class="line">        </span><br><span class="line">    return pow(2, right_height) + countNodes(root-&gt;left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/23830/68ms-c-solution-using-binary-search-with-brief-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/23830/68ms-c-solution-using-binary-search-with-brief-explanation</a></p>
+<p>68ms C++ solution using binary search with brief explanation.</p>
+<p>The thought is simple. We just consider the lowest level of the tree.</p>
+<p>The left child and right child just divide the tree lower than the current node to 2 part.</p>
+<p>So what this code do is first check the right most child of the current node’s left child.</p>
+<p>If this child is exist, we know that there may be more nodes on the right side of the tree. So we move the current node to it’s right child. And repeat until we reach the lowest level.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">int countNodes(TreeNode* root) &#123;</span><br><span class="line">    if(!root) return 0;</span><br><span class="line">    TreeNode *temp = root;</span><br><span class="line">    int height = 0, count = 0, level;</span><br><span class="line">    while(temp) &#123;</span><br><span class="line">        temp = temp-&gt;left;</span><br><span class="line">        height ++;</span><br><span class="line">    &#125;</span><br><span class="line">    temp = root;</span><br><span class="line">    level = height - 2;</span><br><span class="line">    while(level &gt;= 0) &#123;</span><br><span class="line">        TreeNode *left = temp-&gt;left;</span><br><span class="line">        for(int i = 0;i &lt; level;i ++) &#123;</span><br><span class="line">            left = left-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        if(left) &#123;</span><br><span class="line">            temp = temp-&gt;right;</span><br><span class="line">            count += (1 &lt;&lt; level);</span><br><span class="line">        &#125; else temp = temp-&gt;left;</span><br><span class="line">        level --;</span><br><span class="line">    &#125;</span><br><span class="line">    if(temp) count ++;</span><br><span class="line">    return (1 &lt;&lt; (height - 1)) + count - 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17971/my-python-solution-in-o-lgn-lgn-time" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17971/my-python-solution-in-o-lgn-lgn-time</a></p>
+<p>My python solution in O(lgn * lgn) time</p>
+<p>compare the depth between left sub tree and right sub tree.</p>
+<p>A, If it is equal, it means the left sub tree is a full binary tree</p>
+<p>B, It it is not , it means the right sub tree is a full binary tree</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">        # @param &#123;TreeNode&#125; root</span><br><span class="line">        # @return &#123;integer&#125;</span><br><span class="line">        def countNodes(self, root):</span><br><span class="line">            if not root:</span><br><span class="line">                return 0</span><br><span class="line">            leftDepth = self.getDepth(root.left)</span><br><span class="line">            rightDepth = self.getDepth(root.right)</span><br><span class="line">            if leftDepth == rightDepth:</span><br><span class="line">                return pow(2, leftDepth) + self.countNodes(root.right)</span><br><span class="line">            else:</span><br><span class="line">                return pow(2, rightDepth) + self.countNodes(root.left)</span><br><span class="line">    </span><br><span class="line">        def getDepth(self, root):</span><br><span class="line">            if not root:</span><br><span class="line">                return 0</span><br><span class="line">            return 1 + self.getDepth(root.left)</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +553,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+        </div>
       
 
       
@@ -612,7 +686,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

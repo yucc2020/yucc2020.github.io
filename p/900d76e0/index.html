@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,tree,depth first search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="36.4%  Given a binary tree, return all root-to-leaf paths. 12345678910For example, given the following binary tree:   1 /   \2     3 \  5All root-to-leaf paths are:[&amp;quot;1-&amp;gt;2-&amp;gt;5&amp;quot;, &amp;quot;1">
+<meta name="keywords" content="leetcode,easy,tree,depth first search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="257. Binary Tree Paths">
 <meta property="og:url" content="http://yucc.me/p/900d76e0/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="36.4%  Given a binary tree, return all root-to-leaf paths. 12345678910For example, given the following binary tree:   1 /   \2     3 \  5All root-to-leaf paths are:[&amp;quot;1-&amp;gt;2-&amp;gt;5&amp;quot;, &amp;quot;1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.139Z">
+<meta property="og:updated_time" content="2018-05-22T15:28:30.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="257. Binary Tree Paths">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="36.4%  Given a binary tree, return all root-to-leaf paths. 12345678910For example, given the following binary tree:   1 /   \2     3 \  5All root-to-leaf paths are:[&amp;quot;1-&amp;gt;2-&amp;gt;5&amp;quot;, &amp;quot;1">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:28:30+08:00">
+                2018-05-22 23:28
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  891
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -430,7 +452,46 @@
       
 
       
-        
+        <ul>
+<li>36.4%</li>
+</ul>
+<p>Given a binary tree, return all root-to-leaf paths.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">For example, given the following binary tree:</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line"> /   \</span><br><span class="line">2     3</span><br><span class="line"> \</span><br><span class="line">  5</span><br><span class="line">All root-to-leaf paths are:</span><br><span class="line"></span><br><span class="line">[&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一；</p>
+<p><a href="https://discuss.leetcode.com/topic/21447/c-simple-4ms-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21447/c-simple-4ms-recursive-solution</a></p>
+<p>C++ simple 4ms recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void binaryTreePaths(vector&lt;string&gt;&amp; result, TreeNode* root, string t) &#123;</span><br><span class="line">    if(!root-&gt;left &amp;&amp; !root-&gt;right) &#123;</span><br><span class="line">        result.push_back(t);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(root-&gt;left) binaryTreePaths(result, root-&gt;left, t + &quot;-&gt;&quot; + to_string(root-&gt;left-&gt;val));</span><br><span class="line">    if(root-&gt;right) binaryTreePaths(result, root-&gt;right, t + &quot;-&gt;&quot; + to_string(root-&gt;right-&gt;val));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vector&lt;string&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">    vector&lt;string&gt; result;</span><br><span class="line">    if(!root) return result;</span><br><span class="line">    </span><br><span class="line">    binaryTreePaths(result, root, to_string(root-&gt;val));</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; s = &#123;root-&gt;val&#125;;</span><br><span class="line">        helper(root, res, s);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right)&#123;</span><br><span class="line">            <span class="built_in">string</span> t = to_string(s[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;s.size(); i++)</span><br><span class="line">                t += <span class="string">"-&gt;"</span> + to_string(s[i]);</span><br><span class="line">            res.push_back(t);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left)&#123;</span><br><span class="line">            s.push_back(root-&gt;left-&gt;val);   </span><br><span class="line">            helper(root-&gt;left, res, s);</span><br><span class="line">            s.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right)&#123;</span><br><span class="line">            s.push_back(root-&gt;right-&gt;val);</span><br><span class="line">            helper(root-&gt;right, res, s);</span><br><span class="line">            s.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">        s.pop_back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22133/my-java-and-c-solution-c-4ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22133/my-java-and-c-solution-c-4ms</a></p>
+<p>My java and c++ solution,c++ 4ms</p>
+<p>this is a simple dfs+tree question,using preorder to visit tree will be fine.</p>
+<p>c++:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public:</span><br><span class="line">    </span><br><span class="line">            vector&lt;string&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">                vector&lt;string&gt; v;</span><br><span class="line">                if(root)</span><br><span class="line">                    preorder(v,root,&quot;&quot;);</span><br><span class="line">                return v;</span><br><span class="line">            &#125;</span><br><span class="line">            void preorder(vector&lt;string&gt;&amp; v,TreeNode* r,string t)&#123;</span><br><span class="line">                if(!r)</span><br><span class="line">                    return;</span><br><span class="line">                if(!t.empty())</span><br><span class="line">                    t+=(&quot;-&gt;&quot;+to_string(r-&gt;val));</span><br><span class="line">                else t+=to_string(r-&gt;val);</span><br><span class="line">                if(r-&gt;left||r-&gt;right)&#123;</span><br><span class="line">                    preorder(v,r-&gt;left,t);</span><br><span class="line">                    preorder(v,r-&gt;right,t);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    v.push_back(t);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
+<p>my java:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; binaryTreePaths(TreeNode root) &#123;</span><br><span class="line">        List&lt;String&gt; l=new ArrayList&lt;&gt;();</span><br><span class="line">        if(root!=null)</span><br><span class="line">            pre(l,root,&quot;&quot;);</span><br><span class="line">        return l;</span><br><span class="line">    &#125;</span><br><span class="line">     void pre(List&lt;String&gt; l,TreeNode r,String s)&#123;</span><br><span class="line">         if(r==null)return;</span><br><span class="line">         if(s.isEmpty())</span><br><span class="line">            s+=r.val;</span><br><span class="line">        else s+=(&quot;-&gt;&quot;+r.val);</span><br><span class="line">        if(r.left!=null||r.right!=null)&#123;</span><br><span class="line">            pre(l,r.left,s);</span><br><span class="line">            pre(l,r.right,s);</span><br><span class="line">        &#125;else</span><br><span class="line">            l.add(s);</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21559/python-solutions-dfs-stack-bfs-queue-dfs-recursively" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21559/python-solutions-dfs-stack-bfs-queue-dfs-recursively</a></p>
+<p>Python solutions (dfs+stack, bfs+queue, dfs recursively).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># dfs + stack</span><br><span class="line">def binaryTreePaths1(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res, stack = [], [(root, &quot;&quot;)]</span><br><span class="line">    while stack:</span><br><span class="line">        node, ls = stack.pop()</span><br><span class="line">        if not node.left and not node.right:</span><br><span class="line">            res.append(ls+str(node.val))</span><br><span class="line">        if node.right:</span><br><span class="line">            stack.append((node.right, ls+str(node.val)+&quot;-&gt;&quot;))</span><br><span class="line">        if node.left:</span><br><span class="line">            stack.append((node.left, ls+str(node.val)+&quot;-&gt;&quot;))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># bfs + queue</span><br><span class="line">def binaryTreePaths2(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res, queue = [], collections.deque([(root, &quot;&quot;)])</span><br><span class="line">    while queue:</span><br><span class="line">        node, ls = queue.popleft()</span><br><span class="line">        if not node.left and not node.right:</span><br><span class="line">            res.append(ls+str(node.val))</span><br><span class="line">        if node.left:</span><br><span class="line">            queue.append((node.left, ls+str(node.val)+&quot;-&gt;&quot;))</span><br><span class="line">        if node.right:</span><br><span class="line">            queue.append((node.right, ls+str(node.val)+&quot;-&gt;&quot;))</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># dfs recursively</span><br><span class="line">def binaryTreePaths(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    res = []</span><br><span class="line">    self.dfs(root, &quot;&quot;, res)</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def dfs(self, root, ls, res):</span><br><span class="line">    if not root.left and not root.right:</span><br><span class="line">        res.append(ls+str(root.val))</span><br><span class="line">    if root.left:</span><br><span class="line">        self.dfs(root.left, ls+str(root.val)+&quot;-&gt;&quot;, res)</span><br><span class="line">    if root.right:</span><br><span class="line">        self.dfs(root.right, ls+str(root.val)+&quot;-&gt;&quot;, res)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>48ms, 64.24%, May.3rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/52020/5-lines-recursive-python" target="_blank" rel="noopener">https://leetcode.com/discuss/52020/5-lines-recursive-python</a></p>
+<p>5 lines recursive Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def binaryTreePaths(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    return [str(root.val) + &apos;-&gt;&apos; + path</span><br><span class="line">            for kid in (root.left, root.right) if kid</span><br><span class="line">            for path in self.binaryTreePaths(kid)] or [str(root.val)]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>69ms, 5.30%, 209 / 209, May.3rd, 2016</p>
+<p><a href="https://leetcode.com/discuss/59288/8-lines-in-python-48ms" target="_blank" rel="noopener">https://leetcode.com/discuss/59288/8-lines-in-python-48ms</a></p>
+<p>8 lines in python,48ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def binaryTreePaths(self, root):</span><br><span class="line">    if not root:</span><br><span class="line">        return []</span><br><span class="line">    if not root.left and not root.right:</span><br><span class="line">        return [str(root.val)]</span><br><span class="line">    treepaths = [str(root.val)+&apos;-&gt;&apos;+path for path in self.binaryTreePaths(root.left)]</span><br><span class="line">    treepaths += [str(root.val)+&apos;-&gt;&apos;+path for path in self.binaryTreePaths(root.right)]</span><br><span class="line">    return treepaths</span><br></pre></td></tr></table></figure>
+<hr>
+
       
     </div>
     
@@ -491,6 +552,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/tree/" rel="tag"># tree</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+        </div>
       
 
       
@@ -612,7 +685,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

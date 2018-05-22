@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,math,hard," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="28.5%  https://leetcode.com/problems/number-of-digit-one/#/description Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n. 123For exa">
+<meta name="keywords" content="leetcode,math,hard">
 <meta property="og:type" content="article">
 <meta property="og:title" content="233. Number of Digit One">
 <meta property="og:url" content="http://yucc.me/p/bb8f353e/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="28.5%  https://leetcode.com/problems/number-of-digit-one/#/description Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n. 123For exa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.126Z">
+<meta property="og:updated_time" content="2018-05-22T15:19:47.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="233. Number of Digit One">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="28.5%  https://leetcode.com/problems/number-of-digit-one/#/description Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n. 123For exa">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:19:47+08:00">
+                2018-05-22 23:19
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,738
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  11
                 </span>
               
             </div>
@@ -430,7 +452,91 @@
       
 
       
-        
+        <ul>
+<li>28.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/number-of-digit-one/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/number-of-digit-one/#/description</a></p>
+<p>Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line">Given n = 13,</span><br><span class="line">Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.</span><br></pre></td></tr></table></figure>
+<p>Hint:</p>
+<ol>
+<li>Beware of overflow.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>剑指offer 52</p>
+<p>方法一：</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41642/easy-to-understand-c-0ms-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41642/easy-to-understand-c-0ms-solution-with-detailed-explanation</a></p>
+<p>Easy to understand C++ 0ms solution with detailed explanation</p>
+<p>We start from basics:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f(9) = 1;</span><br><span class="line">f(99) = f(9) * 10 + 10(contributed by the most significant digit in range [10, 19]) = 20  </span><br><span class="line">f(999) = f(99) * 10 + 100(contributed by the most significant digit in range [100, 199]) = 300</span><br><span class="line">f(9999) = f(999) * 10 + 1000(contributed by the most significant digit in range [1000, 1999]) = 10 * 300 + 1000 = 4000</span><br><span class="line">... ...</span><br></pre></td></tr></table></figure>
+<p>How about 23?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">23 = [0, 9] + [10, 19] + [20, 23]</span><br></pre></td></tr></table></figure>
+<p>[10, 19] can be reduced to solve f(9) + 10, because its most significant digit is 1. And [20, 23] can be reduced to solve f(3) + 0, because the most significant digit is 2, so this digit doesn’t contribute to final result.<br>So now we know</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(23) = f(9) * 2 + 10 + f(3)</span><br></pre></td></tr></table></figure>
+<p>So now when we look at a number n (e.g. 2356), we look at the most significant digit(2), its divisor with highest 10’s power (1000), and its remainder (356), try to reduce to a smaller number iteratively.</p>
+<p>(1) Since most significant digit is 2, so we know range [0, 999], [1000, 1999] are included, so we add 2 * f(999).</p>
+<p>(2) Also, since we have [1000, 1999] covered, we should add extra 1000.</p>
+<p>(3) Then we look at range [2000, 2356], try to reduce it to [0, 356] by dropping most significant digit 2, it doesn’t impact the final result since most significant digit is 2 not 1.</p>
+<p>(4) Finally, we add f(356)</p>
+<p>So eventually, we have</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f(2356) += (2356 / 1000) * f(1000 - 1) = 2 * f(999);</span><br><span class="line">f(2356) += (2356 / 1000 &gt; 1 ? 1000 : 0); </span><br><span class="line">f(2356) += (2356 / 1000 == 1 ? 356 + 1 : 0);</span><br><span class="line">f(2356) += f(356);</span><br></pre></td></tr></table></figure>
+<p>Below is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countDigitOne(int n) &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        if(n &lt;= 0) return 0;</span><br><span class="line">        if(n &lt;= 9) return 1;</span><br><span class="line">        </span><br><span class="line">        unordered_map&lt;int, int&gt; mp;</span><br><span class="line">        mp[9] = 1;</span><br><span class="line">        for(int i = 9; i &lt;= (INT_MAX - 9) / 10; i = i * 10 + 9)&#123;</span><br><span class="line">            mp[i*10 + 9] = mp[i] * 10 + (i + 1); // mp[99], mp[999], mp[9999], ... ...</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int nn = n, divisor = 1;</span><br><span class="line">        while(nn / 10)&#123;</span><br><span class="line">            nn /= 10;</span><br><span class="line">            divisor *= 10;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += (n / divisor) *  mp[divisor - 1]; </span><br><span class="line">        ans += (n / divisor &gt; 1) ? divisor : 0; </span><br><span class="line">        ans += (n / divisor == 1) ? n % divisor + 1 : 0;</span><br><span class="line">        ans += countDigitOne(n % divisor);</span><br><span class="line"></span><br><span class="line">        return  ans;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18054/4-lines-o-log-n-c-java-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18054/4-lines-o-log-n-c-java-python</a></p>
+<p>4+ lines, O(log n), C++/Java/Python</p>
+<p>Go through the digit positions one at a time, find out how often a “1” appears at each position, and sum those up.</p>
+<p>C++ solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int countDigitOne(int n) &#123;</span><br><span class="line">    int ones = 0;</span><br><span class="line">    for (long long m = 1; m &lt;= n; m *= 10)</span><br><span class="line">        ones += (n/m + 8) / 10 * m + (n/m % 10 == 1) * (n%m + 1);</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>Let me use variables a and b to make the explanation a bit nicer.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int countDigitOne(int n) &#123;</span><br><span class="line">    int ones = 0;</span><br><span class="line">    for (long long m = 1; m &lt;= n; m *= 10) &#123;</span><br><span class="line">        int a = n/m, b = n%m;</span><br><span class="line">        ones += (a + 8) / 10 * m + (a % 10 == 1) * (b + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Go through the digit positions by using position multiplier m with values 1, 10, 100, 1000, etc.</p>
+<p>For each position, split the decimal representation into two parts, for example split n=3141592 into a=31415 and b=92 when we’re at m=100 for analyzing the hundreds-digit. And then we know that the hundreds-digit of n is 1 for prefixes “” to “3141”, i.e., 3142 times. Each of those times is a streak, though. Because it’s the hundreds-digit, each streak is 100 long. So (a / 10 + 1) * 100 times, the hundreds-digit is 1.</p>
+<p>Consider the thousands-digit, i.e., when m=1000. Then a=3141 and b=592. The thousands-digit is 1 for prefixes “” to “314”, so 315 times. And each time is a streak of 1000 numbers. However, since the thousands-digit is a 1, the very last streak isn’t 1000 numbers but only 593 numbers, for the suffixes “000” to “592”. So (a / 10 * 1000) + (b + 1) times, the thousands-digit is 1.</p>
+<p>The case distincton between the current digit/position being 0, 1 and &gt;=2 can easily be done in one expression. With (a + 8) / 10 you get the number of full streaks, and a % 10 == 1 tells you whether to add a partial streak.</p>
+<p>Java version</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public int countDigitOne(int n) &#123;</span><br><span class="line">    int ones = 0;</span><br><span class="line">    for (long m = 1; m &lt;= n; m *= 10)</span><br><span class="line">        ones += (n/m + 8) / 10 * m + (n/m % 10 == 1 ? n%m + 1 : 0);</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Python version</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def countDigitOne(self, n):</span><br><span class="line">    ones, m = 0, 1</span><br><span class="line">    while m &lt;= n:</span><br><span class="line">        ones += (n/m + 8) / 10 * m + (n/m % 10 == 1) * (n%m + 1)</span><br><span class="line">        m *= 10</span><br><span class="line">    return ones</span><br></pre></td></tr></table></figure>
+<p>Using sum or recursion it can also be a one-liner.</p>
+<p>Old solution</p>
+<p>Go through the digit positions from back to front. I found it ugly to explain, so I made up that above new solution instead. The n here is the new solution’s a, and the r here is the new solution’s b+1.</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def countDigitOne(self, n):</span><br><span class="line">    ones = 0</span><br><span class="line">    m = r = 1</span><br><span class="line">    while n &gt; 0:</span><br><span class="line">        ones += (n + 8) / 10 * m + (n % 10 == 1) * r</span><br><span class="line">        r += n % 10 * m</span><br><span class="line">        m *= 10</span><br><span class="line">        n /= 10</span><br><span class="line">    return ones</span><br></pre></td></tr></table></figure>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public int countDigitOne(int n) &#123;</span><br><span class="line">    int ones = 0, m = 1, r = 1;</span><br><span class="line">    while (n &gt; 0) &#123;</span><br><span class="line">        ones += (n + 8) / 10 * m + (n % 10 == 1 ? r : 0);</span><br><span class="line">        r += n % 10 * m;</span><br><span class="line">        m *= 10;</span><br><span class="line">        n /= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int countDigitOne(int n) &#123;</span><br><span class="line">    int ones = 0, m = 1, r = 1;</span><br><span class="line">    while (n &gt; 0) &#123;</span><br><span class="line">        ones += (n + 8) / 10 * m + (n % 10 == 1) * r;</span><br><span class="line">        r += n % 10 * m;</span><br><span class="line">        m *= 10;</span><br><span class="line">        n /= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return ones;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/27565/java-python-one-pass-solution-easy-to-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/27565/java-python-one-pass-solution-easy-to-understand</a></p>
+<p>Java/Python one pass solution easy to understand</p>
+<p>The idea is to calculate occurrence of 1 on every digit. There are 3 scenarios, for example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if n = xyzdabc</span><br></pre></td></tr></table></figure>
+<p>and we are considering the occurrence of one on thousand, it should be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1) xyz * 1000                     if d == 0</span><br><span class="line">(2) xyz * 1000 + abc + 1           if d == 1</span><br><span class="line">(3) xyz * 1000 + 1000              if d &gt; 1</span><br></pre></td></tr></table></figure>
+<p>iterate through all digits and sum them all will give the final answer</p>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int countDigitOne(int n) &#123;</span><br><span class="line"></span><br><span class="line">    if (n &lt;= 0) return 0;</span><br><span class="line">    int q = n, x = 1, ans = 0;</span><br><span class="line">    do &#123;</span><br><span class="line">        int digit = q % 10;</span><br><span class="line">        q /= 10;</span><br><span class="line">        ans += q * x;</span><br><span class="line">        if (digit == 1) ans += n % x + 1;</span><br><span class="line">        if (digit &gt;  1) ans += x;</span><br><span class="line">        x *= 10;</span><br><span class="line">    &#125; while (q &gt; 0);</span><br><span class="line">    return ans;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 40 / 40 test cases passed.</span><br><span class="line">// Status: Accepted</span><br><span class="line">// Runtime: 0 ms</span><br></pre></td></tr></table></figure>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def countDigitOne(self, n):</span><br><span class="line">    if n &lt;= 0:</span><br><span class="line">        return 0</span><br><span class="line">    q, x, ans = n, 1, 0</span><br><span class="line">    while q &gt; 0:</span><br><span class="line">        digit = q % 10</span><br><span class="line">        q /= 10</span><br><span class="line">        ans += q * x</span><br><span class="line">        if digit == 1:</span><br><span class="line">            ans += n % x + 1</span><br><span class="line">        elif digit &gt; 1:</span><br><span class="line">            ans += x</span><br><span class="line">        x *= 10</span><br><span class="line">    return ans</span><br><span class="line"></span><br><span class="line"># 40 / 40 test cases passed.</span><br><span class="line"># Status: Accepted</span><br><span class="line"># Runtime: 32 ms</span><br><span class="line"># 97.59%</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18068/0ms-o-lgn-accepted-c-solution-using-counting-principle-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18068/0ms-o-lgn-accepted-c-solution-using-counting-principle-with-explanation</a></p>
+<p>0ms o(lgn) accepted c++ solution using counting principle with explanation</p>
+<p>For every digit in n (Suppose n = 240315, the digits are 2, 4, 0, 3, 1, 5)，I respectively count the number of digit 1 assuming the position of current digit is 1 and other digits of n is arbitrary.</p>
+<p>For example, I select 3 in n as the current digit, and I suppose the position of 3 is 1.</p>
+<p>The highn is the number composed with the digits before the current digit. In the example, highn = 240;</p>
+<p>The lown is the number composed with the digits after the current digit. In the example, lown = 15.</p>
+<p>The lowc = 10 ^ (the number of lower digits). In the example, lowc = 100;</p>
+<p>As curn = 3 and curn &gt; 1, (highn <em> 10 + 1) must be less than (highn </em> 10 + curn). Then the higher part can be 0 ~ highn, the lower part can be 0 ~ (lowc-1), and the current result = (highn + 1) * lowc.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">int countDigitOne(int n) &#123;</span><br><span class="line">        long long int res(0);</span><br><span class="line">        int highn(n), lowc(1), lown(0);</span><br><span class="line">        while(highn &gt; 0)&#123;</span><br><span class="line">            int curn = highn % 10;</span><br><span class="line">            highn = highn / 10;</span><br><span class="line">            if(1 == curn)&#123;</span><br><span class="line">                //higher: 0~(highn-1);  lower:  0 ~ (lowc-1)</span><br><span class="line">                res += highn * lowc;</span><br><span class="line">                //higher: highn ~ highn;     lower:0~lown</span><br><span class="line">                res += lown + 1;</span><br><span class="line">            &#125;else if(0 == curn)&#123;  </span><br><span class="line">                //curn &lt; 1</span><br><span class="line">               //higher: 0~(highn-1);  lower:  0 ~ (lowc-1)</span><br><span class="line">                res += highn * lowc;</span><br><span class="line">            &#125;else&#123;              </span><br><span class="line">                //curn &gt; 1</span><br><span class="line">                res += (highn + 1) * lowc;</span><br><span class="line">            &#125;</span><br><span class="line">            //update lown and lowc</span><br><span class="line">            lown = curn * lowc + lown;</span><br><span class="line">            lowc = lowc * 10;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/22441/0-ms-recursive-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/22441/0-ms-recursive-solution</a></p>
+<p>0 ms recursive solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int countDigitOne(int n) &#123;</span><br><span class="line">    if(n&lt;1) return 0;</span><br><span class="line">    if(n&gt;=1 &amp;&amp; n&lt;10) return 1;</span><br><span class="line">    // x: first digit</span><br><span class="line">    int y=1, x=n;</span><br><span class="line">    while(!(x&lt;10))&#123;</span><br><span class="line">        x/=10;</span><br><span class="line">        y*=10;</span><br><span class="line">    &#125;</span><br><span class="line">    if(x==1)</span><br><span class="line">        return n-y+1+countDigitOne(y-1)+countDigitOne(n%y);</span><br><span class="line">    else</span><br><span class="line">        return y+x*countDigitOne(y-1)+countDigitOne(n%y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +597,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
       
 
       
@@ -612,7 +728,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

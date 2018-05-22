@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="28.7%  https://leetcode.com/problems/summary-ranges/description/ Given a sorted integer array without duplicates, return the summary of its ranges. 123456Example 1:Input: [0,1,2,4,5,7]Output: [&amp;quot;">
+<meta name="keywords" content="leetcode,array,medium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="228. Summary Ranges">
 <meta property="og:url" content="http://yucc.me/p/62fcefb8/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="28.7%  https://leetcode.com/problems/summary-ranges/description/ Given a sorted integer array without duplicates, return the summary of its ranges. 123456Example 1:Input: [0,1,2,4,5,7]Output: [&amp;quot;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.120Z">
+<meta property="og:updated_time" content="2018-05-22T15:15:45.679Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="228. Summary Ranges">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="28.7%  https://leetcode.com/problems/summary-ranges/description/ Given a sorted integer array without duplicates, return the summary of its ranges. 123456Example 1:Input: [0,1,2,4,5,7]Output: [&amp;quot;">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:15:45+08:00">
+                2018-05-22 23:15
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,288
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -430,7 +452,85 @@
       
 
       
-        
+        <ul>
+<li>28.7%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/summary-ranges/description/" target="_blank" rel="noopener">https://leetcode.com/problems/summary-ranges/description/</a></p>
+<p>Given a sorted integer array without duplicates, return the summary of its ranges.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [0,1,2,4,5,7]</span><br><span class="line">Output: [&quot;0-&gt;2&quot;,&quot;4-&gt;5&quot;,&quot;7&quot;]</span><br><span class="line">Example 2:</span><br><span class="line">Input: [0,2,3,4,6,8,9]</span><br><span class="line">Output: [&quot;0&quot;,&quot;2-&gt;4&quot;,&quot;6&quot;,&quot;8-&gt;9&quot;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; summaryRanges(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, n=nums.size();</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n)&#123;</span><br><span class="line">            <span class="keyword">int</span> j = i;</span><br><span class="line">            <span class="keyword">while</span>(j+<span class="number">1</span>&lt;n &amp;&amp; nums[j+<span class="number">1</span>]==nums[j]+<span class="number">1</span>)</span><br><span class="line">                j++;</span><br><span class="line">            <span class="keyword">if</span>(j==i)</span><br><span class="line">                res.push_back(to_string(nums[i]));</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">string</span> s = to_string(nums[i]) + <span class="string">"-&gt;"</span> + to_string(nums[j]);</span><br><span class="line">                res.push_back(s);</span><br><span class="line">            &#125;</span><br><span class="line">            i = j+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>0ms, 14.20%, June.18th, 2016</p>
+<p><a href="https://leetcode.com/discuss/42229/10-line-c-easy-understand" target="_blank" rel="noopener">https://leetcode.com/discuss/42229/10-line-c-easy-understand</a></p>
+<p>10 line c++ easy understand</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; summaryRanges(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    const int size_n = nums.size();</span><br><span class="line">    vector&lt;string&gt; res;</span><br><span class="line">    if ( 0 == size_n) return res;</span><br><span class="line">    for (int i = 0; i &lt; size_n;) &#123;</span><br><span class="line">        int start = i, end = i;</span><br><span class="line">        while (end + 1 &lt; size_n &amp;&amp; nums[end+1] == nums[end] + 1) end++;</span><br><span class="line">        if (end &gt; start) res.push_back(to_string(nums[start]) + &quot;-&gt;&quot; + to_string(nums[end]));</span><br><span class="line">        else res.push_back(to_string(nums[start]));</span><br><span class="line">        i = end+1;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17154/9-lines-c-0ms-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17154/9-lines-c-0ms-solution</a></p>
+<p>9 lines, c++, 0ms solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; summaryRanges(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int i = 0, size = nums.size();</span><br><span class="line">    vector&lt;string&gt; result; </span><br><span class="line">    while(i &lt; size)&#123;</span><br><span class="line">        int j = 1; </span><br><span class="line">        while(i + j &lt; size &amp;&amp; nums[i + j] - nums[i] == j) ++j;</span><br><span class="line">        result.push_back(j &lt;= 1 ? to_string(nums[i]) : to_string(nums[i]) + &quot;-&gt;&quot; + to_string(nums[i + j - 1]));</span><br><span class="line">        i += j; </span><br><span class="line">    &#125;</span><br><span class="line">    return result; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17177/idea-1-liner-group-by-number-index" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17177/idea-1-liner-group-by-number-index</a></p>
+<p>Idea + 1-Liner: Group by number-index</p>
+<p>The Idea</p>
+<p>The difference between a number and its index identifies the range. Consider the given example input:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers:  [0, 1, 2, 4, 5, 7]</span><br><span class="line">indexes:  [0, 1, 2, 3, 4, 5]</span><br><span class="line">subtract: [0, 0, 0, 1, 1, 2]</span><br></pre></td></tr></table></figure>
+<p>You can see I have three differences (0, 1 and 2), corresponding to the three ranges. That can then be used to group the elements.</p>
+<p>Solution 1</p>
+<p>Ruby and Python can exploit it particularly well, thanks to their groupby functions:</p>
+<p>Python:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    return [re.sub(&apos;-&gt;.*&gt;&apos;, &apos;-&gt;&apos;, &apos;-&gt;&apos;.join(`n` for i, n in g))</span><br><span class="line">            for _, g in itertools.groupby(enumerate(nums), lambda (i, n): n-i)]</span><br></pre></td></tr></table></figure>
+<p>Solution 2</p>
+<p>Here I build two dicts, telling me the first and last number of each range. For the given example I get:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">first = &#123;0: 0, 1: 4, 2: 7&#125;</span><br><span class="line">last  = &#123;0: 2, 1: 5, 2: 7&#125;</span><br></pre></td></tr></table></figure>
+<p>The code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    diff = [(n-i, n) for i, n in enumerate(nums)]</span><br><span class="line">    first, last = dict(diff[::-1]), dict(diff)</span><br><span class="line">    return [`n` + (&apos;-&gt;&apos;+`last[d]`)*(n&lt;last[d]) for d, n in sorted(first.items())]</span><br></pre></td></tr></table></figure>
+<p>Solution 3</p>
+<p>Storing [first, last] for each range in a dict (last being optional).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    ranges = collections.defaultdict(list)</span><br><span class="line">    for i, n in enumerate(nums):</span><br><span class="line">        ranges[n-i][1:] = n,</span><br><span class="line">    return [&apos;-&gt;&apos;.join(map(str, r)) for r in sorted(ranges.values())]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17094/6-lines-in-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17094/6-lines-in-python</a></p>
+<p>6 lines in Python</p>
+<p>Three versions of the same algorithm, all take O(n) time.</p>
+<p>Solution 1</p>
+<p>Just collect the ranges, then format and return them.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    ranges = []</span><br><span class="line">    for n in nums:</span><br><span class="line">        if not ranges or n &gt; ranges[-1][-1] + 1:</span><br><span class="line">            ranges += [],</span><br><span class="line">        ranges[-1][1:] = n,</span><br><span class="line">    return [&apos;-&gt;&apos;.join(map(str, r)) for r in ranges]</span><br></pre></td></tr></table></figure>
+<p>Solution 2</p>
+<p>A variation of solution 1, holding the current range in an extra variable r to make things easier. Note that r contains at most two elements, so the in-check takes constant time.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    ranges, r = [], []</span><br><span class="line">    for n in nums:</span><br><span class="line">        if n-1 not in r:</span><br><span class="line">            r = []</span><br><span class="line">            ranges += r,</span><br><span class="line">        r[1:] = n,</span><br><span class="line">    return [&apos;-&gt;&apos;.join(map(str, r)) for r in ranges]</span><br></pre></td></tr></table></figure>
+<p>Solution 3</p>
+<p>A tricky short version.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    ranges = r = []</span><br><span class="line">    for n in nums:</span><br><span class="line">        if `n-1` not in r:</span><br><span class="line">            r = []</span><br><span class="line">            ranges += r,</span><br><span class="line">        r[1:] = `n`,</span><br><span class="line">    return map(&apos;-&gt;&apos;.join, ranges)</span><br></pre></td></tr></table></figure>
+<p>About the commas :-)</p>
+<p>Three people asked about them in the comments, so I’ll also explain it here as well. I have these two basic cases:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ranges += [],</span><br><span class="line">r[1:] = n,</span><br></pre></td></tr></table></figure>
+<p>Why the trailing commas? Because it turns the right hand side into a tuple and I get the same effects as these more common alternatives:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ranges += [[]]</span><br><span class="line">or</span><br><span class="line">ranges.append([])</span><br><span class="line"></span><br><span class="line">r[1:] = [n]</span><br></pre></td></tr></table></figure>
+<p>Without the comma, …</p>
+<ul>
+<li>ranges += [] wouldn’t add [] itself but only its elements, i.e., nothing.</li>
+<li>r[1:] = n wouldn’t work, because my n is not an iterable.</li>
+</ul>
+<p>Why do it this way instead of the more common alternatives I showed above? Because it’s shorter and faster (according to tests I did a while back).</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17934/my-easy-to-understand-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17934/my-easy-to-understand-python-solution</a></p>
+<p>My easy to understand Python solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def summaryRanges(self, nums):</span><br><span class="line">    if not nums:</span><br><span class="line">        return []</span><br><span class="line">    res, i, start = [], 0, 0</span><br><span class="line">    while i &lt; len(nums)-1:</span><br><span class="line">        if nums[i]+1 != nums[i+1]:</span><br><span class="line">            res.append(self.printRange(nums[start], nums[i]))</span><br><span class="line">            start = i+1</span><br><span class="line">        i += 1</span><br><span class="line">    res.append(self.printRange(nums[start], nums[i]))</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">def printRange(self, l, r):</span><br><span class="line">    if l == r:</span><br><span class="line">        return str(l)</span><br><span class="line">    else:</span><br><span class="line">        return str(l) + &quot;-&gt;&quot; + str(r)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Solution Mine:</p>
+<p>40ms, 84.94%, June.18th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def summaryRanges(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not nums:</span><br><span class="line">            return []</span><br><span class="line">        if len(nums)==1:</span><br><span class="line">            return [str(nums[0])]</span><br><span class="line">        rtype = []</span><br><span class="line">        p1 = 0</span><br><span class="line">        p2 = 0</span><br><span class="line">        n = len(nums)</span><br><span class="line">        while p1 &lt; n-1:</span><br><span class="line">            while p2 &lt; n-1 and nums[p2] + 1 == nums[p2+1]:</span><br><span class="line">                p2 += 1</span><br><span class="line">            if p1 == p2:</span><br><span class="line">                rtype.append(str(nums[p1]))</span><br><span class="line">            else:</span><br><span class="line">                tmp = str(nums[p1]) + &apos;-&gt;&apos; + str(nums[p2])</span><br><span class="line">                rtype.append(tmp)</span><br><span class="line">            p2 += 1</span><br><span class="line">            p1 = p2</span><br><span class="line">        if p1 == n-1:</span><br><span class="line">            rtype.append(str(nums[-1]))</span><br><span class="line">        return rtype</span><br></pre></td></tr></table></figure>
+<p>Solution 1:</p>
+<p>48ms, 38.46%, June.18th, 2016</p>
+<p><a href="https://leetcode.com/discuss/42199/6-lines-in-python" target="_blank" rel="noopener">https://leetcode.com/discuss/42199/6-lines-in-python</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def summaryRanges(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        ranges = []</span><br><span class="line">        for n in nums:</span><br><span class="line">            if not ranges or n &gt; ranges[-1][-1] + 1:</span><br><span class="line">                ranges += [],</span><br><span class="line">            ranges[-1][1:] = n,</span><br><span class="line">        return [&apos;-&gt;&apos;.join(map(str, i)) for i in ranges]</span><br></pre></td></tr></table></figure>
+<hr>
+<p>1ms, 5.00%, June.18th, 2016</p>
+<p><a href="https://leetcode.com/discuss/42290/accepted-java-solution-easy-to-understand" target="_blank" rel="noopener">https://leetcode.com/discuss/42290/accepted-java-solution-easy-to-understand</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; summaryRanges(int[] nums) &#123;</span><br><span class="line">        List&lt;String&gt; list = new ArrayList();</span><br><span class="line">        if(nums.length == 1)&#123;</span><br><span class="line">            list.add(nums[0] + &quot;&quot;);</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i=0; i &lt; nums.length; i++)&#123;</span><br><span class="line">            int a = nums[i];</span><br><span class="line">            while(i+1&lt;nums.length &amp;&amp; nums[i+1] - nums[i] ==1) i++;</span><br><span class="line">            if(a != nums[i]) list.add(a + &quot;-&gt;&quot; + nums[i]);</span><br><span class="line">            else list.add(a+&quot;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +591,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+        </div>
       
 
       
@@ -612,7 +722,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,stack,design," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="35.6%  https://leetcode.com/problems/implement-queue-using-stacks/#/description Implement the following operations of a queue using stacks.  push(x) – Push element x to the back of queue. pop() – Rem">
+<meta name="keywords" content="leetcode,easy,stack,design">
 <meta property="og:type" content="article">
 <meta property="og:title" content="232. Implement Queue using Stacks">
 <meta property="og:url" content="http://yucc.me/p/567717e2/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="35.6%  https://leetcode.com/problems/implement-queue-using-stacks/#/description Implement the following operations of a queue using stacks.  push(x) – Push element x to the back of queue. pop() – Rem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.125Z">
+<meta property="og:updated_time" content="2018-05-22T15:19:08.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="232. Implement Queue using Stacks">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="35.6%  https://leetcode.com/problems/implement-queue-using-stacks/#/description Implement the following operations of a queue using stacks.  push(x) – Push element x to the back of queue. pop() – Rem">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:19:08+08:00">
+                2018-05-22 23:19
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,444
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,61 @@
       
 
       
-        
+        <ul>
+<li>35.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/implement-queue-using-stacks/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/implement-queue-using-stacks/#/description</a></p>
+<p>Implement the following operations of a queue using stacks.</p>
+<ul>
+<li>push(x) – Push element x to the back of queue.</li>
+<li>pop() – Removes the element from in front of queue.</li>
+<li>peek() – Get the front element.</li>
+<li>empty() – Return whether the queue is empty.</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>You must use only standard operations of a stack – which means only push to top, peek/pop from top, size, and is empty operations are valid.</li>
+<li>Depending on your language, stack may not be supported natively. You may simulate a stack by using a list or deque (double-ended queue), as long as you use only standard operations of a stack.</li>
+<li>You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h5 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h5><p>使用两个栈，模拟队列，stack1存储新来的数据，当使用peek时，将stack1的数据都压入stack2，再求stack2的top就是peek数据，当需要pop时，只要先peek，然后再pop stack2就可以了，empty则最简单。</p>
+<ol>
+<li><p>注意的地方，在pop()调用peek()，直接写 peek()就可以了。</p>
+</li>
+<li><p>pop调用peek得到返回的值，然后需要stack2再pop一下，不要忘了。</p>
+</li>
+</ol>
+<p>疑问：如果都是空的，调用pop会发生什么情况，输出栈的error还是不作处理呢？栈直接pop，是error还是什么？</p>
+<p>我的代码实现：</p>
+<p>Oct 10th, 2017</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st1, st2;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    MyQueue() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        st1.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val = peek();</span><br><span class="line">        st2.pop();</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the front element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(st2.empty())&#123;</span><br><span class="line">            <span class="keyword">while</span>(st1.size())&#123;</span><br><span class="line">                <span class="keyword">int</span> val = st1.top();</span><br><span class="line">                st2.push(val);</span><br><span class="line">                st1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> val = st2.top();</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> st1.empty() &amp;&amp; st2.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MyQueue object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MyQueue obj = new MyQueue();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.peek();</span></span><br><span class="line"><span class="comment"> * bool param_4 = obj.empty();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class MyQueue &#123;</span><br><span class="line">stack&lt;int&gt; stack1;</span><br><span class="line">stack&lt;int&gt; stack2;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    /** Initialize your data structure here. */</span><br><span class="line">    MyQueue() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Push element x to the back of queue. */</span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">        stack1.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Removes the element from in front of queue and returns that element. */</span><br><span class="line">    int pop() &#123;</span><br><span class="line">        peek();</span><br><span class="line">        int val = stack2.top();</span><br><span class="line">        stack2.pop();</span><br><span class="line">        return val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Get the front element. */</span><br><span class="line">    int peek() &#123;</span><br><span class="line">        if(stack2.empty())&#123;</span><br><span class="line">            while(stack1.size()&gt;0)&#123;</span><br><span class="line">                int val = stack1.top();</span><br><span class="line">                stack2.push(val);</span><br><span class="line">                stack1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return stack2.top();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /** Returns whether the queue is empty. */</span><br><span class="line">    bool empty() &#123;</span><br><span class="line">        return stack1.empty() &amp;&amp; stack2.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17974/short-o-1-amortized-c-java-ruby" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17974/short-o-1-amortized-c-java-ruby</a></p>
+<p>Short O(1) amortized, C++ / Java / Ruby</p>
+<p>I have one input stack, onto which I push the incoming elements, and one output stack, from which I peek/pop. I move elements from input stack to output stack when needed, i.e., when I need to peek/pop but the output stack is empty. When that happens, I move all elements from input to output stack, thereby reversing the order so it’s the correct order for peek/pop.</p>
+<p>The loop in peek does the moving from input to output stack. Each element only ever gets moved like that once, though, and only after we already spent time pushing it, so the overall amortized cost for each operation is O(1).</p>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class MyQueue &#123;</span><br><span class="line"></span><br><span class="line">    Stack&lt;Integer&gt; input = new Stack();</span><br><span class="line">    Stack&lt;Integer&gt; output = new Stack();</span><br><span class="line">    </span><br><span class="line">    public void push(int x) &#123;</span><br><span class="line">        input.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void pop() &#123;</span><br><span class="line">        peek();</span><br><span class="line">        output.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int peek() &#123;</span><br><span class="line">        if (output.empty())</span><br><span class="line">            while (!input.empty())</span><br><span class="line">                output.push(input.pop());</span><br><span class="line">        return output.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public boolean empty() &#123;</span><br><span class="line">        return input.empty() &amp;&amp; output.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Queue &#123;</span><br><span class="line">    stack&lt;int&gt; input, output;</span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">        input.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void pop(void) &#123;</span><br><span class="line">        peek();</span><br><span class="line">        output.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int peek(void) &#123;</span><br><span class="line">        if (output.empty())</span><br><span class="line">            while (input.size())</span><br><span class="line">                output.push(input.top()), input.pop();</span><br><span class="line">        return output.top();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bool empty(void) &#123;</span><br><span class="line">        return input.empty() &amp;&amp; output.empty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/19152/0-ms-c-solution-using-one-stack-w-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/19152/0-ms-c-solution-using-one-stack-w-explanation</a></p>
+<p>0 ms C++ solution using one Stack w/ explanation.</p>
+<p>You can implement queue using just one stack by either making push process costlier or pop costlier. Since we have two functions (top() and pop()) which require the top element of the stack, well make the push() function costlier - that is, for pushing a new element, we recursively pop the stack till it is empty and push it at the bottom of the stack, and take advantage of the recursive call to push back in the popped elements once the recursive call hits the base condition and returns. This implementation makes pop() and peek() functions easier. pop() is just going to pop off the top element in stack and peek() will return the top most element.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Queue &#123;</span><br><span class="line">public:</span><br><span class="line">    stack&lt;int&gt; s;</span><br><span class="line">    </span><br><span class="line">    // Push element x to the back of queue.</span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">        pushHelper(x);</span><br><span class="line">    &#125;</span><br><span class="line">    void pushHelper(int x)&#123;</span><br><span class="line">        if(s.size()==0)&#123;</span><br><span class="line">            s.push(x);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int data;</span><br><span class="line">        data = s.top();</span><br><span class="line">        s.pop();</span><br><span class="line">        pushHelper(x);</span><br><span class="line">        s.push(data);</span><br><span class="line">        return;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Removes the element from in front of queue.</span><br><span class="line">    void pop(void) &#123;</span><br><span class="line">        s.pop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Get the front element.</span><br><span class="line">    int peek(void) &#123;</span><br><span class="line">        return s.top();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Return whether the queue is empty.</span><br><span class="line">    bool empty(void) &#123;</span><br><span class="line">        return (s.size()==0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26163/share-my-python-solution-32ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26163/share-my-python-solution-32ms</a></p>
+<p>Share my python solution (32ms)</p>
+<p>The idea is to simulate a queue using two stacks (same as previous posts). I use python list as the underlying data structure for stack and add a “move()” method to simplify code: it moves all elements of the “inStack” to the “outStack” when the “outStack” is empty. Here is the code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Queue(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        initialize your data structure here.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.inStack, self.outStack = [], []</span><br><span class="line"></span><br><span class="line">    def push(self, x):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type x: int</span><br><span class="line">        :rtype: nothing</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.inStack.append(x)</span><br><span class="line"></span><br><span class="line">    def pop(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :rtype: nothing</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.move()</span><br><span class="line">        self.outStack.pop()</span><br><span class="line"></span><br><span class="line">    def peek(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        self.move()</span><br><span class="line">        return self.outStack[-1]</span><br><span class="line"></span><br><span class="line">    def empty(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return (not self.inStack) and (not self.outStack) </span><br><span class="line">        </span><br><span class="line">    def move(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :rtype nothing</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        if not self.outStack:</span><br><span class="line">            while self.inStack:</span><br><span class="line">                self.outStack.append(self.inStack.pop())</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/17984/accepted-0ms-c-solution-with-two-std-stack-easy-understand" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/17984/accepted-0ms-c-solution-with-two-std-stack-easy-understand</a></p>
+<p>Accepted 0ms c++ solution with two std::stack, easy understand.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Queue &#123;</span><br><span class="line">public:</span><br><span class="line">    // Push element x to the back of queue.</span><br><span class="line">    void push(int x) &#123;</span><br><span class="line">		while (!nums.empty()) &#123;</span><br><span class="line">			helper.push(nums.top());</span><br><span class="line">			nums.pop();</span><br><span class="line">		&#125;</span><br><span class="line">		nums.push(x);</span><br><span class="line">		while (!helper.empty()) &#123;</span><br><span class="line">			nums.push(helper.top());</span><br><span class="line">			helper.pop();</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // Removes the element from in front of queue.</span><br><span class="line">    void pop(void) &#123;</span><br><span class="line">        nums.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    // Get the front element.</span><br><span class="line">    int peek(void) &#123;</span><br><span class="line">        return nums.top();</span><br><span class="line">    &#125;</span><br><span class="line">    // Return whether the queue is empty.</span><br><span class="line">    bool empty(void) &#123;</span><br><span class="line">		return nums.empty();</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">	std::stack&lt;int&gt; helper, nums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +567,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+            <a href="/tags/design/" rel="tag"># design</a>
+          
+        </div>
       
 
       
@@ -574,8 +662,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +709,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +771,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#方法一："><span class="nav-text">方法一：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

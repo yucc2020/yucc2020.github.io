@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,divide and conquer,binary search," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="38.0%  https://leetcode.com/problems/search-a-2d-matrix-ii/#/description Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers">
+<meta name="keywords" content="leetcode,medium,divide and conquer,binary search">
 <meta property="og:type" content="article">
 <meta property="og:title" content="240. Search a 2D Matrix II">
 <meta property="og:url" content="http://yucc.me/p/ac205ce/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="38.0%  https://leetcode.com/problems/search-a-2d-matrix-ii/#/description Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.135Z">
+<meta property="og:updated_time" content="2018-05-22T15:26:24.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="240. Search a 2D Matrix II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="38.0%  https://leetcode.com/problems/search-a-2d-matrix-ii/#/description Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:  Integers">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:26:24+08:00">
+                2018-05-22 23:26
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  686
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -430,7 +452,48 @@
       
 
       
-        
+        <ul>
+<li>38.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/search-a-2d-matrix-ii/#/description</a></p>
+<p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p>
+<ul>
+<li>Integers in each row are sorted in ascending from left to right.</li>
+<li>Integers in each column are sorted in ascending from top to bottom.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">For example,</span><br><span class="line"></span><br><span class="line">Consider the following matrix:</span><br><span class="line"></span><br><span class="line">[</span><br><span class="line">  [1,   4,  7, 11, 15],</span><br><span class="line">  [2,   5,  8, 12, 19],</span><br><span class="line">  [3,   6,  9, 16, 22],</span><br><span class="line">  [10, 13, 14, 17, 24],</span><br><span class="line">  [18, 21, 23, 26, 30]</span><br><span class="line">]</span><br><span class="line">Given target = 5, return true.</span><br><span class="line"></span><br><span class="line">Given target = 20, return false.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>剑指offer 3</p>
+<p>我的代码实现：</p>
+<p>从右上角开始搜索</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// int m = matrix.size();</span></span><br><span class="line">        <span class="comment">// if(m==0) return false;</span></span><br><span class="line">        <span class="comment">// int n = matrix[0].size();</span></span><br><span class="line">        <span class="comment">// if(n==0) return false;</span></span><br><span class="line">        <span class="keyword">if</span>(matrix.size()==<span class="number">0</span> || matrix[<span class="number">0</span>].size()==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> m=matrix.size(), n=matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">if</span>(target&lt;matrix[<span class="number">0</span>][<span class="number">0</span>] || target&gt;matrix[m<span class="number">-1</span>][n<span class="number">-1</span>]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, j=n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;m &amp;&amp; j&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target==matrix[i][j])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target&lt;matrix[i][j])</span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意代码中</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(matrix.size()==<span class="number">0</span> || matrix[<span class="number">0</span>].size()==<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">int</span> m=matrix.size(), n=matrix[<span class="number">0</span>].size();</span><br></pre></td></tr></table></figure>
+<p>替代</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> m = matrix.size();</span><br><span class="line"><span class="keyword">if</span>(m==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line"><span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+<p>对于矩阵是好用的</p>
+<hr>
+<p>184ms, 78.57%, June.23th, 2016</p>
+<p><a href="https://leetcode.com/discuss/47528/c-with-o-m-n-complexity" target="_blank" rel="noopener">https://leetcode.com/discuss/47528/c-with-o-m-n-complexity</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool searchMatrix(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int target) &#123;</span><br><span class="line">        int m = matrix.size();</span><br><span class="line">        if(m == 0) return false;</span><br><span class="line">        int n = matrix[0].size();</span><br><span class="line">        </span><br><span class="line">        int i = 0, j = n - 1;</span><br><span class="line">        while(i &lt; m &amp;&amp; j &gt;= 0)&#123;</span><br><span class="line">            if(matrix[i][j] == target)</span><br><span class="line">                return true;</span><br><span class="line">            else if(matrix[i][j] &gt; target)</span><br><span class="line">                j--;</span><br><span class="line">            else</span><br><span class="line">                i++;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>Solution mine:</p>
+<p>720ms, 10.08%, June.23th, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def searchMatrix(self, matrix, target):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type matrix: List[List[int]]</span><br><span class="line">        :type target: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        for i in xrange(len(matrix)):</span><br><span class="line">            for j in xrange(len(matrix[0])):</span><br><span class="line">                if matrix[i][j] == target:</span><br><span class="line">                    return True</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<p>Solution 1:</p>
+<p>184ms, 40.60%, June.23th, 2016</p>
+<p><a href="https://leetcode.com/discuss/47571/4-lines-c-6-lines-ruby-7-lines-python-1-liners" target="_blank" rel="noopener">https://leetcode.com/discuss/47571/4-lines-c-6-lines-ruby-7-lines-python-1-liners</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def searchMatrix(self, matrix, target):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type matrix: List[List[int]]</span><br><span class="line">        :type target: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return any(target in row for row in matrix)</span><br></pre></td></tr></table></figure>
+<p>Solution 2:</p>
+<p>124ms, 59.95%, June.23th, 2016</p>
+<p><a href="https://leetcode.com/discuss/47571/4-lines-c-6-lines-ruby-7-lines-python-1-liners" target="_blank" rel="noopener">https://leetcode.com/discuss/47571/4-lines-c-6-lines-ruby-7-lines-python-1-liners</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def searchMatrix(self, matrix, target):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type matrix: List[List[int]]</span><br><span class="line">        :type target: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        j = -1</span><br><span class="line">        for row in matrix:</span><br><span class="line">            while j + len(row) and row[j] &gt; target:</span><br><span class="line">                j -= 1</span><br><span class="line">            if row[j] == target:</span><br><span class="line">                return True</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<hr>
+<p>13ms, 53.66%, June.23th, 2016</p>
+<p><a href="https://leetcode.com/discuss/48852/my-concise-o-m-n-java-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/48852/my-concise-o-m-n-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean searchMatrix(int[][] matrix, int target) &#123;</span><br><span class="line">        if(matrix == null || matrix.length &lt; 1 || matrix[0].length &lt; 1)</span><br><span class="line">            return false;</span><br><span class="line">        </span><br><span class="line">        int col = matrix[0].length - 1;</span><br><span class="line">        int row = 0;</span><br><span class="line">        while(col &gt;= 0 &amp;&amp; row &lt;= matrix.length - 1)&#123;</span><br><span class="line">            if(target == matrix[row][col])</span><br><span class="line">                return true;</span><br><span class="line">            else if(target &lt; matrix[row][col])</span><br><span class="line">                col--;</span><br><span class="line">            else</span><br><span class="line">                row++;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +554,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+          
+        </div>
       
 
       
@@ -612,7 +687,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

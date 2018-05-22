@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,easy,math," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="50.6%  Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. 123For example:Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only">
+<meta name="keywords" content="leetcode,easy,math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="258. Add Digits">
 <meta property="og:url" content="http://yucc.me/p/3ec955c1/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="50.6%  Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. 123For example:Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.142Z">
+<meta property="og:updated_time" content="2018-05-22T15:29:15.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="258. Add Digits">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="50.6%  Given a non-negative integer num, repeatedly add all its digits until the result has only one digit. 123For example:Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:29:15+08:00">
+                2018-05-22 23:29
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  666
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -430,7 +452,75 @@
       
 
       
-        
+        <ul>
+<li>50.6%</li>
+</ul>
+<p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.</span><br></pre></td></tr></table></figure>
+<p>Follow up:</p>
+<p>Could you do it without any loop/recursion in O(1) runtime?</p>
+<p>Hint:</p>
+<ol>
+<li>A naive implementation of the above process is trivial. Could you come up with other methods?</li>
+<li>What are all the possible results?</li>
+<li>How do they occur, periodically or randomly?</li>
+<li>You may find this Wikipedia article useful.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21498/accepted-c-o-1-time-o-1-space-1-line-solution-with-detail-explanations/2" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21498/accepted-c-o-1-time-o-1-space-1-line-solution-with-detail-explanations/2</a></p>
+<p>Accepted C++ O(1)-time O(1)-space 1-Line Solution with Detail Explanations</p>
+<p>The problem, widely known as digit root problem, has a congruence formula:</p>
+<p><a href="https://en.wikipedia.org/wiki/Digital_root#Congruence_formula" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Digital_root#Congruence_formula</a></p>
+<p>For base b (decimal case b = 10), the digit root of an integer is:</p>
+<ul>
+<li>dr(n) = 0 if n == 0</li>
+<li>dr(n) = (b-1) if n != 0 and n % (b-1) == 0</li>
+<li>dr(n) = n mod (b-1) if n % (b-1) != 0</li>
+</ul>
+<p>or</p>
+<ul>
+<li>dr(n) = 1 + (n - 1) % 9</li>
+</ul>
+<p>Note here, when n = 0, since (n - 1) % 9 = -1, the return value is zero (correct).</p>
+<p>From the formula, we can find that the result of this problem is immanently periodic, with period (b-1).</p>
+<p>Output sequence for decimals (b = 10):</p>
+<p>~ input: 0 1 2 3 4 …</p>
+<p>output: 0 1 2 3 4 5 6 7 8 9 1 2 3 4 5 6 7 8 9 1 2 3 ….</p>
+<p>Henceforth, we can write the following code, whose time and space complexities are both O(1).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int addDigits(int num) &#123;</span><br><span class="line">        return 1 + (num - 1) % 9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Thanks for reading. :)</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36921/c-3-lines-implementation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36921/c-3-lines-implementation</a></p>
+<p>C++ 3 lines implementation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int addDigits(int num) &#123;</span><br><span class="line">        if(num%9 == 0 &amp;&amp; num!=0)</span><br><span class="line">        return 9;</span><br><span class="line">        return (num%9);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28791/3-methods-for-python-with-explains" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28791/3-methods-for-python-with-explains</a></p>
+<p>3 methods for python with explains</p>
+<p>Iteration method</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">def addDigits(self, num):</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">:type num: int</span><br><span class="line">:rtype: int</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">while(num &gt;= 10):</span><br><span class="line">    temp = 0</span><br><span class="line">    while(num &gt; 0):</span><br><span class="line">        temp += num % 10</span><br><span class="line">        num /= 10</span><br><span class="line">    num = temp</span><br><span class="line">return num</span><br></pre></td></tr></table></figure>
+<p>Digital Root<br>this method depends on the truth:</p>
+<p>N=(a[0] <em> 1 + a[1] </em> 10 + …a[n] * 10 ^n),and a[0]…a[n] are all between [0,9]</p>
+<p>we set M = a[0] + a[1] + ..a[n]</p>
+<p>and another truth is that:</p>
+<p>1 % 9 = 1</p>
+<p>10 % 9 = 1</p>
+<p>100 % 9 = 1</p>
+<p>so N % 9 = a[0] + a[1] + ..a[n]</p>
+<p>means N % 9 = M</p>
+<p>so N = M (% 9)</p>
+<p>as 9 % 9 = 0,so we can make (n - 1) % 9 + 1 to help us solve the problem when n is 9.as N is 9, ( 9 - 1) % 9 + 1 = 9</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">def addDigits(self, num):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    :type num: int</span><br><span class="line">    :rtype: int</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if num == 0 : return 0</span><br><span class="line">    else:return (num - 1) % 9 + 1</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21834/o-1-solution-with-mod-operation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21834/o-1-solution-with-mod-operation</a></p>
+<p>O(1) solution with mod operation</p>
+<p>If an integer is like 100a+10b+c, then (100a+10b+c)%9=(a+99a+b+9b+c)%9=(a+b+c)%9</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;integer&#125; num</span><br><span class="line">    # @return &#123;integer&#125;</span><br><span class="line">    def addDigits(self, num):</span><br><span class="line">        if num==0:</span><br><span class="line">            return 0</span><br><span class="line">        return num%9 if num%9!=0 else 9</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30490/no-loop-recursion-o-1-runtime-just-one-line-python-code" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30490/no-loop-recursion-o-1-runtime-just-one-line-python-code</a></p>
+<p>No loop/recursion, O(1) runtime, just one line python code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def addDigits(self, num):</span><br><span class="line">        return num if num == 0 else num % 9 or 9</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +581,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+        </div>
       
 
       
@@ -612,7 +712,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

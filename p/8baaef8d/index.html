@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,medium," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="48.0%  https://leetcode.com/problems/product-of-array-except-self/#/description Given an array of n integers where n &amp;gt; 1, nums, return an array output such that output[i] is equal to the product o">
+<meta name="keywords" content="leetcode,array,medium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="238. Product of Array Except Self">
 <meta property="og:url" content="http://yucc.me/p/8baaef8d/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="48.0%  https://leetcode.com/problems/product-of-array-except-self/#/description Given an array of n integers where n &amp;gt; 1, nums, return an array output such that output[i] is equal to the product o">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.133Z">
+<meta property="og:updated_time" content="2018-05-22T15:24:52.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="238. Product of Array Except Self">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="48.0%  https://leetcode.com/problems/product-of-array-except-self/#/description Given an array of n integers where n &amp;gt; 1, nums, return an array output such that output[i] is equal to the product o">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:24:52+08:00">
+                2018-05-22 23:24
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  850
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -430,7 +452,51 @@
       
 
       
-        
+        <ul>
+<li>48.0%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/product-of-array-except-self/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/product-of-array-except-self/#/description</a></p>
+<p>Given an array of n integers where n &gt; 1, nums, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].</p>
+<p>Solve it without division and in O(n).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">For example, given [1,2,3,4], return [24,12,8,6].</span><br></pre></td></tr></table></figure>
+<p>Follow up:</p>
+<p>Could you solve it with constant space complexity? (Note: The output array does not count as extra space for the purpose of space complexity analysis.)</p>
+<a id="more"></a>
+<hr>
+<p>剑指offer 52</p>
+<p><a href="https://discuss.leetcode.com/topic/20434/o-n-time-and-o-1-space-c-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/20434/o-n-time-and-o-1-space-c-solution-with-explanation</a></p>
+<p>O(n) time and O(1) space C++ solution with explanation</p>
+<p>方法一：</p>
+<p>First, consider O(n) time and O(n) space solution.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n=nums.size();</span><br><span class="line">        vector&lt;int&gt; fromBegin(n);</span><br><span class="line">        fromBegin[0]=1;</span><br><span class="line">        vector&lt;int&gt; fromLast(n);</span><br><span class="line">        fromLast[0]=1;</span><br><span class="line">        </span><br><span class="line">        for(int i=1;i&lt;n;i++)&#123;</span><br><span class="line">            fromBegin[i]=fromBegin[i-1]*nums[i-1];</span><br><span class="line">            fromLast[i]=fromLast[i-1]*nums[n-i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; res(n);</span><br><span class="line">        for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">            res[i]=fromBegin[i]*fromLast[n-1-i];</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>空间从o（n）降低到o（1）</p>
+<p>对从前至后的部分考虑保留前一个值，得到结果。</p>
+<p>很巧妙地方法，节省了空间。</p>
+<p>We just need to change the two vectors to two integers and note that we should do multiplying operations for two related elements of the results vector in each loop.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n=nums.size();</span><br><span class="line">        int fromBegin=1;</span><br><span class="line">        int fromLast=1;</span><br><span class="line">        vector&lt;int&gt; res(n,1);</span><br><span class="line">        </span><br><span class="line">        for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">            res[i]*=fromBegin;</span><br><span class="line">            fromBegin*=nums[i];</span><br><span class="line">            res[n-1-i]*=fromLast;</span><br><span class="line">            fromLast*=nums[n-1-i];</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/37927/how-from-o-n-to-o-1" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37927/how-from-o-n-to-o-1</a></p>
+<p>How from O(N) to O(1)</p>
+<p>Here is the O(N) based C++ implementation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int len=nums.size();</span><br><span class="line">        vector&lt;int&gt; left(len, 1);</span><br><span class="line">        vector&lt;int&gt; right(len, 1);</span><br><span class="line">        vector&lt;int&gt; result(len, 0);</span><br><span class="line">        for(int i=1; i&lt;len; i++)  left[i]=left[i-1]*nums[i-1];</span><br><span class="line">        for(int i=len-2; i&gt;=0; i--)  right[i]=right[i+1]*nums[i+1];</span><br><span class="line">        for(int i=0; i&lt;len; i++) result[i]=left[i]*right[i];</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>How to use O(1) ?</p>
+<p>By observing the above code, we can just for every position multiply it to its right position.</p>
+<p>Just the idea to think reversly !</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n=nums.size();</span><br><span class="line">        int left=1, right=1;</span><br><span class="line">        vector&lt;int&gt; result(n, 1);</span><br><span class="line">        for(int i=0; i&lt;n; i++)&#123;</span><br><span class="line">            result[i]*=left;</span><br><span class="line">            result[n-1-i]*=right;</span><br><span class="line">            left*=nums[i];</span><br><span class="line">            right*=nums[n-1-i];</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18877/my-c-solution-o-n-time-with-no-extra-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18877/my-c-solution-o-n-time-with-no-extra-space</a></p>
+<p>My C++ solution, O(n) time with no extra space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int N = nums.size();</span><br><span class="line">    vector&lt;int&gt; res(N,1);</span><br><span class="line">    </span><br><span class="line">    for(int i=0; i&lt;N; i++)&#123;</span><br><span class="line">        if (i==0)   res[i] = 1;</span><br><span class="line">        else res[i] = res[i-1]*nums[i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int r_prod = 1;</span><br><span class="line">    for(int i=N-1; i&gt;=0; i--)&#123;</span><br><span class="line">        res[i] *= r_prod;</span><br><span class="line">        r_prod *= nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/18983/python-solution-accepted-o-n-time-o-1-space" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/18983/python-solution-accepted-o-n-time-o-1-space</a></p>
+<p>Python solution (Accepted), O(n) time, O(1) space</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    # @param &#123;integer[]&#125; nums</span><br><span class="line">    # @return &#123;integer[]&#125;</span><br><span class="line">    def productExceptSelf(self, nums):</span><br><span class="line">        p = 1</span><br><span class="line">        n = len(nums)</span><br><span class="line">        output = []</span><br><span class="line">        for i in range(0,n):</span><br><span class="line">            output.append(p)</span><br><span class="line">            p = p * nums[i]</span><br><span class="line">        p = 1</span><br><span class="line">        for i in range(n-1,-1,-1):</span><br><span class="line">            output[i] = output[i] * p</span><br><span class="line">            p = p * nums[i]</span><br><span class="line">        return output</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30115/very-easy-two-passes-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30115/very-easy-two-passes-solution</a></p>
+<p>Very easy two passes solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// two passes, O(2n)</span><br><span class="line">vector&lt;int&gt; productExceptSelf(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int n = nums.size();</span><br><span class="line">    vector&lt;int&gt; ans(n, 1);</span><br><span class="line">    </span><br><span class="line">    for (int i = 1; i &lt; n; ++i) &#123;</span><br><span class="line">        ans[i] = ans[i-1] * nums[i-1];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int m = 1;</span><br><span class="line">    for (int i = n-1; i &gt;= 0; --i) &#123;</span><br><span class="line">        ans[i] *= m;</span><br><span class="line">        m *= nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +557,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+        </div>
       
 
       
@@ -612,7 +688,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

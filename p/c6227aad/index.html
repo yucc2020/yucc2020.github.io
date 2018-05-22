@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,medium,bit manipulation," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="49.9%  https://leetcode.com/problems/single-number-iii/?tab=Description Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice.">
+<meta name="keywords" content="leetcode,medium,bit manipulation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="260. Single Number III">
 <meta property="og:url" content="http://yucc.me/p/c6227aad/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="49.9%  https://leetcode.com/problems/single-number-iii/?tab=Description Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.146Z">
+<meta property="og:updated_time" content="2018-05-22T15:29:57.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="260. Single Number III">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="49.9%  https://leetcode.com/problems/single-number-iii/?tab=Description Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice.">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:29:57+08:00">
+                2018-05-22 23:29
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  1,505
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  9
                 </span>
               
             </div>
@@ -430,7 +452,92 @@
       
 
       
-        
+        <ul>
+<li>49.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/single-number-iii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/single-number-iii/?tab=Description</a></p>
+<p>Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">Given nums = [1, 2, 1, 3, 2, 5], return [3, 5].</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ol>
+<li>The order of the result is not important. So in the above example, [5, 3] is also correct.</li>
+<li>Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>剑指offer 40</p>
+<p>方法一：</p>
+<p>求第一位非0， diff &amp;= -diff.</p>
+<p>-diff求的相反的数字，存储是补码， 取反加1.</p>
+<p>diff = 110 </p>
+<p>diff &amp; (-diff） = 010</p>
+<p><a href="https://discuss.leetcode.com/topic/21605/accepted-c-java-o-n-time-o-1-space-easy-solution-with-detail-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21605/accepted-c-java-o-n-time-o-1-space-easy-solution-with-detail-explanations</a></p>
+<p>Accepted C++/Java O(n)-time O(1)-space Easy Solution with Detail Explanations</p>
+<p>Once again, we need to use XOR to solve this problem. But this time, we need to do it in two passes:</p>
+<ul>
+<li>In the first pass, we XOR all elements in the array, and get the XOR of the two numbers we need to find. Note that since the two numbers are distinct, so there must be a set bit (that is, the bit with value ‘1’) in the XOR result. Find out an arbitrary set bit (for example, the rightmost set bit).</li>
+<li>In the second pass, we divide all numbers into two groups, one with the aforementioned bit set, another with the aforementinoed bit unset. Two different numbers we need to find must fall into thte two distrinct groups. XOR numbers in each group, we can find a number in either group.</li>
+</ul>
+<p>Complexity:</p>
+<ul>
+<li>Time: O (n)</li>
+<li>Space: O (1)</li>
+</ul>
+<p>A Corner Case:</p>
+<ul>
+<li>When diff == numeric_limits<int>::min(), -diff is also numeric_limits<int>::min(). Therefore, the value of diff after executing diff &amp;= -diff is still numeric_limits<int>::min(). The answer is still correct.<br>C++:</int></int></int></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; singleNumber(vector&lt;int&gt;&amp; nums) </span><br><span class="line">    &#123;</span><br><span class="line">        // Pass 1 : </span><br><span class="line">        // Get the XOR of the two numbers we need to find</span><br><span class="line">        int diff = accumulate(nums.begin(), nums.end(), 0, bit_xor&lt;int&gt;());</span><br><span class="line">        // Get its last set bit</span><br><span class="line">        diff &amp;= -diff;</span><br><span class="line"></span><br><span class="line">        // Pass 2 :</span><br><span class="line">        vector&lt;int&gt; rets = &#123;0, 0&#125;; // this vector stores the two numbers we will return</span><br><span class="line">        for (int num : nums)</span><br><span class="line">        &#123;</span><br><span class="line">            if ((num &amp; diff) == 0) // the bit is not set</span><br><span class="line">            &#123;</span><br><span class="line">                rets[0] ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">            else // the bit is set</span><br><span class="line">            &#123;</span><br><span class="line">                rets[1] ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return rets;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的代码实现：</p>
+<p>注意用&amp;还是用^</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; singleNumber(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        int flag = 0;</span><br><span class="line">        for(auto num:nums)</span><br><span class="line">            flag ^= num;</span><br><span class="line">        flag = flag&amp;-flag;</span><br><span class="line">        int num1 = 0, num2 = 0;</span><br><span class="line">        for(auto num:nums)&#123;</span><br><span class="line">            if(num&amp;flag)</span><br><span class="line">                num1 ^= num;</span><br><span class="line">            else</span><br><span class="line">                num2 ^= num;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(num1);</span><br><span class="line">        res.push_back(num2);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Thanks for reading :)</p>
+<p>Acknowledgements:</p>
+<ul>
+<li>Thank @jianchao.li.fighter for introducing this problem and for your encouragement.</li>
+<li>Thank @StefanPochmann for your valuable suggestions and comments. Your idea of diff &amp;= -diff is very elegent! And yes, it does not need to XOR for both group in the second pass. XOR for one group suffices. I revise my code accordingly.</li>
+<li>Thank @Nakagawa_Kanon for posting this question and presenting the same idea in a previous thread (prior to this thread).</li>
+<li>Thank @caijun for providing an interesting test case.</li>
+</ul>
+<p>方法二：</p>
+<p>int lastBit = (aXorb &amp; (aXorb - 1)) ^ aXorb; </p>
+<p><a href="https://discuss.leetcode.com/topic/21984/c-solution-o-n-time-and-o-1-space-easy-understaning-with-simple-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21984/c-solution-o-n-time-and-o-1-space-easy-understaning-with-simple-explanation</a></p>
+<p>C++ solution O(n) time and O(1) space, easy-understaning with simple explanation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;int&gt; singleNumber(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int aXorb = 0;  // the result of a xor b;</span><br><span class="line">    for (auto item : nums) aXorb ^= item;</span><br><span class="line">    int lastBit = (aXorb &amp; (aXorb - 1)) ^ aXorb;  // the last bit that a diffs b</span><br><span class="line">    int intA = 0, intB = 0;</span><br><span class="line">    for (auto item : nums) &#123;</span><br><span class="line">        // based on the last bit, group the items into groupA(include a) and groupB</span><br><span class="line">        if (item &amp; lastBit) intA = intA ^ item;</span><br><span class="line">        else intB = intB ^ item;</span><br><span class="line">    &#125;</span><br><span class="line">    return vector&lt;int&gt;&#123;intA, intB&#125;;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/25382/sharing-explanation-of-the-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/25382/sharing-explanation-of-the-solution</a></p>
+<p>Sharing explanation of the solution</p>
+<p>If you were stuck by this problem, it’s easy to find a solution in the discussion. However, usually, the solution lacks some explanations.</p>
+<p>I’m sharing my understanding here:</p>
+<p>The two numbers that appear only once must differ at some bit, this is how we can distinguish between them. Otherwise, they will be one of the duplicate numbers.</p>
+<p>One important point is that by XORing all the numbers, we actually get the XOR of the two target numbers (because XORing two duplicate numbers always results in 0). Consider the XOR result of the two target numbers; if some bit of the XOR result is 1, it means that the two target numbers differ at that location.</p>
+<p>Let’s say the at the ith bit, the two desired numbers differ from each other. which means one number has bit i equaling: 0, the other number has bit i equaling 1.</p>
+<p>Thus, all the numbers can be partitioned into two groups according to their bits at location i.<br>the first group consists of all numbers whose bits at i is 0.<br>the second group consists of all numbers whose bits at i is 1.</p>
+<p>Notice that, if a duplicate number has bit i as 0, then, two copies of it will belong to the first group. Similarly, if a duplicate number has bit i as 1, then, two copies of it will belong to the second group.</p>
+<p>by XoRing all numbers in the first group, we can get the first number.</p>
+<p>by XoRing all numbers in the second group, we can get the second number.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/43805/bit-manipulation-beats-99-62" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/43805/bit-manipulation-beats-99-62</a></p>
+<p>Bit manipulation beats 99.62%</p>
+<p>Find the rightmost set bit, divide numbers into two groups. Each group will end up being one unique number.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public int[] singleNumber(int[] nums) &#123;</span><br><span class="line">    int result[] = new int[2];        </span><br><span class="line">    int xor = nums[0];</span><br><span class="line">    for (int i=1; i&lt;nums.length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        xor ^= nums[i];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int bit = xor &amp; ~(xor-1);</span><br><span class="line">    int num1 = 0;</span><br><span class="line">    int num2 = 0;</span><br><span class="line">    </span><br><span class="line">    for (int num : nums)</span><br><span class="line">    &#123;</span><br><span class="line">        if ((num &amp; bit) &gt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            num1 ^= num;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            num2 ^= num;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    result[0] = num1;</span><br><span class="line">    result[1] = num2;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/34545/share-my-c-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34545/share-my-c-solution</a></p>
+<p>Share my C++ solution,</p>
+<ol>
+<li>assume that A and B are the two elements which we want to find;</li>
+<li>use XOR for all elements,the result is : r = A^B,we just need to distinguish A from B next step;</li>
+<li>if we can find a bit ‘1’ in r,then the bit in corresponding position in A and B must be different.We can use {last = r &amp; (~(r-1))} to get the last bit 1 int r;</li>
+<li>we use last to divide all numbers into two groups,then A and B must fall into the two distrinct groups.XOR elements in eash group,get the A and B.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; singleNumber(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int r = 0, n = nums.size(), i = 0, last = 0;</span><br><span class="line">        vector&lt;int&gt; ret(2, 0);</span><br><span class="line">        </span><br><span class="line">        for (i = 0; i &lt; n; ++i) </span><br><span class="line">            r ^= nums[i];</span><br><span class="line">        </span><br><span class="line">        last = r &amp; (~(r - 1));</span><br><span class="line">        for (i = 0; i &lt; n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            if ((last &amp; nums[i]) != 0)</span><br><span class="line">                ret[0] ^= nums[i];</span><br><span class="line">            else</span><br><span class="line">                ret[1] ^= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/21883/my-java-solution-adapted-from-the-commonest-solution-here" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/21883/my-java-solution-adapted-from-the-commonest-solution-here</a></p>
+<p>My Java solution adapted from the commonest solution here</p>
+<p>I read @zhiqing_xiao ‘s post to get an idea about the solution. His solution is really smart and elegant, but it took me a while to get understand how “diff &amp;= -diff” works. I changed it a little bit to make it better understood, but it is totally based on his solution.</p>
+<p>Instead of using the right-most “1” of diff, I used the left-most “1” to divide groups. This should also do the trick.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] singleNumber(int[] nums) &#123;</span><br><span class="line">        int diff = 0;</span><br><span class="line">        for(int num: nums)&#123;</span><br><span class="line">            diff^=num;</span><br><span class="line">        &#125;</span><br><span class="line">        diff = Integer.highestOneBit(diff);</span><br><span class="line">        </span><br><span class="line">        int[] result = new int[2];</span><br><span class="line">        Arrays.fill(result,0);</span><br><span class="line">        for(int num: nums)&#123;</span><br><span class="line">            if((diff &amp; num) == 0)&#123;</span><br><span class="line">                result[0] ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                result[1] ^= num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +598,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/bit-manipulation/" rel="tag"># bit manipulation</a>
+          
+        </div>
       
 
       
@@ -612,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

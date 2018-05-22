@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,array,hash table,easy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="31.8%  https://leetcode.com/problems/contains-duplicate-ii/ Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[">
+<meta name="keywords" content="leetcode,array,hash table,easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="219. Contains Duplicate II">
 <meta property="og:url" content="http://yucc.me/p/4c1e3175/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="31.8%  https://leetcode.com/problems/contains-duplicate-ii/ Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.105Z">
+<meta property="og:updated_time" content="2018-05-22T15:08:48.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="219. Contains Duplicate II">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="31.8%  https://leetcode.com/problems/contains-duplicate-ii/ Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:08:48+08:00">
+                2018-05-22 23:08
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  359
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -430,7 +452,30 @@
       
 
       
-        
+        <ul>
+<li>31.8%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/contains-duplicate-ii/" target="_blank" rel="noopener">https://leetcode.com/problems/contains-duplicate-ii/</a></p>
+<p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.</p>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p>使用unordered_set，函数erase, insert</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">0</span> || nums.empty()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">set</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">set</span>.find(nums[i])!=<span class="built_in">set</span>.end())</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">set</span>.insert(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">set</span>.size()==k+<span class="number">1</span>)</span><br><span class="line">                <span class="built_in">set</span>.erase(nums[i-k]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>32ms, 47.64%, May.6th, 2016</p>
+<p><a href="https://leetcode.com/discuss/37851/c-solution-with-unordered_set" target="_blank" rel="noopener">https://leetcode.com/discuss/37851/c-solution-with-unordered_set</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool containsNearbyDuplicate(vector&lt;int&gt;&amp; nums, int k) &#123;</span><br><span class="line">        unordered_set&lt;int&gt; s;</span><br><span class="line">        </span><br><span class="line">        if(k &lt;= 0) return false;</span><br><span class="line">        if(k &gt;= nums.size()) k = nums.size() - 1;</span><br><span class="line">        </span><br><span class="line">        for(int i = 0; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            if(i &gt; k) s.erase(nums[i - k - 1]);</span><br><span class="line">            if(s.find(nums[i]) != s.end()) return true;</span><br><span class="line">            s.insert(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>52ms, 56.23%, May.6th, 2016</p>
+<p><a href="https://leetcode.com/discuss/54123/python-concise-solution-with-dictionary" target="_blank" rel="noopener">https://leetcode.com/discuss/54123/python-concise-solution-with-dictionary</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def containsNearbyDuplicate(self, nums, k):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :type k: int</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        dic = &#123;&#125;</span><br><span class="line">        for i, v in enumerate(nums):</span><br><span class="line">            if v in dic and  i - dic[v] &lt;= k:</span><br><span class="line">                return True</span><br><span class="line">            dic[v] = i</span><br><span class="line">        return False</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>13ms, 44.06%, May.6th, 2016</p>
+<p><a href="https://leetcode.com/discuss/38445/simple-java-solution" target="_blank" rel="noopener">https://leetcode.com/discuss/38445/simple-java-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean containsNearbyDuplicate(int[] nums, int k) &#123;</span><br><span class="line">        Set&lt;Integer&gt; set = new HashSet&lt;Integer&gt;();</span><br><span class="line">        for(int i = 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">            if(i &gt; k) set.remove(nums[i-k-1]);</span><br><span class="line">            if(!set.add(nums[i])) return true;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,6 +536,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/array/" rel="tag"># array</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+        </div>
       
 
       
@@ -574,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -612,7 +678,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -674,6 +740,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

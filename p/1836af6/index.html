@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="不踏坑的于同学" />
+  <meta name="keywords" content="leetcode,hash table,easy," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
-<meta name="keywords" content="AI一丝一毫,机器学习,深度学习,人工智能,算法,个人技术博客">
+<meta name="description" content="32.5%  https://leetcode.com/problems/word-pattern/#/description Given a pattern and a string str, find if str follows the same pattern. Here follow means a full match, such that there is a bijection">
+<meta name="keywords" content="leetcode,hash table,easy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="290. Word Pattern">
 <meta property="og:url" content="http://yucc.me/p/1836af6/index.html">
 <meta property="og:site_name" content="不踏坑的Yu同学">
-<meta property="og:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta property="og:description" content="32.5%  https://leetcode.com/problems/word-pattern/#/description Given a pattern and a string str, find if str follows the same pattern. Here follow means a full match, such that there is a bijection">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-22T06:42:26.167Z">
+<meta property="og:updated_time" content="2018-05-22T15:38:59.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="290. Word Pattern">
-<meta name="twitter:description" content="AI一丝一毫,机器学习,深度学习,人工智能,算法从业者,个人技术博客">
+<meta name="twitter:description" content="32.5%  https://leetcode.com/problems/word-pattern/#/description Given a pattern and a string str, find if str follows the same pattern. Here follow means a full match, such that there is a bijection">
 
 
 
@@ -358,12 +358,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T14:42:26+08:00">
-                2018-05-22 14:42
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-22T23:38:59+08:00">
+                2018-05-22 23:38
               </time>
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +415,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  608
                 </span>
               
 
@@ -409,7 +431,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -430,7 +452,52 @@
       
 
       
-        
+        <ul>
+<li>32.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/word-pattern/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/word-pattern/#/description</a></p>
+<p>Given a pattern and a string str, find if str follows the same pattern.</p>
+<p>Here follow means a full match, such that there is a bijection between a letter in pattern and a non-empty word in str.</p>
+<p>Examples:</p>
+<ol>
+<li>pattern = “abba”, str = “dog cat cat dog” should return true.</li>
+<li>pattern = “abba”, str = “dog cat cat fish” should return false.</li>
+<li>pattern = “aaaa”, str = “dog cat cat dog” should return false.</li>
+<li>pattern = “abba”, str = “dog dog dog dog” should return false.</li>
+</ol>
+<p>Notes:</p>
+<p>You may assume pattern contains only lowercase letters, and str contains lowercase letters separated by a single space.</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26376/short-c-read-words-on-the-fly" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26376/short-c-read-words-on-the-fly</a></p>
+<p>Short C++, read words on the fly</p>
+<p>I think all previous C++ solutions read all words into a vector at the start. Here I read them on the fly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bool wordPattern(string pattern, string str) &#123;</span><br><span class="line">    map&lt;char, int&gt; p2i;</span><br><span class="line">    map&lt;string, int&gt; w2i;</span><br><span class="line">    istringstream in(str);</span><br><span class="line">    int i = 0, n = pattern.size();</span><br><span class="line">    for (string word; in &gt;&gt; word; ++i) &#123;</span><br><span class="line">        if (i == n || p2i[pattern[i]] != w2i[word])</span><br><span class="line">            return false;</span><br><span class="line">        p2i[pattern[i]] = w2i[word] = i + 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return i == n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26316/short-in-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26316/short-in-python</a></p>
+<p>Short in Python</p>
+<p>This problem is pretty much equivalent to <a href="https://leetcode.com/problems/isomorphic-strings/" target="_blank" rel="noopener">Isomorphic Strings</a>. Let me reuse two old solutions.</p>
+<p>From <a href="https://leetcode.com/discuss/36438/1-liner-in-python?show=39070#c39070" target="_blank" rel="noopener">here</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def wordPattern(self, pattern, str):</span><br><span class="line">    s = pattern</span><br><span class="line">    t = str.split()</span><br><span class="line">    return map(s.find, s) == map(t.index, t)</span><br></pre></td></tr></table></figure>
+<p>Improved version also from there:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def wordPattern(self, pattern, str):</span><br><span class="line">    f = lambda s: map(&#123;&#125;.setdefault, s, range(len(s)))</span><br><span class="line">    return f(pattern) == f(str.split())</span><br></pre></td></tr></table></figure>
+<p>From here:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def wordPattern(self, pattern, str):</span><br><span class="line">    s = pattern</span><br><span class="line">    t = str.split()</span><br><span class="line">    return len(set(zip(s, t))) == len(set(s)) == len(set(t)) and len(s) == len(t)</span><br></pre></td></tr></table></figure>
+<p>Thanks to zhang38 for pointing out the need to check len(s) == len(t) here.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/26313/0ms-c-solution-using-istringstream-and-double-maps" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26313/0ms-c-solution-using-istringstream-and-double-maps</a></p>
+<p>0ms C++ solution using istringstream and double maps</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">bool wordPattern(string pattern, string str) &#123;</span><br><span class="line">    istringstream strcin(str);</span><br><span class="line">    string s;</span><br><span class="line">    vector&lt;string&gt; vs;</span><br><span class="line">    while(strcin &gt;&gt; s) vs.push_back(s);</span><br><span class="line">    if (pattern.size() != vs.size()) return false;</span><br><span class="line">    map&lt;string, char&gt; s2c;</span><br><span class="line">    map&lt;char, string&gt; c2s;</span><br><span class="line">    for (int i = 0; i &lt; vs.size(); ++i) &#123;</span><br><span class="line">        if (s2c[vs[i]] == 0 &amp;&amp; c2s[pattern[i]] == &quot;&quot;) &#123; </span><br><span class="line">            s2c[vs[i]] = pattern[i]; </span><br><span class="line">            c2s[pattern[i]] = vs[i]; </span><br><span class="line">            continue; </span><br><span class="line">        &#125;</span><br><span class="line">        if (s2c[vs[i]] != pattern[i]) return false;</span><br><span class="line">    &#125;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36612/my-solution-in-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36612/my-solution-in-python</a></p>
+<p>My solution in python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def wordPattern(self, pattern, str):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type pattern: str</span><br><span class="line">        :type str: str</span><br><span class="line">        :rtype: bool</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        x = str.split(&apos; &apos;)</span><br><span class="line">        lsp = len(set(pattern))</span><br><span class="line">        lsx = len(set(x))</span><br><span class="line">        return len(x)==len(pattern) and lsx==lsp and lsp== len(set(zip(pattern, x)))</span><br></pre></td></tr></table></figure>
+<p>please point out if there’s anything i should improve</p>
+<hr>
+<p>2ms, 51.78%, October 18, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/26339/8-lines-simple-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/26339/8-lines-simple-java</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean wordPattern(String pattern, String str) &#123;</span><br><span class="line">        String[] words = str.split(&quot; &quot;);</span><br><span class="line">        if(words.length!=pattern.length())</span><br><span class="line">            return false;</span><br><span class="line">        Map index = new HashMap();</span><br><span class="line">        for(Integer i=0; i&lt;words.length; ++i)</span><br><span class="line">            if(index.put(pattern.charAt(i), i) != index.put(words[i], i))</span><br><span class="line">                return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -491,6 +558,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+        </div>
       
 
       
@@ -612,7 +689,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
