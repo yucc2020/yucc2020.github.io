@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,medium,depth first search,graph," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="28.4%  https://leetcode.com/problems/reconstruct-itinerary/#/description Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary i">
+<meta name="keywords" content="leetcode,medium,depth first search,graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="332. Reconstruct Itinerary">
+<meta property="og:url" content="http://yucc.me/p/3d631603/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="28.4%  https://leetcode.com/problems/reconstruct-itinerary/#/description Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary i">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:39:51.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="332. Reconstruct Itinerary">
+<meta name="twitter:description" content="28.4%  https://leetcode.com/problems/reconstruct-itinerary/#/description Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary i">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/3d631603/"/>
+
+
+
+
+
+  <title>332. Reconstruct Itinerary | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/3d631603/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">332. Reconstruct Itinerary</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:07:18+08:00">
+                2018-05-23 13:07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:39:51+08:00">
+                2018-05-23 19:39
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,261
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>28.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/reconstruct-itinerary/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/reconstruct-itinerary/#/description</a></p>
+<p>Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.</p>
+<p>Note:</p>
+<ol>
+<li>If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string. For example, the itinerary [“JFK”, “LGA”] has a smaller lexical order than [“JFK”, “LGB”].</li>
+<li>All airports are represented by three capital letters (IATA code).</li>
+<li>You may assume all tickets form at least one valid itinerary.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">tickets = [[&quot;MUC&quot;, &quot;LHR&quot;], [&quot;JFK&quot;, &quot;MUC&quot;], [&quot;SFO&quot;, &quot;SJC&quot;], [&quot;LHR&quot;, &quot;SFO&quot;]]</span><br><span class="line">Return [&quot;JFK&quot;, &quot;MUC&quot;, &quot;LHR&quot;, &quot;SFO&quot;, &quot;SJC&quot;].</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">tickets = [[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</span><br><span class="line">Return [&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;].</span><br><span class="line">Another possible reconstruction is [&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;]. But it is larger in lexical order.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36370/short-ruby-python-java-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36370/short-ruby-python-java-c</a></p>
+<p>Short Ruby / Python / Java / C++</p>
+<p>Just Eulerian path. Greedy DFS, building the route backwards when retreating.</p>
+<p>More explanation and example under the codes.</p>
+<p>Iterative versions inspired by fangyang (I had only thought of recursion, d’oh).</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def findItinerary(self, tickets):</span><br><span class="line">    targets = collections.defaultdict(list)</span><br><span class="line">    for a, b in sorted(tickets)[::-1]:</span><br><span class="line">        targets[a] += b,</span><br><span class="line">    route = []</span><br><span class="line">    def visit(airport):</span><br><span class="line">        while targets[airport]:</span><br><span class="line">            visit(targets[airport].pop())</span><br><span class="line">        route.append(airport)</span><br><span class="line">    visit(&apos;JFK&apos;)</span><br><span class="line">    return route[::-1]</span><br><span class="line">Iterative version:</span><br><span class="line"></span><br><span class="line">def findItinerary(self, tickets):</span><br><span class="line">    targets = collections.defaultdict(list)</span><br><span class="line">    for a, b in sorted(tickets)[::-1]:</span><br><span class="line">        targets[a] += b,</span><br><span class="line">    route, stack = [], [&apos;JFK&apos;]</span><br><span class="line">    while stack:</span><br><span class="line">        while targets[stack[-1]]:</span><br><span class="line">            stack += targets[stack[-1]].pop(),</span><br><span class="line">        route += stack.pop(),</span><br><span class="line">    return route[::-1]</span><br></pre></td></tr></table></figure>
+<p>Java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;String&gt; findItinerary(String[][] tickets) &#123;</span><br><span class="line">    for (String[] ticket : tickets)</span><br><span class="line">        targets.computeIfAbsent(ticket[0], k -&gt; new PriorityQueue()).add(ticket[1]);</span><br><span class="line">    visit(&quot;JFK&quot;);</span><br><span class="line">    return route;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Map&lt;String, PriorityQueue&lt;String&gt;&gt; targets = new HashMap&lt;&gt;();</span><br><span class="line">List&lt;String&gt; route = new LinkedList();</span><br><span class="line"></span><br><span class="line">void visit(String airport) &#123;</span><br><span class="line">    while(targets.containsKey(airport) &amp;&amp; !targets.get(airport).isEmpty())</span><br><span class="line">        visit(targets.get(airport).poll());</span><br><span class="line">    route.add(0, airport);</span><br><span class="line">&#125;</span><br><span class="line">Iterative version:</span><br><span class="line"></span><br><span class="line">public List&lt;String&gt; findItinerary(String[][] tickets) &#123;</span><br><span class="line">    Map&lt;String, PriorityQueue&lt;String&gt;&gt; targets = new HashMap&lt;&gt;();</span><br><span class="line">    for (String[] ticket : tickets)</span><br><span class="line">        targets.computeIfAbsent(ticket[0], k -&gt; new PriorityQueue()).add(ticket[1]);</span><br><span class="line">    List&lt;String&gt; route = new LinkedList();</span><br><span class="line">    Stack&lt;String&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">    stack.push(&quot;JFK&quot;);</span><br><span class="line">    while (!stack.empty()) &#123;</span><br><span class="line">        while (targets.containsKey(stack.peek()) &amp;&amp; !targets.get(stack.peek()).isEmpty())</span><br><span class="line">            stack.push(targets.get(stack.peek()).poll());</span><br><span class="line">        route.add(0, stack.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    return route;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; findItinerary(vector&lt;pair&lt;string, string&gt;&gt; tickets) &#123;</span><br><span class="line">    for (auto ticket : tickets)</span><br><span class="line">        targets[ticket.first].insert(ticket.second);</span><br><span class="line">    visit(&quot;JFK&quot;);</span><br><span class="line">    return vector&lt;string&gt;(route.rbegin(), route.rend());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map&lt;string, multiset&lt;string&gt;&gt; targets;</span><br><span class="line">vector&lt;string&gt; route;</span><br><span class="line"></span><br><span class="line">void visit(string airport) &#123;</span><br><span class="line">    while (targets[airport].size()) &#123;</span><br><span class="line">        string next = *targets[airport].begin();</span><br><span class="line">        targets[airport].erase(targets[airport].begin());</span><br><span class="line">        visit(next);</span><br><span class="line">    &#125;</span><br><span class="line">    route.push_back(airport);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>First keep going forward until you get stuck. That’s a good main path already. Remaining tickets form cycles which are found on the way back and get merged into that main path. By writing down the path backwards when retreating from recursion, merging the cycles into the main path is easy - the end part of the path has already been written, the start part of the path hasn’t been written yet, so just write down the cycle now and then keep backwards-writing the path.</p>
+<p>Example:</p>
+<p>enter image description here</p>
+<p>From JFK we first visit JFK -&gt; A -&gt; C -&gt; D -&gt; A. There we’re stuck, so we write down A as the end of the route and retreat back to D. There we see the unused ticket to B and follow it: D -&gt; B -&gt; C -&gt; JFK -&gt; D. Then we’re stuck again, retreat and write down the airports while doing so: Write down D before the already written A, then JFK before the D, etc. When we’re back from our cycle at D, the written route is D -&gt; B -&gt; C -&gt; JFK -&gt; D -&gt; A. Then we retreat further along the original path, prepending C, A and finally JFK to the route, ending up with the route JFK -&gt; A -&gt; C -&gt; D -&gt; B -&gt; C -&gt; JFK -&gt; D -&gt; A.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36721/short-c-dfs-iterative-44ms-solution-with-explanation-no-recursive-calls-no-backtracking" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36721/short-c-dfs-iterative-44ms-solution-with-explanation-no-recursive-calls-no-backtracking</a></p>
+<p>Short C++ DFS iterative 44ms solution with explanation. No recursive calls, no backtracking.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	vector&lt;string&gt; findItinerary(vector&lt;pair&lt;string, string&gt;&gt; tickets) &#123;</span><br><span class="line">		// Each node (airport) contains a set of outgoing edges (destination).</span><br><span class="line">		unordered_map&lt;string, multiset&lt;string&gt;&gt; graph;</span><br><span class="line">		// We are always appending the deepest node to the itinerary, </span><br><span class="line">		// so will need to reverse the itinerary in the end.</span><br><span class="line">		vector&lt;string&gt; itinerary;</span><br><span class="line">		if (tickets.size() == 0)&#123;</span><br><span class="line">			return itinerary;</span><br><span class="line">		&#125;</span><br><span class="line">		// Construct the node and assign outgoing edges</span><br><span class="line">		for (pair&lt;string, string&gt; eachTicket : tickets)&#123;</span><br><span class="line">			graph[eachTicket.first].insert(eachTicket.second);</span><br><span class="line">		&#125;</span><br><span class="line">		stack&lt;string&gt; dfs;</span><br><span class="line">		dfs.push(&quot;JFK&quot;);</span><br><span class="line">		while (!dfs.empty())&#123;</span><br><span class="line">			string topAirport = dfs.top();</span><br><span class="line">			if (graph[topAirport].empty())&#123;</span><br><span class="line">				// If there is no more outgoing edges, append to itinerary</span><br><span class="line">				// Two cases: </span><br><span class="line">				// 1. If it searchs the terminal end first, it will simply get</span><br><span class="line">				//    added to the itinerary first as it should, and the proper route</span><br><span class="line">				//    will still be traversed since its entry is still on the stack.</span><br><span class="line">				// 2. If it search the proper route first, the dead end route will also</span><br><span class="line">				//    get added to the itinerary first.</span><br><span class="line">				itinerary.push_back(topAirport);</span><br><span class="line">				dfs.pop();</span><br><span class="line">			&#125;</span><br><span class="line">			else &#123;</span><br><span class="line">				// Otherwise push the outgoing edge to the dfs stack and </span><br><span class="line">				// remove it from the node.</span><br><span class="line">				dfs.push(*(graph[topAirport].begin()));</span><br><span class="line">				graph[topAirport].erase(graph[topAirport].begin());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		// Reverse the itinerary.</span><br><span class="line">		reverse(itinerary.begin(), itinerary.end());</span><br><span class="line">		return itinerary;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/37631/c-non-recursive-o-n-time-o-n-space-solution-with-detail-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/37631/c-non-recursive-o-n-time-o-n-space-solution-with-detail-explanations</a></p>
+<p>C++ non-recursive O(N)-time O(N)-space solution with detail explanations</p>
+<p>The idea of this algorithm, which was originally found in fangyang’s thread <a href="https://leetcode.com/discuss/84706/share-solution-java-greedy-stack-15ms-with-explanation" target="_blank" rel="noopener">https://leetcode.com/discuss/84706/share-solution-java-greedy-stack-15ms-with-explanation</a>, consists of two steps:</p>
+<p>Step 1: Store the flight in a hash map. (say m in the code below. This map enables us to find all possible destinations from a place in amortized constant time.)</p>
+<p>Step 2: Use a greedy and trace-back approach to find the optimal itinerary. Specifically, we use greedy method to find a lexicographically-smallest path until we can not move any further (the path can be stored in a vector, say march in the code below). Each time we reach such an exhaustive state, we find a place which is exactly the end of the itinerary. (The reason is, the path march is an optimal itinerary expect that some loops are omitted. The optimal itinerary can be obtained by inserting some loops into this path, which does not change the last vertex of the path.) Therefore, we can record the last vertex in another place (say results in the code below). So and so forth, the vector results stores the optimal itinerary reversely, since we always place the optimal last vertex at the end of this vector. Reversing the vertex results leads to the correct answer.</p>
+<p>Example:<br>This example is originally shown in StefanPochmann’s thread <a href="https://leetcode.com/discuss/84659/short-ruby-python-java-c" target="_blank" rel="noopener">https://leetcode.com/discuss/84659/short-ruby-python-java-c</a></p>
+<p>[ Source of this picture: <a href="http://www.stefan-pochmann.info/misc/reconstruct-itinerary.png" target="_blank" rel="noopener">http://www.stefan-pochmann.info/misc/reconstruct-itinerary.png</a> ]</p>
+<p>In Step 2, we first march greedily, and get the vector march as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">march: JFK -&gt; A -&gt; C -&gt; D -&gt; A      (the red path)</span><br></pre></td></tr></table></figure>
+<p>However, the optimal itinerary, is</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JFK -&gt; A -&gt; C -&gt; D( -&gt; B -&gt; C -&gt; JFK -&gt; D) -&gt; A</span><br></pre></td></tr></table></figure>
+<p>where the loop (D -&gt; B -&gt; C -&gt; JFK -&gt; D) shall be inserted in the vector march. However, we have already found the last vertex A, Therefore, we can record this result. So march and results become</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">march: JFK -&gt; A -&gt; C -&gt; D</span><br><span class="line">results: A</span><br></pre></td></tr></table></figure>
+<p>Then we march greedily again, results in</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">march: JFK -&gt; A -&gt; C -&gt; D -&gt; B -&gt; C -&gt; JFK -&gt; D</span><br><span class="line">results: A</span><br></pre></td></tr></table></figure>
+<p>Now all edges are used. Before the final reversion, march and results become</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">march: (empty)</span><br><span class="line">results: A &lt;- D &lt;- JFK &lt;- C &lt;- B &lt;- D &lt;- C &lt;- A &lt;- JFK</span><br></pre></td></tr></table></figure>
+<p>Overall Complexities:</p>
+<p>Let N be the number of tickets. Let D be the largest outgoing degree of a vertex.</p>
+<p>Time: O(N log D)</p>
+<p>Step 1: O(N log D)</p>
+<p>Step 2: O(N). Each vertex needs to be put into march once and be moved from march to results. At the very end, results is reversed.</p>
+<p>Space: O(N)</p>
+<p>The map m needs to store all vertices.</p>
+<p>Code (40 ms):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; findItinerary(vector&lt;pair&lt;string, string&gt;&gt; tickets) &#123;</span><br><span class="line">        </span><br><span class="line">        // Step 1: Store directed edges in a hash map</span><br><span class="line">        unordered_map&lt;string, multiset&lt;string&gt;&gt; m;</span><br><span class="line">        for (const pair&lt;string, string&gt; &amp; ticket : tickets) &#123;</span><br><span class="line">            m[ticket.first].insert(ticket.second);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // Step 2: March greedily and traceback</span><br><span class="line">        vector&lt;string&gt; march = &#123; &quot;JFK&quot; &#125;; // the storage for greedy searching</span><br><span class="line">        vector&lt;string&gt; results; // store the final results reversely</span><br><span class="line">        while (march.empty() == false) &#123;</span><br><span class="line">            string &amp; from = march.back();</span><br><span class="line">            if ((m.find(from) != m.end()) &amp;&amp; (m[from].empty() == false)) &#123; // march further</span><br><span class="line">                multiset&lt;string&gt; &amp; to = m[from];</span><br><span class="line">                march.push_back(*(to.begin()));</span><br><span class="line">                to.erase(to.begin());</span><br><span class="line">            &#125; else &#123; // can not march further, trace back</span><br><span class="line">                results.push_back(march.back()); // archive the last place</span><br><span class="line">                march.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(results.begin(), results.end()); // reverse the entries back</span><br><span class="line">        return results;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/46577/28ms-c-beat-100-short-and-elegant" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/46577/28ms-c-beat-100-short-and-elegant</a></p>
+<p>28ms C++ beat 100% Short and Elegant.</p>
+<p>I think this algorithm is often called Fleury’s algorithm. But actually it is Hierholzer’s algorithm according to the wiki. Anyway, it works like this:</p>
+<p>Keep going one path until stuck, then retreat and push the vertices along the route to a stack until it reaches a vertex that has alternative paths, then go along that path and repeat the process.<br>The assumption for this to work is there is guaranteed to exist one Euler path. (This problem is basically to find a Euler path of a graph).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    unordered_map&lt;string, priority_queue&lt;string, vector&lt;string&gt;, greater&lt;string&gt;&gt;&gt; graph;</span><br><span class="line">    vector&lt;string&gt; result;</span><br><span class="line">    void dfs(string vtex)</span><br><span class="line">    &#123;</span><br><span class="line">        auto &amp; edges = graph[vtex];</span><br><span class="line">        while (!edges.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            string to_vtex = edges.top();</span><br><span class="line">            edges.pop();</span><br><span class="line">            dfs(to_vtex);</span><br><span class="line">        &#125;</span><br><span class="line">        result.push_back(vtex);</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; findItinerary(vector&lt;pair&lt;string, string&gt;&gt; tickets) &#123;</span><br><span class="line">        for (auto e : tickets)</span><br><span class="line">            graph[e.first].push(e.second);</span><br><span class="line">        dfs(&quot;JFK&quot;);</span><br><span class="line">        reverse(result.begin(), result.end());</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36445/c-solution-using-dfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36445/c-solution-using-dfs</a></p>
+<p>C++ Solution using DFS</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; findItinerary(vector&lt;pair&lt;string, string&gt;&gt; tickets) &#123;</span><br><span class="line">        vector&lt;string&gt; ans;</span><br><span class="line">        int n = tickets.size();</span><br><span class="line">        for(int i = 0; i &lt; n; ++ i)&#123;</span><br><span class="line">            g[tickets[i].first].insert(tickets[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(&quot;JFK&quot;, ans, 1, n);</span><br><span class="line">   //     puts(&quot; -- &quot;);</span><br><span class="line">        reverse(ans.begin(), ans.end());</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    void dfs(string u, vector&lt;string&gt; &amp;ans, int dep, int tot)&#123;</span><br><span class="line">        while(g[u].size())&#123;</span><br><span class="line">            string v = *g[u].begin();</span><br><span class="line">            g[u].erase(g[u].begin());</span><br><span class="line">            dfs(v, ans, dep + 1, tot);</span><br><span class="line">        &#125;</span><br><span class="line">        ans.push_back(u);</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">unordered_map&lt;string, multiset&lt;string&gt; &gt; g;</span><br><span class="line">//unordered_map&lt;string, set&lt;string&gt;::iterator&gt; vis;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/36403/python-dfs-backtracking" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/36403/python-dfs-backtracking</a></p>
+<p>Python Dfs Backtracking</p>
+<p>I use a dictionary to represent the tickets (start -&gt; [list of possible destinations]). Then, I start the route at JFK and I dfs from there. Since I do the dfs in sorted order, the first time that I find a possible route, I can return it and know that it is in the smallest lexigraphic order. Finally, note that the worked variable either contains None (as a result of a failed search) or the correct route.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def findItinerary(self, tickets):</span><br><span class="line">    d = defaultdict(list)</span><br><span class="line">    for flight in tickets:</span><br><span class="line">        d[flight[0]] += flight[1],</span><br><span class="line">    self.route = [&quot;JFK&quot;]</span><br><span class="line">    def dfs(start = &apos;JFK&apos;):</span><br><span class="line">        if len(self.route) == len(tickets) + 1:</span><br><span class="line">            return self.route</span><br><span class="line">        myDsts = sorted(d[start])</span><br><span class="line">        for dst in myDsts:</span><br><span class="line">            d[start].remove(dst)</span><br><span class="line">            self.route += dst,</span><br><span class="line">            worked = dfs(dst)</span><br><span class="line">            if worked:</span><br><span class="line">                return worked</span><br><span class="line">            self.route.pop()</span><br><span class="line">            d[start] += dst,</span><br><span class="line">    return dfs()</span><br></pre></td></tr></table></figure>
+<hr>
+<p>108ms, 56.72%, 79/79, April.26th, 2016</p>
+<p><a href="https://leetcode.com/discuss/84659/short-ruby-python-java-c" target="_blank" rel="noopener">https://leetcode.com/discuss/84659/short-ruby-python-java-c</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def findItinerary(self, tickets):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type tickets: List[List[str]]</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        targets = collections.defaultdict(list)</span><br><span class="line">        for a, b in sorted(tickets)[::-1]:</span><br><span class="line">            targets[a] += b,</span><br><span class="line">        route = []</span><br><span class="line">        def visit(airport):</span><br><span class="line">            while targets[airport]:</span><br><span class="line">                visit(targets[airport].pop())</span><br><span class="line">            route.append(airport)</span><br><span class="line">        visit(&apos;JFK&apos;)</span><br><span class="line">        return route[::-1]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/3d631603/" title="332. Reconstruct Itinerary">http://yucc.me/p/3d631603/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+            <a href="/tags/graph/" rel="tag"># graph</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/d8b9d36f/" rel="next" title="331. Verify Preorder Serialization of a Binary Tree">
+                <i class="fa fa-chevron-left"></i> 331. Verify Preorder Serialization of a Binary Tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/56530ef8/" rel="prev" title="334. Increasing Triplet Subsequence">
+                334. Increasing Triplet Subsequence <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

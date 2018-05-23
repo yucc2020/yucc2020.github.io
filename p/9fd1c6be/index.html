@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,medium,sort," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="25.4%  https://leetcode.com/problems/wiggle-sort-ii/?tab=Description Given an unsorted array nums, reorder it such that nums[0] &amp;lt; nums[1] &amp;gt; nums[2] &amp;lt; nums[3]…. 123Example:(1) Given nums = [1">
+<meta name="keywords" content="leetcode,medium,sort">
+<meta property="og:type" content="article">
+<meta property="og:title" content="324. Wiggle Sort II">
+<meta property="og:url" content="http://yucc.me/p/9fd1c6be/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="25.4%  https://leetcode.com/problems/wiggle-sort-ii/?tab=Description Given an unsorted array nums, reorder it such that nums[0] &amp;lt; nums[1] &amp;gt; nums[2] &amp;lt; nums[3]…. 123Example:(1) Given nums = [1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:34:48.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="324. Wiggle Sort II">
+<meta name="twitter:description" content="25.4%  https://leetcode.com/problems/wiggle-sort-ii/?tab=Description Given an unsorted array nums, reorder it such that nums[0] &amp;lt; nums[1] &amp;gt; nums[2] &amp;lt; nums[3]…. 123Example:(1) Given nums = [1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/9fd1c6be/"/>
+
+
+
+
+
+  <title>324. Wiggle Sort II | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/9fd1c6be/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">324. Wiggle Sort II</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:06:14+08:00">
+                2018-05-23 13:06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:34:48+08:00">
+                2018-05-23 19:34
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,979
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>25.4%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/wiggle-sort-ii/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/wiggle-sort-ii/?tab=Description</a></p>
+<p>Given an unsorted array nums, reorder it such that nums[0] &lt; nums[1] &gt; nums[2] &lt; nums[3]….</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">(1) Given nums = [1, 5, 1, 1, 6, 4], one possible answer is [1, 4, 1, 5, 1, 6]. </span><br><span class="line">(2) Given nums = [1, 3, 2, 2, 3, 1], one possible answer is [2, 3, 1, 3, 1, 2].</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<p>You may assume all input has valid answer.</p>
+<p>Follow Up:</p>
+<p>Can you do it in O(n) time and/or in-place with O(1) extra space?</p>
+<a id="more"></a>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32929/o-n-o-1-after-median-virtual-indexing" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32929/o-n-o-1-after-median-virtual-indexing</a></p>
+<p>O(n)+O(1) after median — Virtual Indexing</p>
+<p>This post is mainly about what I call “virtual indexing” technique (I’m sure I’m not the first who came up with this, but I couldn’t find anything about it, so I made up a name as well. If you know better, let me know).</p>
+<p>Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">void wiggleSort(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int n = nums.size();</span><br><span class="line">    </span><br><span class="line">    // Find a median.</span><br><span class="line">    auto midptr = nums.begin() + n / 2;</span><br><span class="line">    nth_element(nums.begin(), midptr, nums.end());</span><br><span class="line">    int mid = *midptr;</span><br><span class="line">    </span><br><span class="line">    // Index-rewiring.</span><br><span class="line">    #define A(i) nums[(1+2*(i)) % (n|1)]</span><br><span class="line"></span><br><span class="line">    // 3-way-partition-to-wiggly in O(n) time with O(1) space.</span><br><span class="line">    int i = 0, j = 0, k = n - 1;</span><br><span class="line">    while (j &lt;= k) &#123;</span><br><span class="line">        if (A(j) &gt; mid)</span><br><span class="line">            swap(A(i++), A(j++));</span><br><span class="line">        else if (A(j) &lt; mid)</span><br><span class="line">            swap(A(j), A(k--));</span><br><span class="line">        else</span><br><span class="line">            j++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Explanation</p>
+<p>First I find a median using nth_element. That only guarantees O(n) average time complexity and I don’t know about space complexity. I might write this myself using O(n) time and O(1) space, but that’s not what I want to show here.</p>
+<p>This post is about what comes after that. We can use three-way partitioning to arrange the numbers so that those larger than the median come first, then those equal to the median come next, and then those smaller than the median come last.</p>
+<p>Ordinarily, you’d then use one more phase to bring the numbers to their final positions to reach the overall wiggle-property. But I don’t know a nice O(1) space way for this. Instead, I embed this right into the partitioning algorithm. That algorithm simply works with indexes 0 to n-1 as usual, but sneaky as I am, I rewire those indexes where I want the numbers to actually end up. The partitioning-algorithm doesn’t even know that I’m doing that, it just works like normal (it just uses A(x) instead of nums[x]).</p>
+<p>Let’s say nums is [10,11,…,19]. Then after nth_element and ordinary partitioning, we might have this (15 is my median):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index:     0  1  2  3   4   5  6  7  8  9</span><br><span class="line">number:   18 17 19 16  15  11 14 10 13 12</span><br></pre></td></tr></table></figure>
+<p>I rewire it so that the first spot has index 5, the second spot has index 0, etc, so that I might get this instead:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">index:     5  0  6  1  7  2  8  3  9  4</span><br><span class="line">number:   11 18 14 17 10 19 13 16 12 15</span><br></pre></td></tr></table></figure>
+<p>And 11 18 14 17 10 19 13 16 12 15 is perfectly wiggly. And the whole partitioning-to-wiggly-arrangement (everything after finding the median) only takes O(n) time and O(1) space.</p>
+<p>If the above description is unclear, maybe this explicit listing helps:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Accessing A(0) actually accesses nums[1].</span><br><span class="line">Accessing A(1) actually accesses nums[3].</span><br><span class="line">Accessing A(2) actually accesses nums[5].</span><br><span class="line">Accessing A(3) actually accesses nums[7].</span><br><span class="line">Accessing A(4) actually accesses nums[9].</span><br><span class="line">Accessing A(5) actually accesses nums[0].</span><br><span class="line">Accessing A(6) actually accesses nums[2].</span><br><span class="line">Accessing A(7) actually accesses nums[4].</span><br><span class="line">Accessing A(8) actually accesses nums[6].</span><br><span class="line">Accessing A(9) actually accesses nums[8].</span><br></pre></td></tr></table></figure>
+<p>Props to apolloydy’s solution, I knew the partitioning algorithm already but I didn’t know the name. And apolloydy’s idea to partition to reverse order happened to make the index rewiring simpler.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/41464/step-by-step-explanation-of-index-mapping-in-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41464/step-by-step-explanation-of-index-mapping-in-java</a></p>
+<p>Step by step explanation of index mapping in Java</p>
+<p>The virtual index idea in the post <a href="https://leetcode.com/discuss/77133/o-n-o-1-after-median-virtual-indexing" target="_blank" rel="noopener">https://leetcode.com/discuss/77133/o-n-o-1-after-median-virtual-indexing</a><br>is very brilliant! However, it takes me a while to understand why and how it works. There is no ‘nth_element’ in Java, but you can use ‘findKthLargest’ function from “<a href="https://leetcode.com/problems/kth-largest-element-in-an-array/&quot;" target="_blank" rel="noopener">https://leetcode.com/problems/kth-largest-element-in-an-array/&quot;</a> to get the median element in average O(n) time and O(1) space.</p>
+<p>Assume your original array is {6,13,5,4,5,2}. After you get median element, the ‘nums’ is partially sorted such that the first half is larger or equal to the median, the second half is smaller or equal to the median, i.e</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">13   6   5   5   4   2</span><br><span class="line"></span><br><span class="line">         M</span><br></pre></td></tr></table></figure>
+<p>In the post <a href="https://leetcode.com/discuss/76965/3-lines-python-with-explanation-proof" target="_blank" rel="noopener">https://leetcode.com/discuss/76965/3-lines-python-with-explanation-proof</a>, we have learned that , to get wiggle sort, you want to put the number in the following way such that</p>
+<p>(1) elements smaller than the ‘median’ are put into the last even slots</p>
+<p>(2) elements larger than the ‘median’ are put into the first odd slots</p>
+<p>(3) the medians are put into the remaining slots.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Index :       0   1   2   3   4   5</span><br><span class="line">Small half:   M       S       S    </span><br><span class="line">Large half:       L       L       M</span><br></pre></td></tr></table></figure>
+<p>M - Median, S-Small, L-Large. In this example, we want to put {13, 6, 5} in index 1,3,5 and {5,4,2} in index {0,2,4}</p>
+<p>The index mapping, (1 + 2 * index) % (n | 1) combined with ‘Color sort’, will do the job.</p>
+<p>After selecting the median element, which is 5 in this example, we continue as the following</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">Mapped_idx[Left] denotes the position where the next smaller-than median element  will be inserted.</span><br><span class="line">Mapped_idx[Right] denotes the position where the next larger-than median element  will be inserted.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 1: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    5    5    4    2 </span><br><span class="line">             Left</span><br><span class="line">              i</span><br><span class="line">                                      Right</span><br><span class="line"> nums[Mapped_idx[i]] = nums[1] = 6 &gt; 5, so it is ok to put 6 in the first odd index 1. </span><br><span class="line"> We increment i and left.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 2: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    5    5    4    2 </span><br><span class="line">                  Left</span><br><span class="line">                   i</span><br><span class="line">                                      Right</span><br><span class="line"> nums[3] = 5 = 5, so it is ok to put 6 in the index 3. We increment i.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 3: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    5    5    4    2 </span><br><span class="line">                  Left</span><br><span class="line">                        i</span><br><span class="line">                                     Right</span><br><span class="line"> nums[5] = 2 &lt; 5, so we want to put it to the last even index 4 (pointed by Right). </span><br><span class="line"> So, we swap nums[Mapped_idx[i]] with nums[Mapped_idx[Right]], i.e. nums[5] with nums[4], </span><br><span class="line"> and decrement Right. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 4: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    5    5    2    4 </span><br><span class="line">                  Left</span><br><span class="line">                        i</span><br><span class="line">                               Right</span><br><span class="line"> nums[5] = 4 &lt; 5, so we want to put it to the second last even index 2. So, we swap </span><br><span class="line"> nums[5] with nums[2], and decrement Right. </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 5: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    4    5    2    5 </span><br><span class="line">                  Left</span><br><span class="line">                        i</span><br><span class="line">                            Right</span><br><span class="line"> nums[5] = 5 &lt; 5, it is ok to put it there, we increment i.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step 6: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        13   6    4    5    2    5 </span><br><span class="line">                  Left</span><br><span class="line">                             i</span><br><span class="line">                            Right</span><br><span class="line"> nums[0] = 13 &gt; 5, so, we want to put it to the next odd index which is 3 (pointed by &apos;Left&apos;). </span><br><span class="line"> So, we swap nums[0] with nums[3], and increment &apos;Left&apos; and &apos;i&apos;.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Step Final: </span><br><span class="line">Original idx: 0    1    2    3    4    5  </span><br><span class="line">Mapped idx:   1    3    5    0    2    4 </span><br><span class="line">Array:        5    6    4    13   2    5 </span><br><span class="line">                      Left</span><br><span class="line">                                  i</span><br><span class="line">                            Right</span><br><span class="line">i &gt; Right, we get the final wiggle array 5 6 4 13 2 5 !</span><br></pre></td></tr></table></figure>
+<p>The code is the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public void wiggleSort(int[] nums) &#123;</span><br><span class="line">    int median = findKthLargest(nums, (nums.length + 1) / 2);</span><br><span class="line">    int n = nums.length;</span><br><span class="line"></span><br><span class="line">    int left = 0, i = 0, right = n - 1;</span><br><span class="line"></span><br><span class="line">    while (i &lt;= right) &#123;</span><br><span class="line"></span><br><span class="line">        if (nums[newIndex(i,n)] &gt; median) &#123;</span><br><span class="line">            swap(nums, newIndex(left++,n), newIndex(i++,n));</span><br><span class="line">        &#125;</span><br><span class="line">        else if (nums[newIndex(i,n)] &lt; median) &#123;</span><br><span class="line">            swap(nums, newIndex(right--,n), newIndex(i,n));</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int newIndex(int index, int n) &#123;</span><br><span class="line">    return (1 + 2*index) % (n | 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32861/3-lines-python-with-explanation-proof" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32861/3-lines-python-with-explanation-proof</a></p>
+<p>3 lines Python, with Explanation / Proof</p>
+<p>Solution</p>
+<p>Roughly speaking I put the smaller half of the numbers on the even indexes and the larger half on the odd indexes.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def wiggleSort(self, nums):</span><br><span class="line">    nums.sort()</span><br><span class="line">    half = len(nums[::2])</span><br><span class="line">    nums[::2], nums[1::2] = nums[:half][::-1], nums[half:][::-1]</span><br></pre></td></tr></table></figure>
+<p>Alternative, maybe nicer, maybe not:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def wiggleSort(self, nums):</span><br><span class="line">    nums.sort()</span><br><span class="line">    half = len(nums[::2]) - 1</span><br><span class="line">    nums[::2], nums[1::2] = nums[half::-1], nums[:half:-1]</span><br></pre></td></tr></table></figure>
+<p>Explanation / Proof</p>
+<p>I put the smaller half of the numbers on the even indexes and the larger half on the odd indexes, both from right to left:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example nums = [1,2,...,7]      Example nums = [1,2,...,8] </span><br><span class="line"></span><br><span class="line">Small half:  4 . 3 . 2 . 1      Small half:  4 . 3 . 2 . 1 .</span><br><span class="line">Large half:  . 7 . 6 . 5 .      Large half:  . 8 . 7 . 6 . 5</span><br><span class="line">--------------------------      --------------------------</span><br><span class="line">Together:    4 7 3 6 2 5 1      Together:    4 8 3 7 2 6 1 5</span><br></pre></td></tr></table></figure>
+<p>I want:</p>
+<ul>
+<li>Odd-index numbers are larger than their neighbors.</li>
+</ul>
+<p>Since I put the larger numbers on the odd indexes, clearly I already have:</p>
+<ul>
+<li>Odd-index numbers are larger than or equal to their neighbors.</li>
+</ul>
+<p>Could they be “equal to”? That would require some number M to appear both in the smaller and the larger half. It would be the largest in the smaller half and the smallest in the larger half. Examples again, where S means some number smaller than M and L means some number larger than M.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Small half:  M . S . S . S      Small half:  M . S . S . S .</span><br><span class="line">Large half:  . L . L . M .      Large half:  . L . L . L . M</span><br><span class="line">--------------------------      --------------------------</span><br><span class="line">Together:    M L S L S M S      Together:    M L S L S L S M</span><br></pre></td></tr></table></figure>
+<p>You can see the two M are quite far apart. Of course M could appear more than just twice, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Small half:  M . M . S . S      Small half:  M . S . S . S .</span><br><span class="line">Large half:  . L . L . M .      Large half:  . L . M . M . M</span><br><span class="line">--------------------------      --------------------------</span><br><span class="line">Together:    M L M L S M S      Together:    M L S M S M S M</span><br></pre></td></tr></table></figure>
+<p>You can see that with seven numbers, three M are no problem. And with eight numbers, four M are no problem. Should be easy to see that in general, with n numbers, floor(n/2) times M is no problem. Now, if there were more M than that, then my method would fail. But… it would also be impossible:</p>
+<ul>
+<li>If n is even, then having more than n/2 times the same number clearly is unsolvable, because you’d have to put two of them next to each other, no matter how you arrange them.</li>
+<li>If n is odd, then the only way to successfully arrange a number appearing more than floor(n/2) times is if it appears exactly floor(n/2)+1 times and you put them on all the even indexes. And to have the wiggle-property, all the other numbers would have to be larger. But then we wouldn’t have an M in both the smaller and the larger half.</li>
+</ul>
+<p>So if the input has a valid answer at all, then my code will find one.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32920/o-n-time-o-1-space-solution-with-detail-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32920/o-n-time-o-1-space-solution-with-detail-explanations</a></p>
+<p>O(n)-time O(1)-space solution with detail explanations</p>
+<p>Methodology:</p>
+<p>Idea 1.</p>
+<p>As @whnzinc pointed out in this thread, all elements in nums can be classified into three categories:</p>
+<p>(1) Larger than the median;</p>
+<p>(2) Equal to the median;</p>
+<p>(3) Smaller than the median.</p>
+<p>Note that it’s possible to find the median within O(n)-time and O(1)-space.</p>
+<p>Note: We can use nth_element to find the median, but it’s not O(n)-time and O(1)-space. For the sake of simplicity, I might use nth_element as well.</p>
+<p>Idea 2.</p>
+<p>As @StefanPochmann pointed out in this thread, we can arrange the elements in the three categories in a deterministic way.</p>
+<p>(1) Elements that are larger than the median: we can put them in the first few odd slots;</p>
+<p>(2) Elements that are smaller than the median: we can put them in the last few even slots;</p>
+<p>(3) Elements that equal the median: we can put them in the remaining slots.</p>
+<p>Update: According to @StefanPochmann’s thread, we can use a one-pass three-way partition to rearrange all elements. His idea is to re-map the indices into its destined indices, odd indices first and even indices follow.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Original Indices:    0  1  2  3  4  5  6  7  8  9 10 11</span><br><span class="line">Mapped Indices:      1  3  5  7  9 11  0  2  4  6  8 10</span><br></pre></td></tr></table></figure>
+<p>(its reverse mapping is)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Mapped Indices:      0  1  2  3  4  5  6  7  8  9 10 11</span><br><span class="line">Original Indices:    6  0  7  1  8  2  9  3 10  4 11  5   (wiggled)</span><br></pre></td></tr></table></figure>
+<p>In order to achieve this, we can use a function alike</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int map_index(int idx, int n) &#123;</span><br><span class="line">    return (2 * idx + 1) % (n | 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>where (n | 1) calculates the nearest odd that is not less than n.</p>
+<p>Complexities: (On the condition that finding median is O(n)-time and O(1)-space)</p>
+<ul>
+<li><p>Time: O(n)</p>
+</li>
+<li><p>Space: O(1)</p>
+</li>
+</ul>
+<p>C++ (Updated, 44ms):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	void wiggleSort(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">		if (nums.empty()) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;    </span><br><span class="line">		int n = nums.size();</span><br><span class="line">		</span><br><span class="line">		// Step 1: Find the median    		</span><br><span class="line">		vector&lt;int&gt;::iterator nth = next(nums.begin(), n / 2);</span><br><span class="line">		nth_element(nums.begin(), nth, nums.end());</span><br><span class="line">		int median = *nth;</span><br><span class="line"></span><br><span class="line">		// Step 2: Tripartie partition within O(n)-time &amp; O(1)-space.    		</span><br><span class="line">		auto m = [n](int idx) &#123; return (2 * idx + 1) % (n | 1); &#125;;    		</span><br><span class="line">		int first = 0, mid = 0, last = n - 1;</span><br><span class="line">		while (mid &lt;= last) &#123;</span><br><span class="line">			if (nums[m(mid)] &gt; median) &#123;</span><br><span class="line">				swap(nums[m(first)], nums[m(mid)]);</span><br><span class="line">				++first;</span><br><span class="line">				++mid;</span><br><span class="line">			&#125;</span><br><span class="line">			else if (nums[m(mid)] &lt; median) &#123;</span><br><span class="line">				swap(nums[m(mid)], nums[m(last)]);</span><br><span class="line">				--last;</span><br><span class="line">			&#125;				</span><br><span class="line">			else &#123;</span><br><span class="line">				++mid;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32882/short-simple-c" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32882/short-simple-c</a></p>
+<p>Short simple C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void wiggleSort(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    vector&lt;int&gt; sorted(nums);</span><br><span class="line">    sort(sorted.begin(), sorted.end());</span><br><span class="line">    for (int i=nums.size()-1, j=0, k=i/2+1; i&gt;=0; i--)</span><br><span class="line">        nums[i] = sorted[i&amp;1 ? k++ : j++];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Sort and then write the smaller half of the numbers on the even indexes and the larger half of the numbers on the odd indexes, both from the back. Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Small half:    4 . 3 . 2 . 1 . 0 .</span><br><span class="line">Large half:    . 9 . 8 . 7 . 6 . 5</span><br><span class="line">----------------------------------</span><br><span class="line">Together:      4 9 3 8 2 7 1 6 0 5</span><br></pre></td></tr></table></figure>
+<p>So write nums from the back, interweaving sorted[0..4] (indexed by j) and sorted[5..9] (indexed by k).</p>
+<p>For more explanation/proof, see <a href="https://leetcode.com/discuss/76965/3-lines-python-with-explanation-proof" target="_blank" rel="noopener">my equivalent Python solution</a>.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32923/simple-modulo-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32923/simple-modulo-solution</a></p>
+<p>Simple modulo solution</p>
+<p>Once again I sort and then spread the numbers like in this example with nums=[0,1,…,9]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Small half:    4 . 3 . 2 . 1 . 0 .</span><br><span class="line">Large half:    . 9 . 8 . 7 . 6 . 5</span><br><span class="line">----------------------------------</span><br><span class="line">Together:      4 9 3 8 2 7 1 6 0 5</span><br></pre></td></tr></table></figure>
+<p>Just write the numbers 9, 8, 7, etc at indexes 1, 3, 5, etc. Use modulo to wrap around for the second round (the even indexes).</p>
+<p>Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def wiggleSort(self, nums):</span><br><span class="line">    for i, num in enumerate(sorted(nums)[::-1]):</span><br><span class="line">        nums[(1+2*i) % (len(nums)|1)] = num</span><br></pre></td></tr></table></figure>
+<p>C++</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void wiggleSort(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    vector&lt;int&gt; sorted(nums);</span><br><span class="line">    sort(sorted.rbegin(), sorted.rend());</span><br><span class="line">    int n = nums.size(), m = n | 1;</span><br><span class="line">    for (int i=0; i&lt;n; i++)</span><br><span class="line">        nums[(1+2*i)%m] = sorted[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Or:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void wiggleSort(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    vector&lt;int&gt; sorted(nums);</span><br><span class="line">    sort(sorted.rbegin(), sorted.rend());</span><br><span class="line">    int n = nums.size(), m = n | 1, i = -1;</span><br><span class="line">    for (int num : sorted)</span><br><span class="line">        nums[(i+=2)%m] = num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/9fd1c6be/" title="324. Wiggle Sort II">http://yucc.me/p/9fd1c6be/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/sort/" rel="tag"># sort</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/283870ec/" rel="next" title="322. Coin Change">
+                <i class="fa fa-chevron-left"></i> 322. Coin Change
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/b3a4ad57/" rel="prev" title="326. Power of Three">
+                326. Power of Three <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

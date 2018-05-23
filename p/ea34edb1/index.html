@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,divide and conquer,hard,binary search tree," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="29.1%  https://leetcode.com/problems/count-of-range-sum/?tab=Description Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive. Range sum S(i, j) is define">
+<meta name="keywords" content="leetcode,divide and conquer,hard,binary search tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="327. Count of Range Sum">
+<meta property="og:url" content="http://yucc.me/p/ea34edb1/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="29.1%  https://leetcode.com/problems/count-of-range-sum/?tab=Description Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive. Range sum S(i, j) is define">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:36:08.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="327. Count of Range Sum">
+<meta name="twitter:description" content="29.1%  https://leetcode.com/problems/count-of-range-sum/?tab=Description Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive. Range sum S(i, j) is define">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/ea34edb1/"/>
+
+
+
+
+
+  <title>327. Count of Range Sum | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/ea34edb1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">327. Count of Range Sum</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:06:32+08:00">
+                2018-05-23 13:06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:36:08+08:00">
+                2018-05-23 19:36
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,670
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  23
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>29.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/count-of-range-sum/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/count-of-range-sum/?tab=Description</a></p>
+<p>Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive.</p>
+<p>Range sum S(i, j) is defined as the sum of the elements in nums between indices i and j (i ≤ j), inclusive.</p>
+<p>Note:</p>
+<p>A naive algorithm of O(n2) is trivial. You MUST do better than that.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Given nums = [-2, 5, -1], lower = -2, upper = 2,</span><br><span class="line">Return 3.</span><br><span class="line">The three ranges are : [0, 0], [2, 2], [0, 2] and their respective sums are: -2, -1, 2.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/33993/8-line-multiset-c-solution-100ms-also-binary-search-tree-180ms-mergesort-52ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33993/8-line-multiset-c-solution-100ms-also-binary-search-tree-180ms-mergesort-52ms</a></p>
+<p>8-line multiset C++ solution (100ms), also binary search tree (180ms) + mergesort(52ms)</p>
+<p>The basic idea is to use a multiset to save sum, where sum at i = nums[0]+…+ nums[i]. At each i, only those sum[j] that satisfies lower=&lt; sum[i]-sum[j]&lt;= upper can generate a valid range[j,i]. so we only need to calculate how many j (0=&lt; j&lt; i) satisfy sum[i]-upper=&lt; sum[j]&lt;=-sum[i]-lower. The STL multiset can take care of sort and find upper_bound, lower_bound j. Since the multiset is usually implemented with Red-black tree, so those operations should have complexity of O(logN). So in total, the complexity is O(NlogN) (except the distance part). At least it looks neat</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countRangeSum(vector&lt;int&gt;&amp; nums, int lower, int upper) &#123;</span><br><span class="line">        multiset&lt;long long&gt; pSum;</span><br><span class="line">        int res = 0,  i; </span><br><span class="line">        long long left, right, sum=0;</span><br><span class="line">        for(i=0,pSum.insert(0); i&lt;nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            sum +=nums[i];</span><br><span class="line">            res += std::distance(pSum.lower_bound(sum-upper), pSum.upper_bound(sum-lower));</span><br><span class="line">            pSum.insert(sum);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>In the comments made by StefanPochmann, there is concern that the STL distance function increases the total complexity to O(N^2), which is true. In the following version, I just show one possible way to fix that (O(1) distance function) if we implement the binary search tree by ourselves. Of course, the below version is not a balanced binary search tree, so the worst case is still O(N^2) even if the input is random, the average complexity is O(NlogN)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    class BSTNode&#123; // Binary search tree implementation</span><br><span class="line">    public:    </span><br><span class="line">        long long val;</span><br><span class="line">        int cnt; // how many nodes with value of &quot;val&apos;</span><br><span class="line">        int lCnt; // how many nodes on its left subtree</span><br><span class="line">        BSTNode *left;</span><br><span class="line">        BSTNode *right;</span><br><span class="line">        </span><br><span class="line">        BSTNode(long long x)</span><br><span class="line">        &#123;</span><br><span class="line">            val = x;</span><br><span class="line">            cnt = 1;</span><br><span class="line">            lCnt = 0;</span><br><span class="line">            left = right = nullptr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    int getBound(BSTNode *root, long long x, bool includeSelf)</span><br><span class="line">    &#123; // get the index of the last node that satisfy val&lt;x (includeSelf=false) or val&lt;=x (includeSelf = true)</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        if(root-&gt;val == x) return  root-&gt;lCnt + (includeSelf?root-&gt;cnt:0);</span><br><span class="line">        else if(root-&gt;val &gt; x) return getBound(root-&gt;left, x, includeSelf);</span><br><span class="line">        else return root-&gt;cnt + root-&gt;lCnt + getBound(root-&gt;right, x, includeSelf);</span><br><span class="line">    &#125;</span><br><span class="line">    void insert(BSTNode*&amp; root, long long x)</span><br><span class="line">    &#123; // insert a node to the tree</span><br><span class="line">        if(!root) root = new BSTNode(x);</span><br><span class="line">        else if(root-&gt;val == x) (root-&gt;cnt)++;</span><br><span class="line">        else if(root-&gt;val &lt; x) </span><br><span class="line">            insert(root-&gt;right,x);</span><br><span class="line">        else&#123;</span><br><span class="line">            ++(root-&gt;lCnt);</span><br><span class="line">            insert(root-&gt;left,x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    void deleteTree(BSTNode*root)</span><br><span class="line">    &#123; //destroy the tree</span><br><span class="line">        if(!root) return;</span><br><span class="line">        deleteTree(root-&gt;left);</span><br><span class="line">        deleteTree(root-&gt;right);</span><br><span class="line">        delete root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">public:</span><br><span class="line">    int countRangeSum(vector&lt;int&gt;&amp; nums, int lower, int upper) &#123; // same idea as the multiset  version</span><br><span class="line">        BSTNode *root= new BSTNode(0);</span><br><span class="line">        int res = 0,  i; </span><br><span class="line">        long long left, right, sum=0;</span><br><span class="line">        for(i=0; i&lt;nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            sum +=nums[i];</span><br><span class="line">            res += getBound(root, sum-lower, true) - getBound(root, sum-upper, false);</span><br><span class="line">            insert(root, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        deleteTree(root);</span><br><span class="line">        return res;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Another option is to multify mergesort to do counting. The code is as below and the complexity is O(NlogN) (52ms)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:    </span><br><span class="line">    int mergeSort(vector&lt;long long&gt;&amp;sum, int left, int right, int lower, int upper)</span><br><span class="line">    &#123;</span><br><span class="line">        int mid, i, res, j, k;</span><br><span class="line">        if(left&gt;right) return 0;</span><br><span class="line">        if(left==right) return ( (sum[left]&gt;=lower) &amp;&amp; (sum[left]&lt;=upper) )?1:0;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            vector&lt;long long&gt; temp(right-left+1,0);</span><br><span class="line">            mid = (left+right)/2;</span><br><span class="line">            res = mergeSort(sum, left,mid, lower, upper) + mergeSort(sum, mid+1,right, lower, upper); // merge sort two halfs first, be careful about how to divide [left, mid] and [mid+1, right]</span><br><span class="line">            for(i=left, j=k=mid+1; i&lt;=mid; ++i)</span><br><span class="line">            &#123; // count the valid ranges [i,j], where i is in the first half and j is in the second half</span><br><span class="line">                while(j&lt;=right &amp;&amp; sum[j]-sum[i]&lt;lower)  ++j;</span><br><span class="line">                while(k&lt;=right &amp;&amp; sum[k]-sum[i]&lt;=upper) ++k;</span><br><span class="line">                res +=k-j;</span><br><span class="line">            &#125;</span><br><span class="line">            for(i=k=left, j=mid+1; k&lt;=right; ++k) //merge the sorted two halfs</span><br><span class="line">                temp[k-left] = (i&lt;=mid) &amp;&amp; (j&gt;right || sum[i]&lt;sum[j])?sum[i++]:sum[j++]; </span><br><span class="line">            for(k=left; k&lt;=right; ++k) // copy the sorted results back to sum</span><br><span class="line">                sum[k] = temp[k-left]; </span><br><span class="line">            return res;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    int countRangeSum(vector&lt;int&gt;&amp; nums, int lower, int upper) &#123;</span><br><span class="line">         int len = nums.size(), i;</span><br><span class="line">         vector&lt;long long&gt; sum(len+1, 0);</span><br><span class="line">         for(i=1; i&lt;=len; ++i) sum[i] = sum[i-1]+nums[i-1];</span><br><span class="line">         return mergeSort(sum, 1, len, lower, upper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/45522/c-merge-sort-solution-very-short" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/45522/c-merge-sort-solution-very-short</a></p>
+<p>C++ merge sort solution, very short</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int mergeSort(vector&lt;long&gt;&amp; sum, int lower, int upper, int low, int high)</span><br><span class="line">    &#123;</span><br><span class="line">        if(high-low &lt;= 1) return 0;</span><br><span class="line">        int mid = (low+high)/2, m = mid, n = mid, count =0;</span><br><span class="line">        count =mergeSort(sum,lower,upper,low,mid) +mergeSort(sum,lower,upper,mid,high);</span><br><span class="line">        for(int i =low; i&lt; mid; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            while(m &lt; high &amp;&amp; sum[m] - sum[i] &lt; lower) m++;</span><br><span class="line">            while(n &lt; high &amp;&amp; sum[n] - sum[i] &lt;= upper) n++;</span><br><span class="line">            count += n - m;</span><br><span class="line">        &#125;</span><br><span class="line">        inplace_merge(sum.begin()+low, sum.begin()+mid, sum.begin()+high);</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int countRangeSum(vector&lt;int&gt;&amp; nums, int lower, int upper) &#123;</span><br><span class="line">        int len = nums.size();</span><br><span class="line">        vector&lt;long&gt; sum(len + 1, 0);</span><br><span class="line">        for(int i =0; i&lt; len; i++) sum[i+1] = sum[i]+nums[i];</span><br><span class="line">        return mergeSort(sum, lower, upper, 0, len+1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/33770/short-simple-o-n-log-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33770/short-simple-o-n-log-n</a></p>
+<p>Short &amp; simple O(n log n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def countRangeSum(self, nums, lower, upper):</span><br><span class="line">    first = [0]</span><br><span class="line">    for num in nums:</span><br><span class="line">        first.append(first[-1] + num)</span><br><span class="line">    def sort(lo, hi):</span><br><span class="line">        mid = (lo + hi) / 2</span><br><span class="line">        if mid == lo:</span><br><span class="line">            return 0</span><br><span class="line">        count = sort(lo, mid) + sort(mid, hi)</span><br><span class="line">        i = j = mid</span><br><span class="line">        for left in first[lo:mid]:</span><br><span class="line">            while i &lt; hi and first[i] - left &lt;  lower: i += 1</span><br><span class="line">            while j &lt; hi and first[j] - left &lt;= upper: j += 1</span><br><span class="line">            count += j - i</span><br><span class="line">        first[lo:hi] = sorted(first[lo:hi])</span><br><span class="line">        return count</span><br><span class="line">    return sort(0, len(first))</span><br></pre></td></tr></table></figure>
+<p>First compute the prefix sums: first[m] is the sum of the first m numbers.</p>
+<p>Then the sum of any subarray nums[i:k] is simply first[k] - first[i].</p>
+<p>So we just need to count those where first[k] - first[i] is in [lower,upper].</p>
+<p>To find those pairs, I use mergesort with embedded counting. The pairs in the left half and the pairs in the right half get counted in the recursive calls. We just need to also count the pairs that use both halves.</p>
+<p>For each left in first[lo:mid] I find all right in first[mid:hi] so that right - left lies in [lower, upper]. Because the halves are sorted, these fitting right values are a subarray first[i:j]. With increasing left we must also increase right, meaning must we leave out first[i] if it’s too small and and we must include first[j] if it’s small enough.</p>
+<p>Besides the counting, I also need to actually merge the halves for the sorting. I let sorted do that, which uses Timsort and takes linear time to recognize and merge the already sorted halves.</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/33738/share-my-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33738/share-my-solution</a></p>
+<p>Share my solution</p>
+<p>First of all, let’s look at the naive solution. Preprocess to calculate the prefix sums S[i] = S(0, i), then S(i, j) = S[j] - S[i]. Note that here we define S(i, j) as the sum of range [i, j) where j exclusive and j &gt; i. With these prefix sums, it is trivial to see that with O(n^2) time we can find all S(i, j) in the range [lower, upper]</p>
+<p>Java - Naive Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int countRangeSum(int[] nums, int lower, int upper) &#123;</span><br><span class="line">    int n = nums.length;</span><br><span class="line">    long[] sums = new long[n + 1];</span><br><span class="line">    for (int i = 0; i &lt; n; ++i)</span><br><span class="line">        sums[i + 1] = sums[i] + nums[i];</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; ++i)</span><br><span class="line">        for (int j = i + 1; j &lt;= n; ++j)</span><br><span class="line">            if (sums[j] - sums[i] &gt;= lower &amp;&amp; sums[j] - sums[i] &lt;= upper)</span><br><span class="line">                ans++;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>However the naive solution is set to TLE intentionally</p>
+<p>Now let’s do better than this.</p>
+<p>Recall count smaller number after self where we encountered the problem</p>
+<ul>
+<li>count[i] = count of nums[j] - nums[i] &lt; 0 with j &gt; i</li>
+</ul>
+<p>Here, after we did the preprocess, we need to solve the problem</p>
+<ul>
+<li>count[i] = count of a &lt;= S[j] - S[i] &lt;= b with j &gt; i</li>
+<li>ans = sum(count[:])</li>
+</ul>
+<p>Therefore the two problems are almost the same. We can use the same technique used in that problem to solve this problem. One solution is merge sort based; another one is Balanced BST based. The time complexity are both O(n log n).</p>
+<p>The merge sort based solution counts the answer while doing the merge. During the merge stage, we have already sorted the left half [start, mid) and right half [mid, end). We then iterate through the left half with index i. For each i, we need to find two indices k and j in the right half where</p>
+<ul>
+<li>j is the first index satisfy sums[j] - sums[i] &gt; upper and</li>
+<li>k is the first index satisfy sums[k] - sums[i] &gt;= lower.<br>Then the number of sums in [lower, upper] is j-k. We also use another index t to copy the elements satisfy sums[t] &lt; sums[i] to a cache in order to complete the merge sort.</li>
+</ul>
+<p>Despite the nested loops, the time complexity of the “merge &amp; count” stage is still linear. Because the indices k, j, t will only increase but not decrease, each of them will only traversal the right half once at most. The total time complexity of this divide and conquer solution is then O(n log n).</p>
+<p>One other concern is that the sums may overflow integer. So we use long instead.</p>
+<p>Java - Merge Sort Solution</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public int countRangeSum(int[] nums, int lower, int upper) &#123;</span><br><span class="line">    int n = nums.length;</span><br><span class="line">    long[] sums = new long[n + 1];</span><br><span class="line">    for (int i = 0; i &lt; n; ++i)</span><br><span class="line">        sums[i + 1] = sums[i] + nums[i];</span><br><span class="line">    return countWhileMergeSort(sums, 0, n + 1, lower, upper);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int countWhileMergeSort(long[] sums, int start, int end, int lower, int upper) &#123;</span><br><span class="line">    if (end - start &lt;= 1) return 0;</span><br><span class="line">    int mid = (start + end) / 2;</span><br><span class="line">    int count = countWhileMergeSort(sums, start, mid, lower, upper) </span><br><span class="line">              + countWhileMergeSort(sums, mid, end, lower, upper);</span><br><span class="line">    int j = mid, k = mid, t = mid;</span><br><span class="line">    long[] cache = new long[end - start];</span><br><span class="line">    for (int i = start, r = 0; i &lt; mid; ++i, ++r) &#123;</span><br><span class="line">        while (k &lt; end &amp;&amp; sums[k] - sums[i] &lt; lower) k++;</span><br><span class="line">        while (j &lt; end &amp;&amp; sums[j] - sums[i] &lt;= upper) j++;</span><br><span class="line">        while (t &lt; end &amp;&amp; sums[t] &lt; sums[i]) cache[r++] = sums[t++];</span><br><span class="line">        cache[r] = sums[i];</span><br><span class="line">        count += j - k;</span><br><span class="line">    &#125;</span><br><span class="line">    System.arraycopy(cache, 0, sums, start, t - start);</span><br><span class="line">    return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/34108/summary-of-the-divide-and-conquer-based-and-binary-indexed-tree-based-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34108/summary-of-the-divide-and-conquer-based-and-binary-indexed-tree-based-solutions</a></p>
+<p>Summary of the Divide and Conquer based and Binary Indexed Tree based solutions</p>
+<p>Thanks for those contributing excellent ideas to this problem. Here is a quick summary of solutions based on either divide and conquer or binary indexed tree.</p>
+<p>To start, we already know there is a straightforward solution by computing each range sum and checking whether it lies in [lower, upper] or not. If the number of elements is n, we have n<em>(n+1)/2 such range sums so the naive solution will end up with O(n^2) time complexity. Now we are asked to do better than that. So what are the targeted time complexities in your mind? When I first looked at the problem, my instinct is that O(n) solution is too ambitious, so I will target at linearithmic-like (O(n</em>(logn)^b)) solutions. To get the logarithmic part, it’s natural to think of breaking down the original array, and that’s where the divide-and-conquer idea comes from.</p>
+<p>For this problem, we need some array to apply our divide and conquer algorithm. Without much thinking, we can do that directly with the input array (nums) itself. Since our problem also involves range sums and I believe you have the experience of computing range sums from prefix array of the input array, we might as well apply divide and conquer ideas on the prefix array. So I will give both the input-array based and prefix-array based divide&amp;conquer solutions.</p>
+<p>Let’s first look at input-array based divide&amp;conquer solution. Our original problem is like this: given an input array nums with length n and a range [lower, upper], find the total number of range sums that lie in the given range. Note the range [lower, upper] and the input array are both fixed. Therefore each range sum can be characterized by two indices i1 and i2 (i1 &lt;= i2), such that range sum S(i1, i2) is the summation of input elements with indices going from i1 up to i2 (both inclusive). Then our problem can be redefined in terms of the value ranges of i1 and i2. For example our original problem can be restated as finding the total number of range sums lying in the given range with 0 &lt;= i1 &lt;= i2 &lt;= n - 1, or in a symbolic way T(0, n-1).</p>
+<p>Now if we break our original input array into two subarrays, [0, m] and [m+1, n-1] with m = (n-1)/2, our original problem can be divided into three parts, depending on the values of i1 and i2. If i1 and i2 are both from the first subarray [0, m], we have a subproblem T(0, m); if i1 and i2 are both from the second subarray, we have a subproblem T(m+1, n-1); if i1 is from the first subarray and i2 from the second (note we assume i1 &lt;= i2, therefore we don’t have the other case with i2 from first subarray and i1 from second), then we have a new problem which I define as C. In summary we should have:</p>
+<p>T(0, n-1) = T(0, m) + T(m+1, n-1) + C</p>
+<p>Now from the master theorem, the time complexity of the new problem C should be better than O(n^2), otherwise we make no improvement by applying this divide&amp;conquer idea. So again, I will aim at linearithmic-like solutions for the new problem C: find the total number of range sums lying in the given range with each range sum starting from the first subarray and ending at the second subarray.</p>
+<p>First let’s try to compute all such range sums. The way I did it was first computing the prefix array of the second subarray and the suffix array (or “backward” prefix array if you like) of the first subarray. Then I can naively add each element in the suffix array to all elements in the prefix array to obtain all the possible range sums. Of course you end up with O(n^2) solution, as expected. So how can we approach it with better time complexity?</p>
+<p>Here are the facts I observed: for each element e in the suffix array, we need to add it to all elements in the prefix array. But the order in which we add it doesn’t matter. This implies that we can sort our prefix array. This can be done in O(nlogn) time. Now we have a sorted prefix array, do we still need to add the element e to all elements in the prefix array? The answer is no. Because our final goal is to compare the resulted range sums with the given range bounds lower and upper. It is equivalent to modifying the range bounds so we have new bounds (lower - e) and (upper - e) and leave the prefix array unchanged. Now we can compare these new bounds with the sorted prefix array, and I’m sure you can write your own binary search algorithm to do that. So for each element e in the suffix array, we can compute the modified range bounds and get the number of range sums in this new range in logn time. Therefore the total time will be O(nlogn). So in summary, our new problem C can be solved in O(nlogn) time and according to the master theorem, our original problem can be solved in O(n(logn)^2) time. The following is the complete java program:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public int countRangeSum(int[] nums, int lower, int upper) &#123;</span><br><span class="line">    if (nums == null || nums.length == 0 || lower &gt; upper) return 0;</span><br><span class="line">    return countRangeSumSub(nums, 0, nums.length - 1, lower, upper);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int countRangeSumSub(int[] nums, int l, int r, int lower, int upper) &#123;</span><br><span class="line">    if (l == r) return nums[l] &gt;= lower &amp;&amp; nums[r] &lt;= upper ? 1 : 0;  // base case</span><br><span class="line">	</span><br><span class="line">    int m = l + (r - l) / 2;</span><br><span class="line">    long[] arr = new long[r - m];  // prefix array for the second subarray</span><br><span class="line">    long sum = 0;</span><br><span class="line">    int count = 0;</span><br><span class="line">	</span><br><span class="line">    for (int i = m + 1; i &lt;= r; i++) &#123;</span><br><span class="line">	sum += nums[i];</span><br><span class="line">	arr[i - (m + 1)] = sum;	// compute the prefix array</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    Arrays.sort(arr);  // sort the prefix array</span><br><span class="line">	</span><br><span class="line">    // Here we can compute the suffix array element by element.</span><br><span class="line">    // For each element in the suffix array, we compute the corresponding</span><br><span class="line">    // &quot;insertion&quot; indices of the modified bounds in the sorted prefix array</span><br><span class="line">    // then the number of valid ranges sums will be given by the indices difference.</span><br><span class="line">    // I modified the bounds to be &quot;double&quot; to avoid duplicate elements.</span><br><span class="line">    sum = 0;</span><br><span class="line">    for (int i = m; i &gt;= l; i--) &#123;</span><br><span class="line">	sum += nums[i];  </span><br><span class="line">	count += findIndex(arr, upper - sum + 0.5) - findIndex(arr, lower - sum - 0.5);</span><br><span class="line">     &#125;</span><br><span class="line">	</span><br><span class="line">    return countRangeSumSub(nums, l, m, lower, upper) + countRangeSumSub(nums, m + 1, r, lower, upper) + count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// binary search function</span><br><span class="line">private int findIndex(long[] arr, double val) &#123;</span><br><span class="line">    int l = 0, r = arr.length - 1, m = 0;</span><br><span class="line">	</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">	m = l + (r - l) / 2;</span><br><span class="line">		</span><br><span class="line">	if (arr[m] &lt;= val) &#123;</span><br><span class="line">	    l = m + 1;</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">	    r = m - 1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    return l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(Next two parts will come in answers due to the limitation of maximum length of characters )</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33734/java-segmenttree-solution-36ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33734/java-segmenttree-solution-36ms</a></p>
+<p>Java SegmentTree Solution, 36ms</p>
+<p>Understand my segmentTree implementation is not optimized.<br>Please feel free to give me suggestions.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    class SegmentTreeNode &#123;</span><br><span class="line">        SegmentTreeNode left;</span><br><span class="line">        SegmentTreeNode right;</span><br><span class="line">        int count;</span><br><span class="line">        long min;</span><br><span class="line">        long max;</span><br><span class="line">        public SegmentTreeNode(long min, long max) &#123;</span><br><span class="line">            this.min = min;</span><br><span class="line">            this.max = max;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private SegmentTreeNode buildSegmentTree(Long[] valArr, int low, int high) &#123;</span><br><span class="line">        if(low &gt; high) return null;</span><br><span class="line">        SegmentTreeNode stn = new SegmentTreeNode(valArr[low], valArr[high]);</span><br><span class="line">        if(low == high) return stn;</span><br><span class="line">        int mid = (low + high)/2;</span><br><span class="line">        stn.left = buildSegmentTree(valArr, low, mid);</span><br><span class="line">        stn.right = buildSegmentTree(valArr, mid+1, high);</span><br><span class="line">        return stn;</span><br><span class="line">    &#125;</span><br><span class="line">    private void updateSegmentTree(SegmentTreeNode stn, Long val) &#123;</span><br><span class="line">        if(stn == null) return;</span><br><span class="line">        if(val &gt;= stn.min &amp;&amp; val &lt;= stn.max) &#123;</span><br><span class="line">            stn.count++;</span><br><span class="line">            updateSegmentTree(stn.left, val);</span><br><span class="line">            updateSegmentTree(stn.right, val);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    private int getCount(SegmentTreeNode stn, long min, long max) &#123;</span><br><span class="line">        if(stn == null) return 0;</span><br><span class="line">        if(min &gt; stn.max || max &lt; stn.min) return 0;</span><br><span class="line">        if(min &lt;= stn.min &amp;&amp; max &gt;= stn.max) return stn.count;</span><br><span class="line">        return getCount(stn.left, min, max) + getCount(stn.right, min, max);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int countRangeSum(int[] nums, int lower, int upper) &#123;</span><br><span class="line"></span><br><span class="line">        if(nums == null || nums.length == 0) return 0;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        Set&lt;Long&gt; valSet = new HashSet&lt;Long&gt;();</span><br><span class="line">        long sum = 0;</span><br><span class="line">        for(int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            sum += (long) nums[i];</span><br><span class="line">            valSet.add(sum);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Long[] valArr = valSet.toArray(new Long[0]);</span><br><span class="line"></span><br><span class="line">        Arrays.sort(valArr);</span><br><span class="line">        SegmentTreeNode root = buildSegmentTree(valArr, 0, valArr.length-1);</span><br><span class="line"></span><br><span class="line">        for(int i = nums.length-1; i &gt;=0; i--) &#123;</span><br><span class="line">            updateSegmentTree(root, sum);</span><br><span class="line">            sum -= (long) nums[i];</span><br><span class="line">            ans += getCount(root, (long)lower+sum, (long)upper+sum);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/ea34edb1/" title="327. Count of Range Sum">http://yucc.me/p/ea34edb1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/binary-search-tree/" rel="tag"># binary search tree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/b3a4ad57/" rel="next" title="326. Power of Three">
+                <i class="fa fa-chevron-left"></i> 326. Power of Three
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/80daf693/" rel="prev" title="328. Odd Even Linked List">
+                328. Odd Even Linked List <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

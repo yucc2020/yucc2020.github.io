@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,easy,backtracking,bit manipulation," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="44.4%  A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59). Each LED represents a zero or one, with the least significant">
+<meta name="keywords" content="leetcode,easy,backtracking,bit manipulation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="401. Binary Watch">
+<meta property="og:url" content="http://yucc.me/p/6e69068/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="44.4%  A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59). Each LED represents a zero or one, with the least significant">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/8/8b/Binary_clock_samui_moon.jpg">
+<meta property="og:updated_time" content="2018-05-23T13:46:28.532Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="401. Binary Watch">
+<meta name="twitter:description" content="44.4%  A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59). Each LED represents a zero or one, with the least significant">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/8/8b/Binary_clock_samui_moon.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/6e69068/"/>
+
+
+
+
+
+  <title>401. Binary Watch | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/6e69068/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">401. Binary Watch</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:42:00+08:00">
+                2018-05-23 13:42
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T21:46:28+08:00">
+                2018-05-23 21:46
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,382
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>44.4%</li>
+</ul>
+<p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p>
+<p>Each LED represents a zero or one, with the least significant bit on the right.</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Binary_clock_samui_moon.jpg" alt="image"></p>
+<p>For example, the above binary watch reads “3:25”.</p>
+<p>Given a non-negative integer n which represents the number of LEDs that are currently on, return all possible times the watch could represent.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: n = 1</span><br><span class="line">Return: [&quot;1:00&quot;, &quot;2:00&quot;, &quot;4:00&quot;, &quot;8:00&quot;, &quot;0:01&quot;, &quot;0:02&quot;, &quot;0:04&quot;, &quot;0:08&quot;, &quot;0:16&quot;, &quot;0:32&quot;]</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ul>
+<li>The order of output does not matter.</li>
+<li>The hour must not contain a leading zero, for example “01:00” is not valid, it should be “1:00”.</li>
+<li>The minute must be consist of two digits and may contain a leading zero, for example “10:2” is not valid, it should be “10:02”.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>使用bitset</p>
+<p>将4个时钟和6个分针合并一起</p>
+<p>同时遍历了所有可能的时间，然后去判断几个1，使用bitset</p>
+<p>这个想法非常不粗</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; readBinaryWatch(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> h=<span class="number">0</span>; h&lt;<span class="number">12</span>; h++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>; m&lt;<span class="number">60</span>; m++)</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">bitset</span>&lt;<span class="number">10</span>&gt;(h&lt;&lt;<span class="number">6</span> | m).count()==num)&#123;</span><br><span class="line">                    <span class="built_in">string</span> t;</span><br><span class="line">                    t = to_string(h) + (m&lt;<span class="number">10</span> ? <span class="string">":0"</span> : <span class="string">":"</span> ) + to_string(m);</span><br><span class="line">                    res.push_back(t);</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/59401/straight-forward-6-line-c-solution-no-need-to-explain" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/59401/straight-forward-6-line-c-solution-no-need-to-explain</a></p>
+<p>Straight-forward 6-line c++ solution, no need to explain</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt; readBinaryWatch(int num) &#123;</span><br><span class="line">    vector&lt;string&gt; rs;</span><br><span class="line">    for (int h = 0; h &lt; 12; h++)</span><br><span class="line">    for (int m = 0; m &lt; 60; m++)</span><br><span class="line">        if (bitset&lt;10&gt;(h &lt;&lt; 6 | m).count() == num)</span><br><span class="line">            rs.emplace_back(to_string(h) + (m &lt; 10 ? &quot;:0&quot; : &quot;:&quot;) + to_string(m));</span><br><span class="line">    return rs;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p>75ms, September 19, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/59374/simple-python-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/59374/simple-python-java</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def readBinaryWatch(self, num):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type num: int</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        return [&apos;%d:%02d&apos; % (h, m)</span><br><span class="line">                for h in range(12) for m in range(60)</span><br><span class="line">                if (bin(h) + bin(m)).count(&apos;1&apos;) == num]</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/60319/python-dfs-and-complexity-analysis" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/60319/python-dfs-and-complexity-analysis</a></p>
+<p>Python DFS, and complexity analysis</p>
+<p>Similar to other solutions out there.</p>
+<p>The code has O(1) time complexity, because all the possible watch combinations (valid or invalid) can’t be more that 12 * 59.<br>Regarding space complexity, it’s also O(1) cause the DFS will have depth of maximum n, which can’t be more than 9 as per problem boundary.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def readBinaryWatch(self, n):</span><br><span class="line">        </span><br><span class="line">        def dfs(n, hours, mins, idx):</span><br><span class="line">            if hours &gt;= 12 or mins &gt; 59: return</span><br><span class="line">            if not n:</span><br><span class="line">                res.append(str(hours) + &quot;:&quot; + &quot;0&quot; * (mins &lt; 10) + str(mins))</span><br><span class="line">                return</span><br><span class="line">            for i in range(idx, 10):</span><br><span class="line">                if i &lt; 4: </span><br><span class="line">                    dfs(n - 1, hours | (1 &lt;&lt; i), mins, i + 1)</span><br><span class="line">                else:</span><br><span class="line">                    k = i - 4</span><br><span class="line">                    dfs(n - 1, hours, mins | (1 &lt;&lt; k), i + 1)</span><br><span class="line">        </span><br><span class="line">        res = []</span><br><span class="line">        dfs(n, 0, 0, 0)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+<hr>
+<p>62ms, September 19, 2016</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def readBinaryWatch(self, num):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type num: int</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        ans = [[&apos;0:00&apos;], [&apos;0:01&apos;, &apos;0:02&apos;, &apos;0:04&apos;, &apos;0:08&apos;, &apos;0:16&apos;, &apos;0:32&apos;, &apos;1:00&apos;, &apos;2:00&apos;, &apos;4:00&apos;, &apos;8:00&apos;], [&apos;0:03&apos;, &apos;0:05&apos;, &apos;0:06&apos;, &apos;0:09&apos;, &apos;0:10&apos;, &apos;0:12&apos;, &apos;0:17&apos;, &apos;0:18&apos;, &apos;0:20&apos;, &apos;0:24&apos;, &apos;0:33&apos;, &apos;0:34&apos;, &apos;0:36&apos;, &apos;0:40&apos;, &apos;0:48&apos;, &apos;1:01&apos;, &apos;1:02&apos;, &apos;1:04&apos;, &apos;1:08&apos;, &apos;1:16&apos;, &apos;1:32&apos;, &apos;2:01&apos;, &apos;2:02&apos;, &apos;2:04&apos;, &apos;2:08&apos;, &apos;2:16&apos;, &apos;2:32&apos;, &apos;3:00&apos;, &apos;4:01&apos;, &apos;4:02&apos;, &apos;4:04&apos;, &apos;4:08&apos;, &apos;4:16&apos;, &apos;4:32&apos;, &apos;5:00&apos;, &apos;6:00&apos;, &apos;8:01&apos;, &apos;8:02&apos;, &apos;8:04&apos;, &apos;8:08&apos;, &apos;8:16&apos;, &apos;8:32&apos;, &apos;9:00&apos;, &apos;10:00&apos;], [&apos;0:07&apos;, &apos;0:11&apos;, &apos;0:13&apos;, &apos;0:14&apos;, &apos;0:19&apos;, &apos;0:21&apos;, &apos;0:22&apos;, &apos;0:25&apos;, &apos;0:26&apos;, &apos;0:28&apos;, &apos;0:35&apos;, &apos;0:37&apos;, &apos;0:38&apos;, &apos;0:41&apos;, &apos;0:42&apos;, &apos;0:44&apos;, &apos;0:49&apos;, &apos;0:50&apos;, &apos;0:52&apos;, &apos;0:56&apos;, &apos;1:03&apos;, &apos;1:05&apos;, &apos;1:06&apos;, &apos;1:09&apos;, &apos;1:10&apos;, &apos;1:12&apos;, &apos;1:17&apos;, &apos;1:18&apos;, &apos;1:20&apos;, &apos;1:24&apos;, &apos;1:33&apos;, &apos;1:34&apos;, &apos;1:36&apos;, &apos;1:40&apos;, &apos;1:48&apos;, &apos;2:03&apos;, &apos;2:05&apos;, &apos;2:06&apos;, &apos;2:09&apos;, &apos;2:10&apos;, &apos;2:12&apos;, &apos;2:17&apos;, &apos;2:18&apos;, &apos;2:20&apos;, &apos;2:24&apos;, &apos;2:33&apos;, &apos;2:34&apos;, &apos;2:36&apos;, &apos;2:40&apos;, &apos;2:48&apos;, &apos;3:01&apos;, &apos;3:02&apos;, &apos;3:04&apos;, &apos;3:08&apos;, &apos;3:16&apos;, &apos;3:32&apos;, &apos;4:03&apos;, &apos;4:05&apos;, &apos;4:06&apos;, &apos;4:09&apos;, &apos;4:10&apos;, &apos;4:12&apos;, &apos;4:17&apos;, &apos;4:18&apos;, &apos;4:20&apos;, &apos;4:24&apos;, &apos;4:33&apos;, &apos;4:34&apos;, &apos;4:36&apos;, &apos;4:40&apos;, &apos;4:48&apos;, &apos;5:01&apos;, &apos;5:02&apos;, &apos;5:04&apos;, &apos;5:08&apos;, &apos;5:16&apos;, &apos;5:32&apos;, &apos;6:01&apos;, &apos;6:02&apos;, &apos;6:04&apos;, &apos;6:08&apos;, &apos;6:16&apos;, &apos;6:32&apos;, &apos;7:00&apos;, &apos;8:03&apos;, &apos;8:05&apos;, &apos;8:06&apos;, &apos;8:09&apos;, &apos;8:10&apos;, &apos;8:12&apos;, &apos;8:17&apos;, &apos;8:18&apos;, &apos;8:20&apos;, &apos;8:24&apos;, &apos;8:33&apos;, &apos;8:34&apos;, &apos;8:36&apos;, &apos;8:40&apos;, &apos;8:48&apos;, &apos;9:01&apos;, &apos;9:02&apos;, &apos;9:04&apos;, &apos;9:08&apos;, &apos;9:16&apos;, &apos;9:32&apos;, &apos;10:01&apos;, &apos;10:02&apos;, &apos;10:04&apos;, &apos;10:08&apos;, &apos;10:16&apos;, &apos;10:32&apos;, &apos;11:00&apos;], [&apos;0:15&apos;, &apos;0:23&apos;, &apos;0:27&apos;, &apos;0:29&apos;, &apos;0:30&apos;, &apos;0:39&apos;, &apos;0:43&apos;, &apos;0:45&apos;, &apos;0:46&apos;, &apos;0:51&apos;, &apos;0:53&apos;, &apos;0:54&apos;, &apos;0:57&apos;, &apos;0:58&apos;, &apos;1:07&apos;, &apos;1:11&apos;, &apos;1:13&apos;, &apos;1:14&apos;, &apos;1:19&apos;, &apos;1:21&apos;, &apos;1:22&apos;, &apos;1:25&apos;, &apos;1:26&apos;, &apos;1:28&apos;, &apos;1:35&apos;, &apos;1:37&apos;, &apos;1:38&apos;, &apos;1:41&apos;, &apos;1:42&apos;, &apos;1:44&apos;, &apos;1:49&apos;, &apos;1:50&apos;, &apos;1:52&apos;, &apos;1:56&apos;, &apos;2:07&apos;, &apos;2:11&apos;, &apos;2:13&apos;, &apos;2:14&apos;, &apos;2:19&apos;, &apos;2:21&apos;, &apos;2:22&apos;, &apos;2:25&apos;, &apos;2:26&apos;, &apos;2:28&apos;, &apos;2:35&apos;, &apos;2:37&apos;, &apos;2:38&apos;, &apos;2:41&apos;, &apos;2:42&apos;, &apos;2:44&apos;, &apos;2:49&apos;, &apos;2:50&apos;, &apos;2:52&apos;, &apos;2:56&apos;, &apos;3:03&apos;, &apos;3:05&apos;, &apos;3:06&apos;, &apos;3:09&apos;, &apos;3:10&apos;, &apos;3:12&apos;, &apos;3:17&apos;, &apos;3:18&apos;, &apos;3:20&apos;, &apos;3:24&apos;, &apos;3:33&apos;, &apos;3:34&apos;, &apos;3:36&apos;, &apos;3:40&apos;, &apos;3:48&apos;, &apos;4:07&apos;, &apos;4:11&apos;, &apos;4:13&apos;, &apos;4:14&apos;, &apos;4:19&apos;, &apos;4:21&apos;, &apos;4:22&apos;, &apos;4:25&apos;, &apos;4:26&apos;, &apos;4:28&apos;, &apos;4:35&apos;, &apos;4:37&apos;, &apos;4:38&apos;, &apos;4:41&apos;, &apos;4:42&apos;, &apos;4:44&apos;, &apos;4:49&apos;, &apos;4:50&apos;, &apos;4:52&apos;, &apos;4:56&apos;, &apos;5:03&apos;, &apos;5:05&apos;, &apos;5:06&apos;, &apos;5:09&apos;, &apos;5:10&apos;, &apos;5:12&apos;, &apos;5:17&apos;, &apos;5:18&apos;, &apos;5:20&apos;, &apos;5:24&apos;, &apos;5:33&apos;, &apos;5:34&apos;, &apos;5:36&apos;, &apos;5:40&apos;, &apos;5:48&apos;, &apos;6:03&apos;, &apos;6:05&apos;, &apos;6:06&apos;, &apos;6:09&apos;, &apos;6:10&apos;, &apos;6:12&apos;, &apos;6:17&apos;, &apos;6:18&apos;, &apos;6:20&apos;, &apos;6:24&apos;, &apos;6:33&apos;, &apos;6:34&apos;, &apos;6:36&apos;, &apos;6:40&apos;, &apos;6:48&apos;, &apos;7:01&apos;, &apos;7:02&apos;, &apos;7:04&apos;, &apos;7:08&apos;, &apos;7:16&apos;, &apos;7:32&apos;, &apos;8:07&apos;, &apos;8:11&apos;, &apos;8:13&apos;, &apos;8:14&apos;, &apos;8:19&apos;, &apos;8:21&apos;, &apos;8:22&apos;, &apos;8:25&apos;, &apos;8:26&apos;, &apos;8:28&apos;, &apos;8:35&apos;, &apos;8:37&apos;, &apos;8:38&apos;, &apos;8:41&apos;, &apos;8:42&apos;, &apos;8:44&apos;, &apos;8:49&apos;, &apos;8:50&apos;, &apos;8:52&apos;, &apos;8:56&apos;, &apos;9:03&apos;, &apos;9:05&apos;, &apos;9:06&apos;, &apos;9:09&apos;, &apos;9:10&apos;, &apos;9:12&apos;, &apos;9:17&apos;, &apos;9:18&apos;, &apos;9:20&apos;, &apos;9:24&apos;, &apos;9:33&apos;, &apos;9:34&apos;, &apos;9:36&apos;, &apos;9:40&apos;, &apos;9:48&apos;, &apos;10:03&apos;, &apos;10:05&apos;, &apos;10:06&apos;, &apos;10:09&apos;, &apos;10:10&apos;, &apos;10:12&apos;, &apos;10:17&apos;, &apos;10:18&apos;, &apos;10:20&apos;, &apos;10:24&apos;, &apos;10:33&apos;, &apos;10:34&apos;, &apos;10:36&apos;, &apos;10:40&apos;, &apos;10:48&apos;, &apos;11:01&apos;, &apos;11:02&apos;, &apos;11:04&apos;, &apos;11:08&apos;, &apos;11:16&apos;, &apos;11:32&apos;], [&apos;0:31&apos;, &apos;0:47&apos;, &apos;0:55&apos;, &apos;0:59&apos;, &apos;1:15&apos;, &apos;1:23&apos;, &apos;1:27&apos;, &apos;1:29&apos;, &apos;1:30&apos;, &apos;1:39&apos;, &apos;1:43&apos;, &apos;1:45&apos;, &apos;1:46&apos;, &apos;1:51&apos;, &apos;1:53&apos;, &apos;1:54&apos;, &apos;1:57&apos;, &apos;1:58&apos;, &apos;2:15&apos;, &apos;2:23&apos;, &apos;2:27&apos;, &apos;2:29&apos;, &apos;2:30&apos;, &apos;2:39&apos;, &apos;2:43&apos;, &apos;2:45&apos;, &apos;2:46&apos;, &apos;2:51&apos;, &apos;2:53&apos;, &apos;2:54&apos;, &apos;2:57&apos;, &apos;2:58&apos;, &apos;3:07&apos;, &apos;3:11&apos;, &apos;3:13&apos;, &apos;3:14&apos;, &apos;3:19&apos;, &apos;3:21&apos;, &apos;3:22&apos;, &apos;3:25&apos;, &apos;3:26&apos;, &apos;3:28&apos;, &apos;3:35&apos;, &apos;3:37&apos;, &apos;3:38&apos;, &apos;3:41&apos;, &apos;3:42&apos;, &apos;3:44&apos;, &apos;3:49&apos;, &apos;3:50&apos;, &apos;3:52&apos;, &apos;3:56&apos;, &apos;4:15&apos;, &apos;4:23&apos;, &apos;4:27&apos;, &apos;4:29&apos;, &apos;4:30&apos;, &apos;4:39&apos;, &apos;4:43&apos;, &apos;4:45&apos;, &apos;4:46&apos;, &apos;4:51&apos;, &apos;4:53&apos;, &apos;4:54&apos;, &apos;4:57&apos;, &apos;4:58&apos;, &apos;5:07&apos;, &apos;5:11&apos;, &apos;5:13&apos;, &apos;5:14&apos;, &apos;5:19&apos;, &apos;5:21&apos;, &apos;5:22&apos;, &apos;5:25&apos;, &apos;5:26&apos;, &apos;5:28&apos;, &apos;5:35&apos;, &apos;5:37&apos;, &apos;5:38&apos;, &apos;5:41&apos;, &apos;5:42&apos;, &apos;5:44&apos;, &apos;5:49&apos;, &apos;5:50&apos;, &apos;5:52&apos;, &apos;5:56&apos;, &apos;6:07&apos;, &apos;6:11&apos;, &apos;6:13&apos;, &apos;6:14&apos;, &apos;6:19&apos;, &apos;6:21&apos;, &apos;6:22&apos;, &apos;6:25&apos;, &apos;6:26&apos;, &apos;6:28&apos;, &apos;6:35&apos;, &apos;6:37&apos;, &apos;6:38&apos;, &apos;6:41&apos;, &apos;6:42&apos;, &apos;6:44&apos;, &apos;6:49&apos;, &apos;6:50&apos;, &apos;6:52&apos;, &apos;6:56&apos;, &apos;7:03&apos;, &apos;7:05&apos;, &apos;7:06&apos;, &apos;7:09&apos;, &apos;7:10&apos;, &apos;7:12&apos;, &apos;7:17&apos;, &apos;7:18&apos;, &apos;7:20&apos;, &apos;7:24&apos;, &apos;7:33&apos;, &apos;7:34&apos;, &apos;7:36&apos;, &apos;7:40&apos;, &apos;7:48&apos;, &apos;8:15&apos;, &apos;8:23&apos;, &apos;8:27&apos;, &apos;8:29&apos;, &apos;8:30&apos;, &apos;8:39&apos;, &apos;8:43&apos;, &apos;8:45&apos;, &apos;8:46&apos;, &apos;8:51&apos;, &apos;8:53&apos;, &apos;8:54&apos;, &apos;8:57&apos;, &apos;8:58&apos;, &apos;9:07&apos;, &apos;9:11&apos;, &apos;9:13&apos;, &apos;9:14&apos;, &apos;9:19&apos;, &apos;9:21&apos;, &apos;9:22&apos;, &apos;9:25&apos;, &apos;9:26&apos;, &apos;9:28&apos;, &apos;9:35&apos;, &apos;9:37&apos;, &apos;9:38&apos;, &apos;9:41&apos;, &apos;9:42&apos;, &apos;9:44&apos;, &apos;9:49&apos;, &apos;9:50&apos;, &apos;9:52&apos;, &apos;9:56&apos;, &apos;10:07&apos;, &apos;10:11&apos;, &apos;10:13&apos;, &apos;10:14&apos;, &apos;10:19&apos;, &apos;10:21&apos;, &apos;10:22&apos;, &apos;10:25&apos;, &apos;10:26&apos;, &apos;10:28&apos;, &apos;10:35&apos;, &apos;10:37&apos;, &apos;10:38&apos;, &apos;10:41&apos;, &apos;10:42&apos;, &apos;10:44&apos;, &apos;10:49&apos;, &apos;10:50&apos;, &apos;10:52&apos;, &apos;10:56&apos;, &apos;11:03&apos;, &apos;11:05&apos;, &apos;11:06&apos;, &apos;11:09&apos;, &apos;11:10&apos;, &apos;11:12&apos;, &apos;11:17&apos;, &apos;11:18&apos;, &apos;11:20&apos;, &apos;11:24&apos;, &apos;11:33&apos;, &apos;11:34&apos;, &apos;11:36&apos;, &apos;11:40&apos;, &apos;11:48&apos;], [&apos;1:31&apos;, &apos;1:47&apos;, &apos;1:55&apos;, &apos;1:59&apos;, &apos;2:31&apos;, &apos;2:47&apos;, &apos;2:55&apos;, &apos;2:59&apos;, &apos;3:15&apos;, &apos;3:23&apos;, &apos;3:27&apos;, &apos;3:29&apos;, &apos;3:30&apos;, &apos;3:39&apos;, &apos;3:43&apos;, &apos;3:45&apos;, &apos;3:46&apos;, &apos;3:51&apos;, &apos;3:53&apos;, &apos;3:54&apos;, &apos;3:57&apos;, &apos;3:58&apos;, &apos;4:31&apos;, &apos;4:47&apos;, &apos;4:55&apos;, &apos;4:59&apos;, &apos;5:15&apos;, &apos;5:23&apos;, &apos;5:27&apos;, &apos;5:29&apos;, &apos;5:30&apos;, &apos;5:39&apos;, &apos;5:43&apos;, &apos;5:45&apos;, &apos;5:46&apos;, &apos;5:51&apos;, &apos;5:53&apos;, &apos;5:54&apos;, &apos;5:57&apos;, &apos;5:58&apos;, &apos;6:15&apos;, &apos;6:23&apos;, &apos;6:27&apos;, &apos;6:29&apos;, &apos;6:30&apos;, &apos;6:39&apos;, &apos;6:43&apos;, &apos;6:45&apos;, &apos;6:46&apos;, &apos;6:51&apos;, &apos;6:53&apos;, &apos;6:54&apos;, &apos;6:57&apos;, &apos;6:58&apos;, &apos;7:07&apos;, &apos;7:11&apos;, &apos;7:13&apos;, &apos;7:14&apos;, &apos;7:19&apos;, &apos;7:21&apos;, &apos;7:22&apos;, &apos;7:25&apos;, &apos;7:26&apos;, &apos;7:28&apos;, &apos;7:35&apos;, &apos;7:37&apos;, &apos;7:38&apos;, &apos;7:41&apos;, &apos;7:42&apos;, &apos;7:44&apos;, &apos;7:49&apos;, &apos;7:50&apos;, &apos;7:52&apos;, &apos;7:56&apos;, &apos;8:31&apos;, &apos;8:47&apos;, &apos;8:55&apos;, &apos;8:59&apos;, &apos;9:15&apos;, &apos;9:23&apos;, &apos;9:27&apos;, &apos;9:29&apos;, &apos;9:30&apos;, &apos;9:39&apos;, &apos;9:43&apos;, &apos;9:45&apos;, &apos;9:46&apos;, &apos;9:51&apos;, &apos;9:53&apos;, &apos;9:54&apos;, &apos;9:57&apos;, &apos;9:58&apos;, &apos;10:15&apos;, &apos;10:23&apos;, &apos;10:27&apos;, &apos;10:29&apos;, &apos;10:30&apos;, &apos;10:39&apos;, &apos;10:43&apos;, &apos;10:45&apos;, &apos;10:46&apos;, &apos;10:51&apos;, &apos;10:53&apos;, &apos;10:54&apos;, &apos;10:57&apos;, &apos;10:58&apos;, &apos;11:07&apos;, &apos;11:11&apos;, &apos;11:13&apos;, &apos;11:14&apos;, &apos;11:19&apos;, &apos;11:21&apos;, &apos;11:22&apos;, &apos;11:25&apos;, &apos;11:26&apos;, &apos;11:28&apos;, &apos;11:35&apos;, &apos;11:37&apos;, &apos;11:38&apos;, &apos;11:41&apos;, &apos;11:42&apos;, &apos;11:44&apos;, &apos;11:49&apos;, &apos;11:50&apos;, &apos;11:52&apos;, &apos;11:56&apos;], [&apos;3:31&apos;, &apos;3:47&apos;, &apos;3:55&apos;, &apos;3:59&apos;, &apos;5:31&apos;, &apos;5:47&apos;, &apos;5:55&apos;, &apos;5:59&apos;, &apos;6:31&apos;, &apos;6:47&apos;, &apos;6:55&apos;, &apos;6:59&apos;, &apos;7:15&apos;, &apos;7:23&apos;, &apos;7:27&apos;, &apos;7:29&apos;, &apos;7:30&apos;, &apos;7:39&apos;, &apos;7:43&apos;, &apos;7:45&apos;, &apos;7:46&apos;, &apos;7:51&apos;, &apos;7:53&apos;, &apos;7:54&apos;, &apos;7:57&apos;, &apos;7:58&apos;, &apos;9:31&apos;, &apos;9:47&apos;, &apos;9:55&apos;, &apos;9:59&apos;, &apos;10:31&apos;, &apos;10:47&apos;, &apos;10:55&apos;, &apos;10:59&apos;, &apos;11:15&apos;, &apos;11:23&apos;, &apos;11:27&apos;, &apos;11:29&apos;, &apos;11:30&apos;, &apos;11:39&apos;, &apos;11:43&apos;, &apos;11:45&apos;, &apos;11:46&apos;, &apos;11:51&apos;, &apos;11:53&apos;, &apos;11:54&apos;, &apos;11:57&apos;, &apos;11:58&apos;], [&apos;7:31&apos;, &apos;7:47&apos;, &apos;7:55&apos;, &apos;7:59&apos;, &apos;11:31&apos;, &apos;11:47&apos;, &apos;11:55&apos;, &apos;11:59&apos;], [], []]</span><br><span class="line">        return ans[num]</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p>36ms, September 19, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/59374/simple-python-java" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/59374/simple-python-java</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; readBinaryWatch(int num) &#123;</span><br><span class="line">        List&lt;String&gt; times = new ArrayList&lt;&gt;();</span><br><span class="line">        for(int h=0; h&lt;12; h++)</span><br><span class="line">            for(int m = 0; m&lt;60; m++)</span><br><span class="line">                if(Integer.bitCount(h*64 +m)==num)</span><br><span class="line">                    times.add(String.format(&quot;%d:%02d&quot;, h, m));</span><br><span class="line">        return times;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/59494/3ms-java-solution-using-backtracking-and-idea-of-permutation-and-combination" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/59494/3ms-java-solution-using-backtracking-and-idea-of-permutation-and-combination</a></p>
+<p>3ms Java Solution Using Backtracking and Idea of “Permutation and Combination”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; readBinaryWatch(int num) &#123;</span><br><span class="line">        List&lt;String&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        int[] nums1 = new int[]&#123;8, 4, 2, 1&#125;, nums2 = new int[]&#123;32, 16, 8, 4, 2, 1&#125;;</span><br><span class="line">        for(int i = 0; i &lt;= num; i++) &#123;</span><br><span class="line">            List&lt;Integer&gt; list1 = generateDigit(nums1, i);</span><br><span class="line">            List&lt;Integer&gt; list2 = generateDigit(nums2, num - i);</span><br><span class="line">            for(int num1: list1) &#123;</span><br><span class="line">                if(num1 &gt;= 12) continue;</span><br><span class="line">                for(int num2: list2) &#123;</span><br><span class="line">                    if(num2 &gt;= 60) continue;</span><br><span class="line">                    res.add(num1 + &quot;:&quot; + (num2 &lt; 10 ? &quot;0&quot; + num2 : num2));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private List&lt;Integer&gt; generateDigit(int[] nums, int count) &#123;</span><br><span class="line">        List&lt;Integer&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        generateDigitHelper(nums, count, 0, 0, res);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void generateDigitHelper(int[] nums, int count, int pos, int sum, List&lt;Integer&gt; res) &#123;</span><br><span class="line">        if(count == 0) &#123;</span><br><span class="line">            res.add(sum);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = pos; i &lt; nums.length; i++) &#123;</span><br><span class="line">            generateDigitHelper(nums, count - 1, i + 1, sum + nums[i], res);    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/59611/straightforward-java-answer" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/59611/straightforward-java-answer</a></p>
+<p>straightforward java answer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;String&gt; readBinaryWatch(int num) &#123;</span><br><span class="line">    ArrayList&lt;String&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    for (int i = 0; i &lt; 12; i++) &#123;</span><br><span class="line">        for (int j = 0; j &lt; 60; j++) &#123;</span><br><span class="line">            if (Integer.bitCount(i) + Integer.bitCount(j) == num) &#123;</span><br><span class="line">                result.add(String.format(&quot;%d:%02d&quot;, i, j));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/6e69068/" title="401. Binary Watch">http://yucc.me/p/6e69068/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/backtracking/" rel="tag"># backtracking</a>
+          
+            <a href="/tags/bit-manipulation/" rel="tag"># bit manipulation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/2f0b7067/" rel="next" title="400. Nth Digit">
+                <i class="fa fa-chevron-left"></i> 400. Nth Digit
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/c694c9c7/" rel="prev" title="402. Remove K Digits">
+                402. Remove K Digits <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

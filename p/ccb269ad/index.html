@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,hard,stack,greedy," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="29.6%  https://leetcode.com/problems/remove-duplicate-letters/ Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must">
+<meta name="keywords" content="leetcode,hard,stack,greedy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="316. Remove Duplicate Letters">
+<meta property="og:url" content="http://yucc.me/p/ccb269ad/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="29.6%  https://leetcode.com/problems/remove-duplicate-letters/ Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:31:24.592Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="316. Remove Duplicate Letters">
+<meta name="twitter:description" content="29.6%  https://leetcode.com/problems/remove-duplicate-letters/ Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/ccb269ad/"/>
+
+
+
+
+
+  <title>316. Remove Duplicate Letters | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/ccb269ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">316. Remove Duplicate Letters</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:05:27+08:00">
+                2018-05-23 13:05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:31:24+08:00">
+                2018-05-23 19:31
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,442
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>29.6%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/remove-duplicate-letters/" target="_blank" rel="noopener">https://leetcode.com/problems/remove-duplicate-letters/</a></p>
+<p>Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Given &quot;bcabc&quot;</span><br><span class="line">Return &quot;abc&quot;</span><br><span class="line"></span><br><span class="line">Given &quot;cbacdcbc&quot;</span><br><span class="line">Return &quot;acdb&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一:</p>
+<p>代码中有bug</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeDuplicateLetters</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res = <span class="string">""</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> n = s.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)</span><br><span class="line">            <span class="built_in">map</span>[s[i]] = i;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>, j, k, l;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n &amp;&amp; <span class="built_in">map</span>.size())&#123;</span><br><span class="line">            <span class="keyword">char</span> c = s[i];</span><br><span class="line">            j = min_index(<span class="built_in">map</span>);</span><br><span class="line">            <span class="keyword">for</span>(k=i+<span class="number">1</span>; k&lt;=j; k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[k]&lt;s[i])&#123;</span><br><span class="line">                    l = k;</span><br><span class="line">                    c = s[k];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res += c;</span><br><span class="line">            <span class="built_in">map</span>.erase(c);</span><br><span class="line">            i = l+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">min_index</span><span class="params">(<span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt;&amp; <span class="built_in">map</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="built_in">map</span>.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it=<span class="built_in">map</span>.begin(); it!=<span class="built_in">map</span>.end(); it++)</span><br><span class="line">            index = min(index, it-&gt;second);</span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/31413/easy-to-understand-iterative-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31413/easy-to-understand-iterative-java-solution</a></p>
+<p>The basic idea is to find out the smallest result letter by letter (one letter at a time). Here is the thinking process for input “cbacdcbc”:</p>
+<ol>
+<li>find out the last appeared position for each letter;<br>c - 7<br>b - 6<br>a - 2<br>d - 4</li>
+<li>find out the smallest index from the map in step 1 (a - 2);</li>
+<li>the first letter in the final result must be the smallest letter from index 0 to index 2;</li>
+<li>repeat step 2 to 3 to find out remaining letters.</li>
+</ol>
+<ul>
+<li>the smallest letter from index 0 to index 2: a</li>
+<li>the smallest letter from index 3 to index 4: c</li>
+<li>the smallest letter from index 4 to index 4: d</li>
+<li>the smallest letter from index 5 to index 6: b<br>so the result is “acdb”</li>
+</ul>
+<p>Notes:</p>
+<p>after one letter is determined in step 3, it need to be removed from the “last appeared position map”, and the same letter should be ignored in the following steps<br>in step 3, the beginning index of the search range should be the index of previous determined letter plus one<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line"></span><br><span class="line">    public String removeDuplicateLetters(String s) &#123;</span><br><span class="line">        if (s == null || s.length() &lt;= 1) return s;</span><br><span class="line"></span><br><span class="line">        Map&lt;Character, Integer&gt; lastPosMap = new HashMap&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">            lastPosMap.put(s.charAt(i), i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        char[] result = new char[lastPosMap.size()];</span><br><span class="line">        int begin = 0, end = findMinLastPos(lastPosMap);</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; result.length; i++) &#123;</span><br><span class="line">            char minChar = &apos;z&apos; + 1;</span><br><span class="line">            for (int k = begin; k &lt;= end; k++) &#123;</span><br><span class="line">                if (lastPosMap.containsKey(s.charAt(k)) &amp;&amp; s.charAt(k) &lt; minChar) &#123;</span><br><span class="line">                    minChar = s.charAt(k);</span><br><span class="line">                    begin = k+1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            result[i] = minChar;</span><br><span class="line">            if (i == result.length-1) break;</span><br><span class="line"></span><br><span class="line">            lastPosMap.remove(minChar);</span><br><span class="line">            if (s.charAt(end) == minChar) end = findMinLastPos(lastPosMap);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return new String(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int findMinLastPos(Map&lt;Character, Integer&gt; lastPosMap) &#123;</span><br><span class="line">        if (lastPosMap == null || lastPosMap.isEmpty()) return -1;</span><br><span class="line">        int minLastPos = Integer.MAX_VALUE;</span><br><span class="line">        for (int lastPos : lastPosMap.values()) &#123;</span><br><span class="line">             minLastPos = Math.min(minLastPos, lastPos);</span><br><span class="line">        &#125;</span><br><span class="line">        return minLastPos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/32172/c-simple-solution-easy-understanding" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32172/c-simple-solution-easy-understanding</a></p>
+<p>C++ simple solution easy understanding</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">string removeDuplicateLetters(string s) &#123;</span><br><span class="line">    vector&lt;int&gt; cand(256, 0);</span><br><span class="line">    vector&lt;bool&gt; visited(256, false);</span><br><span class="line">    for (char c : s)</span><br><span class="line">        cand[c]++;</span><br><span class="line">    string result = &quot;0&quot;;</span><br><span class="line">    for (char c : s) &#123;</span><br><span class="line">        cand[c]--;</span><br><span class="line">        if (visited[c]) continue;</span><br><span class="line">        while (c &lt; result.back() &amp;&amp; cand[result.back()]) &#123;</span><br><span class="line">            visited[result.back()] = false;</span><br><span class="line">            result.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">        result += c;</span><br><span class="line">        visited[c] = true;</span><br><span class="line">    &#125;</span><br><span class="line">    return result.substr(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>I think this solution is really concise! But I want to add some detailed explainations to show why we do so to solve the problem, This problem is in fact similiar to the problem “<a href="https://leetcode.com/discuss/84911/geeks-for-geeks-thought-on-how-to-solve-the-problem" target="_blank" rel="noopener">Largest Rectangle under the histogram</a> “</p>
+<p>We need to keep the monotically decreasing substring that contains all the char in the s. So we just use a vector to mimic the stack! Just similiar to the previous many solutions that use the vector to simulate a stack.</p>
+<p>In fact this problem is also similiar to the problem that the <a href="https://leetcode.com/discuss/87685/template-subarray-substring-substring-repeating-characters" target="_blank" rel="noopener">maximum in the sliding windows</a>, I strongly recommend you to grasp the sliding windows solutions.</p>
+<p>Here is the AC C++ implementation</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string removeDuplicateLetters(string s) &#123;</span><br><span class="line">        vector&lt;int&gt; dict(256, 0);</span><br><span class="line">        vector&lt;bool&gt; visited(256, false);</span><br><span class="line">        for(auto ch : s)  dict[ch]++;</span><br><span class="line">        string result = &quot;0&quot;;</span><br><span class="line">        /** the key idea is to keep a monotically increasing sequence **/</span><br><span class="line">        for(auto c : s) &#123;</span><br><span class="line">            dict[c]--;</span><br><span class="line">            /** to filter the previously visited elements **/</span><br><span class="line">            if(visited[c])  continue;</span><br><span class="line">            while(c &lt; result.back() &amp;&amp; dict[result.back()]) &#123;</span><br><span class="line">                visited[result.back()] = false;</span><br><span class="line">                result.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">            result += c;</span><br><span class="line">            visited[c] = true;</span><br><span class="line">        &#125;</span><br><span class="line">        return result.substr(1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31436/short-16ms-o-n-c-solution-using-stack-which-can-be-optimized-down-to-4ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31436/short-16ms-o-n-c-solution-using-stack-which-can-be-optimized-down-to-4ms</a></p>
+<p>Short 16ms O(n) c++ solution using stack which can be optimized down to 4ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string removeDuplicateLetters(string s) &#123;</span><br><span class="line">        unordered_map&lt;char, int&gt; cnts;</span><br><span class="line">        string ret;</span><br><span class="line">        stack&lt;char&gt; stk;</span><br><span class="line">        vector&lt;bool&gt; isVisited(26, false);</span><br><span class="line">        for (char each : s) cnts[each] ++;</span><br><span class="line">        for (int i = 0; i &lt; s.size(); cnts[s[i]] --, ++ i) &#123;</span><br><span class="line">            if (isVisited[s[i] - &apos;a&apos;] || (!stk.empty() &amp;&amp; stk.top() == s[i])) continue;</span><br><span class="line">            while (!stk.empty() &amp;&amp; stk.top() &gt; s[i] &amp;&amp; cnts[stk.top()] &gt; 0) &#123;</span><br><span class="line">                isVisited[stk.top() - &apos;a&apos;] = false;</span><br><span class="line">                stk.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            stk.push(s[i]);</span><br><span class="line">            isVisited[s[i] - &apos;a&apos;] = true;</span><br><span class="line">        &#125;</span><br><span class="line">        while (!stk.empty()) &#123;</span><br><span class="line">            ret.push_back(stk.top());</span><br><span class="line">            stk.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(ret.begin(), ret.end());</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/31561/some-python-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31561/some-python-solutions</a></p>
+<p>Some Python solutions</p>
+<p>Solutions inspired by those of others. Simpler but less efficient (all still get accepted, of course, in about 50 to 100 ms, normal for Python).</p>
+<p>Solution 1</p>
+<p>Inspired by <a href="https://leetcode.com/discuss/73761/a-short-o-n-recursive-greedy-solution" target="_blank" rel="noopener">lixx2100’s explanation</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def removeDuplicateLetters(self, s):</span><br><span class="line">    for c in sorted(set(s)):</span><br><span class="line">        suffix = s[s.index(c):]</span><br><span class="line">        if set(suffix) == set(s):</span><br><span class="line">            return c + self.removeDuplicateLetters(suffix.replace(c, &apos;&apos;))</span><br><span class="line">    return &apos;&apos;</span><br></pre></td></tr></table></figure>
+<p>Solution 2</p>
+<p>Inspired by <a href="https://leetcode.com/discuss/73777/easy-to-understand-iterative-java-solution" target="_blank" rel="noopener">WHJ425’s explanation</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def removeDuplicateLetters(self, s):</span><br><span class="line">    result = &apos;&apos;</span><br><span class="line">    while s:</span><br><span class="line">        i = min(map(s.rindex, set(s)))</span><br><span class="line">        c = min(s[:i+1])</span><br><span class="line">        result += c</span><br><span class="line">        s = s[s.index(c):].replace(c, &apos;&apos;)</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<p>Solution 3</p>
+<p>Inspired by <a href="https://leetcode.com/discuss/73824/short-16ms-solution-using-stack-which-can-optimized-down-4ms" target="_blank" rel="noopener">halibut735’s solution</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def removeDuplicateLetters(self, s):</span><br><span class="line">    rindex = &#123;c: i for i, c in enumerate(s)&#125;</span><br><span class="line">    result = &apos;&apos;</span><br><span class="line">    for i, c in enumerate(s):</span><br><span class="line">        if c not in result:</span><br><span class="line">            while c &lt; result[-1:] and i &lt; rindex[result[-1]]:</span><br><span class="line">                result = result[:-1]</span><br><span class="line">            result += c</span><br><span class="line">    return result</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31404/a-short-o-n-recursive-greedy-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31404/a-short-o-n-recursive-greedy-solution</a></p>
+<p>Given the string s, the greedy choice (i.e., the leftmost letter in the answer) is the smallest s[i], s.t.<br>the suffix s[i .. ] contains all the unique letters. (Note that, when there are more than one smallest s[i]’s, we choose the leftmost one. Why? Simply consider the example: “abcacb”.)</p>
+<p>After determining the greedy choice s[i], we get a new string s’ from s by</p>
+<ol>
+<li>removing all letters to the left of s[i],</li>
+<li>removing all s[i]’s from s.</li>
+</ol>
+<p>We then recursively solve the problem w.r.t. s’.</p>
+<p>The runtime is O(26 * n) = O(n).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public String removeDuplicateLetters(String s) &#123;</span><br><span class="line">        int[] cnt = new int[26];</span><br><span class="line">        int pos = 0; // the position for the smallest s[i]</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) cnt[s.charAt(i) - &apos;a&apos;]++;</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">            if (s.charAt(i) &lt; s.charAt(pos)) pos = i;</span><br><span class="line">            if (--cnt[s.charAt(i) - &apos;a&apos;] == 0) break;</span><br><span class="line">        &#125;</span><br><span class="line">        return s.length() == 0 ? &quot;&quot; : s.charAt(pos) + removeDuplicateLetters(s.substring(pos + 1).replaceAll(&quot;&quot; + s.charAt(pos), &quot;&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/32259/java-solution-using-stack-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/32259/java-solution-using-stack-with-comments</a></p>
+<p>Java solution using Stack with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public String removeDuplicateLetters(String sr) &#123;</span><br><span class="line"></span><br><span class="line">    int[] res = new int[26]; //will contain number of occurences of character (i+&apos;a&apos;)</span><br><span class="line">    boolean[] visited = new boolean[26]; //will contain if character (i+&apos;a&apos;) is present in current result Stack</span><br><span class="line">    char[] ch = sr.toCharArray();</span><br><span class="line">    for(char c: ch)&#123;  //count number of occurences of character </span><br><span class="line">        res[c-&apos;a&apos;]++;</span><br><span class="line">    &#125;</span><br><span class="line">    Stack&lt;Character&gt; st = new Stack&lt;&gt;(); // answer stack</span><br><span class="line">    int index;</span><br><span class="line">    for(char s:ch)&#123; </span><br><span class="line">        index= s-&apos;a&apos;;</span><br><span class="line">        res[index]--;   //decrement number of characters remaining in the string to be analysed</span><br><span class="line">        if(visited[index]) //if character is already present in stack, dont bother</span><br><span class="line">            continue;</span><br><span class="line">        //if current character is smaller than last character in stack which occurs later in the string again</span><br><span class="line">        //it can be removed and  added later e.g stack = bc remaining string abc then a can pop b and then c</span><br><span class="line">        while(!st.isEmpty() &amp;&amp; s&lt;st.peek() &amp;&amp; res[st.peek()-&apos;a&apos;]!=0)&#123; </span><br><span class="line">            visited[st.pop()-&apos;a&apos;]=false;</span><br><span class="line">        &#125;</span><br><span class="line">        st.push(s); //add current character and mark it as visited</span><br><span class="line">        visited[index]=true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    StringBuilder sb = new StringBuilder();</span><br><span class="line">    //pop character from stack and build answer string from back</span><br><span class="line">    while(!st.isEmpty())&#123;</span><br><span class="line">        sb.insert(0,st.pop());</span><br><span class="line">    &#125;</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31424/15-ms-java-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31424/15-ms-java-solution</a></p>
+<p>15 ms Java solution</p>
+<p>for “cbacdcbc”, we counts each letter’s index:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a----2</span><br><span class="line">b----1,6</span><br><span class="line">c----0,3,5,7</span><br><span class="line">d----4</span><br></pre></td></tr></table></figure>
+<p>we go from a to d, to find the first letter who has a index smaller than the largest index of the rest. Here, index 2 of letter a is smaller than 6, 7, 4, so we first pick a; then we remove all index smaller than 2, and we have:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b----6</span><br><span class="line">c----3,5,7</span><br><span class="line">d----4</span><br></pre></td></tr></table></figure>
+<p>the next round we pick c not b, why ? cuz 6 of b is larger than 4, but 3 of c is smaller than 4 and 6.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b---6</span><br><span class="line">d---4</span><br></pre></td></tr></table></figure>
+<p>then we pick d and b to form “acdb”</p>
+<p>O(n) time to count index, and as we only have 26 letters, it’s about O(26 * 26) to find a candidate letter and O(n) time to remove all index. So I think the running time is O(n).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public String removeDuplicateLetters(String s) &#123;</span><br><span class="line">        HashMap&lt;Character, ArrayList&lt;Integer&gt;&gt; counts = new HashMap&lt;Character, ArrayList&lt;Integer&gt;&gt;();</span><br><span class="line">        ArrayList&lt;Character&gt; keys = new ArrayList&lt;Character&gt;();</span><br><span class="line">        for (int i = 0; i &lt; s.length(); i++) &#123;</span><br><span class="line">            char c = s.charAt(i);</span><br><span class="line">            if (!counts.containsKey(c)) &#123;</span><br><span class="line">                counts.put(c, new ArrayList&lt;Integer&gt;());</span><br><span class="line">                keys.add(c);</span><br><span class="line">            &#125;</span><br><span class="line">            counts.get(c).add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.sort(keys);</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        while (!counts.isEmpty()) &#123;</span><br><span class="line">            boolean found = true;</span><br><span class="line">            for (int i = 0; i &lt; keys.size(); i++) &#123;</span><br><span class="line">                int index = counts.get(keys.get(i)).get(0);</span><br><span class="line">                for (int j = 0; j &lt; keys.size(); j++) &#123;</span><br><span class="line">                    ArrayList&lt;Integer&gt; count = counts.get(keys.get(j));</span><br><span class="line">                    if (count.get(count.size() - 1) &lt; index) &#123;</span><br><span class="line">                        found = false;</span><br><span class="line">                        break;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if (found) &#123;</span><br><span class="line">                    sb.append(keys.get(i));</span><br><span class="line">                    counts.remove(keys.get(i));</span><br><span class="line">                    keys.remove(i);</span><br><span class="line">                    for (int j = 0; j &lt; keys.size(); j++) &#123;</span><br><span class="line">                        ArrayList&lt;Integer&gt; count = counts.get(keys.get(j));</span><br><span class="line">                        while (count.get(0) &lt; index) &#123;</span><br><span class="line">                            count.remove(0);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                found = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/43469/java-o-n-solution-using-stack-with-detail-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/43469/java-o-n-solution-using-stack-with-detail-explanation</a></p>
+<p>Java O(n) solution using stack with detail explanation</p>
+<p>First, given “bcabc”, the solution should be “abc”. If we think about this problem intuitively, you would sort of go from the beginning of the string and start removing one if there is still the same character left and a smaller character is after it. Given “bcabc”, when you see a ‘b’, keep it and continue with the search, then keep the following ‘c’, then we see an ‘a’. Now we get a chance to get a smaller lexi order, you can check if after ‘a’, there is still ‘b’ and ‘c’ or not. We indeed have them and “abc” will be our result.</p>
+<p>Come to the implementation, we need some data structure to store the previous characters ‘b’ and ‘c’, and we need to compare the current character with previous saved ones, and if there are multiple same characters, we prefer left ones. This calls for a stack.</p>
+<p>After we decided to use stack, the implementation becomes clearer. From the intuition, we know that we need to know if there are still remaining characters left or not. So we need to iterate the array and save how many each characters are there. A visited array is also required since we want unique character in the solution. The line while(!stack.isEmpty() &amp;&amp; stack.peek() &gt; c &amp;&amp; count[stack.peek()-‘a’] &gt; 0) checks that the queued character should be removed or not, like the ‘b’ and ‘c’ in the previous example. After removing the previous characters, push in the new char and mark the visited array.</p>
+<p>Time complexity: O(n), n is the number of chars in string.</p>
+<p>Space complexity: O(n) worst case.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public String removeDuplicateLetters(String s) &#123;</span><br><span class="line">    Stack&lt;Character&gt; stack = new Stack&lt;&gt;();</span><br><span class="line">    int[] count = new int[26];</span><br><span class="line">    char[] arr = s.toCharArray();</span><br><span class="line">    for(char c : arr) &#123;</span><br><span class="line">        count[c-&apos;a&apos;]++;</span><br><span class="line">    &#125;</span><br><span class="line">    boolean[] visited = new boolean[26];</span><br><span class="line">    for(char c : arr) &#123;</span><br><span class="line">        count[c-&apos;a&apos;]--;</span><br><span class="line">        if(visited[c-&apos;a&apos;]) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        while(!stack.isEmpty() &amp;&amp; stack.peek() &gt; c &amp;&amp; count[stack.peek()-&apos;a&apos;] &gt; 0) &#123;</span><br><span class="line">            visited[stack.peek()-&apos;a&apos;] = false;</span><br><span class="line">            stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(c);</span><br><span class="line">        visited[c-&apos;a&apos;] = true;</span><br><span class="line">    &#125;</span><br><span class="line">    StringBuilder sb = new StringBuilder();</span><br><span class="line">    for(char c : stack) &#123;</span><br><span class="line">        sb.append(c);</span><br><span class="line">    &#125;</span><br><span class="line">    return sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/ccb269ad/" title="316. Remove Duplicate Letters">http://yucc.me/p/ccb269ad/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/stack/" rel="tag"># stack</a>
+          
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/6c1c7aa1/" rel="next" title="315. Count of Smaller Numbers After Self">
+                <i class="fa fa-chevron-left"></i> 315. Count of Smaller Numbers After Self
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/27af2dd0/" rel="prev" title="318. Maximum Product of Word Lengths">
+                318. Maximum Product of Word Lengths <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

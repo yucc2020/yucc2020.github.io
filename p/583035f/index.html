@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,hard," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="20.5%  https://leetcode.com/problems/strong-password-checker/?tab=Description A password is considered strong if below conditions are all met:  It has at least 6 characters and at most 20 characters.">
+<meta name="keywords" content="leetcode,hard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="420. Strong Password Checker">
+<meta property="og:url" content="http://yucc.me/p/583035f/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="20.5%  https://leetcode.com/problems/strong-password-checker/?tab=Description A password is considered strong if below conditions are all met:  It has at least 6 characters and at most 20 characters.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://discuss.leetcode.com/uploads/files/1477253858862-screen-shot-2016-10-23-at-4.16.42-pm.png">
+<meta property="og:updated_time" content="2018-05-23T14:02:44.102Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="420. Strong Password Checker">
+<meta name="twitter:description" content="20.5%  https://leetcode.com/problems/strong-password-checker/?tab=Description A password is considered strong if below conditions are all met:  It has at least 6 characters and at most 20 characters.">
+<meta name="twitter:image" content="https://discuss.leetcode.com/uploads/files/1477253858862-screen-shot-2016-10-23-at-4.16.42-pm.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/583035f/"/>
+
+
+
+
+
+  <title>420. Strong Password Checker | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/583035f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">420. Strong Password Checker</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:44:16+08:00">
+                2018-05-23 13:44
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T22:02:44+08:00">
+                2018-05-23 22:02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,183
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>20.5%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/strong-password-checker/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/strong-password-checker/?tab=Description</a></p>
+<p>A password is considered strong if below conditions are all met:</p>
+<ol>
+<li>It has at least 6 characters and at most 20 characters.</li>
+<li>It must contain at least one lowercase letter, at least one uppercase letter, and at least one digit.</li>
+<li>It must NOT contain three repeating characters in a row (“…aaa…” is weak, but “…aa…a…” is strong, assuming other conditions are met).</li>
+</ol>
+<p>Write a function strongPasswordChecker(s), that takes a string s as input, and return the MINIMUM change required to make s a strong password. If s is already strong, return 0.</p>
+<p>Insertion, deletion or replace of any one character are all considered as one change.</p>
+<a id="more"></a>
+<hr>
+<p>对于三个条件，先理解。然后解决的时候采用分类讨论思想。分为&lt;6, &gt;=6 &amp;&amp; &lt;=20, &gt;20三种情况。</p>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/63185/java-easy-solution-with-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/63185/java-easy-solution-with-explanation</a></p>
+<p>JAVA Easy Solution with explanation</p>
+<p>There are 2 wrong test cases which I list at the beginning.</p>
+<p>The general idea is to record some states, and calculate the edit distance at the end. All detail are explained in the comments.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int strongPasswordChecker(String s) &#123;</span><br><span class="line">        </span><br><span class="line">        if(s.length()&lt;2) return 6-s.length();</span><br><span class="line">        </span><br><span class="line">        //Initialize the states, including current ending character(end), existence of lowercase letter(lower), uppercase letter(upper), digit(digit) and number of replicates for ending character(end_rep)</span><br><span class="line">        char end = s.charAt(0);</span><br><span class="line">        boolean upper = end&gt;=&apos;A&apos;&amp;&amp;end&lt;=&apos;Z&apos;, lower = end&gt;=&apos;a&apos;&amp;&amp;end&lt;=&apos;z&apos;, digit = end&gt;=&apos;0&apos;&amp;&amp;end&lt;=&apos;9&apos;;</span><br><span class="line">        </span><br><span class="line">        //Also initialize the number of modification for repeated characters, total number needed for eliminate all consequnce 3 same character by replacement(change), and potential maximun operation of deleting characters(delete). Note delete[0] means maximum number of reduce 1 replacement operation by 1 deletion operation, delete[1] means maximun number of reduce 1 replacement by 2 deletion operation, delete[2] is no use here. </span><br><span class="line">        int end_rep = 1, change = 0;</span><br><span class="line">        int[] delete = new int[3];</span><br><span class="line">        </span><br><span class="line">        for(int i = 1;i&lt;s.length();++i)&#123;</span><br><span class="line">            if(s.charAt(i)==end) ++end_rep;</span><br><span class="line">            else&#123;</span><br><span class="line">                change+=end_rep/3;</span><br><span class="line">                if(end_rep/3&gt;0) ++delete[end_rep%3];</span><br><span class="line">                //updating the states</span><br><span class="line">                end = s.charAt(i);</span><br><span class="line">                upper = upper||end&gt;=&apos;A&apos;&amp;&amp;end&lt;=&apos;Z&apos;;</span><br><span class="line">                lower = lower||end&gt;=&apos;a&apos;&amp;&amp;end&lt;=&apos;z&apos;;</span><br><span class="line">                digit = digit||end&gt;=&apos;0&apos;&amp;&amp;end&lt;=&apos;9&apos;;</span><br><span class="line">                end_rep = 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        change+=end_rep/3;</span><br><span class="line">        if(end_rep/3&gt;0) ++delete[end_rep%3];</span><br><span class="line">        </span><br><span class="line">        //The number of replcement needed for missing of specific character(lower/upper/digit)</span><br><span class="line">        int check_req = (upper?0:1)+(lower?0:1)+(digit?0:1);</span><br><span class="line">        </span><br><span class="line">        if(s.length()&gt;20)&#123;</span><br><span class="line">            int del = s.length()-20;</span><br><span class="line">            </span><br><span class="line">            //Reduce the number of replacement operation by deletion</span><br><span class="line">            if(del&lt;=delete[0]) change-=del;</span><br><span class="line">            else if(del-delete[0]&lt;=2*delete[1]) change-=delete[0]+(del-delete[0])/2;</span><br><span class="line">            else change-=delete[0]+delete[1]+(del-delete[0]-2*delete[1])/3;</span><br><span class="line">            </span><br><span class="line">            return del+Math.max(check_req,change);</span><br><span class="line">        &#125;</span><br><span class="line">        else return Math.max(6-s.length(), Math.max(check_req, change));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The author is already fixed all the test cases.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/63854/o-n-java-solution-by-analyzing-changes-allowed-to-fix-each-problem" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/63854/o-n-java-solution-by-analyzing-changes-allowed-to-fix-each-problem</a></p>
+<p>O(n) java solution by analyzing changes allowed to fix each problem</p>
+<p>The basic principle is straightforward: if we want to make MINIMUM changes to turn s into a strong password, each change made should fix as many problems as possible.</p>
+<p>So to start, let’s first identify all the problems in the input string s and list what changes are suitable for righting each of them. To clarify, each change should be characterized by at least two parts: the type of operation it takes and the position in the string where the operation is applied (Note: Ideally we should also include the characters involved in the operation and the “power” of each operation for eliminating problems but they turn out to be partially relevant so I will mention them only when appropriate).</p>
+<ol>
+<li>Length problem: if the total length is less than 6, the change that should be made is (insert, any position), which reads as “the operation is insertion and it can be applied to anywhere in the string”. If the total length is greater than 20, then the change should be (delete, any position).</li>
+<li>Missing letter or digit: if any of the lowercase/uppercase letters or digits is missing, we can do either (insert, any position) or (replace, any position) to correct it. (Note here the characters for insertion or replacement can only be those missing.)</li>
+<li>Repeating characters: for repeating characters, all three operations are allowed but the positions where they can be applied are limited within the repeating characters. For example, to fix “aaaaa”, we can do one replacement (replace the middle ‘a’) or two insertions (one after the second ‘a’ and one after the fourth ‘a’) or three deletions (delete any of the three ‘a’s). So the possible changes are (replace, repeating characters), (insert, repeating characters), (delete, repeating characters). (Note however the “power” of each operation for fixing the problem are different – replacement is the strongest while deletion is the weakest.)</li>
+</ol>
+<p>All right, what’s next? If we want a change to eliminate as many problems as it can, it must be shared among the possible solutions to each problem it can fix. So our task is to find out possible overlapping among the changes for fixing each problem.</p>
+<p>Since there are most (three) changes allowed for the third problem, we may start from combinations first problem &amp; third problem and second problem &amp; third problem. It’s not too hard to conclude that any change that can fix the first or second problems is also able to fix the third one (since the type of operation here is irrelevant, we are free to choose the position of the operation to match those of the repeating characters). For combination first problem &amp; second problem, depending on the length of the string, there will be overlapping if length is less than 6 or no overlapping if length is greater than 20.</p>
+<p>From the analyses above, it seems worthwhile to distinguish between the two cases: when the input string is too short or too long.</p>
+<p>For the former case, it can be shown that the total changes needed to fix the first and second problems always outnumber those for the third one. Since whatever change used fixing the first two problems can also correct the third one, we may concern ourselves with only the first two. Also as there is overlapping between the changes for fixing the first two problems, we will prefer those overlapping ones, i.e. (insert, any position). Another point is that the characters involved in the operation matters now. To fix the first problem, only those missing characters can be inserted while for the second condition, it can be any character. Therefore correcting the first problem takes precedence over the second one.</p>
+<p>For the latter case, there is overlapping between the first &amp; third and second &amp; third problems, so those overlapping changes will be taken, i.e., first problem =&gt; (delete, any position), second problem =&gt; (replace, any position). The reason not to use (insert, any position) for the second problem is that it contradicts the changes made to the first problem (therefore has the tendency to cancel its effects). After fixing the first two problems, what operation(s) should we choose for the third one?</p>
+<p>Now the “power” of each operation for eliminating problems comes into play. For the third problem, the “power” of each operation will be measured by the maximum number of repeating characters it is able to get rid of. For example, one replacement can eliminate at most 5 repeating characters while insertion and deletion can do at most 4 and 3, respectively. In this case, we say replacement has more “power” than insertion or deletion. Intuitively the more “powerful” the operation is, the less number of changes is needed for correcting the problem. Therefore (replace, repeating characters) triumphs in terms of fixing the third problem.</p>
+<p>Furthermore, another very interesting point shows up when the “power” of operation is taken into consideration (And thank yicui for pointing it out). As I mentioned that there is overlapping between changes made for fixing the first two problems and for the third one, which means the operations chosen above for the first two problems will also be applied to the third one. For the second problem with change chosen as (replace, any position), we have no problem adapting it so that it coincides with the optimal change (replace, repeating characters) made for the third problem. However, there is no way to do the same for the first problem with change (delete, any position). We have a conflict now!</p>
+<p>How do we reconcile it? The trick is that for a sequence of repeating characters of length k (k &gt;= 3), instead of turning it all the way into a sequence of length 2 (so as to fix the repeating character problem) by the change (delete, any position), we will first reduce its length to (3m + 2), where (3m + 2) is the largest integer of the form yet no more than k. That is to say, if k is a multiple of 3, we apply once such change so its length will become (k - 1); else if k is a multiple of 3 plus 1, we apply twice such change to cut its length down to (k - 2), provided we have more such changes to spare (be careful here as we need at least two changes but the remaining available changes may be less than that, so we should stick to the smaller one: 2 or the remaining available changes). The reason is that the optimal change (replace, repeating characters) for the third problem will be most “powerful” when the total length of the repeating characters is of this form. Of course, if we still have more changes (delete, any position) to do after that, then we are free to turn the repeating sequence all the way into a sequence of length 2.</p>
+<p>Here is the java program based on the above analyses. Both time and space complexity is O(n). Not sure if we can reduce the space down to O(1) by computing the arr array on the fly. A quick explanation is given at the end.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">public int strongPasswordChecker(String s) &#123;</span><br><span class="line">    int res = 0, a = 1, A = 1, d = 1;</span><br><span class="line">    char[] carr = s.toCharArray();</span><br><span class="line">    int[] arr = new int[carr.length];</span><br><span class="line">        </span><br><span class="line">    for (int i = 0; i &lt; arr.length;) &#123;</span><br><span class="line">        if (Character.isLowerCase(carr[i])) a = 0;</span><br><span class="line">        if (Character.isUpperCase(carr[i])) A = 0;</span><br><span class="line">        if (Character.isDigit(carr[i])) d = 0;</span><br><span class="line">            </span><br><span class="line">        int j = i;</span><br><span class="line">        while (i &lt; carr.length &amp;&amp; carr[i] == carr[j]) i++;</span><br><span class="line">        arr[j] = i - j;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    int total_missing = (a + A + d);</span><br><span class="line"></span><br><span class="line">    if (arr.length &lt; 6) &#123;</span><br><span class="line">        res += total_missing + Math.max(0, 6 - (arr.length + total_missing));</span><br><span class="line">            </span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int over_len = Math.max(arr.length - 20, 0), left_over = 0;</span><br><span class="line">        res += over_len;</span><br><span class="line">            </span><br><span class="line">        for (int k = 1; k &lt; 3; k++) &#123;</span><br><span class="line">            for (int i = 0; i &lt; arr.length &amp;&amp; over_len &gt; 0; i++) &#123;</span><br><span class="line">                if (arr[i] &lt; 3 || arr[i] % 3 != (k - 1)) continue;</span><br><span class="line">                arr[i] -= Math.min(over_len, k);</span><br><span class="line">                over_len -= k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        for (int i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            if (arr[i] &gt;= 3 &amp;&amp; over_len &gt; 0) &#123;</span><br><span class="line">                int need = arr[i] - 2;</span><br><span class="line">                arr[i] -= over_len;</span><br><span class="line">                over_len -= need;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            if (arr[i] &gt;= 3) left_over += arr[i] / 3;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">        res += Math.max(total_missing, left_over);</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>A quick explanation of the program:</p>
+<ol>
+<li>res denotes the minimum changes; a, A and d are the number of missing lowercase letters, uppercase letters and digits, respectively; arr is an integer array whose element will be the number of repeating characters starting at the corresponding position in the string.</li>
+<li>In the following loop we fill in the values for a, A, d and arr to identify the problems for each condition. The total number of missing characters total_missing will be the summation of a, A, d and fixing this problem takes at least total_missing changes.</li>
+<li>We then distinguish the two cases when the string is too short or too long. If it is too short, we pad its length to at least 6 (note in this case we’ve already inserted total_missing characters so the new length is the summation of the original length and total_missing).</li>
+<li>Otherwise, to fix the first condition, we need to delete over_len (number of surplus characters) characters. Since fixing the first problem also corrects the third one, we need to get rid of those parts from the arr array. And as I mentioned, we need to first turn all numbers in the arr array greater than 2 into the form of (3m + 2) and then reduce them all the way to 2 if over_len is still greater than 0. After that, we need to replace total_missing characters to fix the second problem, which also fixes part (or all) of the third problem. Therefore we only need to take the larger number of changes needed for fixing the second problem (which is total_missing) and for the third one (which is left_over, since it is the number of changes still needed after fixing the first problem).</li>
+</ol>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/64511/java-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/64511/java-with-detailed-explanation</a></p>
+<p>java with detailed explanation</p>
+<p><img src="https://discuss.leetcode.com/uploads/files/1477253858862-screen-shot-2016-10-23-at-4.16.42-pm.png" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int strongPasswordChecker(String s) &#123;</span><br><span class="line">        int minReplace = getMinReplace(s);</span><br><span class="line"></span><br><span class="line">        if (s.length() &lt; 6)&#123;</span><br><span class="line">            int insersion = 6 - s.length();</span><br><span class="line">            return Math.max(insersion, minReplace);</span><br><span class="line">        &#125; else if (s.length() &lt;= 20)&#123;</span><br><span class="line">            List&lt;Integer&gt; groups = generateGroups(s);</span><br><span class="line">            int replace = 0;</span><br><span class="line">            for (int group : groups)&#123;</span><br><span class="line">                replace += group / 3;</span><br><span class="line">            &#125;</span><br><span class="line">            return Math.max(replace, minReplace);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line"></span><br><span class="line">            List&lt;Integer&gt; groups = generateGroups(s);</span><br><span class="line"></span><br><span class="line">            Collections.sort(groups);</span><br><span class="line"></span><br><span class="line">            int charCount = 0;</span><br><span class="line">            int n = 0;</span><br><span class="line">            while (charCount &lt; 20 &amp;&amp; n &lt; groups.size()) &#123;</span><br><span class="line">                charCount += groups.get(n);</span><br><span class="line">                n++;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            while (groups.size() &gt; n) &#123;</span><br><span class="line">                groups.remove(groups.size() - 1);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            charCount = 0;</span><br><span class="line"></span><br><span class="line">            int badGroup = 0;</span><br><span class="line">            for (int i = 0; i &lt; groups.size(); i++) &#123;</span><br><span class="line">                if (groups.get(i) &gt; 20) &#123;</span><br><span class="line">                    groups.set(i, 20);</span><br><span class="line">                &#125;</span><br><span class="line">                charCount += groups.get(i);</span><br><span class="line">                if (groups.get(i) &gt; 2)&#123;</span><br><span class="line">                    badGroup++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            int deletion = s.length() - 20;</span><br><span class="line"></span><br><span class="line">            int toDelete = charCount - 20;</span><br><span class="line"></span><br><span class="line">            int remainder = 0;</span><br><span class="line">            while (toDelete &gt; 0 &amp;&amp; badGroup &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">                for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">                    if (groups.get(i) &gt; 2 &amp;&amp; groups.get(i) % 3 == remainder) &#123;</span><br><span class="line">                        int del = Math.min(toDelete, remainder + 1);</span><br><span class="line">                        groups.set(i, groups.get(i) - del);</span><br><span class="line">                        toDelete -= del;</span><br><span class="line">                        if (groups.get(i) &lt;= 2)&#123;</span><br><span class="line">                            badGroup--;</span><br><span class="line">                        &#125;</span><br><span class="line">                        if (toDelete == 0 || badGroup == 0) &#123;</span><br><span class="line">                            break;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                remainder = (remainder + 1) % 3;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            int replace = 0;</span><br><span class="line">            for (int i = 0; i &lt; groups.size(); i++) &#123;</span><br><span class="line">                replace += groups.get(i) / 3;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            return deletion + Math.max(replace, minReplace);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * generate sorted groups</span><br><span class="line">     * groups: # of continuous characters in S</span><br><span class="line">     */</span><br><span class="line">    private List&lt;Integer&gt; generateGroups(String s)&#123;</span><br><span class="line">        List&lt;Integer&gt; groups = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 0 ; i &lt; s.length();)&#123;</span><br><span class="line">            int j = i;</span><br><span class="line">            while (j &lt; s.length() &amp;&amp; s.charAt(j) == s.charAt(i))&#123;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">            groups.add(j - i);</span><br><span class="line">            i = j;</span><br><span class="line">        &#125;</span><br><span class="line">        return groups;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * return # of replacements needed to satisfy 2</span><br><span class="line">     */</span><br><span class="line">    private int getMinReplace(String s)&#123;</span><br><span class="line">        boolean[] dls = new boolean[3];</span><br><span class="line">        for(char c : s.toCharArray())&#123;</span><br><span class="line">            dls[getClass(c)] = true;</span><br><span class="line">        &#125;</span><br><span class="line">        int replace = 0;</span><br><span class="line">        for (int i = 0; i &lt; dls.length; i++)&#123;</span><br><span class="line">            if (!dls[i]) replace++;</span><br><span class="line">        &#125;</span><br><span class="line">        return replace;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int getClass(char c)&#123;</span><br><span class="line">        if (c &gt;= &apos;0&apos; &amp;&amp; c &lt;= &apos;9&apos;)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125; else if (c &gt;= &apos;a&apos; &amp;&amp; c &lt;= &apos;z&apos;)&#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125; else&#123;</span><br><span class="line">            return 2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/65158/c-0ms-o-n-35-lines-solution-with-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/65158/c-0ms-o-n-35-lines-solution-with-detailed-explanation</a></p>
+<p>C++ 0ms O(n) 35 lines solution with detailed explanation</p>
+<p>I’ve separated the problem into three cases:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(1) s.length() &lt; 6</span><br><span class="line">(2) 6 &lt;= s.length() &lt;= 20</span><br><span class="line">(3) s.length() &gt; 20</span><br></pre></td></tr></table></figure>
+<p>Let’s look at case (1) first. If s.length() &lt; 6, we know we have room to insert some more letters into s. Question is how to use the insertions effectively to reduce the number of potential replacements. I’m using a greedy approach for this one: I’m inserting one char between the second and third chars whenever I see a repetition of 3 letters as substring.</p>
+<p>e.g. Say we have room to insert some chars in string and we see a substring of “aaaa”. I’ll insert a ‘B’ to make it “aaBaa” to break the 3-char repetition, thus reducing potential replacement by 1. And we’ll do this until we can’t insert any more chars into s. When we reach this point, we’ll start dealing with case (2)</p>
+<p>For case (2), I still follow a greedy approach. I’m simply searching for 3-char repetitions, and replacing one of the chars to break the repetition.<br>e.g. If we see a substring of “aaaa”, we’ll make it “aaBa”.</p>
+<p>My code deals with (1) and (2) together as s.length() &lt;= 20.</p>
+<p>Case (3) is a little bit tricky because simple greedy doesn’t work any more.<br>When s.length() &gt; 20, we want to delete some chars instead of inserting chars to reduce potential replacements. Question is the same: how to do it effectively? Let’s do some observations here:</p>
+<p>Say len is the length of each repetition.<br>(a) len % 3 only has three possible values, namely 0, 1 and 2.<br>(b) Minimum number of replacements needed to break each repetition is len / 3.<br>(c) Based on (a) and (b), we know that deletion can reduce replacements only if the deletion can change the value of len / 3<br>(d) Based on (c), we know if we want to reduce 1 replacement, we need 1 deletion for len % 3 == 0, and 2 deletions for len % 3 == 1, and 3 deletions for len % 3 == 2.</p>
+<p>Given above observations, I simply implemented the solution to do (d).</p>
+<p>Also note that missing of upper case char, lower case char, or digit can always be resolved by insertion or replacement.</p>
+<p>I’ve pasted two versions of the solutions below, with and without comments, for easier reference.</p>
+<p>Without comments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strongPasswordChecker(string s) &#123;</span><br><span class="line">        int deleteTarget = max(0, (int)s.length() - 20), addTarget = max(0, 6 - (int)s.length());</span><br><span class="line">        int toDelete = 0, toAdd = 0, toReplace = 0, needUpper = 1, needLower = 1, needDigit = 1;</span><br><span class="line">        </span><br><span class="line">        for (int l = 0, r = 0; r &lt; s.length(); r++) &#123;</span><br><span class="line">            if (isupper(s[r])) &#123; needUpper = 0; &#125;               </span><br><span class="line">            if (islower(s[r])) &#123; needLower = 0; &#125;</span><br><span class="line">            if (isdigit(s[r])) &#123; needDigit = 0; &#125;</span><br><span class="line">            </span><br><span class="line">            if (r - l == 2) &#123;                               </span><br><span class="line">                if (s[l] == s[l + 1] &amp;&amp; s[l + 1] == s[r]) &#123;     </span><br><span class="line">                    if (toAdd &lt; addTarget) &#123; toAdd++, l = r; &#125;  </span><br><span class="line">                    else &#123; toReplace++, l = r + 1; &#125;           </span><br><span class="line">                &#125; else &#123; l++; &#125;                                 </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (s.length() &lt;= 20) &#123; return max(addTarget + toReplace, needUpper + needLower + needDigit); &#125;</span><br><span class="line">        </span><br><span class="line">        toReplace = 0;                                         </span><br><span class="line">        vector&lt;unordered_map&lt;int, int&gt;&gt; lenCnts(3);            </span><br><span class="line">        for (int l = 0, r = 0, len; r &lt;= s.length(); r++) &#123;    </span><br><span class="line">            if (r == s.length() || s[l] != s[r]) &#123;</span><br><span class="line">                if ((len = r - l) &gt; 2) &#123; lenCnts[len % 3][len]++; &#125; </span><br><span class="line">                l = r;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for (int i = 0, numLetters, dec; i &lt; 3; i++) &#123;                </span><br><span class="line">            for (auto it = lenCnts[i].begin(); it != lenCnts[i].end(); it++) &#123;</span><br><span class="line">                if (i &lt; 2) &#123;</span><br><span class="line">                    numLetters = i + 1, dec = min(it-&gt;second, (deleteTarget - toDelete) / numLetters);</span><br><span class="line">                    toDelete += dec * numLetters, it-&gt;second -= dec;                          </span><br><span class="line">                    if (it-&gt;first - numLetters &gt; 2) &#123; lenCnts[2][it-&gt;first - numLetters] += dec; &#125;   </span><br><span class="line">                &#125;</span><br><span class="line">                toReplace += (it-&gt;second) * ((it-&gt;first) / 3);  </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int dec = (deleteTarget - toDelete) / 3;                </span><br><span class="line">        toReplace -= dec, toDelete -= dec * 3;</span><br><span class="line">        return deleteTarget + max(toReplace, needUpper + needLower + needDigit);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>With comments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strongPasswordChecker(string s) &#123;</span><br><span class="line">        int deleteTarget = max(0, (int)s.length() - 20), addTarget = max(0, 6 - (int)s.length());</span><br><span class="line">        int toDelete = 0, toAdd = 0, toReplace = 0, needUpper = 1, needLower = 1, needDigit = 1;</span><br><span class="line">        </span><br><span class="line">        ///////////////////////////////////</span><br><span class="line">        // For cases of s.length() &lt;= 20 //</span><br><span class="line">        ///////////////////////////////////</span><br><span class="line">        for (int l = 0, r = 0; r &lt; s.length(); r++) &#123;</span><br><span class="line">            if (isupper(s[r])) &#123; needUpper = 0; &#125;               </span><br><span class="line">            if (islower(s[r])) &#123; needLower = 0; &#125;</span><br><span class="line">            if (isdigit(s[r])) &#123; needDigit = 0; &#125;</span><br><span class="line">            </span><br><span class="line">            if (r - l == 2) &#123;                                   // if it&apos;s a three-letter window</span><br><span class="line">                if (s[l] == s[l + 1] &amp;&amp; s[l + 1] == s[r]) &#123;     // found a three-repeating substr</span><br><span class="line">                    if (toAdd &lt; addTarget) &#123; toAdd++, l = r; &#125;  // insert letter to break repetition if possible</span><br><span class="line">                    else &#123; toReplace++, l = r + 1; &#125;            // replace current word to avoid three repeating chars</span><br><span class="line">                &#125; else &#123; l++; &#125;                                 // keep the window with no more than 3 letters</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if (s.length() &lt;= 20) &#123; return max(addTarget + toReplace, needUpper + needLower + needDigit); &#125;</span><br><span class="line">        </span><br><span class="line">        //////////////////////////////////</span><br><span class="line">        // For cases of s.length() &gt; 20 //</span><br><span class="line">        //////////////////////////////////</span><br><span class="line">        toReplace = 0;                                          // reset toReplace</span><br><span class="line">        vector&lt;unordered_map&lt;int, int&gt;&gt; lenCnts(3);             // to record repetitions with (length % 3) == 0, 1 or 2</span><br><span class="line">        for (int l = 0, r = 0, len; r &lt;= s.length(); r++) &#123;     // record all repetion frequencies</span><br><span class="line">            if (r == s.length() || s[l] != s[r]) &#123;</span><br><span class="line">                if ((len = r - l) &gt; 2) &#123; lenCnts[len % 3][len]++; &#125; // we only care about repetions with length &gt;= 3</span><br><span class="line">                l = r;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        /*</span><br><span class="line">            Use deletions to minimize replacements, following below orders:</span><br><span class="line">            (1) Try to delete one letter from repetitions with (length % 3) == 0. Each deletion decreases replacement by 1</span><br><span class="line">            (2) Try to delete two letters from repetitions with (length % 3) == 1. Each deletion decreases repalcement by 1</span><br><span class="line">            (3) Try to delete multiple of three letters from repetions with (length % 3) == 2. Each deletion (of three </span><br><span class="line">            letters) decreases repalcements by 1</span><br><span class="line">        */</span><br><span class="line">        for (int i = 0, numLetters, dec; i &lt; 3; i++) &#123;                </span><br><span class="line">            for (auto it = lenCnts[i].begin(); it != lenCnts[i].end(); it++) &#123;</span><br><span class="line">                if (i &lt; 2) &#123;</span><br><span class="line">                    numLetters = i + 1, dec = min(it-&gt;second, (deleteTarget - toDelete) / numLetters);</span><br><span class="line">                    toDelete += dec * numLetters;               // dec is the number of repetitions we&apos;ll delete from</span><br><span class="line">                    it-&gt;second -= dec;                          // update number of repetitions left</span><br><span class="line">                    </span><br><span class="line">                    // after letters deleted, it fits in the group where (length % 3) == 2</span><br><span class="line">                    if (it-&gt;first - numLetters &gt; 2) &#123; lenCnts[2][it-&gt;first - numLetters] += dec; &#125;   </span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                // record number of replacements needed</span><br><span class="line">                // note if len is the length of repetition, we need (len / 3) number of replacements</span><br><span class="line">                toReplace += (it-&gt;second) * ((it-&gt;first) / 3);  </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int dec = (deleteTarget - toDelete) / 3;                // try to delete multiple of three letters as many as possible</span><br><span class="line">        toReplace -= dec, toDelete -= dec * 3;</span><br><span class="line">        return deleteTarget + max(toReplace, needUpper + needLower + needDigit);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/63341/simple-python-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/63341/simple-python-solution</a></p>
+<p>Simple Python solution</p>
+<p>The len &lt; 6 and 6 &lt;= len &lt;= 20 cases are easy. When len &gt; 20, we need to do len - 20 times deletion. Also we need to do a change for every three repeating characters.</p>
+<p>For any repeating sequences with len % 3 == 0, we can reduce one replacement by deleting one character. For any repeating sequences with len % 3 == 1, we can reduce one replacement by deleting two character. For the remaining sequences, we can reduce every replacement by deleting three character.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def strongPasswordChecker(self, s):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        missing_type = 3</span><br><span class="line">        if any(&apos;a&apos; &lt;= c &lt;= &apos;z&apos; for c in s): missing_type -= 1</span><br><span class="line">        if any(&apos;A&apos; &lt;= c &lt;= &apos;Z&apos; for c in s): missing_type -= 1</span><br><span class="line">        if any(c.isdigit() for c in s): missing_type -= 1</span><br><span class="line"></span><br><span class="line">        change = 0</span><br><span class="line">        one = two = 0</span><br><span class="line">        p = 2</span><br><span class="line">        while p &lt; len(s):</span><br><span class="line">            if s[p] == s[p-1] == s[p-2]:</span><br><span class="line">                length = 2</span><br><span class="line">                while p &lt; len(s) and s[p] == s[p-1]:</span><br><span class="line">                    length += 1</span><br><span class="line">                    p += 1</span><br><span class="line">                    </span><br><span class="line">                change += length / 3</span><br><span class="line">                if length % 3 == 0: one += 1</span><br><span class="line">                elif length % 3 == 1: two += 1</span><br><span class="line">            else:</span><br><span class="line">                p += 1</span><br><span class="line">        </span><br><span class="line">        if len(s) &lt; 6:</span><br><span class="line">            return max(missing_type, 6 - len(s))</span><br><span class="line">        elif len(s) &lt;= 20:</span><br><span class="line">            return max(missing_type, change)</span><br><span class="line">        else:</span><br><span class="line">            delete = len(s) - 20</span><br><span class="line">            </span><br><span class="line">            change -= min(delete, one)</span><br><span class="line">            change -= min(max(delete - one, 0), two * 2) / 2</span><br><span class="line">            change -= max(delete - one - 2 * two, 0) / 3</span><br><span class="line">                </span><br><span class="line">            return delete + max(missing_type, change)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/583035f/" title="420. Strong Password Checker">http://yucc.me/p/583035f/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/d348909f/" rel="next" title="419. Battleships in a Board">
+                <i class="fa fa-chevron-left"></i> 419. Battleships in a Board
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/eb5e02ea/" rel="prev" title="421. Maximum XOR of Two Numbers in an Array">
+                421. Maximum XOR of Two Numbers in an Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

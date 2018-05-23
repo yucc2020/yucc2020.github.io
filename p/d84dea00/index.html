@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,medium,binary indexed tree,segment tree," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="19.1%  https://leetcode.com/problems/range-sum-query-mutable/?tab=Description Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. The update(i, val)">
+<meta name="keywords" content="leetcode,medium,binary indexed tree,segment tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="307. Range Sum Query - Mutable">
+<meta property="og:url" content="http://yucc.me/p/d84dea00/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="19.1%  https://leetcode.com/problems/range-sum-query-mutable/?tab=Description Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. The update(i, val)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:24:37.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="307. Range Sum Query - Mutable">
+<meta name="twitter:description" content="19.1%  https://leetcode.com/problems/range-sum-query-mutable/?tab=Description Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. The update(i, val)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/d84dea00/"/>
+
+
+
+
+
+  <title>307. Range Sum Query - Mutable | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/d84dea00/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">307. Range Sum Query - Mutable</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:04:08+08:00">
+                2018-05-23 13:04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:24:37+08:00">
+                2018-05-23 19:24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,784
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>19.1%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/range-sum-query-mutable/?tab=Description" target="_blank" rel="noopener">https://leetcode.com/problems/range-sum-query-mutable/?tab=Description</a></p>
+<p>Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive.</p>
+<p>The update(i, val) function modifies nums by updating the element at index i to val.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Given nums = [1, 3, 5]</span><br><span class="line"></span><br><span class="line">sumRange(0, 2) -&gt; 9</span><br><span class="line">update(1, 2)</span><br><span class="line">sumRange(0, 2) -&gt; 8</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ol>
+<li>The array is only modifiable by the update function.</li>
+<li>You may assume the number of calls to update and sumRange function is distributed evenly.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<p>leetcode官方答案</p>
+<p><a href="https://leetcode.com/articles/range-sum-query-mutable/" target="_blank" rel="noopener">https://leetcode.com/articles/range-sum-query-mutable/</a></p>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/29939/c-solution-using-buckets-o-1-for-updating-and-o-n-0-5-for-query-in-the-worst-case-not-the-fast" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29939/c-solution-using-buckets-o-1-for-updating-and-o-n-0-5-for-query-in-the-worst-case-not-the-fast</a></p>
+<p>C++ solution using “buckets”. O(1) for updating and O(n^0.5) for query in the worst case (not the fast).</p>
+<p>The idea is using “buckets”. Assume the length of the input array is n, we can partition the whole array into m buckets, with each bucket having k=n/m elements. For each bucket, we record two kind of information: 1) a copy of elements in the bucket, 2) the sum of all the elements in the bucket.</p>
+<p>For example: If the input is [0,1,2,3,4,5,6,7,8,9], and we partition it into 4 buckets, formatted as {[numbers], sum}:</p>
+<p>bucket0: {[0, 1, 2], 3}<br>bucket1: {[3, 4, 5], 12}<br>bucket2: {[6, 7, 8], 21}<br>bucket3: {[9], 9};<br>Updating is easy. You just need to find the right bucket, modify the element value, and change the “sum” value in that bucket accordingly. The operation takes O(1) time.</p>
+<p>Summation is a little complicated. In the above example, let’s say we want to compute the sum in range [1, 7]. We can see, the numbers we want to accumulate are in bucket0, bucket1, and bucket2. Specifically, we only need parts of numbers in bucket0 and bucket2, and all the numbers in bucket1. Because the summation of all numbers in bucket1 have already been computed, we don’t need to compute it again. So, instead of doing (1+2) + (3+4+5) + (6+7), we can just do (1+2) + 12 + (6+7). We save two “+” operations. If you change the size of buckets, the number of saved “+” operations will be different. The questions is:</p>
+<p>What is the best size that can save the most “+” operations?</p>
+<p>Here is my analysis, which might be incorrect.</p>
+<p>We have:</p>
+<p>The number of buckets is m.<br>The size of each bucket is k.<br>The length of input array is n, and we have mk=n.<br>In the worst case (the query is [0, n-1]), we will first add all the elements in bucket0, then add from bucket1 to bucket(m-2), and finally add all the elements in bucket(m-1), so we do 2k+m-2 “+” operations. We want to find the minimum value of 2k+m. Because 2km=2n, when 2k=m, 2k+m reaches the minimum value. (Need proof?) So we have m = sqrt(2n) and k=sqrt(n/2).</p>
+<p>Therefore, in the worst case, the best size of bucket is k=sqrt(n/2), and the complexity is O(2k+m-2)=O(2m-2)=O(m)=O(sqrt(2n))=O(n^0.5);</p>
+<p>Thank you for pointing out any mistake!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">class NumArray &#123;</span><br><span class="line">public:</span><br><span class="line">    </span><br><span class="line">    struct Bucket</span><br><span class="line">    &#123;</span><br><span class="line">        int sum;</span><br><span class="line">        vector&lt;int&gt; val;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    int bucketNum;</span><br><span class="line">    int bucketSize;</span><br><span class="line">    vector&lt;Bucket&gt; Bs;</span><br><span class="line"></span><br><span class="line">    NumArray(vector&lt;int&gt; &amp;nums) &#123;</span><br><span class="line">        int size = nums.size();</span><br><span class="line">        int bucketNum = (int)sqrt(2*size);</span><br><span class="line">        bucketSize = bucketNum/2;</span><br><span class="line">        while(bucketSize * bucketNum&lt;size) ++bucketSize;</span><br><span class="line">        </span><br><span class="line">        Bs.resize(bucketNum);</span><br><span class="line">        for(int i=0, k=0; i&lt;bucketNum; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            int temp = 0;</span><br><span class="line">            Bs[i].val.resize(bucketSize);</span><br><span class="line">            for(int j=0; j&lt;bucketSize &amp;&amp; k&lt;size; ++j, ++k)</span><br><span class="line">            &#123;</span><br><span class="line">                temp += nums[k];</span><br><span class="line">                Bs[i].val[j] = nums[k];</span><br><span class="line">            &#125;</span><br><span class="line">            Bs[i].sum = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void update(int i, int val) &#123;</span><br><span class="line">        int x = i / bucketSize;</span><br><span class="line">        int y = i % bucketSize;</span><br><span class="line">        Bs[x].sum += (val - Bs[x].val[y]);</span><br><span class="line">        Bs[x].val[y] = val;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int sumRange(int i, int j) &#123;</span><br><span class="line">        int x1 = i / bucketSize;</span><br><span class="line">        int y1 = i % bucketSize;</span><br><span class="line">		int x2 = j / bucketSize;</span><br><span class="line">        int y2 = j % bucketSize;</span><br><span class="line">        int sum = 0;</span><br><span class="line"></span><br><span class="line">		if(x1==x2)</span><br><span class="line">		&#123;</span><br><span class="line">			for(int a=y1; a&lt;=y2; ++a)</span><br><span class="line">			&#123;</span><br><span class="line">				sum += Bs[x1].val[a];</span><br><span class="line">			&#125;</span><br><span class="line">			return sum;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		for(int a=y1; a&lt;bucketSize; ++a)</span><br><span class="line">		&#123;</span><br><span class="line">			sum += Bs[x1].val[a];</span><br><span class="line">		&#125;</span><br><span class="line">        for(int a=x1+1; a&lt;x2; ++a)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += Bs[a].sum;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int b=0; b&lt;=y2; ++b)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += Bs[x2].val[b];</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30120/c-segment-tree-update-and-sum-are-both-o-logn" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30120/c-segment-tree-update-and-sum-are-both-o-logn</a></p>
+<p>C++, Segment Tree,update and sum are both O(logn)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">struct SegmentTreeNode &#123;</span><br><span class="line">    int start, end, sum;</span><br><span class="line">    SegmentTreeNode* left;</span><br><span class="line">    SegmentTreeNode* right;</span><br><span class="line">    SegmentTreeNode(int a, int b):start(a),end(b),sum(0),left(nullptr),right(nullptr)&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">class NumArray &#123;</span><br><span class="line">    SegmentTreeNode* root;</span><br><span class="line">public:</span><br><span class="line">    NumArray(vector&lt;int&gt; &amp;nums) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        root = buildTree(nums,0,n-1);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    void update(int i, int val) &#123;</span><br><span class="line">        modifyTree(i,val,root);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int sumRange(int i, int j) &#123;</span><br><span class="line">        return queryTree(i, j, root);</span><br><span class="line">    &#125;</span><br><span class="line">    SegmentTreeNode* buildTree(vector&lt;int&gt; &amp;nums, int start, int end) &#123;</span><br><span class="line">        if(start &gt; end) return nullptr;</span><br><span class="line">        SegmentTreeNode* root = new SegmentTreeNode(start,end);</span><br><span class="line">        if(start == end) &#123;</span><br><span class="line">            root-&gt;sum = nums[start];</span><br><span class="line">            return root;</span><br><span class="line">        &#125;</span><br><span class="line">        int mid = start + (end - start) / 2;</span><br><span class="line">        root-&gt;left = buildTree(nums,start,mid);</span><br><span class="line">        root-&gt;right = buildTree(nums,mid+1,end);</span><br><span class="line">        root-&gt;sum = root-&gt;left-&gt;sum + root-&gt;right-&gt;sum;</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br><span class="line">    int modifyTree(int i, int val, SegmentTreeNode* root) &#123;</span><br><span class="line">        if(root == nullptr) return 0;</span><br><span class="line">        int diff;</span><br><span class="line">        if(root-&gt;start == i &amp;&amp; root-&gt;end == i) &#123;</span><br><span class="line">            diff = val - root-&gt;sum;</span><br><span class="line">            root-&gt;sum = val;</span><br><span class="line">            return diff;</span><br><span class="line">        &#125;</span><br><span class="line">        int mid = (root-&gt;start + root-&gt;end) / 2;</span><br><span class="line">        if(i &gt; mid) &#123;</span><br><span class="line">            diff = modifyTree(i,val,root-&gt;right);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            diff = modifyTree(i,val,root-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;sum = root-&gt;sum + diff;</span><br><span class="line">        return diff;</span><br><span class="line">    &#125;</span><br><span class="line">    int queryTree(int i, int j, SegmentTreeNode* root) &#123;</span><br><span class="line">        if(root == nullptr) return 0;</span><br><span class="line">        if(root-&gt;start == i &amp;&amp; root-&gt;end == j) return root-&gt;sum;</span><br><span class="line">        int mid = (root-&gt;start + root-&gt;end) / 2;</span><br><span class="line">        if(i &gt; mid) return queryTree(i,j,root-&gt;right);</span><br><span class="line">        if(j &lt;= mid) return queryTree(i,j,root-&gt;left);</span><br><span class="line">        return queryTree(i,mid,root-&gt;left) + queryTree(mid+1,j,root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// Your NumArray object will be instantiated and called as such:</span><br><span class="line">// NumArray numArray(nums);</span><br><span class="line">// numArray.sumRange(0, 1);</span><br><span class="line">// numArray.update(1, 10);</span><br><span class="line">// numArray.sumRange(1, 2);</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/34585/strongly-recommend-for-beginners-clean-c-implementation-with-detailed-explaination" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34585/strongly-recommend-for-beginners-clean-c-implementation-with-detailed-explaination</a></p>
+<p>[strongly recommend for beginners]clean C++ implementation with detailed explaination</p>
+<p>Similiar C++ implementation based others’ posts.</p>
+<p>I have refered to the post from GeekForGeek</p>
+<p><a href="http://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/" target="_blank" rel="noopener">http://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/</a></p>
+<p>I think the key points are that you should set “i++” and understand the relationship of the children and parents.</p>
+<p>THE KEY POINTS</p>
+<p>idx is some index of BIT. r is a position in idx of the last digit 1 (from left to right) in binary notation. tree[idx] is sum of frequencies from index (idx – 2^r + 1) to index idx (look at the Table 1.1 for clarification). We also write that idx is responsible for indexes from (idx - 2^r + 1) to idx (note that responsibility is the key in our algorithm and is the way of manipulating the tree).</p>
+<p>FOR EXAMPLE</p>
+<p>Suppose we are looking for cumulative frequency of index 13 (for the first 13 elements). In binary notation, 13 is equal to 1101. Accordingly, we will calculate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c[1101] = tree[1101] + tree[1100] + tree[1000]</span><br></pre></td></tr></table></figure>
+<p>HOW TO GET THE FINAL LAST SET BIT</p>
+<p>There are times when we need to get just the last digit from a binary number, so we need an efficient way to do that. Let num be the integer whose last digit we want to isolate. In binary notation num can be represented as a1b, where a represents binary digits before the last digit and b represents zeroes after the last digit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">num=a1b</span><br><span class="line"></span><br><span class="line">-num= (a1b)¯ + 1 = a¯0b¯ + 1</span><br><span class="line"></span><br><span class="line">-num = (a1b)¯ + 1 = a¯0b¯ + 1 = a¯0(0…0)¯ + 1 = a¯0(1…1) + 1 = a¯1(0…0) = a¯1b.</span><br></pre></td></tr></table></figure>
+<p>b consists of all zeroes, so b¯ consists of all ones. Finally we have</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">so the last set bit  :  00..1...00 = num &amp; -num</span><br></pre></td></tr></table></figure>
+<p>Key ideas -1-</p>
+<p>get-function-details</p>
+<p>getSum(index): Returns sum of arr[0..index]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// Returns sum of arr[0..index] using BITree[0..n].  It assumes that</span><br><span class="line"></span><br><span class="line">// BITree[] is constructed for given array arr[0..n-1]</span><br><span class="line"></span><br><span class="line"> 1) Initialize sum as 0 and index as index+1.</span><br><span class="line"></span><br><span class="line"> 2) Do following while index is greater than 0.</span><br><span class="line"></span><br><span class="line">  ...a) Add BITree[index] to sum</span><br><span class="line"></span><br><span class="line">  ...b) Go to parent of BITree[index].  Parent can be obtained by removing</span><br><span class="line"></span><br><span class="line">         the last set bit from index, i.e., index = index - (index &amp; (-index))</span><br><span class="line"></span><br><span class="line"> 3) Return sum.</span><br></pre></td></tr></table></figure>
+<p>Key ideas -2- update-value-function</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">update(index, val): Updates BIT for operation arr[index] += val</span><br><span class="line"></span><br><span class="line">// Note that arr[] is not changed here.  It changes</span><br><span class="line"></span><br><span class="line">// only BI Tree for the already made change in arr[].</span><br><span class="line"></span><br><span class="line">1) Initialize index as index+1.</span><br><span class="line"></span><br><span class="line">2) Do following while index is smaller than or equal to n.</span><br><span class="line"></span><br><span class="line">  ...a) Add value to BITree[index]</span><br><span class="line"></span><br><span class="line">  ...b) Go to parent of BITree[index].  Parent can be obtained by removing</span><br><span class="line"></span><br><span class="line">         the last set bit from index, i.e., index = index + (index &amp; (-index))</span><br></pre></td></tr></table></figure>
+<p>Here is my final implementation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class NumArray &#123;</span><br><span class="line">    private:</span><br><span class="line">        vector&lt;int&gt; _nums;</span><br><span class="line">        vector&lt;int&gt; bit;</span><br><span class="line">        </span><br><span class="line">        int lower_bit(int i)&#123;</span><br><span class="line">            return i&amp;-i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int query(int i)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            int sum=0;</span><br><span class="line">            while(i&gt;0)&#123;</span><br><span class="line">                sum+=bit[i];</span><br><span class="line">                i-=lower_bit(i);</span><br><span class="line">            &#125;</span><br><span class="line">            return sum;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        void add(int i, int val)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            while(i&lt;bit.size())&#123;</span><br><span class="line">                bit[i]+=val;</span><br><span class="line">                i+=lower_bit(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    public:</span><br><span class="line">        NumArray(vector&lt;int&gt; &amp;nums) : _nums(nums) &#123;</span><br><span class="line">            bit.resize(nums.size()+1);</span><br><span class="line">            for(int i=0; i&lt;nums.size(); i++)&#123;</span><br><span class="line">                add(i, nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        void update(int i, int val) &#123;</span><br><span class="line">            if(val!=_nums[i])&#123;</span><br><span class="line">                add(i, val-_nums[i]);</span><br><span class="line">                _nums[i]=val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        int sumRange(int i, int j) &#123;</span><br><span class="line">            return query(j)-query(i-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/30016/0-lines-python" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30016/0-lines-python</a></p>
+<p>“0 lines” Python</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class NumArray(object):</span><br><span class="line">    def __init__(self, nums):</span><br><span class="line">        self.update = nums.__setitem__</span><br><span class="line">        self.sumRange = lambda i, j: sum(nums[i:j+1])</span><br></pre></td></tr></table></figure>
+<p>I added two lines, but I also removed two lines, so zero overall, right? Just kidding :-P</p>
+<p>Not a serious solution, just showing some Python trickery. The sumRange takes linear time, but due to the test suite being weak, this solution gets accepted (in about 1200-1300ms).</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/33747/148ms-python-solution-binary-indexed-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/33747/148ms-python-solution-binary-indexed-tree</a></p>
+<p>148ms Python solution, Binary Indexed Tree</p>
+<p>Use self.c to represent Binary Indexed Tree. Section sums are stored in self.c[1..len(nums)]. x &amp; -x is lowbit function, which will return x’s rightmost bit 1, e.g. lowbit(7) = 1, lowbit(20) = 4.</p>
+<p>self.c[1] = nums[0]</p>
+<p>self.c[2] = nums[0] + nums[1]</p>
+<p>self.c[3] = nums[2]</p>
+<p>self.c[4] = nums[0] + nums[1] + nums[2] + nums[3]</p>
+<p>self.c[5] = nums[4]</p>
+<p>self.c[6] = nums[4] + nums[5]</p>
+<p>self.c[7] = nums[6]</p>
+<p>self.c[8] = nums[0] + nums[1] + nums[2] + nums[3] + nums[4] + nums[5] + nums[6] + nums[7]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class NumArray(object):</span><br><span class="line">    def __init__(self, nums):</span><br><span class="line">        self.n = len(nums)</span><br><span class="line">        self.a, self.c = nums, [0] * (self.n + 1)</span><br><span class="line">        for i in range(self.n):</span><br><span class="line">            k = i + 1</span><br><span class="line">            while k &lt;= self.n:</span><br><span class="line">                self.c[k] += nums[i]</span><br><span class="line">                k += (k &amp; -k)</span><br><span class="line"></span><br><span class="line">    def update(self, i, val):</span><br><span class="line">        diff, self.a[i] = val - self.a[i], val</span><br><span class="line">        i += 1</span><br><span class="line">        while i &lt;= self.n:</span><br><span class="line">            self.c[i] += diff</span><br><span class="line">            i += (i &amp; -i)</span><br><span class="line"></span><br><span class="line">    def sumRange(self, i, j):</span><br><span class="line">        res, j = 0, j + 1</span><br><span class="line">        while j:</span><br><span class="line">            res += self.c[j]</span><br><span class="line">            j -= (j &amp; -j)</span><br><span class="line">        while i:</span><br><span class="line">            res -= self.c[i]</span><br><span class="line">            i -= (i &amp; -i)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/45266/python-well-commented-solution-using-segment-trees" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/45266/python-well-commented-solution-using-segment-trees</a></p>
+<p>Python: Well commented solution using Segment Trees</p>
+<p>This solution is based on the top voted solution by 2guotou, which is in Java.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;</span><br><span class="line">    The idea here is to build a segment tree. Each node stores the left and right</span><br><span class="line">    endpoint of an interval and the sum of that interval. All of the leaves will store</span><br><span class="line">    elements of the array and each internal node will store sum of leaves under it.</span><br><span class="line">    Creating the tree takes O(n) time. Query and updates are both O(log n).</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">#Segment tree node</span><br><span class="line">class Node(object):</span><br><span class="line">    def __init__(self, start, end):</span><br><span class="line">        self.start = start</span><br><span class="line">        self.end = end</span><br><span class="line">        self.total = 0</span><br><span class="line">        self.left = None</span><br><span class="line">        self.right = None</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">class NumArray(object):</span><br><span class="line">    def __init__(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        initialize your data structure here.</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        #helper function to create the tree from input array</span><br><span class="line">        def createTree(nums, l, r):</span><br><span class="line">            </span><br><span class="line">            #base case</span><br><span class="line">            if l &gt; r:</span><br><span class="line">                return None</span><br><span class="line">                </span><br><span class="line">            #leaf node</span><br><span class="line">            if l == r:</span><br><span class="line">                n = Node(l, r)</span><br><span class="line">                n.total = nums[l]</span><br><span class="line">                return n</span><br><span class="line">            </span><br><span class="line">            mid = (l + r) // 2</span><br><span class="line">            </span><br><span class="line">            root = Node(l, r)</span><br><span class="line">            </span><br><span class="line">            #recursively build the Segment tree</span><br><span class="line">            root.left = createTree(nums, l, mid)</span><br><span class="line">            root.right = createTree(nums, mid+1, r)</span><br><span class="line">            </span><br><span class="line">            #Total stores the sum of all leaves under root</span><br><span class="line">            #i.e. those elements lying between (start, end)</span><br><span class="line">            root.total = root.left.total + root.right.total</span><br><span class="line">                </span><br><span class="line">            return root</span><br><span class="line">        </span><br><span class="line">        self.root = createTree(nums, 0, len(nums)-1)</span><br><span class="line">            </span><br><span class="line">    def update(self, i, val):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type i: int</span><br><span class="line">        :type val: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        #Helper function to update a value</span><br><span class="line">        def updateVal(root, i, val):</span><br><span class="line">            </span><br><span class="line">            #Base case. The actual value will be updated in a leaf.</span><br><span class="line">            #The total is then propogated upwards</span><br><span class="line">            if root.start == root.end:</span><br><span class="line">                root.total = val</span><br><span class="line">                return val</span><br><span class="line">        </span><br><span class="line">            mid = (root.start + root.end) // 2</span><br><span class="line">            </span><br><span class="line">            #If the index is less than the mid, that leaf must be in the left subtree</span><br><span class="line">            if i &lt;= mid:</span><br><span class="line">                updateVal(root.left, i, val)</span><br><span class="line">                </span><br><span class="line">            #Otherwise, the right subtree</span><br><span class="line">            else:</span><br><span class="line">                updateVal(root.right, i, val)</span><br><span class="line">            </span><br><span class="line">            #Propogate the changes after recursive call returns</span><br><span class="line">            root.total = root.left.total + root.right.total</span><br><span class="line">            </span><br><span class="line">            return root.total</span><br><span class="line">        </span><br><span class="line">        return updateVal(self.root, i, val)</span><br><span class="line"></span><br><span class="line">    def sumRange(self, i, j):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        sum of elements nums[i..j], inclusive.</span><br><span class="line">        :type i: int</span><br><span class="line">        :type j: int</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        #Helper function to calculate range sum</span><br><span class="line">        def rangeSum(root, i, j):</span><br><span class="line">            </span><br><span class="line">            #If the range exactly matches the root, we already have the sum</span><br><span class="line">            if root.start == i and root.end == j:</span><br><span class="line">                return root.total</span><br><span class="line">            </span><br><span class="line">            mid = (root.start + root.end) // 2</span><br><span class="line">            </span><br><span class="line">            #If end of the range is less than the mid, the entire interval lies</span><br><span class="line">            #in the left subtree</span><br><span class="line">            if j &lt;= mid:</span><br><span class="line">                return rangeSum(root.left, i, j)</span><br><span class="line">            </span><br><span class="line">            #If start of the interval is greater than mid, the entire inteval lies</span><br><span class="line">            #in the right subtree</span><br><span class="line">            elif i &gt;= mid + 1:</span><br><span class="line">                return rangeSum(root.right, i, j)</span><br><span class="line">            </span><br><span class="line">            #Otherwise, the interval is split. So we calculate the sum recursively,</span><br><span class="line">            #by splitting the interval</span><br><span class="line">            else:</span><br><span class="line">                return rangeSum(root.left, i, mid) + rangeSum(root.right, mid+1, j)</span><br><span class="line">        </span><br><span class="line">        return rangeSum(self.root, i, j)</span><br><span class="line">                </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Your NumArray object will be instantiated and called as such:</span><br><span class="line"># numArray = NumArray(nums)</span><br><span class="line"># numArray.sumRange(0, 1)</span><br><span class="line"># numArray.update(1, 10)</span><br><span class="line"># numArray.sumRange(1, 2)</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/29918/17-ms-java-solution-with-segment-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29918/17-ms-java-solution-with-segment-tree</a></p>
+<p>17 ms Java solution with segment tree</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">public class NumArray &#123;</span><br><span class="line"></span><br><span class="line">    class SegmentTreeNode &#123;</span><br><span class="line">        int start, end;</span><br><span class="line">        SegmentTreeNode left, right;</span><br><span class="line">        int sum;</span><br><span class="line"></span><br><span class="line">        public SegmentTreeNode(int start, int end) &#123;</span><br><span class="line">            this.start = start;</span><br><span class="line">            this.end = end;</span><br><span class="line">            this.left = null;</span><br><span class="line">            this.right = null;</span><br><span class="line">            this.sum = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">      </span><br><span class="line">    SegmentTreeNode root = null;</span><br><span class="line">   </span><br><span class="line">    public NumArray(int[] nums) &#123;</span><br><span class="line">        root = buildTree(nums, 0, nums.length-1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private SegmentTreeNode buildTree(int[] nums, int start, int end) &#123;</span><br><span class="line">        if (start &gt; end) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            SegmentTreeNode ret = new SegmentTreeNode(start, end);</span><br><span class="line">            if (start == end) &#123;</span><br><span class="line">                ret.sum = nums[start];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                int mid = start  + (end - start) / 2;             </span><br><span class="line">                ret.left = buildTree(nums, start, mid);</span><br><span class="line">                ret.right = buildTree(nums, mid + 1, end);</span><br><span class="line">                ret.sum = ret.left.sum + ret.right.sum;</span><br><span class="line">            &#125;         </span><br><span class="line">            return ret;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    void update(int i, int val) &#123;</span><br><span class="line">        update(root, i, val);</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    void update(SegmentTreeNode root, int pos, int val) &#123;</span><br><span class="line">        if (root.start == root.end) &#123;</span><br><span class="line">           root.sum = val;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            int mid = root.start + (root.end - root.start) / 2;</span><br><span class="line">            if (pos &lt;= mid) &#123;</span><br><span class="line">                 update(root.left, pos, val);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                 update(root.right, pos, val);</span><br><span class="line">            &#125;</span><br><span class="line">            root.sum = root.left.sum + root.right.sum;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int sumRange(int i, int j) &#123;</span><br><span class="line">        return sumRange(root, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int sumRange(SegmentTreeNode root, int start, int end) &#123;</span><br><span class="line">        if (root.end == end &amp;&amp; root.start == start) &#123;</span><br><span class="line">            return root.sum;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            int mid = root.start + (root.end - root.start) / 2;</span><br><span class="line">            if (end &lt;= mid) &#123;</span><br><span class="line">                return sumRange(root.left, start, end);</span><br><span class="line">            &#125; else if (start &gt;= mid+1) &#123;</span><br><span class="line">                return sumRange(root.right, start, end);</span><br><span class="line">            &#125;  else &#123;    </span><br><span class="line">                return sumRange(root.right, mid+1, end) + sumRange(root.left, start, mid);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31599/java-using-binary-indexed-tree-with-clear-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31599/java-using-binary-indexed-tree-with-clear-explanation</a></p>
+<p>Java using Binary Indexed Tree with clear explanation</p>
+<p>This is to share the explanation of the BIT and the meaning of the bit operations.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">public class NumArray &#123;</span><br><span class="line">	/**</span><br><span class="line">	 * Binary Indexed Trees (BIT or Fenwick tree):</span><br><span class="line">	 * https://www.topcoder.com/community/data-science/data-science-</span><br><span class="line">	 * tutorials/binary-indexed-trees/</span><br><span class="line">	 * </span><br><span class="line">	 * Example: given an array a[0]...a[7], we use a array BIT[9] to</span><br><span class="line">	 * represent a tree, where index [2] is the parent of [1] and [3], [6]</span><br><span class="line">	 * is the parent of [5] and [7], [4] is the parent of [2] and [6], and</span><br><span class="line">	 * [8] is the parent of [4]. I.e.,</span><br><span class="line">	 * </span><br><span class="line">	 * BIT[] as a binary tree:</span><br><span class="line">	 *            ______________*</span><br><span class="line">	 *            ______*</span><br><span class="line">	 *            __*     __*</span><br><span class="line">	 *            *   *   *   *</span><br><span class="line">	 * indices: 0 1 2 3 4 5 6 7 8</span><br><span class="line">	 * </span><br><span class="line">	 * BIT[i] = ([i] is a left child) ? the partial sum from its left most</span><br><span class="line">	 * descendant to itself : the partial sum from its parent (exclusive) to</span><br><span class="line">	 * itself. (check the range of &quot;__&quot;).</span><br><span class="line">	 * </span><br><span class="line">	 * Eg. BIT[1]=a[0], BIT[2]=a[1]+BIT[1]=a[1]+a[0], BIT[3]=a[2],</span><br><span class="line">	 * BIT[4]=a[3]+BIT[3]+BIT[2]=a[3]+a[2]+a[1]+a[0],</span><br><span class="line">	 * BIT[6]=a[5]+BIT[5]=a[5]+a[4],</span><br><span class="line">	 * BIT[8]=a[7]+BIT[7]+BIT[6]+BIT[4]=a[7]+a[6]+...+a[0], ...</span><br><span class="line">	 * </span><br><span class="line">	 * Thus, to update a[1]=BIT[2], we shall update BIT[2], BIT[4], BIT[8],</span><br><span class="line">	 * i.e., for current [i], the next update [j] is j=i+(i&amp;-i) //double the</span><br><span class="line">	 * last 1-bit from [i].</span><br><span class="line">	 * </span><br><span class="line">	 * Similarly, to get the partial sum up to a[6]=BIT[7], we shall get the</span><br><span class="line">	 * sum of BIT[7], BIT[6], BIT[4], i.e., for current [i], the next</span><br><span class="line">	 * summand [j] is j=i-(i&amp;-i) // delete the last 1-bit from [i].</span><br><span class="line">	 * </span><br><span class="line">	 * To obtain the original value of a[7] (corresponding to index [8] of</span><br><span class="line">	 * BIT), we have to subtract BIT[7], BIT[6], BIT[4] from BIT[8], i.e.,</span><br><span class="line">	 * starting from [idx-1], for current [i], the next subtrahend [j] is</span><br><span class="line">	 * j=i-(i&amp;-i), up to j==idx-(idx&amp;-idx) exclusive. (However, a quicker</span><br><span class="line">	 * way but using extra space is to store the original array.)</span><br><span class="line">	 */</span><br><span class="line"></span><br><span class="line">	int[] nums;</span><br><span class="line">	int[] BIT;</span><br><span class="line">	int n;</span><br><span class="line"></span><br><span class="line">	public NumArray(int[] nums) &#123;</span><br><span class="line">		this.nums = nums;</span><br><span class="line"></span><br><span class="line">		n = nums.length;</span><br><span class="line">		BIT = new int[n + 1];</span><br><span class="line">		for (int i = 0; i &lt; n; i++)</span><br><span class="line">			init(i, nums[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void init(int i, int val) &#123;</span><br><span class="line">		i++;</span><br><span class="line">		while (i &lt;= n) &#123;</span><br><span class="line">			BIT[i] += val;</span><br><span class="line">			i += (i &amp; -i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void update(int i, int val) &#123;</span><br><span class="line">		int diff = val - nums[i];</span><br><span class="line">		nums[i] = val;</span><br><span class="line">		init(i, diff);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getSum(int i) &#123;</span><br><span class="line">		int sum = 0;</span><br><span class="line">		i++;</span><br><span class="line">		while (i &gt; 0) &#123;</span><br><span class="line">			sum += BIT[i];</span><br><span class="line">			i -= (i &amp; -i);</span><br><span class="line">		&#125;</span><br><span class="line">		return sum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int sumRange(int i, int j) &#123;</span><br><span class="line">		return getSum(j) - getSum(i - 1);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Your NumArray object will be instantiated and called as such:</span><br><span class="line">// NumArray numArray = new NumArray(nums);</span><br><span class="line">// numArray.sumRange(0, 1);</span><br><span class="line">// numArray.update(1, 10);</span><br><span class="line">// numArray.sumRange(1, 2);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/d84dea00/" title="307. Range Sum Query - Mutable">http://yucc.me/p/d84dea00/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/binary-indexed-tree/" rel="tag"># binary indexed tree</a>
+          
+            <a href="/tags/segment-tree/" rel="tag"># segment tree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/6099572b/" rel="next" title="306. Additive Number">
+                <i class="fa fa-chevron-left"></i> 306. Additive Number
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/36465192/" rel="prev" title="309. Best Time to Buy and Sell Stock with Cooldown">
+                309. Best Time to Buy and Sell Stock with Cooldown <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

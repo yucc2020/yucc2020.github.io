@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,divide and conquer,dynamic programming,hard," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="41.9%  https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the bal">
+<meta name="keywords" content="leetcode,divide and conquer,dynamic programming,hard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="312. Burst Balloons">
+<meta property="og:url" content="http://yucc.me/p/20467241/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="41.9%  https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the bal">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:29:40.057Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="312. Burst Balloons">
+<meta name="twitter:description" content="41.9%  https://leetcode.com/problems/burst-balloons/ Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the bal">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/20467241/"/>
+
+
+
+
+
+  <title>312. Burst Balloons | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/20467241/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">312. Burst Balloons</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:04:42+08:00">
+                2018-05-23 13:04
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:29:40+08:00">
+                2018-05-23 19:29
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,948
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>41.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/burst-balloons/" target="_blank" rel="noopener">https://leetcode.com/problems/burst-balloons/</a></p>
+<p>Given <strong>n</strong> balloons, indexed from <strong>0</strong> to <strong>n-1</strong>. Each balloon is painted with a number on it represented by array <strong>nums</strong>. You are asked to burst all the balloons. If the you burst balloon <strong>i</strong> you will get <strong>nums[left] <em> nums[i] </em> nums[right]</strong> coins. Here left and right are adjacent indices of i. After the burst, the left and right then becomes adjacent.</p>
+<p>Find the maximum coins you can collect by bursting the balloons wisely.</p>
+<p>Note:<br>(1) You may imagine nums[-1] = nums[n] = 1. They are not real therefore you can not burst them.<br>(2) 0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Given [3, 1, 5, 8]</span><br><span class="line"></span><br><span class="line">Return 167</span><br><span class="line"></span><br><span class="line">nums = [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>先戳破第一个气球，直到最后一个，即第n个。</p>
+<p>重点是逆向思考，先第n个，再第n-1个，直到第一个。</p>
+<p>一个vector&lt;vector<int>&gt; dp</int></p>
+<p>dp[left][right]表示索引left至索引right里面，不戳破left和right，戳破[left+1, right-1]中任意顺序能获得的最大值。</p>
+<p>假定最后戳破某一位i，则得到奖励nums[left]<em>nums[i]</em>nums[right]，并且获得dp[left][i]和dp[i][right]。而dp[i][left]又是类似于前一个问题，而且跟i关系不大。</p>
+<p>下面两个方法分别是递归和迭代</p>
+<p>方法一：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// insert插入时，第一位位置要使用迭代器</span></span><br><span class="line">        nums.insert(nums.begin(), <span class="number">1</span>);</span><br><span class="line">        nums.push_back(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">return</span> dfs(nums, <span class="number">0</span>, n<span class="number">-1</span>, dp);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; dp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left+<span class="number">1</span>==right)&#123;</span><br><span class="line">            dp[left][right] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 不要忘了这句话，不然超时</span></span><br><span class="line">        <span class="keyword">if</span>(dp[left][right]&gt;=<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> dp[left][right];</span><br><span class="line">        <span class="comment">// 使用变量前先声明</span></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=left+<span class="number">1</span>; i&lt;right; i++)</span><br><span class="line">            ans = max(ans, nums[left]*nums[i]*nums[right]+dfs(nums, left, i, dp)+dfs(nums, i, right, dp));</span><br><span class="line">        dp[left][right] = ans;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法二：</p>
+<p>我的代码实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxCoins</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        nums.insert(nums.begin(), <span class="number">1</span>);</span><br><span class="line">        nums.push_back(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 不要忘了声明</span></span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">2</span>; len&lt;=n; len++)&#123;</span><br><span class="line">            <span class="comment">// 比较大小时，用&lt;= 而不用 !=</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> left=<span class="number">0</span>; left+len&lt;=n; left++)&#123;</span><br><span class="line">                <span class="keyword">int</span> right = left + len - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i=left+<span class="number">1</span>; i!=right; i++)</span><br><span class="line">                    ans = max(ans, nums[left]*nums[i]*nums[right]+dp[left][i]+dp[i][right]);</span><br><span class="line">                dp[left][right] = ans;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>方法一和方法二参考以下文章</p>
+<p><a href="https://discuss.leetcode.com/topic/41086/c-dp-detailed-explanation" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/41086/c-dp-detailed-explanation</a></p>
+<p>C++ dp detailed explanation</p>
+<p>the visualization help me to understand hope it can help you too.</p>
+<p>1···················1</p>
+<p>add two 1 at beginning and end of nums, each · represent each number in nums.</p>
+<p>len is the subinterval length, it grows from 1 to full length of orignal nums string.</p>
+<p>the following illustrations demonstrate how the subinterval shift from left to right. (len = 7 in the illustration)</p>
+<p>for each len, when shifted to rightmost, increase len and do the shift again. this way we can evaluate all possible subintervals.</p>
+<p>for each subinterval, in the innermost for loop, find which balloon to burst LAST that will give us the most coins for that subinterval. &lt;- IMPORTANT TO UNDERSTAND THIS</p>
+<p>dp[left][right] is the maximum coins we can get from left to right. note when left &gt; right, it is 0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1···················1    (len = 7)</span><br><span class="line">|     |</span><br><span class="line">left  right</span><br><span class="line"></span><br><span class="line">1···················1</span><br><span class="line">       |     |</span><br><span class="line">     left  right</span><br><span class="line">      </span><br><span class="line">1···················1</span><br><span class="line">            |     |</span><br><span class="line">          left  right</span><br></pre></td></tr></table></figure>
+<p>for the example [3, 1, 5, 8], the dp matrix is updated like this</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0    0    0    0    0    0</span><br><span class="line">0    3    0    0    0    0</span><br><span class="line">0    0    15   0    0    0</span><br><span class="line">0    0    0    40   0    0</span><br><span class="line">0    0    0    0    40   0</span><br><span class="line">0    0    0    0    0    0</span><br></pre></td></tr></table></figure>
+<p>then</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0    0    0    0    0    0</span><br><span class="line">0    3    30   0    0    0</span><br><span class="line">0    0    15   135  0    0</span><br><span class="line">0    0    0    40   48   0</span><br><span class="line">0    0    0    0    40   0</span><br><span class="line">0    0    0    0    0    0</span><br></pre></td></tr></table></figure>
+<p>at last</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0    0    0    0    0    0</span><br><span class="line">0    3    30   159  167  0</span><br><span class="line">0    0    15   135  159  0</span><br><span class="line">0    0    0    40   48   0</span><br><span class="line">0    0    0    0    40   0</span><br><span class="line">0    0    0    0    0    0</span><br></pre></td></tr></table></figure>
+<p>the code is like most others.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n = nums.size();</span><br><span class="line">        nums.insert(nums.begin(), 1);</span><br><span class="line">        nums.push_back(1);</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(nums.size(), vector&lt;int&gt;(nums.size(), 0));</span><br><span class="line">        for (int len = 1; len &lt;= n; ++len)</span><br><span class="line">            for (int left = 1; left &lt;= n - len + 1; ++left) &#123;</span><br><span class="line">                int right = left + len - 1;</span><br><span class="line">                for (int k = left; k &lt;= right; ++k)</span><br><span class="line">                    dp[left][right] = max(dp[left][right], nums[left-1]*nums[k]*nums[right+1] + dp[left][k-1] + dp[k+1][right]);</span><br><span class="line">            &#125;</span><br><span class="line">        return dp[1][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a href="https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations</a></p>
+<p>Share some analysis and explanations</p>
+<h4 id="Be-Naive-First"><a href="#Be-Naive-First" class="headerlink" title="Be Naive First"></a>Be Naive First</h4><p>When I first get this problem, it is far from dynamic programming to me. I started with the most naive idea the backtracking.</p>
+<p>We have n balloons to burst, which mean we have n steps in the game. In the i th step we have n-i balloons to burst, i = 0~ n-1. Therefore we are looking at an algorithm of O(n!). Well, it is slow, probably works for n &lt; 12 only.</p>
+<p>Of course this is not the point to implement it. We need to identify the redundant works we did in it and try to optimize.</p>
+<p>Well, we can find that for any balloons left the maxCoins does not depends on the balloons already bursted. This indicate that we can use memorization (top down) or dynamic programming (bottom up) for all the cases from small numbers of balloon until n balloons. How many cases are there? For k balloons there are C(n, k) cases and for each case it need to scan the k balloons to compare. The sum is quite big still. It is better than O(n!) but worse than O(2^n).</p>
+<h4 id="Better-idea"><a href="#Better-idea" class="headerlink" title="Better idea"></a>Better idea</h4><p>We then think can we apply the divide and conquer technique? After all there seems to be many self similar sub problems from the previous analysis.</p>
+<p>Well, the nature way to divide the problem is burst one balloon and separate the balloons into 2 sub sections one on the left and one one the right. However, in this problem the left and right become adjacent and have effects on the maxCoins in the future.</p>
+<p>Then another interesting idea come up. Which is quite often seen in dp problem analysis. That is reverse thinking. Like I said the coins you get for a balloon does not depend on the balloons already burst. Therefore<br>instead of divide the problem by the first balloon to burst, we divide the problem by the last balloon to burst.</p>
+<p>Why is that? Because only the first and last balloons we are sure of their adjacent balloons before hand!</p>
+<p>For the first we have nums[i-1]<em>nums[i]</em>nums[i+1] for the last we have nums[-1]<em>nums[i]</em>nums[n].</p>
+<p>OK. Think about n balloons if i is the last one to burst, what now?</p>
+<p>We can see that the balloons is again separated into 2 sections. But this time since the balloon i is the last balloon of all to burst, the left and right section now has well defined boundary and do not affect each other! Therefore we can do either recursive method with memoization or dp.</p>
+<h4 id="Final"><a href="#Final" class="headerlink" title="Final"></a>Final</h4><p>Here comes the final solutions. Note that we put 2 balloons with 1 as boundaries and also burst all the zero balloons in the first round since they won’t give any coins.<br>The algorithm runs in O(n^3) which can be easily seen from the 3 loops in dp solution.</p>
+<p>Java D&amp;C with Memoization</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public int maxCoins(int[] iNums) &#123;</span><br><span class="line">    int[] nums = new int[iNums.length + 2];</span><br><span class="line">    int n = 1;</span><br><span class="line">    for (int x : iNums) if (x &gt; 0) nums[n++] = x;</span><br><span class="line">    nums[0] = nums[n++] = 1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    int[][] memo = new int[n][n];</span><br><span class="line">    return burst(memo, nums, 0, n - 1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public int burst(int[][] memo, int[] nums, int left, int right) &#123;</span><br><span class="line">    if (left + 1 == right) return 0;</span><br><span class="line">    if (memo[left][right] &gt; 0) return memo[left][right];</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (int i = left + 1; i &lt; right; ++i)</span><br><span class="line">        ans = Math.max(ans, nums[left] * nums[i] * nums[right] </span><br><span class="line">        + burst(memo, nums, left, i) + burst(memo, nums, i, right));</span><br><span class="line">    memo[left][right] = ans;</span><br><span class="line">    return ans;</span><br><span class="line">&#125;</span><br><span class="line">// 12 ms</span><br></pre></td></tr></table></figure>
+<p>Java DP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public int maxCoins(int[] iNums) &#123;</span><br><span class="line">    int[] nums = new int[iNums.length + 2];</span><br><span class="line">    int n = 1;</span><br><span class="line">    for (int x : iNums) if (x &gt; 0) nums[n++] = x;</span><br><span class="line">    nums[0] = nums[n++] = 1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    int[][] dp = new int[n][n];</span><br><span class="line">    for (int k = 2; k &lt; n; ++k)</span><br><span class="line">        for (int left = 0; left &lt; n - k; ++left) &#123;</span><br><span class="line">            int right = left + k;</span><br><span class="line">            for (int i = left + 1; i &lt; right; ++i)</span><br><span class="line">                dp[left][right] = Math.max(dp[left][right], </span><br><span class="line">                nums[left] * nums[i] * nums[right] + dp[left][i] + dp[i][right]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    return dp[0][n - 1];</span><br><span class="line">&#125;</span><br><span class="line">// 17 ms</span><br></pre></td></tr></table></figure>
+<p>C++ DP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int maxCoinsDP(vector&lt;int&gt; &amp;iNums) &#123;</span><br><span class="line">    int nums[iNums.size() + 2];</span><br><span class="line">    int n = 1;</span><br><span class="line">    for (int x : iNums) if (x &gt; 0) nums[n++] = x;</span><br><span class="line">    nums[0] = nums[n++] = 1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    int dp[n][n] = &#123;&#125;;</span><br><span class="line">    for (int k = 2; k &lt; n; ++k) &#123;</span><br><span class="line">        for (int left = 0; left &lt; n - k; ++left)</span><br><span class="line">            int right = left + k;</span><br><span class="line">            for (int i = left + 1; i &lt; right; ++i)</span><br><span class="line">                dp[left][right] = max(dp[left][right],</span><br><span class="line">                     nums[left] * nums[i] * nums[right] + dp[left][i] + dp[i][right]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    return dp[0][n - 1];</span><br><span class="line">&#125;</span><br><span class="line">// 16 ms</span><br></pre></td></tr></table></figure>
+<p>Python DP</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def maxCoins(self, iNums):</span><br><span class="line">    nums = [1] + [i for i in iNums if i &gt; 0] + [1]</span><br><span class="line">    n = len(nums)</span><br><span class="line">    dp = [[0]*n for _ in xrange(n)]</span><br><span class="line"></span><br><span class="line">    for k in xrange(2, n):</span><br><span class="line">        for left in xrange(0, n - k):</span><br><span class="line">            right = left + k</span><br><span class="line">            for i in xrange(left + 1,right):</span><br><span class="line">                dp[left][right] = max(dp[left][right],</span><br><span class="line">                       nums[left] * nums[i] * nums[right] + dp[left][i] + dp[i][right])</span><br><span class="line">    return dp[0][n - 1]</span><br><span class="line"></span><br><span class="line"># 528ms</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30738/c-dynamic-programming-o-n-3-32-ms-with-comments" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30738/c-dynamic-programming-o-n-3-32-ms-with-comments</a></p>
+<p>C++ dynamic programming, O(N^3), 32 ms, with comments</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    int N = nums.size();</span><br><span class="line">    nums.insert(nums.begin(), 1);</span><br><span class="line">    nums.insert(nums.end(), 1);</span><br><span class="line"></span><br><span class="line">    // rangeValues[i][j] is the maximum # of coins that can be obtained</span><br><span class="line">    // by popping balloons only in the range [i,j]</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; rangeValues(nums.size(), vector&lt;int&gt;(nums.size(), 0));</span><br><span class="line">    </span><br><span class="line">    // build up from shorter ranges to longer ranges</span><br><span class="line">    for (int len = 1; len &lt;= N; ++len) &#123;</span><br><span class="line">        for (int start = 1; start &lt;= N - len + 1; ++start) &#123;</span><br><span class="line">            int end = start + len - 1;</span><br><span class="line">            // calculate the max # of coins that can be obtained by</span><br><span class="line">            // popping balloons only in the range [start,end].</span><br><span class="line">            // consider all possible choices of final balloon to pop</span><br><span class="line">            int bestCoins = 0;</span><br><span class="line">            for (int final = start; final &lt;= end; ++final) &#123;</span><br><span class="line">                int coins = rangeValues[start][final-1] + rangeValues[final+1][end]; // coins from popping subranges</span><br><span class="line">                coins += nums[start-1] * nums[final] * nums[end+1]; // coins from final pop</span><br><span class="line">                if (coins &gt; bestCoins) bestCoins = coins;</span><br><span class="line">            &#125;</span><br><span class="line">            rangeValues[start][end] = bestCoins;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return rangeValues[1][N];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/30934/my-c-code-dp-o-n-3-20ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30934/my-c-code-dp-o-n-3-20ms</a></p>
+<p>My C++ code (DP, O(N^3)) 20ms</p>
+<p>The algorithm is well explained in 1 and I pretty much followed the same line.</p>
+<ol>
+<li>First version I got is recursion +backtracing (TLE)</li>
+<li>Second version I got is DP:</li>
+</ol>
+<p>instead of bursting ballons one by one, we do it in a reverse order, “de-burst” ballons one by one. In that order, the left and right neighbor of the “de-burst” ballon is known. However, the complexity is still high (~ order of C(n,n/2))</p>
+<p>The real challenge is the outer boundaries (i.e. left, right neighbors vary with the burst order). The algorithm in 1 elegantly fixed that problem: fix left/right neighbors and doing DP from length=3 to nSize;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int nSize = nums.size()+2, left, right, len, mid, temp, dpMax[nSize][nSize] =&#123;&#125;;</span><br><span class="line">        nums.insert(nums.begin(),1); // two dummy &quot;1&quot; added to simplify DP</span><br><span class="line">        nums.push_back(1);</span><br><span class="line">        </span><br><span class="line">        for(len=3; len&lt;=nSize; ++len) // lenght including left and right boudaries, </span><br><span class="line">            for(left=0; left&lt;=nSize-len; ++left)  //left boudary/neighbor</span><br><span class="line">                for(right = left+len-1, mid=left+1, temp = nums[left]*nums[right]; mid&lt;right;++mid) //right boundary, mid is the last one to burst in the range (left, right)</span><br><span class="line">                    dpMax[left][right] = max(dpMax[left][right], dpMax[left][mid] + dpMax[mid][right] + nums[mid]*temp);</span><br><span class="line"></span><br><span class="line">        nums.erase(nums.begin()); // recover nums</span><br><span class="line">        nums.pop_back();</span><br><span class="line">        return dpMax[0][nSize-1];        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions</a></p>
+<p>Python DP N^3 Solutions</p>
+<p>Analysis:<br>We need to find a way to divide the problems. If we start from the first balloon, we can’t determine the left/right for the number in each sub-problem, If we start from the last balloon, we can.<br>We can see the transformation equation is very similar to the one for matrix multiplication.</p>
+<p>dp[i][j] = max(dp[i][j], nums[i] <em> nums[k] </em> nums[j] + dp[i][k] + dp[k][j]) # i &lt; k &lt; j<br>This is a typical interval DP problem. Because the order of the number extracted matters, we need to do a O(n^3) DP. If we only need to expand the interval to the left or right, we only need to do a O(n^2) DP.</p>
+<p>Top-down:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxCoins(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        nums = [1] + nums + [1]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        dp = [[0] * n for _ in xrange(n)]</span><br><span class="line"></span><br><span class="line">        def calculate(i, j):</span><br><span class="line">            if dp[i][j] or j == i + 1: # in memory or gap &lt; 2</span><br><span class="line">                return dp[i][j]</span><br><span class="line">            coins = 0</span><br><span class="line">            for k in xrange(i+1, j): # find the last balloon</span><br><span class="line">                coins = max(coins, nums[i] * nums[k] * nums[j] + calculate(i, k) + calculate(k, j))</span><br><span class="line">            dp[i][j] = coins</span><br><span class="line">            return coins</span><br><span class="line"></span><br><span class="line">        return calculate(0, n-1)</span><br></pre></td></tr></table></figure>
+<p>Bottom-up:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">        def maxCoins(self, nums):</span><br><span class="line">            &quot;&quot;&quot;</span><br><span class="line">            :type nums: List[int]</span><br><span class="line">            :rtype: int</span><br><span class="line">            &quot;&quot;&quot;</span><br><span class="line">            nums = [1] + nums + [1] # build the complete array </span><br><span class="line">            n = len(nums)</span><br><span class="line">            dp = [[0] * n for _ in xrange(n)]</span><br><span class="line">    </span><br><span class="line">            for gap in xrange(2, n):</span><br><span class="line">                for i in xrange(n-gap):</span><br><span class="line">                    j = i + gap</span><br><span class="line">                    for k in xrange(i+1, j):</span><br><span class="line">                        dp[i][j] = max(dp[i][j], nums[i] * nums[k] * nums[j] + dp[i][k] + dp[k][j])</span><br><span class="line">            return dp[0][n-1]</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><blockquote>
+<p><a href="https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations</a></p>
+<p><strong>Be Naive First</strong></p>
+<p>When I first get this problem, it is far from dynamic programming to me. I started with the most naive idea the backtracking.</p>
+<p>We have n balloons to burst, which mean we have n steps in the game. In the i th step we have n-i balloons to burst, i = 0~ n-1. Therefore we are looking at an algorithm of O(n!). Well, it is slow, probably works for n &lt; 12 only.</p>
+<p>Of course this is not the point to implement it. We need to identify the redundant works we did in it and try to optimize.</p>
+<p>Well, we can find that for any balloons left the maxCoins does not depends on the balloons already bursted. This indicate that we can use memorization (top down) or dynamic programming (bottom up) for all the cases from small numbers of balloon until n balloons. How many cases are there? For k balloons there are C(n, k) cases and for each case it need to scan the k balloons to compare. The sum is quite big still. It is better than O(n!) but worse than O(2^n).</p>
+<p>Better idea</p>
+<p>We then think can we apply the divide and conquer technique? After all there seems to be many self similar sub problems from the previous analysis.</p>
+<p>Well, the nature way to divide the problem is burst one balloon and separate the balloons into 2 sub sections one on the left and one one the right. However, in this problem the left and right become adjacent and have effects on the maxCoins in the future.</p>
+<p>Then another interesting idea come up. Which is quite often seen in dp problem analysis. That is reverse thinking. Like I said the coins you get for a balloon does not depend on the balloons already burst. Therefore<br>instead of divide the problem by the first balloon to burst, we divide the problem by the last balloon to burst.</p>
+<p>Why is that? Because only the first and last balloons we are sure of their adjacent balloons before hand!</p>
+</blockquote>
+<p>For the first we have nums[i-1]*nums[i]* nums[i+1] for the last we have nums[-1]*nums[i]*nums[n] .</p>
+<p>OK. Think about n balloons if i is the last one to burst, what now?</p>
+<p>We can see that the balloons is again separated into 2 sections. But this time since the balloon i is the last balloon of all to burst, the left and right section now has well defined boundary and do not affect each other! Therefore we can do either recursive method with memoization or dp.</p>
+<p>Final </p>
+<p>Here comes the final solutions. Note that we put 2 balloons with 1 as boundaries and also burst all the zero balloons in the first round since they won’t give any coins.</p>
+<p>The algorithm runs in O ( n\^3 ) which can be easily seen from the 3 loops in dp solution.</p>
+<p>Java D&amp;C with Memoization</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxCoins(int[] nums) &#123;</span><br><span class="line">        if(nums.length == 0) return 0;</span><br><span class="line">        int n = 1; </span><br><span class="line">        int[] numss = new int[nums.length+2];</span><br><span class="line">        for(int i:nums) numss[n++] = i;</span><br><span class="line">        numss[0] = numss[n++] = 1;</span><br><span class="line">        </span><br><span class="line">        int[][] dp = new int[n][n];</span><br><span class="line">        return dfs(numss, dp, 0, n-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private int dfs(int[] numss, int[][] dp, int left, int right)&#123;</span><br><span class="line">        if(left+1==right) return 0;</span><br><span class="line">        if(dp[left][right]&gt;0) return dp[left][right];</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for(int i=left+1; i&lt;right; i++)&#123;</span><br><span class="line">            ans = Math.max(ans, numss[left]*numss[i]*numss[right]+dfs(numss, dp, left, i) + dfs(numss, dp, i, right));</span><br><span class="line">        &#125;</span><br><span class="line">        dp[left][right] = ans;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Java DP</strong></p>
+<blockquote>
+<p>19ms, September 9, 2016<br><a href="https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int maxCoins(int[] nums) &#123;</span><br><span class="line">        int[] numbers = new int [nums.length + 2];</span><br><span class="line">        int n = 1;</span><br><span class="line">        for(int x:nums) if(x&gt;0) numbers[n++] = x;</span><br><span class="line">        numbers[0] = numbers[n++] = 1;</span><br><span class="line">        </span><br><span class="line">        int[][] dp = new int[n][n];</span><br><span class="line">        for(int k=2; k&lt;n; ++k)&#123;</span><br><span class="line">            for(int left = 0; left&lt;n-k; ++left)&#123;</span><br><span class="line">                int right = left+k;</span><br><span class="line">                for(int i = left+1; i&lt;right; ++i)&#123;</span><br><span class="line">                    dp[left][right] = Math.max(dp[left][right], </span><br><span class="line">                        numbers[left]*numbers[i]*numbers[right] + dp[left][i] + dp[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return dp[0][n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><blockquote>
+<p>19ms, September 9, 2016<br><a href="https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/30746/share-some-analysis-and-explanations</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maxCoins(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int numbers[nums.size() + 2];</span><br><span class="line">        int n = 1;</span><br><span class="line">        for(int x:nums) if(x &gt;0) numbers[n++] = x;</span><br><span class="line">        numbers[0] = numbers[n++] = 1;</span><br><span class="line">        </span><br><span class="line">        int dp[n][n] = &#123;&#125;;</span><br><span class="line">        for(int k = 2; k&lt;n; ++k)&#123;</span><br><span class="line">            for(int left = 0; left&lt;n-k;++left)&#123;</span><br><span class="line">                int right = left + k;</span><br><span class="line">                for(int i = left+1; i&lt;right; ++i)&#123;</span><br><span class="line">                    dp[left][right] = max(dp[left][right],</span><br><span class="line">                        numbers[left]*numbers[i]*numbers[right] + dp[left][i] + dp[i][right]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return dp[0][n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><blockquote>
+<p>416ms, September 9, 2016<br><a href="https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxCoins(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        nums = [1] + nums + [1]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        dp = [[0] *n for _ in xrange(n)]</span><br><span class="line">        </span><br><span class="line">        for gap in xrange(2, n):</span><br><span class="line">            for i in xrange(n-gap):</span><br><span class="line">                j = i + gap</span><br><span class="line">                for k in xrange(i+1, j):</span><br><span class="line">                    dp[i][j] = max(dp[i][j], nums[i]*nums[k]*nums[j] + dp[i][k] + dp[k][j])</span><br><span class="line">        return dp[0][n-1]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>972ms, September 9, 2016<br><a href="https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/31178/python-dp-n-3-solutions</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def maxCoins(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        nums = [1] + nums + [1]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        dp = [[0]*n for _ in xrange(n)]</span><br><span class="line">        </span><br><span class="line">        def calculate(i, j):</span><br><span class="line">            if dp[i][j] or j == i+1:</span><br><span class="line">                return dp[i][j]</span><br><span class="line">            coins = 0</span><br><span class="line">            for k in xrange(i+1, j):</span><br><span class="line">                coins = max(coins, nums[i] * nums[k] * nums[j] + calculate(i, k) + calculate(k, j))</span><br><span class="line">            dp[i][j] = coins</span><br><span class="line">            return coins</span><br><span class="line">        </span><br><span class="line">        return calculate(0, n-1)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/20467241/" title="312. Burst Balloons">http://yucc.me/p/20467241/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+            <a href="/tags/dynamic-programming/" rel="tag"># dynamic programming</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/390d067f/" rel="next" title="310. Minimum Height Trees">
+                <i class="fa fa-chevron-left"></i> 310. Minimum Height Trees
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/e533ea3a/" rel="prev" title="313. Super Ugly Number">
+                313. Super Ugly Number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Be-Naive-First"><span class="nav-text">Be Naive First</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Better-idea"><span class="nav-text">Better idea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Final"><span class="nav-text">Final</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

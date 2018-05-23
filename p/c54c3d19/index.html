@@ -1,0 +1,1484 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,divide and conquer,hard,binary search tree,binary indexed tree,segment tree," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="17.7%  Given an array nums, we call (i, j) an important reverse pair if i &amp;lt; j and nums[i] &amp;gt; 2* nums[j]. You need to return the number of important reverse pairs in the given array. 1234Example1">
+<meta name="keywords" content="leetcode,divide and conquer,hard,binary search tree,binary indexed tree,segment tree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="493. Reverse Pairs">
+<meta property="og:url" content="http://yucc.me/p/c54c3d19/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="17.7%  Given an array nums, we call (i, j) an important reverse pair if i &amp;lt; j and nums[i] &amp;gt; 2* nums[j]. You need to return the number of important reverse pairs in the given array. 1234Example1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T15:48:44.163Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="493. Reverse Pairs">
+<meta name="twitter:description" content="17.7%  Given an array nums, we call (i, j) an important reverse pair if i &amp;lt; j and nums[i] &amp;gt; 2* nums[j]. You need to return the number of important reverse pairs in the given array. 1234Example1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/c54c3d19/"/>
+
+
+
+
+
+  <title>493. Reverse Pairs | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/c54c3d19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">493. Reverse Pairs</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:48:26+08:00">
+                2018-05-23 13:48
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T23:48:44+08:00">
+                2018-05-23 23:48
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,764
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  30
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>17.7%</li>
+</ul>
+<p>Given an array nums, we call (i, j) an important reverse pair if i &lt; j and nums[i] &gt; 2* nums[j].</p>
+<p>You need to return the number of important reverse pairs in the given array.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example1:</span><br><span class="line"></span><br><span class="line">Input: [1,3,2,3,1]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example2:</span><br><span class="line"></span><br><span class="line">Input: [2,4,3,5,1]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+<p>Note:</p>
+<ol>
+<li>The length of the given array will not exceed 50,000.</li>
+<li>All the numbers in the input array are in the range of 32-bit integer.</li>
+</ol>
+<a id="more"></a>
+<hr>
+<h4 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/78993/c-with-iterators" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78993/c-with-iterators</a></p>
+<p>C++ with iterators</p>
+<p>Just a mergesort solution, but using iterators (instead of indexes) and inplace_merge.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int sort_and_count(vector&lt;int&gt;::iterator begin, vector&lt;int&gt;::iterator end) &#123;</span><br><span class="line">        if (end - begin &lt;= 1)</span><br><span class="line">            return 0;</span><br><span class="line">        auto mid = begin + (end - begin) / 2;</span><br><span class="line">        int count = sort_and_count(begin, mid) + sort_and_count(mid, end);</span><br><span class="line">        for (auto i = begin, j = mid; i != mid; ++i) &#123;</span><br><span class="line">            while (j != end and *i &gt; 2L * *j)</span><br><span class="line">                ++j;</span><br><span class="line">            count += j - mid;</span><br><span class="line">        &#125;</span><br><span class="line">        inplace_merge(begin, mid, end);</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int reversePairs(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        return sort_and_count(nums.begin(), nums.end());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/78953/c-solution-using-merge-sort" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78953/c-solution-using-merge-sort</a></p>
+<p>C++ Solution using merge sort</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    int count;</span><br><span class="line">   </span><br><span class="line">    void checkCount(vector&lt;int&gt;&amp; nums, int start, int mid, int end)&#123;</span><br><span class="line"></span><br><span class="line">        // two pointers;</span><br><span class="line">        int l = start, r = mid + 1;</span><br><span class="line">        while(l &lt;= mid &amp;&amp; r &lt;= end)&#123;</span><br><span class="line">            if((long)nums[l] &gt; (long) 2 * nums[r])&#123;</span><br><span class="line">                count += (mid - l + 1);</span><br><span class="line">                r++;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">       // worst case might be nlog(n) </span><br><span class="line">        sort(nums.begin() + start, nums.begin() + end + 1);</span><br><span class="line">        return;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        //every step sort</span><br><span class="line">    &#125;</span><br><span class="line">    void mergeSort(vector&lt;int&gt;&amp; nums, int start, int end)&#123;</span><br><span class="line">        if(start == end) return;</span><br><span class="line">        </span><br><span class="line">        int mid = (start + end)/2;</span><br><span class="line">        mergeSort(nums,start, mid);</span><br><span class="line">        mergeSort(nums,mid+1,end);</span><br><span class="line">        </span><br><span class="line">        checkCount(nums,start,mid,end);</span><br><span class="line">        return;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    int reversePairs(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if(!nums.size())return 0;</span><br><span class="line">        count = 0;</span><br><span class="line">        mergeSort(nums,0,nums.size()-1);</span><br><span class="line">        return count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/78980/well-explained-o-nlogn-python-solution-based-on-mergesort" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78980/well-explained-o-nlogn-python-solution-based-on-mergesort</a></p>
+<p>Well explained O(nlogn) Python Solution based on mergesort</p>
+<p>Count “important reverse pairs” while doing mergesort:</p>
+<p>When we’re doing mergesort, original index of elements in left part (smaller side), i, must less than those in right part, j.</p>
+<p>Simply compare nums[i] and 2* nums[j] and sum them up.</p>
+<p>Note that those partial lists induced during mergesort here are generated by sorted(), instead of building it one by one.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        self.cnt = 0</span><br><span class="line">    def reversePairs(self, nums):</span><br><span class="line">        def msort(lst):</span><br><span class="line">            # merge sort body</span><br><span class="line">            L = len(lst)</span><br><span class="line">            if L &lt;= 1:                          # base case</span><br><span class="line">                return lst</span><br><span class="line">            else:                               # recursive case</span><br><span class="line">                return merger(msort(lst[:int(L/2)]), msort(lst[int(L/2):]))</span><br><span class="line">        def merger(left, right):</span><br><span class="line">            # merger</span><br><span class="line">            l, r = 0, 0                         # increase l and r iteratively</span><br><span class="line">            while l &lt; len(left) and r &lt; len(right):</span><br><span class="line">                if left[l] &lt;= 2*right[r]:</span><br><span class="line">                    l += 1</span><br><span class="line">                else:</span><br><span class="line">                    self.cnt += len(left)-l     # add here</span><br><span class="line">                    r += 1</span><br><span class="line">            return sorted(left+right)           # I can&apos;t avoid TLE without timsort...</span><br><span class="line"></span><br><span class="line">        msort(nums)</span><br><span class="line">        return self.cnt</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="java"><a href="#java" class="headerlink" title="java"></a>java</h4><hr>
+<p><a href="https://discuss.leetcode.com/topic/78933/very-short-and-clear-mergesort-bst-java-solutions" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78933/very-short-and-clear-mergesort-bst-java-solutions</a></p>
+<p>Very Short and Clear MergeSort &amp; BST Java Solutions</p>
+<p>MergeSort</p>
+<p>Explanation: In each round, we divide our array into two parts and sort them. So after “int cnt = mergeSort(nums, s, mid) + mergeSort(nums, mid+1, e); “, the left part and the right part are sorted and now our only job is to count how many pairs of number (leftPart[i], rightPart[j]) satisfies leftPart[i] &lt;= 2* rightPart[j].<br>For example,<br>left: 4 6 8 right: 1 2 3<br>so we use two pointers to travel left and right parts. For each leftPart[i], if j&lt;=e &amp;&amp; nums[i]/2.0 &gt; nums[j], we just continue to move j to the end, to increase rightPart[j], until it is valid. Like in our example, left’s 4 can match 1 and 2; left’s 6 can match 1, 2, 3, and left’s 8 can match 1, 2, 3. So in this particular round, there are 8 pairs found, so we increases our total by 8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        return mergeSort(nums, 0, nums.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    private int mergeSort(int[] nums, int s, int e)&#123;</span><br><span class="line">        if(s&gt;=e) return 0; </span><br><span class="line">        int mid = s + (e-s)/2; </span><br><span class="line">        int cnt = mergeSort(nums, s, mid) + mergeSort(nums, mid+1, e); </span><br><span class="line">        for(int i = s, j = mid+1; i&lt;=mid; i++)&#123;</span><br><span class="line">            while(j&lt;=e &amp;&amp; nums[i]/2.0 &gt; nums[j]) j++; </span><br><span class="line">            cnt += j-(mid+1); </span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(nums, s, e+1); </span><br><span class="line">        return cnt; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Or:<br>Because left part and right part are sorted, you can replace the Arrays.sort() part with a actual merge sort process. The previous version is easy to write, while this one is faster.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    int[] helper;</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        this.helper = new int[nums.length];</span><br><span class="line">        return mergeSort(nums, 0, nums.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    private int mergeSort(int[] nums, int s, int e)&#123;</span><br><span class="line">        if(s&gt;=e) return 0; </span><br><span class="line">        int mid = s + (e-s)/2; </span><br><span class="line">        int cnt = mergeSort(nums, s, mid) + mergeSort(nums, mid+1, e); </span><br><span class="line">        for(int i = s, j = mid+1; i&lt;=mid; i++)&#123;</span><br><span class="line">            while(j&lt;=e &amp;&amp; nums[i]/2.0 &gt; nums[j]) j++; </span><br><span class="line">            cnt += j-(mid+1); </span><br><span class="line">        &#125;</span><br><span class="line">        //Arrays.sort(nums, s, e+1); </span><br><span class="line">        myMerge(nums, s, mid, e);</span><br><span class="line">        return cnt; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void myMerge(int[] nums, int s, int mid, int e)&#123;</span><br><span class="line">        for(int i = s; i&lt;=e; i++) helper[i] = nums[i];</span><br><span class="line">        int p1 = s;//pointer for left part</span><br><span class="line">        int p2 = mid+1;//pointer for rigth part</span><br><span class="line">        int i = s;//pointer for sorted array</span><br><span class="line">        while(p1&lt;=mid || p2&lt;=e)&#123;</span><br><span class="line">            if(p1&gt;mid || (p2&lt;=e &amp;&amp; helper[p1] &gt;= helper[p2]))&#123;</span><br><span class="line">                nums[i++] = helper[p2++];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                nums[i++] = helper[p1++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>BST<br>BST solution is no longer acceptable, because it’s performance can be very bad, O(n^2) actually, for extreme cases like [1,2,3,4……49999], due to the its unbalance, but I am still providing it below just FYI.<br>We build the Binary Search Tree from right to left, and at the same time, search the partially built tree with nums[i]/2.0. The code below should be clear enough.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        Node root = null;</span><br><span class="line">        int[] cnt = new int[1];</span><br><span class="line">        for(int i = nums.length-1; i&gt;=0; i--)&#123;</span><br><span class="line">            search(cnt, root, nums[i]/2.0);//search and count the partially built tree</span><br><span class="line">            root = build(nums[i], root);//add nums[i] to BST</span><br><span class="line">        &#125;</span><br><span class="line">        return cnt[0];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private void search(int[] cnt, Node node, double target)&#123;</span><br><span class="line">        if(node==null) return; </span><br><span class="line">        else if(target == node.val) cnt[0] += node.less;</span><br><span class="line">        else if(target &lt; node.val) search(cnt, node.left, target);</span><br><span class="line">        else&#123;</span><br><span class="line">            cnt[0]+=node.less + node.same; </span><br><span class="line">            search(cnt, node.right, target);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private Node build(int val, Node n)&#123;</span><br><span class="line">        if(n==null) return new Node(val);</span><br><span class="line">        else if(val == n.val) n.same+=1;</span><br><span class="line">        else if(val &gt; n.val) n.right = build(val, n.right);</span><br><span class="line">        else&#123;</span><br><span class="line">            n.less += 1;</span><br><span class="line">            n.left = build(val, n.left);</span><br><span class="line">        &#125;</span><br><span class="line">        return n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    class Node&#123;</span><br><span class="line">        int val, less = 0, same = 1;//less: number of nodes that less than this node.val</span><br><span class="line">        Node left, right;</span><br><span class="line">        public Node(int v)&#123;</span><br><span class="line">            this.val = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Similar to this <a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">https://leetcode.com/problems/count-of-smaller-numbers-after-self/</a>. But the main difference is: here, the number to add and the number to search are different (add nums[i], but search nums[i]/2.0), so not a good idea to combine build and search together.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/79227/general-principles-behind-problems-similar-to-reverse-pairs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/79227/general-principles-behind-problems-similar-to-reverse-pairs</a></p>
+<p>General principles behind problems similar to “Reverse Pairs”</p>
+<p>It looks like a host of solutions are out there (BST-based, BIT-based, Merge-sort-based). Here I’d like to focus on the general principles behind these solutions and its possible application to a number of similar problems.</p>
+<p>The fundamental idea is very simple: break down the array and solve for the subproblems.</p>
+<p>A breakdown of an array naturally reminds us of subarrays. To smoothen our following discussion, let’s assume the input array is nums, with a total of n elements. Let nums[i, j] denote the subarray starting from index i to index j (both inclusive), T(i, j) as the same problem applied to this subarray (for example, for Reverse Pairs, T(i, j) will represent the total number of important reverse pairs for subarray nums[i, j]).</p>
+<p>With the definition above, it’s straightforward to identify our original problem as T(0, n - 1). Now the key point is how to construct solutions to the original problem from its subproblems. This is essentially equivalent to building recurrence relations for T(i, j). Since if we can find solutions to T(i, j) from its subproblems, we surely can build solutions to larger subarrays until eventually the whole array is spanned.</p>
+<p>While there may be many ways for establishing recurrence relations for T(i, j), here I will only introduce the following two common ones:</p>
+<ol>
+<li>T(i, j) = T(i, j - 1) + C, i.e., elements will be processed sequentially and C denotes the subproblem for processing the last element of subarray nums[i, j]. We will call this sequential recurrence relation.</li>
+<li>T(i, j) = T(i, m) + T(m + 1, j) + C where m = (i+j)/2, i.e., subarray nums[i, j] will be further partitioned into two parts and C denotes the subproblem for combining the two parts. We will call this partition recurrence relation.</li>
+</ol>
+<p>For either case, the nature of the subproblem C will depend on the problem under consideration, and it will determine the overall time complexity of the original problem. So usually it’s crucial to find efficient algorithm for solving this subproblem in order to have better time performance. Also pay attention to possibilities of overlapping subproblems, in which case a dynamic programming (DP) approach would be preferred.</p>
+<p>Next, I will apply these two recurrence relations to this problem “Reverse Pairs” and list some solutions for your reference.</p>
+<p><strong>I – Sequential recurrence relation</strong></p>
+<p>Again we assume the input array is nums with n elements and T(i, j) denotes the total number of important reverse pairs for subarray nums[i, j]. For sequential recurrence relation, we can set i = 0, i.e., the subarray always starts from the beginning. Therefore we end up with:</p>
+<p>T(0, j) = T(0, j - 1) + C</p>
+<p>where the subproblem C now becomes “find the number of important reverse pairs with the first element of the pair coming from subarray nums[i, j - 1] while the second element of the pair being nums[j]”.</p>
+<p>Note that for a pair (p, q) to be an important reverse pair, it has to satisfy the following two conditions:</p>
+<ol>
+<li>p &lt; q: the first element must come before the second element;</li>
+<li>nums[p] &gt; 2 * nums[q]: the first element has to be greater than twice of the second element.</li>
+</ol>
+<p>For subproblem C, the first condition is met automatically; so we only need to consider the second condition, which is equivalent to searching for all elements within subarray nums[i, j - 1] that are greater than twice of nums[j].</p>
+<p>The straightforward way of searching would be a linear scan of the subarray, which runs at the order of O(j). From the sequential recurrence relation, this leads to the naive O(n^2) solution.</p>
+<p>To improve the searching efficiency, a key observation is that the order of elements in the subarray does not matter, since we are only interested in the total number of important reverse pairs. This suggests we may sort those elements and do a binary search instead of a plain linear scan.</p>
+<p>If the searching space (formed by elements over which the search will be done) is “static” (it does not vary from run to run), placing the elements into an array would be perfect for us to do the binary search. However, this is not the case here. After the j-th element is processed, we need to add it to the searching space so that it becomes searchable for later elements, which renders the searching space expanding as more and more elements are processed.</p>
+<p>Therefore we’d like to strike a balance between searching and insertion operations. This is where data structures like binary search tree (BST) or binary indexed tree (BIT) prevail, which offers relatively fast performance for both operations.</p>
+<p><em>1. BST-based solution</em></p>
+<p>we will define the tree node as follows, where val is the node value and cnt is the total number of elements in the subtree rooted at current node that are greater than or equal to val:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    int val, cnt;</span><br><span class="line">    Node left, right;</span><br><span class="line">        </span><br><span class="line">    Node(int val) &#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">        this.cnt = 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The searching and insertion operations can be done as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">private int search(Node root, long val) &#123;</span><br><span class="line">    if (root == null) &#123;</span><br><span class="line">    	return 0;</span><br><span class="line">    &#125; else if (val == root.val) &#123;</span><br><span class="line">    	return root.cnt;</span><br><span class="line">    &#125; else if (val &lt; root.val) &#123;</span><br><span class="line">    	return root.cnt + search(root.left, val);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">    	return search(root.right, val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private Node insert(Node root, int val) &#123;</span><br><span class="line">    if (root == null) &#123;</span><br><span class="line">        root = new Node(val);</span><br><span class="line">    &#125; else if (val == root.val) &#123;</span><br><span class="line">        root.cnt++;</span><br><span class="line">    &#125; else if (val &lt; root.val) &#123;</span><br><span class="line">        root.left = insert(root.left, val);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        root.cnt++;</span><br><span class="line">        root.right = insert(root.right, val);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And finally the main program, in which we will search for all elements no less than twice of current element plus 1 (converted to long type to avoid overflow) while insert the element itself into the BST.</p>
+<p>Note: this homemade BST is not self-balanced and the time complexity can go as bad as O(n^2) (in fact you will get TLE if you copy and paste the solution here). To guarantee O(nlogn) performance, use one of the self-balanced BST’s (e.g. Red-black tree, AVL tree, etc.).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public int reversePairs(int[] nums) &#123;</span><br><span class="line">    int res = 0;</span><br><span class="line">    Node root = null;</span><br><span class="line">    	</span><br><span class="line">    for (int ele : nums) &#123;</span><br><span class="line">        res += search(root, 2L * ele + 1);</span><br><span class="line">        root = insert(root, ele);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>2. BIT-based solution</em></p>
+<p>For BIT, the searching and insertion operations are:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private int search(int[] bit, int i) &#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    </span><br><span class="line">    while (i &lt; bit.length) &#123;</span><br><span class="line">        sum += bit[i];</span><br><span class="line">        i += i &amp; -i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void insert(int[] bit, int i) &#123;</span><br><span class="line">    while (i &gt; 0) &#123;</span><br><span class="line">        bit[i] += 1;</span><br><span class="line">        i -= i &amp; -i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And the main program, where again we will search for all elements greater than twice of current element while insert the element itself into the BIT. For each element, the “index” function will return its index in the BIT. Unlike the BST-based solution, this is guaranteed to run at O(nlogn).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public int reversePairs(int[] nums) &#123;</span><br><span class="line">    int res = 0;</span><br><span class="line">    int[] copy = Arrays.copyOf(nums, nums.length);</span><br><span class="line">    int[] bit = new int[copy.length + 1];</span><br><span class="line">    </span><br><span class="line">    Arrays.sort(copy);</span><br><span class="line">    </span><br><span class="line">    for (int ele : nums) &#123;</span><br><span class="line">        res += search(bit, index(copy, 2L * ele + 1));</span><br><span class="line">        insert(bit, index(copy, ele));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private int index(int[] arr, long val) &#123;</span><br><span class="line">    int l = 0, r = arr.length - 1, m = 0;</span><br><span class="line">    	</span><br><span class="line">    while (l &lt;= r) &#123;</span><br><span class="line">    	m = l + ((r - l) &gt;&gt; 1);</span><br><span class="line">    		</span><br><span class="line">    	if (arr[m] &gt;= val) &#123;</span><br><span class="line">    	    r = m - 1;</span><br><span class="line">    	&#125; else &#123;</span><br><span class="line">    	    l = m + 1;</span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return l + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>More explanation for the BIT-based solution:</p>
+<ol>
+<li>We want the elements to be sorted so there is a sorted version of the input array which is copy.</li>
+<li>The bit is built upon this sorted array. Its length is one greater than that of the copy array to account for the root.</li>
+<li>Initially the bit is empty and we start doing a sequential scan of the input array. For each element being scanned, we first search the bit to find all elements greater than twice of it and add the result to res. We then insert the element itself into the bit for future search.</li>
+<li>Note that conventionally searching of the bit involves traversing towards the root from some index of the bit, which will yield a predefined running total of the copy array up to the corresponding index. For insertion, the traversing direction will be opposite and go from some index towards the end of the bit array.</li>
+<li>For each scanned element of the input array, its searching index will be given by the index of the first element in the copy array that is greater than twice of it (shifted up by 1 to account for the root), while its insertion index will be the index of the first element in the copy array that is no less than itself (again shifted up by 1). This is what the index function is for.</li>
+<li>For our case, the running total is simply the number of elements encountered during the traversal process. If we stick to the convention above, the running total will be the number of elements smaller than the one at the given index, since the copy array is sorted in ascending order. However, we’d actually like to find the number of elements greater than some value (i.e., twice of the element being scanned), therefore we need to flip the convention. This is what you see inside the search and insert functions: the former traversing towards the end of the bit while the latter towards the root.</li>
+</ol>
+<p><strong>II – Partition recurrence relation</strong></p>
+<p>For partition recurrence relation, setting i = 0, j = n - 1, m = (n-1)/2, we have:</p>
+<p>T(0, n - 1) = T(0, m) + T(m + 1, n - 1) + C</p>
+<p>where the subproblem C now reads “find the number of important reverse pairs with the first element of the pair coming from the left subarray nums[0, m] while the second element of the pair coming from the right subarray nums[m + 1, n - 1]”.</p>
+<p>Again for this subproblem, the first of the two aforementioned conditions is met automatically. As for the second condition, we have as usual this plain linear scan algorithm, applied for each element in the left (or right) subarray. This, to no surprise, leads to the O(n^2) naive solution.</p>
+<p>Fortunately the observation holds true here that the order of elements in the left or right subarray does not matter, which prompts sorting of elements in both subarrays. With both subarrays sorted, the number of important reverse pairs can be found in linear time by employing the so-called two-pointer technique: one pointing to elements in the left subarray while the other to those in the right subarray and both pointers will go only in one direction due to the ordering of the elements.</p>
+<p>The last question is which algorithm is best here to sort the subarrays. Since we need to partition the array into halves anyway, it is most natural to adapt it into a Merge-sort. Another point in favor of Merge-sort is that the searching process above can be embedded seamlessly into its merging stage.</p>
+<p>So here is the Merge-sort-based solution, where the function “reversePairsSub” will return the total number of important reverse pairs within subarray nums[l, r]. The two-pointer searching process is represented by the nested while loop involving variable p, while the rest is the standard merging algorithm.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public int reversePairs(int[] nums) &#123;</span><br><span class="line">    return reversePairsSub(nums, 0, nums.length - 1);</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">private int reversePairsSub(int[] nums, int l, int r) &#123;</span><br><span class="line">    if (l &gt;= r) return 0;</span><br><span class="line">        </span><br><span class="line">    int m = l + ((r - l) &gt;&gt; 1);</span><br><span class="line">    int res = reversePairsSub(nums, l, m) + reversePairsSub(nums, m + 1, r);</span><br><span class="line">        </span><br><span class="line">    int i = l, j = m + 1, k = 0, p = m + 1;</span><br><span class="line">    int[] merge = new int[r - l + 1];</span><br><span class="line">        </span><br><span class="line">    while (i &lt;= m) &#123;</span><br><span class="line">        while (p &lt;= r &amp;&amp; nums[i] &gt; 2L * nums[p]) p++;</span><br><span class="line">        res += p - (m + 1);</span><br><span class="line">        	</span><br><span class="line">        while (j &lt;= r &amp;&amp; nums[i] &gt;= nums[j]) merge[k++] = nums[j++];</span><br><span class="line">        merge[k++] = nums[i++];</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">    while (j &lt;= r) merge[k++] = nums[j++];</span><br><span class="line">        </span><br><span class="line">    System.arraycopy(merge, 0, nums, l, merge.length);</span><br><span class="line">        </span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>III – Summary</strong></p>
+<p>Many problems involving arrays can be solved by breaking down the problem into subproblems applied on subarrays and then link the solution to the original problem with those of the subproblems, to which we have sequential recurrence relation and partition recurrence relation. For either case, it’s crucial to identify the subproblem C and find efficient algorithm for approaching it.</p>
+<p>If the subproblem C involves searching on “dynamic searching space”, try to consider data structures that support relatively fast operations on both searching and updating (such as self-balanced BST, BIT, Segment tree, …).</p>
+<p>If the subproblem C of partition recurrence relation involves sorting, Merge-sort would be a nice sorting algorithm to use. Also, the code could be made more elegant if the solution to the subproblem can be embedded into the merging process.</p>
+<p>If there are overlapping among the subproblems T(i, j), it’s preferable to save the intermediate results for future lookup.</p>
+<p>Last let me name a few leetcode problems that fall into the patterns described above and thus can be solved with similar ideas.</p>
+<p><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. Count of Smaller Numbers After Self</a><br><a href="https://leetcode.com/problems/count-of-range-sum/" target="_blank" rel="noopener">327. Count of Range Sum</a></p>
+<p>For leetcode 315, applying the sequential recurrence relation (with j fixed), the subproblem C reads: find the number of elements out of visited ones that are smaller than current element, which involves searching on “dynamic searching space”; applying the partition recurrence relation, we have a subproblem C: for each element in the left half, find the number of elements in the right half that are smaller than it, which can be embedded into the merging process by noting that these elements are exactly those swapped to its left during the merging process.</p>
+<p>For leetcode 327, applying the sequential recurrence relation (with j fixed) on the pre-sum array, the subproblem C reads: find the number of elements out of visited ones that are within the given range, which again involves searching on “dynamic searching space”; applying the partition recurrence relation, we have a subproblem C: for each element in the left half, find the number of elements in the right half that are within the given range, which can be embedded into the merging process using the two-pointer technique.</p>
+<p>Anyway, hope these ideas can sharpen your skills for solving array-related problems.</p>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/78950/java-merge-sort-solution-o-nlog-n" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78950/java-merge-sort-solution-o-nlog-n</a></p>
+<p>Java merge sort solution, O(nlog(n))</p>
+<p>Similar with count smaller after self, just scan the array before merge</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">        </span><br><span class="line">    public int ret;</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        ret = 0;</span><br><span class="line">        mergeSort(nums, 0, nums.length-1);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void mergeSort(int[] nums, int left, int right) &#123;</span><br><span class="line">        if (right &lt;= left) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int middle = left + (right - left)/2;</span><br><span class="line">        mergeSort(nums, left, middle);</span><br><span class="line">        mergeSort(nums,middle+1, right);</span><br><span class="line"></span><br><span class="line">        //count elements</span><br><span class="line">        int count = 0;</span><br><span class="line">        for (int l = left, r = middle+1; l &lt;= middle;) &#123;</span><br><span class="line">            if (r &gt; right || (long)nums[l] &lt;= 2*(long)nums[r]) &#123;</span><br><span class="line">                l++;</span><br><span class="line">                ret += count;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                r++;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //merge sort</span><br><span class="line">        int[] temp = new int[right - left + 1];</span><br><span class="line">        for (int l = left, r = middle+1, k = 0; l &lt;= middle || r &lt;= right;) &#123;</span><br><span class="line">            if (l &lt;= middle &amp;&amp; ((r &gt; right) || nums[l] &lt; nums[r])) &#123;</span><br><span class="line">                temp[k++] = nums[l++];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                temp[k++] = nums[r++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; temp.length; i++) &#123;</span><br><span class="line">            nums[left + i] = temp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Clearer and simpler version, but slower, got the idea by <a href="https://discuss.leetcode.com/topic/78953/c-solution-using-merge-sort" target="_blank" rel="noopener">another solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">        </span><br><span class="line">    public int ret;</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        ret = 0;</span><br><span class="line">        mergeSort(nums, 0, nums.length-1);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void mergeSort(int[] nums, int left, int right) &#123;</span><br><span class="line">        if (right &lt;= left) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int middle = left + (right - left)/2;</span><br><span class="line">        mergeSort(nums, left, middle);</span><br><span class="line">        mergeSort(nums,middle+1, right);</span><br><span class="line"></span><br><span class="line">        //count elements</span><br><span class="line">        int count = 0;</span><br><span class="line">        for (int l = left, r = middle+1; l &lt;= middle;) &#123;</span><br><span class="line">            if (r &gt; right || (long)nums[l] &lt;= 2*(long)nums[r]) &#123;</span><br><span class="line">                l++;</span><br><span class="line">                ret += count;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                r++;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //sort</span><br><span class="line">        Arrays.sort(nums, left, right + 1);   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/78943/clean-java-solution-using-enhanced-binary-search-tree" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/78943/clean-java-solution-using-enhanced-binary-search-tree</a></p>
+<p>Clean Java Solution using Enhanced Binary Search Tree</p>
+<p>This is literally the same problem with<a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener"> 315. Count of Smaller Numbers After Self</a>.<br>The only difference is to find count of numbers smaller than half of the current number after itself.<br>To efficiently search for count of numbers smaller than a target, we can use a Binary Search Tree. There is a little change of the TreeNode to include count of numbers smaller or equal to it. This will make the query even faster because we don’t need to traverse all its left sub-tree to get the count.</p>
+<p>Overall Algorithm:</p>
+<ol>
+<li>Scan the numbers from right to left.</li>
+<li>First search the tree to get count of numbers smaller than nums[i] / 2.0, sum to the final result.</li>
+<li>Insert nums[i] to the tree.</li>
+</ol>
+<p>Insert logic:</p>
+<ol>
+<li>Recursively try to find a place to insert this number. When root is null, its time to create a new node. If meet the same number, just increase the count.</li>
+<li>When try to insert the number to left sub-tree, increase count of current node.</li>
+</ol>
+<p>Query logic:</p>
+<ol>
+<li>If target value is greater than the current value, meaning current node and all left sub-tree are smaller than target, return count (remember it stands for count of numbers smaller or equal to current number) of current node plus any possible smaller number than target in right sub-tree.</li>
+<li>Otherwise, only search left sub-tree.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    class Node &#123;</span><br><span class="line">	int value, count;</span><br><span class="line">	Node left, right;</span><br><span class="line">	Node (int v) &#123;</span><br><span class="line">	    value = v; count = 1;</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    public int reversePairs(int[] nums) &#123;</span><br><span class="line">        int result = 0;</span><br><span class="line">        if (nums == null || nums.length &lt;= 1) return result;</span><br><span class="line">        </span><br><span class="line">        int len = nums.length;</span><br><span class="line">	Node root = new Node(nums[len - 1]);</span><br><span class="line">	    </span><br><span class="line">	for(int i = len - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">	    result += query(root, nums[i] / 2.0);</span><br><span class="line">	    insert(root, nums[i]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private Node insert(Node root, int value) &#123;</span><br><span class="line">	if (root == null) return new Node(value);</span><br><span class="line">		</span><br><span class="line">	if (root.value == value) &#123;</span><br><span class="line">	    root.count++;</span><br><span class="line">	&#125;</span><br><span class="line">	else if (root.value &gt; value) &#123;</span><br><span class="line">	    root.count++;</span><br><span class="line">	    root.left = insert(root.left, value);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">	    root.right = insert(root.right, value);</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	return root;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    private int query(Node root, double value) &#123;</span><br><span class="line">	if (root == null) return 0;</span><br><span class="line">		</span><br><span class="line">	if (value &gt; root.value) &#123;</span><br><span class="line">	    return root.count + query(root.right, value);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">	    return query(root.left, value);</span><br><span class="line">	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/c54c3d19/" title="493. Reverse Pairs">http://yucc.me/p/c54c3d19/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/binary-search-tree/" rel="tag"># binary search tree</a>
+          
+            <a href="/tags/binary-indexed-tree/" rel="tag"># binary indexed tree</a>
+          
+            <a href="/tags/segment-tree/" rel="tag"># segment tree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/1ffd3329/" rel="next" title="491. Increasing Subsequences">
+                <i class="fa fa-chevron-left"></i> 491. Increasing Subsequences
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/84bf5c1d/" rel="prev" title="494. Target Sum">
+                494. Target Sum <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cpp"><span class="nav-text">cpp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#python"><span class="nav-text">python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java"><span class="nav-text">java</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>

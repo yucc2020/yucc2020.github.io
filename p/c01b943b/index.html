@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="leetcode,hard,depth first search,breadth first search," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="34.9%  https://leetcode.com/problems/remove-invalid-parentheses/#/description Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. No">
+<meta name="keywords" content="leetcode,hard,depth first search,breadth first search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="301. Remove Invalid Parentheses">
+<meta property="og:url" content="http://yucc.me/p/c01b943b/index.html">
+<meta property="og:site_name" content="不踏坑的Yu同学">
+<meta property="og:description" content="34.9%  https://leetcode.com/problems/remove-invalid-parentheses/#/description Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. No">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-23T11:22:16.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="301. Remove Invalid Parentheses">
+<meta name="twitter:description" content="34.9%  https://leetcode.com/problems/remove-invalid-parentheses/#/description Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results. No">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/c01b943b/"/>
+
+
+
+
+
+  <title>301. Remove Invalid Parentheses | 不踏坑的Yu同学</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">不踏坑的Yu同学</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cv">
+          <a href="/CV/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            CV
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/c01b943b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Marco Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="不踏坑的Yu同学">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">301. Remove Invalid Parentheses</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T13:03:23+08:00">
+                2018-05-23 13:03
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T19:22:16+08:00">
+                2018-05-23 19:22
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,868
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>34.9%</li>
+</ul>
+<p><a href="https://leetcode.com/problems/remove-invalid-parentheses/#/description" target="_blank" rel="noopener">https://leetcode.com/problems/remove-invalid-parentheses/#/description</a></p>
+<p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
+<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Examples:</span><br><span class="line">&quot;()())()&quot; -&gt; [&quot;()()()&quot;, &quot;(())()&quot;]</span><br><span class="line">&quot;(a)())()&quot; -&gt; [&quot;(a)()()&quot;, &quot;(a())()&quot;]</span><br><span class="line">&quot;)(&quot; -&gt; [&quot;&quot;]</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<hr>
+<p>方法一：</p>
+<p><a href="https://discuss.leetcode.com/topic/28831/my-c-dfs-solution-16ms" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28831/my-c-dfs-solution-16ms</a></p>
+<p>My C++ DFS Solution - 16ms</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; removeInvalidParentheses(string s) &#123;</span><br><span class="line">        unordered_set&lt;string&gt; result;</span><br><span class="line">        int left_removed = 0;</span><br><span class="line">        int right_removed = 0;</span><br><span class="line">        for(auto c : s) &#123;</span><br><span class="line">            if(c == &apos;(&apos;) &#123;</span><br><span class="line">                ++left_removed;</span><br><span class="line">            &#125;</span><br><span class="line">            if(c == &apos;)&apos;) &#123;</span><br><span class="line">                if(left_removed != 0) &#123;</span><br><span class="line">                    --left_removed;</span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    ++right_removed;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        helper(s, 0, left_removed, right_removed, 0, &quot;&quot;, result);</span><br><span class="line">        return vector&lt;string&gt;(result.begin(), result.end());</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    void helper(string s, int index, int left_removed, int right_removed, int pair, string path, unordered_set&lt;string&gt;&amp; result) &#123;</span><br><span class="line">        if(index == s.size()) &#123;</span><br><span class="line">            if(left_removed == 0 &amp;&amp; right_removed == 0 &amp;&amp; pair == 0) &#123;</span><br><span class="line">                result.insert(path);</span><br><span class="line">            &#125;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if(s[index] != &apos;(&apos; &amp;&amp; s[index] != &apos;)&apos;) &#123;</span><br><span class="line">            helper(s, index + 1, left_removed, right_removed, pair, path + s[index], result);</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            if(s[index] == &apos;(&apos;) &#123;</span><br><span class="line">                if(left_removed &gt; 0) &#123;</span><br><span class="line">                    helper(s, index + 1, left_removed - 1, right_removed, pair, path, result);</span><br><span class="line">                &#125;</span><br><span class="line">                helper(s, index + 1, left_removed, right_removed, pair + 1, path + s[index], result);</span><br><span class="line">            &#125;</span><br><span class="line">            if(s[index] == &apos;)&apos;) &#123;</span><br><span class="line">                if(right_removed &gt; 0) &#123;</span><br><span class="line">                    helper(s, index + 1, left_removed, right_removed - 1, pair, path, result);</span><br><span class="line">                &#125;</span><br><span class="line">                if(pair &gt; 0) &#123;</span><br><span class="line">                    helper(s, index + 1, left_removed, right_removed, pair - 1, path + s[index], result);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/34996/recommend-for-beginners-clean-c-implementation-with-detailed-explaination" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34996/recommend-for-beginners-clean-c-implementation-with-detailed-explaination</a></p>
+<p>[recommend for beginners]clean C++ implementation with detailed explaination</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; removeInvalidParentheses(string s) &#123;</span><br><span class="line">        int remove_left=0, remove_right=0, pair=0;</span><br><span class="line">        /*** use the unordered_set to deal with the duplicate cases ***/</span><br><span class="line">        unordered_set&lt;string&gt; result;</span><br><span class="line">        /***  calculate the remained # of left and right parentheses  ***/</span><br><span class="line">        for(int i=0; i&lt;s.size(); i++)&#123;</span><br><span class="line">            if(s[i]==&apos;(&apos;)   remove_left++;</span><br><span class="line">            else if(s[i]==&apos;)&apos;)&#123;</span><br><span class="line">                if(remove_left &gt; 0) remove_left--;</span><br><span class="line">                else    remove_right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        help(0, 0, remove_left, remove_right, s, &quot;&quot;, result);</span><br><span class="line">        /*** change the unordered_set to vector ***/</span><br><span class="line">        return vector&lt;string&gt;(result.begin(), result.end());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /***</span><br><span class="line">    pair : record the () pair count in the solution</span><br><span class="line">    index : record the cur-position int the string s</span><br><span class="line">    remove_left : the number of left parentheses needed to delete</span><br><span class="line">    remove_right : the number of right parentheses needed to delete</span><br><span class="line">    s : origninal input string    solution : the current produced string</span><br><span class="line">    result : stores all the satisfied solution string</span><br><span class="line">    ***/</span><br><span class="line">    void help(int pair, int index, int remove_left, int remove_right, const string&amp; s, string solution, unordered_set&lt;string&gt;&amp; result)&#123;</span><br><span class="line">        /***   end condition       ***/</span><br><span class="line">        if(index==s.size())&#123;</span><br><span class="line">            /*** check whether the remained string solution is right  ***/</span><br><span class="line">            if(pair==0 &amp;&amp; remove_left==0 &amp;&amp; remove_right==0)    result.insert(solution);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        /***    left-half-parentheses     ***/</span><br><span class="line">        if(s[index]==&apos;(&apos;)&#123;</span><br><span class="line">            /***    remove the left-half-parentheses     ***/</span><br><span class="line">            if(remove_left &gt; 0)     help(pair, index+1, remove_left-1, remove_right, s, solution, result);</span><br><span class="line">            /***    keep  the  left-half-parentheses     ***/</span><br><span class="line">            help(pair+1, index+1, remove_left, remove_right, s, solution+s[index], result);</span><br><span class="line">        &#125;</span><br><span class="line">        /***    right-half-parentheses     ***/</span><br><span class="line">        else if(s[index]==&apos;)&apos;)&#123;</span><br><span class="line">            /***    remove the right-half-parentheses     ***/</span><br><span class="line">            if(remove_right &gt; 0)     help(pair, index+1, remove_left, remove_right-1, s, solution, result);</span><br><span class="line">            /***    keep  the  right-half-parentheses     ***/</span><br><span class="line">            if(pair &gt; 0) help(pair-1, index+1, remove_left, remove_right, s, solution+s[index], result);</span><br><span class="line">        &#125;</span><br><span class="line">        /***    other-characters     ***/</span><br><span class="line">        else&#123;</span><br><span class="line">            help(pair, index+1, remove_left, remove_right, s, solution+s[index], result);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28819/c-depth-limited-dfs-3ms-eliminate-duplicates-without-hashmap" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28819/c-depth-limited-dfs-3ms-eliminate-duplicates-without-hashmap</a></p>
+<p>C++ Depth limited DFS 3ms. Eliminate duplicates without hashmap.</p>
+<p>num1 and num2 stand for the number of ‘(‘ and ‘)’ to remove respectively. Duplicates arise from consecutive ‘(‘ or ‘)’. We only get rid of the first one before going a level further.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    bool isValid(string s) &#123;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for(char &amp;c : s) &#123;</span><br><span class="line">            if(c == &apos;(&apos;) ++sum;</span><br><span class="line">            else if(c == &apos;)&apos;) --sum;</span><br><span class="line">            if(sum &lt; 0) return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum == 0;</span><br><span class="line">    &#125;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; removeInvalidParentheses(string s) &#123;</span><br><span class="line">        int num1 = 0, num2 = 0;</span><br><span class="line">        for(char &amp;c : s) &#123;</span><br><span class="line">            num1 += c == &apos;(&apos;;</span><br><span class="line">            if (num1 == 0) &#123;</span><br><span class="line">                num2 += c == &apos;)&apos;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                num1 -= c == &apos;)&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;string&gt; ret;</span><br><span class="line">        dfs(s, 0, num1, num2, ret);</span><br><span class="line">        return ret;</span><br><span class="line">    &#125;</span><br><span class="line">    void dfs(string s, int beg, int num1, int num2, vector&lt;string&gt; &amp;ret) &#123;</span><br><span class="line">        if(num1 == 0 &amp;&amp; num2 == 0) &#123;</span><br><span class="line">            if(isValid(s))</span><br><span class="line">                ret.push_back(s);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            for(int i = beg; i &lt; s.size(); ++i) &#123;</span><br><span class="line">                string tmp = s;</span><br><span class="line">                if(num2 == 0 &amp;&amp; num1 &gt; 0 &amp;&amp; tmp[i] == &apos;(&apos;) &#123;</span><br><span class="line">                    if(i == beg || tmp[i] != tmp[i - 1]) &#123;</span><br><span class="line">                        tmp.erase(i, 1);</span><br><span class="line">                        dfs(tmp, i, num1 - 1, num2, ret);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                if(num2 &gt; 0 &amp;&amp; tmp[i] == &apos;)&apos;) &#123;</span><br><span class="line">                    if(i == beg || tmp[i] != tmp[i - 1]) &#123;</span><br><span class="line">                        tmp.erase(i, 1);</span><br><span class="line">                        dfs(tmp, i, num1, num2 - 1, ret);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/28833/short-python-bfs" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28833/short-python-bfs</a></p>
+<p>Short Python BFS</p>
+<p>Solution 1</p>
+<p>Being lazy and using eval for checking:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def removeInvalidParentheses(self, s):</span><br><span class="line">    level = &#123;s&#125;</span><br><span class="line">    while True:</span><br><span class="line">        valid = []</span><br><span class="line">        for s in level:</span><br><span class="line">            try:</span><br><span class="line">                eval(&apos;0,&apos; + filter(&apos;()&apos;.count, s).replace(&apos;)&apos;, &apos;),&apos;))</span><br><span class="line">                valid.append(s)</span><br><span class="line">            except:</span><br><span class="line">                pass</span><br><span class="line">        if valid:</span><br><span class="line">            return valid</span><br><span class="line">        level = &#123;s[:i] + s[i+1:] for s in level for i in range(len(s))&#125;</span><br></pre></td></tr></table></figure>
+<p>Update: Meh, ok, checking it myself isn’t that much longer, and it’s three times as fast:</p>
+<p>Solution 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def removeInvalidParentheses(self, s):</span><br><span class="line">    def isvalid(s):</span><br><span class="line">        ctr = 0</span><br><span class="line">        for c in s:</span><br><span class="line">            if c == &apos;(&apos;:</span><br><span class="line">                ctr += 1</span><br><span class="line">            elif c == &apos;)&apos;:</span><br><span class="line">                ctr -= 1</span><br><span class="line">                if ctr &lt; 0:</span><br><span class="line">                    return False</span><br><span class="line">        return ctr == 0</span><br><span class="line">    level = &#123;s&#125;</span><br><span class="line">    while True:</span><br><span class="line">        valid = filter(isvalid, level)</span><br><span class="line">        if valid:</span><br><span class="line">            return valid</span><br><span class="line">        level = &#123;s[:i] + s[i+1:] for s in level for i in range(len(s))&#125;</span><br></pre></td></tr></table></figure>
+<p>Solution 3</p>
+<p>Just a mix of the above two.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def removeInvalidParentheses(self, s):</span><br><span class="line">    def isvalid(s):</span><br><span class="line">        try:</span><br><span class="line">            eval(&apos;0,&apos; + filter(&apos;()&apos;.count, s).replace(&apos;)&apos;, &apos;),&apos;))</span><br><span class="line">            return True</span><br><span class="line">        except:</span><br><span class="line">            pass</span><br><span class="line">    level = &#123;s&#125;</span><br><span class="line">    while True:</span><br><span class="line">        valid = filter(isvalid, level)</span><br><span class="line">        if valid:</span><br><span class="line">            return valid</span><br><span class="line">        level = &#123;s[:i] + s[i+1:] for s in level for i in range(len(s))&#125;</span><br></pre></td></tr></table></figure>
+<p>Solution 4</p>
+<p>Yet another way to do isvalid.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def removeInvalidParentheses(self, s):</span><br><span class="line">    def isvalid(s):</span><br><span class="line">        s = filter(&apos;()&apos;.count, s)</span><br><span class="line">        while &apos;()&apos; in s:</span><br><span class="line">            s = s.replace(&apos;()&apos;, &apos;&apos;)</span><br><span class="line">        return not s</span><br><span class="line">    level = &#123;s&#125;</span><br><span class="line">    while True:</span><br><span class="line">        valid = filter(isvalid, level)</span><br><span class="line">        if valid:</span><br><span class="line">            return valid</span><br><span class="line">        level = &#123;s[:i] + s[i+1:] for s in level for i in range(len(s))&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><a href="https://discuss.leetcode.com/topic/29096/python-dp-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/29096/python-dp-solution</a></p>
+<p>Python DP Solution</p>
+<p>We can perceive the task as minimization the number of removed parenthesis and represent the solution as recursive with parameters si - ‘Start Index’ and oc - ‘Open Count’.</p>
+<p>DropCount = min(DropCount[si + 1][oc], DropCount[si + 1][oc + {1 if s[si] == ‘(‘ else -1}]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">def minDrop(s, si, oc, cache, pseq):</span><br><span class="line">    N = len(s)</span><br><span class="line"></span><br><span class="line">    if oc &lt; 0:</span><br><span class="line">        return N - si + 1</span><br><span class="line"></span><br><span class="line">    if si == N :</span><br><span class="line">        if oc == 0:</span><br><span class="line">            pseq[si][oc] = &#123;&apos;&apos;&#125;</span><br><span class="line">        return oc</span><br><span class="line"></span><br><span class="line">    if cache[si][oc] != -1:</span><br><span class="line">        return cache[si][oc]</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    if s[si] in &apos;()&apos;:</span><br><span class="line">        dc0 = 1 + minDrop(s, si + 1, oc, cache, pseq)</span><br><span class="line">        pseq0 = pseq[si + 1][oc]</span><br><span class="line"></span><br><span class="line">        if s[si] == &apos;(&apos;:</span><br><span class="line">            dc1 = minDrop(s, si + 1, oc + 1, cache, pseq)</span><br><span class="line">            pseq1 = [&apos;(&apos; + x for x in pseq[si + 1][oc + 1]]</span><br><span class="line">        else:</span><br><span class="line">            dc1 = minDrop(s, si + 1, oc - 1, cache, pseq)</span><br><span class="line">            pseq1 = [&apos;)&apos; + x for x in pseq[si + 1][oc - 1]]</span><br><span class="line"></span><br><span class="line">        cache[si][oc] = min(dc0, dc1)</span><br><span class="line"></span><br><span class="line">        # note &apos;=&apos; - in case of eqaulity we keep both combination sets</span><br><span class="line">        if dc0 &gt;= dc1 :</span><br><span class="line">            pseq[si][oc] = pseq[si][oc].union(pseq1)</span><br><span class="line"></span><br><span class="line">        if dc0 &lt;= dc1 :</span><br><span class="line">            pseq[si][oc] = pseq[si][oc].union(pseq0) </span><br><span class="line"></span><br><span class="line">    else:</span><br><span class="line">        cache[si][oc] = minDrop(s, si + 1, oc, cache, pseq)</span><br><span class="line">        pseq[si][oc] = [s[si] + x for x in pseq[si + 1][oc]]</span><br><span class="line"></span><br><span class="line">    return cache[si][oc]</span><br><span class="line"></span><br><span class="line">class Solution(object):</span><br><span class="line">    def removeInvalidParentheses(self, s):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type s: str</span><br><span class="line">        :rtype: List[str]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        N = len(s)</span><br><span class="line">        cache = [[-1 for x in range(N)] for x in range(N)]</span><br><span class="line">        pseq = [[set() for x in range(N + 1)] for x in range(N + 1)]</span><br><span class="line"></span><br><span class="line">        c = minDrop(s, 0, 0, cache, pseq)</span><br><span class="line"></span><br><span class="line">        return list(pseq[0][0])</span><br></pre></td></tr></table></figure>
+<hr>
+<p>101ms, 40.15%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/28827/share-my-java-bfs-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/28827/share-my-java-bfs-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; removeInvalidParentheses(String s) &#123;</span><br><span class="line">        List&lt;String&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        if(s == null) return res;</span><br><span class="line">        </span><br><span class="line">        Set&lt;String&gt; visited = new HashSet&lt;&gt;();</span><br><span class="line">        Queue&lt;String&gt; queue = new LinkedList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        queue.add(s);</span><br><span class="line">        visited.add(s);</span><br><span class="line">        </span><br><span class="line">        boolean found = false;</span><br><span class="line">        </span><br><span class="line">        while(!queue.isEmpty())&#123;</span><br><span class="line">            s = queue.poll();</span><br><span class="line">            </span><br><span class="line">            if(isValid(s))&#123;</span><br><span class="line">                res.add(s);</span><br><span class="line">                found = true;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if(found) continue;</span><br><span class="line">            </span><br><span class="line">            for(int i = 0; i&lt;s.length(); i++)&#123;</span><br><span class="line">                if(s.charAt(i) != &apos;(&apos; &amp;&amp; s.charAt(i) != &apos;)&apos;) continue;</span><br><span class="line">                String t = s.substring(0, i) + s.substring(i+1);</span><br><span class="line">                if(!visited.contains(t))&#123;</span><br><span class="line">                    queue.add(t);</span><br><span class="line">                    visited.add(t);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    boolean isValid(String s)&#123;</span><br><span class="line">        int count = 0;</span><br><span class="line">        for(int i=0; i&lt;s.length(); i++)&#123;</span><br><span class="line">            char c = s.charAt(i);</span><br><span class="line">            if(c==&apos;(&apos;) count++;</span><br><span class="line">            if(c==&apos;)&apos; &amp;&amp; count -- == 0) return false; </span><br><span class="line">        &#125;</span><br><span class="line">        return count == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3ms, 81.22%, October 15, 2016</p>
+<p><a href="https://discuss.leetcode.com/topic/34875/easy-short-concise-and-fast-java-dfs-3-ms-solution" target="_blank" rel="noopener">https://discuss.leetcode.com/topic/34875/easy-short-concise-and-fast-java-dfs-3-ms-solution</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; removeInvalidParentheses(String s) &#123;</span><br><span class="line">        List&lt;String&gt; ans = new ArrayList&lt;&gt;();</span><br><span class="line">        remove(s, ans, 0, 0, new char[]&#123;&apos;(&apos;, &apos;)&apos;&#125;);</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void remove(String s, List&lt;String&gt; ans, int last_i, int last_j, char[] par)&#123;</span><br><span class="line">        for(int stack = 0, i = last_i; i&lt;s.length(); ++i)&#123;</span><br><span class="line">            if(s.charAt(i) == par[0]) stack++;</span><br><span class="line">            if(s.charAt(i) == par[1]) stack--;</span><br><span class="line">            if(stack &gt;= 0) continue;</span><br><span class="line">            for(int j=last_j; j&lt;=i; ++j)</span><br><span class="line">                if(s.charAt(j) == par[1] &amp;&amp; (j==last_j || s.charAt(j-1) != par[1]))</span><br><span class="line">                    remove(s.substring(0, j) + s.substring(j+1, s.length()), ans, i, j, par);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        String reversed = new StringBuilder(s).reverse().toString();</span><br><span class="line">        if(par[0] == &apos;(&apos;)</span><br><span class="line">            remove(reversed, ans, 0, 0, new char[]&#123;&apos;)&apos;, &apos;(&apos;&#125;);</span><br><span class="line">        else</span><br><span class="line">            ans.add(reversed);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>赞赏是最好的支持</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Marco Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Marco Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Marco Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/c01b943b/" title="301. Remove Invalid Parentheses">http://yucc.me/p/c01b943b/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/hard/" rel="tag"># hard</a>
+          
+            <a href="/tags/depth-first-search/" rel="tag"># depth first search</a>
+          
+            <a href="/tags/breadth-first-search/" rel="tag"># breadth first search</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/71a6e0e6/" rel="next" title="300. Longest Increasing Subsequence">
+                <i class="fa fa-chevron-left"></i> 300. Longest Increasing Subsequence
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/p/8423b2f0/" rel="prev" title="303. Range Sum Query - Immutable">
+                303. Range Sum Query - Immutable <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Marco Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">365</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Marco Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
