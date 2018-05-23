@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yucc.me/p/55aa0f10/1.png">
 <meta property="og:image" content="http://yucc.me/p/55aa0f10/3.png">
-<meta property="og:updated_time" content="2018-05-13T23:46:55.186Z">
+<meta property="og:updated_time" content="2018-05-23T04:38:06.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差反向传播（error backpropagation）推导过程【待完成】">
 <meta name="twitter:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-14T07:46:55+08:00">
-                2018-05-14 07:46
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:38:06+08:00">
+                2018-05-23 12:38
               </time>
             
           </span>
@@ -418,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,683
+                  1,689
                 </span>
               
 
@@ -457,7 +457,7 @@
       
         <p>误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squared Error）。</p>
 <a id="more"></a>
-<h2 id="1-前馈神经网络简介"><a href="#1-前馈神经网络简介" class="headerlink" title="1. 前馈神经网络简介"></a>1. 前馈神经网络简介</h2><p>基本网络如图1所示，这是一个基本的神经网络，下面来解析这个网络结构。</p>
+<h3 id="1-前馈神经网络简介"><a href="#1-前馈神经网络简介" class="headerlink" title="1. 前馈神经网络简介"></a>1. 前馈神经网络简介</h3><p>基本网络如图1所示，这是一个基本的神经网络，下面来解析这个网络结构。</p>
 <img src="/p/55aa0f10/1.png" title="图1：两层神经网络的网络图。输入变量、隐含变量、输出变量表示的节点，权参数被表示为节点之间的链接，其中偏置参数被表示为来自额外的输入变量$\\x_0\\$和隐含变量$\\z_0\\$的链接。箭头表示信息流在网络中传播的方向。">
 <p>首先，我们构造输入变量$x_1,…,x_D$的线性组合，形式为：</p>
 <p>$$<br>\begin{equation}<br>{a_j} = \sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}<br>\end{equation} \tag{1}<br>$$</p>
@@ -477,9 +477,9 @@
 <p>第二层的偏置也做类似处理，最终整体网络函数可以从公式（5）变为：</p>
 <p>$$<br>\begin{equation}<br>y_k = \sigma(\sum_{i=0}^K {w_{kj}}^{(2)} \cdot h(\sum_{i=0}^D {w_{ji}}^{(1)} \cdot x_i))<br>\end{equation} \tag{7}<br>$$</p>
 <p>至此，一个简单的前馈神经网络已经完成了。</p>
-<h2 id="2-误差反向传播算法简介"><a href="#2-误差反向传播算法简介" class="headerlink" title="2. 误差反向传播算法简介"></a>2. 误差反向传播算法简介</h2><p>我们的目标是寻找一种计算前馈神经网络的误差函数$E(w)$的梯度高效的方法。我们将会看到，可以使用局部信息传递的思想来完成这一点。在局部信息传递的思想中，信息在神经网络中交替的向前、向后传播。这种方法被称为误差反向传播（error propagation），有时被称为backprop，通常简称bp算法。</p>
+<h3 id="2-误差反向传播算法简介"><a href="#2-误差反向传播算法简介" class="headerlink" title="2. 误差反向传播算法简介"></a>2. 误差反向传播算法简介</h3><p>我们的目标是寻找一种计算前馈神经网络的误差函数$E(w)$的梯度高效的方法。我们将会看到，可以使用局部信息传递的思想来完成这一点。在局部信息传递的思想中，信息在神经网络中交替的向前、向后传播。这种方法被称为误差反向传播（error propagation），有时被称为backprop，通常简称bp算法。</p>
 <p>关于训练过程的本质。大部分训练算法涉及到一个迭代的步骤用于误差函数的最小化，以及通过一系列的步骤进行权重调节。在每一个这样迭代过程中，我们可以区分这两个不同的阶段。<strong>在第一个阶段，误差函数关于权重的导数必须被计算出来。</strong>正如我们稍后看到的那样，反向传播算法的一个重要贡献是提供了计算这些导数的一个高效的方法。由于正是这个阶段，误差通过网络进行传播，因此我们将专门使用反向传播这个属于来描述计算导数的过程。<strong>在第二个阶段，导数用于计算权重的调整量。</strong>最简单的方法，也是最开始由Rumelhart et al.（1986）考虑的方法，涉及到梯度下降。认识到这两个阶段属于不同的阶段是很重要的。因此，第一阶段，即为了计算导数而进行的误差在网络中的反向传播阶段，可以应用于许多不同种类的网络，而不仅仅是多层感知器。它也可以 应用于其他的误差函数，而不仅仅是简单的平方和误差函数。它也可以用于计算其他类型的导数。第二阶段，即使用计算过的导数调整权重的阶段，可以使用许多最优化方法处理，许多最优化方法本质上要比简单的梯度下降更强大。</p>
-<h2 id="3-简单线性模型误差导数的计算"><a href="#3-简单线性模型误差导数的计算" class="headerlink" title="3. 简单线性模型误差导数的计算"></a>3. 简单线性模型误差导数的计算</h2><p>许多实际应用中使用的误差函数，例如针对一组独立同分布的数据的最大似然方法定义的误差函数，由若干项的求和公式组成。每一项对应于训练集中的一个数据点，即：</p>
+<h3 id="3-简单线性模型误差导数的计算"><a href="#3-简单线性模型误差导数的计算" class="headerlink" title="3. 简单线性模型误差导数的计算"></a>3. 简单线性模型误差导数的计算</h3><p>许多实际应用中使用的误差函数，例如针对一组独立同分布的数据的最大似然方法定义的误差函数，由若干项的求和公式组成。每一项对应于训练集中的一个数据点，即：</p>
 <p>$$<br>\begin{equation}<br>E(w) = \sum_{n=1}^N {w}<br>\end{equation} \tag{8}<br>$$</p>
 <p>这里，我们要考虑计算$\nabla E_n(w)$的问题。这可以直接使用顺序优化的方法计算，或者使用批处理方法在训练集上进行累加。</p>
 <p>对于一个特定的输入模式n（等价于对于一个特定的样本$\vec{x}$），误差函数形式为：</p>
@@ -487,10 +487,11 @@
 <p>其中$y_{nk} = y_k(\vec{x_n}, \vec{w})$，$y_{nk}$表示对于特定输入模式的输出，$t_{nk}$表示对应的实际标签（或预测值）。这个误差函数关于权重$w_{ji}$的梯度为：</p>
 <p>$$<br>\begin{equation}<br>\frac{E_n}{w_{ji}} = (y_{nj} - t_{nj})x_{ni}<br>\end{equation} \tag{10}<br>$$</p>
 <p>它可以表示为与链接$w_{ji}$的输出端关联的“误差信号”$y_{nj}-t_{nj}$和与链接的输入端相关连的变量$x_{ni}$的乘积。我们现在会看到这个简单的结果如何扩展到更复杂的多层前馈神经网络中。</p>
-<h2 id="4-通用前馈神经网络bp算法推导"><a href="#4-通用前馈神经网络bp算法推导" class="headerlink" title="4. 通用前馈神经网络bp算法推导"></a>4. 通用前馈神经网络bp算法推导</h2><img src="/p/55aa0f10/3.png" title="图2：">
-<h2 id="5-一个简单的例子"><a href="#5-一个简单的例子" class="headerlink" title="5. 一个简单的例子"></a>5. 一个简单的例子</h2><p>参考资料：</p>
+<h3 id="4-通用前馈神经网络bp算法推导"><a href="#4-通用前馈神经网络bp算法推导" class="headerlink" title="4. 通用前馈神经网络bp算法推导"></a>4. 通用前馈神经网络bp算法推导</h3><img src="/p/55aa0f10/3.png" title="图2：">
+<h3 id="5-一个简单的例子"><a href="#5-一个简单的例子" class="headerlink" title="5. 一个简单的例子"></a>5. 一个简单的例子</h3><p>参考资料：</p>
 <ol>
 <li>BISHOP, C, M. Pattern recognition and machine learning[M]. New York:Springer, 2006. 225-244</li>
+<li><a href="http://yucc.me/p/55aa0f10/">http://yucc.me/p/55aa0f10/</a></li>
 </ol>
 
       
@@ -765,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前馈神经网络简介"><span class="nav-text">1. 前馈神经网络简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-误差反向传播算法简介"><span class="nav-text">2. 误差反向传播算法简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-简单线性模型误差导数的计算"><span class="nav-text">3. 简单线性模型误差导数的计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-通用前馈神经网络bp算法推导"><span class="nav-text">4. 通用前馈神经网络bp算法推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-一个简单的例子"><span class="nav-text">5. 一个简单的例子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-前馈神经网络简介"><span class="nav-text">1. 前馈神经网络简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-误差反向传播算法简介"><span class="nav-text">2. 误差反向传播算法简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-简单线性模型误差导数的计算"><span class="nav-text">3. 简单线性模型误差导数的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-通用前馈神经网络bp算法推导"><span class="nav-text">4. 通用前馈神经网络bp算法推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-一个简单的例子"><span class="nav-text">5. 一个简单的例子</span></a></li></ol></div>
             
 
           </div>
