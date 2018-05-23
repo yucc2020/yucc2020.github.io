@@ -94,16 +94,16 @@
 <meta property="og:description" content="本论文是2017年的一篇使用GAN网络做单声道语音增强的论文[1]，在github上有作者的开源代码[2]，语音增强的效果有官方示例[3]。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/1.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/2.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/3.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/4.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/10.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/5.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/6.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/7.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/8.png">
-<meta property="og:image" content="http://yucc.me/p/bea139a/9.png">
-<meta property="og:updated_time" content="2018-05-23T16:26:08.512Z">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/2.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/3.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/4.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/10.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/5.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/6.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/7.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/8.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/9.png">
+<meta property="og:updated_time" content="2018-05-23T16:38:32.909Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《SEGAN: Speech Enhancement Generative Adversarial Network》阅读笔记">
 <meta name="twitter:description" content="本论文是2017年的一篇使用GAN网络做单声道语音增强的论文[1]，在github上有作者的开源代码[2]，语音增强的效果有官方示例[3]。">
@@ -369,8 +369,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-24T00:26:08+08:00">
-                2018-05-24 00:26
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-24T00:38:32+08:00">
+                2018-05-24 00:38
               </time>
             
           </span>
@@ -479,30 +479,30 @@
 <p>GAN中，有两个单元，一个负责映射，叫做生成器G，另一个负责判别，叫做判别器D。G负责映射，G的映射负责从Z分布映射到X分布，不同于传统的输入输出映射。判别器D是一个二分类器，输出值是0-1之间的数字。</p>
 <p>G将样本z映射为$\hat{x}$，而真实样本为$x$，G的目的是尽可能的使$\hat{x}$与$x$相似，以迷惑判别器D。而D的功能是区分真实样本$x$和G生成的样本$\hat{x}$，真实样本尽可能的判为1，G生成的尽可能的判为0。所以G的目的在于迷惑D，而D的目的是不被G迷惑。所以叫生成对抗网络。</p>
 <p>于是就有了对抗网络的基本公式：</p>
-<img src="http://p94fw3huv.bkt.clouddn.com/static/images/1.png">
+<img title="公式1" src="http://p94fw3huv.bkt.clouddn.com/static/images/1.png">
 <p>其中pdata(x)表示真实样本，pz(z)表示经过G之前的样本。 意义就很明显了，对于D优化的目标就是希望真实样本输出越大，生成的样本尽可能输出小，使得结果最大。对于G，希望生成的时候，尽可能的骗过D，使得目标函数最小。</p>
 <p>下面的公式2是带额外信息的GAN。</p>
-<img src="/p/bea139a/2.png" title="公式2">
+<img title="公式2" src="http://p94fw3huv.bkt.clouddn.com/static/images/2.png">
 <p>一些论文致力于提升GAN网络生成的质量。比如，在原始的训练中，由于使用sigmoid交叉熵损失，会出现梯度消失的问题。这时，可以将损失替换为最小平方（least square）的Least Square GAN（LSGAN）方法。结果如下：</p>
-<img src="/p/bea139a/3.png" title="公式3">
-<img src="/p/bea139a/4.png" title="公式4">
+<img title="公式3" src="http://p94fw3huv.bkt.clouddn.com/static/images/3.png">
+<img title="公式4" src="http://p94fw3huv.bkt.clouddn.com/static/images/4.png">
 <p>关于gan的更多解释：</p>
 <p>有人说GAN强大之处在于可以自动的学习原始真实样本集的数据分布，不管这个分布多么的复杂，只要训练的足够好就可以学出来。针对这一点，感觉有必要好好理解一下为什么别人会这么说。</p>
 <p>我们知道，传统的机器学习方法，我们一般都会定义一个什么模型让数据去学习。比如说假设我们知道原始数据属于高斯分布呀，只是不知道高斯分布的参数，这个时候我们定义高斯分布，然后利用数据去学习高斯分布的参数得到我们最终的模型。再比如说我们定义一个分类器，比如SVM，然后强行让数据进行东变西变，进行各种高维映射，最后可以变成一个简单的分布，SVM可以很轻易的进行二分类分开，其实SVM已经放松了这种映射关系了，但是也是给了一个模型，这个模型就是核映射（什么径向基函数等等），说白了其实也好像是你事先知道让数据该怎么映射一样，只是核映射的参数可以学习罢了。</p>
 <p>所有的这些方法都在直接或者间接的告诉数据你该怎么映射一样，只是不同的映射方法能力不一样。那么我们再来看看GAN，生成模型最后可以通过噪声生成一个完整的真实数据（比如人脸），说明生成模型已经掌握了从随机噪声到人脸数据的分布规律了，有了这个规律，想生成人脸还不容易。然而这个规律我们开始知道吗？显然不知道，如果让你说从随机噪声到人脸应该服从什么分布，你不可能知道。这是一层层映射之后组合起来的非常复杂的分布映射规律。然而GAN的机制可以学习到，也就是说GAN学习到了真实样本集的数据分布。</p>
 <p>再拿原论文中的一张图来解释： </p>
-<img src="/p/bea139a/10.png" title="图1">
+<img title="图1" src="http://p94fw3huv.bkt.clouddn.com/static/images/10.png">
 <p>这张图表明的是GAN的生成网络如何一步步从均匀分布学习到正太分布的。原始数据x服从正太分布，这个过程你也没告诉生成网络说你得用正太分布来学习，但是生成网络学习到了。假设你改一下x的分布，不管什么分布，生成网络可能也能学到。这就是GAN可以自动学习真实数据的分布的强大之处。</p>
 <p>还有人说GAN强大之处在于可以自动的定义潜在损失函数。 什么意思呢，这应该说的是判别网络可以自动学习到一个好的判别方法，其实就是等效的理解为可以学习到好的损失函数，来比较好或者不好的判别出来结果。虽然大的loss函数还是我们人为定义的，基本上对于多数GAN也都这么定义就可以了，但是判别网络潜在学习到的损失函数隐藏在网络之中，不同的问题这个函数就不一样，所以说可以自动学习这个潜在的损失函数。</p>
 <h3 id="3-Speech-Enhancement-GAN-amp-amp-Experimental-Setup"><a href="#3-Speech-Enhancement-GAN-amp-amp-Experimental-Setup" class="headerlink" title="3. Speech Enhancement GAN &amp;&amp; Experimental Setup"></a>3. Speech Enhancement GAN &amp;&amp; Experimental Setup</h3><p>这部分是本文的而核心SEGAN。</p>
 <p>整个网络全部是由CNN组成。 下图是生成器G，它是一个encoder-decoder。D的结构是encoder，上面接了一个降维层。将8* 1024个参数降为8个。</p>
 <p>encoder由步长为2的1维卷积层构成。16384×1, 8192×16, 4096×32, 2048×32, 1024×64, 512×64, 256×128, 128×128, 64×256,<br>32×256, 16×512, and 8×1024。</p>
-<img src="/p/bea139a/5.png" title="图2：生成器G，encoder-decoder">
+<img title="图2" alt="生成器G，encoder-decoder" src="http://p94fw3huv.bkt.clouddn.com/static/images/5.png">
 <p>至于SEGAN的训练，其实跟普通的GAN很类似。如下图所示，先训练一个判别器D。D的输入为纯净信号和经过生成器增强后的信号。然后再固定判别器D，改变生成器G的参数。</p>
-<img src="/p/bea139a/6.png" title="图3">
+<img title="图3" src="http://p94fw3huv.bkt.clouddn.com/static/images/6.png">
 <p>其中，有一点，在初步实验中，我们发现在G的损失中增加一个次要成分是很方便的，以便将它的世代与干净的例子之间的距离减至最小。 为了测量这种距离，我们选择了L1范数，因为它已被证明在图像处理领域有效。</p>
 <p>所以最终G的损失函数如公式6：</p>
-<img src="/p/bea139a/7.png" title="公式5">
+<img title="公式5" src="http://p94fw3huv.bkt.clouddn.com/static/images/7.png">
 <h3 id="4-Results"><a href="#4-Results" class="headerlink" title="4. Results"></a>4. Results</h3><p>分为客观和主观评价两部分。</p>
 <h4 id="4-1-Objective-Evaluation"><a href="#4-1-Objective-Evaluation" class="headerlink" title="4.1 Objective Evaluation"></a>4.1 Objective Evaluation</h4><p>客观评价，有以下几个指标，都是越大越好：</p>
 <ol>
@@ -513,10 +513,10 @@
 <li>SSNR: Segmental SNR (from 0 to ∞).</li>
 </ol>
 <p>结果如下图：</p>
-<img src="/p/bea139a/8.png" title="图4">
+<img title="图4" src="http://p94fw3huv.bkt.clouddn.com/static/images/8.png">
 <p>可以看到，segan在PESQ指标上表现稍微差一点。在所有其他指标上，这些指标更与语音失真有关系，segan都比wiener更好。segan产生更少的语音失真（CSIG）和移除噪声更有效（CBAK和SSNR）。所以，segan能在二者之间取得更好的权衡。</p>
 <h4 id="4-2-Subjective-Evaluation"><a href="#4-2-Subjective-Evaluation" class="headerlink" title="4.2 Subjective Evaluation"></a>4.2 Subjective Evaluation</h4><p>主观描述，就是一段音频，给出它原始音频、wiener处理的音频、segan处理后的音频，不显示具体哪个对应哪个，让被测试者打分，1-5之间，分数越高代表越好。 16个测试者，20个句子。效果如下图。</p>
-<img src="/p/bea139a/9.png" title="图5">
+<img title="图5" src="http://p94fw3huv.bkt.clouddn.com/static/images/9.png">
 <h3 id="5-Conclusions"><a href="#5-Conclusions" class="headerlink" title="5. Conclusions"></a>5. Conclusions</h3><p>在这项工作中，端对端语音增强方法已经在生成对抗框架内实施。该模型使用编码器-解码器完全卷积结构，使得它能够快速操作来对波形块进行去噪。 结果表明，不仅该方法是可行的，而且它也可以作当前方法的有效替代。</p>
 <h3 id="疑惑："><a href="#疑惑：" class="headerlink" title="疑惑："></a>疑惑：</h3><ol>
 <li>对称的解卷积是如何做的？</li>
