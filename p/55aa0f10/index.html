@@ -93,13 +93,13 @@
 <meta property="og:site_name" content="不踏坑的Yu同学">
 <meta property="og:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yucc.me/p/55aa0f10/1.png">
-<meta property="og:image" content="http://yucc.me/p/55aa0f10/3.png">
-<meta property="og:updated_time" content="2018-05-23T04:38:06.599Z">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/21.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/22.png">
+<meta property="og:updated_time" content="2018-05-23T16:55:27.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="误差反向传播（error backpropagation）推导过程【待完成】">
 <meta name="twitter:description" content="误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squ">
-<meta name="twitter:image" content="http://yucc.me/p/55aa0f10/1.png">
+<meta name="twitter:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/21.png">
 
 
 
@@ -361,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:38:06+08:00">
-                2018-05-23 12:38
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-24T00:55:27+08:00">
+                2018-05-24 00:55
               </time>
             
           </span>
@@ -458,7 +458,7 @@
         <p>误差反向传播算法（error backpropagation）推导过程是每个做深度学习（deep learning）的人员必会的基本功。这里是针对前馈神经网络（Feed Forward Neural Network）或者叫多层感知机（Multi Layer Perceptron）或者叫深度神经网络（Deep Neural Network）的做一个推导。此处用到的误差函数是均方误差（Mean Squared Error）。</p>
 <a id="more"></a>
 <h3 id="1-前馈神经网络简介"><a href="#1-前馈神经网络简介" class="headerlink" title="1. 前馈神经网络简介"></a>1. 前馈神经网络简介</h3><p>基本网络如图1所示，这是一个基本的神经网络，下面来解析这个网络结构。</p>
-<img src="/p/55aa0f10/1.png" title="图1：两层神经网络的网络图。输入变量、隐含变量、输出变量表示的节点，权参数被表示为节点之间的链接，其中偏置参数被表示为来自额外的输入变量$\\x_0\\$和隐含变量$\\z_0\\$的链接。箭头表示信息流在网络中传播的方向。">
+<img title="图1" alt="两层神经网络的网络图。输入变量、隐含变量、输出变量表示的节点，权参数被表示为节点之间的链接，其中偏置参数被表示为来自额外的输入变量$\\x_0\\$和隐含变量$\\z_0\\$的链接。箭头表示信息流在网络中传播的方向。" src="http://p94fw3huv.bkt.clouddn.com/static/images/21.png">
 <p>首先，我们构造输入变量$x_1,…,x_D$的线性组合，形式为：</p>
 <p>$$<br>\begin{equation}<br>{a_j} = \sum_{i=1}^D {w_{ji}}^{(1)} \cdot x_i + {w_{j0}}^{(1)}<br>\end{equation} \tag{1}<br>$$</p>
 <p>其中$j=1,…,M$，M是输出的总量，且上标(1)表示对应的参数是神经网络的第一层。${w_{ji}}^{(1)}$叫做权重（weight），参数$w_{j0}$叫做偏置（bias）,$a_j$叫做激活(activation)。每个激活都使用一个非线性激活函数(activation function) $h(·)$进行变换，得：</p>
@@ -487,7 +487,7 @@
 <p>其中$y_{nk} = y_k(\vec{x_n}, \vec{w})$，$y_{nk}$表示对于特定输入模式的输出，$t_{nk}$表示对应的实际标签（或预测值）。这个误差函数关于权重$w_{ji}$的梯度为：</p>
 <p>$$<br>\begin{equation}<br>\frac{E_n}{w_{ji}} = (y_{nj} - t_{nj})x_{ni}<br>\end{equation} \tag{10}<br>$$</p>
 <p>它可以表示为与链接$w_{ji}$的输出端关联的“误差信号”$y_{nj}-t_{nj}$和与链接的输入端相关连的变量$x_{ni}$的乘积。我们现在会看到这个简单的结果如何扩展到更复杂的多层前馈神经网络中。</p>
-<h3 id="4-通用前馈神经网络bp算法推导"><a href="#4-通用前馈神经网络bp算法推导" class="headerlink" title="4. 通用前馈神经网络bp算法推导"></a>4. 通用前馈神经网络bp算法推导</h3><img src="/p/55aa0f10/3.png" title="图2：">
+<h3 id="4-通用前馈神经网络bp算法推导"><a href="#4-通用前馈神经网络bp算法推导" class="headerlink" title="4. 通用前馈神经网络bp算法推导"></a>4. 通用前馈神经网络bp算法推导</h3><img title="图2" src="http://p94fw3huv.bkt.clouddn.com/static/images/22.png">
 <h3 id="5-一个简单的例子"><a href="#5-一个简单的例子" class="headerlink" title="5. 一个简单的例子"></a>5. 一个简单的例子</h3><p>参考资料：</p>
 <ol>
 <li>BISHOP, C, M. Pattern recognition and machine learning[M]. New York:Springer, 2006. 225-244</li>

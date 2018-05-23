@@ -93,18 +93,18 @@
 <meta property="og:site_name" content="不踏坑的Yu同学">
 <meta property="og:description" content="这是2017年Xu Yong关于使用多任务学习和使用mask做后处理做语音增强的一篇论文[1]。 同样有github源码[2]及展示demo[3,4]。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/1.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/2.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/3.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/4.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/5.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/6.png">
-<meta property="og:image" content="http://yucc.me/p/719f3cc0/7.png">
-<meta property="og:updated_time" content="2018-05-23T04:36:53.132Z">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/14.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/15.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/16.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/17.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/18.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/19.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/20.png">
+<meta property="og:updated_time" content="2018-05-23T16:53:25.131Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Multi-objective Learning and Mask-based Post-processing for Deep Neural Network based Speech Enhancement》阅读笔记">
 <meta name="twitter:description" content="这是2017年Xu Yong关于使用多任务学习和使用mask做后处理做语音增强的一篇论文[1]。 同样有github源码[2]及展示demo[3,4]。">
-<meta name="twitter:image" content="http://yucc.me/p/719f3cc0/1.png">
+<meta name="twitter:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/14.png">
 
 
 
@@ -366,8 +366,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-23T12:36:53+08:00">
-                2018-05-23 12:36
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-24T00:53:25+08:00">
+                2018-05-24 00:53
               </time>
             
           </span>
@@ -465,18 +465,18 @@
 <p><a href="https://arxiv.org/abs/1703.07172" target="_blank" rel="noopener">论文原文：Multi-objective Learning and Mask-based Post-processing for Deep Neural<br>  Network based Speech Enhancement</a></p>
 <h3 id="1-Abstract"><a href="#1-Abstract" class="headerlink" title="1. Abstract"></a>1. Abstract</h3><p>论文主要的学习目标是clean log-power spectra (LPS) features，因为LPS可以直接用于构造增强后的信号。作为多任务学习，使用了附加的架构，去学习比如MFCC特征，同时去学习类别信息，比如ideal binary mask (IBM)。这些特征其实也是对DNN的一种限制，潜在的能提高LPS这个首要目标的效果。</p>
 <h3 id="2-Introduction"><a href="#2-Introduction" class="headerlink" title="2. Introduction"></a>2. Introduction</h3><h3 id="3-Multi-objective-Learning-for-DNN-based-Speech-Enhancement"><a href="#3-Multi-objective-Learning-for-DNN-based-Speech-Enhancement" class="headerlink" title="3. Multi-objective Learning for DNN-based Speech Enhancement"></a>3. Multi-objective Learning for DNN-based Speech Enhancement</h3><p>多任务学习框架如下图图1所示：</p>
-<img src="/p/719f3cc0/1.png" title="图1">
+<img title="图1" src="http://p94fw3huv.bkt.clouddn.com/static/images/14.png">
 <p>输入是带噪语音信号，输出是干净音频信号。只是输入输出有时有带噪的特征，输出是干净的特征。输出有时有类别信息。</p>
 <p>公式2是单独的dnn+LPS训练的误差函数，公式3是多输出的。</p>
-<img src="/p/719f3cc0/2.png" title="公式1">
-<img src="/p/719f3cc0/3.png" title="公式2">
+<img title="公式1" src="http://p94fw3huv.bkt.clouddn.com/static/images/15.png">
+<img title="公式2" src="http://p94fw3huv.bkt.clouddn.com/static/images/16.png">
 <h4 id="3-1-Joint-Prediction-of-LPS-with-MFCC"><a href="#3-1-Joint-Prediction-of-LPS-with-MFCC" class="headerlink" title="3.1 Joint Prediction of LPS with MFCC"></a>3.1 Joint Prediction of LPS with MFCC</h4><p>这个就是LPS和MFCC两个的多输出了。</p>
 <h4 id="3-2-Joint-Prediction-of-LPS-with-IBM"><a href="#3-2-Joint-Prediction-of-LPS-with-IBM" class="headerlink" title="3.2 Joint Prediction of LPS with IBM"></a>3.2 Joint Prediction of LPS with IBM</h4><p>同上，LPS+IBM</p>
 <h4 id="3-3-IBM-based-Post-processing"><a href="#3-3-IBM-based-Post-processing" class="headerlink" title="3.3 IBM-based Post-processing"></a>3.3 IBM-based Post-processing</h4><p>IBM用于LPS的后处理。如公式3，如果IBM大于一定阈值，说明SNR很高，就不必做语音增强了，所以直接用原始的语音信息。如果中间就是原始信息和增强后的信息的均值。如果低于一定阈值，就是使用处理后的信息。</p>
-<img src="/p/719f3cc0/4.png" title="公式3">
-<h3 id="4-Experimental-Results-and-Analysis"><a href="#4-Experimental-Results-and-Analysis" class="headerlink" title="4. Experimental Results and Analysis"></a>4. Experimental Results and Analysis</h3><img src="/p/719f3cc0/5.png" title="图2">
-<img src="/p/719f3cc0/6.png" title="图3">
-<img src="/p/719f3cc0/7.png" title="图4">
+<img title="公式3" src="http://p94fw3huv.bkt.clouddn.com/static/images/17.png">
+<h3 id="4-Experimental-Results-and-Analysis"><a href="#4-Experimental-Results-and-Analysis" class="headerlink" title="4. Experimental Results and Analysis"></a>4. Experimental Results and Analysis</h3><img title="图2" src="http://p94fw3huv.bkt.clouddn.com/static/images/18.png">
+<img title="图3" src="http://p94fw3huv.bkt.clouddn.com/static/images/19.png">
+<img title="图4" src="http://p94fw3huv.bkt.clouddn.com/static/images/20.png">
 <h4 id="5-Conclusion"><a href="#5-Conclusion" class="headerlink" title="5. Conclusion"></a>5. Conclusion</h4><p>本文提出了多目标学习以改善语音增强的DNN训练。 显示目标函数中添加来自MFCC或IBM等功能的约束可获得更准确的干净的LPS估计。 MFCC可以使对数频谱失真在低频下更加一致; IBM可以明确表示T-F单元的语音呈现信息，因此可以提供更高的SSNR。 此外，可以采用估计的IBM来进行后期处理，以减轻基于回归的DNN中的高估或低估问题。 基于IBM的后处理对于减少语音失真至关重要，特别是在高信噪比T-F单元。</p>
 <p>参考资料：</p>
 <ol>
