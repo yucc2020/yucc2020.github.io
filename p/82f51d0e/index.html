@@ -94,7 +94,7 @@
 <meta property="og:description" content="本文主要内容有：   错误率（Error Rate）与准确率（Accuracy、ACC） 混淆矩阵（Confusion matrix） 精确率（Precision）、召回率（Recall）、F1值（F1-score） 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1） ROC与A">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/13.jpg">
-<meta property="og:updated_time" content="2018-05-25T04:35:16.576Z">
+<meta property="og:updated_time" content="2018-05-25T10:00:09.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分类任务中的模型性能评估指标详解">
 <meta name="twitter:description" content="本文主要内容有：   错误率（Error Rate）与准确率（Accuracy、ACC） 混淆矩阵（Confusion matrix） 精确率（Precision）、召回率（Recall）、F1值（F1-score） 宏精确率（macro-P）、宏召回率（marco-R）、宏F1值（macro-F1）、微精确率（micro-P）、微召回率（micro-R）、微F1值（micro-F1） ROC与A">
@@ -360,8 +360,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-05-25T12:35:16+08:00">
-                2018-05-25 12:35
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-25T18:00:09+08:00">
+                2018-05-25 18:00
               </time>
             
           </span>
@@ -417,7 +417,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,268
+                  3,303
                 </span>
               
 
@@ -565,6 +565,7 @@
 <p>在进行学习期比较时，如果一个学习期的ROC曲线被另一个学习期的曲线完全“包住”，则可以断言后者优于前者。但是如果有交叉，则一般难以断言哪个更好。此时如果一定要比较，则较为合理的判断是比较ROC曲线下的面积，即AUC（Area Under ROC Curve）。</p>
 <p>从以上定义可知，AUC可以通过对ROC曲线下个面积求和得到。假设ROC曲线的坐标为${(x_1, y_1),(x_2, y_2),…(x_m, y_m)}的点按序连接而成$(x_1 = 0, x_m = 1)$，则AUC可以估算为：</p>
 <p>$$<br>\begin{equation}<br>AUC = \frac{1}{2} \sum_{i=1}^{m-1} (x_{i+1} - x_i)(y_i + y_{i+1})<br>\end{equation} \tag{23}<br>$$</p>
+<p>所以，ROC 与 AUC的区别是，ROC是曲线，就是上图中的那条曲线，而AUC是ROC曲线下面围成的面积。</p>
 <h3 id="6-Mean-Average-Precision-K"><a href="#6-Mean-Average-Precision-K" class="headerlink" title="6. Mean Average Precision @ K"></a>6. Mean Average Precision @ K</h3><p>在kaggle的Freesound General-Purpose Audio Tagging Challenge[7]使用的评估方法是Mean Average Precision @ 3 (MAP@3)，该问题是每个音频文件进行自动标注，每个音频实际上只对应一个标签，但是可以做出最多三个预测标签值，对应的公式是：</p>
 <p>$$<br>\begin{equation}<br>MAP@3 = \frac{1}{U} \sum_{u=1}^U {\sum_{k=1}^{min(n,3)} P(k)}<br>\end{equation} \tag{24}<br>$$</p>
 <p>U是样本的总个数，最后是对每个样本的评价求平均，所以关键还是要Average Precision @ 3 (AP@3），所以对应的公式是：</p>
@@ -652,9 +653,9 @@
           
             <a href="/tags/AI一丝一毫/" rel="tag"># AI一丝一毫</a>
           
-            <a href="/tags/to-do/" rel="tag"># to do</a>
-          
             <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/to-do/" rel="tag"># to do</a>
           
         </div>
       
@@ -769,7 +770,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">367</span>
+                  <span class="site-state-item-count">368</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
