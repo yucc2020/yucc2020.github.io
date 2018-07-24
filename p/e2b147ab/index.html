@@ -95,8 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/28.png">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/29.png">
-<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/30.png">
-<meta property="og:updated_time" content="2018-07-17T09:16:55.883Z">
+<meta property="og:updated_time" content="2018-07-24T08:24:24.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jupyter notebook在服务器上配置，本地进行开发教程">
 <meta name="twitter:description" content="适用于在linux环境的服务器且已经安装了jupyter，希望能在服务器上配置好的jupyter，在本地进行连接jupyter用于开发的情况。也适合本地配置。">
@@ -362,8 +361,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-17T17:16:55+08:00">
-                2018-07-17 17:16
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-24T16:24:24+08:00">
+                2018-07-24 16:24
               </time>
             
           </span>
@@ -419,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  309
+                  330
                 </span>
               
 
@@ -467,7 +466,7 @@
 <h4 id="3-配置jupyter配置文件"><a href="#3-配置jupyter配置文件" class="headerlink" title="3. 配置jupyter配置文件"></a>3. 配置jupyter配置文件</h4><p>使用vim打开配置文件，配置文件的地址可以从图1对应的位置找到。下面是我的位置，你需要换成自己的位置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /root/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
 <p>配置如下，其中port对应的是端口号，notebook_dir对应的是jupyter的默认路径，可以根据自己需要更改就行了。</p>
-<img title="图2" src="http://p94fw3huv.bkt.clouddn.com/static/images/30.png">
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.port = 8082</span><br><span class="line">c.NotebookApp.ip = &apos;*&apos;</span><br><span class="line">c.NotebookApp.open_browser = False</span><br><span class="line">c.NotebookApp.notebook_dir = &apos;/dfsdata/yucc1_data/jupyters&apos;</span><br></pre></td></tr></table></figure>
 <h4 id="4-运行jupyter"><a href="#4-运行jupyter" class="headerlink" title="4. 运行jupyter"></a>4. 运行jupyter</h4><p>命令为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
 <p>然后在本地浏览器里打开 ip:port，就可以了，比如我的<a href="http://10.100.208.201:8082" target="_blank" rel="noopener">http://10.100.208.201:8082</a> 。在浏览器里打开，首先需要输入密码，根据步骤2，我的密码为空，我直接enter键就可以了。</p>
@@ -654,7 +653,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">373</span>
+                  <span class="site-state-item-count">374</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
