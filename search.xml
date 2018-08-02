@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[音频(audio)信号中做数据增强(Data Augmentation)及部分代码实现]]></title>
+    <url>%2Fp%2Fa6e89bc4%2F</url>
+    <content type="text"><![CDATA[音频信号处理中，常用到数据增强的方法。一般而言，音频中的数据增强也是对音频的时频谱（spectrogram）进行增强的，时频谱本身也是一种图像，这使得音频中的数据增强与图像的数据增强有诸多相似之处。这里对一些资源进行了简单的总结。 1. 一些数据增强的代码这里主要参考[1]。 1.1 相同类别增强（Same Class Augmentation）相同类别的增强是简单将两个音频片段s1和s2，按照一定比例相加： 1s_aug = alpha * s1 + (1-alpha) * s2 其中alph可以从平均分布[0, 1)中随机抽取。 python代码实现： 12345678910def same_class_augmentation(wave, class_dir): """ Perform same class augmentation of the wave by loading a random segment from the class_dir and additively combine the wave with that segment. """ sig_paths = glob.glob(os.path.join(class_dir, "*.wav")) aug_sig_path = np.random.choice(sig_paths, 1, replace=False)[0] (fs, aug_sig) = utils.read_wave_file(aug_sig_path) alpha = np.random.rand() wave = (1.0-alpha)*wave + alpha*aug_sig return wave 1.2 噪声增强（Noise Augmentation）噪声增强只是在增强信号之上增加一个随机噪声段，阻尼系数为0.4。 1s_aug += (noise_seg * 0.4) for noise_seg in noise_segs 其中noise_segs是来自噪声段目录的三个随机选择的噪声段。 python代码实现： 123456789101112def noise_augmentation(wave, noise_dir): """ Perform noise augmentation of the wave by loading three noise segments from the noise_dir and add these on top of the wave with a dampening factor of 0.4 """ noise_paths = glob.glob(os.path.join(noise_dir, "*.wav")) aug_noise_paths = np.random.choice(noise_paths, 3, replace=False) dampening_factor = 0.4 for aug_noise_path in aug_noise_paths: (fs, aug_noise) = utils.read_wave_file(aug_noise_path) wave = wave + aug_noise*dampening_factor return wave 1.3 时移增强（Time Shift Augmentation）时移增强是通过沿时间轴滚动信号来随机移位信号。包裹着移动。 1234567def time_shift_spectrogram(spectrogram): """ Shift a spectrogram along the time axis in the spectral-domain at random """ nb_cols = spectrogram.shape[1] nb_shifts = np.random.randint(0, nb_cols) return np.roll(spectrogram, nb_shifts, axis=1) 1.4 音高变换增强（Pitch Shift Augmentation）音高变化增量是围绕频率轴的±5％范围内的随机滚动。环绕式转换以保留所有信息。 123456789def pitch_shift_spectrogram(spectrogram): """ Shift a spectrogram along the frequency axis in the spectral-domain at random """ nb_cols = spectrogram.shape[0] max_shifts = nb_cols//20 # around 5% shift nb_shifts = np.random.randint(-max_shifts, max_shifts) return np.roll(spectrogram, nb_shifts, axis=0) 2. 一些数据增强的其他资料Andrew Ng关于image中的data augmentation的讲解。Ng讲到主要是两方面。一个是图像的形状的变形，比如翻转、旋转、缩放等。另一个是RGB颜色的变化，比如加入一定的R或减少一定的G[2]。 现在一些开源框里也可以做数据增强了。这里分别是tensorflow[3]、keras[4]的实践。这里代码信实现非常简单，因为只用了他们的接口，传入参数，不需要自己写。其中[4]调用的接口是keras的[5]。而且这里的数据增强是针对图像的，只要是图像都可以使用。 前面的这些适用于图像，当然也是用音频的声谱图。这里有两个专门做音频数据增强的实践，一个是做了时移变换（Time shifting）、速度调整（Speed tuning）、混合背景音（Mix background noise）和音量调节（volume tuning）[6]。另一个也是做了增加白噪声（adding white noise）、移动音频（shifting the sound）、拉伸音频信号（stretching the sound）[7]。这两个有说明，有代码实践，而且都是专门针对音频处理的，值得一看。 有一个专门做音频数据增强的开源库，叫做muda[8]，全称为A library for Musical Data Augmentation。做到音频增强，可以尝试使用此库。Salamon 2016年的一篇关于音频事件分类的论文中使用的数据增强就是使用此库做的[9]。 参考资料 https://github.com/johnmartinsson/bird-species-classification/wiki/Data-Augmentation https://www.coursera.org/lecture/convolutional-neural-networks/data-augmentation-AYzbX?authMode=signup https://www.kaggle.com/dansbecker/data-augmentation https://absentm.github.io/2016/06/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84Data-Augmentation%E6%96%B9%E6%B3%95%E5%92%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0/ https://keras.io/preprocessing/image/ https://www.kaggle.com/haqishen/augmentation-methods-for-audio https://www.kaggle.com/CVxTz/audio-data-augmentation https://github.com/bmcfee/muda https://arxiv.org/abs/1608.04363]]></content>
+      <categories>
+        <category>Artificial Intelligence</category>
+      </categories>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>data augmentation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据增强(Data Augmentation)]]></title>
+    <url>%2Fp%2F4a960c05%2F</url>
+    <content type="text"><![CDATA[我们常常会遇到数据不足的情况。比如，你遇到的一个任务，目前只有小几百的数据，然而，你知道目前现在流行的最先进的神经网络都是成千上万的图片数据。你知道有人提及大的数据集是效果好的保证。对自己数据集小感到失望，你怀疑在我的小数据集上能使我的“最先进的”神经网络能表现好吗？ 答案是：是！在我们开始是这件事发生之前，我们需要先反思几个问题。 1. 为什么需要大量的数据？ 当你训练一个机器学习mode时候，你真正做的就是调参以便它能将输入（比如图片）映射到输出（比如标签）。我们优化目标是追求我们模型损失较低的最佳点，当参数以正确的方式调整时就会发生这种情况。 最领先的神经网络有着数百万的参数！ 显然，如果你有很多参数，你需要给你的模型足够比例的样本。同样，你需要的参数的个数与你任务的复杂度成比例。 2. 如果没有很多数据，我怎么去获得更多数据？你不必寻找新奇的图片增加到你的数据集中。为什么？因为，神经网络在开始的时候并不是那么聪明。比如，一个欠训练的神经网络会认为这三个如下的网球是不同、独特的图片。 所以，为了获得更多的数据，我们只要对现有的数据集进行微小的改变。比如旋转（flips）、移位（translations）、旋转（rotations）等微小的改变。我们的网络会认为这是不同的图片。 一个卷积神经网络，如果能够对物体即使它放在不同的地方也能稳健的分类，就被称为具有不变性的属性。更具体的，CNN可以对移位（translation）、视角（viewpoint）、大小（size）、照明（illumination）（或者以上的组合）具有不变性。 这本质上是数据增强的前提。在现实场景中，我们可能会有一批在有限场景中拍摄的数据集。但是我们的目标应用可能存在于不同的条件，比如在不同的方向、位置、缩放比例、亮度等。我们通过额外合成的数据来训练神经网络来解释这些情况。 如果我有很多的数据，数据增强会有用吗？ 是的。它能增加你数据集中相关数据的数据量。这与神经网络的学习方式有关。让我们用一个例子来阐述它。 假设我们有一个数据集，含两种品牌的车，如上所示。我们假设A品牌的车都如上面左侧一样对其（所有的车头朝向左侧）。同样B如右侧（所有的都朝向右侧）。现在，你将你的数据集送入“最先进的”神经网络，你希望等训练结束后获得令人印象深刻的结果。 当训练结束后，你送入上面的品牌A车的图片。 但是你的神经网络却认为它是一辆B品牌的车！你很困惑。难道不是刚刚通过这个“最先进的”神经网络获得了95%的准确率吗？我不是夸张，这个事情以往发生过[2]。 为什么发生了这件事？ 它的发生正是很多机器学习算法工作的院里。它会去寻找最能区分两个类别的、最明显的特征。这里，A品牌与B品牌最明显的区别是A都是朝向左侧，B是朝向右侧。 你的神经网络会与你喂给它的数据质量一样好或坏。 我们如何去阻止这件事发生呢？ 我们不得不减少数据集中不相关的特征。对于上面的轿车模型分类器，一个简单的方案是增加分别朝向原始方向反向的两种车的图片。更好的方法是，你可以从沿着水平方向翻转图片以便它们都朝着反方向！现在，在新数据集上训练神经网络，你将会获得你想要获得的性能。 通过执行数据增强，你可以阻止神经网络学习不相关的特征，从根本上提升整体性能。 3. 入门在我们开始各种增强技术之前，有一问题我们必须考虑清楚 在我们的机器学习管道（pipeline）的何处进行增强数据呢？ 答案似乎很显然，在我们喂入模型之前，进行数据增强，对吧？是的，但是你有两个选项。一种是事先执行所有转换，实质上会增强你的数据集的大小。另一种选项是在送入机器学习之前，在小批量（mini-batch）上执行这些转换。 第一个选项叫做线下增强（offline augmentation）。这种方法适用于较小的数据集（smaller dataset）。你最终会增加一定的倍数的数据集，这个倍数等于你转换的个数。比如我要翻转我的所有图片，我的数据集相当于乘以2。 第二种方法叫做线上增强（online augmentation）或在飞行中增强（augmentation on the fly）。这种方法更适用于较大的数据集（larger datasets），因为你无法承受爆炸性增加的规模。另外，你会在喂入模型之前进行小批量的转换。一些机器学习框架支持在线增强，可以再gpu上加速。 4. 流行的数据增强技术在本章节中，我们会展示一些基本的但是很强大的、流行的增强技术。在我们探索这些技术之前，简便起见，我们做一个假设，假设我们不需要考虑图片边界之外的东西。我们会使用以下技术，使我们的假设有效。 如果我们使用一种技术迫使我们猜出图像边界之外的东西，会发生什么？在这种情况下，我们需要插入一些信息。在我们介绍了增强类型之后，我们将详细讨论这个问题。 对于这些技术中的每一种，我们还指定了数据集大小增加的因子，也称为数据增强因子（Data Augmentation Factor）。 4.1 翻转（Flip）可以对图片进行水平和垂直翻转。一些框架不提供垂直翻转功能。但是，一个垂直反转的图片等同于图片的180度旋转，然后再执行水平翻转。下面是我们的图片翻转的例子。 你可以使用你喜欢的工具包进行下面的任意命令进行翻转，数据增强因子=2或4 123456789# NumPy.'img' = A single image.flip_1 = np.fliplr(img)# TensorFlow. 'x' = A placeholder for an image.shape = [height, width, channels]x = tf.placeholder(dtype = tf.float32, shape = shape)flip_2 = tf.image.flip_up_down(x)flip_3 = tf.image.flip_left_right(x)flip_4 = tf.image.random_flip_up_down(x)flip_5 = tf.image.random_flip_left_right(x) 4.2 旋转（Rotation）一个关键性的问题是当旋转之后图像的维数可能并不能保持跟原来一样。如果你的图片是正方形的，那么以直角旋转将会保持图像大小。如果它是长方形，那么180度的旋转将会保持原来的大小。以更精细的角度旋转图像也会改变最终的图像尺寸。我们将在下一节中看到我们如何处理这个问题。以下是以直角旋转的方形图像的示例。 你可以使用你喜欢的工具包执行以下的旋转命令。数据增强因子= 2或4。 12345678910111213# Placeholders: 'x' = A single image, 'y' = A batch of images# 'k' denotes the number of 90 degree anticlockwise rotationsshape = [height, width, channels]x = tf.placeholder(dtype = tf.float32, shape = shape)rot_90 = tf.image.rot90(img, k=1)rot_180 = tf.image.rot90(img, k=2)# To rotate in any angle. In the example below, 'angles' is in radiansshape = [batch, height, width, 3]y = tf.placeholder(dtype = tf.float32, shape = shape)rot_tf_180 = tf.contrib.image.rotate(y, angles=3.1415)# Scikit-Image. 'angle' = Degrees. 'img' = Input Image# For details about 'mode', checkout the interpolation section below.rot = skimage.transform.rotate(img, angle=45, mode='reflect') 4.3 缩放比例（Scale）图像可以向外或向内缩放。向外缩放时，最终图像尺寸将大于原始图像尺寸。大多数图像框架从新图像中剪切出一个部分，其大小等于原始图像。我们将在下一节中处理向内缩放，因为它会缩小图像大小，迫使我们对超出边界的内容做出假设。以下是缩放的示例或图像。 您可以使用scikit-image使用以下命令执行缩放。数据增强因子=任意。 123456# Scikit Image. 'img' = Input Image, 'scale' = Scale factor# For details about 'mode', checkout the interpolation section below.scale_out = skimage.transform.rescale(img, scale=2.0, mode='constant')scale_in = skimage.transform.rescale(img, scale=0.5, mode='constant')# Don't forget to crop the images back to the original size (for # scale_out) 4.4 裁剪（Crop）与缩放不同，我们只是从原始图像中随机抽样一个部分。然后，我们将此部分的大小调整为原始图像大小。这种方法通常称为随机裁剪。以下是随机裁剪的示例。仔细观察，你会发现此方法与缩放之间的区别。 你可以使用以下任何TensorFlow命令执行随机裁剪。数据增强因子=任意。 12345678# TensorFlow. 'x' = A placeholder for an image.original_size = [height, width, channels]x = tf.placeholder(dtype = tf.float32, shape = original_size)# Use the following commands to perform random cropscrop_size = [new_height, new_width, channels]seed = np.random.randint(1234)x = tf.random_crop(x, size = crop_size, seed = seed)output = tf.images.resize_images(x, size = original_size) 4.5 移位（Translation）移位只涉及沿X或Y方向（或两者）移动图像。在下面的示例中，我们假设图像在其边界之外具有黑色背景，并且被适当地移位。这种增强方法非常有用，因为大多数对象几乎可以位于图像的任何位置。这迫使你的卷积神经网络看到所有角落。 你可以使用以下命令在TensorFlow中执行转换。数据增强因子=任意。 1234567# pad_left, pad_right, pad_top, pad_bottom denote the pixel # displacement. Set one of them to the desired value and rest to 0shape = [batch, height, width, channels]x = tf.placeholder(dtype = tf.float32, shape = shape)# We use two functions to get our desired augmentationx = tf.image.pad_to_bounding_box(x, pad_top, pad_left, height + pad_bottom + pad_top, width + pad_right + pad_left)output = tf.image.crop_to_bounding_box(x, pad_bottom, pad_right, height, width) 4.6 高斯噪声（Gaussian Noise）当您的神经网络试图学习可能无用的高频特征（大量出现的模式）时，通常会发生过度拟合。具有零均值的高斯噪声基本上在所有频率中具有数据点，从而有效地扭曲高频特征。这也意味着较低频率的组件（通常是您的预期数据）也会失真，但你的神经网络可以学会超越它。添加适量的噪音可以增强学习能力。 一个色调较低的版本是盐和胡椒噪音，它表现为随机的黑白像素在图像中传播。这类似于通过向图像添加高斯噪声而产生的效果，但可能具有较低的信息失真水平。 您可以在TensorFlow上使用以下命令为图像添加高斯噪声。数据增强因子= 2。 1234567#TensorFlow. 'x' = A placeholder for an image.shape = [height, width, channels]x = tf.placeholder(dtype = tf.float32, shape = shape)# Adding Gaussian noisenoise = tf.random_normal(shape=tf.shape(x), mean=0.0, stddev=1.0,dtype=tf.float32)output = tf.add(x, noise) 5. 高级增强技术现实世界中，自然数据仍然可以存在于上述简单方法无法解释的各种条件下。例如，让我们承担识别照片中景观的任务。景观可以是任何东西：冻结苔原，草原，森林等。听起来像一个非常直接的分类任务吧？除了一件事，你是对的。我们忽略了影响照片表现中的一个重要特征 - 拍摄照片的季节。 如果我们的神经网络不了解某些景观可以在各种条件下（雪，潮湿，明亮等）存在的事实，它可能会将冰冻的湖岸虚假地标记为冰川或湿地作为沼泽。 缓解这种情况的一种方法是添加更多图片，以便我们考虑所有季节性变化。但这是一项艰巨的任务。扩展我们的数据增强概念，想象一下人工生成不同季节的效果有多酷？ 条件对抗神经网络（Conditional GANs）来救援！ 在没有进入血腥细节的情况下，条件GAN可以将图像从一个域转换为图像到另一个域。如果你认为这听起来太模糊，那就不是;这就是这个神经网络的强大功能[3]！以下是用于将夏季风景照片转换为冬季风景的条件GAN的示例。 上述方法是稳健的，但计算密集。更便宜的替代品将被称为神经风格转移（neural style transfer）。它抓取一个图像（又称“风格”）的纹理、氛围、外观，并将其与另一个图像的内容混合。使用这种强大的技术，我们产生类似于条件GAN的效果（事实上，这种方法是在cGAN发明之前引入的！）。 这种方法的唯一缺点是，输出看起来更具艺术性而非现实性。但是，有一些进步，如下面显示的深度照片风格转移（Deep Photo Style Transfer），有令人印象深刻的结果。 我们没有深入探索这些技术，因为我们并不关心它们的内在工作。我们可以使用现有的训练模型，以及转移学习的魔力，将其用于增强。 6. 关于插值（interpolation）的简要说明如果您想要翻译不具有黑色背景的图像，该怎么办？如果你想向内扩展怎么办？或者以更精细的角度旋转？在我们执行这些转换后，我们需要保留原始图像大小。由于我们的图像没有关于其边界之外的任何信息，我们需要做出一些假设。通常，假设图像边界之外的空间在每个点都是常数0。因此，当您进行这些转换时，会得到一个未定义图像的黑色区域。 但是这是个正确的假设吗？在现实世界的情况下，它主要是否定的。图像处理和ML框架有一些标准方法，您可以使用它们来决定如何填充未知空间。它们的定义如下。 6.1 常数（Constant）最简单的插值方法是用一些常数值填充未知区域。这可能不适用于自然图像，但可以用于在单色背景下拍摄的图像。 6.2 边界（Edge）在边界之后扩展图像的边缘值。此方法适用于温和移位。 6.3 反射（Reflect）图像像素值沿图像边界反射。此方法适用于包含树木，山脉等的连续或自然背景。 6.4 对称（Symmetric）该方法类似于反射，除了在反射边界处制作边缘像素的副本的事实。通常，反射和对称可以互换使用，但在处理非常小的图像或图案时会出现差异。 6.5 包裹（Wrap）图像只是重复超出其边界，就好像它正在平铺一样。这种方法并不像其他方法那样普遍使用，因为它对很多场景都没有意义。 除此之外，你可以设计自己的方法来处理未定义的空间，但通常这些方法对大多数分类问题都可以。 7. 所以，如果我使用上述技术，我的机器学习算法会很健壮（robust），对吗？如果你以正确的方式使用它，那么是的！你问的正确方法是什么？好吧，有时并非所有的增强技术都对数据集有意义。再考虑我们的汽车示例。以下是一些修改图像的方法。 当然，它们是同一辆车的照片，但你的目标应用可能永远不会看到以这些方向呈现的汽车。 例如，如果你只是想在路上对随机汽车进行分类，那么只有第二张图像才能在数据集上进行分类。但是，如果你拥有一家处理车祸的保险公司，并且你想要确定倒车，破车的车型，那么第三张图片就有意义了。对于上述两种情况，最后一张图像可能没有意义。 关键是，在使用增强技术时，我们必须确保不增加不相关的数据。 8. 真的值得努力吗？你可能期待一些结果来激励你走得更远。很公平;我也有这个问题。让我用小的示例证明增强确实有效。您可以复制此实验以进行验证。 让我们创建两个神经网络，将数据分类为四类中的一类：猫，狮子，老虎或豹子。问题是，一个不会使用数据增加，而另一个则不会。您可以从此处下载数据集链接[4]。 如果你已经检查了数据集，你会发现每个类只有50个图像用于训练和测试显然，我们不能对其中一个分类器使用扩充。为了使机会更公平，我们使用迁移学习（Transfer Learning)[5]为模型提供了更少的数据量。 对于没有增强的那个，让我们使用VGG19网络。我在这里写了一个TensorFlow实现[6]，它基于这个实现[7]。一旦你克隆了我的仓库[6]，你可以从这里获得数据[4],并且vgg19.npy（用于迁移学习）在这里[8]。你现在可以建模验证表现了。 我同意，编写额外的数据扩充代码确实是需要功夫。所以，为了建立我们的第二个模型，我转向Nanonets[9]。他们在内部使用迁移学习和数据扩充，以使用最少的数据提供最佳结果。你需要做的就是在他们的网站[10]上传数据，并等待它们在他们的服务器上训练（通常大约30分钟）。你知道什么，它对我们的比较实验来说是完美的。 如果已完成培训，您可以请求调用其API来计算测试准确性。查看我的仓库以获取示例代码段（不要忘记在代码段中插入您的模型ID）。 123ResultsVGG19 (No Augmentation)- 76% Test Accuracy (Highest)Nanonets (With Augmentation) - 94.5% Test Accuracy 令人印象深刻，不是吗？事实上，大多数模型在更多数据的情况下表现良好。所以为了提供一个具体的证明，我已经提到了下表。它显示了Cifar 10（C10）和Cifar 100（C100）数据集上流行神经网络的错误率。 C10 +和C100 +列是数据增强的错误率。 感谢您阅读本文！如果你这样击中那个拍手按钮！希望它能够为数据扩充提供一些启示。如果您有任何疑问，可以在社交媒体[11]上给我打电话或给我发电子邮件（bharathrajn98@gmail.com）。 更多了解请参考[1]。 参考资料 https://medium.com/nanonets/how-to-use-deep-learning-when-you-have-limited-data-part-2-data-augmentation-c26971dc8ced https://www.theverge.com/2018/1/12/16882408/google-racist-gorillas-photo-recognition-algorithm-ai https://junyanz.github.io/CycleGAN/ https://drive.google.com/drive/folders/1GpIpbqBQ_ak1Z_4yAj7t6YRqDDyyBbAq?usp=sharing https://medium.com/nanonets/nanonets-how-to-use-deep-learning-when-you-have-limited-data-f68c0b512cab https://github.com/thatbrguy/VGG19-Transfer-Learn https://github.com/machrisaa/tensorflow-vgg https://mega.nz/#!xZ8glS6J!MAnE91ND_WyfZ_8mvkuSa2YcA7q-1ehfSm-Q1fxOvvs https://nanonets.com/?utm_source=Medium&amp;utm_campaign=data%20augmentation/ https://nanonets.com/#demo https://thatbrguy.github.io/ https://arxiv.org/abs/1703.07511]]></content>
+      <categories>
+        <category>Artificial Intelligence</category>
+      </categories>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>data augmentation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[农民群体，被有意无意忽略的大多数——《中国农民调查》读后感]]></title>
     <url>%2Fp%2F9cd63d93%2F</url>
     <content type="text"><![CDATA[秉持着读完一定要尽快写，拖延着就没了的精神。在这几天读完此书后，赶快下笔写了下来。 父辈及以上都是农民，生活的前十八年都是农村及我们的小县城度过的，可以说，生活的见闻是我对此书中的例子有切实的体会的。记得小的时候，我会坐着爸爸的奔马车去乡里交公粮。小时候的我，大多数时间都是在村里，只有交公粮才算是出去一次，记得那时第一次见中间有人指挥的十字路口。再后来，国家不收公粮了，我查了下，大概2006年开始的。我奶奶时常说起胡主席的好，胡主席免了大家的公粮。我们家在河南农村，农民的苦和心酸，在我这里基本可以说很麻木了。以我们家自己最近一季种的大蒜为例，大蒜现在价格是0.35元/斤，一亩地约3k斤大蒜。前几天我们家卖了一亩蒜，1100元。这1100是收入，但是如果扣除种子费、农药费、浇水用电费等必不可少的开支成本，我们这亩蒜是赔钱的。也就是说，家里这一季度又白忙活了。有人或许会问，那为什么不承包出去呢？现在承包一亩地的价格是400元/年，即使价格如此低我们家也很乐意去承包出去，但是仍然没人愿意承包。这就是农村的现状，这就是2018年的河南农村现状。 引言提到，“我们常常骄傲地宣称：我们是以世界百分之七的耕地，养活了世界上百分之二十一的人口。我们的农民为十三亿人口提供了足够的粮食，这不能不是一个世界性的伟大贡献，可是，我们却往往很少想到，我们是在以占世界上百分之四十的农民才养活了这百分之二十一的人口的。这只能说明，我们的农业目前还相当落后，绝大多数的农民生活水平还很低。“从7%土地养活21%的人口而言，的确伟大。但是我们是靠着40%的农民养活21%的人口，这种现实却常常被忽略。一定程度上，这种事实被一些人有意的掩盖着，自己等大多数人们也被欺骗着。 书依然可以分为两块，殉道者、恶人治村、漫漫上访路等章节以典型事件来凸显农村现状为第一部分，而税改等对农村出路的探讨为第二部分。注意此书的成书时间是2003年，主要写的还是90年代左右（~1986-~2002）的事情，整体事件大体都发生在25年前左右。看到“恶人治村“这一块，很自然的想到我们村，我不是说我们的村干部们是书中的恶人，但是村里跟所谓的法治社会关系也不大，且这不是我们一个村的问题。以某年村干部选举为例，选举前，某人相当村干部，拉全村人吃个一星期，每人天天发包烟。这也没什么，就是贿赂选民。选举中，乡里派过来的选举监督代表，某些人就可以喊，谁跟我抢××位置我就弄死谁。然后靠兄弟多人多直接把乡里的监督代表轰走了。你想想，这问题。顺便吐槽，跟zf打交道也是一样的麻烦，我们那边官本位意识一点不差，从来没有为人民服务的想法。之前去乡里办身份证，跑了很多趟，跑了两个月才拍照。为什么呢？记得有次说，照相机坏了，有次说人放假了（工作日去的），有次说出去玩了，有次说今天不办理身份证，有次说负责照相的人不在，有次说打印机坏了等。后来，我妈就同我讲，“身份证一定要放好，办的时候难死”。的确，在农村，办事难死。回头想一想，不就一个身份证吗？照个相，交个钱就行了，有什么难的呢？而现实中，我依然跑了两个月才给照相办理。在农村，各种办事都要靠有人有权。像我们家这种没人（没有人当村干部及乡干部）的大多数家庭而言，这么多年怎么过来的，其中的艰难你们应该很难想象。虽然21世纪了，村里依然是兄弟多的人横着走，没有儿子的依然被人瞧不起，这种文化或风气带来的结果就是，在农村儿子还是非生不可的。这也解释了，为何农村剩男多。 从书中，我们也看到农村经历过这么多苦难。乱收费、乱摊派、乱集资的“三乱”。书中的后半部分是讲农村体制改革，改为收公粮的一次性交清的方法。这种方法的好处的确很多，提高了农民的积极性。这种改革，是一种非常大的进步。但是这种改革其实并没有触及根本，因为国家要发展，就需要钱，需要钱就要从人民或农民身上出。出的钱最终不会少太多。这种改革，从大约90年开始，走了十多年的路，这种改革过程中，遇到的各种阻碍，阻力还是非常大的。最终还是有一个相对非常好的结果，还是不错的。 正如书中所言，户口的城市与农村，使得农民先天成为二等人民。农民们为国家的城市化进程提供了所有能提供的支撑，却被排除在了城市化之外。我爸妈外出务工十多年了，成为了常年在外的农民工。一如书中所言，所谓的社保局永远是为城里人开的社保局，公积金也一样。我爸妈他们没有任何的医疗、工伤、养老等保险。像爸妈一样的务工人员，他们为城市化进程出力，却一直不被城市接纳。这种问题也是新的或一直以来的问题。同样，务工人员的子女教育问题，留守儿童问题都十分的突出和严峻。农村要增加收入，靠土地早已经不行了。比如我们种的小麦，亩产基本稳定是800-1000斤，小麦是国家定价8毛一斤，出去化肥、农药、交水等一亩也就两三百元的净收入，这就是辛苦半年的收入。外出务工可能是对多数农民的出路了。外出务工带动了运输、消费，提供了生产力。可是社会从来没有为他们的社保及子女付出过什么。难道不该做点什么吗？从来都讲，中华民族是勤劳、智慧、善良的，我们的农民是最朴实、善良的，也是说我们的农民是世界上最能承受压迫的，只要能活着，基本都不会有什么事情，任何官员，含村长，村电工，村水管工都可以欺负我们或他们，可是我们的农民活的真的很苦、很累、很委屈。书中的描述的确很煽情，有一些适当的过分，但是现实里也差不多。书中也点出了一些问题，中央的出发点是好的，但是具体行动起来难。如果都按照文件来，真的实现不了，这也是矛盾的地方，所以政策实施也未必全怪地方官员。在生活里，很多村里乡里的干部故意刁难的现象很常见，我们的农民依然是任人宰割的羔羊，很多新的矛盾和问题也在不断地凸显，比如像我们的地承包不出去，种了等于没种的现象。这些问题，依然有待解决。]]></content>
@@ -260,9 +284,9 @@
         <tag>leetcode</tag>
         <tag>divide and conquer</tag>
         <tag>hard</tag>
+        <tag>binary search tree</tag>
         <tag>binary indexed tree</tag>
         <tag>segment tree</tag>
-        <tag>binary search tree</tag>
       </tags>
   </entry>
   <entry>
@@ -469,8 +493,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -621,8 +645,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -780,8 +804,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1004,9 +1028,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>medium</tag>
         <tag>array</tag>
         <tag>hash table</tag>
-        <tag>medium</tag>
         <tag>design</tag>
       </tags>
   </entry>
@@ -1111,8 +1135,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -1168,8 +1192,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>heap</tag>
         <tag>design</tag>
       </tags>
@@ -1229,8 +1253,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>heap</tag>
       </tags>
   </entry>
@@ -1244,8 +1268,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>easy</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -1258,8 +1282,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>easy</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -1460,8 +1484,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1555,9 +1579,9 @@
       <tags>
         <tag>leetcode</tag>
         <tag>divide and conquer</tag>
+        <tag>binary search tree</tag>
         <tag>binary indexed tree</tag>
         <tag>segment tree</tag>
-        <tag>binary search tree</tag>
       </tags>
   </entry>
   <entry>
@@ -1705,8 +1729,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
       </tags>
   </entry>
   <entry>
@@ -1772,8 +1796,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -1866,8 +1890,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>sort</tag>
       </tags>
   </entry>
@@ -1894,9 +1918,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>math</tag>
         <tag>array</tag>
         <tag>easy</tag>
-        <tag>math</tag>
         <tag>bit manipulation</tag>
       </tags>
   </entry>
@@ -1924,8 +1948,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1950,8 +1974,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2031,8 +2055,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2044,8 +2068,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2083,8 +2107,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -2124,8 +2148,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
         <tag>bit manipulation</tag>
       </tags>
   </entry>
@@ -2152,8 +2176,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2165,8 +2189,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2328,8 +2352,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -2427,8 +2451,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>binary search</tag>
       </tags>
@@ -2472,8 +2496,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2485,9 +2509,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>math</tag>
         <tag>hash table</tag>
         <tag>easy</tag>
-        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -2499,8 +2523,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2512,9 +2536,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>math</tag>
         <tag>hash table</tag>
         <tag>easy</tag>
-        <tag>math</tag>
       </tags>
   </entry>
   <entry>
@@ -2634,8 +2658,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>bit manipulation</tag>
       </tags>
   </entry>
@@ -2690,8 +2714,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2733,9 +2757,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>math</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
       </tags>
   </entry>
   <entry>
@@ -2773,8 +2797,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2787,8 +2811,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -2840,8 +2864,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2854,8 +2878,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -2894,8 +2918,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>math</tag>
+        <tag>hash table</tag>
         <tag>hard</tag>
       </tags>
   </entry>
@@ -3004,8 +3028,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -3045,9 +3069,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>linked list</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
       </tags>
   </entry>
   <entry>
@@ -3207,8 +3231,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>easy</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -3276,8 +3300,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -3471,8 +3495,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>tree</tag>
         <tag>depth first search</tag>
       </tags>
@@ -3486,8 +3510,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>tree</tag>
         <tag>depth first search</tag>
       </tags>
@@ -3642,8 +3666,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>stack</tag>
         <tag>tree</tag>
       </tags>
@@ -3831,8 +3855,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -3845,8 +3869,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -3859,8 +3883,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
         <tag>bit manipulation</tag>
       </tags>
@@ -3888,8 +3912,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>hash table</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
         <tag>hard</tag>
       </tags>
   </entry>
@@ -3902,8 +3926,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>sort</tag>
       </tags>
@@ -3917,8 +3941,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -3931,8 +3955,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -3985,8 +4009,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -4012,8 +4036,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
         <tag>string</tag>
       </tags>
   </entry>
@@ -4026,8 +4050,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>math</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4052,8 +4076,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4066,8 +4090,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4080,8 +4104,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4122,8 +4146,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4161,8 +4185,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>sort</tag>
       </tags>
   </entry>
@@ -4175,8 +4199,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>greedy</tag>
       </tags>
   </entry>
@@ -4189,8 +4213,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4256,8 +4280,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>hash table</tag>
         <tag>string</tag>
       </tags>
   </entry>
@@ -4270,8 +4294,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4392,8 +4416,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -4457,8 +4481,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -4471,8 +4495,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -4499,8 +4523,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4513,8 +4537,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>hash table</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
         <tag>hard</tag>
       </tags>
   </entry>
@@ -4541,8 +4565,8 @@
       <tags>
         <tag>leetcode</tag>
         <tag>easy</tag>
-        <tag>string</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
@@ -4637,8 +4661,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>linked list</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -4678,9 +4702,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>medium</tag>
         <tag>array</tag>
         <tag>hash table</tag>
-        <tag>medium</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -4707,8 +4731,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -4721,8 +4745,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -4748,8 +4772,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
         <tag>string</tag>
       </tags>
   </entry>
@@ -4776,8 +4800,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>two pointers</tag>
       </tags>
   </entry>
@@ -4805,8 +4829,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>math</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -4870,8 +4894,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>divide and conquer</tag>
         <tag>binary search</tag>
       </tags>
@@ -4885,10 +4909,10 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>medium</tag>
-        <tag>string</tag>
+        <tag>hash table</tag>
         <tag>two pointers</tag>
+        <tag>string</tag>
       </tags>
   </entry>
   <entry>
