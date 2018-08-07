@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ZFNet]]></title>
+    <url>%2Fp%2F3f18ad9b%2F</url>
+    <content type="text"><![CDATA[ZFNet[1]赢得了ILSVRC 2013的冠军，top-5错误率是11.2%。 ZFNet可以认为是AlexNet进行了微调。 使用relu激活函数，交叉熵作为代价函数。 使用了较小的filter以保留更多原始像素信息。 整体架构如图1所示，结构如公式1所示。 $$\begin{equation}ZFNet = (conv + relu + maxpooling)\times 2 + （conv + relu)\times 3 + fc \times 2 + softmax\end{equation} \tag{1}$$ ZFNet的具体参数下图图2所示。 参考资料 Zeiler M D, Fergus R. Visualizing and understanding convolutional networks[C]//European conference on computer vision. Springer, Cham, 2014: 818-833. https://ziyubiti.github.io/2016/11/27/cnnnet/ https://blog.csdn.net/JNingWei/article/details/79100267]]></content>
+      <categories>
+        <category>Artificial Intelligence</category>
+      </categories>
+      <tags>
+        <tag>deep learning</tag>
+        <tag>cnn</tag>
+        <tag>convolutional neural network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[AlexNet]]></title>
     <url>%2Fp%2Fca9994d1%2F</url>
     <content type="text"><![CDATA[AlexNet[1]是经典CNN网络之一，由Alex Krizhevsky, Ilya Sutskever and Geoff Hinton三位开发，以一作Alex的名字命名。该网络结构赢得了2012年的ImageNet ILSVRC-2012竞赛的冠军，且大幅度的领先第二名。top-5的错误率为15.3%大幅度领先第二名的26.2%。 AlexNet的出现，证明了虽然计算昂贵，但是模型的深度是获得好的效果和性能的必要保证。同时，也让深度学习真正开始流行了起来。拐点之所以出现在2012年，在于一方面数据可用量大大增加，机器的计算能力伴随着gpu也大幅度提高。当然，AlexNet本身也很优秀，我们这里对该网络进行一些解读。 1. 网络结构1.1 使用了ReLU单元 论文使用了ReLU单元替代了传统的tanh，和sigmoid，|tanh|等激活函数。相对而言，ReLU更容易求导和运算。能加快迭代的进程。如图2所示，对于CIFAR-10，同样到达25%的训练误差，ReLU可以比tanh激活单元速度快6倍。 1.2 在多个gpu上训练 使用了两块GTX 580 gpu，3GB内存。 1.3 Local Response Normalization 这种方法据说没什么用，就不讲了。 1.4 Overlapping Pooling 此前的CNN普遍使用平均池化，AlexNet全部使用最大池化，避免了平均池化的模糊化效果，并且AlexNet提出步长比池化层的尺寸小，池化层的输出之间就会有重叠和覆盖，提升了特征的丰富性。 2. 减少过拟合整个网络结构有60m个参数（可以对比LeNet-5有大约60k个参数）。论文中使用了两种方式进行防止过拟合。 2.1 数据增强（Data Augmentation） 增强方法一。论文中，首先将所有图像缩放到最短的一边为256，然后截取长的一边也为256。于是得到256*256*3的图像，3代表RGB颜色。做数据增强的时候，从这个256*256的图像上随机抽取一些224*224的部分图片及其水平翻转。截取的时候，截取四个角落的片段和一个中心的片段，然后加上水平的翻转，正好10个patches。 关于水平反转的数据增强方法，可以参考我的另一篇博客[5]。同时，这里说的224*224因该是有误的，正确的是应该是227*227，最早由Andrei Karpathy在他的CS231n课程上提出[2]。这种增强方法还是很常用的，目前。 增强方法二。是在RGB颜色上增强，先做了PCA降维，然后进行做均值为0，方差为0.1的高斯扰动。 2.2 Dropout 目前的网络里，dropout非常常用，也是受本篇论文的影响。 3. 整体网络结构解析 整体的网络结构如图1所示。刚开始看的时候，我也没看太明白，后来看了其他博客才看懂。看的时候是这么看的。首先要明白，这是一个8层网络，5个卷积层，3个全连接层。然后从左向右看，Max Pooling这里，前面的那些虚线都表示的是一个卷积层，然后max pooling呢，表示卷积得到的图像，要经过max pooling层，这里只是写上了文字pooling，并没有画出来。然后经过max pooling之后的图像再经过卷积层，到达下一层。所以整体的网络结构可以参考下图图3。 下面的图4展示了各个层、参数个数、计算单元等详细情况。 4. 论文亮点4.1 使用了Relu替代tanh，增加非线性，在相同准确率情况下加速了6倍。4.2 使用dropout防止过拟合。4.3 使用了带重叠的池化层（pooling)层。它使得top1和top5的错误率分别减少了0.4%和0.3%。 AlexNet的出现，让人们认识到deep learning巨大的威力，也证明了要想获得更好的效果，增加网络的深度是必要的。 参考资料 Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[C]//Advances in neural information processing systems. 2012: 1097-1105. https://medium.com/@smallfishbigsea/a-walk-through-of-alexnet-6cbd137a5637 https://blog.csdn.net/zyqdragon/article/details/72353420 https://blog.csdn.net/marsjhao/article/details/72953256 http://yucc.me/p/4a960c05/]]></content>
@@ -526,8 +539,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -589,8 +602,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1020,8 +1033,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1046,8 +1059,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
+        <tag>array</tag>
         <tag>hard</tag>
         <tag>design</tag>
       </tags>
@@ -1061,9 +1074,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>design</tag>
       </tags>
   </entry>
@@ -1254,9 +1267,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>hash table</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
         <tag>binary search</tag>
         <tag>sort</tag>
       </tags>
@@ -1270,9 +1283,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>hash table</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
         <tag>binary search</tag>
         <tag>sort</tag>
       </tags>
@@ -1300,9 +1313,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1314,9 +1327,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -1397,8 +1410,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>string</tag>
+        <tag>hash table</tag>
         <tag>hard</tag>
         <tag>trie</tag>
       </tags>
@@ -1829,8 +1842,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -1855,9 +1868,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>array</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -2088,8 +2101,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2140,8 +2153,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
+        <tag>easy</tag>
         <tag>linked list</tag>
       </tags>
   </entry>
@@ -2209,8 +2222,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2222,8 +2235,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -2342,8 +2355,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
+        <tag>array</tag>
         <tag>easy</tag>
       </tags>
   </entry>
@@ -2371,8 +2384,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
+        <tag>array</tag>
         <tag>easy</tag>
       </tags>
   </entry>
@@ -2385,8 +2398,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -2484,9 +2497,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2775,9 +2788,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>array</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2830,8 +2843,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2897,8 +2910,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -2911,8 +2924,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -3061,8 +3074,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
+        <tag>easy</tag>
         <tag>linked list</tag>
       </tags>
   </entry>
@@ -3247,8 +3260,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>string</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
         <tag>hard</tag>
         <tag>breadth first search</tag>
@@ -3263,9 +3276,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -3333,8 +3346,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -3528,8 +3541,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>tree</tag>
         <tag>depth first search</tag>
       </tags>
@@ -3543,8 +3556,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>tree</tag>
         <tag>depth first search</tag>
       </tags>
@@ -3780,8 +3793,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -3821,8 +3834,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
         <tag>hard</tag>
         <tag>stack</tag>
@@ -3888,9 +3901,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -3902,8 +3915,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -3916,8 +3929,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
         <tag>bit manipulation</tag>
       </tags>
@@ -3944,9 +3957,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>hash table</tag>
         <tag>hard</tag>
       </tags>
   </entry>
@@ -3959,9 +3972,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>sort</tag>
       </tags>
   </entry>
@@ -3974,8 +3987,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -3988,8 +4001,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4069,8 +4082,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
         <tag>math</tag>
       </tags>
   </entry>
@@ -4109,8 +4122,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4123,8 +4136,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4137,8 +4150,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>dynamic programming</tag>
       </tags>
   </entry>
@@ -4179,8 +4192,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4218,8 +4231,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>sort</tag>
       </tags>
   </entry>
@@ -4232,8 +4245,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>greedy</tag>
       </tags>
   </entry>
@@ -4246,8 +4259,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4313,8 +4326,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>string</tag>
+        <tag>hash table</tag>
         <tag>medium</tag>
       </tags>
   </entry>
@@ -4327,8 +4340,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4409,8 +4422,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
+        <tag>array</tag>
         <tag>hard</tag>
         <tag>stack</tag>
       </tags>
@@ -4449,8 +4462,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -4514,8 +4527,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -4528,8 +4541,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>binary search</tag>
       </tags>
   </entry>
@@ -4556,8 +4569,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4569,9 +4582,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>hash table</tag>
         <tag>hard</tag>
       </tags>
   </entry>
@@ -4597,9 +4610,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -4611,9 +4624,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>array</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -4625,9 +4638,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
+        <tag>two pointers</tag>
         <tag>array</tag>
         <tag>easy</tag>
-        <tag>two pointers</tag>
       </tags>
   </entry>
   <entry>
@@ -4680,8 +4693,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
         <tag>backtracking</tag>
       </tags>
   </entry>
@@ -4707,8 +4720,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
         <tag>stack</tag>
       </tags>
   </entry>
@@ -4735,10 +4748,10 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
-        <tag>hash table</tag>
         <tag>two pointers</tag>
+        <tag>hash table</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4764,9 +4777,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4778,9 +4791,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4792,8 +4805,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
       </tags>
   </entry>
   <entry>
@@ -4805,8 +4818,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>easy</tag>
         <tag>string</tag>
+        <tag>easy</tag>
         <tag>math</tag>
       </tags>
   </entry>
@@ -4833,9 +4846,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>two pointers</tag>
         <tag>medium</tag>
+        <tag>array</tag>
       </tags>
   </entry>
   <entry>
@@ -4927,8 +4940,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>medium</tag>
+        <tag>array</tag>
         <tag>divide and conquer</tag>
         <tag>binary search</tag>
       </tags>
@@ -4942,9 +4955,9 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>hash table</tag>
         <tag>two pointers</tag>
         <tag>string</tag>
+        <tag>hash table</tag>
         <tag>medium</tag>
       </tags>
   </entry>
@@ -4971,8 +4984,8 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>array</tag>
         <tag>hash table</tag>
+        <tag>array</tag>
         <tag>easy</tag>
       </tags>
   </entry>
