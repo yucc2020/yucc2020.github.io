@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="http://p94fw3huv.bkt.clouddn.com/static/images/favicon-48-48.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="http://p94fw3huv.bkt.clouddn.com/static/images/favicon-32-32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="http://p94fw3huv.bkt.clouddn.com/static/images/favicon-16-16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="VGGNet, VGG, CNN, convolutional neural network, deep learning, ImageNet, ILSVRC, ILSVRC 2014" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="VGGNet[1]是University of Oxford（牛津大学）的Visual Geometry GroupKaren小组的 Simonyan和Andrew Zisserman提出的一种经典网络结构，以机构Visual Geometry GroupKaren的缩写VGG命名。VGGNet赢得了ILSVRC 2014中localisation（定位）的第一名和classification（分">
+<meta name="keywords" content="VGGNet, VGG, CNN, convolutional neural network, deep learning, ImageNet, ILSVRC, ILSVRC 2014">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VGGNet">
+<meta property="og:url" content="http://yucc.me/p/b2e32499/index.html">
+<meta property="og:site_name" content="Chenchen Yu">
+<meta property="og:description" content="VGGNet[1]是University of Oxford（牛津大学）的Visual Geometry GroupKaren小组的 Simonyan和Andrew Zisserman提出的一种经典网络结构，以机构Visual Geometry GroupKaren的缩写VGG命名。VGGNet赢得了ILSVRC 2014中localisation（定位）的第一名和classification（分">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/60.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/61.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/62.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/63.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/64.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/65.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/66.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/67.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/68.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/69.png">
+<meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/70.png">
+<meta property="og:updated_time" content="2018-08-09T11:37:59.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VGGNet">
+<meta name="twitter:description" content="VGGNet[1]是University of Oxford（牛津大学）的Visual Geometry GroupKaren小组的 Simonyan和Andrew Zisserman提出的一种经典网络结构，以机构Visual Geometry GroupKaren的缩写VGG命名。VGGNet赢得了ILSVRC 2014中localisation（定位）的第一名和classification（分">
+<meta name="twitter:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/60.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yucc.me/p/b2e32499/"/>
+
+
+
+
+
+  <title>VGGNet | Chenchen Yu</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Chenchen Yu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yucc.me/p/b2e32499/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chenchen Yu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p94fw3huv.bkt.clouddn.com/static/images/yucc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chenchen Yu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">VGGNet</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T20:41:15+08:00">
+                2018-08-08 20:41
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-08-09T19:37:59+08:00">
+                2018-08-09 19:37
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Artificial-Intelligence/" itemprop="url" rel="index">
+                    <span itemprop="name">Artificial Intelligence</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,780
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>VGGNet[1]是University of Oxford（牛津大学）的Visual Geometry GroupKaren小组的 Simonyan和Andrew Zisserman提出的一种经典网络结构，以机构Visual Geometry GroupKaren的缩写VGG命名。VGGNet赢得了ILSVRC 2014中localisation（定位）的第一名和classification（分类）的第二名(分类第一名是GoogLeNet）。<strong>该网络结构的主要工作时证明了增加网络结构深度能够在一定程度上影响网络的最终性能。</strong>VGG有两种网络结构，分别是VGG16和VGG19。两者没有本质区别，只是网络深度不一样。</p>
+<img title="图1：VGG16的网络结构示意图[3]" src="http://p94fw3huv.bkt.clouddn.com/static/images/60.png">
+<a id="more"></a>
+<h4 id="1-卷积网络配置"><a href="#1-卷积网络配置" class="headerlink" title="1. 卷积网络配置"></a>1. 卷积网络配置</h4><h5 id="1-1-架构-结构"><a href="#1-1-架构-结构" class="headerlink" title="1.1 架构/结构"></a>1.1 架构/结构</h5><p><strong>卷积网络的输入是 $224\times 224$RGB图像。</strong> 仅有的预处理是减去训练集的RGB均值。</p>
+<p>全部使用3*3的卷积核，该卷积核恰好能看到上下左右及中心。使用了1*1的卷积滤波器，可以认为是输入通道的线性转换，后面紧跟着一个分线性转换。3*3的padding是1像素，这样能保证图像大小不变。使用max-pooling，窗口为2*2，步长为2。</p>
+<p>三个全连接层4096,4096,1000。后面是softmax层。</p>
+<p>所有隐层使用relu非线性激活。</p>
+<h5 id="1-2-配置"><a href="#1-2-配置" class="headerlink" title="1.2 配置"></a>1.2 配置</h5><p>卷积网络的配置如图2。图3中标识了不同配置的参数多少。尽管非常深，我们的权重个数并没有比浅的网络参数多多少（比如Sermanet 2014的144M个权重）。</p>
+<img title="图2：卷积网络参数设置（按列看）。从A至E，深度依次增加，越来越多的网络被增加，新增的用黑体标注。卷积的参数标书为“conv（感受野大小）-（通道个数）”，为了简洁，Relu激活单元没有标注" src="http://p94fw3huv.bkt.clouddn.com/static/images/61.png">
+<img title="图3：参数个数（单位是：百万）" src="http://p94fw3huv.bkt.clouddn.com/static/images/62.png">
+<h5 id="1-3-讨论"><a href="#1-3-讨论" class="headerlink" title="1.3 讨论"></a>1.3 讨论</h5><p>AlexNet第一层使用的11*11的卷积核，ZFNet使用的是7*7。我们全部使用3*3的卷积核，步长为1。很容易看到两个3*3的卷积核堆叠（他们之间不使用pooling）的感受野（receptive field）等价于5*5的。三层堆叠可以有7*7的感受野。所以，当我们使用堆叠的3*3的卷积核，而不是7*7的卷积核，我们获得了什么收益呢？</p>
+<p>首先，决策函数更有分辨性。其次，我们减少了参数的个数。假设输入和输出的3*3卷积堆有C个channel，则该堆具有的参数的个数是$3(3^2 C^2)=27C^2$，而相对应的7*7的参数个数为$7^7C^2=49C^2$。比前面的多了81%还多。可以看做是对7*7的滤波器上做了一个强制的正则化，让他们强制分解为3*3的滤波器，并且中间插入了非线性。</p>
+<img title="图4：两个串联的3\*3的卷积层感受野类似于5\*5的" src="http://p94fw3huv.bkt.clouddn.com/static/images/63.png">
+<p>VGG C在最后的三个阶段都用到了1x1卷积核，选用1x1卷积核的最直接原因是在维度上继承全连接，然而作者首先认为1x1卷积可以增加决策函数（decision function，这里的决策函数我认为就是softmax）的非线性能力，非线性是由激活函数ReLU决定的，本身1x1卷积则是线性映射，即将输入的feature map映射到同样维度的feature map。作者还提到“Network in Network” architecture of Lin et al. (2014).这篇文章就大量使用了1x1卷积核。</p>
+<p>此外，查了知乎简单总结下1x1卷积的特点（就不说加入非线性这个conv自带的特点了）：</p>
+<ol>
+<li>专注于跨通道的特征组合：conv1x1根本不考虑单通道上像素的局部信息（不考虑局部信息），专注于那一个卷积核内部通道的信息整合。conv3x3既考虑跨通道，也考虑局部信息整合；</li>
+<li>对feature map的channel级别降维或升维：例如224x224x100的图像（或feature map）经过20个conv1x1的卷积核，得到224x224x20的feature map。尤其当卷积核（即filter）数量达到上百个时，3x3或5x5卷积的计算会非常耗时，所以1x1卷积在3x3或5x5卷积计算前先降低feature map的维度。</li>
+</ol>
+<h5 id="1-4-内存与参数个数计算"><a href="#1-4-内存与参数个数计算" class="headerlink" title="1.4 内存与参数个数计算"></a>1.4 内存与参数个数计算</h5><p>下图5中，可以看出。像其他卷积神经网络一样，内存（memory）同样也是计算时间（compute time）在早期的卷积网络中，而多数的参数则在全连接层（FC）。在VGGNet中，第一层FC（全连接）中有100M个参数，而总参数是140M个。</p>
+<img title="图5：内存与参数个数计算[6]" src="http://p94fw3huv.bkt.clouddn.com/static/images/64.png">
+<h4 id="2-分类框架"><a href="#2-分类框架" class="headerlink" title="2. 分类框架"></a>2. 分类框架</h4><h5 id="2-1-训练"><a href="#2-1-训练" class="headerlink" title="2.1 训练"></a>2.1 训练</h5><p>训练的详细参数可以参考论文。</p>
+<p>Training image size。训练图片大小。是这样，类似于AlexNet，先把图片缩放到一定大小，比如最小边长为S。S是大于224的。然后再从这个图片中裁剪一些224*224的图片作为输入。</p>
+<p>这里使用了两种方法设置S。一种是S=256，也是AlexNet使用的。及使用S=384。</p>
+<p>另一种是S从Smin和Smax中每次随机挑选。这里Smin=256,Smax=512。</p>
+<h5 id="2-2-测试-amp-amp-实施细节"><a href="#2-2-测试-amp-amp-实施细节" class="headerlink" title="2.2 测试 &amp;&amp; 实施细节"></a>2.2 测试 &amp;&amp; 实施细节</h5><p>这里是细节。参考论文就好。</p>
+<h4 id="3-分类实验"><a href="#3-分类实验" class="headerlink" title="3. 分类实验"></a>3. 分类实验</h4><p>数据集是ILSVRC 2012，其中training 1.3m，validation 50k，testing 100k。</p>
+<h5 id="3-1-单尺度评估（Single-Scale-Evaluation）"><a href="#3-1-单尺度评估（Single-Scale-Evaluation）" class="headerlink" title="3.1 单尺度评估（Single Scale Evaluation）"></a>3.1 单尺度评估（Single Scale Evaluation）</h5><p>如图6，结果如下。证明了。 </p>
+<ol>
+<li>local response normalization（LRN）无效，开从A-LRN可以看出。所以B-E不再使用。</li>
+<li>1*1的卷积是有效果的，可以从C比B好看出。</li>
+<li>D比C好，说明通过卷积获取空间内容还是有效的。</li>
+<li>深度越深越好。</li>
+</ol>
+<img title="图6：单测试尺度的卷积网络表现" src="http://p94fw3huv.bkt.clouddn.com/static/images/65.png">
+<h5 id="3-2-多尺度评估（Multi-Scale-Evaluation）"><a href="#3-2-多尺度评估（Multi-Scale-Evaluation）" class="headerlink" title="3.2 多尺度评估（Multi-Scale Evaluation）"></a>3.2 多尺度评估（Multi-Scale Evaluation）</h5><p>对比图7与图6，说明多尺度评估明显有效果。</p>
+<img title="图7：多测试尺度的卷积网络表现" src="http://p94fw3huv.bkt.clouddn.com/static/images/66.png">
+<h5 id="3-3-多裁剪评估"><a href="#3-3-多裁剪评估" class="headerlink" title="3.3 多裁剪评估"></a>3.3 多裁剪评估</h5><p>多种裁剪方法进行评估，然后评估预测结果。这里只使用了D和E两个网络。结果如图8。</p>
+<img title="图8：评估技术对比。训练尺度从256至512中抽样，测试尺度有三种256,384和512" src="http://p94fw3huv.bkt.clouddn.com/static/images/67.png">
+<h5 id="3-4-卷积网络混淆"><a href="#3-4-卷积网络混淆" class="headerlink" title="3.4 卷积网络混淆"></a>3.4 卷积网络混淆</h5><p>至此，我们尝试用了多种单一网络的模型。在这部分，我们尝试将多种模型的结果进行平均。AlexNet，ZFNet都证明了多种模型的预测是有效的，能够获得很好的结果。</p>
+<p>结果如图9所示。</p>
+<p>By the time of ILSVRC submission we had only trained the single-scale networks, as well as a multi-scale model D (by fine-tuning only the fully-connected layers rather than all layers). The resulting ensemble of 7 networks has 7.3% ILSVRC test error. After the submission, we considered an ensemble of only two best-performing multi-scale models (configurations D and E), which reduced the test error to 7.0% using dense evaluation and 6.8% using combined dense and multi-crop evaluation. For reference, our best-performing single model achieves 7.1% error.</p>
+<img title="图9：多种网络结果进行混淆" src="http://p94fw3huv.bkt.clouddn.com/static/images/68.png">
+<h5 id="3-5-与最先进的网络进行对比"><a href="#3-5-与最先进的网络进行对比" class="headerlink" title="3.5 与最先进的网络进行对比"></a>3.5 与最先进的网络进行对比</h5><p>对比结果如图10所示。</p>
+<img title="图10：与ILSVRC" src="http://p94fw3huv.bkt.clouddn.com/static/images/69.png">
+<h5 id="3-6-VGGNet的泛化能力"><a href="#3-6-VGGNet的泛化能力" class="headerlink" title="3.6 VGGNet的泛化能力"></a>3.6 VGGNet的泛化能力</h5><p>VGGNet对于其他数据集一样有非常好的泛化能力。多尺度卷积特征和线性SVM的组合或许优于更复杂的的识别管道加不太深的特征组合。我们对PASCAL VOC和Caltech图像分类的基准如下：</p>
+<img title="图11：VGGNet对PASCAL" src="http://p94fw3huv.bkt.clouddn.com/static/images/70.png">
+<h4 id="4-结论"><a href="#4-结论" class="headerlink" title="4. 结论"></a>4. 结论</h4><p>这篇工作中，使用了深达19层的卷积神经网络进行大量图片分类。证明了网络的深度对于分类的准确率是有提升的。</p>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ol>
+<li>Simonyan K, Zisserman A. Very deep convolutional networks for large-scale image recognition[J]. arXiv preprint arXiv:1409.1556, 2014.</li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzUxNjcxMjQxNg==&amp;mid=2247485161&amp;idx=1&amp;sn=0d836d81ba051e37675bbf6f25504e9d&amp;chksm=f9a27466ced5fd701d93c4fd5ac9f286deab61bc0bc0448acc2876d7d251becf2eceb306fba5&amp;scene=0#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzUxNjcxMjQxNg==&amp;mid=2247485161&amp;idx=1&amp;sn=0d836d81ba051e37675bbf6f25504e9d&amp;chksm=f9a27466ced5fd701d93c4fd5ac9f286deab61bc0bc0448acc2876d7d251becf2eceb306fba5&amp;scene=0#rd</a></li>
+<li><a href="https://blog.heuritech.com/2016/02/29/a-brief-report-of-the-heuritech-deep-learning-meetup-5/" target="_blank" rel="noopener">https://blog.heuritech.com/2016/02/29/a-brief-report-of-the-heuritech-deep-learning-meetup-5/</a></li>
+<li><a href="https://blog.csdn.net/qq_40027052/article/details/79015827" target="_blank" rel="noopener">https://blog.csdn.net/qq_40027052/article/details/79015827</a></li>
+<li><a href="http://www.robots.ox.ac.uk/~vgg/research/very_deep/" target="_blank" rel="noopener">http://www.robots.ox.ac.uk/~vgg/research/very_deep/</a></li>
+<li><a href="http://cs231n.github.io/convolutional-networks/" target="_blank" rel="noopener">http://cs231n.github.io/convolutional-networks/</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://p94fw3huv.bkt.clouddn.com/static/images/wechatpay.jpg" alt="Chenchen Yu 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://p94fw3huv.bkt.clouddn.com/static/images/alipay.jpg" alt="Chenchen Yu 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Chenchen Yu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yucc.me/p/b2e32499/" title="VGGNet">http://yucc.me/p/b2e32499/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deep-learning/" rel="tag"># deep learning</a>
+          
+            <a href="/tags/cnn/" rel="tag"># cnn</a>
+          
+            <a href="/tags/convolutional-neural-network/" rel="tag"># convolutional neural network</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/p/3f18ad9b/" rel="next" title="ZFNet">
+                <i class="fa fa-chevron-left"></i> ZFNet
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p94fw3huv.bkt.clouddn.com/static/images/yucc.jpg"
+                alt="Chenchen Yu" />
+            
+              <p class="site-author-name" itemprop="name">Chenchen Yu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">381</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yucc2018" target="_blank" title="github">
+                      
+                        <i class="fa fa-fw fa-github"></i>github</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zhuanlan.zhihu.com/yuchenchen" target="_blank" title="zhihu">
+                      
+                        <i class="fa fa-fw fa-globe"></i>zhihu</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/zxjhdn" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.linkedin.com/in/chenchen-yu-510401107/" target="_blank" title="Linkedin">
+                      
+                        <i class="fa fa-fw fa-linkedin"></i>Linkedin</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yucc2018" target="_blank" title="twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/yucc2018" target="_blank" title="facebook">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>facebook</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:6506666@gmail.com" target="_blank" title="email">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>email</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-卷积网络配置"><span class="nav-text">1. 卷积网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-架构-结构"><span class="nav-text">1.1 架构/结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-配置"><span class="nav-text">1.2 配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-讨论"><span class="nav-text">1.3 讨论</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-内存与参数个数计算"><span class="nav-text">1.4 内存与参数个数计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分类框架"><span class="nav-text">2. 分类框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-训练"><span class="nav-text">2.1 训练</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-测试-amp-amp-实施细节"><span class="nav-text">2.2 测试 &amp;&amp; 实施细节</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-分类实验"><span class="nav-text">3. 分类实验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-单尺度评估（Single-Scale-Evaluation）"><span class="nav-text">3.1 单尺度评估（Single Scale Evaluation）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-多尺度评估（Multi-Scale-Evaluation）"><span class="nav-text">3.2 多尺度评估（Multi-Scale Evaluation）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-多裁剪评估"><span class="nav-text">3.3 多裁剪评估</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-卷积网络混淆"><span class="nav-text">3.4 卷积网络混淆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-与最先进的网络进行对比"><span class="nav-text">3.5 与最先进的网络进行对比</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-VGGNet的泛化能力"><span class="nav-text">3.6 VGGNet的泛化能力</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-结论"><span class="nav-text">4. 结论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chenchen Yu</span>
+
+  
+</div>
+
+<div>
+<span id="showDays"></span>
+</div>
+
+
+
+
+
+<script>
+  var seconds = 1000;
+  var minutes = seconds * 60;
+  var hours = minutes * 60;
+  var days = hours * 24;
+  var years = days * 365;
+  var birthDay = Date.UTC(2018,04,23,12,00,00); // 这里设置建站时间
+  setInterval(function() {
+    var today = new Date();
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth()+1;
+    var todayDate = today.getDate();
+    var todayHour = today.getHours();
+    var todayMinute = today.getMinutes();
+    var todaySecond = today.getSeconds();
+    var now = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+    var diff = now - birthDay;
+    var diffYears = Math.floor(diff/years);
+    var diffDays = Math.floor((diff/days)-diffYears*365);
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+      document.getElementById('showDays').innerHTML="本站已运行 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 ";
+  }, 1000);
+</script>
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站总访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.4"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.4"></script>
+
+
+  
+
+</body>
+</html>
