@@ -95,7 +95,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/11.png">
 <meta property="og:image" content="http://p94fw3huv.bkt.clouddn.com/static/images/12.png">
-<meta property="og:updated_time" content="2018-09-18T12:29:15.789Z">
+<meta property="og:updated_time" content="2018-09-20T08:54:53.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用vultr搭建vpn（shadowsocks）科学上网&#x2F;翻墙并支持北邮人bt（ipv6）下载教程">
 <meta name="twitter:description" content="学习本教程，主要收获会有两个。一个是科学上网，一个能够去北邮人bt或晨光pt（六维bt不适用）上传下载资源。内容概要如下，如果只为了科学上网，学习1-3即可。需要支持北邮人bt或晨光pt看1-4，服务器管理相关的内容放在了5，章节6主要是一些问题的解决办法。内容主要是以win、mac为例写的，android的科学上网也可以跟着本教程来。内容概要：  vultr购买VPS服务器 在服务器上搭建sha">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-18T20:29:15+08:00">
-                2018-09-18 20:29
+              <time title="更新于" itemprop="dateModified" datetime="2018-09-20T16:54:53+08:00">
+                2018-09-20 16:54
               </time>
             
           </span>
@@ -408,7 +408,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,785
+                  2,781
                 </span>
               
 
@@ -460,7 +460,7 @@
 <p><a href="https://www.vultr.com/?ref=7402906" target="_blank" rel="noopener">https://www.vultr.com/?ref=7402906</a></p>
 <h4 id="1-2-购买服务器"><a href="#1-2-购买服务器" class="headerlink" title="1.2 购买服务器"></a>1.2 购买服务器</h4><p>注册完账户，并充值后。进入以下网址购买服务器。</p>
 <p><a href="https://my.vultr.com/deploy/" target="_blank" rel="noopener">https://my.vultr.com/deploy/</a></p>
-<p>Server Location自己随意选，Server Type自己随意，建议用centos。Server Size随意，现在2.5美元那个只支持ipv6，如果支持ipv4的话需要再花钱买支持ipv4。所以这里建议使用5美元的服务器，同时支持ipv4及ipv6，简单省事。</p>
+<p>Server Location自己随意选，Server Type自己随意，建议用centos。Server Size随意，现在2.5美元那个只支持ipv6，如果支持ipv4的话需要再花钱买支持ipv4。所以这里建议使用3.5美元的服务器，同时支持ipv4及ipv6，简单省事。</p>
 <p><strong>Additional Features中，如果想支持ipv6， 访问北邮人bt，那么Enable IPv6必选</strong>。</p>
 <p>然后点击Deploy Now。</p>
 <p>然后跳转或访问以下网址：</p>
@@ -474,20 +474,18 @@
 <p>其中ip替换为你自己的ip地址。然后会弹出弹出一个框，输入你前几步提到的密码，并回车（enter键）。至此，你已经登陆了。</p>
 <h4 id="2-2-服务器上部署shadowsocks"><a href="#2-2-服务器上部署shadowsocks" class="headerlink" title="2.2 服务器上部署shadowsocks"></a>2.2 服务器上部署shadowsocks</h4><p>在刚才登录的xshell服务器上，输入以下代码。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
-<p>按照提示输入密码、端口号、加密方式等就好了。注意端口号不要太大，建议使用1000以内的。</p>
-<p>安装完成后显示效果如下，可以截图保存这些信息下面配置会用的到：</p>
+<p>按照提示输入密码、端口号、加密方式等就好了。注意端口号不要太大，建议使用1000以内的。安装完成后显示效果如下，可以截图保存这些信息下面配置会用的到：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Congratulations, Shadowsocks-python server install completed!</span><br><span class="line">Your Server IP        :  your ip</span><br><span class="line">Your Server Port      :  your port</span><br><span class="line">Your Password         :  your password</span><br><span class="line">Your Encryption Method:  your encryption method</span><br><span class="line"></span><br><span class="line">Welcome to visit:https://teddysun.com/342.html</span><br><span class="line">Enjoy it!</span><br><span class="line"></span><br><span class="line">[root@vultr ~]#</span><br></pre></td></tr></table></figure>
 <p>至此，服务器端的配置已经完成。</p>
 <h3 id="3-在win、mac或Android中配置shadowsocks"><a href="#3-在win、mac或Android中配置shadowsocks" class="headerlink" title="3. 在win、mac或Android中配置shadowsocks"></a>3. 在win、mac或Android中配置shadowsocks</h3><h4 id="3-1-下载shadowsocks客户端"><a href="#3-1-下载shadowsocks客户端" class="headerlink" title="3.1 下载shadowsocks客户端"></a>3.1 下载shadowsocks客户端</h4><p>Windows：<a href="https://github.com/shadowsocks/shadowsocks-windows/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-windows/releases</a></p>
 <p>Android：<a href="https://github.com/shadowsocks/shadowsocks-android/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-android/releases</a></p>
 <p>mac：<a href="https://github.com/shadowsocks/ShadowsocksX-NG/releases" target="_blank" rel="noopener">https://github.com/shadowsocks/ShadowsocksX-NG/releases</a> </p>
 <p>ubuntu的配置较为复杂，可以参考[4]。</p>
-<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例，下载，并解压缩后，运行shadowsocks。输入ip，port，password，及encryption点击确定。 然后再桌面右下角找到shadowsocks，右键点击勾选上“Enable System Proxy”（启用系统代理）。此时就可以愉快的科学上网了。</p>
-<p>请注意，如果win下面提示去安装.net4.5还是更高的框架时，按照提示去安装就好了。安装完再打开shadowsocks运行上面的步骤。</p>
+<h4 id="3-2-配置shadowsocks客户端"><a href="#3-2-配置shadowsocks客户端" class="headerlink" title="3.2 配置shadowsocks客户端"></a>3.2 配置shadowsocks客户端</h4><p>以win为例，下载，并解压缩后，运行shadowsocks。请注意，如果win下面提示去安装.net4.5还是更高的框架时，按照提示去安装就好了。安装完再打开运行shadowsocks。输入ip，port，password，及encryption点击确定。 然后再桌面右下角找到shadowsocks，右键点击勾选上“Enable System Proxy”（启用系统代理）。此时就可以愉快的科学上网了。</p>
 <p>如果是mac，解压缩后运行，在上面点击那个小飞机，出现下拉栏“服务器-新服务器”-“服务器设置”。同样是输入地址、端口、加密方法、密码，并点击确定。类似于win，有可能需要点击勾选“Enable System Proxy”（启用系统代理）。</p>
 <p>如果是Android，则点击右上角的较好，进去配置服务器、远程端口、密码、加密方式、路由，然后点击右上角的对号进行保存。 然后，选中刚才配置的vpn，然后点击右下角有个飞机的那个圆圈，就可以了。快来测试下吧！</p>
 <p>有可能需要关闭并重新打开shadowsocks的操作，有可能不需要。打开你的浏览器，输入 <a href="https://www.google.com/" target="_blank" rel="noopener">https://www.google.com/</a> ，那么见证奇迹的时刻到了。</p>
-<p>至此，电脑及手机的科学上网已经配置完成。</p>
+<p><strong>至此，电脑及手机的科学上网已经配置完成。</strong></p>
 <p>此外，正常情况下，会默认国内网站直连，国外走代理，没有问题的。但是一些网站需要走代理，但是并没有走代理的话，可以参照4.1的方法，将网站相应的网址加入走代理的列表里，重启shadowsocks即可。</p>
 <h3 id="4-配置utorrent，支持北邮人bt"><a href="#4-配置utorrent，支持北邮人bt" class="headerlink" title="4. 配置utorrent，支持北邮人bt"></a>4. 配置utorrent，支持北邮人bt</h3><p>两步，第一步将北邮人bt的网址加入支持翻墙的列表，第二步配置utorrent。都很简单。</p>
 <h4 id="4-1-配置shadowsocks"><a href="#4-1-配置shadowsocks" class="headerlink" title="4.1 配置shadowsocks"></a>4.1 配置shadowsocks</h4><p>首先通过 右键Shadowsocks托盘图标 &gt;-&gt; PAC &gt;-&gt; 编辑 GFWList 的用户规则（或 Edit User rule for GFWList） 来打开user-rule.txt。（mac用户，点击小飞机，“编辑PAC用户自定规则”）</p>
