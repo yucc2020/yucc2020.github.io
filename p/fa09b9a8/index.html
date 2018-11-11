@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,linked list,medium," />
+  <meta name="keywords" content="leetcode,medium,linked list," />
 
 
 
@@ -86,7 +86,7 @@
 
 
 <meta name="description" content="24.9%  https://leetcode.com/problems/reorder-list/#/description Given a singly linked list L: L0→L1→…→Ln-1→Ln,reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→… You must do this in-place without altering the nod">
-<meta name="keywords" content="leetcode,linked list,medium">
+<meta name="keywords" content="leetcode,medium,linked list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="143. Reorder List">
 <meta property="og:url" content="http://blog.yucc.me/p/fa09b9a8/index.html">
@@ -386,7 +386,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/p/fa09b9a8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/p/fa09b9a8/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/fa09b9a8/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -559,9 +559,9 @@
           
             <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/linked-list/" rel="tag"># linked list</a>
-          
             <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/linked-list/" rel="tag"># linked list</a>
           
         </div>
       
@@ -617,7 +617,12 @@
 
   
     <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
     </div>
+
   
 
 
@@ -926,30 +931,49 @@
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'lXLRyKtvjGcDKrKPgDpLHm43-gzGzoHsz',
-        appKey: 'taC7ztlgBcxJBrSwJLUCBtdV',
-        placeholder: '来啊，快活啊(*^▽^*)',
-        avatar:'hide',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 

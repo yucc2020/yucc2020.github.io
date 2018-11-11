@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,string,easy," />
+  <meta name="keywords" content="leetcode,easy,string," />
 
 
 
@@ -86,7 +86,7 @@
 
 
 <meta name="description" content="31.5%  https://leetcode.com/problems/longest-common-prefix/ Write a function to find the longest common prefix string amongst an array of strings.">
-<meta name="keywords" content="leetcode,string,easy">
+<meta name="keywords" content="leetcode,easy,string">
 <meta property="og:type" content="article">
 <meta property="og:title" content="014. Longest Common Prefix">
 <meta property="og:url" content="http://blog.yucc.me/p/58ae5420/index.html">
@@ -386,7 +386,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/p/58ae5420/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/p/58ae5420/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/p/58ae5420/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -627,9 +627,9 @@
           
             <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/string/" rel="tag"># string</a>
-          
             <a href="/tags/easy/" rel="tag"># easy</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
           
         </div>
       
@@ -685,7 +685,12 @@
 
   
     <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
     </div>
+
   
 
 
@@ -1019,30 +1024,49 @@
 
 
 
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'yucc2018',
+            repo: 'yucc2018.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '704923b823cfe85343062ae2444019597f96be86',
+            
+                client_id: '174a67d1482f56c9aabb'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'lXLRyKtvjGcDKrKPgDpLHm43-gzGzoHsz',
-        appKey: 'taC7ztlgBcxJBrSwJLUCBtdV',
-        placeholder: '来啊，快活啊(*^▽^*)',
-        avatar:'hide',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
+
 
 
 
