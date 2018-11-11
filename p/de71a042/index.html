@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="leetcode,hash table,medium,heap," />
+  <meta name="keywords" content="leetcode,medium,hash table,heap," />
 
 
 
@@ -86,7 +86,7 @@
 
 
 <meta name="description" content="46.8%  https://leetcode.com/problems/top-k-frequent-elements/#/description Given a non-empty array of integers, return the k most frequent elements. 12For example,Given [1,1,1,2,2,3] and k = 2, retur">
-<meta name="keywords" content="leetcode,hash table,medium,heap">
+<meta name="keywords" content="leetcode,medium,hash table,heap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="347. Top K Frequent Elements">
 <meta property="og:url" content="http://blog.yucc.me/p/de71a042/index.html">
@@ -380,6 +380,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/p/de71a042/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/p/de71a042/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -517,7 +527,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>谢谢你！</div>
+  <div>谢谢你，可爱的朋友。</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>赞赏</span>
   </button>
@@ -571,9 +581,9 @@
           
             <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
-            <a href="/tags/hash-table/" rel="tag"># hash table</a>
-          
             <a href="/tags/medium/" rel="tag"># medium</a>
+          
+            <a href="/tags/hash-table/" rel="tag"># hash table</a>
           
             <a href="/tags/heap/" rel="tag"># heap</a>
           
@@ -631,11 +641,7 @@
 
   
     <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
     </div>
-
   
 
 
@@ -944,43 +950,30 @@
 
 
 
-<!-- LOCAL: You can save these files to your site and update links -->
-    
-        
-        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-        <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-    
-<!-- END LOCAL -->
-
-    
-
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitment({
-            id: window.location.pathname, 
-            owner: 'yucc2018',
-            repo: 'yucc2018.github.io',
-            
-            oauth: {
-            
-            
-                client_secret: '704923b823cfe85343062ae2444019597f96be86',
-            
-                client_id: '174a67d1482f56c9aabb'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
-    
 
 
 
-
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'lXLRyKtvjGcDKrKPgDpLHm43-gzGzoHsz',
+        appKey: 'taC7ztlgBcxJBrSwJLUCBtdV',
+        placeholder: '来啊，快活啊(*^▽^*)',
+        avatar:'hide',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
